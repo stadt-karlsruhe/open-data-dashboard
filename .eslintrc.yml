@@ -1,0 +1,272 @@
+# {
+#   "extends": "next/core-web-vitals"
+# }
+
+
+parserOptions:
+    project: ./tsconfig.json
+    ecmaVersion: latest
+    sourceType: module
+    ecmaFeatures:
+        globalReturn: false
+        impliedStrict: true
+extends:
+- next/core-web-vitals
+- plugin:import/typescript
+- plugin:@typescript-eslint/strict-type-checked
+- plugin:@typescript-eslint/stylistic-type-checked
+- plugin:sonarjs/recommended
+- plugin:deprecation/recommended
+- plugin:sonarjs/recommended
+- plugin:import/errors
+- plugin:import/warnings
+- plugin:promise/recommended
+- plugin:eslint-comments/recommended
+- plugin:regexp/recommended
+- plugin:unicorn/all
+- plugin:prettier/recommended
+- prettier
+rules:
+    "@typescript-eslint/no-misused-promises": off
+    "@typescript-eslint/no-unused-vars": off
+    import/consistent-type-specifier-style:
+    - error
+    - prefer-inline
+    import/no-cycle:
+    - error
+    - maxDepth: 4
+      ignoreExternal: true
+    import/no-empty-named-blocks: error
+    import/no-extraneous-dependencies: error
+    import/no-unresolved: off
+    eslint-comments/no-unused-disable: error
+    promise/no-multiple-resolved: error
+    regexp/no-extra-lookaround-assertions: error
+    regexp/no-misleading-capturing-group: error
+    regexp/no-missing-g-flag: error
+    regexp/prefer-regexp-exec: error
+    unicorn/catch-error-name:
+    - error
+    - name: err
+    unicorn/consistent-function-scoping: error
+    unicorn/custom-error-definition: error
+    unicorn/filename-case: off
+    unicorn/no-array-for-each: off
+    unicorn/no-document-cookie: error
+    unicorn/no-keyword-prefix: error
+    unicorn/no-negated-condition: error
+    unicorn/no-nested-ternary: error
+    unicorn/no-null: off
+    unicorn/no-object-as-default-parameter: error
+    unicorn/no-process-exit: error
+    unicorn/no-static-only-class: error
+    unicorn/no-unsafe-regex: error
+    unicorn/no-unused-properties: error
+    unicorn/numeric-separators-style: error
+    unicorn/prefer-array-find: error
+    unicorn/prefer-array-flat: error
+    unicorn/prefer-flat-map: error
+    unicorn/prefer-module: error
+    unicorn/prefer-node-protocol: error
+    unicorn/prefer-query-selector: 0
+    unicorn/prefer-replace-all: error
+    unicorn/prefer-switch: error
+    unicorn/prevent-abbreviations: off
+    unicorn/string-content: error
+    array-bracket-newline:
+    - error
+    - multiline: true
+    array-bracket-spacing: error
+    arrow-parens: error
+    arrow-spacing: error
+    block-scoped-var: error
+    block-spacing: error
+    brace-style: 0
+    camelcase: error
+    comma-dangle:
+    - error
+    - always-multiline
+    comma-spacing: 0
+    comma-style: error
+    computed-property-spacing: error
+    consistent-this: error
+    curly:
+    - error
+    - all
+    default-case: error
+    default-case-last: error
+    default-param-last: error
+    eqeqeq: error
+    eol-last: error
+    for-direction: error
+    func-call-spacing: 0
+    func-name-matching: error
+    func-names:
+    - error
+    - never
+    getter-return: error
+    grouped-accessor-pairs: error
+    handle-callback-err: error
+    key-spacing: 0
+    keyword-spacing: error
+    line-comment-position: error
+    linebreak-style: error
+    max-classes-per-file: error
+    max-depth: error
+    max-len:
+    - error
+    - ignoreComments: true
+      ignoreTrailingComments: true
+      ignoreStrings: true
+      ignoreTemplateLiterals: true
+      ignoreUrls: true
+      code: 120
+    max-lines: error
+    max-lines-per-function:
+    - error
+    - max: 60
+    max-nested-callbacks:
+    - error
+    - max: 4
+    max-params: error
+    max-statements:
+    - error
+    - max: 25
+    max-statements-per-line: error
+    new-parens: error
+    no-alert: error
+    no-array-constructor: error
+    no-bitwise: error
+    no-buffer-constructor: error
+    no-caller: error
+    no-confusing-arrow:
+    - error
+    - allowParens: false
+    no-console: 0
+    no-constant-binary-expression: error
+    no-constructor-return: error
+    no-continue: error
+    no-dupe-class-members: 0
+    no-else-return: error
+    no-empty-function: error
+    no-empty-static-block: error
+    no-eq-null: error
+    no-eval: error
+    no-extend-native: error
+    no-extra-bind: error
+    no-extra-label: error
+    no-extra-parens: 0
+    no-extra-semi: 0
+    no-implicit-coercion: error
+    no-implicit-globals: error
+    no-implied-eval: error
+    no-invalid-this: 0
+    no-iterator: error
+    no-label-var: error
+    no-labels: error
+    no-lone-blocks: error
+    no-lonely-if: error
+    no-loop-func: error
+    no-loss-of-precision: off
+    no-multi-assign: error
+    no-multi-spaces: error
+    no-multiple-empty-lines: error
+    no-negated-condition: error
+    no-nested-ternary: error
+    no-new: error
+    no-new-func: error
+    no-new-native-nonconstructor: error
+    no-new-object: error
+    no-new-wrappers: error
+    no-nonoctal-decimal-escape: error
+    no-param-reassign: error
+    no-proto: error
+    no-restricted-imports: 0
+    no-restricted-properties: error
+    no-return-assign: error
+    no-return-await: error
+    no-script-url: error
+    no-self-compare: error
+    no-sequences: error
+    no-shadow: 0
+    no-shadow-restricted-names: error
+    no-tabs: error
+    no-template-curly-in-string: error
+    no-throw-literal: error
+    no-trailing-spaces: error
+    no-undef-init: error
+    no-underscore-dangle:
+    - error
+    - allow:
+        - _id
+        - __v
+    no-unmodified-loop-condition: error
+    no-unneeded-ternary: error
+    no-unsafe-optional-chaining: error
+    no-unreachable-loop: error
+    no-unused-expressions: error
+    no-use-before-define: 0
+    no-useless-backreference: error
+    no-useless-call: error
+    no-useless-catch: error
+    no-useless-computed-key: error
+    no-useless-concat: error
+    no-useless-constructor: error
+    no-useless-rename: error
+    no-useless-return: error
+    no-void: error
+    no-whitespace-before-property: error
+    no-with: error
+    nonblock-statement-body-position: error
+    object-curly-spacing: 0
+    object-property-newline:
+    - error
+    - allowAllPropertiesOnSameLine: true
+    object-shorthand: error
+    one-var:
+    - error
+    - never
+    one-var-declaration-per-line: error
+    operator-assignment: error
+    operator-linebreak: error
+    padded-blocks:
+    - error
+    - never
+    prefer-arrow-callback: error
+    prefer-destructuring: error
+    prefer-exponentiation-operator: error
+    prefer-numeric-literals: error
+    prefer-object-has-own: error
+    prefer-object-spread: error
+    prefer-promise-reject-errors: error
+    prefer-regex-literals: error
+    prefer-rest-params: error
+    prefer-template: error
+    quote-props:
+    - error
+    - as-needed
+    radix: error
+    require-atomic-updates: error
+    require-await: error
+    require-unicode-regexp: error
+    rest-spread-spacing: error
+    semi:
+    - error
+    - always
+    semi-spacing: error
+    sort-imports: error
+    space-before-blocks: error
+    space-before-function-paren: 0
+    space-in-parens: error
+    space-infix-ops: 0
+    space-unary-ops: error
+    spaced-comment: error
+    strict: error
+    switch-colon-spacing: error
+    symbol-description: error
+    template-curly-spacing: error
+    wrap-iife: error
+    yield-star-spacing: error
+    yoda:
+    - error
+    - never
