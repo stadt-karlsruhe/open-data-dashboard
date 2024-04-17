@@ -1,11 +1,12 @@
-name: Build and Deploy
+name: Build and Deploy to GitHub Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: ['Lint and Test']
+    types: [completed]
     branches:
     - main
-
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -25,7 +26,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "21"
+          node-version: '21'
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -43,7 +44,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: npm i
+        run: npm ci
       - name: Build with Next.js
         run: npm run build
       - name: Upload artifact
