@@ -1,0 +1,29 @@
+---
+    name: Lint and Test
+    on: # yamllint disable-line rule:truthy
+        - push
+    jobs:
+        lint-test:
+            name: Lint and Test
+            runs-on: ubuntu-latest
+            steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: yamllint
+              uses: ibiqlik/action-yamllint@v3
+              with:
+                strict: true
+            - name: markdownlint
+              uses: nosborn/github-action-markdown-cli@v3.3.0
+              with:
+                files: .
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: '21'
+            - name: Install
+              run: npm ci
+            - name: ESLint
+              run: npm run lint
+            - name: Build
+              run: npm run build
