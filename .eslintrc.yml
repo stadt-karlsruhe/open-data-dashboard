@@ -1,8 +1,4 @@
-# {
-#   "extends": "next/core-web-vitals"
-# }
-
-
+---
 parserOptions:
     project: ./tsconfig.json
     ecmaVersion: latest
@@ -11,21 +7,21 @@ parserOptions:
         globalReturn: false
         impliedStrict: true
 extends:
-- next/core-web-vitals
-- plugin:import/typescript
-- plugin:@typescript-eslint/strict-type-checked
-- plugin:@typescript-eslint/stylistic-type-checked
-- plugin:sonarjs/recommended
-- plugin:deprecation/recommended
-- plugin:sonarjs/recommended
-- plugin:import/errors
-- plugin:import/warnings
-- plugin:promise/recommended
-- plugin:eslint-comments/recommended
-- plugin:regexp/recommended
-- plugin:unicorn/all
-- plugin:prettier/recommended
-- prettier
+    - next/core-web-vitals
+    - plugin:import/typescript
+    - plugin:@typescript-eslint/strict-type-checked
+    - plugin:@typescript-eslint/stylistic-type-checked
+    - plugin:sonarjs/recommended
+    - plugin:deprecation/recommended
+    - plugin:sonarjs/recommended
+    - plugin:import/errors
+    - plugin:import/warnings
+    - plugin:promise/recommended
+    - plugin:eslint-comments/recommended
+    - plugin:regexp/recommended
+    - plugin:unicorn/all
+    - plugin:prettier/recommended
+    - prettier
 rules:
     "@typescript-eslint/no-misused-promises": off
     "@typescript-eslint/no-unused-vars": off

@@ -8,6 +8,5 @@ line-length:
   code_blocks: true
   tables: true
   headings: true
-  headers: true
   strict: false
-  stern: false  
+  stern: false

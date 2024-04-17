@@ -1,6 +1,6 @@
 name: Build and Deploy to GitHub Pages
 
-on:
+on: # yamllint disable-line rule:truthy
   workflow_run:
     workflows: ['Lint and Test']
     types: [completed]
