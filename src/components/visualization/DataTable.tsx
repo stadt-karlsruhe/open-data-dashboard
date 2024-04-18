@@ -1,28 +1,17 @@
+import { DataRecord } from '@/types/visualization';
 import Table from 'react-bootstrap/Table';
 
-type DataSet = Record<string, never>;
-
 interface Props {
-  data: JsonDictionary;
+  data: DataRecord;
 }
-
-interface JsonDictionary {
-  fields: [{ type: string; id: string }];
-  records: DataSet[];
-}
-
-const getHeaderNames = (jsonData: JsonDictionary) => {
-  return jsonData.fields.map((field) => field.id);
-};
 
 export default function DataTable({ data }: Props) {
-  const headers = getHeaderNames(data);
   return (
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          {headers.map((header) => (
-            <th key={header}>{header}</th>
+          {data.fields.map((field) => (
+            <th key={field}>{field}</th>
           ))}
         </tr>
       </thead>
