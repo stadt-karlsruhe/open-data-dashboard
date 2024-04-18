@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import configYAML from '../../config.yaml';
+import configYML from '../../config.yml';
 import { prefix } from '@/prefix';
 import styles from './page.module.css';
 
@@ -6,6 +8,10 @@ import styles from './page.module.css';
 export default function Home() {
   return (
     <main className={styles.main}>
+      <div className={styles.description}>
+        <p>A parsed YAML config with *.yaml extension: {configYAML.person.name}</p>
+        <p>A parsed YAML config with *.yml extension: {configYML.person.age}</p>
+      </div>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
