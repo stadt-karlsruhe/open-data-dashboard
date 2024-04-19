@@ -19,6 +19,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "7.7.0",
     "@typescript-eslint/parser": "7.7.0",
+    "bootstrap": "5.3.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "eslint-config-prettier": "9.1.0",
@@ -31,6 +32,8 @@
     "eslint-plugin-sonarjs": "0.25.1",
     "eslint-plugin-unicorn": "52.0.0",
     "prettier-eslint": "16.3.0",
+    "react-bootstrap": "2.10.2",
+    "sass": "1.75.0",
     "typescript": "^5"
   }
 }
