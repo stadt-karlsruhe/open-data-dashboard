@@ -18,7 +18,7 @@ export interface Resource {
     name: string;
     description?: string;
     endpoint: string;
-    type: 'JSON' | 'CSV';
+    type: 'JSON' | 'CSV' | 'PDF';
     skipFields?: string;
     renameFields?: Record<string, string>;
 }
