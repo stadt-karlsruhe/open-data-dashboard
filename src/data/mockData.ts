@@ -26,4 +26,11 @@ export const mockData = [
         endpoint:
             'https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf',
     },
+    {
+        id: '4',
+        name: 'nachhaltigkeit-in-karlsruhe-2021',
+        type: 'PDF',
+        endpoint:
+            'https://www.karlsruhe.de/securedl/sdl-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODc2OTc0OTAsImV4cCI6MzMyMTc2MjY0NTYsInVzZXIiOjAsImdyb3VwcyI6WzAsLTFdLCJmaWxlIjoiZmlsZWFkbWluL3VzZXJfdXBsb2FkLzAzX1Vtd2VsdF9LbGltYS8wMzdfTmFjaGhhbHRpZ2tlaXQvTmFjaGhhbHRpZ2tlaXRzYmVyaWNodC9OYWNoaGFsdGlna2VpdHNiZXJpY2h0XzIwMjFfZmluYWxfa2xlaW4ucGRmIiwicGFnZSI6NDA0OH0.x7S055gbpebaEUEsl31q74XYZHfT52Ghzho1HByIN-Q/Nachhaltigkeitsbericht_2021_final_klein.pdf',
+    },
 ] as Resource[];
