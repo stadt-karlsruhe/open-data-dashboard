@@ -1,5 +1,3 @@
-export type JsonSourceStandard = Record<string, never>[];
-
 export interface JsonSourceObjects {
     result: {
         records_format: 'objects';
@@ -10,13 +8,10 @@ export interface JsonSourceObjects {
 
 export interface JsonSourceArrays {
     fields: [{ type: string; id: string }];
-    records: Record<string, never>[];
-}
-
-export interface DataRecord {
-    fields: string[];
     records: never[][];
 }
+
+export type DataRecord = Record<string, never>[];
 
 export interface Resource {
     id: string;

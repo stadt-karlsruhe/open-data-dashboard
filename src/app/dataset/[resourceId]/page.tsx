@@ -24,9 +24,6 @@ const mockData = [
 export default async function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
   const resource = mockData.find((item) => item.id === resourceId);
   const data = await getData(resource?.endpoint ?? '', resource?.skipFields, resource?.renameFields);
-  if (data === undefined) {
-    return <></>;
-  }
   return (
     <>
       <DataTable key={resourceId} data={data}></DataTable>

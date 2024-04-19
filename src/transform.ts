@@ -1,11 +1,11 @@
-import { DataRecord, JsonSourceArrays, JsonSourceObjects, JsonSourceStandard } from '@/types/visualization';
+import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
 
 export function transformJson(json: unknown, skipFieldsRegex?: string, renameFieldsObj?: Record<string, string>) {
     const transformedJson = transformJsonData(json);
-    if (transformedJson !== undefined && skipFieldsRegex !== undefined) {
+    if (skipFieldsRegex !== undefined) {
         const skippedFieldsJson = skipFields(transformedJson, skipFieldsRegex);
         if (renameFieldsObj !== undefined) {
-            renameFields(skippedFieldsJson, renameFieldsObj);
+            return renameFields(skippedFieldsJson, renameFieldsObj);
         }
         return skippedFieldsJson;
     }
@@ -14,38 +14,26 @@ export function transformJson(json: unknown, skipFieldsRegex?: string, renameFie
 
 function transformJsonData(json: unknown) {
     if (isJsonSourceStandard(json)) {
-        if (json.length === 0) {
-            return;
-        }
-        const objectsArray = json as Record<string, never>[];
-        return {
-            fields: Object.keys(objectsArray[0]),
-            records: objectsArray.map((obj) => Object.values(obj)),
-        } as DataRecord;
+        return json;
     }
 
     if (isJsonSourceObjects(json)) {
-        if (json.result.records.length === 0) {
-            return;
-        }
-        return {
-            fields: Object.keys(json.result.records[0]),
-            records: json.result.records.map((obj) => Object.values(obj)),
-        } as DataRecord;
+        return json.result.records as DataRecord;
     }
 
     if (isJsonSourceArrays(json)) {
-        if (json.records.length === 0) {
-            return;
-        }
-        return {
-            fields: json.fields.map((field) => field.id),
-            records: json.records.map((obj) => Object.values(obj)),
-        } as DataRecord;
+        const fields = json.fields.map((field) => field.id);
+        const records = [] as DataRecord;
+        json.records.forEach((record) => {
+            const obj = Object.fromEntries(fields.map((_, i) => [fields[i], record[i]]));
+            records.push(obj);
+        });
+        return records;
     }
+    return [] as DataRecord;
 }
 
-function isJsonSourceStandard(json: unknown): json is JsonSourceStandard {
+function isJsonSourceStandard(json: unknown): json is DataRecord {
     return Array.isArray(json) && json.every((item) => typeof item === 'object');
 }
 
@@ -78,39 +66,33 @@ function isJsonSourceArrays(json: unknown): json is JsonSourceArrays {
     );
 }
 
-function skipFields(record: DataRecord, skipFieldsRegex: string) {
+function skipFields(records: DataRecord, skipFieldsRegex: string) {
+    if (records.length === 0) {
+        return records;
+    }
+
     const regex = new RegExp(skipFieldsRegex, 'u');
-    const indicesToRemove: number[] = [];
-    const remainingFields: string[] = [];
-    const recordsWithoutSkippedFields = record.records.map((arr) => [...arr]);
+    const fieldsToRemove = Object.keys(records[0]).filter((key) => regex.test(key));
 
-    record.fields.forEach((field, index) => {
-        if (regex.test(field)) {
-            indicesToRemove.push(index);
-        } else {
-            remainingFields.push(field);
-        }
-    });
+    if (fieldsToRemove.length === 0) {
+        return records;
+    }
 
-    indicesToRemove.sort((a, b) => b - a);
-    recordsWithoutSkippedFields.forEach((records) => {
-        indicesToRemove.forEach((index) => {
-            if (index >= 0 && index < records.length) {
-                records.splice(index, 1);
-            }
-        });
+    const filteredRecords = records.map((record) => {
+        const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
+        return Object.fromEntries(filteredFields);
     });
-    return {
-        fields: remainingFields,
-        records: recordsWithoutSkippedFields,
-    };
+    return filteredRecords as DataRecord;
 }
 
-function renameFields(record: DataRecord, renameFieldsObj: Record<string, string>) {
-    record.fields.forEach((fieldName, index) => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (renameFieldsObj[fieldName] !== undefined) {
-            record.fields[index] = renameFieldsObj[fieldName];
-        }
+function renameFields(records: DataRecord, renameFieldsObj: Record<string, string>) {
+    const renamedRecords = records.map((record) => {
+        const renamedObj = {} as Record<string, never>;
+        Object.entries(record).forEach(([key, value]) => {
+            const renamedKey = renameFieldsObj[key] ?? key;
+            renamedObj[renamedKey] = value;
+        });
+        return renamedObj;
     });
+    return renamedRecords as DataRecord;
 }
