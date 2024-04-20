@@ -13,12 +13,14 @@ export interface JsonSourceArrays {
 
 export type DataRecord = Record<string, never>[];
 
+export type ResourceType = 'JSON' | 'CSV' | 'PDF';
+
 export interface Resource {
     id: string;
     name: string;
     description?: string;
     endpoint: string;
-    type: 'JSON' | 'CSV';
+    type: ResourceType;
     skipFields?: string;
     renameFields?: Record<string, string>;
 }
