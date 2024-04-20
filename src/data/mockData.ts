@@ -16,8 +16,10 @@ export const mockData = [
         id: '2',
         name: 'Bevölkerung mit Hauptwohnung',
         type: 'JSON',
-        endpoint:
-            'https://transparenz.karlsruhe.de/api/3/action/datastore_search?resource_id=d8be5f4a-0788-4ee3-abe5-b36313ce3799&limit=450',
+        // Transparenzportal currently not available
+        endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
+        // endpoint:
+        //     'https://transparenz.karlsruhe.de/api/3/action/datastore_search?resource_id=d8be5f4a-0788-4ee3-abe5-b36313ce3799&limit=450',
     },
     {
         id: '3',
