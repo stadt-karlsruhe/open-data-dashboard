@@ -13,6 +13,18 @@ export interface JsonSourceArrays {
 
 export type DataRecord = Record<string, never>[];
 
+export interface ChartInput {
+    name: string;
+    labels: string[];
+    datapoints: ChartData[];
+}
+
+export interface ChartData {
+    label: string;
+    data: string[];
+    backgroundColor?: string;
+}
+
 export interface Resource {
     id: string;
     name: string;
@@ -21,4 +33,6 @@ export interface Resource {
     type: 'JSON' | 'CSV';
     skipFields?: string;
     renameFields?: Record<string, string>;
+    labelIndizes?: number[];
+    dataIndizes?: number[];
 }
