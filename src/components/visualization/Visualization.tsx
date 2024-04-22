@@ -4,7 +4,6 @@ import { ChartInput, Resource } from '@/types/visualization';
 // eslint-disable-next-line import/named
 import useSWR, { Fetcher } from 'swr';
 import CustomChart from './CustomChart';
-import { Resource } from '@/types/visualization';
 import Table from './Table';
 import { transformJson } from '@/transform';
 
