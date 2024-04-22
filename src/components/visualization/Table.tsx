@@ -43,9 +43,8 @@ export default function Table({ record }: { record: DataRecord }) {
     return <></>;
   }
 
-  const columns = Object.keys(record[0]).map((key, index) => {
+  const columns = Object.keys(record[0]).map((key) => {
     return {
-      id: index,
       name: key,
       selector: (row: Record<string, never>) => row[key],
       sortable: true,
