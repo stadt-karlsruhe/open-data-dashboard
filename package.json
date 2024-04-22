@@ -7,12 +7,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
-    "next": "14.2.2",
-    "react": "^18",
-    "react-dom": "^18",
-    "recharts": "^2.12.6"
-  },
   "devDependencies": {
     "@tsconfig/node21": "21.0.3",
     "@types/node": "^20",
@@ -37,6 +31,7 @@
     "react": "18.2.0",
     "react-bootstrap": "2.10.2",
     "react-dom": "18.2.0",
+    "recharts": "2.12.6",
     "sass": "1.75.0",
     "swr": "2.2.5",
     "typescript": "^5"
