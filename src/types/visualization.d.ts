@@ -14,17 +14,14 @@ export interface JsonSourceArrays {
 export type DataRecord = Record<string, never>[];
 
 export interface ChartInput {
-    name: string;
-    labels: string[];
-    datapoints: ChartData[];
+    data: DataRecord;
+    yAxis: string;
+    xAxis: string;
 }
 
-export interface ChartData {
-    label: string;
-    data: string[];
-    backgroundColor?: string;
-}
 export type ResourceType = 'JSON' | 'CSV' | 'PDF';
+
+export type VisualizationType = 'TABLE' | 'CHART' | 'PDF';
 
 export interface Resource {
     id: string;
@@ -32,8 +29,9 @@ export interface Resource {
     description?: string;
     endpoint: string;
     type: ResourceType;
+    visType?: VisualizationType;
     skipFields?: string;
     renameFields?: Record<string, string>;
-    labelIndizes?: number[];
-    dataIndizes?: number[];
+    yAxis?: string;
+    xAxis?: string;
 }

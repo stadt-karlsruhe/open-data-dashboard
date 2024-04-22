@@ -1,16 +1,28 @@
 'use client';
 
-// eslint-disable-next-line import/named
 import useSWR, { Fetcher } from 'swr';
-import DataTable from './DataTable';
-import { Resource } from '@/types/visualization';
 import { transformJson } from '@/transform';
+import DataTable from './DataTable';
+import { ChartInput, DataRecord, Resource } from '@/types/visualization';
+import CustomChart from './DataChart';
 
 const fetcher: Fetcher<unknown, string> = (url) => getData(url);
 
 export default function Visualization({ resource }: { resource: Resource }) {
   const { data } = useSWR(resource.endpoint, fetcher);
   if (resource.type === 'JSON' || resource.type === 'CSV') {
+    if (resource.visType === 'CHART' && resource.yAxis !== undefined && resource.xAxis !== undefined) {
+      const chartInput: ChartInput = {
+        data: transformJson(data),
+        yAxis: resource.yAxis,
+        xAxis: resource.xAxis,
+      };
+      return (
+        <div style={{ height: '100vh' }}>
+          <CustomChart key={resource.id} chartInput={chartInput} />
+        </div>
+      );
+    }
     const transformedData = transformJson(data, resource.skipFields, resource.renameFields);
     return (
       <>

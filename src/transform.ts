@@ -1,6 +1,7 @@
 'use-client';
 
-import { ChartData, ChartInput, DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
+import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
+import { isNumber } from 'chart.js/helpers';
 
 export function transformJson(json: unknown, skipFieldsRegex?: string, renameFieldsObj?: Record<string, string>) {
     const transformedJson = transformJsonData(json);
@@ -12,71 +13,6 @@ export function transformJson(json: unknown, skipFieldsRegex?: string, renameFie
         return skippedFieldsJson;
     }
     return transformedJson;
-}
-
-export function transformJsonForCharts(json: unknown, labelIndizes: number[], dataIndizes: number[]) {
-    const transformedJson = transformJsonData(json);
-    const labels = getLabelsForCharts(transformedJson, labelIndizes);
-    const dataPoints = getDatapointsForCharts(transformedJson, dataIndizes);
-    const chartData: ChartData[] = [
-        {
-            label: 'Data',
-            data: dataPoints ?? [],
-        },
-    ];
-    const chartInput: ChartInput = {
-        name: 'Chart',
-        labels: labels ?? [],
-        datapoints: chartData,
-    };
-    return chartInput;
-}
-
-function getLabelsForCharts(records: DataRecord, labelIndizes: number[]) {
-    let labels: string[];
-    for (let entry of records) {
-        let label = "";
-        for(var index of labelIndizes) {
-            // console.log(entry);
-            const entryLabel = Object.entries(entry).at(index)?.[1];
-            if (entryLabel !== undefined) {
-                label += entryLabel as string;
-            }
-        }
-        if(labels === undefined || labels.length === 0){
-            labels = [label];
-        } else {
-            labels.push(label);
-        }
-    }
-    if(labels !== undefined){
-        console.log(labels);
-        return labels;
-    }
-    return undefined;
- }
-
-function getDatapointsForCharts(records: DataRecord, dataIndizes: number[]) {
-    let dataPoints: string[];
-    for (let entry of records) {
-        let dataPoint = "";
-        for(var index of dataIndizes) {
-            const entryLabel = Object.entries(entry).at(index)?.[1];
-            if (entryLabel !== undefined) {
-                dataPoint += entryLabel as string;
-            }
-        }
-        if (dataPoints === undefined || dataPoints.length === 0) {
-            dataPoints = [dataPoint];
-        } else {
-            dataPoints.push(dataPoint);
-        }
-    }
-    if (dataPoints !== undefined) {
-        console.log(dataPoints);
-        return dataPoints;
-    }
-    return undefined;
 }
 
 function transformJsonData(json: unknown) {
@@ -148,7 +84,8 @@ function skipFields(records: DataRecord, skipFieldsRegex: string) {
     }
 
     const filteredRecords = records.map((record) => {
-        const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
+        // const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
+        const filteredFields = Object.entries(record)
         return Object.fromEntries(filteredFields);
     });
     return filteredRecords as DataRecord;
