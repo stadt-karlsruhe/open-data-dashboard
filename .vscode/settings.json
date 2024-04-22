@@ -2,8 +2,5 @@
     "files.eol": "\n",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.tsdk": "node_modules/typescript/lib",
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "cSpell.words": [
-        "datapoints"
-    ]
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 }

@@ -21,9 +21,7 @@ function transformJsonData(json: unknown) {
     }
 
     if (isJsonSourceObjects(json)) {
-        const result = json.result.records as DataRecord;
-        console.log(result);
-        return result;
+        return json.result.records as DataRecord;
     }
 
     if (isJsonSourceArrays(json)) {
@@ -84,8 +82,7 @@ function skipFields(records: DataRecord, skipFieldsRegex: string) {
     }
 
     const filteredRecords = records.map((record) => {
-        // const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
-        const filteredFields = Object.entries(record)
+        const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
         return Object.fromEntries(filteredFields);
     });
     return filteredRecords as DataRecord;
