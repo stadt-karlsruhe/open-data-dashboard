@@ -3,7 +3,7 @@
 import { ChartInput, Resource } from '@/types/visualization';
 // eslint-disable-next-line import/named
 import useSWR, { Fetcher } from 'swr';
-import CustomChart from './CustomChart';
+import BarChart from './CustomChart';
 import DataTable from './DataTable';
 import { transformJson } from '@/transform';
 
@@ -20,7 +20,7 @@ export default function Visualization({ resource }: { resource: Resource }) {
       };
       return (
         <div style={{ height: '100vh' }}>
-          <CustomChart key={resource.id} chartInput={chartInput} />
+          <BarChart key={resource.id} chartInput={chartInput} />
         </div>
       );
     }

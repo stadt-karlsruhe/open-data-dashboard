@@ -1,11 +1,21 @@
-import { Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import {
+  Bar,
+  BarChart as BarChartRecharts,
+  CartesianGrid,
+  Label,
+  Rectangle,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { ChartInput, DataRecord } from '@/types/visualization';
 
-export default function CustomChart({ chartInput }: { chartInput: ChartInput }) {
+export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const maxValue = getMaxYValue(chartInput.data, chartInput.yAxis);
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart
+      <BarChartRecharts
         data={chartInput.data}
         margin={{
           top: 5,
@@ -15,15 +25,18 @@ export default function CustomChart({ chartInput }: { chartInput: ChartInput }) 
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={chartInput.xAxis} />
-        <YAxis type="number" domain={[0, maxValue]} />
+        <XAxis dataKey={chartInput.xAxis} label={chartInput.xAxis} />
+        <YAxis type="number" domain={[0, maxValue]}>
+          <Label angle={270} position={'left'} value={chartInput.yAxis} />
+        </YAxis>
+        <Tooltip />
         <Bar dataKey={chartInput.yAxis} fill="#8884d8" activeBar={<Rectangle stroke="blue" />} />
-      </BarChart>
+      </BarChartRecharts>
     </ResponsiveContainer>
   );
 }
 
-export function getMaxYValue(records: DataRecord, yAxis: string) {
+function getMaxYValue(records: DataRecord, yAxis: string) {
   let maxValue = 0;
   records.forEach((record) => {
     const valueArray = Object.entries(record)
