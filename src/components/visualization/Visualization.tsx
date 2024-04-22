@@ -1,10 +1,11 @@
 'use client';
 
+import { ChartInput, Resource } from '@/types/visualization';
+// eslint-disable-next-line import/named
 import useSWR, { Fetcher } from 'swr';
-import { transformJson } from '@/transform';
+import CustomChart from './CustomChart';
 import DataTable from './DataTable';
-import { ChartInput, DataRecord, Resource } from '@/types/visualization';
-import CustomChart from './DataChart';
+import { transformJson } from '@/transform';
 
 const fetcher: Fetcher<unknown, string> = (url) => getData(url);
 

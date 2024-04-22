@@ -1,3 +1,5 @@
+/* eslint eslint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Resource } from '@/types/visualization';
 
 export const mockData = [
