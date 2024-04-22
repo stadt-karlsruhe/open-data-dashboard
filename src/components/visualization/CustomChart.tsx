@@ -25,7 +25,7 @@ export default function CustomChart({ chartInput }: { chartInput: ChartInput }) 
 
 export function getMaxYValue(records: DataRecord, yAxis: string) {
   let maxValue = 0;
-  records.map((record) => {
+  records.forEach((record) => {
     const valueArray = Object.entries(record)
       .filter(([key, _]) => key === yAxis)
       .map((entry) => entry[1]);
