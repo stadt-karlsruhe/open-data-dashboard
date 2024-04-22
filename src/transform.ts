@@ -1,7 +1,4 @@
-'use-client';
-
 import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
-import { isNumber } from 'chart.js/helpers';
 
 export function transformJson(json: unknown, skipFieldsRegex?: string, renameFieldsObj?: Record<string, string>) {
     const transformedJson = transformJsonData(json);
