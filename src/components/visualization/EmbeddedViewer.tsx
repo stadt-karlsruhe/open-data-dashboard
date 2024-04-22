@@ -14,7 +14,7 @@ export default function PDFViewer({ source }: { source: string }) {
 
   return (
     <div className="d-flex">
-      <iframe src={source} width="100%" height={height}/>
+      <iframe src={source} width="100%" height={height} />
     </div>
   );
 }
