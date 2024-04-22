@@ -9,7 +9,9 @@ export default function PDFViewer({ source }: { source: string }) {
       setHeight(window.innerHeight);
     }
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
