@@ -36,9 +36,12 @@ const customStyles: TableStyles = {
   },
 };
 
+const allFields = 'ALL';
+
 // eslint-disable-next-line max-lines-per-function
 export default function Table({ record }: { record: DataRecord }) {
   const [filterText, setFilterText] = useState('');
+  const [selectedFields, setSelectedFields] = useState(allFields);
   if (record.length === 0) {
     return <></>;
   }
@@ -55,12 +58,18 @@ export default function Table({ record }: { record: DataRecord }) {
   const filteredRecords =
     filterText === ''
       ? record
-      : record.filter((obj) => Object.values(obj).some((value) => String(value).includes(filterText)));
+      : record.filter((obj) => {
+          if (selectedFields === allFields) {
+            return Object.values(obj).some((value) => String(value).includes(filterText));
+          }
+          return String(obj[selectedFields]).includes(filterText);
+        });
 
   const onClear = () => {
     if (filterText !== '') {
       setFilterText('');
     }
+    setSelectedFields(allFields);
   };
   const SubHeaderComponent = () => {
     return (
@@ -75,6 +84,22 @@ export default function Table({ record }: { record: DataRecord }) {
             setFilterText(e.target.value);
           }}
         />
+        <select
+          style={{ maxWidth: '30%' }}
+          value={selectedFields}
+          onChange={(e) => {
+            setSelectedFields(e.target.value);
+          }}
+          className="form-select"
+          aria-label="Filter By"
+        >
+          <option value={allFields} selected></option>
+          {Object.keys(record[0]).map((key) => (
+            <option key={key} value={key}>
+              {key}
+            </option>
+          ))}
+        </select>
         <button className="btn-primary px-2 rounded-0" onClick={onClear}>
           ✖
         </button>
