@@ -75,7 +75,7 @@ export default function Table({ record }: { record: DataRecord }) {
           onChange={(e) => {
             setFilterText(e.target.value);
           }}
-        ></input>
+        />
         <button className="btn-primary px-2 rounded-0" onClick={onClear}>
           ✖
         </button>
@@ -96,7 +96,7 @@ export default function Table({ record }: { record: DataRecord }) {
         subHeaderComponent={SubHeaderComponent()}
         subHeaderAlign={Alignment.CENTER}
         customStyles={customStyles}
-      ></DataTable>
+      />
     </div>
   );
 }
