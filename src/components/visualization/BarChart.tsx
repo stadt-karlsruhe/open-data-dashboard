@@ -25,7 +25,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={chartInput.xAxis} label={chartInput.xAxis} />
+        <XAxis dataKey={chartInput.xAxis} label={chartInput.xAxis} tick={false}/>
         <YAxis type="number" domain={[0, maxValue]}>
           <Label angle={270} position={'left'} value={chartInput.yAxis} />
         </YAxis>
