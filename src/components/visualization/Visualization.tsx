@@ -3,7 +3,7 @@
 import { ChartInput, Resource } from '@/types/visualization';
 // eslint-disable-next-line import/named
 import useSWR, { Fetcher } from 'swr';
-import BarChart from './CustomChart';
+import BarChart from './BarChart';
 import Table from './Table';
 import { transformJson } from '@/transform';
 

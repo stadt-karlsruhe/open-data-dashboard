@@ -45,6 +45,6 @@ export const mockData = [
         // TODO: Change this to an actual endpoint once the Transparenzportal is available again.
         endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
         yAxis: 'Wohnberechtigte',
-        xAxis: 'Stadtteile',
+        xAxis: 'Stadtteil',
     },
 ] as Resource[];
