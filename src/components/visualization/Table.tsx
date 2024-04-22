@@ -60,9 +60,9 @@ export default function Table({ record }: { record: DataRecord }) {
       ? record
       : record.filter((obj) => {
           if (selectedFields === allFields) {
-            return Object.values(obj).some((value) => String(value).includes(filterText));
+            return Object.values(obj).some((value) => String(value).toLowerCase().includes(filterText.toLowerCase()));
           }
-          return String(obj[selectedFields]).includes(filterText);
+          return String(obj[selectedFields]).toLowerCase().includes(filterText.toLowerCase());
         });
 
   const onClear = () => {
