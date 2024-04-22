@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export default function PDFViewer({ source }: { source: string }) {
+export default function EmbeddedViewer({ source }: { source: string }) {
   const [height, setHeight] = useState(window.innerHeight);
   useEffect(() => {
     function handleResize() {
