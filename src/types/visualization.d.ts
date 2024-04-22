@@ -19,7 +19,7 @@ export interface ChartInput {
     xAxis: string;
 }
 
-export type ResourceType = 'JSON' | 'CSV' | 'PDF';
+export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
 
 export type VisualizationType = 'TABLE' | 'CHART' | 'PDF';
 
