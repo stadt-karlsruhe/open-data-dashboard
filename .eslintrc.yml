@@ -20,6 +20,7 @@ extends:
     - plugin:eslint-comments/recommended
     - plugin:regexp/recommended
     - plugin:unicorn/all
+    - plugin:jest/all
     - plugin:prettier/recommended
     - prettier
 rules:
