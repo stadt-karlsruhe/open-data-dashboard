@@ -1,6 +1,8 @@
-import PDFViewer from '@/components/visualization/PDFViewer';
 import Visualization from '@/components/visualization/Visualization';
+import dynamic from 'next/dynamic';
 import { mockData } from '@/data/mockData';
+
+const EmbeddedViewer = dynamic(() => import('@/components/visualization/EmbeddedViewer'), { ssr: false });
 
 export default function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
   const resource = mockData.find((item) => item.id === resourceId);
@@ -9,10 +11,10 @@ export default function Page({ params: { resourceId } }: { params: { resourceId:
     return <></>;
   }
 
-  if (resource.type === 'PDF') {
+  if (resource.type === 'PDF' || resource.type === 'Embedded') {
     return (
       <>
-        <PDFViewer url={resource.endpoint}></PDFViewer>
+        <EmbeddedViewer source={resource.endpoint}></EmbeddedViewer>
       </>
     );
   }

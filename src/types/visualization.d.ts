@@ -13,7 +13,7 @@ export interface JsonSourceArrays {
 
 export type DataRecord = Record<string, never>[];
 
-export type ResourceType = 'JSON' | 'CSV' | 'PDF';
+export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
 
 export interface Resource {
     id: string;
