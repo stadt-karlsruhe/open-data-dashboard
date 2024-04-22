@@ -1,4 +1,4 @@
-import PDFViewer from '@/components/visualization/PDFViewer';
+import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import Visualization from '@/components/visualization/Visualization';
 import { mockData } from '@/data/mockData';
 
@@ -9,10 +9,10 @@ export default function Page({ params: { resourceId } }: { params: { resourceId:
     return <></>;
   }
 
-  if (resource.type === 'PDF') {
+  if (resource.type === 'PDF' || resource.type === 'Embedded') {
     return (
       <>
-        <PDFViewer url={resource.endpoint}></PDFViewer>
+        <EmbeddedViewer source={resource.endpoint}></EmbeddedViewer>
       </>
     );
   }
