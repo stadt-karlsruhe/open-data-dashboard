@@ -1,18 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import useWindowDimensions from '../WindowDimensions';
 
 export default function EmbeddedViewer({ source }: { source: string }) {
-  const [height, setHeight] = useState(window.innerHeight);
-  useEffect(() => {
-    function handleResize() {
-      setHeight(window.innerHeight);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { height } = useWindowDimensions();
 
   return (
     <div className="d-flex">
