@@ -17,11 +17,11 @@ export default function ChartWrapper({
       <div className="card-header">
         <ul className="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
           {resource.diagrams.map((diagram, index) => (
-            <li className="nav-item" key={diagram.type}>
+            <li className="nav-item" key={`${diagram.type}-${String(index)}`}>
               <a
                 data-bs-toggle="tab"
                 aria-current="true"
-                href={`#${diagram.type}-${resource.id}`}
+                href={`#${diagram.type}-${resource.id}-${String(index)}`}
                 className={`nav-link ${index === 0 ? 'active' : ''}`}
               >
                 {diagram.type}
@@ -33,8 +33,8 @@ export default function ChartWrapper({
       <div className="card-body tab-content diagram-card">
         {resource.diagrams.map((diagram, index) => (
           <div
-            key={diagram.type}
-            id={`${diagram.type}-${resource.id}`}
+            key={`${diagram.type}-${String(index)}`}
+            id={`${diagram.type}-${resource.id}-${String(index)}`}
             className={`tab-pane ${index === 0 ? 'active' : ''}`}
           >
             {diagram.type === 'CHART' ? (

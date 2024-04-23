@@ -21,6 +21,16 @@ export const mockData = [
                 xAxis: 'Stadtteil',
             },
             {
+                type: 'CHART',
+                yAxis: 'Hauptwohnung (%)',
+                xAxis: 'Stadtteil',
+            },
+            {
+                type: 'CHART',
+                yAxis: 'Nebenwohnung (%)',
+                xAxis: 'Stadtteil',
+            },
+            {
                 type: 'TABLE',
             },
         ],
