@@ -1,5 +1,3 @@
-/* eslint eslint-comments/disable-enable-pair: [error, {allowWholeFile: true}] */
-/* eslint-disable sonarjs/no-duplicate-string */
 import { Resource } from '@/types/visualization';
 
 export const mockData = [
@@ -36,15 +34,5 @@ export const mockData = [
         type: 'PDF',
         endpoint:
             'https://www.karlsruhe.de/securedl/sdl-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODc2OTc0OTAsImV4cCI6MzMyMTc2MjY0NTYsInVzZXIiOjAsImdyb3VwcyI6WzAsLTFdLCJmaWxlIjoiZmlsZWFkbWluL3VzZXJfdXBsb2FkLzAzX1Vtd2VsdF9LbGltYS8wMzdfTmFjaGhhbHRpZ2tlaXQvTmFjaGhhbHRpZ2tlaXRzYmVyaWNodC9OYWNoaGFsdGlna2VpdHNiZXJpY2h0XzIwMjFfZmluYWxfa2xlaW4ucGRmIiwicGFnZSI6NDA0OH0.x7S055gbpebaEUEsl31q74XYZHfT52Ghzho1HByIN-Q/Nachhaltigkeitsbericht_2021_final_klein.pdf',
-    },
-    {
-        id: '5',
-        name: 'Bevölkerung mit Hauptwohnung',
-        type: 'JSON',
-        visType: 'CHART',
-        // TODO: Change this to an actual endpoint once the Transparenzportal is available again.
-        endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
-        yAxis: 'Wohnberechtigte',
-        xAxis: 'Stadtteil',
     },
 ] as Resource[];

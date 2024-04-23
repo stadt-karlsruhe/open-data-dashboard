@@ -37,7 +37,6 @@
     "react-bootstrap": "2.10.2",
     "react-data-table-component": "7.6.2",
     "react-dom": "18.2.0",
-    "recharts": "2.12.6",
     "sass": "1.75.0",
     "styled-components": "6.1.8",
     "swr": "2.2.5",
