@@ -1,6 +1,5 @@
 export interface JsonSourceObjects {
     result: {
-        records_format: 'objects';
         fields: [{ type: string; id: string }];
         records: Record<string, never>[];
     };
@@ -21,7 +20,7 @@ export interface ChartInput {
 
 export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
 
-export type VisualizationType = 'TABLE' | 'CHART' | 'PDF';
+export type DiagramType = { type: 'TABLE' } | { type: 'CHART'; yAxis: string; xAxis: string };
 
 export interface Resource {
     id: string;
@@ -29,9 +28,7 @@ export interface Resource {
     description?: string;
     endpoint: string;
     type: ResourceType;
-    visType?: VisualizationType;
+    diagrams: DiagramType[];
     skipFields?: string;
     renameFields?: Record<string, string>;
-    yAxis?: string;
-    xAxis?: string;
 }

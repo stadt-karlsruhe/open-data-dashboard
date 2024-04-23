@@ -93,7 +93,7 @@ export default function Table({ record }: { record: DataRecord }) {
           className="form-select"
           aria-label="Filter By"
         >
-          <option value={allFields} selected></option>
+          <option value={allFields}></option>
           {Object.keys(record[0]).map((key) => (
             <option key={key} value={key}>
               {key}

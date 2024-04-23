@@ -14,7 +14,7 @@ import { ChartInput, DataRecord } from '@/types/visualization';
 export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const maxValue = getMaxYValue(chartInput.data, chartInput.yAxis);
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer aspect={2}>
       <BarChartRecharts
         data={chartInput.data}
         margin={{

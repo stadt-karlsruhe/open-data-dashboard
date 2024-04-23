@@ -7,21 +7,40 @@ export const mockData = [
         id: '1',
         name: 'Bevölkerung mit Hauptwohnung',
         type: 'JSON',
-        endpoint: 'https://transparenz.karlsruhe.de/datastore/dump/d8be5f4a-0788-4ee3-abe5-b36313ce3799?format=json',
+        // endpoint: 'https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?format=json',
+        endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
         skipFields: '^_id$',
         renameFields: {
             'mannlich (%)': 'Männlich (%)',
             'weiblich (%)': 'Weiblich (%)',
         },
+        diagrams: [
+            {
+                type: 'CHART',
+                yAxis: 'Wohnberechtigte',
+                xAxis: 'Stadtteil',
+            },
+            {
+                type: 'TABLE',
+            },
+        ],
     },
     {
         id: '2',
         name: 'Bevölkerung mit Hauptwohnung',
         type: 'JSON',
-        // Transparenzportal currently not available
-        endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
-        // endpoint:
-        //     'https://transparenz.karlsruhe.de/api/3/action/datastore_search?resource_id=d8be5f4a-0788-4ee3-abe5-b36313ce3799&limit=450',
+        endpoint:
+            'https://transparenz.karlsruhe.de/api/3/action/datastore_search?limit=450&resource_id=71ef348f-0f5b-46a0-8250-e87aae9f91bd',
+        diagrams: [
+            {
+                type: 'CHART',
+                yAxis: 'Wohnberechtigte',
+                xAxis: 'Stadtteil',
+            },
+            {
+                type: 'TABLE',
+            },
+        ],
     },
     {
         id: '3',
@@ -40,11 +59,17 @@ export const mockData = [
     {
         id: '5',
         name: 'Bevölkerung mit Hauptwohnung',
-        type: 'JSON',
-        visType: 'CHART',
-        // TODO: Change this to an actual endpoint once the Transparenzportal is available again.
-        endpoint: 'https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022',
-        yAxis: 'Wohnberechtigte',
-        xAxis: 'Stadtteil',
+        type: 'CSV',
+        endpoint: 'https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?bom=True',
+        diagrams: [
+            {
+                type: 'CHART',
+                yAxis: 'Wohnberechtigte',
+                xAxis: 'Stadtteil',
+            },
+            {
+                type: 'TABLE',
+            },
+        ],
     },
 ] as Resource[];

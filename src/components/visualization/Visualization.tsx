@@ -1,39 +1,73 @@
 'use client';
 
-import { ChartInput, Resource } from '@/types/visualization';
-// eslint-disable-next-line import/named
-import useSWR, { Fetcher } from 'swr';
 import BarChart from './BarChart';
+import { Resource } from '@/types/visualization';
 import Table from './Table';
-import { transformJson } from '@/transform';
+import { transformData } from '@/transform';
+import useSWR from 'swr';
 
-const fetcher: Fetcher<unknown, string> = (url) => getData(url);
-
+// eslint-disable-next-line max-lines-per-function
 export default function Visualization({ resource }: { resource: Resource }) {
-  const { data } = useSWR(resource.endpoint, fetcher);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { data, error } = useSWR(resource, async (resource) => {
+    const response = await fetch(resource.endpoint);
+    return resource.type === 'CSV' ? response.text() : response.json();
+  });
   if (resource.type === 'JSON' || resource.type === 'CSV') {
-    if (resource.visType === 'CHART' && resource.yAxis !== undefined && resource.xAxis !== undefined) {
-      const chartInput: ChartInput = {
-        data: transformJson(data),
-        yAxis: resource.yAxis,
-        xAxis: resource.xAxis,
-      };
-      return (
-        <div style={{ height: '100vh' }}>
-          <BarChart key={resource.id} chartInput={chartInput} />
-        </div>
-      );
+    const transformedData = transformData(resource, data);
+
+    if (transformedData === undefined) {
+      return <></>;
     }
-    const transformedData = transformJson(data, resource.skipFields, resource.renameFields);
+
     return (
-      <>
-        <Table key={resource.id} record={transformedData}></Table>
-      </>
+      <div>
+        <div className="card rounded-0">
+          <div className="card-header">
+            <ul className="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+              {resource.diagrams.map((diagram, index) => (
+                <li className="nav-item" key={diagram.type}>
+                  <a
+                    data-bs-toggle="tab"
+                    aria-current="true"
+                    href={`#${diagram.type}-${resource.id}`}
+                    className={`nav-link ${index === 0 ? 'active' : ''}`}
+                  >
+                    {diagram.type}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="card-body tab-content diagram-card">
+            {resource.diagrams.map((diagram, index) => (
+              <div
+                key={diagram.type}
+                id={`${diagram.type}-${resource.id}`}
+                className={`tab-pane ${index === 0 ? 'active' : ''}`}
+              >
+                {diagram.type === 'CHART' ? (
+                  <div className="d-flex">
+                    <div className="overflow-hidden" style={{ flexBasis: '90%' }}>
+                      <BarChart
+                        chartInput={{
+                          data: transformedData,
+                          xAxis: diagram.xAxis,
+                          yAxis: diagram.yAxis,
+                        }}
+                      ></BarChart>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <Table key={resource.id} record={transformedData}></Table>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     );
   }
-}
-
-async function getData(endpoint: string) {
-  const response = await fetch(endpoint);
-  return response.json();
 }
