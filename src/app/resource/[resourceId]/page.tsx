@@ -18,6 +18,16 @@ export default function Page({ params: { resourceId } }: { params: { resourceId:
       </>
     );
   }
+  if (resource.type === 'GeoJSON') {
+    const MapWithNoSSR = dynamic(() => import('@/components/visualization/Map'), {
+      ssr: false,
+    });
+    return (
+      <>
+        <MapWithNoSSR resource={resource} />
+      </>
+    );
+  }
   return (
     <>
       <Visualization resource={resource}></Visualization>

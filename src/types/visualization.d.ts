@@ -19,9 +19,9 @@ export interface ChartInput {
     xAxis: string;
 }
 
-export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
+export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded' | 'GeoJSON';
 
-export type VisualizationType = 'TABLE' | 'CHART' | 'PDF';
+export type VisualizationType = 'TABLE' | 'CHART' | 'PDF' | 'MAP';
 
 export interface Resource {
     id: string;
