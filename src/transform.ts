@@ -1,5 +1,4 @@
 import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
-import { GeoJSONSource } from 'react-map-gl';
 
 export function transformJson(json: unknown, skipFieldsRegex?: string, renameFieldsObj?: Record<string, string>) {
     const transformedJson = transformJsonData(json);
@@ -11,10 +10,6 @@ export function transformJson(json: unknown, skipFieldsRegex?: string, renameFie
         return skippedFieldsJson;
     }
     return transformedJson;
-}
-
-export function transformGeoJson(json: unknown): json is GeoJSONSource {
-    return json as GeoJSONSource;
 }
 
 function transformJsonData(json: unknown) {

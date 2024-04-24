@@ -12,9 +12,7 @@ const fetcher: Fetcher<unknown, string> = (url) => getData(url);
 
 export default function Map({ resource }: { resource: Resource }) {
   const { data } = useSWR(resource.endpoint, fetcher);
-  // TODO: Make this assignment typesafe!
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const dataAsFeatureCollection = data as GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+  const dataAsFeatureCollection = data as GeoJSON.FeatureCollection;
   console.log(dataAsFeatureCollection);
   if (resource.visType === 'MAP') {
     return (
@@ -26,7 +24,7 @@ export default function Map({ resource }: { resource: Resource }) {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           dataAsFeatureCollection && <GeoJSON data={dataAsFeatureCollection} />
         }
       </MapContainer>
