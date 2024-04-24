@@ -10,7 +10,7 @@ export default function ChartWrapper({
   resource: Resource;
   transformedData: DataRecord;
 }) {
-  const { height } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   return (
     <div className="card rounded-0">
@@ -38,13 +38,14 @@ export default function ChartWrapper({
             className={`tab-pane ${index === 0 ? 'active' : ''}`}
           >
             {diagram.type === 'CHART' ? (
-              <div className="d-flex overflow-hidden">
-                <div style={{ flexBasis: '90%', maxHeight: height - 100 }}>
+              <div className="d-flex flex-column">
+                <div style={{ flexBasis: '100%' }}>
                   <BarChart
                     chartInput={{
                       data: transformedData,
                       xAxis: diagram.xAxis,
                       yAxis: diagram.yAxis,
+                      aspect: width / (height - 100),
                     }}
                   ></BarChart>
                 </div>

@@ -16,6 +16,7 @@ export interface ChartInput {
     data: DataRecord;
     yAxis: string;
     xAxis: string;
+    aspect: number;
 }
 
 export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
