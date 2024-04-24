@@ -3,7 +3,7 @@ import BarChart from './BarChart';
 import Table from './Table';
 import useWindowDimensions from '../WindowDimensions';
 
-export default function ChartWrapper({
+export default function ChartTableWrapper({
   resource,
   transformedData,
 }: {

@@ -1,6 +1,6 @@
 'use client';
 
-import ChartWrapper from './ChartWrapper';
+import ChartTableWrapper from './ChartTableWrapper';
 import { Resource } from '@/types/visualization';
 import { transformData } from '@/transform';
 import useSWR from 'swr';
@@ -18,6 +18,6 @@ export default function Visualization({ resource }: { resource: Resource }) {
       return <></>;
     }
 
-    return <ChartWrapper resource={resource} transformedData={transformedData} />;
+    return <ChartTableWrapper resource={resource} transformedData={transformedData} />;
   }
 }
