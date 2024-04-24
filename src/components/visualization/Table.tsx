@@ -73,7 +73,7 @@ export default function Table({ record }: { record: DataRecord }) {
   };
   const SubHeaderComponent = () => {
     return (
-      <div className="input-group" style={{ maxWidth: '50%' }}>
+      <div className="input-group" style={{ maxWidth: '800px' }}>
         <input
           type="text"
           placeholder="Filter"
@@ -85,7 +85,7 @@ export default function Table({ record }: { record: DataRecord }) {
           }}
         />
         <select
-          style={{ maxWidth: '30%' }}
+          style={{ maxWidth: '300px' }}
           value={selectedFields}
           onChange={(e) => {
             setSelectedFields(e.target.value);
@@ -93,7 +93,7 @@ export default function Table({ record }: { record: DataRecord }) {
           className="form-select"
           aria-label="Filter By"
         >
-          <option value={allFields} selected></option>
+          <option value={allFields}></option>
           {Object.keys(record[0]).map((key) => (
             <option key={key} value={key}>
               {key}
