@@ -104,16 +104,18 @@ export default function ChartTableFilter({
             </label>
             <div className="col-md-10">
               {Number.isNaN(Number(value)) ? (
-                <input
-                  type="text"
-                  value={filterValues[key] || ''}
-                  className="form-control rounded-0"
-                  aria-labelledby={`${resource.id}-${key}-input`}
-                  id={`${resource.id}-${key}-text-input`}
-                  onChange={(e) => {
-                    setFilter(key, e.target.value);
-                  }}
-                />
+                <div className="form-floating">
+                  <input
+                    type="text"
+                    value={filterValues[key] || ''}
+                    className="form-control rounded-0"
+                    id={`${resource.id}-${key}-text-input`}
+                    onChange={(e) => {
+                      setFilter(key, e.target.value);
+                    }}
+                  />
+                  <label htmlFor={`${resource.id}-${key}-text-input`}>Search</label>
+                </div>
               ) : (
                 <div className="row">
                   <div className="col-md-6">
@@ -122,7 +124,6 @@ export default function ChartTableFilter({
                         type="number"
                         id={`${resource.id}-${key}-min`}
                         value={filterValues[`${key}-min`] || ''}
-                        placeholder="Min"
                         aria-labelledby={`${resource.id}-${key}-input`}
                         className="form-control rounded-0"
                         onChange={(e) => {
@@ -138,7 +139,6 @@ export default function ChartTableFilter({
                         type="number"
                         id={`${resource.id}-${key}-max`}
                         value={filterValues[`${key}-max`] || ''}
-                        placeholder="Max"
                         aria-labelledby={`${resource.id}-${key}-input`}
                         className="form-control rounded-0"
                         onChange={(e) => {
