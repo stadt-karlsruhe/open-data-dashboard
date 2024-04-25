@@ -1,15 +1,27 @@
-import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
+import { DataRecord, JsonSourceArrays, JsonSourceObjects, Resource } from '@/types/visualization';
+import { csv2json } from 'json-2-csv';
 
-export function transformJson(json: unknown, skipFieldsRegex?: string, renameFieldsObj?: Record<string, string>) {
-    const transformedJson = transformJsonData(json);
-    if (skipFieldsRegex !== undefined) {
-        const skippedFieldsJson = skipFields(transformedJson, skipFieldsRegex);
-        if (renameFieldsObj !== undefined) {
-            return renameFields(skippedFieldsJson, renameFieldsObj);
-        }
-        return skippedFieldsJson;
+export function transformData(resource: Resource, data: unknown) {
+    let transformedData = transformType(resource, data);
+    if (transformedData === undefined) {
+        return;
     }
-    return transformedJson;
+    if (resource.skipFields !== undefined) {
+        transformedData = skipFields(transformedData, resource.skipFields);
+    }
+    if (resource.renameFields !== undefined) {
+        transformedData = renameFields(transformedData, resource.renameFields);
+    }
+    return transformedData;
+}
+
+function transformType(resource: Resource, data: unknown) {
+    if (resource.type === 'JSON') {
+        return transformJsonData(data);
+    }
+    if (resource.type === 'CSV') {
+        return transformCsvData(data);
+    }
 }
 
 function transformJsonData(json: unknown) {
@@ -44,8 +56,6 @@ function isJsonSourceObjects(json: unknown): json is JsonSourceObjects {
         'result' in json &&
         json.result !== null &&
         typeof json.result === 'object' &&
-        'records_format' in json.result &&
-        json.result.records_format === 'objects' &&
         'fields' in json.result &&
         Array.isArray(json.result.fields) &&
         json.result.fields.every((field) => typeof field === 'object' && 'type' in field && 'id' in field) &&
@@ -64,6 +74,10 @@ function isJsonSourceArrays(json: unknown): json is JsonSourceArrays {
         'records' in json &&
         Array.isArray(json.records)
     );
+}
+
+function transformCsvData(csv: unknown) {
+    return csv2json(String(csv)) as DataRecord;
 }
 
 function skipFields(records: DataRecord, skipFieldsRegex: string) {

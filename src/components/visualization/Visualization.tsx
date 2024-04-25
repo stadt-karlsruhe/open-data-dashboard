@@ -1,39 +1,34 @@
 'use client';
 
-import { ChartInput, Resource } from '@/types/visualization';
-// eslint-disable-next-line import/named
-import useSWR, { Fetcher } from 'swr';
-import BarChart from './BarChart';
-import Table from './Table';
-import { transformJson } from '@/transform';
-
-const fetcher: Fetcher<unknown, string> = (url) => getData(url);
+import ChartTableWrapper from './ChartTableWrapper';
+import { Resource } from '@/types/visualization';
+import dynamic from 'next/dynamic';
+import { transformData } from '@/transform';
+import useSWR from 'swr';
 
 export default function Visualization({ resource }: { resource: Resource }) {
-  const { data } = useSWR(resource.endpoint, fetcher);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { data, error } = useSWR(resource, async (resource) => {
+    const response = await fetch(resource.endpoint);
+    return resource.type === 'CSV' ? response.text() : response.json();
+  });
   if (resource.type === 'JSON' || resource.type === 'CSV') {
-    if (resource.visType === 'CHART' && resource.yAxis !== undefined && resource.xAxis !== undefined) {
-      const chartInput: ChartInput = {
-        data: transformJson(data),
-        yAxis: resource.yAxis,
-        xAxis: resource.xAxis,
-      };
-      return (
-        <div style={{ height: '100vh' }}>
-          <BarChart key={resource.id} chartInput={chartInput} />
-        </div>
-      );
+    const transformedData = transformData(resource, data);
+
+    if (transformedData === undefined) {
+      return <></>;
     }
-    const transformedData = transformJson(data, resource.skipFields, resource.renameFields);
+
+    return <ChartTableWrapper resource={resource} transformedData={transformedData} />;
+  } else if (resource.type === 'GeoJSON') {
+    const geoJsonData = data as GeoJSON.FeatureCollection;
+    const Map = dynamic(() => import('@/components/visualization/Map'), {
+      ssr: false,
+    });
     return (
       <>
-        <Table key={resource.id} record={transformedData}></Table>
+        <Map geoJsonData={geoJsonData} />
       </>
     );
   }
-}
-
-async function getData(endpoint: string) {
-  const response = await fetch(endpoint);
-  return response.json();
 }
