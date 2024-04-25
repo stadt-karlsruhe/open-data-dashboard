@@ -34,7 +34,7 @@ export default function ChartTableFilter({
           });
     const filteredData = searchedData.filter((item) => {
       for (const key of Object.keys(item)) {
-        if (key in filterValues && !String(item[key]).includes(filterValues[key])) {
+        if (key in filterValues && !String(item[key]).toLowerCase().includes(String(filterValues[key]).toLowerCase())) {
           return false;
         }
         if (

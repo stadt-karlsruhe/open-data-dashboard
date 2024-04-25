@@ -36,11 +36,8 @@ const customStyles: TableStyles = {
   },
 };
 
-export default function Table({ record }: { record: DataRecord }) {
-  if (record.length === 0) {
-    return <>NO DATA FOUND</>;
-  }
-  const columns = Object.keys(record[0]).map((key) => {
+export default function Table({ records, filteredRecords }: { records: DataRecord; filteredRecords: DataRecord }) {
+  const columns = Object.keys(records[0]).map((key) => {
     return {
       name: key,
       selector: (row: Record<string, never>) => row[key],
@@ -53,7 +50,7 @@ export default function Table({ record }: { record: DataRecord }) {
     <div>
       <DataTable
         columns={columns}
-        data={record}
+        data={filteredRecords}
         pagination
         paginationComponentOptions={{ selectAllRowsItem: true }}
         striped

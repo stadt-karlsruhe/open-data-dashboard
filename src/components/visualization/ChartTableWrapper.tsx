@@ -56,7 +56,7 @@ export default function ChartTableWrapper({
               </div>
             ) : (
               <>
-                <Table key={resource.id} record={filteredData}></Table>
+                <Table key={resource.id} records={transformedData} filteredRecords={filteredData}></Table>
               </>
             )}
           </div>
