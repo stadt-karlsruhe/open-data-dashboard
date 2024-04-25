@@ -1,6 +1,8 @@
 import { DataRecord, Resource } from '@/types/visualization';
 import BarChart from './BarChart';
+import ChartTableFilter from '../ChartTableFilter';
 import Table from './Table';
+import { useState } from 'react';
 import useWindowDimensions from '../WindowDimensions';
 
 export default function ChartTableWrapper({
@@ -10,6 +12,7 @@ export default function ChartTableWrapper({
   resource: Resource;
   transformedData: DataRecord;
 }) {
+  const [filteredData, setFilteredData] = useState(transformedData);
   const { width, height } = useWindowDimensions();
 
   return (
@@ -31,6 +34,7 @@ export default function ChartTableWrapper({
         </ul>
       </div>
       <div className="card-body tab-content diagram-card">
+        <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
         {resource.diagrams.map((diagram, index) => (
           <div
             key={`${diagram.type}-${String(index)}`}
@@ -39,20 +43,20 @@ export default function ChartTableWrapper({
           >
             {diagram.type === 'CHART' ? (
               <div className="d-flex flex-column">
-                <div style={{ flexBasis: '100%' }}>
+                <div>
                   <BarChart
                     chartInput={{
-                      data: transformedData,
+                      data: filteredData,
                       xAxis: diagram.xAxis,
                       yAxis: diagram.yAxis,
-                      aspect: width / (height - 100),
+                      aspect: width / height,
                     }}
                   ></BarChart>
                 </div>
               </div>
             ) : (
               <>
-                <Table key={resource.id} record={transformedData}></Table>
+                <Table key={resource.id} record={filteredData}></Table>
               </>
             )}
           </div>

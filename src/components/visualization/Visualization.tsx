@@ -15,7 +15,7 @@ export default function Visualization({ resource }: { resource: Resource }) {
   if (resource.type === 'JSON' || resource.type === 'CSV') {
     const transformedData = transformData(resource, data);
 
-    if (transformedData === undefined) {
+    if (transformedData === undefined || transformedData.length === 0) {
       return <></>;
     }
 
