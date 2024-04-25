@@ -82,4 +82,11 @@ export const mockData = [
             },
         ],
     },
+    {
+        id: '6',
+        name: 'Points of Interest: Kinos',
+        type: 'GeoJSON',
+        endpoint:
+            'https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson',
+    },
 ] as Resource[];

@@ -2,6 +2,7 @@
 
 import ChartTableWrapper from './ChartTableWrapper';
 import { Resource } from '@/types/visualization';
+import dynamic from 'next/dynamic';
 import { transformData } from '@/transform';
 import useSWR from 'swr';
 
@@ -19,5 +20,15 @@ export default function Visualization({ resource }: { resource: Resource }) {
     }
 
     return <ChartTableWrapper resource={resource} transformedData={transformedData} />;
+  } else if (resource.type === 'GeoJSON') {
+    const geoJsonData = data as GeoJSON.FeatureCollection;
+    const Map = dynamic(() => import('@/components/visualization/Map'), {
+      ssr: false,
+    });
+    return (
+      <>
+        <Map geoJsonData={geoJsonData} />
+      </>
+    );
   }
 }

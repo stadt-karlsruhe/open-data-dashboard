@@ -19,7 +19,7 @@ export interface ChartInput {
     aspect: number;
 }
 
-export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded';
+export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded' | 'GeoJSON';
 
 export type DiagramType = { type: 'TABLE' } | { type: 'CHART'; yAxis: string; xAxis: string };
 
