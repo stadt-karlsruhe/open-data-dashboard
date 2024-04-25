@@ -106,7 +106,7 @@ export default function ChartTableFilter({
               {Number.isNaN(Number(value)) ? (
                 <input
                   type="text"
-                  value={filterValues[key]}
+                  value={filterValues[key] || ''}
                   className="form-control rounded-0"
                   aria-labelledby={`${resource.id}-${key}-input`}
                   id={`${resource.id}-${key}-text-input`}
