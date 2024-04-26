@@ -36,7 +36,7 @@ const customStyles: TableStyles = {
 };
 
 export default function Table({ columnNames, records }: { columnNames: string[]; records: DataRecord }) {
-  const columns = Object.keys(columnNames[0]).map((key) => {
+  const columns = columnNames.map((key) => {
     return {
       name: key,
       selector: (row: Record<string, never>) => row[key],

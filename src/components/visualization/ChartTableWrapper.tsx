@@ -56,7 +56,7 @@ export default function ChartTableWrapper({
               </div>
             ) : (
               <>
-                <Table key={resource.id} columnNames={Object.keys(transformedData)} records={filteredData}></Table>
+                <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData}></Table>
               </>
             )}
           </div>
