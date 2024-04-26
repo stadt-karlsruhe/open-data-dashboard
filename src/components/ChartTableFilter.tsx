@@ -60,7 +60,7 @@ export default function ChartTableFilter({
   }
   return (
     <div className="container-sm">
-      <div className="input-group">
+      <div className="input-group mb-3">
         <input
           type="text"
           id={`${resource.id}-search`}
@@ -96,7 +96,7 @@ export default function ChartTableFilter({
           {isCollapsed ? <i className="bi bi-caret-down-square"></i> : <i className="bi bi-caret-up-square"></i>}
         </button>
       </div>
-      <div className="collapse" id={`${resource.id}-filter`}>
+      <div className="collapse mb-3" id={`${resource.id}-filter`}>
         {Object.entries(data[0]).map(([key, value]) => (
           <div key={key} className="row my-3">
             <label id={`${resource.id}-${key}-input`} className="col-sm-2 col-form-label">
