@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/named
 import DataTable, { TableStyles } from 'react-data-table-component';
 import { DataRecord } from '@/types/visualization';
-import { useState } from 'react';
 
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts
 // Themed to fit Bootstrap 5 look
@@ -36,8 +35,8 @@ const customStyles: TableStyles = {
   },
 };
 
-export default function Table({ records, filteredRecords }: { records: DataRecord; filteredRecords: DataRecord }) {
-  const columns = Object.keys(records[0]).map((key) => {
+export default function Table({ columnNames, records }: { columnNames: string[]; records: DataRecord }) {
+  const columns = Object.keys(columnNames[0]).map((key) => {
     return {
       name: key,
       selector: (row: Record<string, never>) => row[key],
@@ -50,7 +49,7 @@ export default function Table({ records, filteredRecords }: { records: DataRecor
     <div>
       <DataTable
         columns={columns}
-        data={filteredRecords}
+        data={records}
         pagination
         paginationComponentOptions={{ selectAllRowsItem: true }}
         striped
