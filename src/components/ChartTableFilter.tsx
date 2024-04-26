@@ -21,29 +21,25 @@ export default function ChartTableFilter({
     updatedFilter[key] = value;
     setFilterValues(updatedFilter);
   }
-  function filterData(search?: string) {
+  function filterData(search: string = searchText, filter: Filter = filterValues) {
     const searchedData =
       searchText === ''
         ? data
         : data.filter((obj) => {
-            return Object.values(obj).some((value) =>
-              String(value)
-                .toLowerCase()
-                .includes(search ?? searchText.toLowerCase()),
-            );
+            return Object.values(obj).some((value) => String(value).toLowerCase().includes(search.toLowerCase()));
           });
     const filteredData = searchedData.filter((item) => {
       for (const key of Object.keys(item)) {
-        if (key in filterValues && !String(item[key]).toLowerCase().includes(String(filterValues[key]).toLowerCase())) {
+        if (key in filter && !String(item[key]).toLowerCase().includes(String(filter[key]).toLowerCase())) {
           return false;
         }
         if (
-          (`${key}-min` in filterValues && filterValues[`${key}-min`] !== '') ||
-          (`${key}-max` in filterValues && filterValues[`${key}-max`] !== '')
+          (`${key}-min` in filter && filter[`${key}-min`] !== '') ||
+          (`${key}-max` in filter && filter[`${key}-max`] !== '')
         ) {
           const value = Number(item[key]);
-          const min = Number(filterValues[`${key}-min`]);
-          const max = Number(filterValues[`${key}-max`]);
+          const min = Number(filter[`${key}-min`]);
+          const max = Number(filter[`${key}-max`]);
           if (!((Number.isNaN(min) || value >= min) && (Number.isNaN(max) || value <= max))) {
             return false;
           }
@@ -69,9 +65,7 @@ export default function ChartTableFilter({
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
-            if (isCollapsed) {
-              filterData(e.target.value);
-            }
+            filterData(e.target.value);
           }}
         />
         <button
@@ -97,6 +91,7 @@ export default function ChartTableFilter({
         </button>
       </div>
       <div className="collapse mb-3" id={`${resource.id}-filter`}>
+        {/* eslint-disable-next-line max-lines-per-function */}
         {Object.entries(data[0]).map(([key, value]) => (
           <div key={key} className="row my-3">
             <label id={`${resource.id}-${key}-input`} className="col-sm-2 col-form-label">
@@ -112,6 +107,9 @@ export default function ChartTableFilter({
                     id={`${resource.id}-${key}-text-input`}
                     onChange={(e) => {
                       setFilter(key, e.target.value);
+                      const filter = { ...filterValues };
+                      filter[key] = e.target.value;
+                      filterData(undefined, filter);
                     }}
                   />
                   <label htmlFor={`${resource.id}-${key}-text-input`}>Search</label>
@@ -128,6 +126,9 @@ export default function ChartTableFilter({
                         className="form-control rounded-0"
                         onChange={(e) => {
                           setFilter(`${key}-min`, e.target.value);
+                          const filter = { ...filterValues };
+                          filter[`${key}-min`] = e.target.value;
+                          filterData(undefined, filter);
                         }}
                       />
                       <label htmlFor={`${resource.id}-${key}-min`}>Min</label>
@@ -143,6 +144,9 @@ export default function ChartTableFilter({
                         className="form-control rounded-0"
                         onChange={(e) => {
                           setFilter(`${key}-max`, e.target.value);
+                          const filter = { ...filterValues };
+                          filter[`${key}-max`] = e.target.value;
+                          filterData(undefined, filter);
                         }}
                       />
                       <label htmlFor={`${resource.id}-${key}-max`}>Max</label>
@@ -153,22 +157,6 @@ export default function ChartTableFilter({
             </div>
           </div>
         ))}
-        <button
-          className="btn btn-primary rounded-0"
-          onClick={(e) => {
-            filterData();
-          }}
-        >
-          Search
-        </button>
-        <button
-          className="btn btn-secondary rounded-0 mx-2"
-          onClick={(e) => {
-            onClear();
-          }}
-        >
-          Clear
-        </button>
       </div>
     </div>
   );
