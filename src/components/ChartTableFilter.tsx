@@ -57,17 +57,19 @@ export default function ChartTableFilter({
   return (
     <div className="container-sm">
       <div className="input-group mb-3">
-        <input
-          type="text"
-          id={`${resource.id}-search`}
-          placeholder="Search"
-          className="form-control rounded-0"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-            filterData(e.target.value);
-          }}
-        />
+        <div className="form-floating">
+          <input
+            type="text"
+            id={`${resource.id}-search`}
+            className="form-control rounded-0"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+              filterData(e.target.value);
+            }}
+          />
+          <label htmlFor={`${resource.id}-search`}>Search all entries</label>
+        </div>
         <button
           className="btn-primary px-2 rounded-0"
           onClick={(e) => {
