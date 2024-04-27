@@ -11,7 +11,7 @@ export default function ChartTableFilter({
 }: {
   resource: Resource;
   data: DataRecord;
-  onFilter: (filteredDate: DataRecord) => void;
+  onFilter: (filteredData: DataRecord) => void;
 }) {
   const [searchText, setSearchText] = useState('');
   const [filterValues, setFilterValues] = useState({} as Filter);
