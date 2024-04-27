@@ -1,5 +1,5 @@
+import { ChangeEvent, useState } from 'react';
 import { DataRecord, Resource } from '@/types/visualization';
-import { useState } from 'react';
 
 type Filter = Record<string, string>;
 
@@ -57,25 +57,16 @@ export default function ChartTableFilter({
   return (
     <div className="container-sm">
       <div className="input-group mb-3">
-        <div className="form-floating">
-          <input
-            type="text"
-            id={`${resource.id}-search`}
-            className="form-control rounded-0"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-              filterData(e.target.value);
-            }}
-          />
-          <label htmlFor={`${resource.id}-search`}>Search all entries</label>
-        </div>
-        <button
-          className="btn-primary px-2 rounded-0"
-          onClick={(e) => {
-            onClear();
+        <InputWithFloatingLabel
+          id={`${resource.id}-search`}
+          type="text"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            filterData(e.target.value);
           }}
-        >
+        />
+        <button className="btn-primary px-2 rounded-0" onClick={onClear}>
           <i className="bi bi-x-lg"></i>
         </button>
         <button
@@ -85,7 +76,7 @@ export default function ChartTableFilter({
           data-bs-target={`#${resource.id}-filter`}
           aria-expanded="false"
           aria-controls={`${resource.id}-filter`}
-          onClick={(e) => {
+          onClick={() => {
             setIsCollapsed(!isCollapsed);
           }}
         >
@@ -93,7 +84,6 @@ export default function ChartTableFilter({
         </button>
       </div>
       <div className="collapse mb-3" id={`${resource.id}-filter`}>
-        {/* eslint-disable-next-line max-lines-per-function */}
         {Object.entries(data[0]).map(([key, value]) => (
           <div key={key} className="row my-3">
             <label id={`${resource.id}-${key}-input`} className="col-sm-2 col-form-label">
@@ -101,58 +91,44 @@ export default function ChartTableFilter({
             </label>
             <div className="col-md-10">
               {Number.isNaN(Number(value)) ? (
-                <div className="form-floating">
-                  <input
-                    type="text"
-                    value={filterValues[key] || ''}
-                    className="form-control rounded-0"
-                    id={`${resource.id}-${key}-text-input`}
-                    onChange={(e) => {
-                      setFilter(key, e.target.value);
-                      const filter = { ...filterValues };
-                      filter[key] = e.target.value;
-                      filterData(undefined, filter);
-                    }}
-                  />
-                  <label htmlFor={`${resource.id}-${key}-text-input`}>Search</label>
-                </div>
+                <InputWithFloatingLabel
+                  id={`${resource.id}-${key}-text-input`}
+                  type="text"
+                  value={filterValues[key] || ''}
+                  onChange={(e) => {
+                    setFilter(key, e.target.value);
+                    const filter = { ...filterValues };
+                    filter[key] = e.target.value;
+                    filterData(undefined, filter);
+                  }}
+                />
               ) : (
                 <div className="row">
                   <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="number"
-                        id={`${resource.id}-${key}-min`}
-                        value={filterValues[`${key}-min`] || ''}
-                        aria-labelledby={`${resource.id}-${key}-input`}
-                        className="form-control rounded-0"
-                        onChange={(e) => {
-                          setFilter(`${key}-min`, e.target.value);
-                          const filter = { ...filterValues };
-                          filter[`${key}-min`] = e.target.value;
-                          filterData(undefined, filter);
-                        }}
-                      />
-                      <label htmlFor={`${resource.id}-${key}-min`}>Min</label>
-                    </div>
+                    <InputWithFloatingLabel
+                      id={`${resource.id}-${key}-min`}
+                      type="number"
+                      value={filterValues[`${key}-min`] || ''}
+                      onChange={(e) => {
+                        setFilter(`${key}-min`, e.target.value);
+                        const filter = { ...filterValues };
+                        filter[`${key}-min`] = e.target.value;
+                        filterData(undefined, filter);
+                      }}
+                    />
                   </div>
                   <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="number"
-                        id={`${resource.id}-${key}-max`}
-                        value={filterValues[`${key}-max`] || ''}
-                        aria-labelledby={`${resource.id}-${key}-input`}
-                        className="form-control rounded-0"
-                        onChange={(e) => {
-                          setFilter(`${key}-max`, e.target.value);
-                          const filter = { ...filterValues };
-                          filter[`${key}-max`] = e.target.value;
-                          filterData(undefined, filter);
-                        }}
-                      />
-                      <label htmlFor={`${resource.id}-${key}-max`}>Max</label>
-                    </div>
+                    <InputWithFloatingLabel
+                      id={`${resource.id}-${key}-max`}
+                      type="number"
+                      value={filterValues[`${key}-max`] || ''}
+                      onChange={(e) => {
+                        setFilter(`${key}-max`, e.target.value);
+                        const filter = { ...filterValues };
+                        filter[`${key}-max`] = e.target.value;
+                        filterData(undefined, filter);
+                      }}
+                    />
                   </div>
                 </div>
               )}
@@ -160,6 +136,25 @@ export default function ChartTableFilter({
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function InputWithFloatingLabel({
+  id,
+  type,
+  value,
+  onChange,
+}: {
+  id: string;
+  type: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}) {
+  return (
+    <div className="form-floating">
+      <input type={type} id={id} className="form-control rounded-0" value={value} onChange={onChange} />
+      <label htmlFor={id}>Search all entries</label>
     </div>
   );
 }
