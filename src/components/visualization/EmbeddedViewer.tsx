@@ -1,6 +1,6 @@
 'use client';
 
-import useWindowDimensions from '../WindowDimensions';
+import useWindowDimensions from '../helper/WindowDimensions';
 
 export default function EmbeddedViewer({ source }: { source: string }) {
   const { height } = useWindowDimensions();

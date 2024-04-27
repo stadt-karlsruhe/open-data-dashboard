@@ -1,9 +1,9 @@
 import { DataRecord, Resource } from '@/types/visualization';
 import BarChart from './BarChart';
-import ChartTableFilter from '../ChartTableFilter';
+import ChartTableFilter from './ChartTableFilter';
 import Table from './Table';
 import { useState } from 'react';
-import useWindowDimensions from '../WindowDimensions';
+import useWindowDimensions from '../helper/WindowDimensions';
 
 export default function ChartTableWrapper({
   resource,
