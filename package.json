@@ -49,6 +49,7 @@
     "swr": "2.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "use-debounce": "10.0.0"
   }
 }
