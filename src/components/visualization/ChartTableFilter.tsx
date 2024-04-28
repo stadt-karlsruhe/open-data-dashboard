@@ -61,6 +61,7 @@ export default function ChartTableFilter({
           id={`${resource.id}-search`}
           type="text"
           value={searchText}
+          label="Search all entries"
           onChange={(e) => {
             setSearchText(e.target.value);
             filterData(e.target.value);
@@ -95,6 +96,7 @@ export default function ChartTableFilter({
                   id={`${resource.id}-${key}-text-input`}
                   type="text"
                   value={filterValues[key] || ''}
+                  label="Search"
                   onChange={(e) => {
                     setFilter(key, e.target.value);
                     const filter = { ...filterValues };
@@ -109,6 +111,7 @@ export default function ChartTableFilter({
                       id={`${resource.id}-${key}-min`}
                       type="number"
                       value={filterValues[`${key}-min`] || ''}
+                      label="Min"
                       onChange={(e) => {
                         setFilter(`${key}-min`, e.target.value);
                         const filter = { ...filterValues };
@@ -122,6 +125,7 @@ export default function ChartTableFilter({
                       id={`${resource.id}-${key}-max`}
                       type="number"
                       value={filterValues[`${key}-max`] || ''}
+                      label="Max"
                       onChange={(e) => {
                         setFilter(`${key}-max`, e.target.value);
                         const filter = { ...filterValues };
@@ -144,17 +148,19 @@ function InputWithFloatingLabel({
   id,
   type,
   value,
+  label,
   onChange,
 }: {
   id: string;
   type: string;
   value: string;
+  label: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div className="form-floating">
       <input type={type} id={id} className="form-control rounded-0" value={value} onChange={onChange} />
-      <label htmlFor={id}>Search all entries</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }
