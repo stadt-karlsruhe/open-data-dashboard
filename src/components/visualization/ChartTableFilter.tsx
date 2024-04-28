@@ -107,7 +107,7 @@ export default function ChartTableFilter({
             onChange(allEntries, e.target.value);
           }}
         />
-        <button className="btn-primary px-2 rounded-0" onClick={onClear}>
+        <button className="btn-primary px-2 rounded-0" title="Clear" onClick={onClear}>
           <i className="bi bi-x-lg"></i>
         </button>
         <button
@@ -117,6 +117,7 @@ export default function ChartTableFilter({
           data-bs-target={`#${resource.id}-filter`}
           aria-expanded="false"
           aria-controls={`${resource.id}-filter`}
+          title={isCollapsed ? 'Expand filters' : 'Collapse filters'}
           onClick={() => {
             setIsCollapsed(!isCollapsed);
           }}
