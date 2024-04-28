@@ -49,6 +49,12 @@ export default function ChartTableFilter({
     });
     onFilter(filteredData);
   }
+  function onChangeFilter(key: string, value: string) {
+    setFilter(key, value);
+    const filter = { ...filterValues };
+    filter[key] = value;
+    filterData(undefined, filter);
+  }
   function onClear() {
     setSearchText('');
     setFilterValues({} as Filter);
@@ -98,10 +104,7 @@ export default function ChartTableFilter({
                   value={filterValues[key] || ''}
                   label="Search"
                   onChange={(e) => {
-                    setFilter(key, e.target.value);
-                    const filter = { ...filterValues };
-                    filter[key] = e.target.value;
-                    filterData(undefined, filter);
+                    onChangeFilter(key, e.target.value);
                   }}
                 />
               ) : (
@@ -113,10 +116,7 @@ export default function ChartTableFilter({
                       value={filterValues[`${key}-min`] || ''}
                       label="Min"
                       onChange={(e) => {
-                        setFilter(`${key}-min`, e.target.value);
-                        const filter = { ...filterValues };
-                        filter[`${key}-min`] = e.target.value;
-                        filterData(undefined, filter);
+                        onChangeFilter(`${key}-min`, e.target.value);
                       }}
                     />
                   </div>
@@ -127,10 +127,7 @@ export default function ChartTableFilter({
                       value={filterValues[`${key}-max`] || ''}
                       label="Max"
                       onChange={(e) => {
-                        setFilter(`${key}-max`, e.target.value);
-                        const filter = { ...filterValues };
-                        filter[`${key}-max`] = e.target.value;
-                        filterData(undefined, filter);
+                        onChangeFilter(`${key}-max`, e.target.value);
                       }}
                     />
                   </div>
