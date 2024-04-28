@@ -2,7 +2,6 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { DataRecord, Resource } from '@/types/visualization';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
-type Filter = Record<string, string>;
 
 const allEntries = 'all-entries';
 // eslint-disable-next-line max-lines-per-function
@@ -16,9 +15,7 @@ export default function ChartTableFilter({
   onFilter: (filteredData: DataRecord) => void;
 }) {
   const searchParams = useSearchParams();
-  const [filters, setFilters] = useState(Object.fromEntries(searchParams.entries()) as Filter);
-  const pathname = usePathname();
-  const router = useRouter();
+  const [filters, setFilters] = useState(Object.fromEntries(searchParams.entries()) as Record<string, string>);
   // check if any of the column-filters are set by query parameters and if yes, expand the filters
   const [isCollapsedInitial] = useState(
     !Object.keys(data[0]).some((key) => {
@@ -27,6 +24,8 @@ export default function ChartTableFilter({
     }),
   );
   const [isCollapsed, setIsCollapsed] = useState(isCollapsedInitial);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     // use query parameters on initial render
@@ -35,7 +34,7 @@ export default function ChartTableFilter({
   }, []);
 
   function onChange(key: string, value: string) {
-    const updatedFilter = { ...filters } as Filter;
+    const updatedFilter = { ...filters } as Record<string, string>;
     updatedFilter[key] = value;
     setFilters(updatedFilter);
     filterData(key, value);
@@ -56,15 +55,21 @@ export default function ChartTableFilter({
         if (filter !== null && !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())) {
           return false;
         }
-        const filterMin = key === `${objKey}-min` ? value : searchParams.get(`${objKey}-min`);
-        const filterMax = key === `${objKey}-max` ? value : searchParams.get(`${objKey}-max`);
-        if ((filterMin !== null && filterMin !== '') || (filterMax !== null && filterMax !== '')) {
-          const value = Number(item[objKey]);
-          const min = Number(filterMin);
-          const max = Number(filterMax);
-          if (!((Number.isNaN(min) || value >= min) && (Number.isNaN(max) || value <= max))) {
-            return false;
-          }
+        const filterMin =
+          key === `${objKey}-min`
+            ? Number.parseFloat(value)
+            : Number.parseFloat(searchParams.get(`${objKey}-min`) ?? '');
+        const filterMax =
+          key === `${objKey}-max`
+            ? Number.parseFloat(value)
+            : Number.parseFloat(searchParams.get(`${objKey}-max`) ?? '');
+        if (
+          !(
+            (Number.isNaN(filterMin) || Number.parseFloat(item[objKey]) >= filterMin) &&
+            (Number.isNaN(filterMax) || Number.parseFloat(item[objKey]) <= filterMax)
+          )
+        ) {
+          return false;
         }
       }
       return true;
@@ -82,7 +87,7 @@ export default function ChartTableFilter({
   }, 300);
 
   function onClear() {
-    setFilters({} as Filter);
+    setFilters({} as Record<string, string>);
     onFilter(data);
     const params = new URLSearchParams(searchParams);
     Object.keys(filters).forEach((key) => {
@@ -121,16 +126,16 @@ export default function ChartTableFilter({
       </div>
       <div className={`collapse  mb-3 ${isCollapsedInitial ? '' : 'show'}`} id={`${resource.id}-filter`}>
         {Object.entries(data[0]).map(([key, value]) => (
-          <div key={key} className="row my-3">
-            <label id={`${resource.id}-${key}-input`} className="col-sm-2 col-form-label">
+          <fieldset key={key} className="row my-3">
+            <legend id={`${resource.id}-${key}-input`} className="col-sm-2 col-form-label">
               {key}
-            </label>
+            </legend>
             <div className="col-md-10">
-              {Number.isNaN(Number(value)) ? (
+              {Number.isNaN(Number.parseFloat(value)) ? (
                 <InputWithFloatingLabel
                   id={`${resource.id}-${key}-text-input`}
                   type="text"
-                  value={filters[key] || ''}
+                  value={filters[key] ?? ''}
                   label="Search"
                   onChange={(e) => {
                     onChange(key, e.target.value);
@@ -142,7 +147,7 @@ export default function ChartTableFilter({
                     <InputWithFloatingLabel
                       id={`${resource.id}-${key}-min`}
                       type="number"
-                      value={filters[`${key}-min`] || ''}
+                      value={filters[`${key}-min`] ?? ''}
                       label="Min"
                       onChange={(e) => {
                         onChange(`${key}-min`, e.target.value);
@@ -153,7 +158,7 @@ export default function ChartTableFilter({
                     <InputWithFloatingLabel
                       id={`${resource.id}-${key}-max`}
                       type="number"
-                      value={filters[`${key}-max`] || ''}
+                      value={filters[`${key}-max`] ?? ''}
                       label="Max"
                       onChange={(e) => {
                         onChange(`${key}-max`, e.target.value);
@@ -163,7 +168,7 @@ export default function ChartTableFilter({
                 </div>
               )}
             </div>
-          </div>
+          </fieldset>
         ))}
       </div>
     </div>
