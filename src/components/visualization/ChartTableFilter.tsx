@@ -15,12 +15,12 @@ export default function ChartTableFilter({
   onFilter: (filteredData: DataRecord) => void;
 }) {
   const searchParams = useSearchParams();
-  const [filters, setFilters] = useState(Object.fromEntries(searchParams.entries()) as Record<string, string>);
+  const [filters, setFilters] = useState(JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string>);
   // check if any of the column-filters are set by query parameters and if yes, expand the filters
   const [isCollapsedInitial] = useState(
     !Object.keys(data[0]).some((key) => {
-      const filterKeys = Object.fromEntries(searchParams.entries());
-      return key in filterKeys || `${key}-max` in filterKeys || `${key}-min` in filterKeys;
+      const filterObj = JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string>;
+      return filterObj[key] || filterObj[`${key}-max`] || filterObj[`${key}-min`];
     }),
   );
   const [isCollapsed, setIsCollapsed] = useState(isCollapsedInitial);
@@ -29,46 +29,37 @@ export default function ChartTableFilter({
 
   useEffect(() => {
     // use query parameters on initial render
-    filterData('', '');
+    filterData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function onChange(key: string, value: string) {
-    const updatedFilter = { ...filters } as Record<string, string>;
-    updatedFilter[key] = value;
-    setFilters(updatedFilter);
-    filterData(key, value);
-    setParams(key, value);
+    const updatedFilters = { ...filters } as Record<string, string>;
+    updatedFilters[key] = value;
+    setFilters(updatedFilters);
+    filterData(updatedFilters);
+    setParams(updatedFilters);
   }
-  function filterData(key: string, value: string) {
-    const filterAll = key === allEntries ? value : searchParams.get(allEntries);
-    const searchedData =
-      filterAll === null || filterAll === ''
-        ? data
-        : data.filter((obj) => {
-            return Object.values(obj).some((value) => String(value).toLowerCase().includes(filterAll.toLowerCase()));
-          });
-    // eslint-disable-next-line sonarjs/cognitive-complexity
+  function filterData(updatedFilters: Record<string, string> = filters) {
+    const searchedData = updatedFilters[allEntries]
+      ? data.filter((obj) => {
+          return Object.values(obj).some((value) =>
+            String(value).toLowerCase().includes(updatedFilters[allEntries].toLowerCase()),
+          );
+        })
+      : data;
     const filteredData = searchedData.filter((item) => {
       for (const objKey of Object.keys(item)) {
-        const filter = key === objKey ? value : searchParams.get(objKey);
-        if (filter !== null && !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())) {
+        const filter = updatedFilters[objKey];
+        if (filter && !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())) {
           return false;
         }
-        const filterMin =
-          key === `${objKey}-min`
-            ? Number.parseFloat(value)
-            : Number.parseFloat(searchParams.get(`${objKey}-min`) ?? '');
-        const filterMax =
-          key === `${objKey}-max`
-            ? Number.parseFloat(value)
-            : Number.parseFloat(searchParams.get(`${objKey}-max`) ?? '');
-        if (
-          !(
-            (Number.isNaN(filterMin) || Number.parseFloat(item[objKey]) >= filterMin) &&
-            (Number.isNaN(filterMax) || Number.parseFloat(item[objKey]) <= filterMax)
-          )
-        ) {
+        const filterMin = Number.parseFloat(updatedFilters[`${objKey}-min`]);
+        const filterMax = Number.parseFloat(updatedFilters[`${objKey}-max`]);
+        if (!Number.isNaN(filterMin) && Number.parseFloat(item[objKey]) < filterMin) {
+          return false;
+        }
+        if (!Number.isNaN(filterMax) && Number.parseFloat(item[objKey]) > filterMax) {
           return false;
         }
       }
@@ -76,13 +67,9 @@ export default function ChartTableFilter({
     });
     onFilter(filteredData);
   }
-  const setParams = useDebouncedCallback((key: string, value: string) => {
+  const setParams = useDebouncedCallback((updatedFilters: Record<string, string>) => {
     const params = new URLSearchParams(searchParams);
-    if (value) {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-    }
+    params.set('search', JSON.stringify(updatedFilters));
     router.replace(`${pathname}?${params.toString()}`);
   }, 300);
 
@@ -90,9 +77,7 @@ export default function ChartTableFilter({
     setFilters({} as Record<string, string>);
     onFilter(data);
     const params = new URLSearchParams(searchParams);
-    Object.keys(filters).forEach((key) => {
-      params.delete(key);
-    });
+    params.delete('search');
     router.replace(`${pathname}?${params.toString()}`);
   }
   return (
