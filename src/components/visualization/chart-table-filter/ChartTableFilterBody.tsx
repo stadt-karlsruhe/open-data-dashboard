@@ -1,6 +1,6 @@
-import { ChartTableFilterNumber } from './ChartTableFilterNumber';
-import { InputWithFloatingLabel } from './InputWithFloatingLabel';
+import { FloatingLabelInput } from './FloatingLabelInput';
 
+// eslint-disable-next-line max-lines-per-function
 export function ChartTableFilterBody({
   resourceId,
   filters,
@@ -23,7 +23,7 @@ export function ChartTableFilterBody({
           </legend>
           <div className="col-md-10">
             {Number.isNaN(Number.parseFloat(String(value))) ? (
-              <InputWithFloatingLabel
+              <FloatingLabelInput
                 id={`${resourceId}-${key}-text-input`}
                 type="text"
                 value={filters[key] ?? ''}
@@ -33,7 +33,30 @@ export function ChartTableFilterBody({
                 }}
               />
             ) : (
-              <ChartTableFilterNumber resourceId={resourceId} filterKey={key} filters={filters} onChange={onChange} />
+              <div className="row">
+                <div className="col-md-6">
+                  <FloatingLabelInput
+                    id={`${resourceId}-${key}-min`}
+                    type="number"
+                    value={filters[`${key}-min`] ?? ''}
+                    label="Min"
+                    onChange={(e) => {
+                      onChange(`${key}-min`, e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <FloatingLabelInput
+                    id={`${resourceId}-${key}-max`}
+                    type="number"
+                    value={filters[`${key}-max`] ?? ''}
+                    label="Max"
+                    onChange={(e) => {
+                      onChange(`${key}-max`, e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
             )}
           </div>
         </fieldset>

@@ -1,4 +1,4 @@
-import { InputWithFloatingLabel } from './InputWithFloatingLabel';
+import { FloatingLabelInput } from './FloatingLabelInput';
 
 export function ChartTableFilterHead({
   resourceId,
@@ -17,7 +17,7 @@ export function ChartTableFilterHead({
 }) {
   return (
     <div className="input-group mb-3">
-      <InputWithFloatingLabel
+      <FloatingLabelInput
         id={`${resourceId}-search`}
         type="text"
         value={filters['all-entries'] ?? ''}

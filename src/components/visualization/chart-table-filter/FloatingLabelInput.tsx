@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-export function InputWithFloatingLabel({
+export function FloatingLabelInput({
   id,
   type,
   value,
