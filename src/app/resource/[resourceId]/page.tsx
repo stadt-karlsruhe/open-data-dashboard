@@ -1,5 +1,5 @@
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
-import Visualization from '@/components/visualization/Visualization';
+import Visualization from '@/components/visualization/layout/Visualization';
 import { mockData } from '@/data/mockData';
 
 export default function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
