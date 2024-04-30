@@ -1,1 +1,3 @@
 site_name: Open Data Dashboard
+theme:
+  name: material
