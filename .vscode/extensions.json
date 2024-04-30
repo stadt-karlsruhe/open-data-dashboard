@@ -6,6 +6,8 @@
         "DavidAnson.vscode-markdownlint",
         "rvest.vs-code-prettier-eslint",
         "dbaeumer.vscode-eslint",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-german"
     ]
 }
