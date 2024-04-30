@@ -1,8 +1,8 @@
 import './globals.css';
 import './globals.scss';
+import BootstrapJS from '@/components/helper/BootstrapJS';
 import { Inter } from 'next/font/google';
 import { type Metadata } from 'next';
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,12 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <BootstrapJS />
       <body className={inter.className}>{children}</body>
-      <Script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossOrigin="anonymous"
-      />
     </html>
   );
 }
