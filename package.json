@@ -38,7 +38,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "14.2.2",
     "prettier-eslint": "16.3.0",
-    "react": "18.2.0",
+    "react": "18.3.1",
     "react-bootstrap": "2.10.2",
     "react-data-table-component": "7.6.2",
     "react-dom": "18.2.0",
