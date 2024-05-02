@@ -61,7 +61,6 @@ export default function Table({ columnNames, records }: { columnNames: string[];
         }}
         striped
         highlightOnHover
-        subHeader
         customStyles={customStyles}
       />
     </div>
