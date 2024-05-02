@@ -1,0 +1,17 @@
+{
+  "ChartTableFilterHead": {
+    "searchAll": "Search all entries"
+  },
+  "ChartTableFilterBody": {
+    "search": "Search"
+  },
+  "ChartTableWrapper": {
+    "CHART": "Bar Chart",
+    "TABLE": "Table"
+  },
+  "Table": {
+    "rowsPerPageText": "Rows per page:",
+    "rangeSeparatorText": "of",
+    "selectAllRowsItemText": "All"
+  }
+}

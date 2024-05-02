@@ -6,7 +6,7 @@ export default getRequestConfig(async ({ locale }: { locale: string }) => {
     if (!locales.has(locale)) {
         notFound();
     }
-    const t = (await import(`../messages/${locale}.json`)) as Record<string, never>;
+    const t = (await import(`./messages/${locale}.json`)) as Record<string, never>;
     return {
         messages: t.default,
     };

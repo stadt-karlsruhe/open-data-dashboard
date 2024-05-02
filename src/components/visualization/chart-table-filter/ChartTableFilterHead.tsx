@@ -1,4 +1,5 @@
 import { FloatingLabelInput } from './FloatingLabelInput';
+import { useTranslations } from 'next-intl';
 
 export function ChartTableFilterHead({
   resourceId,
@@ -15,13 +16,14 @@ export function ChartTableFilterHead({
   onCollapse: () => void;
   onClear: () => void;
 }) {
+  const t = useTranslations('ChartTableFilterHead');
   return (
     <div className="input-group mb-3">
       <FloatingLabelInput
         id={`${resourceId}-search`}
         type="text"
         value={filters['all-entries'] ?? ''}
-        label="Search all entries"
+        label={t('searchAll')}
         onChange={(e) => {
           onChange('all-entries', e.target.value);
         }}
