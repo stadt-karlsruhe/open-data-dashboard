@@ -1,25 +1,8 @@
-import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
-import Visualization from '@/components/visualization/layout/Visualization';
-import config from '../../../../data-source.config.yml';
+import { mockData } from '@/data/mockData';
+import { redirect } from 'next/navigation';
+
 export default function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
-  const resource = config.resources.find((item) => item.id === resourceId);
-
-  if (resource === undefined) {
-    return <></>;
-  }
-
-  if (resource.type === 'Embedded') {
-    return (
-      <>
-        <EmbeddedViewer source={resource.source}></EmbeddedViewer>
-      </>
-    );
-  }
-  return (
-    <>
-      <Visualization resource={resource}></Visualization>
-    </>
-  );
+  redirect(`/en/resource/${resourceId}`);
 }
 
 export function generateStaticParams() {
