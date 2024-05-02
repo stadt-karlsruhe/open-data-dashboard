@@ -1,0 +1,17 @@
+{
+  "ChartTableFilterHead": {
+    "searchAll": "Suche (alle Einträge)"
+  },
+  "ChartTableFilterBody": {
+    "search": "Suche"
+  },
+  "ChartTableWrapper": {
+    "CHART": "Balkendiagramm",
+    "TABLE": "Tabelle"
+  },
+  "Table": {
+    "rowsPerPageText": "Zeilen pro Seite:",
+    "rangeSeparatorText": "von",
+    "selectAllRowsItemText": "Alle"
+  }
+}

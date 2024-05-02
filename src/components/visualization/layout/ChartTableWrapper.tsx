@@ -3,8 +3,10 @@ import BarChart from '../BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import Table from '../Table';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import useWindowDimensions from '../../helper/WindowDimensions';
 
+// eslint-disable-next-line max-lines-per-function
 export default function ChartTableWrapper({
   resource,
   transformedData,
@@ -12,6 +14,7 @@ export default function ChartTableWrapper({
   resource: Resource;
   transformedData: DataRecord;
 }) {
+  const t = useTranslations('ChartTableWrapper');
   const [filteredData, setFilteredData] = useState(transformedData);
   const { width, height } = useWindowDimensions();
 
@@ -27,7 +30,7 @@ export default function ChartTableWrapper({
                 href={`#${diagram.type}-${resource.id}-${String(index)}`}
                 className={`nav-link ${index === 0 ? 'active' : ''}`}
               >
-                {diagram.type}
+                {t(diagram.type)}
               </a>
             </li>
           ))}
