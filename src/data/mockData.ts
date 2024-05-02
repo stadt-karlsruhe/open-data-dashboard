@@ -89,4 +89,21 @@ export const mockData = [
         endpoint:
             'https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson',
     },
+    {
+        id: '7',
+        name: 'Wanderungssaldo',
+        type: 'JSON',
+        endpoint: 'https://mocki.io/v1/becc7043-0251-46e9-8f2b-81a6b904fe86',
+        // endpoint: 'https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json',
+        diagrams: [
+            {
+                type: 'CHART',
+                yAxis: 'Personen',
+                xAxis: 'Stadtteil',
+            },
+            {
+                type: 'TABLE',
+            },
+        ],
+    },
 ] as Resource[];
