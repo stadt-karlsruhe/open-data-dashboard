@@ -1,7 +1,7 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { unstable_setRequestLocale as setRequestLocale } from 'next-intl/server';
 
-export default function RootLayout({
+export default function Layout({
   children,
   params: { locale },
 }: Readonly<{
@@ -11,12 +11,8 @@ export default function RootLayout({
   setRequestLocale(locale);
   const messages = useMessages();
   return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 }
