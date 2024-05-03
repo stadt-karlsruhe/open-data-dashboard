@@ -25,10 +25,6 @@ export default function Visualization({ resource }: { resource: Resource }) {
     const Map = dynamic(() => import('@/components/visualization/Map'), {
       ssr: false,
     });
-    return (
-      <>
-        <Map geoJsonData={geoJsonData} />
-      </>
-    );
+    return <Map geoJsonData={geoJsonData} />;
   }
 }

@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import useWindowDimensions from '../../helper/WindowDimensions';
 
-// eslint-disable-next-line max-lines-per-function
 export default function ChartTableWrapper({
   resource,
   transformedData,
@@ -60,9 +59,7 @@ export default function ChartTableWrapper({
                 </div>
               </div>
             ) : (
-              <>
-                <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData}></Table>
-              </>
+              <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
             )}
           </div>
         ))}
