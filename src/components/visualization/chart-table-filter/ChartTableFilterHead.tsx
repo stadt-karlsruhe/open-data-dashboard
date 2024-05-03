@@ -28,7 +28,7 @@ export function ChartTableFilterHead({
           onChange('all-entries', e.target.value);
         }}
       />
-      <button className="btn-primary px-2 rounded-0" title="Clear" onClick={onClear}>
+      <button className="btn-primary px-2 rounded-0" title={t('clearTooltip')} onClick={onClear}>
         <i className="bi bi-x-lg"></i>
       </button>
       <button
@@ -38,7 +38,7 @@ export function ChartTableFilterHead({
         data-bs-target={`#${resourceId}-filter`}
         aria-expanded="false"
         aria-controls={`${resourceId}-filter`}
-        title={isCollapsed ? 'Expand filters' : 'Collapse filters'}
+        title={isCollapsed ? t('collapseTooltipExpand') : t('collapseTooltipCollapse')}
         onClick={onCollapse}
       >
         {isCollapsed ? <i className="bi bi-caret-down-square"></i> : <i className="bi bi-caret-up-square"></i>}

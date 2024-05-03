@@ -1,6 +1,9 @@
 {
   "ChartTableFilterHead": {
-    "searchAll": "Search all entries"
+    "searchAll": "Search all entries",
+    "clearTooltip": "Clear all filters",
+    "collapseTooltipExpand": "Expand filters",
+    "collapseTooltipCollapse": "Collapse filters"
   },
   "ChartTableFilterBody": {
     "search": "Search"

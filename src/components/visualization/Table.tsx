@@ -48,21 +48,19 @@ export default function Table({ columnNames, records }: { columnNames: string[];
   });
 
   return (
-    <div>
-      <DataTable
-        columns={columns}
-        data={records}
-        pagination
-        paginationComponentOptions={{
-          rowsPerPageText: t('rowsPerPageText'),
-          rangeSeparatorText: t('rangeSeparatorText'),
-          selectAllRowsItem: true,
-          selectAllRowsItemText: t('selectAllRowsItemText'),
-        }}
-        striped
-        highlightOnHover
-        customStyles={customStyles}
-      />
-    </div>
+    <DataTable
+      columns={columns}
+      data={records}
+      pagination
+      paginationComponentOptions={{
+        rowsPerPageText: t('rowsPerPageText'),
+        rangeSeparatorText: t('rangeSeparatorText'),
+        selectAllRowsItem: true,
+        selectAllRowsItemText: t('selectAllRowsItemText'),
+      }}
+      striped
+      highlightOnHover
+      customStyles={customStyles}
+    />
   );
 }
