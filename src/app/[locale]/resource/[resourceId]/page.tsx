@@ -10,17 +10,9 @@ export default function Page({ params: { resourceId } }: { params: { resourceId:
   }
 
   if (resource.type === 'PDF' || resource.type === 'Embedded') {
-    return (
-      <>
-        <EmbeddedViewer source={resource.endpoint}></EmbeddedViewer>
-      </>
-    );
+    return <EmbeddedViewer source={resource.endpoint} />;
   }
-  return (
-    <>
-      <Visualization resource={resource}></Visualization>
-    </>
-  );
+  return <Visualization resource={resource} />;
 }
 
 export function generateStaticParams() {
