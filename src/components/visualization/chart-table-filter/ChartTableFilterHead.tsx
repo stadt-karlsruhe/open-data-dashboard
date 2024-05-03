@@ -1,4 +1,5 @@
 import { FloatingLabelInput } from './FloatingLabelInput';
+import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { useTranslations } from 'next-intl';
 
 export function ChartTableFilterHead({
@@ -43,6 +44,8 @@ export function ChartTableFilterHead({
       >
         {isCollapsed ? <i className="bi bi-caret-down-square"></i> : <i className="bi bi-caret-up-square"></i>}
       </button>
+      {/* TODO: Move LocaleSwitcher to footer component when it is implemented */}
+      <LocaleSwitcher />
     </div>
   );
 }

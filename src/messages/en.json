@@ -16,5 +16,8 @@
     "rowsPerPageText": "Rows per page:",
     "rangeSeparatorText": "of",
     "selectAllRowsItemText": "All"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
   }
 }
