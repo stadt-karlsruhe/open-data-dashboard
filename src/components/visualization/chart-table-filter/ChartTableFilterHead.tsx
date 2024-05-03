@@ -28,7 +28,7 @@ export function ChartTableFilterHead({
           onChange('all-entries', e.target.value);
         }}
       />
-      <button className="btn-primary px-2 rounded-0" title={t('clearTooltip')} onClick={onClear}>
+      <button className="btn btn-secondary px-2 rounded-0" title={t('clearTooltip')} onClick={onClear}>
         <i className="bi bi-x-lg"></i>
       </button>
       <button
