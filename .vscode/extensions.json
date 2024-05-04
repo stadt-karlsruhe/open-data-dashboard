@@ -5,6 +5,7 @@
       "github.vscode-github-actions",
       "DavidAnson.vscode-markdownlint",
       "rvest.vs-code-prettier-eslint",
-      "dbaeumer.vscode-eslint"
+      "dbaeumer.vscode-eslint",
+      "lokalise.i18n-ally"
     ]
   }

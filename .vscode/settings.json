@@ -2,5 +2,9 @@
     "files.eol": "\n",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.tsdk": "node_modules/typescript/lib",
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "i18n-ally.localesPaths": [
+        "src/messages"
+    ],
+    "i18n-ally.keystyle": "nested"
 }
