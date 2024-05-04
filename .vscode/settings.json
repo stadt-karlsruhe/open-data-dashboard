@@ -3,6 +3,10 @@
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.tsdk": "node_modules/typescript/lib",
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "i18n-ally.localesPaths": [
+        "src/messages"
+    ],
+    "i18n-ally.keystyle": "nested",
     "yaml.schemas": {
         "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
     },
@@ -14,8 +18,5 @@
         "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
         "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
     ],
-    "cSpell.language": "en,de-de",
-    "i18n-ally.localesPaths": [
-        "messages"
-    ]
+    "cSpell.language": "en,de-de"
 }
