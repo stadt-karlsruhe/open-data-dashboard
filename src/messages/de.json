@@ -19,5 +19,10 @@
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
+  },
+  "NotFound": {
+    "title": "Hoppla! Du bist verloren.",
+    "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
+    "returnBtn": "Zurück zur Startseite"
   }
 }
