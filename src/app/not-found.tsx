@@ -1,8 +1,8 @@
 //  "Hacky" workaround due to https://github.com/vercel/next.js/discussions/50034 and https://github.com/vercel/next.js/discussions/64660
 'use client';
 
-import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { redirect, usePathname } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
 import NotFound from '@/components/NotFound';
 import de from '../messages/de.json';
 import en from '../messages/en.json';
