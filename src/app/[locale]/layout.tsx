@@ -1,5 +1,3 @@
-import '../globals.css';
-import '../globals.scss';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import BootstrapJS from '@/components/helper/BootstrapJS';
 import { Inter } from 'next/font/google';
