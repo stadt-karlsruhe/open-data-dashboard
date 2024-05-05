@@ -1,8 +1,8 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
+import { useTranslations } from 'next-intl';
 
 const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
@@ -10,7 +10,6 @@ const { Link } = createSharedPathnamesNavigation({
 
 export default function NotFound() {
   const t = useTranslations('NotFound');
-  const locale = useLocale();
 
   return (
     <div className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
