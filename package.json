@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "docs": "mkdocs serve"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

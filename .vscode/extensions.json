@@ -1,11 +1,14 @@
 {
     "recommendations": [
-      "streetsidesoftware.code-spell-checker",
-      "EditorConfig.EditorConfig",
-      "github.vscode-github-actions",
-      "DavidAnson.vscode-markdownlint",
-      "rvest.vs-code-prettier-eslint",
-      "dbaeumer.vscode-eslint",
-      "lokalise.i18n-ally"
+        "streetsidesoftware.code-spell-checker",
+        "EditorConfig.EditorConfig",
+        "github.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint",
+        "rvest.vs-code-prettier-eslint",
+        "dbaeumer.vscode-eslint",
+        "redhat.vscode-yaml",
+        "lokalise.i18n-ally",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-german"
     ]
-  }
+}
