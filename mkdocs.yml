@@ -1,4 +1,5 @@
 site_name: Open Data Dashboard
+site_url: https://open-data-dashboard.readthedocs.io
 repo_url: https://github.com/stadt-karlsruhe/open-data-dashboard
 theme:
     name: material
