@@ -1,10 +1,11 @@
 ---
     name: Build Documentation
     on: # yamllint disable-line rule:truthy
-        push:
-            paths:
-                - 'docs/*'
-                - mkdocs.yml
+        - push
+        # push:
+        #     paths:
+        #         - 'docs/*'
+        #         - mkdocs.yml
     jobs:
         build:
             name: Build
@@ -19,7 +20,7 @@
             - name: Upgrade and install
               run: |
                 pip install --upgrade --no-cache-dir pip setuptools
-                pip install --exists-action=w --no-cache-dir docs/requirements.txt
+                pip install --exists-action=w --no-cache-dir -r docs/requirements.txt
             - name: Build MkDocs
               run: |
                 mkdocs build --clean
