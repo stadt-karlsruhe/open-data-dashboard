@@ -1,0 +1,40 @@
+site_name: Open Data Dashboard
+repo_url: https://github.com/stadt-karlsruhe/open-data-dashboard
+theme:
+    name: material
+    language: en
+    features:
+        - search.suggest
+        - search.highlight
+        - search.share
+        - navigation.instant
+        - navigation.instant.progress
+        - navigation.tracking
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.sections
+        - navigation.expand
+        - navigation.indexes
+        - navigation.top
+plugins:
+    - search
+    - i18n:
+          docs_structure: suffix
+          languages:
+              - locale: en
+                default: true
+                name: English
+                build: true
+              - locale: de
+                name: Deutsch
+                build: true
+extra:
+    version:
+        provider: mike
+    alternate:
+        - name: English
+          link: /
+          lang: en
+        - name: Deutsch
+          link: /de/
+          lang: de
