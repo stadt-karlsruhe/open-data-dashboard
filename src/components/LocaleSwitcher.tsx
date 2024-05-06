@@ -25,6 +25,7 @@ export default function LocaleSwitcher() {
     <select
       defaultValue={locale}
       onChange={onLocaleChange}
+      id="locale-switcher"
       className="form-select rounded-0"
       style={{ maxWidth: '200px' }}
     >
