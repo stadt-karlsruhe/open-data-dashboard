@@ -11,7 +11,8 @@ build:
         post_checkout:
             - cat mkdocs.yml
             - echo $READTHEDOCS_VERSION
-            - "sed -i \"s/site_url: \\(.*\\)/site_url: \\1\\/\"$READTHEDOCS_VERSION\"/g\" mkdocs.yml"
+            - |
+                sed -i "s|link: \(/[^/]*\)|link: /$READTHEDOCS_VERSION\1|g" mkdocs.yml
             - cat mkdocs.yml
 
 mkdocs:
