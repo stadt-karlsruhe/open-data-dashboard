@@ -8,7 +8,6 @@ theme:
         - search.suggest
         - search.highlight
         - search.share
-        - navigation.instant
         - navigation.instant.progress
         - navigation.tracking
         - navigation.tabs
@@ -30,8 +29,6 @@ plugins:
                 name: Deutsch
                 build: true
 extra:
-    version:
-        provider: mike
     alternate:
         - name: English
           link: /
