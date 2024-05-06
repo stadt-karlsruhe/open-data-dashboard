@@ -4,6 +4,7 @@
         push:
             paths:
                 - 'docs/*'
+                - mkdocs.yml
     jobs:
         build:
             name: Build
