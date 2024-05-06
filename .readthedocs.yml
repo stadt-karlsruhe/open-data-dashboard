@@ -8,12 +8,13 @@ build:
     tools:
         python: "3.12"
     jobs:
+        # Edit the locale switcher URLs for each language during the build process in order to match the Read the Docs URL versioning scheme
+        # See https://docs.readthedocs.io/en/stable/versioning-schemes.html#multiple-versions-without-translations
         post_checkout:
-            - cat mkdocs.yml
-            - echo $READTHEDOCS_VERSION
             - |
+                echo $READTHEDOCS_VERSION
                 sed -i "s|link: \(/[^/]*\)|link: /$READTHEDOCS_VERSION\1|g" mkdocs.yml
-            - cat mkdocs.yml
+                cat mkdocs.yml
 
 mkdocs:
     configuration: mkdocs.yml
