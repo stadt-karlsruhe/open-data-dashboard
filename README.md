@@ -2,7 +2,7 @@
 
 ## Documentation
 
-The documentation for the project can be found on [Read the Docs](https://open-data-dashboard.readthedocs.io/en/latest/).
+The documentation for the project can be found on [Read the Docs](https://open-data-dashboard.readthedocs.io/latest/).
 
 ## Deployment
 
