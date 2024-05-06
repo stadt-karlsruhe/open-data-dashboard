@@ -3,8 +3,9 @@
     on: # yamllint disable-line rule:truthy
         push:
             paths:
-                - 'docs/*'
+                - docs/*
                 - mkdocs.yml
+                - .github/*
     jobs:
         build:
             name: Build
