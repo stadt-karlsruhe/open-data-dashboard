@@ -6,10 +6,6 @@ import { unstable_setRequestLocale as setRequestLocale } from 'next-intl/server'
 
 const inter = Inter({ subsets: ['latin'] });
 
-// Comment out `output: export` in next.config.mjs and uncomment the following line to work on not-found.tsx.
-// See https://github.com/vercel/next.js/issues/56253
-// export const dynamicParams = false;
-
 export default function RootLayout({
   children,
   params: { locale },
