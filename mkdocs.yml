@@ -31,8 +31,8 @@ plugins:
 extra:
     alternate:
         - name: English
-          link: /
+          link: /39/
           lang: en
         - name: Deutsch
-          link: /de/
+          link: /39/de/
           lang: de
