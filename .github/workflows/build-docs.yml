@@ -1,11 +1,10 @@
 ---
     name: Build Documentation
     on: # yamllint disable-line rule:truthy
-        - push
-        # push:
-        #     paths:
-        #         - 'docs/*'
-        #         - mkdocs.yml
+        push:
+            paths:
+                - 'docs/*'
+                - mkdocs.yml
     jobs:
         build:
             name: Build
