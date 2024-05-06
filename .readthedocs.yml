@@ -8,10 +8,11 @@ build:
     tools:
         python: "3.12"
     jobs:
-      post_checkout:
-        - echo $READTHEDOCS_VERSION
-        - echo version
-        - cat mkdocs.yml
+        post_checkout:
+            - cat mkdocs.yml
+            - echo $READTHEDOCS_VERSION
+            - "sed -i 's/site_url: \\(.*\\)/site_url: \\1\\/$READTHEDOCS_VERSION/g' mkdocs.yml"
+            - cat mkdocs.yml
 
 mkdocs:
     configuration: mkdocs.yml
