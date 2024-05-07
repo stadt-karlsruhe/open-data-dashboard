@@ -15,6 +15,21 @@ theme:
         - navigation.expand
         - navigation.indexes
         - navigation.top
+    palette:
+        - media: "(prefers-color-scheme)"
+          toggle:
+              icon: material/brightness-auto
+              name: Light Mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          toggle:
+              icon: material/brightness-7
+              name: Dark Mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          toggle:
+              icon: material/brightness-4
+              name: Default
 plugins:
     - search
     - i18n:
