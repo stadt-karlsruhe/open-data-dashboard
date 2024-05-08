@@ -24,7 +24,7 @@ function transformType(resource: Resource, data: unknown) {
     }
 }
 
-function transformJsonData(json: unknown) {
+export function transformJsonData(json: unknown) {
     if (isJsonSourceStandard(json)) {
         return json;
     }
