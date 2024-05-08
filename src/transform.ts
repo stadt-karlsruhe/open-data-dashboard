@@ -20,7 +20,7 @@ function transformType(resource: TransformableResource, data: unknown) {
     return transformCsvData(data);
 }
 
-function transformJsonData(json: unknown) {
+export function transformJsonData(json: unknown) {
     if (isJsonSourceStandard(json)) {
         return json;
     }
