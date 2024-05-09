@@ -1,4 +1,4 @@
-# Welcome to MkDocs
+# Willkommen bei MkDocs
 
 Die vollständige Dokumentation kann unter [mkdocs.org](https://www.mkdocs.org) eingesehen werden.
 
