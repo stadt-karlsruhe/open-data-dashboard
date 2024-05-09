@@ -51,6 +51,7 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "use-debounce": "10.0.0"
+    "use-debounce": "10.0.0",
+    "yaml-loader": "0.8.1"
   }
 }

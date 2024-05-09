@@ -1,0 +1,55 @@
+resources:
+    - id: "1"
+      source: https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022
+      #   source: https://transparenz.karlsruhe.de/datastore/dump/d8be5f4a-0788-4ee3-abe5-b36313ce3799?format=json
+      type: JSON
+      name: Bevölkerung mit Hauptwohnung
+      description: dadada
+      renameFields:
+          mannlich (%): Männlich (%)
+          weiblich (%): Weiblich (%)
+      skipFieldsRegEx: ^_id$
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohnberechtigte
+                  - xAxis: Stadtteil
+                    yAxis: Hauptwohnung (%)
+                  - xAxis: Stadtteil
+                    yAxis: Nebenwohnung (%)
+          table: {}
+    - id: "2"
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
+      type: Embedded
+      name: Karlsruher Mietspiegel 2023
+    - id: "3"
+      source: https://mocki.io/v1/56ffb4b7-49d5-4763-98ec-db1a67feb0a5
+      # source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      type: GeoJSON
+      name: Points of Interest Kinos
+      visualizations:
+          map: {}
+    - id: "4"
+      source: https://mocki.io/v1/becc7043-0251-46e9-8f2b-81a6b904fe86
+      # source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
+      type: JSON
+      name: Wanderungssaldo
+      skipFieldsRegEx: ^_id$
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+    - id: "5"
+      source: https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True
+      type: CSV
+      name: Hunde insgesamt
+      skipFieldsRegEx: ^_id$
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Hunde
+          table: {}
