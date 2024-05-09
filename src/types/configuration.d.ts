@@ -13,7 +13,7 @@ interface EmbeddedResource extends BaseResource {
     type: 'Embedded';
 }
 
-interface GeoJSONResource extends TransformableResource {
+interface GeoJSONResource extends BaseResource {
     type: 'GeoJSON';
     visualizations: {
         map: Record<string, never>;
