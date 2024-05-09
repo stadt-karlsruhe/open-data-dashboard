@@ -21,7 +21,7 @@
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
   },
   "NotFound": {
-    "title": "Hoppla! Du bist verloren.",
+    "title": "Hoppla! Du hast dich verirrt.",
     "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
     "returnBtn": "Zurück zur Startseite"
   }
