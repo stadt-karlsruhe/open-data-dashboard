@@ -23,6 +23,6 @@
   "NotFound": {
     "title": "Oops! You're lost.",
     "subtitle": "The page you are looking for was not found.",
-    "returnBtn": "Back to Home"
+    "returnBtn": "Return Home"
   }
 }
