@@ -1,0 +1,26 @@
+---
+    name: Build Documentation
+    on: # yamllint disable-line rule:truthy
+        push:
+            paths:
+                - docs/*
+                - mkdocs.yml
+                - .github/*
+    jobs:
+        build:
+            name: Build
+            runs-on: ubuntu-latest
+            steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Set up Python 3.12
+              uses: actions/setup-python@v5.0.0
+              with:
+                python-version: 3.12
+            - name: Upgrade and install
+              run: |
+                pip install --upgrade --no-cache-dir pip setuptools
+                pip install --exists-action=w --no-cache-dir -r docs/requirements.txt
+            - name: Build MkDocs
+              run: |
+                mkdocs build --clean

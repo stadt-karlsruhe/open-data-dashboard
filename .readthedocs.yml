@@ -7,6 +7,14 @@ build:
     os: ubuntu-22.04
     tools:
         python: "3.12"
+    jobs:
+        # Edit the locale switcher URLs for each language during the build process in order to match the Read the Docs URL versioning scheme
+        # See https://docs.readthedocs.io/en/stable/versioning-schemes.html#multiple-versions-without-translations
+        post_checkout:
+            - |
+                echo $READTHEDOCS_VERSION
+                sed -i "s|link: \(/[^/]*\)|link: /$READTHEDOCS_VERSION\1|g" mkdocs.yml
+                cat mkdocs.yml
 
 mkdocs:
     configuration: mkdocs.yml
