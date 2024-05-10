@@ -16,6 +16,7 @@ theme:
         - navigation.indexes
         - navigation.top
         - navigation.path
+        - navigation.footer
         - content.code.copy
     palette:
         - media: "(prefers-color-scheme)"
@@ -40,6 +41,7 @@ nav:
     - Features:
           - features/dataTypes.md
           - features/visualizations.md
+          - features/filters.md
     - Configuration: configuration/configuration.md
     - Development: development.md
 plugins:
@@ -63,6 +65,7 @@ extra:
           link: /de/
           lang: de
 markdown_extensions:
+    - admonition
     - pymdownx.highlight:
           anchor_linenums: true
           line_spans: __span
