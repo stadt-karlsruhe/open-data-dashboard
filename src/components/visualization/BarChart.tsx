@@ -49,7 +49,7 @@ function getMaxAndMinYValue(records: DataRecord, yAxis: string) {
       .filter(([key, _]) => key === yAxis)
       .map((entry) => entry[1]);
     for (const value of valueArray) {
-      const parsedValue = Number.parseInt(value, 10);
+      const parsedValue = Number.parseFloat(value);
       if (parsedValue > maxValue) {
         maxValue = parsedValue;
       } else if (parsedValue < minValue) {
