@@ -12,9 +12,7 @@ CSV data will get converted to JSON using [json-2-csv](https://www.npmjs.com/pac
 - The source must return the data as plain text.
 - All lines must have the same exact number of CSV values.
 
-**Example Data**:
-
-````csv
+````csv title="Example Data" linenums="1"
 StringColumn,IntegerColumn,FloatColumn,BooleanColumn
 Seal,24,9.1,True
 Bear,2023,5.1,False
@@ -34,9 +32,7 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
 
 - The source must return the data in one of the three supported JSON formats. See examples below.
 
-**Example Data (Format 1):**
-
-````json
+````json title="Example Data (Format 1)" linenums="1"
 [
   {
     "StringColumn": "Seal",
@@ -53,9 +49,7 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
 ]
 ````
 
-**Example Data (Format 2):**
-
-````json
+````json title="Example Data (Format 2)" linenums="1"
 {
   "fields": [
     {
@@ -86,9 +80,7 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
 }
 ````
 
-**Example Data (Format 3):**
-
-````json
+````json title="Example Data (Format 3)" linenums="1"
 {
   "success": true,
   "result": {
