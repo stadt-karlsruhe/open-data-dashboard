@@ -1,13 +1,12 @@
-/* eslint-disable sort-imports */
-// I don't understand the sorting rules I used Organize Imports and it's still wrong
-import { TransformableResource } from '@/types/configuration';
+import BarChart from '../BarChart';
+import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import { DataRecord } from '@/types/visualization';
+import Table from '../Table';
+import { TransformableResource } from '@/types/configuration';
 import { useState } from 'react';
 import useWindowDimensions from '../../helper/WindowDimensions';
-import BarChart from '../BarChart';
-import Table from '../Table';
-import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 
+// eslint-disable-next-line max-lines-per-function
 export default function ChartTableWrapper({
   resource,
   transformedData,
@@ -50,6 +49,7 @@ export default function ChartTableWrapper({
                   <BarChart
                     chartInput={{
                       data: filteredData,
+                      // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
                       xAxis: diagramAttr.axisPairs[0].xAxis,
                       yAxis: diagramAttr.axisPairs[0].yAxis,
                       aspect: width / height,

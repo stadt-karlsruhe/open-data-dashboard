@@ -1,11 +1,10 @@
-/* eslint-disable sort-imports */
-import { TransformableResource } from '@/types/configuration';
-import { DataRecord } from '@/types/visualization';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHead } from './ChartTableFilterHead';
+import { DataRecord } from '@/types/visualization';
+import { TransformableResource } from '@/types/configuration';
+import { useDebouncedCallback } from 'use-debounce';
 
 // eslint-disable-next-line max-lines-per-function
 export default function ChartTableFilter({
