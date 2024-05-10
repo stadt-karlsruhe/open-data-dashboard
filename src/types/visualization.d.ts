@@ -33,3 +33,18 @@ export interface Resource {
     skipFields?: string;
     renameFields?: Record<string, string>;
 }
+
+export interface ViewButtonProps {
+    title: string;
+    pos: MapPos;
+}
+
+export interface MapPos {
+    latLon: L.LatLngExpression;
+    zoom: number;
+}
+
+export interface LegendProps {
+    title: string;
+    labels: string[];
+}

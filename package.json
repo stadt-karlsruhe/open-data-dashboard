@@ -51,5 +51,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5",
     "use-debounce": "10.0.0"
+  },
+  "dependencies": {
+    "@react-leaflet/core": "^2.1.0",
+    "react-leaflet-custom-control": "^1.4.0"
   }
 }
