@@ -1,9 +1,11 @@
-import { DataRecord, Resource } from '@/types/visualization';
-import { useEffect, useState } from 'react';
+/* eslint-disable sort-imports */
+import { TransformableResource } from '@/types/configuration';
+import { DataRecord } from '@/types/visualization';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHead } from './ChartTableFilterHead';
-import { useDebouncedCallback } from 'use-debounce';
 
 // eslint-disable-next-line max-lines-per-function
 export default function ChartTableFilter({
@@ -11,7 +13,7 @@ export default function ChartTableFilter({
   data,
   onFilter,
 }: {
-  resource: Resource;
+  resource: TransformableResource;
   data: DataRecord;
   onFilter: (filteredData: DataRecord) => void;
 }) {
