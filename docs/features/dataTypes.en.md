@@ -1,4 +1,4 @@
-# Supported Data Types and Formats
+# Data Types and Formats
 
 `Open Data Dashboard` supports a number of different data types and formats.
 Depending on the data type, different [visualizations](visualizations.md) for the data are available.

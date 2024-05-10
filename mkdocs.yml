@@ -15,6 +15,7 @@ theme:
         - navigation.expand
         - navigation.indexes
         - navigation.top
+        - navigation.path
         - content.code.copy
     palette:
         - media: "(prefers-color-scheme)"
@@ -31,6 +32,16 @@ theme:
           toggle:
               icon: material/brightness-4
               name: Default
+nav:
+    - Home: index.md
+    - About: about/about.md
+    - Getting Started:
+          - getting-started/installation.md
+    - Features:
+          - features/dataTypes.md
+          - features/visualizations.md
+    - Configuration: configuration/configuration.md
+    - Development: development.md
 plugins:
     - search
     - i18n:
