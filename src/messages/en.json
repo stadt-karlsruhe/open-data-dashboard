@@ -9,8 +9,8 @@
     "search": "Search"
   },
   "ChartTableWrapper": {
-    "CHART": "Bar Chart",
-    "TABLE": "Table"
+    "barChart": "Bar Chart",
+    "table": "Table"
   },
   "Table": {
     "rowsPerPageText": "Rows per page:",

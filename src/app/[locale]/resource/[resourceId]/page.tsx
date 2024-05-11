@@ -1,22 +1,21 @@
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import Visualization from '@/components/visualization/layout/Visualization';
-import { mockData } from '@/data/mockData';
-
+import config from '../../../../../data-source.config.yml';
 export default function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
-  const resource = mockData.find((item) => item.id === resourceId);
+  const resource = config.resources.find((item) => item.id === resourceId);
 
   if (resource === undefined) {
     return <></>;
   }
 
-  if (resource.type === 'PDF' || resource.type === 'Embedded') {
-    return <EmbeddedViewer source={resource.endpoint} />;
+  if (resource.type === 'Embedded') {
+    return <EmbeddedViewer source={resource.source} />;
   }
   return <Visualization resource={resource} />;
 }
 
 export function generateStaticParams() {
-  return mockData.map((data) => ({
+  return config.resources.map((data) => ({
     resourceId: data.id,
   }));
 }

@@ -9,8 +9,8 @@
     "search": "Suche"
   },
   "ChartTableWrapper": {
-    "CHART": "Balkendiagramm",
-    "TABLE": "Tabelle"
+    "barChart": "Balkendiagramm",
+    "table": "Tabelle"
   },
   "Table": {
     "rowsPerPageText": "Zeilen pro Seite:",

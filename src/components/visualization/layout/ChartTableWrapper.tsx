@@ -30,7 +30,7 @@ export default function ChartTableWrapper({
                 href={`#${diagramType}-${resource.id}}`}
                 className={`nav-link ${index === 0 ? 'active' : ''}`}
               >
-                {diagramType}
+                {diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
               </a>
             </li>
           ))}
@@ -53,7 +53,7 @@ export default function ChartTableWrapper({
                       // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
                       xAxis: diagramAttr.axisPairs[0].xAxis,
                       yAxis: diagramAttr.axisPairs[0].yAxis,
-                      aspect: width / height,
+                      aspect: width / (height - 200),
                     }}
                   ></BarChart>
                 </div>
