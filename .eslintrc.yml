@@ -11,9 +11,8 @@ extends:
     - plugin:import/typescript
     - plugin:@typescript-eslint/strict-type-checked
     - plugin:@typescript-eslint/stylistic-type-checked
-    - plugin:sonarjs/recommended
+    - plugin:sonarjs/recommended-legacy
     - plugin:deprecation/recommended
-    - plugin:sonarjs/recommended
     - plugin:import/errors
     - plugin:import/warnings
     - plugin:promise/recommended
