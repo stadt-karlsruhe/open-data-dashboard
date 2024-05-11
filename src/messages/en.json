@@ -1,12 +1,13 @@
 {
   "ChartTableFilterHead": {
     "searchAll": "Search all entries",
-    "clearTooltip": "Clear all filters",
     "collapseTooltipExpand": "Expand filters",
     "collapseTooltipCollapse": "Collapse filters"
   },
   "ChartTableFilterBody": {
-    "search": "Search"
+    "search": "Search",
+    "clearAll": "Clear",
+    "clearAllTooltip": "Clear all filters"
   },
   "ChartTableWrapper": {
     "barChart": "Bar Chart",
@@ -16,6 +17,9 @@
     "rowsPerPageText": "Rows per page:",
     "rangeSeparatorText": "of",
     "selectAllRowsItemText": "All"
+  },
+  "ClearableInputGroup": {
+    "clearTooltip": "Clear"
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"

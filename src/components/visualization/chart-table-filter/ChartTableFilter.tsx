@@ -3,6 +3,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHead } from './ChartTableFilterHead';
 import { DataRecord } from '@/types/visualization';
+import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { TransformableResource } from '@/types/configuration';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -36,8 +37,18 @@ export default function ChartTableFilter({
   }, []);
 
   function onChange(key: string, value: string) {
-    const updatedFilters = { ...filters } as Record<string, string>;
-    updatedFilters[key] = value;
+    let updatedFilters;
+    if (value) {
+      updatedFilters = { ...filters } as Record<string, string>;
+      updatedFilters[key] = value;
+    } else {
+      updatedFilters = Object.assign(
+        {},
+        ...Object.keys(filters)
+          .filter((k) => k !== key)
+          .map((k) => ({ [k]: filters[k] })),
+      ) as Record<string, string>;
+    }
     setFilters(updatedFilters);
     filter(updatedFilters);
     setParams(updatedFilters);
@@ -49,37 +60,43 @@ export default function ChartTableFilter({
 
   const setParams = useDebouncedCallback((updatedFilters: Record<string, string>) => {
     const params = new URLSearchParams(searchParams);
-    params.set('search', JSON.stringify(updatedFilters));
+    if (Object.keys(updatedFilters).length === 0) {
+      params.delete('search');
+    } else {
+      params.set('search', JSON.stringify(updatedFilters));
+    }
     router.replace(`${pathname}?${params.toString()}`);
   }, 300);
 
-  function onClear() {
+  function onClearAll() {
     setFilters({} as Record<string, string>);
     onFilter(data);
-    const params = new URLSearchParams(searchParams);
-    params.delete('search');
-    router.replace(`${pathname}?${params.toString()}`);
+    setParams({});
   }
 
   return (
-    <div className="container-sm">
-      <ChartTableFilterHead
-        resourceId={resource.id}
-        filters={filters}
-        isCollapsed={isCollapsed}
-        onChange={onChange}
-        onCollapse={() => {
-          setIsCollapsed(!isCollapsed);
-        }}
-        onClear={onClear}
-      />
-      <ChartTableFilterBody
-        resourceId={resource.id}
-        filters={filters}
-        isCollapsedInitial={isCollapsedInitial}
-        record={data[0]}
-        onChange={onChange}
-      />
+    <div>
+      {/* TODO: Move LocaleSwitcher to footer component when it is implemented */}
+      <LocaleSwitcher />
+      <div className="container-sm">
+        <ChartTableFilterHead
+          resourceId={resource.id}
+          filters={filters}
+          isCollapsed={isCollapsed}
+          onChange={onChange}
+          onCollapse={() => {
+            setIsCollapsed(!isCollapsed);
+          }}
+        />
+        <ChartTableFilterBody
+          resourceId={resource.id}
+          filters={filters}
+          isCollapsedInitial={isCollapsedInitial}
+          record={data[0]}
+          onChange={onChange}
+          onClearAll={onClearAll}
+        />
+      </div>
     </div>
   );
 }

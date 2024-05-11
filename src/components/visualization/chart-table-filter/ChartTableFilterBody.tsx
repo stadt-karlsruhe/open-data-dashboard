@@ -1,4 +1,4 @@
-import { FloatingLabelInput } from './FloatingLabelInput';
+import { ClearableInputGroup } from './ClearableInputGroup';
 import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
@@ -8,12 +8,14 @@ export function ChartTableFilterBody({
   isCollapsedInitial,
   record,
   onChange,
+  onClearAll,
 }: {
   resourceId: string;
   filters: Record<string, string>;
   isCollapsedInitial: boolean;
   record: Record<string, never>;
   onChange: (key: string, value: string) => void;
+  onClearAll: () => void;
 }) {
   const t = useTranslations('ChartTableFilterBody');
   return (
@@ -25,19 +27,22 @@ export function ChartTableFilterBody({
           </legend>
           <div className="col-md-10">
             {Number.isNaN(Number.parseFloat(String(value))) ? (
-              <FloatingLabelInput
+              <ClearableInputGroup
                 id={`${resourceId}-${key}-text-input`}
-                type="text"
+                type="search"
                 value={filters[key] ?? ''}
                 label={t('search')}
                 onChange={(e) => {
                   onChange(key, e.target.value);
                 }}
+                onClear={() => {
+                  onChange(key, '');
+                }}
               />
             ) : (
               <div className="row">
                 <div className="col-md-6">
-                  <FloatingLabelInput
+                  <ClearableInputGroup
                     id={`${resourceId}-${key}-min`}
                     type="number"
                     value={filters[`${key}-min`] ?? ''}
@@ -45,16 +50,22 @@ export function ChartTableFilterBody({
                     onChange={(e) => {
                       onChange(`${key}-min`, e.target.value);
                     }}
+                    onClear={() => {
+                      onChange(`${key}-min`, '');
+                    }}
                   />
                 </div>
                 <div className="col-md-6">
-                  <FloatingLabelInput
+                  <ClearableInputGroup
                     id={`${resourceId}-${key}-max`}
                     type="number"
                     value={filters[`${key}-max`] ?? ''}
                     label="Max"
                     onChange={(e) => {
                       onChange(`${key}-max`, e.target.value);
+                    }}
+                    onClear={() => {
+                      onChange(`${key}-max`, '');
                     }}
                   />
                 </div>
@@ -63,6 +74,11 @@ export function ChartTableFilterBody({
           </div>
         </fieldset>
       ))}
+      <div className="d-flex justify-content-end">
+        <button title={t('clearAllTooltip')} className="btn btn-secondary rounded-0 px-5" onClick={onClearAll}>
+          {t('clearAll')}
+        </button>
+      </div>
     </div>
   );
 }
