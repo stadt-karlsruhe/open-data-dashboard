@@ -50,7 +50,7 @@ export default function ChartTableWrapper({
                     data: filteredData,
                     xAxis: diagram.xAxis,
                     yAxis: diagram.yAxis,
-                    aspect: width / height,
+                    aspect: width / (height - 200),
                   }}
                 />
               </div>
