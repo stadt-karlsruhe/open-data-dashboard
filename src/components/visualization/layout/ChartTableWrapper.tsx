@@ -1,33 +1,35 @@
-import { DataRecord, Resource } from '@/types/visualization';
 import BarChart from '../BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
+import { DataRecord } from '@/types/visualization';
 import Table from '../Table';
+import { TransformableResource } from '@/types/configuration';
 import { useState } from 'react';
 import useWindowDimensions from '../../helper/WindowDimensions';
 
+// eslint-disable-next-line max-lines-per-function
 export default function ChartTableWrapper({
   resource,
   transformedData,
 }: {
-  resource: Resource;
+  resource: TransformableResource;
   transformedData: DataRecord;
 }) {
   const [filteredData, setFilteredData] = useState(transformedData);
   const { width, height } = useWindowDimensions();
-
+  const resourceArr = Object.entries(resource.visualizations);
   return (
     <div className="card rounded-0">
       <div className="card-header">
         <ul className="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
-          {resource.diagrams.map((diagram, index) => (
-            <li className="nav-item" key={`${diagram.type}-${String(index)}`}>
+          {resourceArr.map(([diagramType, _], index) => (
+            <li className="nav-item" key={`${diagramType}}`}>
               <a
                 data-bs-toggle="tab"
                 aria-current="true"
-                href={`#${diagram.type}-${resource.id}-${String(index)}`}
+                href={`#${diagramType}-${resource.id}}`}
                 className={`nav-link ${index === 0 ? 'active' : ''}`}
               >
-                {diagram.type}
+                {diagramType}
               </a>
             </li>
           ))}
@@ -35,20 +37,21 @@ export default function ChartTableWrapper({
       </div>
       <div className="card-body tab-content diagram-card">
         <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
-        {resource.diagrams.map((diagram, index) => (
+        {resourceArr.map(([diagramType, diagramAttr], index) => (
           <div
-            key={`${diagram.type}-${String(index)}`}
-            id={`${diagram.type}-${resource.id}-${String(index)}`}
+            key={`${diagramType}-${String(index)}`}
+            id={`${diagramType}-${resource.id}-${String(index)}`}
             className={`tab-pane ${index === 0 ? 'active' : ''}`}
           >
-            {diagram.type === 'CHART' ? (
+            {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
                 <div>
                   <BarChart
                     chartInput={{
                       data: filteredData,
-                      xAxis: diagram.xAxis,
-                      yAxis: diagram.yAxis,
+                      // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
+                      xAxis: diagramAttr.axisPairs[0].xAxis,
+                      yAxis: diagramAttr.axisPairs[0].yAxis,
                       aspect: width / height,
                     }}
                   ></BarChart>

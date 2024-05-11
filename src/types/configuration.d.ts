@@ -1,5 +1,7 @@
-declare module '*.yml' {
-    export const resources: Resource[];
+declare global {
+    declare module '*.yml' {
+        const resources: Resource[];
+    }
 }
 
 interface BaseResource {
@@ -9,21 +11,21 @@ interface BaseResource {
     description?: string;
 }
 
-interface EmbeddedResource extends BaseResource {
+export interface EmbeddedResource extends BaseResource {
     type: 'Embedded';
 }
 
-interface GeoJSONResource extends TransformableResource {
+export interface GeoJSONResource extends BaseResource {
     type: 'GeoJSON';
     visualizations: {
         map: Record<string, never>;
     };
 }
 
-interface TransformableResource extends BaseResource {
+export interface TransformableResource extends BaseResource {
     type: 'JSON' | 'CSV';
     skipFieldsRegEx?: string;
-    renameFields?: Record<string, string>[];
+    renameFields?: Record<string, string>;
     visualizations: {
         barChart?: {
             axisPairs: AxisPair[];
@@ -37,4 +39,4 @@ interface AxisPair {
     yAxis: string;
 }
 
-type Resource = GeoJSONResource | TransformableResource | EmbeddedResource;
+export type Resource = GeoJSONResource | TransformableResource | EmbeddedResource;

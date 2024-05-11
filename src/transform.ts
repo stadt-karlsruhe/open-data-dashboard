@@ -1,13 +1,11 @@
-import { DataRecord, JsonSourceArrays, JsonSourceObjects, Resource } from '@/types/visualization';
+import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
+import { TransformableResource } from '@/types/configuration';
 import { csv2json } from 'json-2-csv';
 
-export function transformData(resource: Resource, data: unknown) {
+export function transformData(resource: TransformableResource, data: unknown) {
     let transformedData = transformType(resource, data);
-    if (transformedData === undefined) {
-        return;
-    }
-    if (resource.skipFields !== undefined) {
-        transformedData = skipFields(transformedData, resource.skipFields);
+    if (resource.skipFieldsRegEx !== undefined) {
+        transformedData = skipFields(transformedData, resource.skipFieldsRegEx);
     }
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
@@ -15,13 +13,11 @@ export function transformData(resource: Resource, data: unknown) {
     return transformedData;
 }
 
-function transformType(resource: Resource, data: unknown) {
+function transformType(resource: TransformableResource, data: unknown) {
     if (resource.type === 'JSON') {
         return transformJsonData(data);
     }
-    if (resource.type === 'CSV') {
-        return transformCsvData(data);
-    }
+    return transformCsvData(data);
 }
 
 function transformJsonData(json: unknown) {
