@@ -77,7 +77,9 @@ export default function ChartTableFilter({
   return (
     <div>
       {/* TODO: Move LocaleSwitcher to footer component when it is implemented */}
-      <LocaleSwitcher />
+      <div className="m-3">
+        <LocaleSwitcher />
+      </div>
       <div className="container-sm">
         <ChartTableFilterHead
           resourceId={resource.id}
