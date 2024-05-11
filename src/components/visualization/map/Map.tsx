@@ -23,8 +23,8 @@ export default function Map({ geoJsonData }: { geoJsonData: GeoJSON.FeatureColle
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         geoJsonData && <GeoJSON data={geoJsonData} onEachFeature={onEach} />
       }
-      <ResetView props={{ title: 'Reset', pos: standardPos }} />
-      <Legend props={{ title: 'Legende', labels: collectedLabels }} />
+      <ResetView resetViewInput={{ title: 'Reset', pos: standardPos }} />
+      <Legend legendInput={{ title: 'Legende', labels: collectedLabels }} />
     </MapContainer>
   );
 }
