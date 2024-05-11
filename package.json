@@ -45,7 +45,7 @@
     "react-data-table-component": "7.6.2",
     "react-dom": "18.2.0",
     "react-leaflet": "^4.2.1",
-    "recharts": "2.12.6",
+    "recharts": "2.12.7",
     "sass": "1.77.1",
     "styled-components": "6.1.11",
     "swr": "2.2.5",
