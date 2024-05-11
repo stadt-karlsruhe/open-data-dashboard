@@ -47,7 +47,7 @@
     "react-leaflet": "^4.2.1",
     "recharts": "2.12.6",
     "sass": "1.77.1",
-    "styled-components": "6.1.8",
+    "styled-components": "6.1.11",
     "swr": "2.2.5",
     "ts-deepmerge": "7.0.0",
     "ts-jest": "^29.1.2",
