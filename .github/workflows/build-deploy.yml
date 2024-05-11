@@ -1,12 +1,13 @@
 name: Build and Deploy to GitHub Pages
 
 on: # yamllint disable-line rule:truthy
-  workflow_run:
-    workflows: ['Lint and Test']
-    types: [completed]
-    branches:
-    - main
-  workflow_dispatch: {}
+  - push
+    # workflow_run:
+    # workflows: ['Lint and Test']
+    # types: [completed]
+    # branches:
+    # - main
+#   workflow_dispatch: {}
 
 permissions:
   contents: read
