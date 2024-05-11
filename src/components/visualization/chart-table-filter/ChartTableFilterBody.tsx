@@ -1,4 +1,5 @@
 import { FloatingLabelInput } from './FloatingLabelInput';
+import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
 export function ChartTableFilterBody({
@@ -14,6 +15,7 @@ export function ChartTableFilterBody({
   record: Record<string, never>;
   onChange: (key: string, value: string) => void;
 }) {
+  const t = useTranslations('ChartTableFilterBody');
   return (
     <div className={`collapse  mb-3 ${isCollapsedInitial ? '' : 'show'}`} id={`${resourceId}-filter`}>
       {Object.entries(record).map(([key, value]) => (
@@ -27,7 +29,7 @@ export function ChartTableFilterBody({
                 id={`${resourceId}-${key}-text-input`}
                 type="text"
                 value={filters[key] ?? ''}
-                label="Search"
+                label={t('search')}
                 onChange={(e) => {
                   onChange(key, e.target.value);
                 }}

@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/named
 import DataTable, { TableStyles } from 'react-data-table-component';
 import { DataRecord } from '@/types/visualization';
+import { useTranslations } from 'next-intl';
 
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts
 // Themed to fit Bootstrap 5 look
@@ -36,6 +37,7 @@ const customStyles: TableStyles = {
 };
 
 export default function Table({ columnNames, records }: { columnNames: string[]; records: DataRecord }) {
+  const t = useTranslations('Table');
   const columns = columnNames.map((key) => {
     return {
       name: key,
@@ -46,17 +48,19 @@ export default function Table({ columnNames, records }: { columnNames: string[];
   });
 
   return (
-    <div>
-      <DataTable
-        columns={columns}
-        data={records}
-        pagination
-        paginationComponentOptions={{ selectAllRowsItem: true }}
-        striped
-        highlightOnHover
-        subHeader
-        customStyles={customStyles}
-      />
-    </div>
+    <DataTable
+      columns={columns}
+      data={records}
+      pagination
+      paginationComponentOptions={{
+        rowsPerPageText: t('rowsPerPageText'),
+        rangeSeparatorText: t('rangeSeparatorText'),
+        selectAllRowsItem: true,
+        selectAllRowsItemText: t('selectAllRowsItemText'),
+      }}
+      striped
+      highlightOnHover
+      customStyles={customStyles}
+    />
   );
 }

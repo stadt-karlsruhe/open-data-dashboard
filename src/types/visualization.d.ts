@@ -19,21 +19,6 @@ export interface ChartInput {
     aspect: number;
 }
 
-export type ResourceType = 'JSON' | 'CSV' | 'PDF' | 'Embedded' | 'GeoJSON';
-
-export type DiagramType = { type: 'TABLE' } | { type: 'CHART'; yAxis: string; xAxis: string };
-
-export interface Resource {
-    id: string;
-    name: string;
-    description?: string;
-    endpoint: string;
-    type: ResourceType;
-    diagrams: DiagramType[];
-    skipFields?: string;
-    renameFields?: Record<string, string>;
-}
-
 export interface ResetViewProps {
     resetViewInput: ResetViewInput;
     map?: Map;
