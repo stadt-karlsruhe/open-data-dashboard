@@ -1,4 +1,6 @@
 import { FloatingLabelInput } from './FloatingLabelInput';
+import LocaleSwitcher from '@/components/LocaleSwitcher';
+import { useTranslations } from 'next-intl';
 
 export function ChartTableFilterHead({
   resourceId,
@@ -15,18 +17,19 @@ export function ChartTableFilterHead({
   onCollapse: () => void;
   onClear: () => void;
 }) {
+  const t = useTranslations('ChartTableFilterHead');
   return (
     <div className="input-group mb-3">
       <FloatingLabelInput
         id={`${resourceId}-search`}
         type="text"
         value={filters['all-entries'] ?? ''}
-        label="Search all entries"
+        label={t('searchAll')}
         onChange={(e) => {
           onChange('all-entries', e.target.value);
         }}
       />
-      <button className="btn-primary px-2 rounded-0" title="Clear" onClick={onClear}>
+      <button className="btn btn-secondary px-2 rounded-0" title={t('clearTooltip')} onClick={onClear}>
         <i className="bi bi-x-lg"></i>
       </button>
       <button
@@ -36,11 +39,13 @@ export function ChartTableFilterHead({
         data-bs-target={`#${resourceId}-filter`}
         aria-expanded="false"
         aria-controls={`${resourceId}-filter`}
-        title={isCollapsed ? 'Expand filters' : 'Collapse filters'}
+        title={isCollapsed ? t('collapseTooltipExpand') : t('collapseTooltipCollapse')}
         onClick={onCollapse}
       >
         {isCollapsed ? <i className="bi bi-caret-down-square"></i> : <i className="bi bi-caret-up-square"></i>}
       </button>
+      {/* TODO: Move LocaleSwitcher to footer component when it is implemented */}
+      <LocaleSwitcher />
     </div>
   );
 }

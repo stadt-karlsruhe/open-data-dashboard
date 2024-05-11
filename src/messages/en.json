@@ -1,0 +1,28 @@
+{
+  "ChartTableFilterHead": {
+    "searchAll": "Search all entries",
+    "clearTooltip": "Clear all filters",
+    "collapseTooltipExpand": "Expand filters",
+    "collapseTooltipCollapse": "Collapse filters"
+  },
+  "ChartTableFilterBody": {
+    "search": "Search"
+  },
+  "ChartTableWrapper": {
+    "barChart": "Bar Chart",
+    "table": "Table"
+  },
+  "Table": {
+    "rowsPerPageText": "Rows per page:",
+    "rangeSeparatorText": "of",
+    "selectAllRowsItemText": "All"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
+  },
+  "NotFound": {
+    "title": "Oops! You're lost.",
+    "subtitle": "The page you are looking for was not found.",
+    "returnBtn": "Return Home"
+  }
+}

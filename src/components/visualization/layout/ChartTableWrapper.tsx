@@ -4,9 +4,9 @@ import { DataRecord } from '@/types/visualization';
 import Table from '../Table';
 import { TransformableResource } from '@/types/configuration';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import useWindowDimensions from '../../helper/WindowDimensions';
 
-// eslint-disable-next-line max-lines-per-function
 export default function ChartTableWrapper({
   resource,
   transformedData,
@@ -14,6 +14,7 @@ export default function ChartTableWrapper({
   resource: TransformableResource;
   transformedData: DataRecord;
 }) {
+  const t = useTranslations('ChartTableWrapper');
   const [filteredData, setFilteredData] = useState(transformedData);
   const { width, height } = useWindowDimensions();
   const resourceArr = Object.entries(resource.visualizations);
@@ -29,7 +30,7 @@ export default function ChartTableWrapper({
                 href={`#${diagramType}-${resource.id}}`}
                 className={`nav-link ${index === 0 ? 'active' : ''}`}
               >
-                {diagramType}
+                {diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
               </a>
             </li>
           ))}
@@ -52,15 +53,13 @@ export default function ChartTableWrapper({
                       // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
                       xAxis: diagramAttr.axisPairs[0].xAxis,
                       yAxis: diagramAttr.axisPairs[0].yAxis,
-                      aspect: width / height,
+                      aspect: width / (height - 200),
                     }}
                   ></BarChart>
                 </div>
               </div>
             ) : (
-              <>
-                <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData}></Table>
-              </>
+              <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
             )}
           </div>
         ))}

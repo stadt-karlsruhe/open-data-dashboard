@@ -1,0 +1,28 @@
+{
+  "ChartTableFilterHead": {
+    "searchAll": "Suche (alle Einträge)",
+    "clearTooltip": "Alle Filter löschen",
+    "collapseTooltipExpand": "Filter öffnen",
+    "collapseTooltipCollapse": "Filter schließen"
+  },
+  "ChartTableFilterBody": {
+    "search": "Suche"
+  },
+  "ChartTableWrapper": {
+    "barChart": "Balkendiagramm",
+    "table": "Tabelle"
+  },
+  "Table": {
+    "rowsPerPageText": "Zeilen pro Seite:",
+    "rangeSeparatorText": "von",
+    "selectAllRowsItemText": "Alle"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
+  },
+  "NotFound": {
+    "title": "Hoppla! Du hast dich verirrt.",
+    "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
+    "returnBtn": "Zurück zur Startseite"
+  }
+}
