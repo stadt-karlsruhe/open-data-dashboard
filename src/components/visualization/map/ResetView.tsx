@@ -7,9 +7,7 @@ class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: M
   createButtonControl() {
     const Button = L.Control.extend({
       onAdd: (map: Map) => {
-        const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control');
-        console.log(this.props);
-        button.innerHTML = this.props.resetViewInput.title;
+        const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control bi-arrow-clockwise');
 
         button.addEventListener('click', () => {
           if (map instanceof Map) {
@@ -33,12 +31,7 @@ class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: M
   }
 }
 
-function withMap(Component: typeof ResetView) {
-  // eslint-disable-next-line func-names
-  return function WrappedComponent(props: ResetViewProps) {
-    const map = useMap();
-    return <Component {...props} map={map} />;
-  };
+export default function ResetComponent(props: ResetViewProps) {
+  const map = useMap();
+  return <ResetView {...props} map={map} />;
 }
-
-export default withMap(ResetView);

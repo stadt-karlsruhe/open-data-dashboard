@@ -3,9 +3,9 @@ import { LegendInput, LegendProps } from '@/types/visualization';
 import React, { Component } from 'react';
 import { useMap } from 'react-leaflet';
 
-class Legend extends React.Component<{ legendInput: LegendInput; map: Map }> {
-  createButtonControl() {
-    const Button = L.Control.extend({
+class LegendWrapper extends React.Component<{ legendInput: LegendInput; map: Map }> {
+  createLegend() {
+    const Legend = L.Control.extend({
       onAdd: () => {
         const div = L.DomUtil.create('div', 'leaflet-bar leaflet-container');
         div.innerHTML += `<h6>${this.props.legendInput.title}</h6>`;
@@ -15,13 +15,13 @@ class Legend extends React.Component<{ legendInput: LegendInput; map: Map }> {
         return div;
       },
     });
-    return new Button({ position: 'bottomleft' });
+    return new Legend({ position: 'bottomleft' });
   }
 
   componentDidMount() {
     const { map } = this.props;
-    const control = this.createButtonControl();
-    control.addTo(map);
+    const legend = this.createLegend();
+    legend.addTo(map);
   }
 
   render() {
@@ -29,12 +29,7 @@ class Legend extends React.Component<{ legendInput: LegendInput; map: Map }> {
   }
 }
 
-function withMap(Component: typeof Legend) {
-  // eslint-disable-next-line func-names
-  return function WrappedComponent(props: LegendProps) {
-    const map = useMap();
-    return <Component {...props} map={map} />;
-  };
+export default function LegendComponent(props: LegendProps) {
+  const map = useMap();
+  return <LegendWrapper {...props} map={map} />;
 }
-
-export default withMap(Legend);
