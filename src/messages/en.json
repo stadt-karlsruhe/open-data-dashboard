@@ -1,6 +1,6 @@
 {
   "ChartTableFilterHead": {
-    "searchAll": "Search all entries",
+    "searchAll": "Search all rows",
     "collapseTooltipExpand": "Expand filters",
     "collapseTooltipCollapse": "Collapse filters"
   },
@@ -20,6 +20,10 @@
   },
   "ClearableInputGroup": {
     "clearTooltip": "Clear"
+  },
+  "CurrentFilters": {
+    "contains": "contains",
+    "allEntriesLabel": "Row"
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
