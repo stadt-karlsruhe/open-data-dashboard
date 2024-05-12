@@ -22,7 +22,7 @@ export default function Visualization({ resource }: { resource: Resource }) {
     return <ChartTableWrapper resource={resource} transformedData={transformedData} />;
   } else if (resource.type === 'GeoJSON') {
     const geoJsonData = data as GeoJSON.FeatureCollection;
-    const Map = dynamic(() => import('@/components/visualization/map/Map'), {
+    const Map = dynamic(() => import('@/components/visualization/map/GeoJSONMap'), {
       ssr: false,
     });
     return <Map geoJsonData={geoJsonData} />;

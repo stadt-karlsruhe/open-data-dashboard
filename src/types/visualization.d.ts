@@ -41,5 +41,5 @@ export interface LegendProps {
 
 export interface LegendInput {
     title: string;
-    labels: string[];
+    labels: Map<string, string>;
 }
