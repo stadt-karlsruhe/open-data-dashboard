@@ -23,7 +23,6 @@ export default function ChartTableWrapper({
   return (
     <>
       <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
-
       <Tabs
         defaultActiveKey={resourceArr.map(([diagramType]) => diagramType).includes('barChart') ? 'barChart' : 'table'}
       >
@@ -32,6 +31,7 @@ export default function ChartTableWrapper({
             key={`${resource.id}-${diagramType}-${String(index)}}`}
             title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
             eventKey={diagramType}
+            className="m-3"
           >
             {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
@@ -41,7 +41,7 @@ export default function ChartTableWrapper({
                     // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
                     xAxis: diagramAttr.axisPairs[0].xAxis,
                     yAxis: diagramAttr.axisPairs[0].yAxis,
-                    aspect: width / (height - 200),
+                    aspect: width / (height - 250),
                   }}
                 ></BarChart>
               </div>
