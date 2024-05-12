@@ -20,6 +20,6 @@ describe('transformJson', () => {
         ];
 
         const result = transformJsonData(inputData);
-        expect(result).toBe(inputData);
+        expect(result).toStrictEqual(inputData);
     });
 });
