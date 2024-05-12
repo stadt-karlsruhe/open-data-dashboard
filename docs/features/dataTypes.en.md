@@ -117,9 +117,7 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
 
 - The source must return valid GeoJSON data.
 
-**Example:**
-
-````json
+````json title="Example Data"
 {
   "type": "FeatureCollection",
   "features": [
