@@ -21,33 +21,36 @@ export default function ChartTableWrapper({
   const { width, height } = useWindowDimensions();
   const resourceArr = Object.entries(resource.visualizations);
   return (
-    <Tabs
-      defaultActiveKey={resourceArr.map(([diagramType]) => diagramType).includes('barChart') ? 'barChart' : 'table'}
-    >
-      {resourceArr.map(([diagramType, diagramAttr], index) => (
-        <Tab
-          key={`${resource.id}-${diagramType}-${String(index)}}`}
-          title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
-          eventKey={diagramType}
-        >
-          <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
-          {diagramType === 'barChart' ? (
-            <div className="d-flex flex-column">
-              <BarChart
-                chartInput={{
-                  data: filteredData,
-                  // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
-                  xAxis: diagramAttr.axisPairs[0].xAxis,
-                  yAxis: diagramAttr.axisPairs[0].yAxis,
-                  aspect: width / (height - 200),
-                }}
-              ></BarChart>
-            </div>
-          ) : (
-            <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
-          )}
-        </Tab>
-      ))}
-    </Tabs>
+    <>
+      <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
+
+      <Tabs
+        defaultActiveKey={resourceArr.map(([diagramType]) => diagramType).includes('barChart') ? 'barChart' : 'table'}
+      >
+        {resourceArr.map(([diagramType, diagramAttr], index) => (
+          <Tab
+            key={`${resource.id}-${diagramType}-${String(index)}}`}
+            title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
+            eventKey={diagramType}
+          >
+            {diagramType === 'barChart' ? (
+              <div className="d-flex flex-column">
+                <BarChart
+                  chartInput={{
+                    data: filteredData,
+                    // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
+                    xAxis: diagramAttr.axisPairs[0].xAxis,
+                    yAxis: diagramAttr.axisPairs[0].yAxis,
+                    aspect: width / (height - 200),
+                  }}
+                ></BarChart>
+              </div>
+            ) : (
+              <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
+            )}
+          </Tab>
+        ))}
+      </Tabs>
+    </>
   );
 }

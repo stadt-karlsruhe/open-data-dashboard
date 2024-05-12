@@ -1,4 +1,7 @@
+import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ClearableInputGroup } from './ClearableInputGroup';
+import { useAccordionButton } from 'react-bootstrap/AccordionButton';
+import { useContext } from 'react';
 import { useTranslations } from 'next-intl';
 
 const allEntries = 'all-entries';
@@ -6,16 +9,18 @@ const allEntries = 'all-entries';
 export function ChartTableFilterHead({
   resourceId,
   filters,
-  isCollapsed,
+  eventKey,
   onChange,
-  onCollapse,
 }: {
   resourceId: string;
   filters: Record<string, string>;
-  isCollapsed: boolean;
+  eventKey: string;
   onChange: (key: string, value: string) => void;
-  onCollapse: () => void;
 }) {
+  const { activeEventKey } = useContext(AccordionContext);
+  const decoratedOnClick = useAccordionButton(eventKey);
+  const isCurrentEventKey = activeEventKey === eventKey;
+
   const t = useTranslations('ChartTableFilterHead');
   return (
     <ClearableInputGroup
@@ -33,14 +38,10 @@ export function ChartTableFilterHead({
       <button
         className="btn btn-primary rounded-0"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target={`#${resourceId}-filter`}
-        aria-expanded="false"
-        aria-controls={`${resourceId}-filter`}
-        title={isCollapsed ? t('collapseTooltipExpand') : t('collapseTooltipCollapse')}
-        onClick={onCollapse}
+        title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
+        onClick={decoratedOnClick}
       >
-        {isCollapsed ? <i className="bi bi-caret-down-square"></i> : <i className="bi bi-caret-up-square"></i>}
+        {isCurrentEventKey ? <i className="bi bi-caret-up-square"></i> : <i className="bi bi-caret-down-square"></i>}
       </button>
     </ClearableInputGroup>
   );

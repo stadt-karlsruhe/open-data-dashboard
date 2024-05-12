@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHead } from './ChartTableFilterHead';
 import { DataRecord } from '@/types/visualization';
@@ -19,14 +20,6 @@ export default function ChartTableFilter({
 }) {
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState(JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string>);
-  // check if any of the column-filters are set by query parameters and if yes, expand the filters
-  const [isCollapsedInitial] = useState(
-    !Object.keys(data[0]).some((key) => {
-      const filterObj = JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string>;
-      return filterObj[key] || filterObj[`${key}-max`] || filterObj[`${key}-min`];
-    }),
-  );
-  const [isCollapsed, setIsCollapsed] = useState(isCollapsedInitial);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -76,28 +69,22 @@ export default function ChartTableFilter({
 
   return (
     <div>
-      {/* TODO: Move LocaleSwitcher to footer component when it is implemented */}
+      {/* TODO: Move LocaleSwitcher to header component when it is implemented */}
       <div className="m-3">
         <LocaleSwitcher />
       </div>
       <div className="container-sm">
-        <ChartTableFilterHead
-          resourceId={resource.id}
-          filters={filters}
-          isCollapsed={isCollapsed}
-          onChange={onChange}
-          onCollapse={() => {
-            setIsCollapsed(!isCollapsed);
-          }}
-        />
-        <ChartTableFilterBody
-          resourceId={resource.id}
-          filters={filters}
-          isCollapsedInitial={isCollapsedInitial}
-          record={data[0]}
-          onChange={onChange}
-          onClearAll={onClearAll}
-        />
+        <Accordion flush>
+          <ChartTableFilterHead resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
+          <ChartTableFilterBody
+            resourceId={resource.id}
+            filters={filters}
+            record={data[0]}
+            eventKey="0"
+            onChange={onChange}
+            onClearAll={onClearAll}
+          />
+        </Accordion>
       </div>
     </div>
   );
