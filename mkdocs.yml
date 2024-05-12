@@ -46,6 +46,7 @@ nav:
     - Development: development.md
 plugins:
     - search
+    - glightbox
     - i18n:
           docs_structure: suffix
           languages:
@@ -73,3 +74,5 @@ markdown_extensions:
     - pymdownx.inlinehilite
     - pymdownx.snippets
     - pymdownx.superfences
+    - attr_list
+    - md_in_html
