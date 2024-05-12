@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
-import { ChartTableFilterHead } from './ChartTableFilterHead';
+import { ChartTableFilterHeader } from './ChartTableFilterHeader';
 import { DataRecord } from '@/types/visualization';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { TransformableResource } from '@/types/configuration';
@@ -75,7 +75,7 @@ export default function ChartTableFilter({
       </div>
       <div className="container-sm">
         <Accordion flush>
-          <ChartTableFilterHead resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
+          <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
           <ChartTableFilterBody
             resourceId={resource.id}
             filters={filters}
