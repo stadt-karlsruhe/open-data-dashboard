@@ -9,6 +9,8 @@ import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { TransformableResource } from '@/types/configuration';
 import { useDebouncedCallback } from 'use-debounce';
 
+const allEntries = 'all-entries';
+
 // eslint-disable-next-line max-lines-per-function
 export default function ChartTableFilter({
   resource,
@@ -20,7 +22,9 @@ export default function ChartTableFilter({
   onFilter: (filteredData: DataRecord) => void;
 }) {
   const searchParams = useSearchParams();
-  const [filters, setFilters] = useState(JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string>);
+  const [filters, setFilters] = useState(
+    JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string | { min?: string; max?: string }>,
+  );
   const pathname = usePathname();
   const router = useRouter();
 
@@ -30,10 +34,10 @@ export default function ChartTableFilter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function onChange(key: string, value: string) {
+  function onChange(key: string, value: string | { min?: string; max?: string }) {
     let updatedFilters;
     if (value) {
-      updatedFilters = { ...filters } as Record<string, string>;
+      updatedFilters = { ...filters } as Record<string, string | { min?: string; max?: string }>;
       updatedFilters[key] = value;
     } else {
       updatedFilters = Object.assign(
@@ -48,11 +52,11 @@ export default function ChartTableFilter({
     setParams(updatedFilters);
   }
 
-  function filter(updatedFilters: Record<string, string> = filters) {
-    filterData(data, updatedFilters, onFilter);
+  function filter(updatedFilters: Record<string, string | { min?: string; max?: string }> = filters) {
+    onFilter(filterData(data, updatedFilters));
   }
 
-  const setParams = useDebouncedCallback((updatedFilters: Record<string, string>) => {
+  const setParams = useDebouncedCallback((updatedFilters: Record<string, string | { min?: string; max?: string }>) => {
     const params = new URLSearchParams(searchParams);
     if (Object.keys(updatedFilters).length === 0) {
       params.delete('search');
@@ -77,7 +81,7 @@ export default function ChartTableFilter({
       <div className="container-sm">
         <Accordion flush>
           <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
-          <CurrentFilters filters={filters} columnNames={Object.keys(data[0])} />
+          <CurrentFilters filters={filters} onClear={onChange} />
           <ChartTableFilterBody
             resourceId={resource.id}
             filters={filters}
@@ -92,22 +96,25 @@ export default function ChartTableFilter({
   );
 }
 
-function filterData(data: DataRecord, filters: Record<string, string>, onFilter: (filteredData: DataRecord) => void) {
-  const searchedData = filters['all-entries']
+function filterData(data: DataRecord, filters: Record<string, string | { min?: string; max?: string }>) {
+  const searchedData = filters[allEntries]
     ? data.filter((obj) => {
-        return Object.values(obj).some((value) =>
-          String(value).toLowerCase().includes(filters['all-entries'].toLowerCase()),
+        return Object.values(obj).some(
+          (value) =>
+            typeof filters[allEntries] === 'string' &&
+            String(value).toLowerCase().includes(filters[allEntries].toLowerCase()),
         );
       })
     : data;
-  const filteredData = searchedData.filter((item) => {
+  return searchedData.filter((item) => {
     for (const objKey of Object.keys(item)) {
       const filter = filters[objKey];
-      if (filter && !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())) {
+      if (filter && typeof filter === 'string' && !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())) {
         return false;
       }
-      const filterMin = Number.parseFloat(filters[`${objKey}-min`]);
-      const filterMax = Number.parseFloat(filters[`${objKey}-max`]);
+      const filterObj = typeof filter === 'object' ? filter : ({} as { min: string; max: string });
+      const filterMin = Number.parseFloat(filterObj.min ?? '');
+      const filterMax = Number.parseFloat(filterObj.max ?? '');
       if (!Number.isNaN(filterMin) && Number.parseFloat(item[objKey]) < filterMin) {
         return false;
       }
@@ -117,5 +124,4 @@ function filterData(data: DataRecord, filters: Record<string, string>, onFilter:
     }
     return true;
   });
-  onFilter(filteredData);
 }

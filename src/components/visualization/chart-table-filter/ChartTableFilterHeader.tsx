@@ -13,7 +13,7 @@ export function ChartTableFilterHeader({
   onChange,
 }: {
   resourceId: string;
-  filters: Record<string, string>;
+  filters: Record<string, string | { min?: string; max?: string }>;
   eventKey: string;
   onChange: (key: string, value: string) => void;
 }) {
@@ -26,7 +26,7 @@ export function ChartTableFilterHeader({
     <ClearableInputGroup
       id={`${resourceId}-search`}
       type="search"
-      value={filters[allEntries] ?? ''}
+      value={typeof filters[allEntries] === 'string' && filters[allEntries] ? filters[allEntries] : ''}
       label={t('searchAll')}
       onChange={(e) => {
         onChange(allEntries, e.target.value);
