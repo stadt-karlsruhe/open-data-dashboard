@@ -5,11 +5,14 @@
 [CSV](dataTypes.md#csv) and [JSON](dataTypes.md#json) data can be visualized as a bar chart.
 Bar charts are provided by [Recharts](https://recharts.org/en-US/).
 
-![Example Bar Chart](../assets/barChart.png "Example Bar Chart")
+<figure markdown="span">
+    ![Example Bar Chart](../assets/barChart.png "Example Bar Chart"){ loading=lazy }
+    <figcaption>Example Bar Chart</figcaption>
+</figure>
 
 **Features:**
 
-- [Instant filters](filters.md)
+- [Real-time filters](filters.md)
 - Show additional information when hovering over bars
 
 ## Table
@@ -17,11 +20,14 @@ Bar charts are provided by [Recharts](https://recharts.org/en-US/).
 [CSV](dataTypes.md#csv) and [JSON](dataTypes.md#json) data can be visualized as a table.
 Tables are provided by [React Data Table Component](https://react-data-table-component.netlify.app/?path=/docs/getting-started-intro--docs).
 
-![Example Table](../assets/table.png "Example Table")
+<figure markdown="span">
+    ![Example Table](../assets/table.png "Example Table"){ loading=lazy }
+    <figcaption>Example Table</figcaption>
+</figure>
 
 **Features:**
 
-- [Instant filters](filters.md)
+- [Real-time filters](filters.md)
 - Sorting
 - Pagination
 - Rearrangeable columns
@@ -30,7 +36,10 @@ Tables are provided by [React Data Table Component](https://react-data-table-com
 
 [GeoJSON](dataTypes.md#geojson) data can be visualized as a map. Maps are provided by [React Leaflet](https://react-leaflet.js.org/).
 
-![Example Map](../assets/map.png "Example Map")
+<figure markdown="span">
+    ![Example Map](../assets/map.png "Example Map"){ loading=lazy }
+    <figcaption>Example Map</figcaption>
+</figure>
 
 **Features:**
 

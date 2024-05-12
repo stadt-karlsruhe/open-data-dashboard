@@ -65,10 +65,6 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
       "id": "FloatColumn"
     },
     {
-      "type": "float",
-      "id": "FloatColumn"
-    },
-    {
       "type": "boolean",
       "id": "BooleanColumn"
     }
@@ -92,10 +88,6 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
       {
         "type": "int",
         "id": "IntegerColumn"
-      },
-      {
-        "type": "float",
-        "id": "FloatColumn"
       },
       {
         "type": "float",
