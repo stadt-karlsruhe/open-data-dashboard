@@ -3,6 +3,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHeader } from './ChartTableFilterHeader';
+import CurrentFilters from './CurrentFilters';
 import { DataRecord } from '@/types/visualization';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { TransformableResource } from '@/types/configuration';
@@ -76,6 +77,7 @@ export default function ChartTableFilter({
       <div className="container-sm">
         <Accordion flush>
           <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
+          <CurrentFilters filters={filters} columnNames={Object.keys(data[0])} />
           <ChartTableFilterBody
             resourceId={resource.id}
             filters={filters}
