@@ -31,6 +31,10 @@ npm test
 npm run build
 ```
 
+```bash title="Run production build locally"
+npx serve out
+```
+
 **Resources:**
 
 - [Next.js Documentation](https://nextjs.org/docs)
