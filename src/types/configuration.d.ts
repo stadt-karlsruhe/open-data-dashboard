@@ -15,7 +15,6 @@ export interface EmbeddedResource extends BaseResource {
     type: 'Embedded';
 }
 
-
 export interface GeoJSONResource extends BaseResource {
     type: 'GeoJSON';
     visualizations: {

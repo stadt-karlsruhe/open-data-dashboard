@@ -7,10 +7,8 @@ import CurrentFilters from './CurrentFilters';
 import { DataRecord } from '@/types/visualization';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { TransformableResource } from '@/types/configuration';
-import { useDebouncedCallback } from 'use-debounce';
 import { filterData } from '@/filter';
-
-const allEntries = 'all-entries';
+import { useDebouncedCallback } from 'use-debounce';
 
 // eslint-disable-next-line max-lines-per-function
 export default function ChartTableFilter({
