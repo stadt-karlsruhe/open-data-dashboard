@@ -1,25 +1,23 @@
 import { describe, expect, it } from '@jest/globals';
-import { transformJsonData } from '@/transform';
+import { transformData } from '@/transform';
+import { jsonStandard } from './data/dataFormats';
+import { TransformableResource } from '@/types/configuration';
 
-describe('transformJson', () => {
-    it('should transform an array of objects into Json format', () => {
+const jsonResource: TransformableResource = {
+    id: '',
+    source: '',
+    name: '',
+    type: 'JSON',
+    visualizations: {
+        table: {},
+    },
+};
+
+describe('transform JSON formats', () => {
+    it('should not transform JSON if it is in standard format', () => {
         expect.hasAssertions();
-        const inputData = [
-            {
-                StringColumn: 'Seal',
-                IntegerColumn: 24,
-                FloatColumn: 9.1,
-                BooleanColumn: true,
-            },
-            {
-                StringColumn: 'Bear',
-                IntegerColumn: 2023,
-                FloatColumn: 5.1,
-                BooleanColumn: false,
-            },
-        ];
 
-        const result = transformJsonData(inputData);
-        expect(result).toStrictEqual(inputData);
+        const result = transformData(jsonResource, jsonStandard);
+        expect(result).toStrictEqual(jsonStandard);
     });
 });
