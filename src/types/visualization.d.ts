@@ -1,11 +1,11 @@
-export interface JsonSourceObjects {
+export interface TabularJsonResponse {
     result: {
         fields: [{ type: string; id: string }];
         records: Record<string, never>[];
     };
 }
 
-export interface JsonSourceArrays {
+export interface TabularJson {
     fields: [{ type: string; id: string }];
     records: never[][];
 }

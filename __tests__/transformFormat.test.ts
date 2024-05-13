@@ -1,6 +1,11 @@
 import { describe, expect, it } from '@jest/globals';
 import { transformData } from '@/transform';
-import { jsonStandard } from './data/dataFormats';
+import {
+    jsonFormatNotSupported,
+    jsonStandard,
+    jsonTabular,
+    jsonTabularResponse,
+} from './data/dataFormats';
 import { TransformableResource } from '@/types/configuration';
 
 const jsonResource: TransformableResource = {
@@ -19,5 +24,26 @@ describe('transform JSON formats', () => {
 
         const result = transformData(jsonResource, jsonStandard);
         expect(result).toStrictEqual(jsonStandard);
+    });
+
+    it('should transform TabularJson into standard format', () => {
+        expect.hasAssertions();
+
+        const result = transformData(jsonResource, jsonTabular);
+        expect(result).toStrictEqual(jsonStandard);
+    });
+
+    it('should transform TabularJsonResponse into standard format', () => {
+        expect.hasAssertions();
+
+        const result = transformData(jsonResource, jsonTabularResponse);
+        expect(result).toStrictEqual(jsonStandard);
+    });
+
+    it('should return an empty array for not supported JSON format', () => {
+        expect.hasAssertions();
+
+        const result = transformData(jsonResource, jsonFormatNotSupported);
+        expect(result).toStrictEqual([]);
     });
 });

@@ -1,4 +1,4 @@
-import { DataRecord, JsonSourceArrays, JsonSourceObjects } from '@/types/visualization';
+import { DataRecord, TabularJson, TabularJsonResponse } from '@/types/visualization';
 import { TransformableResource } from '@/types/configuration';
 import { csv2json } from 'json-2-csv';
 
@@ -21,15 +21,15 @@ function transformType(resource: TransformableResource, data: unknown) {
 }
 
 function transformJsonData(json: unknown) {
-    if (isJsonSourceStandard(json)) {
+    if (isStandardJson(json)) {
         return json;
     }
 
-    if (isJsonSourceObjects(json)) {
+    if (isTabularResponseJson(json)) {
         return json.result.records as DataRecord;
     }
 
-    if (isJsonSourceArrays(json)) {
+    if (isTabularJson(json)) {
         const fields = json.fields.map((field) => field.id);
         const records = [] as DataRecord;
         json.records.forEach((record) => {
@@ -41,11 +41,11 @@ function transformJsonData(json: unknown) {
     return [] as DataRecord;
 }
 
-function isJsonSourceStandard(json: unknown): json is DataRecord {
+function isStandardJson(json: unknown): json is DataRecord {
     return Array.isArray(json) && json.every((item) => typeof item === 'object');
 }
 
-function isJsonSourceObjects(json: unknown): json is JsonSourceObjects {
+function isTabularResponseJson(json: unknown): json is TabularJsonResponse {
     return (
         json !== null &&
         typeof json === 'object' &&
@@ -60,7 +60,7 @@ function isJsonSourceObjects(json: unknown): json is JsonSourceObjects {
     );
 }
 
-function isJsonSourceArrays(json: unknown): json is JsonSourceArrays {
+function isTabularJson(json: unknown): json is TabularJson {
     return (
         json !== null &&
         typeof json === 'object' &&

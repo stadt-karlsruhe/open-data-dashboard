@@ -99,8 +99,18 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
       }
     ],
     "records": [
-      ["Seal", 24, 9.1, true],
-      ["Bear", 2023, 5.1, false]
+      {
+        "StringColumn": "Seal",
+        "IntegerColumn": 24,
+        "FloatColumn": 9.1,
+        "BooleanColumn": true
+      },
+      {
+        "StringColumn": "Bear",
+        "IntegerColumn": 2023,
+        "FloatColumn": 5.1,
+        "BooleanColumn": false
+      }
     ]
   }
 }
