@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { transformData } from '@/transform';
 import {
+    csvValid,
     jsonFormatNotSupported,
     jsonStandard,
     jsonTabular,
@@ -16,6 +17,11 @@ const jsonResource: TransformableResource = {
     visualizations: {
         table: {},
     },
+};
+
+const csvResource: TransformableResource = {
+    ...jsonResource,
+    type: 'CSV',
 };
 
 describe('transform JSON formats', () => {
@@ -47,3 +53,13 @@ describe('transform JSON formats', () => {
         expect(result).toStrictEqual([]);
     });
 });
+
+describe('transform CSV to JSON', () => {
+    it('should transform valid CSV to JSON standard format', () => {
+        expect.hasAssertions();
+
+        const result = transformData(csvResource, csvValid);
+        expect(result).toStrictEqual(jsonStandard);
+    });
+})
+

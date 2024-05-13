@@ -90,5 +90,7 @@ export const jsonFormatNotSupported = {
             FloatColumn: 5.1,
             BooleanColumn: false,
         },
-    ]
-}
+    ],
+};
+
+export const csvValid = "StringColumn,IntegerColumn,FloatColumn,BooleanColumn\nSeal,24,9.1,true\nBear,2023,5.1,false";
