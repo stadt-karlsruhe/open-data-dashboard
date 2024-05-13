@@ -10,11 +10,16 @@ import ResetView from './ResetView';
 
 const collectedLabels = new Map<string, string>();
 
+const standardPos: MapPos = {
+  latLon: [49.013_677_698_392_264, 8.404_375_426_378_891],
+  zoom: 13.5,
+};
+
 export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
   return (
     <MapContainer
-      center={[49.013_677_698_392_264, 8.404_375_426_378_891]}
-      zoom={13.5}
+      center={standardPos.latLon}
+      zoom={standardPos.zoom}
       scrollWheelZoom={false}
       style={{ height: '100vh' }}
     >
@@ -29,20 +34,29 @@ export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.Featu
   );
 }
 
+// TODO: We need to somehow set the information which field of the properties holds the label for the legend.
+// Might mean that we modify the config file.
+// TODO2: We definitely need a better way to get our colors, randomly generated ones aren't always appropriate.
 function pointToLayer(feature: GeoJSON.Feature, latlng: LatLngExpression) {
-  if (
-    feature.properties?.GRUPPENNAME_DE !== undefined &&
-    typeof feature.properties.GRUPPENNAME_DE === 'string' &&
-    collectedLabels.get(feature.properties.GRUPPENNAME_DE) === undefined
-  ) {
-    collectedLabels.set(feature.properties.GRUPPENNAME_DE, '#c30b82');
+  let colorCode = '#c30b82';
+  if (feature.properties?.GRUPPENNAME_DE !== undefined && typeof feature.properties.GRUPPENNAME_DE === 'string') {
+    const mappedColor = collectedLabels.get(feature.properties.GRUPPENNAME_DE);
+    if (mappedColor === undefined) {
+      colorCode = generateRandomColor();
+      collectedLabels.set(feature.properties.GRUPPENNAME_DE, colorCode);
+    } else {
+      colorCode = mappedColor;
+    }
   }
-  console.log(collectedLabels);
-  const icon = getIcon('#c30b82');
+  const icon = getIcon(colorCode);
   return L.marker(latlng, { icon });
 }
 
-// TODO: maybe custom colors?
+function generateRandomColor() {
+  // eslint-disable-next-line unicorn/numeric-separators-style
+  return `#${(0x1000000 + Math.random() * 0xffffff).toString(16).slice(1, 7)}`;
+}
+
 function getIcon(color: string) {
   return L.divIcon({
     // eslint-disable-next-line unicorn/no-keyword-prefix
@@ -52,16 +66,13 @@ function getIcon(color: string) {
   });
 }
 
-const standardPos: MapPos = {
-  latLon: [49.013_677_698_392_264, 8.404_375_426_378_891],
-  zoom: 13.5,
-};
-
-// TODO: this needs better typing
 const onEach = (feature: GeoJSON.Feature, layer: Layer) => {
-  let name = 'text';
-  if (feature.properties?.NAME !== undefined && typeof feature.properties.NAME === 'string') {
-    name = feature.properties.NAME;
+  const featureProperties = feature.properties as Record<string, string>;
+  let content = '';
+  Object.entries(featureProperties).forEach(([key, value]) => {
+    content += `<b>${key}:</b> ${value} <br/>`;
+  });
+  if (content !== '') {
+    layer.on('mouseover', (e) => layer.bindTooltip(content).openTooltip());
   }
-  layer.on('mouseover', (e) => layer.bindTooltip(name).openTooltip());
 };

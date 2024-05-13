@@ -1,13 +1,17 @@
 import L, { Map } from 'leaflet';
 import React, { Component } from 'react';
 import { ResetViewInput, ResetViewProps } from '@/types/visualization';
+import styles from './mapstyles.module.css';
 import { useMap } from 'react-leaflet';
 
 class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: Map }> {
   createButtonControl() {
     const Button = L.Control.extend({
       onAdd: (map: Map) => {
-        const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control bi-arrow-clockwise');
+        const button = L.DomUtil.create(
+          'button',
+          `leaflet-bar leaflet-control ${styles.reset_view} bi-arrow-clockwise`,
+        );
 
         button.addEventListener('click', () => {
           if (map instanceof Map) {
