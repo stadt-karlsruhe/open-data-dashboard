@@ -6,6 +6,7 @@ import { MapPos } from '@/types/visualization';
 import React from 'react';
 import ResetView from './ResetView';
 import { generateRandomColor } from '@/colors';
+import { useTranslations } from 'next-intl';
 
 const collectedLabels = new Map<string, string>();
 
@@ -15,6 +16,7 @@ const standardPos: MapPos = {
 };
 
 export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
+  const t = useTranslations('GeoJSONMap');
   return (
     <MapContainer
       center={standardPos.latLng}
@@ -29,7 +31,7 @@ export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.Featu
         geoJsonData && <GeoJSON data={geoJsonData} pointToLayer={pointToLayer} onEachFeature={onEach} />
       }
       <ResetView resetViewInput={{ title: 'Reset', pos: standardPos }} />
-      <Legend legendInput={{ title: 'Legende', labels: collectedLabels }} />
+      <Legend legendInput={{ title: t('legendTitle'), labels: collectedLabels }} />
     </MapContainer>
   );
 }

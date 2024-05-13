@@ -3,8 +3,10 @@ import { LegendInput, LegendProps } from '@/types/visualization';
 import React from 'react';
 import styles from './mapstyles.module.css';
 import { useMap } from 'react-leaflet';
+import { useTranslations } from 'next-intl';
 
 class LegendWrapper extends React.Component<{ legendInput: LegendInput; map: Map }> {
+  // t = useTranslations('ChartTableFilterHead');
   createLegend() {
     const Legend = L.Control.extend({
       onAdd: () => {
