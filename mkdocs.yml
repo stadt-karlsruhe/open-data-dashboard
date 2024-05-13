@@ -15,6 +15,9 @@ theme:
         - navigation.expand
         - navigation.indexes
         - navigation.top
+        - navigation.path
+        - navigation.footer
+        - content.code.copy
     palette:
         - media: "(prefers-color-scheme)"
           toggle:
@@ -30,8 +33,20 @@ theme:
           toggle:
               icon: material/brightness-4
               name: Default
+nav:
+    - Home: index.md
+    - About: about/about.md
+    - Getting Started:
+          - getting-started/installation.md
+    - Features:
+          - features/dataTypes.md
+          - features/visualizations.md
+          - features/filters.md
+    - Configuration: configuration/configuration.md
+    - Development: development.md
 plugins:
     - search
+    - glightbox
     - i18n:
           docs_structure: suffix
           languages:
@@ -50,3 +65,14 @@ extra:
         - name: Deutsch
           link: /de/
           lang: de
+markdown_extensions:
+    - admonition
+    - pymdownx.highlight:
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - attr_list
+    - md_in_html
