@@ -30,7 +30,7 @@ export interface ResetViewInput {
 }
 
 export interface MapPos {
-    latLon: L.LatLngExpression;
+    latLng: L.LatLngExpression;
     zoom: number;
 }
 

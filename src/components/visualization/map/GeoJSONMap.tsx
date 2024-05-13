@@ -1,26 +1,26 @@
 import 'leaflet/dist/leaflet.css';
-import 'leaflet-defaulticon-compatibility';
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { LatLngExpression, Layer } from 'leaflet';
-import React, { useEffect } from 'react';
 import Legend from './Legend';
 import { MapPos } from '@/types/visualization';
+import React from 'react';
 import ResetView from './ResetView';
+import { generateRandomColor } from '@/colors';
 
 const collectedLabels = new Map<string, string>();
 
 const standardPos: MapPos = {
-  latLon: [49.013_677_698_392_264, 8.404_375_426_378_891],
+  latLng: [49.013_677_698_392_264, 8.404_375_426_378_891],
   zoom: 13.5,
 };
 
 export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
   return (
     <MapContainer
-      center={standardPos.latLon}
+      center={standardPos.latLng}
       zoom={standardPos.zoom}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
+      zoomControl={false}
       style={{ height: '100vh' }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -50,11 +50,6 @@ function pointToLayer(feature: GeoJSON.Feature, latlng: LatLngExpression) {
   }
   const icon = getIcon(colorCode);
   return L.marker(latlng, { icon });
-}
-
-function generateRandomColor() {
-  // eslint-disable-next-line unicorn/numeric-separators-style
-  return `#${(0x1000000 + Math.random() * 0xffffff).toString(16).slice(1, 7)}`;
 }
 
 function getIcon(color: string) {

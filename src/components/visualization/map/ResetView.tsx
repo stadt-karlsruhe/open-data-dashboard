@@ -1,6 +1,6 @@
 import L, { Map } from 'leaflet';
-import React, { Component } from 'react';
 import { ResetViewInput, ResetViewProps } from '@/types/visualization';
+import React from 'react';
 import styles from './mapstyles.module.css';
 import { useMap } from 'react-leaflet';
 
@@ -8,14 +8,12 @@ class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: M
   createButtonControl() {
     const Button = L.Control.extend({
       onAdd: (map: Map) => {
-        const button = L.DomUtil.create(
-          'button',
-          `leaflet-bar leaflet-control ${styles.reset_view} bi-arrow-clockwise`,
-        );
+        const button = L.DomUtil.create('button', `leaflet-bar ${styles.reset_view}`);
+        button.innerHTML += `<div style='color:#000;' class='bi bi-crosshair'></div>`;
 
         button.addEventListener('click', () => {
           if (map instanceof Map) {
-            map.setView(this.props.resetViewInput.pos.latLon, this.props.resetViewInput.pos.zoom);
+            map.setView(this.props.resetViewInput.pos.latLng, this.props.resetViewInput.pos.zoom);
           }
         });
         return button;
