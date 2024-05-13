@@ -4,7 +4,7 @@ const jestConfig: Config.InitialOptions = {
     preset: 'ts-jest/presets/default-esm',
 
     extensionsToTreatAsEsm: ['.ts', '.mts', '.json'],
-    moduleNameMapper: { '^(.{1,2}/.).m?js$': '$1' },
+    moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
 
     transform: {
         '.test.m?ts$': [

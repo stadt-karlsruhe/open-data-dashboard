@@ -14,8 +14,8 @@ CSV data will get converted to JSON using [json-2-csv](https://www.npmjs.com/pac
 
 ````csv title="Example Data" linenums="1"
 StringColumn,IntegerColumn,FloatColumn,BooleanColumn
-Seal,24,9.1,True
-Bear,2023,5.1,False
+Seal,24,9.1,true
+Bear,2023,5.1,false
 ````
 
 **Visualizations:**
@@ -99,8 +99,18 @@ In particular, the JSON formats provided by the [CKAN Data Management System](ht
       }
     ],
     "records": [
-      ["Seal", 24, 9.1, true],
-      ["Bear", 2023, 5.1, false]
+      {
+        "StringColumn": "Seal",
+        "IntegerColumn": 24,
+        "FloatColumn": 9.1,
+        "BooleanColumn": true
+      },
+      {
+        "StringColumn": "Bear",
+        "IntegerColumn": 2023,
+        "FloatColumn": 5.1,
+        "BooleanColumn": false
+      }
     ]
   }
 }
