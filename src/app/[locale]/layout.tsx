@@ -1,5 +1,4 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import BootstrapJS from '@/components/helper/BootstrapJS';
 import { Inter } from 'next/font/google';
 import { locales } from '@/locales';
 import { unstable_setRequestLocale as setRequestLocale } from 'next-intl/server';
@@ -17,7 +16,6 @@ export default function RootLayout({
   const messages = useMessages();
   return (
     <html lang={locale}>
-      <BootstrapJS />
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
