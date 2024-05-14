@@ -1,10 +1,12 @@
-import L, { Map } from 'leaflet';
-import { LegendInput, LegendProps } from '@/types/visualization';
+import L, { Map as LeafletMap } from 'leaflet';
 import React from 'react';
 import styles from './mapstyles.module.css';
 import { useMap } from 'react-leaflet';
 
-class LegendWrapper extends React.Component<{ legendInput: LegendInput; map: Map }> {
+class LegendWrapper extends React.Component<{
+  legendInput: { title: string; labels: Map<string, string> };
+  map: LeafletMap;
+}> {
   createLegend() {
     const Legend = L.Control.extend({
       onAdd: () => {
@@ -30,7 +32,7 @@ class LegendWrapper extends React.Component<{ legendInput: LegendInput; map: Map
   }
 }
 
-export default function LegendComponent(props: LegendProps) {
+export default function LegendComponent(legendInput: { title: string; labels: Map<string, string> }) {
   const map = useMap();
-  return <LegendWrapper {...props} map={map} />;
+  return <LegendWrapper legendInput={legendInput} map={map} />;
 }

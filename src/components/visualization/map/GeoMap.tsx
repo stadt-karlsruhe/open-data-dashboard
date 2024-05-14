@@ -2,7 +2,6 @@ import 'leaflet/dist/leaflet.css';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { LatLngExpression, Layer } from 'leaflet';
 import Legend from './Legend';
-import { MapPos } from '@/types/visualization';
 import React from 'react';
 import ResetView from './ResetView';
 import { generateRandomColor } from '@/colors';
@@ -10,8 +9,8 @@ import { useTranslations } from 'next-intl';
 
 const collectedLabels = new Map<string, string>();
 
-const standardPos: MapPos = {
-  latLng: [49.013_677_698_392_264, 8.404_375_426_378_891],
+const standardPos = {
+  latLng: [49.013_677_698_392_264, 8.404_375_426_378_891] as LatLngExpression,
   zoom: 13.5,
 };
 
@@ -30,8 +29,8 @@ export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCo
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         geoJsonData && <GeoJSON data={geoJsonData} pointToLayer={pointToLayer} onEachFeature={onEach} />
       }
-      <ResetView resetViewInput={{ title: 'Reset', pos: standardPos }} />
-      <Legend legendInput={{ title: t('legendTitle'), labels: collectedLabels }} />
+      <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
+      <Legend title={t('legendTitle')} labels={collectedLabels} />
     </MapContainer>
   );
 }

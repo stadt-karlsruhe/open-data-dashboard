@@ -1,10 +1,9 @@
-import L, { Map } from 'leaflet';
-import { ResetViewInput, ResetViewProps } from '@/types/visualization';
+import L, { LatLngExpression, Map } from 'leaflet';
 import React from 'react';
 import styles from './mapstyles.module.css';
 import { useMap } from 'react-leaflet';
 
-class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: Map }> {
+class ResetView extends React.Component<{ mapPos: { zoom: number; latLng: LatLngExpression }; map: Map }> {
   createButtonControl() {
     const Button = L.Control.extend({
       onAdd: (map: Map) => {
@@ -13,7 +12,7 @@ class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: M
 
         button.addEventListener('click', () => {
           if (map instanceof Map) {
-            map.setView(this.props.resetViewInput.pos.latLng, this.props.resetViewInput.pos.zoom);
+            map.setView(this.props.mapPos.latLng, this.props.mapPos.zoom);
           }
         });
         return button;
@@ -33,7 +32,7 @@ class ResetView extends React.Component<{ resetViewInput: ResetViewInput; map: M
   }
 }
 
-export default function ResetComponent(props: ResetViewProps) {
+export default function ResetComponent(mapPos: { zoom: number; latLng: LatLngExpression }) {
   const map = useMap();
-  return <ResetView {...props} map={map} />;
+  return <ResetView mapPos={mapPos} map={map} />;
 }

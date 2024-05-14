@@ -18,28 +18,3 @@ export interface ChartInput {
     xAxis: string;
     aspect: number;
 }
-
-export interface ResetViewProps {
-    resetViewInput: ResetViewInput;
-    map?: Map;
-}
-
-export interface ResetViewInput {
-    title: string;
-    pos: MapPos;
-}
-
-export interface MapPos {
-    latLng: L.LatLngExpression;
-    zoom: number;
-}
-
-export interface LegendProps {
-    legendInput: LegendInput;
-    map?: Map;
-}
-
-export interface LegendInput {
-    title: string;
-    labels: Map<string, string>;
-}
