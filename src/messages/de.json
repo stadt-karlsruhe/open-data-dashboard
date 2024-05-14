@@ -25,7 +25,7 @@
     "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
     "returnBtn": "Zurück zur Startseite"
   },
-  "GeoJSONMap": {
+  "GeoMap": {
     "legendTitle": "Legende"
   }
 }

@@ -15,8 +15,8 @@ const standardPos: MapPos = {
   zoom: 13.5,
 };
 
-export default function GeoJSONMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
-  const t = useTranslations('GeoJSONMap');
+export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
+  const t = useTranslations('GeoMap');
   return (
     <MapContainer
       center={standardPos.latLng}
