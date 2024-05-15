@@ -1,0 +1,27 @@
+.legend {
+    background-color: white;
+}
+
+.legend span {
+    position: relative;
+    margin: 2px 5px 2px 0;
+  }
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    border-radius: 50%;
+    margin: 2px 8px 2px 5px;
+}
+
+.legend h6 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.reset_view {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+}
