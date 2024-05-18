@@ -3,8 +3,6 @@ import NotFound from '@/components/NotFound';
 import Visualization from '@/components/visualization/layout/Visualization';
 import config from '../../../../../data-source.config.yml';
 
-export const dynamicParams = false;
-
 export default function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
   const resource = config.resources.find((item) => item.id === resourceId);
 
@@ -16,10 +14,4 @@ export default function Page({ params: { resourceId } }: { params: { resourceId:
     return <EmbeddedViewer source={resource.source} />;
   }
   return <Visualization resource={resource} />;
-}
-
-export function generateStaticParams() {
-  return config.resources.map((data) => ({
-    resourceId: data.id,
-  }));
 }

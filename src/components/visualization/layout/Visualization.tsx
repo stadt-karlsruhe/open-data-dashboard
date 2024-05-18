@@ -1,17 +1,11 @@
-'use client';
-
 import ChartTableWrapper from './ChartTableWrapper';
 import { Resource } from '@/types/configuration';
 import dynamic from 'next/dynamic';
 import { transformData } from '@/transform';
-import useSWR from 'swr';
 
-export default function Visualization({ resource }: { resource: Resource }) {
+export default async function Visualization({ resource }: { resource: Resource }) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { data, error } = useSWR(resource, async (resource: Resource) => {
-    const response = await fetch(resource.source);
-    return resource.type === 'CSV' ? response.text() : response.json();
-  });
+  const data = await fetchData(resource);
   if (resource.type === 'JSON' || resource.type === 'CSV') {
     const transformedData = transformData(resource, data);
 
@@ -27,4 +21,9 @@ export default function Visualization({ resource }: { resource: Resource }) {
     });
     return <GeoMap geoJsonData={geoJsonData} />;
   }
+}
+
+async function fetchData(resource: Resource) {
+  const response = await fetch(resource.source);
+  return resource.type === 'CSV' ? response.text() : response.json();
 }
