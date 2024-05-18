@@ -1,3 +1,5 @@
+'use client';
+
 import 'leaflet/dist/leaflet.css';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { LatLngExpression, Layer } from 'leaflet';
