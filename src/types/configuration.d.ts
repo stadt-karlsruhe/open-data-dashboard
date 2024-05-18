@@ -1,7 +1,5 @@
-declare global {
-    declare module '*.yml' {
-        const resources: Resource[];
-    }
+export interface Configuration {
+    resources: Resource[];
 }
 
 interface BaseResource {
