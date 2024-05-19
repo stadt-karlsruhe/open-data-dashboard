@@ -2,7 +2,7 @@
 
 ## Bar Chart
 
-[CSV](dataTypes.md#csv) and [JSON](dataTypes.md#json) data can be visualized as a bar chart.
+[CSV](data-types.md#csv) and [JSON](data-types.md#json) data can be visualized as a bar chart.
 Bar charts are provided by [Recharts](https://recharts.org/en-US/).
 
 <figure markdown="span">
@@ -17,7 +17,7 @@ Bar charts are provided by [Recharts](https://recharts.org/en-US/).
 
 ## Table
 
-[CSV](dataTypes.md#csv) and [JSON](dataTypes.md#json) data can be visualized as a table.
+[CSV](data-types.md#csv) and [JSON](data-types.md#json) data can be visualized as a table.
 Tables are provided by [React Data Table Component](https://react-data-table-component.netlify.app/?path=/docs/getting-started-intro--docs).
 
 <figure markdown="span">
@@ -34,7 +34,7 @@ Tables are provided by [React Data Table Component](https://react-data-table-com
 
 ## Map
 
-[GeoJSON](dataTypes.md#geojson) data can be visualized as a map. Maps are provided by [React Leaflet](https://react-leaflet.js.org/).
+[GeoJSON](data-types.md#geojson) data can be visualized as a map. Maps are provided by [React Leaflet](https://react-leaflet.js.org/).
 
 <figure markdown="span">
     ![Example Map](../assets/map.png "Example Map"){ loading=lazy }
@@ -48,4 +48,4 @@ Tables are provided by [React Data Table Component](https://react-data-table-com
 
 ## Embedded Viewer
 
-[HTML and PDF](dataTypes.md#html-and-pdf) data can be embedded into the application.
+[HTML and PDF](data-types.md#html-and-pdf) data can be embedded into the application.

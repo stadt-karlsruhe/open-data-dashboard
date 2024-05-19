@@ -32,7 +32,7 @@ npm run build
 ```
 
 ```bash title="Run production build locally"
-npx serve out
+npm run start
 ```
 
 **Resources:**

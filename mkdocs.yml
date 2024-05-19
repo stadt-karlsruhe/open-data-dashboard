@@ -39,7 +39,7 @@ nav:
     - Getting Started:
           - getting-started/installation.md
     - Features:
-          - features/dataTypes.md
+          - features/data-types.md
           - features/visualizations.md
           - features/filters.md
     - Configuration: configuration/configuration.md
