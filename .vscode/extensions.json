@@ -8,6 +8,7 @@
         "dbaeumer.vscode-eslint",
         "lokalise.i18n-ally",
         "redhat.vscode-yaml",
+        "Orta.vscode-jest",
         "streetsidesoftware.code-spell-checker",
         "streetsidesoftware.code-spell-checker-german"
     ]

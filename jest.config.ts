@@ -1,27 +1,25 @@
 import { type Config } from '@jest/types';
 
 const jestConfig: Config.InitialOptions = {
-    preset: 'ts-jest/presets/default-esm',
-
-    extensionsToTreatAsEsm: ['.ts', '.mts', '.json'],
+    extensionsToTreatAsEsm: ['.ts', '.tsx'],
     moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
 
     transform: {
-        '.test.m?ts$': [
-            'ts-jest',
+        '^.+\\.(t|j)sx?$': [
+            '@swc/jest',
             {
-                useESM: true,
-                isolatedModules: false,
+                jsc: {
+                    target: 'esnext',
+                },
             },
         ],
     },
-    collectCoverageFrom: ['<rootDir>/src/**/.ts'],
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
+    coveragePathIgnorePatterns: ['src/(middleware|locales|i18n).ts'],
     testEnvironment: 'node',
 
     bail: true,
-    testRegex: '__tests__/.+\\.test\\.ts$',
-    coveragePathIgnorePatterns: ['<rootDir>/src/main.m?ts$', '.*.module.m?ts$', '<rootDir>/src/health/'],
-    coverageReporters: ['text-summary', 'html'],
+    testRegex: String.raw`__tests__/.+\.test\.ts$`,
     errorOnDeprecated: true,
     verbose: true,
 };
