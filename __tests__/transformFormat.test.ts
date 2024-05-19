@@ -1,13 +1,7 @@
+import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from './data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
-import { transformData } from '@/transform';
-import {
-    csvValid,
-    jsonFormatNotSupported,
-    jsonStandard,
-    jsonTabular,
-    jsonTabularResponse,
-} from './data/dataFormats';
 import { TransformableResource } from '@/types/configuration';
+import { transformData } from '@/transform';
 
 const jsonResource: TransformableResource = {
     id: '',
@@ -61,5 +55,4 @@ describe('transform CSV to JSON', () => {
         const result = transformData(csvResource, csvValid);
         expect(result).toStrictEqual(jsonStandard);
     });
-})
-
+});

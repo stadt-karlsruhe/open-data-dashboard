@@ -93,4 +93,4 @@ export const jsonFormatNotSupported = {
     ],
 };
 
-export const csvValid = "StringColumn,IntegerColumn,FloatColumn,BooleanColumn\nSeal,24,9.1,true\nBear,2023,5.1,false";
+export const csvValid = 'StringColumn,IntegerColumn,FloatColumn,BooleanColumn\nSeal,24,9.1,true\nBear,2023,5.1,false';
