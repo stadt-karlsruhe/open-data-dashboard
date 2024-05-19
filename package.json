@@ -6,11 +6,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "jest --coverage",
     "docs": "mkdocs serve"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@swc/core": "1.5.7",
+    "@swc/jest": "0.2.36",
+    "@testing-library/react": "15.0.7",
     "@tsconfig/node21": "21.0.3",
     "@types/jest": "^29.5.12",
     "@types/leaflet": "^1.9.12",
@@ -48,12 +51,9 @@
     "recharts": "2.12.7",
     "sass": "1.77.1",
     "styled-components": "6.1.11",
-    "swr": "2.2.5",
     "ts-deepmerge": "7.0.0",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
     "typescript": "^5",
     "use-debounce": "10.0.0",
-    "yaml-loader": "0.8.1"
+    "yaml": "2.4.2"
   }
 }

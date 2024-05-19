@@ -35,5 +35,8 @@
   },
   "GeoMap": {
     "legendTitle": "Legend"
+  },
+  "ResetView": {
+    "resetTooltip": "Reset view"
   }
 }

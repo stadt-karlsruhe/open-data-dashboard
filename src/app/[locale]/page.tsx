@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { prefix } from '@/prefix';
 import styles from './page.module.css';
 
 // eslint-disable-next-line max-lines-per-function
@@ -18,20 +17,13 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             By{' '}
-            <Image
-              src={`${prefix}/vercel.svg`}
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+            <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
           </a>
         </div>
       </div>
 
       <div className={styles.center}>
-        <Image className={styles.logo} src={`${prefix}/next.svg`} alt="Next.js Logo" width={180} height={37} priority />
+        <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
       </div>
 
       <div className={styles.grid}>
