@@ -4,6 +4,10 @@ import { DataRecord } from '@/types/visualization';
 import { filterData } from '@/filter';
 import { jsonStandard } from './data/dataFormats';
 
+const filterAllEntries = {
+    'all-entries': 'sea',
+};
+
 const filterString = {
     StringColumn: 'Seal',
 };
@@ -21,6 +25,13 @@ const filterFloat = {
 };
 
 describe('filter data', () => {
+    it('should return only rows where any column contains the substring "sea" (ignoring case)', () => {
+        expect.hasAssertions();
+
+        const result = filterData(jsonStandard as unknown as DataRecord, filterAllEntries);
+        expect(result).toStrictEqual(jsonFilteredString);
+    });
+
     it('should return only rows where StringColumn contains "Seal"', () => {
         expect.hasAssertions();
 

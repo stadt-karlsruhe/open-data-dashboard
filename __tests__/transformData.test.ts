@@ -15,6 +15,17 @@ const skipFieldsResource: TransformableResource = {
     },
 };
 
+const skipFieldsResourceNoMatch: TransformableResource = {
+    id: '',
+    source: '',
+    name: '',
+    type: 'JSON',
+    skipFieldsRegEx: '^notMatchingColumn$',
+    visualizations: {
+        table: {},
+    },
+};
+
 const renameFieldsResource: TransformableResource = {
     id: '',
     source: '',
@@ -43,6 +54,20 @@ describe('transform data', () => {
 
         const result = transformData(skipFieldsResource, jsonStandard);
         expect(result).toStrictEqual(jsonSkipFields);
+    });
+
+    it('should not do anything if records array is empty', () => {
+        expect.hasAssertions();
+
+        const result = transformData(skipFieldsResource, []);
+        expect(result).toStrictEqual([]);
+    });
+
+    it('should not do anything if skipFieldsRegex does not match any column names', () => {
+        expect.hasAssertions();
+
+        const result = transformData(skipFieldsResourceNoMatch, jsonStandard);
+        expect(result).toStrictEqual(jsonStandard);
     });
 
     it('should rename fields StringColumn and BooleanColumn', () => {

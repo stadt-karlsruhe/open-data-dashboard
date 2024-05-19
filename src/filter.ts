@@ -4,13 +4,13 @@ const allEntries = 'all-entries';
 
 export function filterData(data: DataRecord, filters: Record<string, string | { min?: string; max?: string }>) {
     const searchedData = filters[allEntries]
-        ? data.filter((obj) => {
-              return Object.values(obj).some(
+        ? data.filter((obj) =>
+              Object.values(obj).some(
                   (value) =>
                       typeof filters[allEntries] === 'string' &&
                       String(value).toLowerCase().includes(filters[allEntries].toLowerCase()),
-              );
-          })
+              ),
+          )
         : data;
     return searchedData.filter((item) => {
         for (const objKey of Object.keys(item)) {
