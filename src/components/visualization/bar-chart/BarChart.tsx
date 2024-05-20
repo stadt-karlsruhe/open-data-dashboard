@@ -2,9 +2,7 @@ import {
   Bar,
   BarChart as BarChartRecharts,
   CartesianGrid,
-  Label,
   Legend,
-  Rectangle,
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
@@ -20,6 +18,7 @@ import { useState } from 'react';
 let minValue: number;
 let maxValue: number;
 
+// TODO: xAxis also has to become selectable
 export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const [axesMap, setAxesMap] = useState(collectYAxes(chartInput.axisPairs as AxisPair[]));
 
@@ -28,8 +27,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   }
 
   function getBars() {
-    let yAxesMap = axesMap.get(chartInput.xAxis);
-    yAxesMap = yAxesMap ?? new Map<string, boolean>();
+    const yAxesMap = axesMap.get(chartInput.xAxis) ?? new Map<string, boolean>();
     return [...yAxesMap.entries()].map(([yAxis, visible], index) => (
       // eslint-disable-next-line react/jsx-key
       <Bar dataKey={yAxis} hide={!visible} fill={getColor(index)} />

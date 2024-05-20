@@ -6,7 +6,7 @@ import L, { LatLngExpression, Layer } from 'leaflet';
 import Legend from './Legend';
 import React from 'react';
 import ResetView from './ResetView';
-import { generateRandomColor } from '@/colors';
+import { getColor } from '@/colors';
 import { useTranslations } from 'next-intl';
 
 const collectedLabels = new Map<string, string>();
@@ -45,7 +45,7 @@ function pointToLayer(feature: GeoJSON.Feature, latlng: LatLngExpression) {
   if (feature.properties?.GRUPPENNAME_DE !== undefined && typeof feature.properties.GRUPPENNAME_DE === 'string') {
     const mappedColor = collectedLabels.get(feature.properties.GRUPPENNAME_DE);
     if (mappedColor === undefined) {
-      colorCode = generateRandomColor();
+      colorCode = getColor(collectedLabels.size);
       collectedLabels.set(feature.properties.GRUPPENNAME_DE, colorCode);
     } else {
       colorCode = mappedColor;
