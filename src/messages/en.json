@@ -1,4 +1,8 @@
 {
+  "Metadata": {
+    "title": "Open Data Dashboard",
+    "description": "Visualizations of open data related to the city of Karlsruhe"
+  },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",
     "collapseTooltipExpand": "Expand filters",
