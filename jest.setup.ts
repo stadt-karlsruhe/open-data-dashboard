@@ -22,3 +22,8 @@ jest.mock('next/navigation', () => {
         useParams: () => ({ locale: 'en' }),
     };
 });
+
+// eslint-disable-next-line jest/no-untyped-mock-factory
+jest.mock('react-bootstrap/AccordionButton', () => ({
+    useAccordionButton: jest.fn(),
+}));

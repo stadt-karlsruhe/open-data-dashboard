@@ -38,6 +38,7 @@ export function ChartTableFilterHeader({
       <button
         className="btn btn-primary rounded-0"
         type="button"
+        name={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         onClick={decoratedOnClick}
       >
