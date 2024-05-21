@@ -13,11 +13,12 @@ const jestConfig: Config.InitialOptions = {
             },
         ],
     },
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
     coveragePathIgnorePatterns: ['src/(middleware|locales|i18n).ts'],
     coverageReporters: ['lcov', 'text', 'text-summary'],
     bail: true,
-    testRegex: String.raw`__tests__/.+\.test\.ts$`,
+    testRegex: String.raw`__tests__/.+\.test\.(ts|tsx)$`,
     errorOnDeprecated: true,
     verbose: true,
 };

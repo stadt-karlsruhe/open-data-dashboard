@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
-import { jsonFilteredFloat, jsonFilteredInteger, jsonFilteredString } from './data/dataFilters';
+import { jsonFilteredFloat, jsonFilteredInteger, jsonFilteredString } from '../data/data-filters';
 import { DataRecord } from '@/types/visualization';
 import { filterData } from '@/filter';
-import { jsonStandard } from './data/dataFormats';
+import { jsonStandard } from '../data/data-formats';
 
 const filterAllEntries = {
     'all-entries': 'sea',
