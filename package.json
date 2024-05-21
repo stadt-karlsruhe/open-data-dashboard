@@ -54,10 +54,14 @@
     "ts-deepmerge": "7.0.0",
     "typescript": "^5",
     "use-debounce": "10.0.0",
+<<<<<<< Updated upstream
     "yaml": "2.4.2",
     "yaml-loader": "0.8.1"
   },
   "dependencies": {
     "ajv": "^8.13.0"
+=======
+    "yaml": "2.4.2"
+>>>>>>> Stashed changes
   }
 }
