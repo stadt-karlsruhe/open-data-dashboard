@@ -38,5 +38,8 @@
   },
   "ResetView": {
     "resetTooltip": "Reset view"
+  },
+  "AxisSelector": {
+    "title": "Select X-Axis:"
   }
 }

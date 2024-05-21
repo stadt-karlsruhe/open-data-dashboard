@@ -11,6 +11,7 @@ import {
 } from 'recharts';
 import { ChartInput, DataRecord } from '@/types/visualization';
 import { AxisPair } from '@/types/configuration';
+import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { getColor } from '@/colors';
 import { useState } from 'react';
@@ -18,16 +19,17 @@ import { useState } from 'react';
 let minValue: number;
 let maxValue: number;
 
-// TODO: xAxis also has to become selectable
 export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
-  const [axesMap, setAxesMap] = useState(collectYAxes(chartInput.axisPairs as AxisPair[]));
+  const axisPairs = chartInput.axisPairs as AxisPair[];
+  const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
+  const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
 
   function onLegendClick(e: Payload) {
-    setAxesMap(updateAxisMap(chartInput.xAxis, e.dataKey?.toString(), axesMap));
+    setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
   }
 
   function getBars() {
-    const yAxesMap = axesMap.get(chartInput.xAxis) ?? new Map<string, boolean>();
+    const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
     return [...yAxesMap.entries()].map(([yAxis, visible], index) => (
       // eslint-disable-next-line react/jsx-key
       <Bar dataKey={yAxis} hide={!visible} fill={getColor(index)} />
@@ -35,25 +37,28 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   }
 
   return (
-    <ResponsiveContainer debounce={200} aspect={chartInput.aspect}>
-      <BarChartRecharts
-        data={chartInput.data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={chartInput.xAxis} label={chartInput.xAxis} tick={false} />
-        <YAxis type="number" domain={getDomain(chartInput.data, axesMap, chartInput.xAxis)} ticks={getTicks()} />
-        <ReferenceLine y={0} stroke="#000" />
-        <Tooltip />
-        <Legend onClick={onLegendClick} />
-        {getBars()}
-      </BarChartRecharts>
-    </ResponsiveContainer>
+    <div>
+      <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
+      <ResponsiveContainer debounce={200} aspect={chartInput.aspect}>
+        <BarChartRecharts
+          data={chartInput.data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={xAxis} label={xAxis} tick={false} />
+          <YAxis type="number" domain={getDomain(chartInput.data, axesMap, xAxis)} ticks={getTicks()} />
+          <ReferenceLine y={0} stroke="#000" />
+          <Tooltip />
+          <Legend onClick={onLegendClick} />
+          {getBars()}
+        </BarChartRecharts>
+      </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -97,13 +102,13 @@ function updateAxisMap(xAxis: string, yAxis: string | undefined, axesMap: Map<st
   if (yAxis === undefined) {
     return axesMap;
   }
-  let yAxiForXAxis = axesMap.get(xAxis);
-  if (yAxiForXAxis === undefined) {
-    yAxiForXAxis = new Map<string, boolean>();
+  let yAxesForXAxis = axesMap.get(xAxis);
+  if (yAxesForXAxis === undefined) {
+    yAxesForXAxis = new Map<string, boolean>();
   }
-  let bool = yAxiForXAxis.get(yAxis);
+  let bool = yAxesForXAxis.get(yAxis);
   bool = bool === undefined ? true : !bool;
-  yAxiForXAxis.set(yAxis, bool);
+  yAxesForXAxis.set(yAxis, bool);
   // eslint-disable-next-line sonarjs/prefer-immediate-return
   const updatedAxesMap = new Map(axesMap);
   return updatedAxesMap;

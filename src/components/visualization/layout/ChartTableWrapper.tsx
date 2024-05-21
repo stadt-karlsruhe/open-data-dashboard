@@ -43,10 +43,7 @@ export default function ChartTableWrapper({
                 <BarChart
                   chartInput={{
                     data: filteredData,
-                    // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
                     axisPairs: diagramAttr.axisPairs,
-                    xAxis: diagramAttr.axisPairs[0].xAxis,
-                    yAxis: diagramAttr.axisPairs[0].yAxis,
                     aspect: width / (height - 250),
                   }}
                 ></BarChart>
