@@ -1,10 +1,10 @@
 resources:
     - id: "1"
-      source: https://mocki.io/v1/6f1ad2df-8cbb-4928-af84-b3dffe7f7022
-      #   source: https://transparenz.karlsruhe.de/datastore/dump/d8be5f4a-0788-4ee3-abe5-b36313ce3799?format=json
+      source: https://mocki.io/v1/1442bc5a-869f-4398-96a9-c5c50fc3b1a3
+      #   source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?format=json
       type: JSON
-      name: Bevölkerung mit Hauptwohnung
-      description: dadada
+      name: Wohnberechtigte Bevölkerung
+      description: dadad
       renameFields:
           mannlich (%): Männlich (%)
           weiblich (%): Weiblich (%)
