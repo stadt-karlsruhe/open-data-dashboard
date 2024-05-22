@@ -1,4 +1,8 @@
 {
+  "Metadata": {
+    "title": "Open Data Dashboard",
+    "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
+  },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
     "collapseTooltipExpand": "Filter öffnen",
