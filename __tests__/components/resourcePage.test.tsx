@@ -4,19 +4,12 @@
 
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
 import Page from '@/app/[locale]/resource/[resourceId]/page';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
+import messages from '@/messages/en.json';
 
-jest.mock<typeof import('@/components/NotFound')>('@/components/NotFound', () => {
-  const actual = jest.requireActual<typeof import('@/components/NotFound')>('@/components/NotFound');
-  return {
-    __esModule: true,
-    ...actual,
-    default: jest.fn(() => <div>Mocked NotFound</div>),
-    NotFound: jest.fn(() => <div>Mocked NotFound</div>),
-  };
-});
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('@/components/visualization/layout/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
 // eslint-disable-next-line jest/no-untyped-mock-factory
@@ -76,8 +69,12 @@ describe('resource page', () => {
     const { params } = { params: { resourceId: 'non-existent-resource' } };
 
     const PageComponent = await Page({ params });
-    render(PageComponent);
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        {PageComponent}
+      </NextIntlClientProvider>,
+    );
 
-    expect(screen.getByText('Mocked NotFound')).toBeInTheDocument();
+    expect(screen.getByText(messages.NotFound.title)).toBeInTheDocument();
   });
 });
