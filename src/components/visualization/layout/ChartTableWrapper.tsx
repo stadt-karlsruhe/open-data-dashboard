@@ -36,8 +36,8 @@ export default function ChartTableWrapper({
     params.set('visualization', eventKey);
     router.replace(`${pathname}?${params.toString()}`);
   });
-  const [activeVisualization, setActiveVisualization] = useState(getDefaultVisualization());
-  function getDefaultVisualization() {
+  const [activeVisualization, setActiveVisualization] = useState(getAndUpdateVisualizationParameter());
+  function getAndUpdateVisualizationParameter() {
     const passedInitialParameter = searchParams.get('visualization');
     const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
     if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
