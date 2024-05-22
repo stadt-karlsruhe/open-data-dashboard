@@ -19,20 +19,6 @@ jest.mock<typeof import('@/components/NotFound')>('@/components/NotFound', () =>
 });
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('@/components/visualization/layout/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
-jest.mock<typeof import('@/components/visualization/EmbeddedViewer')>(
-  '@/components/visualization/EmbeddedViewer',
-  () => {
-    const actual = jest.requireActual<typeof import('@/components/visualization/EmbeddedViewer')>(
-      '@/components/visualization/EmbeddedViewer',
-    );
-    return {
-      __esModule: true,
-      ...actual,
-      default: jest.fn(() => <div>Mocked EmbeddedViewer</div>),
-      EmbeddedViewer: jest.fn(() => <div>Mocked EmbeddedViewer</div>),
-    };
-  },
-);
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('yaml', () => ({
   parse: jest.fn(),
@@ -50,7 +36,7 @@ jest.mock<typeof import('node:fs')>('node:fs', () => {
 
 const mockConfiguration = {
   resources: [
-    { id: 'embedded-resource', type: 'Embedded' },
+    { id: '1', type: 'Embedded', name: 'Embedded Resource', source: 'https://example.com' },
     { id: 'visualization-resource', type: 'JSON' },
   ],
 };
@@ -61,12 +47,12 @@ describe('resource page', () => {
 
     (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
     (YAML.parse as jest.Mock).mockReturnValueOnce(mockConfiguration);
-    const { params } = { params: { resourceId: 'embedded-resource' } };
+    const { params } = { params: { resourceId: '1' } };
 
     const PageComponent = await Page({ params });
-    render(PageComponent);
+    const { getByTitle } = render(PageComponent);
 
-    expect(screen.getByText('Mocked EmbeddedViewer')).toBeInTheDocument();
+    expect(getByTitle('Embedded Resource')).toBeInTheDocument();
   });
 
   it('should render the Visualization component for non-embedded resources', async () => {
