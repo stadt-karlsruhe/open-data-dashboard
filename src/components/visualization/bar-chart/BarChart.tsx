@@ -13,6 +13,7 @@ import { ChartInput, DataRecord } from '@/types/visualization';
 import { AxisPair } from '@/types/configuration';
 import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
+import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
 import { useState } from 'react';
 
@@ -23,6 +24,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const axisPairs = chartInput.axisPairs as AxisPair[];
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
+  console.log(chartInput.data);
 
   function onLegendClick(e: Payload) {
     setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
@@ -86,14 +88,8 @@ function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean
 function collectYAxes(axisPairs: AxisPair[]) {
   const axesMap = new Map<string, Map<string, boolean>>();
   for (const axisPair of axisPairs) {
-    let yAxiForXAxis = axesMap.get(axisPair.xAxis);
-    if (yAxiForXAxis === undefined) {
-      yAxiForXAxis = new Map<string, boolean>();
-      axesMap.set(axisPair.xAxis, yAxiForXAxis);
-    }
-    if (yAxiForXAxis.get(axisPair.yAxis) === undefined) {
-      yAxiForXAxis.set(axisPair.yAxis, true);
-    }
+    const yAxiForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
+    computeIfAbsent(yAxiForXAxis, axisPair.yAxis, true);
   }
   return axesMap;
 }
@@ -102,10 +98,7 @@ function updateAxisMap(xAxis: string, yAxis: string | undefined, axesMap: Map<st
   if (yAxis === undefined) {
     return axesMap;
   }
-  let yAxesForXAxis = axesMap.get(xAxis);
-  if (yAxesForXAxis === undefined) {
-    yAxesForXAxis = new Map<string, boolean>();
-  }
+  const yAxesForXAxis = computeIfAbsent(axesMap, xAxis, new Map<string, boolean>()) as Map<string, boolean>;
   let bool = yAxesForXAxis.get(yAxis);
   bool = bool === undefined ? true : !bool;
   yAxesForXAxis.set(yAxis, bool);
