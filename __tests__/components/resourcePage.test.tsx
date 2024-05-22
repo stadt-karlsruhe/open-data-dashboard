@@ -2,41 +2,51 @@
  * @jest-environment jsdom
  */
 
-import { beforeEach, describe, expect, it } from '@jest/globals';
+import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import Page from '@/app/[locale]/resource/[resourceId]/page';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
 
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('yaml', () => ({
-  parse: jest.fn(),
-}));
-
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('node:fs', () => ({
-  promises: {
-    readFile: jest.fn(),
-  },
-}));
-
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('@/components/NotFound', () => jest.fn(() => <div>Mocked NotFound</div>));
+jest.mock<typeof import('@/components/NotFound')>('@/components/NotFound', () => {
+  const actual = jest.requireActual<typeof import('@/components/NotFound')>('@/components/NotFound');
+  return {
+    __esModule: true,
+    ...actual,
+    default: jest.fn(() => <div>Mocked NotFound</div>),
+    NotFound: jest.fn(() => <div>Mocked NotFound</div>),
+  };
+});
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('@/components/visualization/layout/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('@/components/visualization/EmbeddedViewer', () => jest.fn(() => <div>Mocked EmbeddedViewer</div>));
+jest.mock<typeof import('@/components/visualization/EmbeddedViewer')>(
+  '@/components/visualization/EmbeddedViewer',
+  () => {
+    const actual = jest.requireActual<typeof import('@/components/visualization/EmbeddedViewer')>(
+      '@/components/visualization/EmbeddedViewer',
+    );
+    return {
+      __esModule: true,
+      ...actual,
+      default: jest.fn(() => <div>Mocked EmbeddedViewer</div>),
+      EmbeddedViewer: jest.fn(() => <div>Mocked EmbeddedViewer</div>),
+    };
+  },
+);
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('yaml', () => ({
   parse: jest.fn(),
 }));
-
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('node:fs', () => ({
-  promises: {
-    readFile: jest.fn(),
-  },
-}));
+jest.mock<typeof import('node:fs')>('node:fs', () => {
+  const actual = jest.requireActual<typeof import('node:fs')>('node:fs');
+  return {
+    ...actual,
+    promises: {
+      ...actual.promises,
+      readFile: jest.fn(),
+    },
+  };
+});
 
 const mockConfiguration = {
   resources: [

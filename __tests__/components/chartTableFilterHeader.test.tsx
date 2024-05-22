@@ -10,10 +10,15 @@ import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('react-bootstrap/AccordionButton', () => ({
-  useAccordionButton: jest.fn(),
-}));
+jest.mock<typeof import('react-bootstrap/AccordionButton')>('react-bootstrap/AccordionButton', () => {
+  const actual = jest.requireActual<typeof import('react-bootstrap/AccordionButton')>(
+    'react-bootstrap/AccordionButton',
+  );
+  return {
+    ...actual,
+    useAccordionButton: jest.fn(),
+  };
+});
 
 const filtersWithNonEmptyString = { 'all-entries': 'test' };
 const filtersWithEmptyString = { 'all-entries': '' };

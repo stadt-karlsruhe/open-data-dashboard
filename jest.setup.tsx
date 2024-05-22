@@ -3,9 +3,10 @@ import { ReadonlyURLSearchParams } from 'next/navigation';
 
 // Global mocks
 
-// eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('next/navigation', () => {
+jest.mock<typeof import('next/navigation')>('next/navigation', () => {
+  const actual = jest.requireActual<typeof import('next/navigation')>('next/navigation');
   return {
+    ...actual,
     usePathname: () => '',
     useRouter: jest.fn().mockReturnValue({
       push: jest.fn(),
@@ -16,6 +17,5 @@ jest.mock('next/navigation', () => {
         // eslint-disable-next-line no-empty-function, @typescript-eslint/no-empty-function
         get: () => {},
       }) as unknown as ReadonlyURLSearchParams,
-    useParams: () => ({ locale: 'en' }),
   };
 });
