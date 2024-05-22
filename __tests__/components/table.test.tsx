@@ -5,7 +5,7 @@ import { describe, expect, it, jest } from '@jest/globals';
 import { DataRecord } from '@/types/visualization';
 import { NextIntlClientProvider } from 'next-intl';
 import Table from '@/components/visualization/Table';
-import { jsonStandard } from '../data/data-formats';
+import { jsonStandard } from '../data/dataFormats';
 import messages from '@/messages/en.json';
 import { render } from '@testing-library/react';
 

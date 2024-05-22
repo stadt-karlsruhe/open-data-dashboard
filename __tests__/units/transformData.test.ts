@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
-import { jsonRenameFields, jsonSkipAndRenameFields, jsonSkipFields } from '../data/data-transformations';
+import { jsonRenameFields, jsonSkipAndRenameFields, jsonSkipFields } from '../data/dataTransformations';
 import { TransformableResource } from '@/types/configuration';
-import { jsonStandard } from '../data/data-formats';
+import { jsonStandard } from '../data/dataFormats';
 import { transformData } from '@/transform';
 
 const skipFieldsResource: TransformableResource = {
