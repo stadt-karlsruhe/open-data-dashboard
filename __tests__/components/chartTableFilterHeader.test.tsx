@@ -2,13 +2,18 @@
  * @jest-environment jsdom
  */
 
-import { describe, expect, it, jest } from '@jest/globals';
+import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
+
+// eslint-disable-next-line jest/no-untyped-mock-factory
+jest.mock('react-bootstrap/AccordionButton', () => ({
+  useAccordionButton: jest.fn(),
+}));
 
 const filtersWithNonEmptyString = { 'all-entries': 'test' };
 const filtersWithEmptyString = { 'all-entries': '' };

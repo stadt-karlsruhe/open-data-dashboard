@@ -20,7 +20,7 @@
     ],
     "cSpell.language": "en,de-de",
     "jest.runMode": {
-        "type": "watch",
+        "type": "on-save",
         "coverage": true
-      }
+    }
 }
