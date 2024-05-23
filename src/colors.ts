@@ -1,3 +1,4 @@
+// TODO: We need better and more colors. Also might become obsolete if we decide to make colors configurable
 const colors: string[] = ['#8884d8', '#1ab015', '#dce320', '#e39820'];
 
 export function generateRandomColor() {

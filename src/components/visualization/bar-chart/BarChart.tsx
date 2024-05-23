@@ -34,7 +34,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
     const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
     return [...yAxesMap.entries()].map(([yAxis, visible], index) => (
       // eslint-disable-next-line react/jsx-key
-      <Bar dataKey={yAxis} hide={!visible} fill={getColor(index)} />
+      <Bar dataKey={yAxis} hide={!visible} fill={getColor(index)} isAnimationActive={false} />
     ));
   }
 
@@ -68,10 +68,10 @@ function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean
   minValue = 0;
   maxValue = 0;
   const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
-  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([_, visible]) => visible).map(([yAxis, _]) => yAxis));
+  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([_, visible]) => visible).map(([yAxis]) => yAxis));
   records.forEach((record) => {
     const valueArray = Object.entries(record)
-      .filter(([key, _]) => visibleYAxes.has(key))
+      .filter(([key]) => visibleYAxes.has(key))
       .map((entry) => entry[1]);
     for (const value of valueArray) {
       const parsedValue = Number.parseFloat(value);
@@ -88,8 +88,8 @@ function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean
 function collectYAxes(axisPairs: AxisPair[]) {
   const axesMap = new Map<string, Map<string, boolean>>();
   for (const axisPair of axisPairs) {
-    const yAxiForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
-    computeIfAbsent(yAxiForXAxis, axisPair.yAxis, true);
+    const yAxesForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
+    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, true);
   }
   return axesMap;
 }

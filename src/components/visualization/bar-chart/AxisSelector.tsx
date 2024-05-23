@@ -18,11 +18,11 @@ export default function AxisSelector({
   };
 
   return (
-    <div>
+    <div className="mb-2">
       {t('title')}
       <select
         onChange={onAxisChange}
-        id="x-axis-selector"
+        id="x-axis"
         aria-label="x-axis-selector"
         className="form-select rounded-0"
         style={{ maxWidth: '200px' }}
