@@ -9,23 +9,11 @@ import { NextIntlClientProvider } from 'next-intl';
 import { filterMixed } from '../data/dataFilters';
 import { jsonStandardNoBoolean } from '../data/dataFormats';
 import messages from '@/messages/en.json';
-import { useAccordionButton } from 'react-bootstrap/AccordionButton';
-
-jest.mock<typeof import('react-bootstrap/AccordionButton')>('react-bootstrap/AccordionButton', () => {
-  const actual = jest.requireActual<typeof import('react-bootstrap/AccordionButton')>(
-    'react-bootstrap/AccordionButton',
-  );
-  return {
-    ...actual,
-    useAccordionButton: jest.fn(),
-  };
-});
 
 // eslint-disable-next-line max-lines-per-function
 describe('component ChartTableFilterBody', () => {
   const mockOnChange = jest.fn();
   const mockOnClearAll = jest.fn();
-  const mockUseAccordionButton = useAccordionButton as jest.Mock;
 
   const renderComponent = () => {
     render(
