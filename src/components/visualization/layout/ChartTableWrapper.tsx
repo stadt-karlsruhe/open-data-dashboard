@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import BarChart from '../BarChart';
+import BarChart from '../bar-chart/BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import { DataRecord } from '@/types/visualization';
 import Tab from 'react-bootstrap/Tab';
@@ -70,9 +70,7 @@ export default function ChartTableWrapper({
                 <BarChart
                   chartInput={{
                     data: filteredData,
-                    // TODO: Adapt to the implementation of https://h-ka-team-rdqzrlfpomci.atlassian.net/browse/ODDSK-87
-                    xAxis: diagramAttr.axisPairs[0].xAxis,
-                    yAxis: diagramAttr.axisPairs[0].yAxis,
+                    axisPairs: diagramAttr.axisPairs,
                     aspect: width / (height - 250),
                   }}
                 ></BarChart>

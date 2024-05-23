@@ -32,7 +32,7 @@ export interface TransformableResource extends BaseResource {
     };
 }
 
-interface AxisPair {
+export interface AxisPair {
     xAxis: string;
     yAxis: string;
 }

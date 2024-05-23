@@ -14,7 +14,6 @@ export type DataRecord = Record<string, never>[];
 
 export interface ChartInput {
     data: DataRecord;
-    yAxis: string;
-    xAxis: string;
+    axisPairs: AxisPair[];
     aspect: number;
 }

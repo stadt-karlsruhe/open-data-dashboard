@@ -42,5 +42,8 @@
   },
   "ResetView": {
     "resetTooltip": "Ansicht zurücksetzen"
+  },
+  "AxisSelector": {
+    "title": "X-Achse auswählen:"
   }
 }
