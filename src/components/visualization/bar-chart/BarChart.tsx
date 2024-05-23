@@ -47,7 +47,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
           margin={{
             top: 5,
             right: 30,
-            left: 20,
+            left: 5,
             bottom: 5,
           }}
         >

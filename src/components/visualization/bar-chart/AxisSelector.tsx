@@ -18,14 +18,14 @@ export default function AxisSelector({
   };
 
   return (
-    <div className="mb-2">
-      {t('title')}
+    <div className="mb-1" style={{ display: 'table' }}>
+      <label style={{ display: 'table-cell' }}>{t('title')}</label>
       <select
         onChange={onAxisChange}
-        id="x-axis"
+        id="x-axis-selector"
         aria-label="x-axis-selector"
         className="form-select rounded-0"
-        style={{ maxWidth: '200px' }}
+        style={{ maxWidth: '200px', display: 'table-cell', marginLeft: '1vw' }}
       >
         {[...axesMap.entries()].map(([xAxis, _]) => (
           <option key={xAxis} value={xAxis}>
