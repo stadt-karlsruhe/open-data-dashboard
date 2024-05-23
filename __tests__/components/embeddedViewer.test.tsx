@@ -3,16 +3,9 @@
  */
 
 import { describe, expect, it } from '@jest/globals';
-import { EmbeddedResource } from '@/types/configuration';
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
+import { embeddedResource } from '../data/resources';
 import { render } from '@testing-library/react';
-
-const embeddedResource: EmbeddedResource = {
-  id: '1',
-  source: 'https://google.com/',
-  name: 'Test',
-  type: 'Embedded',
-};
 
 describe('component EmbeddedViewer', () => {
   it('should render iframe with correct source and height', () => {

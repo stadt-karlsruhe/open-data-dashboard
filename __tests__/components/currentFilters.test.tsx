@@ -6,14 +6,12 @@ import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
 import CurrentFilters from '@/components/visualization/chart-table-filter/CurrentFilters';
 import { NextIntlClientProvider } from 'next-intl';
+import { filterMixed } from '../data/dataFilters';
 import messages from '@/messages/en.json';
 
+const allEntries = 'all-entries';
 const defaultProps = {
-  filters: {
-    textKey: 'text filter',
-    numberKey: { min: '10', max: '20' },
-    'all-entries': 'test filter',
-  },
+  filters: filterMixed,
   onClear: jest.fn(),
 };
 
@@ -32,9 +30,11 @@ describe('component CurrentFilters', () => {
 
     renderComponent(defaultProps);
     const allEntriesFilter = screen.getByText(
-      `${messages.CurrentFilters.allEntriesLabel} ${messages.CurrentFilters.contains} "test filter"`,
+      `${messages.CurrentFilters.allEntriesLabel} ${messages.CurrentFilters.contains} "${filterMixed[allEntries]}"`,
     );
-    const textFilter = screen.getByText(`textKey ${messages.CurrentFilters.contains} "text filter"`);
+    const textFilter = screen.getByText(
+      `StringColumn ${messages.CurrentFilters.contains} "${filterMixed.StringColumn}"`,
+    );
 
     expect(allEntriesFilter).toBeInTheDocument();
     expect(textFilter).toBeInTheDocument();
@@ -47,7 +47,9 @@ describe('component CurrentFilters', () => {
 
     renderComponent(defaultProps);
 
-    expect(screen.getByText('10 ≤ numberKey ≤ 20')).toBeInTheDocument();
+    expect(
+      screen.getByText(`${filterMixed.IntegerColumn.min} ≤ IntegerColumn ≤ ${filterMixed.IntegerColumn.max}`),
+    ).toBeInTheDocument();
   });
 
   it('should call onClear when clear button is clicked', () => {
@@ -55,20 +57,22 @@ describe('component CurrentFilters', () => {
 
     renderComponent(defaultProps);
     const clearButtonAllEntries = screen.getByRole('button', {
-      name: `${messages.CurrentFilters.allEntriesLabel} ${messages.CurrentFilters.contains} "test filter"`,
+      name: `${messages.CurrentFilters.allEntriesLabel} ${messages.CurrentFilters.contains} "${filterMixed[allEntries]}"`,
     });
     const clearButtonTextFilter = screen.getByRole('button', {
-      name: `textKey ${messages.CurrentFilters.contains} "text filter"`,
+      name: `StringColumn ${messages.CurrentFilters.contains} "${filterMixed.StringColumn}"`,
     });
-    const clearButtonNumberFilter = screen.getByRole('button', { name: '10 ≤ numberKey ≤ 20' });
+    const clearButtonNumberFilter = screen.getByRole('button', {
+      name: `${filterMixed.IntegerColumn.min} ≤ IntegerColumn ≤ ${filterMixed.IntegerColumn.max}`,
+    });
     fireEvent.click(clearButtonAllEntries);
     fireEvent.click(clearButtonTextFilter);
     fireEvent.click(clearButtonNumberFilter);
 
     expect(defaultProps.onClear).toHaveBeenCalledTimes(3);
-    expect(defaultProps.onClear).toHaveBeenCalledWith('all-entries', '');
-    expect(defaultProps.onClear).toHaveBeenCalledWith('textKey', '');
-    expect(defaultProps.onClear).toHaveBeenCalledWith('numberKey', '');
+    expect(defaultProps.onClear).toHaveBeenCalledWith(allEntries, '');
+    expect(defaultProps.onClear).toHaveBeenCalledWith('StringColumn', '');
+    expect(defaultProps.onClear).toHaveBeenCalledWith('IntegerColumn', '');
   });
 
   it('should handle equal min and max in number filter correctly', () => {
@@ -77,13 +81,13 @@ describe('component CurrentFilters', () => {
     const props = {
       ...defaultProps,
       filters: {
-        numberKey: { min: '15', max: '15' },
+        IntegerColumn: { min: '15', max: '15' },
       },
     };
 
     renderComponent(props as typeof defaultProps);
 
-    expect(screen.getByText('numberKey = 15')).toBeInTheDocument();
+    expect(screen.getByText(`IntegerColumn = ${props.filters.IntegerColumn.max}`)).toBeInTheDocument();
   });
 
   it('should handle missing max in number filter correctly', () => {
@@ -92,13 +96,13 @@ describe('component CurrentFilters', () => {
     const propsWithMinOnly = {
       ...defaultProps,
       filters: {
-        numberKey: { min: '10' },
+        IntegerColumn: { min: '10', max: undefined },
       },
     };
 
-    renderComponent(propsWithMinOnly as typeof defaultProps);
+    renderComponent(propsWithMinOnly as unknown as typeof defaultProps);
 
-    expect(screen.getByText('10 ≤ numberKey')).toBeInTheDocument();
+    expect(screen.getByText(`${propsWithMinOnly.filters.IntegerColumn.min} ≤ IntegerColumn`)).toBeInTheDocument();
   });
 
   it('should handle missing min in number filter correctly', () => {
@@ -107,12 +111,12 @@ describe('component CurrentFilters', () => {
     const propsWithMaxOnly = {
       ...defaultProps,
       filters: {
-        numberKey: { max: '20' },
+        IntegerColumn: { min: undefined, max: '20' },
       },
     };
 
-    renderComponent(propsWithMaxOnly as typeof defaultProps);
+    renderComponent(propsWithMaxOnly as unknown as typeof defaultProps);
 
-    expect(screen.getByText('numberKey ≤ 20')).toBeInTheDocument();
+    expect(screen.getByText(`IntegerColumn ≤ ${propsWithMaxOnly.filters.IntegerColumn.max}`)).toBeInTheDocument();
   });
 });

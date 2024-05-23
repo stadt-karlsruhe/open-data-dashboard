@@ -3,6 +3,7 @@
  */
 
 import { describe, expect, it } from '@jest/globals';
+import { embeddedResource, jsonResource } from '../data/resources';
 import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import Page from '@/app/[locale]/resource/[resourceId]/page';
@@ -28,10 +29,7 @@ jest.mock<typeof import('node:fs')>('node:fs', () => {
 });
 
 const mockConfiguration = {
-  resources: [
-    { id: '1', type: 'Embedded', name: 'Embedded Resource', source: 'https://example.com' },
-    { id: 'visualization-resource', type: 'JSON' },
-  ],
+  resources: [embeddedResource, jsonResource],
 };
 
 describe('resource page', () => {
@@ -53,10 +51,14 @@ describe('resource page', () => {
 
     (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
     (YAML.parse as jest.Mock).mockReturnValueOnce(mockConfiguration);
-    const { params } = { params: { resourceId: 'visualization-resource' } };
+    const { params } = { params: { resourceId: '2' } };
 
     const PageComponent = await Page({ params });
-    render(PageComponent);
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        {PageComponent}
+      </NextIntlClientProvider>,
+    );
 
     expect(screen.getByText('Mocked Visualization')).toBeInTheDocument();
   });

@@ -3,6 +3,7 @@
  */
 
 import { describe, expect, it } from '@jest/globals';
+import { filterAllEntries, filterAllEntriesInvalid } from '../data/dataFilters';
 import { fireEvent, render, screen } from '@testing-library/react';
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
@@ -20,11 +21,6 @@ jest.mock<typeof import('react-bootstrap/AccordionButton')>('react-bootstrap/Acc
   };
 });
 
-const filtersWithNonEmptyString = { 'all-entries': 'test' };
-const filtersWithEmptyString = { 'all-entries': '' };
-const filtersWithNonString = { 'all-entries': { min: '1', max: '10' } };
-const filtersUndefined = {};
-
 // eslint-disable-next-line max-lines-per-function
 describe('component ChartTableFilterHeader', () => {
   const mockOnChange = jest.fn();
@@ -32,7 +28,7 @@ describe('component ChartTableFilterHeader', () => {
 
   const renderComponent = (
     activeEventKey?: string,
-    filters: Record<string, string | { min?: string | undefined; max?: string | undefined }> = filtersUndefined,
+    filters: Record<string, string | { min?: string | undefined; max?: string | undefined }> = {},
   ) => {
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
@@ -46,7 +42,7 @@ describe('component ChartTableFilterHeader', () => {
   it('should render correctly with the button in collapsed state', () => {
     expect.hasAssertions();
 
-    renderComponent(undefined, filtersWithEmptyString);
+    renderComponent(undefined, filterAllEntries);
 
     expect(screen.getByLabelText(messages.ChartTableFilterHead.searchAll)).toBeInTheDocument();
     expect(
@@ -57,7 +53,7 @@ describe('component ChartTableFilterHeader', () => {
   it('should correctly handle input change', () => {
     expect.hasAssertions();
 
-    renderComponent(undefined, filtersWithNonString);
+    renderComponent(undefined, filterAllEntries);
     const input = screen.getByLabelText(messages.ChartTableFilterHead.searchAll);
     fireEvent.change(input, { target: { value: 'test' } });
 
@@ -67,7 +63,7 @@ describe('component ChartTableFilterHeader', () => {
   it('should clear the input value when onClear is triggered', () => {
     expect.hasAssertions();
 
-    renderComponent(undefined, filtersWithNonEmptyString);
+    renderComponent(undefined, filterAllEntries);
     const clearButton = screen.getByRole('button', { name: messages.ClearableInputGroup.clearTooltip });
     fireEvent.click(clearButton);
 
@@ -80,7 +76,7 @@ describe('component ChartTableFilterHeader', () => {
     const mockDecoratedOnClick = jest.fn();
     mockUseAccordionButton.mockReturnValue(mockDecoratedOnClick);
 
-    renderComponent(undefined, filtersWithEmptyString);
+    renderComponent(undefined, filterAllEntries);
 
     const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand });
     fireEvent.click(button);
@@ -91,7 +87,7 @@ describe('component ChartTableFilterHeader', () => {
   it('should show collapse icon and title when activeEventKey matches eventKey', () => {
     expect.hasAssertions();
 
-    renderComponent('1', filtersWithEmptyString);
+    renderComponent('1', filterAllEntriesInvalid);
 
     const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipCollapse });
     expect(button).toBeInTheDocument();
@@ -101,7 +97,7 @@ describe('component ChartTableFilterHeader', () => {
   it('should show expand icon and title when activeEventKey does not match eventKey', () => {
     expect.hasAssertions();
 
-    renderComponent('2', filtersWithEmptyString);
+    renderComponent('2', filterAllEntries);
 
     const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand });
     expect(button).toBeInTheDocument();

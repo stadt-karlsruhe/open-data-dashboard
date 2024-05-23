@@ -1,52 +1,13 @@
 import { describe, expect, it } from '@jest/globals';
 import { jsonRenameFields, jsonSkipAndRenameFields, jsonSkipFields } from '../data/dataTransformations';
-import { TransformableResource } from '@/types/configuration';
+import {
+    renameFieldsResource,
+    skipAndRenameFieldsResource,
+    skipFieldsResource,
+    skipFieldsResourceNoMatch,
+} from '../data/resources';
 import { jsonStandard } from '../data/dataFormats';
 import { transformData } from '@/transform';
-
-const skipFieldsResource: TransformableResource = {
-    id: '',
-    source: '',
-    name: '',
-    type: 'JSON',
-    skipFieldsRegEx: '^IntegerColumn|FloatColumn$',
-    visualizations: {
-        table: {},
-    },
-};
-
-const skipFieldsResourceNoMatch: TransformableResource = {
-    id: '',
-    source: '',
-    name: '',
-    type: 'JSON',
-    skipFieldsRegEx: '^notMatchingColumn$',
-    visualizations: {
-        table: {},
-    },
-};
-
-const renameFieldsResource: TransformableResource = {
-    id: '',
-    source: '',
-    name: '',
-    type: 'JSON',
-    renameFields: {
-        StringColumn: 'Name',
-        BooleanColumn: 'Boolean',
-    },
-    visualizations: {
-        table: {},
-    },
-};
-
-const skipAndRenameFieldsResource: TransformableResource = {
-    ...skipFieldsResource,
-    renameFields: {
-        StringColumn: 'Name',
-        BooleanColumn: 'Boolean',
-    },
-};
 
 describe('transform data', () => {
     it('should skip fields IntegerColumn and FloatColumn', () => {
