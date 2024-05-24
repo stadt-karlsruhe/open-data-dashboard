@@ -1,13 +1,14 @@
 'use client';
 
+import { Resource } from '@/types/configuration';
 import useWindowDimensions from '../helper/WindowDimensions';
 
-export default function EmbeddedViewer({ source }: { source: string }) {
+export default function EmbeddedViewer({ resource }: { resource: Resource }) {
   const { height } = useWindowDimensions();
 
   return (
     <div className="d-flex">
-      <iframe src={source} width="100%" height={height} />
+      <iframe title={resource.name} src={resource.source} width="100%" height={height} />
     </div>
   );
 }
