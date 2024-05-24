@@ -22,11 +22,11 @@ export function ClearableInputGroup({
   return (
     <div className="input-group mb-3">
       <div className="form-floating">
-        <input type={type} id={id} className="form-control rounded-0" value={value} onChange={onChange} />
+        <input type={type} id={id} className="form-control" value={value} onChange={onChange} />
         <label htmlFor={id}>{label}</label>
       </div>
       <button
-        className="btn border-top border-bottom border-end bg-white px-2 rounded-0"
+        className="btn btn-secondary border-start-0 px-2"
         name={t('clearTooltip')}
         title={t('clearTooltip')}
         onClick={onClear}
