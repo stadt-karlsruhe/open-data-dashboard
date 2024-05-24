@@ -37,6 +37,12 @@
     "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
     "returnBtn": "Zurück zur Startseite"
   },
+  "Error": {
+    "title": "Es ist ein unerwarteter Fehler aufgetreten.",
+    "errorCode": "Fehlercode: ",
+    "genericMessage": "Keine Ahnung was hier passiert ist.",
+    "returnBtn":"Zurück zur Startseite"
+  },
   "GeoMap": {
     "legendTitle": "Legende"
   },
@@ -46,4 +52,5 @@
   "AxisSelector": {
     "title": "X-Achse auswählen:"
   }
+
 }

@@ -37,6 +37,12 @@
     "subtitle": "The page you are looking for was not found.",
     "returnBtn": "Return Home"
   },
+  "Error": {
+    "title": "An unexpected error occured.",
+    "errorCode": "Code: ",
+    "genericMessage": "Dunno wtf happened here.",
+    "returnBtn":"Return Home"
+  },
   "GeoMap": {
     "legendTitle": "Legend"
   },
