@@ -27,7 +27,7 @@ export default function LocaleSwitcher() {
       onChange={onLocaleChange}
       id="locale-switcher"
       aria-label="locale-switcher"
-      className="form-select rounded-0"
+      className="form-select"
       style={{ maxWidth: '200px' }}
     >
       {[...locales.values()].map((lang) => (
