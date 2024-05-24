@@ -52,7 +52,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
           <YAxis type="number" domain={getDomain(chartInput.data, axesMap, xAxis)} ticks={getTicks()} />
-          <ReferenceLine y={0} stroke="var(--dark)" />
+          <ReferenceLine y={0} stroke="var(--bs-dark)" />
           <Tooltip />
           <Legend onClick={onLegendClick} />
           {getBars()}

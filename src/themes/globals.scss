@@ -1,19 +1,6 @@
-@import '~bootstrap/scss/_functions.scss';
-@import '~bootstrap/scss/_variables.scss';
 .card {
   border: 0;
 }
-:root {
-    --primary: var(--bs-primary);
-    --secondary: var(--bs-secondary);
-    --success: var(--bs-success);
-    --info: var(--bs-info);
-    --warning: var(--bs-warning);
-    --danger: var(--bs-danger);
-    --light: var(--bs-light);
-    --dark: var(--bs-dark);
-    --font-sans-serif: var(--bs-font-sans-serif);
-  }
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
