@@ -6,14 +6,14 @@ import { useTranslations } from 'next-intl';
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts
 // Themed to fit Bootstrap 5 look
 const fontStyle = {
-  fontFamily: 'var(--bs-font-sans-serif)',
+  fontFamily: 'var(--font-sans-serif)',
   lineHeight: 1.5,
 };
 const customStyles: TableStyles = {
   head: {
     style: {
       ...fontStyle,
-      color: '#212529',
+      color: 'var(--dark)',
       fontSize: '1rem',
       fontWeight: 500,
     },
@@ -23,13 +23,13 @@ const customStyles: TableStyles = {
       ...fontStyle,
       fontSize: '1rem',
       fontWeight: 400,
-      color: '#212529',
+      color: 'var(--dark)',
     },
   },
   pagination: {
     style: {
       ...fontStyle,
-      color: 'var(--bs-secondary)',
+      color: 'var(--secondary)',
       fontSize: '0.9rem',
       fontWeight: 400,
     },

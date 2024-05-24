@@ -1,0 +1,27 @@
+// https://getbootstrap.com/docs/5.3/customize/color-modes/#custom-color-modes
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+[data-bs-theme='karlsruhe'] {
+  $primary: #048500;
+  $custom-colors: (
+    'primary': $primary,
+  );
+  .nav-link {
+    color: $primary !important;
+  }
+  --primary: #048500;
+  --secondary: var(--bs-secondary);
+  --success: var(--bs-success);
+  --info: var(--bs-info);
+  --warning: var(--bs-warning);
+  --danger: var(--bs-danger);
+  --light: var(--bs-light);
+  --dark: var(--bs-dark);
+--font-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  $theme-colors: map-merge($theme-colors, $custom-colors);
+  $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  @import '~bootstrap/scss/bootstrap.scss';
+}

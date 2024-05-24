@@ -22,5 +22,8 @@
     "jest.runMode": {
         "type": "watch",
         "coverage": true
-      }
+    },
+    "cSpell.words": [
+        "karlsruhe"
+    ]
 }
