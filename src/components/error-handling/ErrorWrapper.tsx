@@ -1,4 +1,4 @@
-import GenericError from '../GenericError';
+import GenericError from './GenericError';
 
 export default function ErrorWrapper({
   message,
