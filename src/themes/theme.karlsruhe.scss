@@ -4,6 +4,7 @@
 [data-bs-theme='karlsruhe'] {
   $custom-colors: (
     'primary': #048500,
+    'secondary': #000,
   );
   --bs-primary: #048500;
   --bs-secondary: #000;
@@ -26,6 +27,9 @@
 
   $input-border-color: var(--bs-secondary);
 
+  $form-select-border-width: 1px;
+  $form-select-border-color: var(--bs-secondary);
+
   .nav-link {
     color: var(--bs-primary) !important;
   }
@@ -34,8 +38,13 @@
     background-color: var(--bs-white) !important;
   }
   .btn-secondary:hover {
-    border-color: var(--bs-gray);
-    color: var(--bs-gray);
+    border-color: var(--bs-gray) !important;
+    color: var(--bs-gray) !important;
+    background-color: var(--bs-light) !important;
+  }
+  .form-control:focus, .form-select:focus {
+    border-color: var(--bs-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
   }
 
   @import '~bootstrap/scss/bootstrap.scss';
