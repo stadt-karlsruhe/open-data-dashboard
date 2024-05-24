@@ -6,8 +6,8 @@
   "Visualization": {
     "dataEmpty": "Die gewählte Ressource beinhaltet keine Daten.",
     "dataEmptyDetail": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben",
-    "endpointError": "Der Endpunkt der Ressource hat keine/fehlerhafte Daten zurückgegeben.",
-    "endpointErrorDetail": "Endpunkt \"{source}\" für Ressource \"{name}\" mit Id {id} konnte nicht erreicht werden. Statuscode des Endpunkts: {code}"
+    "endpointError": "Die Daten der Ressource konnten nicht geladen werden.",
+    "endpointErrorDetail": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Statuscode des Endpunkts: {code}"
   },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",

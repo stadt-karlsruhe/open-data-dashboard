@@ -6,8 +6,8 @@
   "Visualization": {
     "dataEmpty": "The requested resource contains no data.",
     "dataEmptyDetail": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data.",
-    "endpointError": "The resource's endpoint could not be reached.",
-    "endpointErrorDetail": "Endpoint \"{source}\" for resource \"{name}\" with id {id} could not be reached. Statuscode of endpoint: {code}"
+    "endpointError": "The resource's data could not be loaded.",
+    "endpointErrorDetail": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not loaded. Statuscode of endpoint: {code}"
   },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",
