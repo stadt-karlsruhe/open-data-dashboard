@@ -1,6 +1,6 @@
 import { Configuration } from '@/types/configuration';
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
-import NotFound from '@/components/NotFound';
+import NotFound from '@/components/error-handling/NotFound';
 import Visualization from '@/components/visualization/layout/Visualization';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';

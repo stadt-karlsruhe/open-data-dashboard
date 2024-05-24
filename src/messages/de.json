@@ -3,6 +3,12 @@
     "title": "Open Data Dashboard",
     "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
   },
+  "Visualization": {
+    "dataEmpty": "Die gewählte Ressource beinhaltet keine Daten.",
+    "dataEmptyDetail": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben",
+    "endpointError": "Der Endpunkt der Ressource hat keine/fehlerhafte Daten zurückgegeben.",
+    "endpointErrorDetail": "Endpunkt \"{source}\" für Ressource \"{name}\" mit Id {id} konnte nicht erreicht werden. Statuscode des Endpunkts: {code}"
+  },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
     "collapseTooltipExpand": "Filter öffnen",
@@ -38,10 +44,11 @@
     "returnBtn": "Zurück zur Startseite"
   },
   "Error": {
-    "title": "Es ist ein unerwarteter Fehler aufgetreten.",
-    "errorCode": "Fehlercode: ",
-    "genericMessage": "Keine Ahnung was hier passiert ist.",
-    "returnBtn":"Zurück zur Startseite"
+    "title": "Fehler",
+    "errorCode": "Code ",
+    "genericMessage": "Es ist ein unerwarteter Fehler aufgetreten.",
+    "returnBtn": "Zurück zur Startseite",
+    "detailBtn": "Detaillierte Fehlermeldung"
   },
   "GeoMap": {
     "legendTitle": "Legende"
