@@ -1,26 +1,32 @@
-export const jsonFilteredString = [
-    {
-        StringColumn: 'Seal',
-        IntegerColumn: 24,
-        FloatColumn: 9.1,
-        BooleanColumn: true,
-    },
-];
+export const filterAllEntries = {
+    'all-entries': 'sea',
+};
 
-export const jsonFilteredInteger = [
-    {
-        StringColumn: 'Seal',
-        IntegerColumn: 24,
-        FloatColumn: 9.1,
-        BooleanColumn: true,
-    },
-];
+export const filterAllEntriesInvalid = {
+    'all-entries': { min: '2' },
+};
 
-export const jsonFilteredFloat = [
-    {
-        StringColumn: 'Seal',
-        IntegerColumn: 24,
-        FloatColumn: 9.1,
-        BooleanColumn: true,
+export const filterString = {
+    StringColumn: 'Seal',
+};
+
+export const filterInteger = {
+    IntegerColumn: {
+        max: '25',
     },
-];
+};
+
+export const filterFloat = {
+    FloatColumn: {
+        min: '6',
+    },
+};
+
+export const filterMixed = {
+    StringColumn: 'Seal',
+    IntegerColumn: {
+        min: '1',
+        max: '25',
+    },
+    'all-entries': 'sea',
+};

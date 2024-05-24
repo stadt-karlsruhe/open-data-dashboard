@@ -13,6 +13,19 @@ export const jsonStandard = [
     },
 ];
 
+export const jsonStandardNoBoolean = [
+    {
+        StringColumn: 'Seal',
+        IntegerColumn: 24,
+        FloatColumn: 9.1,
+    },
+    {
+        StringColumn: 'Bear',
+        IntegerColumn: 2023,
+        FloatColumn: 5.1,
+    },
+];
+
 export const jsonTabular = {
     fields: [
         {

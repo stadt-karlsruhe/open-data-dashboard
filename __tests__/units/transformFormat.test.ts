@@ -1,4 +1,4 @@
-import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from './data/dataFormats';
+import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from '../data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
 import { TransformableResource } from '@/types/configuration';
 import { transformData } from '@/transform';
