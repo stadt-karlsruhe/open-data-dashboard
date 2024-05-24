@@ -1,7 +1,11 @@
 'use client';
 
-import ErrorWrapper from '@/components/error-handling/ErrorWrapper';
+import GenericError from '@/components/error-handling/GenericError';
+import { useEffect } from 'react';
 
 export default function Error({ error }: { error: Error & { digest?: string } }) {
-  return <ErrorWrapper code="500" detail={error.message} originalError={error} />;
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+  return <GenericError code="500" detail={error.message} />;
 }

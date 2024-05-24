@@ -7,7 +7,7 @@
     "dataEmpty": "The requested resource contains no data.",
     "dataEmptyDetail": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data.",
     "endpointError": "The resource's data could not be loaded.",
-    "endpointErrorDetail": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not loaded. Statuscode of endpoint: {code}"
+    "endpointErrorDetail": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Statuscode of endpoint: {code}"
   },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",

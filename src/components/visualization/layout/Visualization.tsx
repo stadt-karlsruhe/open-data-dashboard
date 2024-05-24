@@ -1,5 +1,5 @@
 import ChartTableWrapper from './ChartTableWrapper';
-import ErrorWrapper from '@/components/error-handling/ErrorWrapper';
+import GenericError from '@/components/error-handling/GenericError';
 import { Resource } from '@/types/configuration';
 import dynamic from 'next/dynamic';
 import { getTranslations } from 'next-intl/server';
@@ -7,23 +7,23 @@ import { transformData } from '@/transform';
 
 export default async function Visualization({ resource }: { resource: Resource }) {
   const t = await getTranslations('Visualization');
-  const data = await fetchData(resource);
+  let data;
   let payload;
   try {
+    data = await fetchData(resource);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     payload = await data.payload;
   } catch (err) {
     console.error(err);
     return (
-      <ErrorWrapper
+      <GenericError
         message={t('endpointError')}
         detail={t('endpointErrorDetail', {
           source: resource.source,
           name: resource.name,
           id: resource.id,
-          code: data.statusCode,
+          code: data?.statusCode,
         })}
-        originalError={err as Error}
       />
     );
   }
@@ -32,7 +32,7 @@ export default async function Visualization({ resource }: { resource: Resource }
 
     if (transformedData.length === 0) {
       return (
-        <ErrorWrapper
+        <GenericError
           message={t('dataEmpty')}
           detail={t('dataEmptyDetail', {
             source: resource.source,
