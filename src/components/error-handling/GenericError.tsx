@@ -9,7 +9,15 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function GenericError({ message, code, detail }: { message?: string; code?: string; detail: string }) {
+export default function GenericError({
+  message,
+  code,
+  detail,
+}: {
+  message?: string;
+  code?: string;
+  detail: string | undefined;
+}) {
   const t = useTranslations('Error');
   const [showDetail, setShowDetail] = useState(false);
   const errorMessage = message ?? t('genericMessage');
