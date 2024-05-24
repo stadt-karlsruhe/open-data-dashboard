@@ -9,19 +9,21 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function GenericError({
+export default function ErrorComponent({
+  title,
   message,
   code,
   detail,
 }: {
-  message?: string;
+  title?: string;
+  message: string;
   code?: string;
-  detail: string | undefined;
+  detail?: string;
 }) {
   const t = useTranslations('Error');
   const [showDetail, setShowDetail] = useState(false);
-  const errorMessage = message ?? t('genericMessage');
-  const errorCode = code === undefined ? undefined : `: ${t('errorCode')}${code}`;
+  const errorTitle = title ?? t('genericTitle');
+  const statusCode = code === undefined ? undefined : `${t('code')}${code}`;
 
   function clickDetailButton() {
     setShowDetail(!showDetail);
@@ -32,17 +34,27 @@ export default function GenericError({
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="text-center">
-              <h3 className="h2 mb-2">{t('title') + (errorCode ?? '')}</h3>
-              <p className="mb-2">{errorMessage}</p>
+            <div>
+              <p className="h5 mb-2">{errorTitle}</p>
+              <br />
+              <p className="mb-2">{message}</p>
               <Link className="btn bsb-btn-5xl btn-dark badge px-5 fs-6 m-0 mb-2" href="/">
                 {t('returnBtn')}
               </Link>
               <br />
-              <button className="btn bsb-btn-5xl btn-secondary badge px-5 fs-6 m-0" onClick={clickDetailButton}>
-                {t('detailBtn')}
-              </button>
-              {showDetail && <p>{detail}</p>}
+              {detail && (
+                <div>
+                  <button className="btn bsb-btn-5xl btn-secondary badge px-5 fs-6 m-0" onClick={clickDetailButton}>
+                    {showDetail ? t('lessDetail') : t('moreDetail')}
+                  </button>
+                  {showDetail && (
+                    <p>
+                      {statusCode} <br />
+                      {detail}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

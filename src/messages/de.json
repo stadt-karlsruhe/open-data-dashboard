@@ -4,10 +4,10 @@
     "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
   },
   "Visualization": {
-    "dataEmpty": "Die gewählte Ressource beinhaltet keine Daten.",
-    "dataEmptyDetail": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben",
-    "endpointError": "Die Daten der Ressource konnten nicht geladen werden.",
-    "endpointErrorDetail": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Statuscode des Endpunkts: {code}"
+    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+    "dataEmptyMessage": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben. Melden sie dieses Problem dem Administrator dieser Seite.",
+    "endpointErrorTitle": "Daten konnten nicht geladen werden!",
+    "endpointErrorMessage": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Falls dieses Problem weiterhin bestellt, melden sie es dem Administrator der Seite."
   },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
@@ -44,11 +44,11 @@
     "returnBtn": "Zurück zur Startseite"
   },
   "Error": {
-    "title": "Fehler",
-    "errorCode": "Code ",
-    "genericMessage": "Es ist ein unerwarteter Fehler aufgetreten.",
+    "genericTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
+    "code": "Code: ",
     "returnBtn": "Zurück zur Startseite",
-    "detailBtn": "Detaillierte Fehlermeldung"
+    "moreDetail": "Mehr Informationen",
+    "lessDetail": "Weniger Informationen"
   },
   "GeoMap": {
     "legendTitle": "Legende"

@@ -4,10 +4,10 @@
     "description": "Visualizations of open data related to the city of Karlsruhe"
   },
   "Visualization": {
-    "dataEmpty": "The requested resource contains no data.",
-    "dataEmptyDetail": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data.",
-    "endpointError": "The resource's data could not be loaded.",
-    "endpointErrorDetail": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Statuscode of endpoint: {code}"
+    "dataEmptyTitle": "Ressource returned no data!",
+    "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data. Please notify this site's administrator.",
+    "endpointErrorTitle": "Data could not be loaded!",
+    "endpointErrorMessage": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Should this problem persist, please notify this site's administrator."
   },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",
@@ -44,11 +44,11 @@
     "returnBtn": "Return Home"
   },
   "Error": {
-    "title": "Error",
-    "errorCode": "Code ",
-    "genericMessage": "An unexpected error ocurred.",
+    "genericTitle": "An unexpected error ocurred!",
+    "code": "Code: ",
     "returnBtn":"Return Home",
-    "detailBtn": "Detailed Error Message"
+    "moreDetail": "More Information",
+    "lessDetail": "Less Information"
   },
   "GeoMap": {
     "legendTitle": "Legend"
