@@ -33,7 +33,6 @@ export function ClearableInputGroup({
       >
         <i className="bi bi-x-lg"></i>
       </button>
-
       {children}
     </div>
   );
