@@ -12,7 +12,7 @@ export default async function Page({ params: { resourceId } }: { params: { resou
   }
 
   if (resource.type === 'Embedded') {
-    return <EmbeddedViewer source={resource.source} />;
+    return <EmbeddedViewer resource={resource} />;
   }
   return <Visualization resource={resource} />;
 }

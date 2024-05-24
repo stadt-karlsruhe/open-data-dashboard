@@ -23,6 +23,13 @@ extends:
     - plugin:prettier/recommended
     - prettier
 rules:
+    jest/prefer-importing-jest-globals:
+    - error
+    - types:
+        - describe
+        - test
+        - expect
+        - unknown
     "@typescript-eslint/no-misused-promises": off
     "@typescript-eslint/no-unused-vars": off
     import/consistent-type-specifier-style:

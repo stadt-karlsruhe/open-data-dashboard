@@ -28,7 +28,6 @@ export function ClearableInputGroup({
       <button className="btn btn-secondary border-start-0 px-2" title={t('clearTooltip')} onClick={onClear}>
         <i className="bi bi-x-lg"></i>
       </button>
-
       {children}
     </div>
   );
