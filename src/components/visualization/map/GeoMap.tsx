@@ -41,7 +41,7 @@ export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCo
 // Might mean that we modify the config file.
 // TODO2: We definitely need a better way to get our colors, randomly generated ones aren't always appropriate.
 function pointToLayer(feature: GeoJSON.Feature, latlng: LatLngExpression) {
-  let colorCode = '#c30b82';
+  let colorCode = 'var(--primary)';
   if (feature.properties?.GRUPPENNAME_DE !== undefined && typeof feature.properties.GRUPPENNAME_DE === 'string') {
     const mappedColor = collectedLabels.get(feature.properties.GRUPPENNAME_DE);
     if (mappedColor === undefined) {
