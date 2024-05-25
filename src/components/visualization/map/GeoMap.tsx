@@ -7,7 +7,6 @@ import Legend from './Legend';
 import React from 'react';
 import ResetView from './ResetView';
 import { getColor } from '@/colors';
-import { useTranslations } from 'next-intl';
 
 const collectedLabels = new Map<string, string>();
 
@@ -17,7 +16,6 @@ const standardPos = {
 };
 
 export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
-  const t = useTranslations('GeoMap');
   return (
     <MapContainer
       center={standardPos.latLng}
@@ -32,7 +30,7 @@ export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCo
         geoJsonData && <GeoJSON data={geoJsonData} pointToLayer={pointToLayer} onEachFeature={onEach} />
       }
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-      <Legend title={t('legendTitle')} labels={collectedLabels} />
+      <Legend labels={collectedLabels} />
     </MapContainer>
   );
 }
