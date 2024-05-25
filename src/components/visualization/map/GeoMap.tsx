@@ -48,12 +48,9 @@ export default function GeoMap({
   );
 }
 
-// TODO: We need to somehow set the information which field of the properties holds the label for the legend.
-// Might mean that we modify the config file.
-// TODO2: We definitely need a better way to get our colors, randomly generated ones aren't always appropriate.
 function pointToLayer(feature: GeoJSON.Feature<GeoJSON.Point, unknown>, latlng: LatLngExpression, labelKey: string) {
   const geoJsonFeature = feature as GeoJSON.Feature;
-  let colorCode = '#c30b82';
+  let colorCode = 'var(--bs-primary)';
   const label = getLabelForKey(geoJsonFeature.properties, labelKey);
   if (label !== '') {
     const mappedColor = collectedLabels.get(label);

@@ -1,4 +1,7 @@
 export interface Configuration {
+    appearance?: {
+        theme?: 'bootstrap-light' | 'karlsruhe';
+    };
     resources: Resource[];
 }
 

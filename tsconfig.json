@@ -1,7 +1,11 @@
 {
-    "extends": "@tsconfig/node21/tsconfig.json",
-    "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+  "extends": "@tsconfig/node21/tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "noEmit": true,
     "module": "esnext",
@@ -16,10 +20,24 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "types": ["@testing-library/jest-dom"]
+    "types": [
+      "@testing-library/jest-dom"
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "*.mjs", "*.d.ts", "__tests__/*"],
-  "exclude": ["node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "*.mjs",
+    "*.d.ts",
+    "__tests__/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
 }

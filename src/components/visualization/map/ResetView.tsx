@@ -9,7 +9,7 @@ export default function ResetView({ latLng, zoom }: { latLng: LatLngExpression; 
   return (
     <button
       style={{ zIndex: 400, fontSize: '20px' }}
-      className="btn btn-secondary rounded-1 m-3 position-relative"
+      className="btn btn-secondary m-3 position-absolute"
       onClick={() => {
         map.setView(latLng, zoom);
       }}

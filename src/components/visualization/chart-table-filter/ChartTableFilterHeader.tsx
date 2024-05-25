@@ -25,7 +25,7 @@ export function ChartTableFilterHeader({
   return (
     <ClearableInputGroup
       id={`${resourceId}-search`}
-      type="search"
+      type="text"
       value={typeof filters[allEntries] === 'string' && filters[allEntries] ? filters[allEntries] : ''}
       label={t('searchAll')}
       onChange={(e) => {
@@ -36,7 +36,7 @@ export function ChartTableFilterHeader({
       }}
     >
       <button
-        className="btn btn-primary rounded-0"
+        className="btn btn-primary"
         type="button"
         name={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}

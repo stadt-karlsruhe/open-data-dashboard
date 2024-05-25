@@ -34,7 +34,7 @@ export function ChartTableFilterBody({
                 {Number.isNaN(Number.parseFloat(String(value))) ? (
                   <ClearableInputGroup
                     id={`${resourceId}-${key}-text-input`}
-                    type="search"
+                    type="text"
                     value={filter && typeof filter === 'string' ? filter : ''}
                     label={t('search')}
                     onChange={(e) => {
@@ -81,7 +81,7 @@ export function ChartTableFilterBody({
           );
         })}
         <div className="d-flex justify-content-end">
-          <button title={t('clearAllTooltip')} className="btn btn-secondary rounded-0 px-5" onClick={onClearAll}>
+          <button title={t('clearAllTooltip')} className="btn btn-secondary px-5" onClick={onClearAll}>
             {t('clearAll')}
           </button>
         </div>
