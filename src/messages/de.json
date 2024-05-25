@@ -37,8 +37,8 @@
     "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
     "returnBtn": "Zurück zur Startseite"
   },
-  "GeoMap": {
-    "legendTitle": "Legende"
+  "Legend": {
+    "title": "Legende"
   },
   "ResetView": {
     "resetTooltip": "Ansicht zurücksetzen"

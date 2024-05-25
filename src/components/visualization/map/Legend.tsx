@@ -1,38 +1,24 @@
-import L, { Map as LeafletMap } from 'leaflet';
-import React from 'react';
-import styles from './mapstyles.module.css';
-import { useMap } from 'react-leaflet';
+import { useTranslations } from 'next-intl';
 
-class LegendWrapper extends React.Component<{
-  legendInput: { title: string; labels: Map<string, string> };
-  map: LeafletMap;
-}> {
-  createLegend() {
-    const Legend = L.Control.extend({
-      onAdd: () => {
-        const div = L.DomUtil.create('div', `leaflet-bar ${styles.legend}`);
-        div.innerHTML += `<h6>${this.props.legendInput.title}</h6>`;
-        this.props.legendInput.labels.forEach((color, label) => {
-          div.innerHTML += `<i style="background: ${color}"></i><span>${label}</span><br>`;
-        });
-        return div;
-      },
-    });
-    return new Legend({ position: 'bottomleft' });
-  }
-
-  componentDidMount() {
-    const { map } = this.props;
-    const legend = this.createLegend();
-    legend.addTo(map);
-  }
-
-  render() {
-    return null;
-  }
-}
-
-export default function LegendComponent(legendInput: { title: string; labels: Map<string, string> }) {
-  const map = useMap();
-  return <LegendWrapper legendInput={legendInput} map={map} />;
+export default function Legend({ labels }: { labels: Map<string, string> }) {
+  const t = useTranslations('Legend');
+  return (
+    <div style={{ zIndex: 400, width: '200px' }} className="bg-white card position-absolute bottom-0 m-3 pe-none">
+      <h6 className="card-header text-center">{t('title')}</h6>
+      <div className="card-body">
+        {[...labels.entries()].map(([label, color]) => (
+          <div className="row" key={label}>
+            <div className="col-1">
+              <i className="bi bi-circle-fill" style={{ color, fontSize: '20px' }}></i>
+            </div>
+            <div className="col-10">
+              <div className="ms-2" style={{ fontSize: '20px' }}>
+                {label}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
