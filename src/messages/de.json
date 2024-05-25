@@ -3,6 +3,12 @@
     "title": "Open Data Dashboard",
     "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
   },
+  "Visualization": {
+    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+    "dataEmptyMessage": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben. Melden sie dieses Problem dem Administrator dieser Seite.",
+    "endpointErrorTitle": "Daten konnten nicht geladen werden!",
+    "endpointErrorMessage": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Falls dieses Problem weiterhin bestellt, melden sie es dem Administrator der Seite."
+  },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
     "collapseTooltipExpand": "Filter öffnen",
@@ -32,10 +38,12 @@
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
   },
-  "NotFound": {
-    "title": "Hoppla! Du hast dich verirrt.",
-    "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
-    "returnBtn": "Zurück zur Startseite"
+  "Error": {
+    "notFoundTitle": "Hoppla! Du hast dich verirrt.",
+    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
+    "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
+    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden sie es dem Administrator der Seite.",
+    "returnBtn":"Zurück zur Startseite"
   },
   "GeoMap": {
     "legendTitle": "Legende"
@@ -46,4 +54,5 @@
   "AxisSelector": {
     "title": "X-Achse auswählen:"
   }
+
 }

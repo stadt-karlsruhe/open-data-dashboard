@@ -63,7 +63,7 @@ describe('resource page', () => {
     expect(screen.getByText('Mocked Visualization')).toBeInTheDocument();
   });
 
-  it('should render the NotFound component if the resource is not found', async () => {
+  it('should render the Error component if the resource is not found', async () => {
     expect.hasAssertions();
 
     (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
@@ -77,6 +77,7 @@ describe('resource page', () => {
       </NextIntlClientProvider>,
     );
 
-    expect(screen.getByText(messages.NotFound.title)).toBeInTheDocument();
+    expect(screen.getByText(messages.Error.notFoundTitle)).toBeInTheDocument();
+    expect(screen.getByText(messages.Error.notFoundSubtitle)).toBeInTheDocument();
   });
 });

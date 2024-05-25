@@ -69,3 +69,16 @@ resources:
                   yAxis: Stimmen
                 - xAxis: Parteiname
                   yAxis: "%"
+    - id: "7"
+      source: https://mocki.io/v1/iprobablydontexist
+      # source: https://transparenz.karlsruhe.de/datastore/dump/iprobablydontexist?format=json
+      type: JSON
+      name: Not Found
+      visualizations:
+          table: {}
+    - id: "8"
+      source: https://mocki.io/v1/5e610643-2531-4aba-9191-aa1c2524e96e
+      type: JSON
+      name: Empty
+      visualizations:
+          table: {}
