@@ -21,6 +21,7 @@ export interface GeoJSONResource extends BaseResource {
     visualizations: {
         map: {
             labelKey: string;
+            tooltipFields: Record<string, string>;
         };
     };
 }

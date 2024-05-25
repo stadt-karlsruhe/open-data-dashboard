@@ -38,7 +38,9 @@ export default function GeoMap({
           <GeoJSON
             data={geoJsonData}
             pointToLayer={(feature, latLng) => pointToLayer(feature, latLng, resource.visualizations.map.labelKey)}
-            onEachFeature={onEach}
+            onEachFeature={(feature, layer) => {
+              onEach(feature, layer, resource.visualizations.map.tooltipFields);
+            }}
           />
         )
       }
@@ -81,12 +83,18 @@ function getIcon(color: string) {
   });
 }
 
-const onEach = (feature: GeoJSON.Feature, layer: Layer) => {
+const onEach = (
+  feature: GeoJSON.Feature<GeoJSON.Geometry, unknown>,
+  layer: Layer,
+  tooltipFields: Record<string, string>,
+) => {
   const featureProperties = feature.properties as Record<string, string>;
   let content = '';
-  Object.entries(featureProperties).forEach(([key, value]) => {
-    content += `<b>${key}:</b> ${value} <br/>`;
-  });
+  Object.entries(featureProperties)
+    .filter(([key]) => tooltipFields[key])
+    .forEach(([key, value]) => {
+      content += `<b>${tooltipFields[key]}:</b> ${value} <br/>`;
+    });
   if (content !== '') {
     layer.on('mouseover', (e) => layer.bindTooltip(content).openTooltip());
   }
