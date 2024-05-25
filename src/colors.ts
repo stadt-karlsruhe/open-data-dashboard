@@ -1,14 +1,16 @@
-// TODO: We need better and more colors. Also might become obsolete if we decide to make colors configurable
-const colors: string[] = ['var(--bs-primary)', 'var(--bs-yellow)', 'var(--bs-gray)', '#e39820'];
-
-export function generateRandomColor() {
-    // eslint-disable-next-line unicorn/numeric-separators-style
-    return `#${(0x1000000 + Math.random() * 0xffffff).toString(16).slice(1, 7)}`;
-}
+// https://getbootstrap.com/docs/5.2/customize/css-variables/
+// TODO: Might become obsolete if we decide to make colors configurable
+// TODO: Add 3-4 more colors
+const colors: string[] = [
+    'var(--bs-primary)',
+    'var(--bs-yellow)',
+    'var(--bs-gray)',
+    'var(--bs-purple)',
+    'var(--bs-teal)',
+    'var(--bs-cyan)',
+    'var(--bs-orange)',
+];
 
 export function getColor(index: number) {
-    if (index >= colors.length) {
-        return generateRandomColor();
-    }
-    return colors[index];
+    return colors[index % colors.length];
 }

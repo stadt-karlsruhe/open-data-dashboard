@@ -2,10 +2,6 @@
 @import '~bootstrap/scss/_functions.scss';
 @import '~bootstrap/scss/_variables.scss';
 [data-bs-theme='karlsruhe'] {
-  $custom-colors: (
-    'primary': #048500,
-    'secondary': #000,
-  );
   --bs-primary: #048500;
   --bs-secondary: #000;
   --bs-yellow: #fdcb00;
@@ -15,15 +11,17 @@
   --bs-font-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
+  $custom-colors: (
+    'primary': #048500,
+    'secondary': #000,
+  );
   $theme-colors: map-merge($theme-colors, $custom-colors);
   $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  $btn-border-radius: 4px;
   $btn-font-weight: 600;
   $btn-padding-y: 12px;
   $btn-padding-x: 18px;
-  $btn-border-width: 1px;
 
   $input-border-color: var(--bs-secondary);
 
@@ -42,9 +40,10 @@
     color: var(--bs-gray) !important;
     background-color: var(--bs-light) !important;
   }
-  .form-control:focus, .form-select:focus {
+  .form-control:focus,
+  .form-select:focus {
     border-color: var(--bs-primary) !important;
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(4, 133, 0, 0.5) !important;
   }
 
   @import '~bootstrap/scss/bootstrap.scss';
