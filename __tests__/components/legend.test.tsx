@@ -7,9 +7,9 @@ import { render, screen } from '@testing-library/react';
 import Legend from '@/components/visualization/map/Legend';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
-import { standardLabels } from '../data/dataLabels';
+import { standardLabels } from '../data/mapComponentData';
 
-describe('component ChartTableFilterBody', () => {
+describe('component Legend', () => {
   const renderComponent = () => {
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
@@ -18,12 +18,22 @@ describe('component ChartTableFilterBody', () => {
     );
   };
 
-  it('should render correctly', () => {
+  it('should render labels correctly', () => {
     expect.hasAssertions();
 
     renderComponent();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(screen.getByText('Kinos')).toBeInTheDocument();
+    expect(screen.getByText('Museen')).toBeInTheDocument();
+  });
+  it('should render colors correctly', () => {
+    expect.hasAssertions();
+
+    renderComponent();
+
+    const divElements = screen.getAllByRole('generic', { hidden: true });
+    expect(divElements.some((div) => div.classList.contains('bi-circle-fill'))).toBe(true);
+    expect(divElements.some((div) => div.style.color === 'rgb(255, 255, 255)')).toBe(true);
+    expect(divElements.some((div) => div.style.color === 'rgb(0, 0, 0)')).toBe(true);
   });
 });
