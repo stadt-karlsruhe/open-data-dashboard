@@ -7,7 +7,7 @@
     "dataEmptyTitle": "Ressource returned no data!",
     "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data. Please notify this site's administrator.",
     "endpointErrorTitle": "Data could not be loaded!",
-    "endpointErrorMessage": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Should this problem persist, please notify this site's administrator."
+    "endpointErrorMessage": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Should this problem persist, please notify this site's administrator.\n\nError: \"{error}\""
   },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",
@@ -43,7 +43,7 @@
     "unexpectedTitle": "An unexpected error ocurred!",
     "notFoundSubtitle": "The page you are looking for was not found.",
     "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
-    "returnBtn":"Return Home"
+    "returnBtn": "Return Home"
   },
   "Legend": {
     "title": "Legend"
