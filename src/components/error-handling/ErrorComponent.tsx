@@ -2,59 +2,46 @@
 
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function ErrorComponent({
-  title,
-  message,
-  code,
-  detail,
-}: {
-  title?: string;
-  message: string;
-  code?: string;
-  detail?: string;
-}) {
+export default function ErrorComponent({ title, code }: { title?: string; code?: number }) {
   const t = useTranslations('Error');
-  const [showDetail, setShowDetail] = useState(false);
-  const errorTitle = title ?? t('genericTitle');
-  const statusCode = code === undefined ? undefined : `${t('code')}${code}`;
-
-  function clickDetailButton() {
-    setShowDetail(!showDetail);
+  let errorTitle;
+  let subTitle;
+  let codeElement;
+  if (code === 404) {
+    errorTitle = t('notFoundTitle');
+    subTitle = t('notFoundSubtitle');
+    codeElement = (
+      <h2 className="d-flex justify-content-center align-items-center gap-2 mb-4">
+        <span className="display-1 fw-bold">4</span>
+        <i className="bi bi-exclamation-circle-fill text-danger display-4"></i>
+        <span className="display-1 fw-bold bsb-flip-h">4</span>
+      </h2>
+    );
+  } else {
+    errorTitle = title ?? t('unexpectedTitle');
+    subTitle = t('genericSubtitle');
+    codeElement = code ? <span className="display-1 fw-bold">{code}</span> : <div />;
   }
 
   return (
     <div className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
       <div className="container">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 text-center">
             <div>
-              <p className="h5 mb-2">{errorTitle}</p>
-              <br />
-              <p className="mb-2">{message}</p>
+              {codeElement}
+              <h5 className="mb-2">{errorTitle}</h5>
+              <p className="mb-2">{subTitle}</p>
               <Link className="btn bsb-btn-5xl btn-dark badge px-5 fs-6 m-0 mb-2" href="/">
                 {t('returnBtn')}
               </Link>
               <br />
-              {detail && (
-                <div>
-                  <button className="btn bsb-btn-5xl btn-secondary badge px-5 fs-6 m-0" onClick={clickDetailButton}>
-                    {showDetail ? t('lessDetail') : t('moreDetail')}
-                  </button>
-                  {showDetail && (
-                    <p>
-                      {statusCode} <br />
-                      {detail}
-                    </p>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </div>

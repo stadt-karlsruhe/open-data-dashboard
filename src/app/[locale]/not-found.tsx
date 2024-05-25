@@ -1,5 +1,5 @@
-import NotFound from '@/components/error-handling/NotFound';
+import ErrorComponent from '@/components/error-handling/ErrorComponent';
 
 export default function NotFoundLocale() {
-  return <NotFound />;
+  return <ErrorComponent code={404} />;
 }

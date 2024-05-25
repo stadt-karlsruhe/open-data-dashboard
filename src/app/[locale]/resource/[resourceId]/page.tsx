@@ -1,6 +1,6 @@
 import { Configuration } from '@/types/configuration';
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
-import NotFound from '@/components/error-handling/NotFound';
+import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Visualization from '@/components/visualization/layout/Visualization';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
@@ -12,7 +12,7 @@ export default async function Page({ params: { resourceId } }: { params: { resou
   const resource = config.resources.find((item) => item.id === resourceId);
 
   if (resource === undefined) {
-    return <NotFound />;
+    return <ErrorComponent code={404} />;
   }
 
   if (resource.type === 'Embedded') {

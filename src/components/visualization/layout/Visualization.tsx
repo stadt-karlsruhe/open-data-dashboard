@@ -12,33 +12,28 @@ export default async function Visualization({ resource }: { resource: Resource }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     data = await fetchData(resource);
   } catch (err) {
-    console.error(err);
-    return (
-      <ErrorComponent
-        title={t('endpointErrorTitle')}
-        message={t('endpointErrorMessage', {
-          source: resource.source,
-          name: resource.name,
-          id: resource.id,
-        })}
-        detail={(err as Error).stack}
-      />
+    console.error(
+      t('endpointErrorMessage', {
+        source: resource.source,
+        name: resource.name,
+        id: resource.id,
+      }),
     );
+    console.error(err);
+    return <ErrorComponent title={t('endpointErrorTitle')} />;
   }
   if (resource.type === 'JSON' || resource.type === 'CSV') {
     const transformedData = transformData(resource, data);
 
     if (transformedData.length === 0) {
-      return (
-        <ErrorComponent
-          title={t('dataEmptyTitle')}
-          message={t('dataEmptyMessage', {
-            source: resource.source,
-            name: resource.name,
-            id: resource.id,
-          })}
-        />
+      console.error(
+        t('dataEmptyMessage', {
+          source: resource.source,
+          name: resource.name,
+          id: resource.id,
+        }),
       );
+      return <ErrorComponent title={t('dataEmptyTitle')} />;
     }
 
     return <ChartTableWrapper resource={resource} transformedData={transformedData} />;

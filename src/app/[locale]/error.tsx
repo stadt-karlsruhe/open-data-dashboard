@@ -7,5 +7,5 @@ export default function Error({ error }: { error: Error & { digest?: string } })
   useEffect(() => {
     console.error(error);
   }, [error]);
-  return <ErrorComponent code="500" message={error.message} detail={error.stack} />;
+  return <ErrorComponent code={500} />;
 }

@@ -38,17 +38,12 @@
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
   },
-  "NotFound": {
-    "title": "Hoppla! Du hast dich verirrt.",
-    "subtitle": "Die gesuchte Seite wurde nicht gefunden.",
-    "returnBtn": "Zurück zur Startseite"
-  },
   "Error": {
-    "genericTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
-    "code": "Code: ",
-    "returnBtn": "Zurück zur Startseite",
-    "moreDetail": "Mehr Informationen",
-    "lessDetail": "Weniger Informationen"
+    "notFoundTitle": "Hoppla! Du hast dich verirrt.",
+    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
+    "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
+    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden sie es dem Administrator der Seite.",
+    "returnBtn":"Zurück zur Startseite"
   },
   "GeoMap": {
     "legendTitle": "Legende"

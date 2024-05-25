@@ -38,17 +38,12 @@
   "LocaleSwitcher": {
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
   },
-  "NotFound": {
-    "title": "Oops! You're lost.",
-    "subtitle": "The page you are looking for was not found.",
-    "returnBtn": "Return Home"
-  },
   "Error": {
-    "genericTitle": "An unexpected error ocurred!",
-    "code": "Code: ",
-    "returnBtn":"Return Home",
-    "moreDetail": "More Information",
-    "lessDetail": "Less Information"
+    "notFoundTitle": "Oops! You're lost.",
+    "unexpectedTitle": "An unexpected error ocurred!",
+    "notFoundSubtitle": "The page you are looking for was not found.",
+    "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
+    "returnBtn":"Return Home"
   },
   "GeoMap": {
     "legendTitle": "Legend"
