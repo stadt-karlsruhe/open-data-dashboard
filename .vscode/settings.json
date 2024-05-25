@@ -22,5 +22,8 @@
     "jest.runMode": {
         "type": "on-save",
         "coverage": true
-    }
+    },
+    "cSpell.words": [
+      "karlsruhe"
+    ]
 }

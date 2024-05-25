@@ -7,23 +7,23 @@ import { useTranslations } from 'next-intl';
 // Themed to fit Bootstrap 5 look
 const fontStyle = {
   fontFamily: 'var(--bs-font-sans-serif)',
-  lineHeight: 1.5,
+  lineHeight: 'var(--bs-body-line-height)',
 };
 const customStyles: TableStyles = {
   head: {
     style: {
       ...fontStyle,
-      color: '#212529',
-      fontSize: '1rem',
-      fontWeight: 500,
+      color: 'var(--bs-dark)',
+      fontSize: 'var(--bs-body-font-size)',
+      fontWeight: 600,
     },
   },
   rows: {
     style: {
       ...fontStyle,
-      fontSize: '1rem',
-      fontWeight: 400,
-      color: '#212529',
+      fontSize: 'var(--bs-body-font-size)',
+      fontWeight: 'var(--bs-body-font-weight)',
+      color: 'var(--bs-dark)',
     },
   },
   pagination: {
@@ -31,7 +31,7 @@ const customStyles: TableStyles = {
       ...fontStyle,
       color: 'var(--bs-secondary)',
       fontSize: '0.9rem',
-      fontWeight: 400,
+      fontWeight: 'var(--bs-body-font-weight)',
     },
   },
 };

@@ -24,7 +24,6 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const axisPairs = chartInput.axisPairs as AxisPair[];
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
-  console.log(chartInput.data);
 
   function onLegendClick(e: Payload) {
     setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
@@ -33,8 +32,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   function getBars() {
     const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
     return [...yAxesMap.entries()].map(([yAxis, visible], index) => (
-      // eslint-disable-next-line react/jsx-key
-      <Bar dataKey={yAxis} hide={!visible} fill={getColor(index)} isAnimationActive={false} />
+      <Bar key={index} dataKey={yAxis} hide={!visible} fill={getColor(index)} isAnimationActive={false} />
     ));
   }
 

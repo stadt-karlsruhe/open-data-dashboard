@@ -24,7 +24,7 @@ export default function AxisSelector({
         onChange={onAxisChange}
         id="x-axis-selector"
         aria-label="x-axis-selector"
-        className="form-select rounded-0"
+        className="form-select"
         style={{ maxWidth: '200px', display: 'table-cell', marginLeft: '1vw' }}
       >
         {[...axesMap.entries()].map(([xAxis, _]) => (
