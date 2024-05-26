@@ -3,12 +3,6 @@
     "title": "Open Data Dashboard",
     "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
   },
-  "Visualization": {
-    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
-    "dataEmptyMessage": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben. Melden sie dieses Problem dem Administrator dieser Seite.",
-    "endpointErrorTitle": "Daten konnten nicht geladen werden!",
-    "endpointErrorMessage": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Falls dieses Problem weiterhin bestellt, melden sie es dem Administrator der Seite.\n\nError: \"{error}\""
-  },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
     "collapseTooltipExpand": "Filter öffnen",
@@ -40,9 +34,16 @@
   },
   "Error": {
     "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
     "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
-    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden sie es dem Administrator der Seite.",
+    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+    "dataEmptyMessage": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben. Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
+    "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
+    "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.\n\nFehler: \"{error}\"",
+    "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
+    "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" hat Fehler zurückgegeben. Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.\n\nFehler: \"{error}\"",
+    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
+    "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
+    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
     "returnBtn": "Zurück zur Startseite"
   },
   "Legend": {

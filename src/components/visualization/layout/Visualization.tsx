@@ -2,43 +2,20 @@ import ChartTableWrapper from './ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { Resource } from '@/schema';
 import dynamic from 'next/dynamic';
-import { getTranslations } from 'next-intl/server';
 import { transformData } from '@/transform';
 
 export default async function Visualization({ resource }: { resource: Resource }) {
-  const t = await getTranslations('Visualization');
   let data;
   try {
     data = (await fetchData(resource)) as never;
   } catch (err) {
-    return (
-      <ErrorComponent
-        code={500}
-        title={t('endpointErrorTitle')}
-        logMessage={t('endpointErrorMessage', {
-          source: resource.source,
-          name: resource.name,
-          id: resource.id,
-          err: String(err),
-        })}
-      />
-    );
+    return <ErrorComponent type="dataNotLoaded" resource={resource} error={String(err)} />;
   }
   if (resource.type === 'JSON' || resource.type === 'CSV') {
     const transformedData = transformData(resource, data);
 
     if (transformedData.length === 0) {
-      return (
-        <ErrorComponent
-          code={500}
-          title={t('dataEmptyTitle')}
-          logMessage={t('dataEmptyMessage', {
-            source: resource.source,
-            name: resource.name,
-            id: resource.id,
-          })}
-        />
-      );
+      return <ErrorComponent type="dataEmpty" resource={resource} />;
     }
 
     return <ChartTableWrapper resource={resource} transformedData={transformedData} />;

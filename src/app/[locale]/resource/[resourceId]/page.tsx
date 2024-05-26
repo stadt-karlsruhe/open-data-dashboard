@@ -9,12 +9,18 @@ export default async function Page({ params: { resourceId } }: { params: { resou
   const resource = configuration.resources.find((item) => item.id === resourceId);
 
   if (resource === undefined) {
-    return <ErrorComponent code={404} />;
+    return <ErrorComponent type="notFound" resource={resource} />;
   }
 
   const parsedResource = ResourceSchema.safeParse(resource);
   if (!parsedResource.success) {
-    return <ErrorComponent code={500} />;
+    return (
+      <ErrorComponent
+        type="resourceConfigurationInvalid"
+        resource={resource}
+        error={JSON.stringify(parsedResource.error)}
+      />
+    );
   }
 
   if (resource.type === 'Embedded') {

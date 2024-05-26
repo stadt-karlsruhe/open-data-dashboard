@@ -1,5 +1,6 @@
 'use client';
 
+import { Resource } from '@/schema';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useEffect } from 'react';
@@ -9,31 +10,26 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function ErrorComponent({
-  title,
-  code,
-  logMessage,
-}: {
-  title?: string;
-  code: 404 | 500;
-  logMessage?: string;
-}) {
+interface ApplicationError {
+  type: 'notFound' | 'dataEmpty' | 'dataNotLoaded' | 'resourceConfigurationInvalid' | 'unexpected';
+  resource?: Resource;
+  error?: string;
+}
+
+export default function ErrorComponent({ type, resource, error }: ApplicationError) {
   const t = useTranslations('Error');
   useEffect(() => {
-    if (logMessage) {
-      console.error(logMessage);
+    if (type === 'dataNotLoaded' || type === 'resourceConfigurationInvalid' || type === 'unexpected') {
+      console.error(
+        t(`${type}Message`, {
+          source: resource?.source,
+          name: resource?.name,
+          id: resource?.id,
+          error,
+        }),
+      );
     }
-  }, [logMessage]);
-
-  let errorTitle;
-  let subTitle;
-  if (code === 404) {
-    errorTitle = t('notFoundTitle');
-    subTitle = t('notFoundSubtitle');
-  } else {
-    errorTitle = title ?? t('unexpectedTitle');
-    subTitle = t('genericSubtitle');
-  }
+  });
 
   return (
     <div className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
@@ -41,9 +37,9 @@ export default function ErrorComponent({
         <div className="row">
           <div className="col-12 text-center">
             <div>
-              {code === 404 ? codeElement404 : codeElement500}
-              <h5 className="mb-2">{errorTitle}</h5>
-              <p className="mb-2">{subTitle}</p>
+              {type === 'notFound' ? codeElement404 : codeElement500}
+              <h5 className="mb-2">{t(`${type}Title`)}</h5>
+              <p className="mb-2">{type === 'notFound' ? t('notFoundSubtitle') : t('genericSubtitle')}</p>
               <Link className="btn bsb-btn-5xl btn-dark badge px-5 fs-6 m-0 mb-2" href="/">
                 {t('returnBtn')}
               </Link>
