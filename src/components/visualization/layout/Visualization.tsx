@@ -24,7 +24,12 @@ export default async function Visualization({ resource }: { resource: Resource }
     const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
       ssr: false,
     });
-    return <GeoMap resource={resource} geoJsonData={geoJsonData} />;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    return geoJsonData ? (
+      <GeoMap resource={resource} geoJsonData={geoJsonData} />
+    ) : (
+      <ErrorComponent title={t('dataEmptyTitle')} />
+    );
   }
 }
 
