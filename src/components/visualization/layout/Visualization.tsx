@@ -1,6 +1,6 @@
 import ChartTableWrapper from './ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import { Resource } from '@/types/configuration';
+import { Resource } from '@/schema';
 import dynamic from 'next/dynamic';
 import { getTranslations } from 'next-intl/server';
 import { transformData } from '@/transform';

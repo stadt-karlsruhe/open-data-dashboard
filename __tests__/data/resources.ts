@@ -1,4 +1,4 @@
-import { EmbeddedResource, TransformableResource } from '@/types/configuration';
+import { EmbeddedResource, TransformableResource } from '@/schema';
 import { mock } from 'node:test';
 
 const mockSource = 'https://example.com/';

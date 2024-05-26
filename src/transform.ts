@@ -1,5 +1,5 @@
 import { DataRecord, TabularJson, TabularJsonResponse } from '@/types/visualization';
-import { TransformableResource } from '@/types/configuration';
+import { TransformableResource } from '@/schema';
 import { csv2json } from 'json-2-csv';
 
 export function transformData(resource: TransformableResource, data: unknown) {

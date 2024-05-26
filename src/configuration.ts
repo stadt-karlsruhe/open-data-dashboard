@@ -1,4 +1,4 @@
-import { Configuration } from './types/configuration';
+import { Configuration } from '@/schema';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
 
