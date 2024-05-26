@@ -42,7 +42,7 @@ export const TransformableResourceSchema = BaseResourceSchema.extend({
                 })
                 .strict()
                 .optional(),
-            table: z.record(z.never()),
+            table: z.record(z.never()).default({}),
         })
         .strict()
         .default({ table: {} }),
