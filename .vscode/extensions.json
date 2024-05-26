@@ -11,6 +11,6 @@
         "Orta.vscode-jest",
         "streetsidesoftware.code-spell-checker",
         "streetsidesoftware.code-spell-checker-german",
-        "mike-co.import-sorter"
+        "amatiasq.sort-imports"
     ]
 }
