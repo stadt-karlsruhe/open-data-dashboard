@@ -64,7 +64,21 @@ export const TransformableResourceSchema = BaseResourceSchema.extend({
         })
         .strict()
         .default({ table: {} }),
-}).strict();
+})
+    .strict()
+    .refine(
+        (data) => {
+            if (data.skipFieldsRegEx && data.renameFields) {
+                const regex = new RegExp(data.skipFieldsRegEx, 'u');
+                return !Object.keys(data.renameFields).some((key) => regex.test(key));
+            }
+            return true;
+        },
+        {
+            message: 'skipFieldsRegEx should not match any keys in renameFields',
+            path: ['skipFieldsRegEx'],
+        },
+    );
 
 export const ResourceSchema = z.union([GeoJSONResourceSchema, TransformableResourceSchema, EmbeddedResourceSchema]);
 
