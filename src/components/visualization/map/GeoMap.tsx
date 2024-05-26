@@ -3,11 +3,11 @@
 import 'leaflet/dist/leaflet.css';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { LatLngExpression, Layer } from 'leaflet';
+import { GeoJSONResource } from '@/types/configuration';
 import Legend from './Legend';
 import React from 'react';
 import ResetView from './ResetView';
 import { getColor } from '@/colors';
-import { useTranslations } from 'next-intl';
 
 const collectedLabels = new Map<string, string>();
 
@@ -16,8 +16,13 @@ const standardPos = {
   zoom: 13.5,
 };
 
-export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCollection }) {
-  const t = useTranslations('GeoMap');
+export default function GeoMap({
+  resource,
+  geoJsonData,
+}: {
+  resource: GeoJSONResource;
+  geoJsonData: GeoJSON.FeatureCollection;
+}) {
   return (
     <MapContainer
       center={standardPos.latLng}
@@ -29,30 +34,44 @@ export default function GeoMap({ geoJsonData }: { geoJsonData: GeoJSON.FeatureCo
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        geoJsonData && <GeoJSON data={geoJsonData} pointToLayer={pointToLayer} onEachFeature={onEach} />
+        geoJsonData && (
+          <GeoJSON
+            data={geoJsonData}
+            pointToLayer={(feature, latLng) => pointToLayer(feature, latLng, resource.visualizations.map.labelKey)}
+            onEachFeature={(feature, layer) => {
+              onEach(feature, layer, resource.visualizations.map.tooltipFields);
+            }}
+          />
+        )
       }
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-      <Legend title={t('legendTitle')} labels={collectedLabels} />
+      <Legend labels={collectedLabels} />
     </MapContainer>
   );
 }
 
-// TODO: We need to somehow set the information which field of the properties holds the label for the legend.
-// Might mean that we modify the config file.
-// TODO2: We definitely need a better way to get our colors, randomly generated ones aren't always appropriate.
-function pointToLayer(feature: GeoJSON.Feature, latlng: LatLngExpression) {
+function pointToLayer(feature: GeoJSON.Feature<GeoJSON.Point, unknown>, latlng: LatLngExpression, labelKey: string) {
+  const geoJsonFeature = feature as GeoJSON.Feature;
   let colorCode = 'var(--bs-primary)';
-  if (feature.properties?.GRUPPENNAME_DE !== undefined && typeof feature.properties.GRUPPENNAME_DE === 'string') {
-    const mappedColor = collectedLabels.get(feature.properties.GRUPPENNAME_DE);
+  const label = getLabelForKey(geoJsonFeature.properties, labelKey);
+  if (label !== '') {
+    const mappedColor = collectedLabels.get(label);
     if (mappedColor === undefined) {
       colorCode = getColor(collectedLabels.size);
-      collectedLabels.set(feature.properties.GRUPPENNAME_DE, colorCode);
+      collectedLabels.set(label, colorCode);
     } else {
       colorCode = mappedColor;
     }
   }
   const icon = getIcon(colorCode);
   return L.marker(latlng, { icon });
+}
+
+function getLabelForKey(properties: GeoJSON.GeoJsonProperties, keyLabel: string) {
+  if (properties !== null && properties[keyLabel] !== undefined && typeof properties[keyLabel] === 'string') {
+    return properties[keyLabel] as string;
+  }
+  return '';
 }
 
 function getIcon(color: string) {
@@ -64,12 +83,18 @@ function getIcon(color: string) {
   });
 }
 
-const onEach = (feature: GeoJSON.Feature, layer: Layer) => {
+const onEach = (
+  feature: GeoJSON.Feature<GeoJSON.Geometry, unknown>,
+  layer: Layer,
+  tooltipFields: Record<string, string>,
+) => {
   const featureProperties = feature.properties as Record<string, string>;
   let content = '';
-  Object.entries(featureProperties).forEach(([key, value]) => {
-    content += `<b>${key}:</b> ${value} <br/>`;
-  });
+  Object.entries(featureProperties)
+    .filter(([key]) => tooltipFields[key])
+    .forEach(([key, value]) => {
+      content += `<b>${tooltipFields[key]}:</b> ${value} <br/>`;
+    });
   if (content !== '') {
     layer.on('mouseover', (e) => layer.bindTooltip(content).openTooltip());
   }

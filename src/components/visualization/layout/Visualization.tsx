@@ -42,7 +42,7 @@ export default async function Visualization({ resource }: { resource: Resource }
     const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
       ssr: false,
     });
-    return <GeoMap geoJsonData={geoJsonData} />;
+    return <GeoMap resource={resource} geoJsonData={geoJsonData} />;
   }
 }
 

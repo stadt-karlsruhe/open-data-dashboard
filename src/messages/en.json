@@ -45,8 +45,8 @@
     "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
     "returnBtn":"Return Home"
   },
-  "GeoMap": {
-    "legendTitle": "Legend"
+  "Legend": {
+    "title": "Legend"
   },
   "ResetView": {
     "resetTooltip": "Reset view"

@@ -1,38 +1,21 @@
-import L, { Map as LeafletMap } from 'leaflet';
-import React from 'react';
-import styles from './mapstyles.module.css';
-import { useMap } from 'react-leaflet';
+import { useTranslations } from 'next-intl';
 
-class LegendWrapper extends React.Component<{
-  legendInput: { title: string; labels: Map<string, string> };
-  map: LeafletMap;
-}> {
-  createLegend() {
-    const Legend = L.Control.extend({
-      onAdd: () => {
-        const div = L.DomUtil.create('div', `leaflet-bar ${styles.legend}`);
-        div.innerHTML += `<h6>${this.props.legendInput.title}</h6>`;
-        this.props.legendInput.labels.forEach((color, label) => {
-          div.innerHTML += `<i style="background: ${color}"></i><span>${label}</span><br>`;
-        });
-        return div;
-      },
-    });
-    return new Legend({ position: 'bottomleft' });
-  }
-
-  componentDidMount() {
-    const { map } = this.props;
-    const legend = this.createLegend();
-    legend.addTo(map);
-  }
-
-  render() {
-    return null;
-  }
-}
-
-export default function LegendComponent(legendInput: { title: string; labels: Map<string, string> }) {
-  const map = useMap();
-  return <LegendWrapper legendInput={legendInput} map={map} />;
+export default function Legend({ labels }: { labels: Map<string, string> }) {
+  const t = useTranslations('Legend');
+  return (
+    <div
+      className="bg-white card leaflet-bottom leaflet-left position-absolute m-3 fs-6"
+      style={{ width: '200px', maxWidth: '50vw' }}
+    >
+      <div className="card-header text-center">{t('title')}</div>
+      <div className="card-body">
+        {[...labels.entries()].map(([label, color]) => (
+          <div className="row" key={label}>
+            <div className="col-1 bi bi-circle-fill" style={{ color }} />
+            <div className="col-10">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

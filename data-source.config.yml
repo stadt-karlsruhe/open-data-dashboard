@@ -31,7 +31,11 @@ resources:
       type: GeoJSON
       name: Points of Interest Kinos
       visualizations:
-          map: {}
+          map:
+              labelKey: GRUPPENNAME_DE
+              tooltipFields:
+                  GRUPPENNAME_DE: Kategorie
+                  NAME: Name
     - id: "4"
       source: https://mocki.io/v1/becc7043-0251-46e9-8f2b-81a6b904fe86
       # source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json

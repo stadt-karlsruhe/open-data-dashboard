@@ -19,7 +19,10 @@ export interface EmbeddedResource extends BaseResource {
 export interface GeoJSONResource extends BaseResource {
     type: 'GeoJSON';
     visualizations: {
-        map: Record<string, never>;
+        map: {
+            labelKey: string;
+            tooltipFields: Record<string, string>;
+        };
     };
 }
 
