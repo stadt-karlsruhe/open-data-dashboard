@@ -55,7 +55,6 @@
     "sass": "1.77.2",
     "styled-components": "6.1.11",
     "ts-deepmerge": "7.0.0",
-    "ts-to-zod": "^3.8.5",
     "ts-node": "10.9.2",
     "typescript": "^5",
     "use-debounce": "10.0.0",
