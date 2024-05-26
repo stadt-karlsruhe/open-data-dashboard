@@ -16,4 +16,5 @@ export interface ChartInput {
     data: DataRecord;
     axisPairs: AxisPair[];
     aspect: number;
+    germanFormat?: boolean;
 }

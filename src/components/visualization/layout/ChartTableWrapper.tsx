@@ -72,6 +72,7 @@ export default function ChartTableWrapper({
                     data: filteredData,
                     axisPairs: diagramAttr.axisPairs,
                     aspect: width / (height - 250),
+                    germanFormat: resource.germanFormat,
                   }}
                 ></BarChart>
               </div>
