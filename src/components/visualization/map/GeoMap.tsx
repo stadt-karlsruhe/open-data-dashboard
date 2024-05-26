@@ -1,11 +1,13 @@
 'use client';
 
 import 'leaflet/dist/leaflet.css';
-import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
-import L, { LatLngExpression, Layer } from 'leaflet';
+
+import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-leaflet';
+import L, { LatLngExpression } from 'leaflet';
+
 import { GeoJSONResource } from '@/schema';
 import Legend from './Legend';
-import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
 import { getColor } from '@/colors';
 
@@ -32,70 +34,58 @@ export default function GeoMap({
       style={{ height: '100vh' }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        geoJsonData && (
-          <GeoJSON
-            data={geoJsonData}
-            pointToLayer={(feature, latLng) => pointToLayer(feature, latLng, resource.visualizations.map.labelKey)}
-            onEachFeature={(feature, layer) => {
-              onEach(feature, layer, resource.visualizations.map.tooltipFields);
-            }}
-          />
-        )
-      }
+      {geoJsonData.features.map((feature, index) => {
+        let colorCode = 'var(--bs-primary)';
+        const label = getLabelForKey(feature.properties, resource.visualizations.map.labelKey);
+        if (label) {
+          const mappedColor = collectedLabels.get(label);
+          if (mappedColor === undefined) {
+            colorCode = getColor(collectedLabels.size);
+            collectedLabels.set(label, colorCode);
+          } else {
+            colorCode = mappedColor;
+          }
+          collectedLabels.set(label, colorCode);
+        }
+        if (feature.geometry.type !== 'Point') {
+          return;
+        }
+        return (
+          <FeatureGroup key={index}>
+            <Tooltip>
+              {Object.entries(feature.properties as Record<string, string>)
+                .filter(([key]) => resource.visualizations.map.tooltipFields[key])
+                .map(([key, value]) => (
+                  <>
+                    <b>{resource.visualizations.map.tooltipFields[key]}: </b>
+                    {value} <br />
+                  </>
+                ))}
+            </Tooltip>
+            <Marker
+              position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
+              icon={getIcon(colorCode)}
+            />
+          </FeatureGroup>
+        );
+      })}
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
       <Legend labels={collectedLabels} />
     </MapContainer>
   );
 }
 
-function pointToLayer(feature: GeoJSON.Feature<GeoJSON.Point, unknown>, latlng: LatLngExpression, labelKey: string) {
-  const geoJsonFeature = feature as GeoJSON.Feature;
-  let colorCode = 'var(--bs-primary)';
-  const label = getLabelForKey(geoJsonFeature.properties, labelKey);
-  if (label !== '') {
-    const mappedColor = collectedLabels.get(label);
-    if (mappedColor === undefined) {
-      colorCode = getColor(collectedLabels.size);
-      collectedLabels.set(label, colorCode);
-    } else {
-      colorCode = mappedColor;
-    }
-  }
-  const icon = getIcon(colorCode);
-  return L.marker(latlng, { icon });
-}
-
 function getLabelForKey(properties: GeoJSON.GeoJsonProperties, keyLabel: string) {
   if (properties !== null && properties[keyLabel] !== undefined && typeof properties[keyLabel] === 'string') {
     return properties[keyLabel] as string;
   }
-  return '';
 }
 
 function getIcon(color: string) {
   return L.divIcon({
     // eslint-disable-next-line unicorn/no-keyword-prefix
     className: 'custom-icon-div',
-    html: `<div style='color:${color}; font-size: 30px' class='bi bi-geo-alt-fill'></div>`,
+    html: ReactDOMServer.renderToString(<div style={{ color, fontSize: '30px' }} className="bi bi-geo-alt-fill" />),
     iconAnchor: [15, 30],
   });
 }
-
-const onEach = (
-  feature: GeoJSON.Feature<GeoJSON.Geometry, unknown>,
-  layer: Layer,
-  tooltipFields: Record<string, string>,
-) => {
-  const featureProperties = feature.properties as Record<string, string>;
-  let content = '';
-  Object.entries(featureProperties)
-    .filter(([key]) => tooltipFields[key])
-    .forEach(([key, value]) => {
-      content += `<b>${tooltipFields[key]}:</b> ${value} <br/>`;
-    });
-  if (content !== '') {
-    layer.on('mouseover', (e) => layer.bindTooltip(content).openTooltip());
-  }
-};
