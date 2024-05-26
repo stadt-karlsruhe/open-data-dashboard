@@ -34,10 +34,24 @@ const AxisPairSchema = z
     })
     .strict();
 
+const DefaultFilterSchema = z.union([
+    z.string(),
+    z
+        .object({
+            min: z.number().transform(String).optional(),
+            max: z.number().transform(String).optional(),
+        })
+        .strict()
+        .refine((data) => data.min !== undefined || data.max !== undefined, {
+            message: "At least one of 'min' or 'max' must be defined",
+        }),
+]);
+
 export const TransformableResourceSchema = BaseResourceSchema.extend({
     type: z.union([z.literal('JSON'), z.literal('CSV')]),
     skipFieldsRegEx: z.string().optional(),
     renameFields: z.record(z.string()).optional(),
+    defaultFilters: z.record(z.string(), DefaultFilterSchema).optional(),
     visualizations: z
         .object({
             barChart: z
@@ -72,3 +86,4 @@ export type AxisPair = z.infer<typeof AxisPairSchema>;
 export type TransformableResource = z.infer<typeof TransformableResourceSchema>;
 export type Resource = z.infer<typeof ResourceSchema>;
 export type Configuration = z.infer<typeof ConfigurationSchema>;
+export type Filter = z.infer<typeof DefaultFilterSchema>;
