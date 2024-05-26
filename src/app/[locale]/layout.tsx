@@ -17,7 +17,7 @@ export default async function RootLayout({
   const configuration = await getConfiguration();
   return (
     // By default, Bootstrap will ignore themes that are not defined
-    <html lang={locale} data-bs-theme={configuration.appearance?.theme ?? ''}>
+    <html lang={locale} data-bs-theme={configuration.appearance.theme}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
