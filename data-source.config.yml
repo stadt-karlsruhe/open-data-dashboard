@@ -69,3 +69,7 @@ resources:
                   yAxis: Stimmen
                 - xAxis: Parteiname
                   yAxis: "%"
+    - id: "7"
+      source: https://mocki.io/v1/1442bc5a-869f-4398-96a9-c5c50fc3b1a3
+      type: JSON
+      name: Wohnberechtigte Bevölkerung testet default config
