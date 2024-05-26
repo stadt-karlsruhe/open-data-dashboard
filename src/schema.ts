@@ -17,10 +17,14 @@ export const GeoJSONResourceSchema = BaseResourceSchema.extend({
     type: z.literal('GeoJSON'),
     visualizations: z
         .object({
-            map: z.record(z.never()),
+            map: z
+                .object({
+                    labelKey: z.string(),
+                    tooltipFields: z.record(z.string()),
+                })
+                .strict(),
         })
-        .strict()
-        .default({ map: {} }),
+        .strict(),
 }).strict();
 
 const AxisPairSchema = z
