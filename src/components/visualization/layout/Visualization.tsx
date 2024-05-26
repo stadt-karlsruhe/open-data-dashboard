@@ -1,5 +1,5 @@
 import ChartTableWrapper from './ChartTableWrapper';
-import { Resource } from '@/types/configuration';
+import { Resource } from '@/schema';
 import dynamic from 'next/dynamic';
 import { transformData } from '@/transform';
 
