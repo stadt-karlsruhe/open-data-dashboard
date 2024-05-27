@@ -52,7 +52,7 @@ export default function GeoMap({
             return;
           }
           return (
-            <FeatureGroup key={index}>
+            <FeatureGroup key={`${String(index)}-${String(feature.id)}`}>
               <Tooltip>
                 {Object.entries(feature.properties as Record<string, string>)
                   .filter(([key]) => resource.visualizations.map.tooltipFields[key])
