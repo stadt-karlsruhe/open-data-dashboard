@@ -4,6 +4,7 @@
 
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
+
 import Legend from '@/components/visualization/map/Legend';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
