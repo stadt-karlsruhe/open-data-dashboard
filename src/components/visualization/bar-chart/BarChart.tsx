@@ -9,9 +9,10 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { ChartInput, DataRecord } from '@/types/visualization';
+
 import { AxisPair } from '@/schema';
 import AxisSelector from './AxisSelector';
+import { DataRecord } from '@/types/visualization';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
@@ -20,8 +21,15 @@ import { useState } from 'react';
 let minValue: number;
 let maxValue: number;
 
-export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
-  const axisPairs = chartInput.axisPairs as AxisPair[];
+export default function BarChart({
+  data,
+  axisPairs,
+  aspect,
+}: {
+  data: DataRecord;
+  axisPairs: AxisPair[];
+  aspect: number;
+}) {
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
 
@@ -39,9 +47,9 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   return (
     <div>
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
-      <ResponsiveContainer debounce={200} aspect={chartInput.aspect}>
+      <ResponsiveContainer debounce={200} aspect={aspect}>
         <BarChartRecharts
-          data={chartInput.data}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -51,7 +59,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
-          <YAxis type="number" domain={getDomain(chartInput.data, axesMap, xAxis)} ticks={getTicks()} />
+          <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
           <ReferenceLine y={0} stroke="#000" />
           <Tooltip />
           <Legend onClick={onLegendClick} />

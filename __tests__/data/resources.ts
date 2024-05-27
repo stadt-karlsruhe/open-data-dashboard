@@ -1,4 +1,6 @@
 import { EmbeddedResource, TransformableResource } from '@/schema';
+
+import Visualization from '@/components/visualization/layout/Visualization';
 import { mock } from 'node:test';
 
 const mockSource = 'https://example.com/';
@@ -15,6 +17,7 @@ export const jsonResource: TransformableResource = {
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
+    numberFormat: 'en',
     visualizations: {
         table: {},
     },
@@ -43,5 +46,35 @@ export const skipAndRenameFieldsResource: TransformableResource = {
     renameFields: {
         StringColumn: 'Name',
         BooleanColumn: 'Boolean',
+    },
+};
+
+export const germanNumberFormatResource: TransformableResource = {
+    id: '3',
+    source: mockSource,
+    name: 'JSON Resource',
+    type: 'JSON',
+    numberFormat: 'de',
+    visualizations: {
+        table: {},
+    },
+};
+
+export const germanNumberFormatResourceChart: TransformableResource = {
+    ...germanNumberFormatResource,
+    visualizations: {
+        table: {},
+        barChart: {
+            axisPairs: [
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'NumberWithDotColumn',
+                },
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'NumberWithCommaColumn',
+                },
+            ],
+        },
     },
 };

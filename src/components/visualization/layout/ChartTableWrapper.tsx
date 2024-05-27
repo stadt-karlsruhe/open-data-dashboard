@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 import BarChart from '../bar-chart/BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import { DataRecord } from '@/types/visualization';
@@ -68,11 +69,9 @@ export default function ChartTableWrapper({
             {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
                 <BarChart
-                  chartInput={{
-                    data: filteredData,
-                    axisPairs: diagramAttr.axisPairs,
-                    aspect: width / (height - 250),
-                  }}
+                  data={filteredData}
+                  axisPairs={diagramAttr.axisPairs}
+                  aspect={width / (height - 250)}
                 ></BarChart>
               </div>
             ) : (

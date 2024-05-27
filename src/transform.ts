@@ -1,4 +1,5 @@
 import { DataRecord, TabularJson, TabularJsonResponse } from '@/types/visualization';
+
 import { TransformableResource } from '@/schema';
 import { csv2json } from 'json-2-csv';
 
@@ -9,6 +10,9 @@ export function transformData(resource: TransformableResource, data: unknown) {
     }
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
+    }
+    if (resource.numberFormat === 'de') {
+        transformedData = mapGermanToInternationalNumberFormat(transformedData, resource);
     }
     return transformedData;
 }
@@ -105,4 +109,28 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
         return renamedObj;
     });
     return renamedRecords as DataRecord;
+}
+
+function mapGermanToInternationalNumberFormat(records: DataRecord, resource: TransformableResource) {
+    if (resource.visualizations.barChart?.axisPairs === undefined) {
+        return records;
+    }
+    const yAxes = resource.visualizations.barChart.axisPairs.map((value) => value.yAxis);
+    const mappedRecords = [] as DataRecord;
+    records.forEach((record) => {
+        const obj = Object.fromEntries(Object.entries(record).map((entry) => parseEntry(entry, yAxes)));
+        mappedRecords.push(obj);
+    });
+    return mappedRecords;
+}
+
+function parseEntry(entry: [string, never], yAxes: string[]) {
+    if (!yAxes.includes(entry[0])) {
+        return entry;
+    }
+    return [entry[0], parseGermanNumberToInternationalFormat(entry[1])] as [string, never];
+}
+
+function parseGermanNumberToInternationalFormat(value: never) {
+    return (value as string).toString().replace('.', '').replace(',', '.') as never;
 }

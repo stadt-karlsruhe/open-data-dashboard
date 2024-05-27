@@ -64,12 +64,11 @@ resources:
                     yAxis: Hunde
           table: {}
     - id: "6"
-      source: https://mocki.io/v1/da33f382-2056-4e9e-b958-876df5f5c595
-      # This is the actual, unmodified source, which leads to ODDSK-175
-      # source: https://mocki.io/v1/8b010dfa-a1ab-4139-9f84-f213098ec1f1
+      source: https://mocki.io/v1/8b010dfa-a1ab-4139-9f84-f213098ec1f1
       # source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
       type: JSON
       name: Europawahl 2019
+      numberFormat: de
       visualizations:
           barChart:
               axisPairs:
