@@ -4,12 +4,12 @@ import 'leaflet/dist/leaflet.css';
 
 import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import L, { LatLngExpression } from 'leaflet';
+import { colorPrimary, getColor } from '@/colors';
 
 import { GeoJSONResource } from '@/schema';
 import Legend from './Legend';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
-import { getColor } from '@/colors';
 
 const collectedLabels = new Map<string, string>();
 
@@ -36,7 +36,7 @@ export default function GeoMap({
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {geoJsonData.features.map((feature, index) => {
-          let colorCode = 'var(--bs-primary)';
+          let colorCode = colorPrimary;
           const label = getLabelForKey(feature.properties, resource.visualizations.map.labelKey);
           if (label) {
             const mappedColor = collectedLabels.get(label);

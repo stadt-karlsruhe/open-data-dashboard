@@ -7,6 +7,7 @@ export const colorTeal = 'var(--bs-teal)';
 export const colorCyan = 'var(--bs-orange)';
 export const colorOrange = 'var(--bs-cyan)';
 export const colorRed = 'var(--bs-red)';
+export const colorDark = 'var(--bs-dark)';
 
 const colors: string[] = [colorPrimary, colorYellow, colorPurple, colorTeal, colorCyan, colorOrange];
 

@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/named
 import DataTable, { TableStyles } from 'react-data-table-component';
+import { colorDark, colorSecondary } from '@/colors';
+
 import { DataRecord } from '@/types/visualization';
 import { useTranslations } from 'next-intl';
 
@@ -13,7 +15,7 @@ const customStyles: TableStyles = {
   head: {
     style: {
       ...fontStyle,
-      color: 'var(--bs-dark)',
+      color: colorDark,
       fontSize: 'var(--bs-body-font-size)',
       fontWeight: 600,
     },
@@ -23,13 +25,13 @@ const customStyles: TableStyles = {
       ...fontStyle,
       fontSize: 'var(--bs-body-font-size)',
       fontWeight: 'var(--bs-body-font-weight)',
-      color: 'var(--bs-dark)',
+      color: colorDark,
     },
   },
   pagination: {
     style: {
       ...fontStyle,
-      color: 'var(--bs-secondary)',
+      color: colorSecondary,
       fontSize: '0.9rem',
       fontWeight: 'var(--bs-body-font-weight)',
     },
