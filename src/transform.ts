@@ -10,6 +10,10 @@ export function transformData(resource: TransformableResource, data: unknown) {
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
+    if (resource.germanFormat) {
+        // TODO: We currently do this for all our data, e.g. also data that just represents text. We should use information from AxisPairs to only do this where appropriate.
+        transformedData = mapData(transformedData);
+    }
     return transformedData;
 }
 
@@ -105,4 +109,19 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
         return renamedObj;
     });
     return renamedRecords as DataRecord;
+}
+
+function mapData(records: DataRecord) {
+    const mappedRecords = [] as DataRecord;
+    records.forEach((record) => {
+        const obj = Object.fromEntries(
+            Object.entries(record).map((entry) => [entry[0], parseValueToBetterFormat(entry[1])]),
+        );
+        mappedRecords.push(obj);
+    });
+    return mappedRecords;
+}
+
+function parseValueToBetterFormat(value: never) {
+    return (value as string).toString().replace('.', '').replace(',', '.') as never;
 }

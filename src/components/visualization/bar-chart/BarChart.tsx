@@ -24,7 +24,6 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
   const axisPairs = chartInput.axisPairs as AxisPair[];
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
-  const chartData = chartInput.germanFormat ? mapData(chartInput.data) : chartInput.data;
 
   function onLegendClick(e: Payload) {
     setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
@@ -42,7 +41,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
       <ResponsiveContainer debounce={200} aspect={chartInput.aspect}>
         <BarChartRecharts
-          data={chartData}
+          data={chartInput.data}
           margin={{
             top: 5,
             right: 30,
@@ -52,7 +51,7 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
-          <YAxis type="number" domain={getDomain(chartData, axesMap, xAxis)} ticks={getTicks()} />
+          <YAxis type="number" domain={getDomain(chartInput.data, axesMap, xAxis)} ticks={getTicks()} />
           <ReferenceLine y={0} stroke="#000" />
           <Tooltip />
           <Legend onClick={onLegendClick} />
@@ -61,21 +60,6 @@ export default function BarChart({ chartInput }: { chartInput: ChartInput }) {
       </ResponsiveContainer>
     </div>
   );
-}
-
-function mapData(records: DataRecord) {
-  const mappedRecords = [] as DataRecord;
-  records.forEach((record) => {
-    const obj = Object.fromEntries(
-      Object.entries(record).map((entry) => [entry[0], parseValueToBetterFormat(entry[1])]),
-    );
-    mappedRecords.push(obj);
-  });
-  return mappedRecords;
-}
-
-function parseValueToBetterFormat(value: never) {
-  return (value as string).toString().replace('.', '').replace(',', '.') as never;
 }
 
 function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
