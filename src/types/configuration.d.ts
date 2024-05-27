@@ -30,7 +30,7 @@ export interface TransformableResource extends BaseResource {
     type: 'JSON' | 'CSV';
     skipFieldsRegEx?: string;
     renameFields?: Record<string, string>;
-    germanFormat?: boolean;
+    germanFormat?: 'de' | 'en';
     visualizations: {
         barChart?: {
             axisPairs: AxisPair[];

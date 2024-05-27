@@ -64,7 +64,7 @@ resources:
       # source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
       type: JSON
       name: Europawahl 2019
-      germanFormat: true
+      germanFormat: de
       visualizations:
           barChart:
               axisPairs:

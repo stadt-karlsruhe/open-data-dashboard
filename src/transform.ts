@@ -10,9 +10,8 @@ export function transformData(resource: TransformableResource, data: unknown) {
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
-    if (resource.germanFormat) {
-        // TODO: We currently do this for all our data, e.g. also data that just represents text. We should use information from AxisPairs to only do this where appropriate.
-        transformedData = mapData(transformedData);
+    if (resource.germanFormat === 'de') {
+        transformedData = mapData(transformedData, resource);
     }
     return transformedData;
 }
@@ -111,17 +110,26 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
     return renamedRecords as DataRecord;
 }
 
-function mapData(records: DataRecord) {
+function mapData(records: DataRecord, resource: TransformableResource) {
+    if (resource.visualizations.barChart?.axisPairs === undefined) {
+        return records;
+    }
+    const yAxes = resource.visualizations.barChart.axisPairs.map((value) => value.yAxis);
     const mappedRecords = [] as DataRecord;
     records.forEach((record) => {
-        const obj = Object.fromEntries(
-            Object.entries(record).map((entry) => [entry[0], parseValueToBetterFormat(entry[1])]),
-        );
+        const obj = Object.fromEntries(Object.entries(record).map((entry) => parseEntry(entry, yAxes)));
         mappedRecords.push(obj);
     });
     return mappedRecords;
 }
 
-function parseValueToBetterFormat(value: never) {
+function parseEntry(entry: [string, never], yAxes: string[]) {
+    if (!yAxes.includes(entry[0])) {
+        return entry;
+    }
+    return [entry[0], parseNumberToInternationalFormat(entry[1])] as [string, never];
+}
+
+function parseNumberToInternationalFormat(value: never) {
     return (value as string).toString().replace('.', '').replace(',', '.') as never;
 }
