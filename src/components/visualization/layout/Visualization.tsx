@@ -28,7 +28,7 @@ export default async function Visualization({ resource }: { resource: Resource }
     return geoJsonData ? (
       <GeoMap resource={resource} geoJsonData={geoJsonData} />
     ) : (
-      <ErrorComponent title={t('dataEmptyTitle')} />
+      <ErrorComponent type="dataEmpty" resource={resource} />
     );
   }
 }
