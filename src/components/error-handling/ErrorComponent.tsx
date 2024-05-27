@@ -1,6 +1,7 @@
 'use client';
 
 import { Resource } from '@/schema';
+import { colorRed } from '@/colors';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useEffect } from 'react';
@@ -37,10 +38,24 @@ export default function ErrorComponent({ type, resource, error }: ApplicationErr
         <div className="row">
           <div className="col-12 text-center">
             <div>
-              {type === 'notFound' ? codeElement404 : codeElement500}
+              <h2 className="d-flex justify-content-center align-items-center gap-2 mb-4">
+                <span style={{ color: colorRed }} className="display-1 fw-bold">
+                  {type === 'notFound' ? 4 : 5}
+                </span>
+                {type === 'notFound' ? (
+                  <i style={{ color: colorRed }} className="bi bi-exclamation-circle-fill display-4" />
+                ) : (
+                  <span style={{ color: colorRed }} className="display-1 fw-bold">
+                    0
+                  </span>
+                )}
+                <span style={{ color: colorRed }} className="display-1 fw-bold">
+                  {type === 'notFound' ? 4 : 0}
+                </span>
+              </h2>
               <h5 className="mb-2">{t(`${type}Title`)}</h5>
               <p className="mb-2">{type === 'notFound' ? t('notFoundSubtitle') : t('genericSubtitle')}</p>
-              <Link className="btn bsb-btn-5xl btn-dark badge px-5 fs-6 m-0 mb-2" href="/">
+              <Link className="btn btn-primary mt-2" href="/">
                 {t('returnBtn')}
               </Link>
               <br />
@@ -51,19 +66,3 @@ export default function ErrorComponent({ type, resource, error }: ApplicationErr
     </div>
   );
 }
-
-const codeElement404 = (
-  <h2 className="d-flex justify-content-center align-items-center gap-2 mb-4">
-    <span className="display-1 fw-bold">4</span>
-    <i className="bi bi-exclamation-circle-fill text-danger display-4"></i>
-    <span className="display-1 fw-bold bsb-flip-h">4</span>
-  </h2>
-);
-
-const codeElement500 = (
-  <h2 className="d-flex justify-content-center align-items-center gap-2 mb-4">
-    <span className="display-1 fw-bold">5</span>
-    <span className="display-1 fw-bold bsb-flip-h">0</span>
-    <span className="display-1 fw-bold bsb-flip-h">0</span>
-  </h2>
-);

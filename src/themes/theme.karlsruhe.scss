@@ -14,6 +14,7 @@
   $custom-colors: (
     'primary': #048500,
     'secondary': #000,
+    'danger': #e2001a,
   );
   $theme-colors: map-merge($theme-colors, $custom-colors);
   $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',

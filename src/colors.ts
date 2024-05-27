@@ -1,12 +1,14 @@
 // https://getbootstrap.com/docs/5.2/customize/css-variables/
-const colors: string[] = [
-    'var(--bs-primary)',
-    'var(--bs-yellow)',
-    'var(--bs-purple)',
-    'var(--bs-teal)',
-    'var(--bs-cyan)',
-    'var(--bs-orange)',
-];
+export const colorPrimary = 'var(--bs-primary)';
+export const colorSecondary = 'var(--bs-secondary)';
+export const colorYellow = 'var(--bs-yellow)';
+export const colorPurple = 'var(--bs-purple)';
+export const colorTeal = 'var(--bs-teal)';
+export const colorCyan = 'var(--bs-orange)';
+export const colorOrange = 'var(--bs-cyan)';
+export const colorRed = 'var(--bs-red)';
+
+const colors: string[] = [colorPrimary, colorYellow, colorPurple, colorTeal, colorCyan, colorOrange];
 
 export function getColor(index: number) {
     return colors[index % colors.length];
