@@ -12,7 +12,7 @@ export function transformData(resource: TransformableResource, data: unknown) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
     if (resource.numberFormat === 'de') {
-        transformedData = mapDataToInternationalFormat(transformedData, resource);
+        transformedData = mapGermanToInternationalNumberFormat(transformedData, resource);
     }
     return transformedData;
 }
@@ -111,7 +111,7 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
     return renamedRecords as DataRecord;
 }
 
-function mapDataToInternationalFormat(records: DataRecord, resource: TransformableResource) {
+function mapGermanToInternationalNumberFormat(records: DataRecord, resource: TransformableResource) {
     if (resource.visualizations.barChart?.axisPairs === undefined) {
         return records;
     }
@@ -128,9 +128,9 @@ function parseEntry(entry: [string, never], yAxes: string[]) {
     if (!yAxes.includes(entry[0])) {
         return entry;
     }
-    return [entry[0], parseNumberToInternationalFormat(entry[1])] as [string, never];
+    return [entry[0], parseGermanNumberToInternationalFormat(entry[1])] as [string, never];
 }
 
-function parseNumberToInternationalFormat(value: never) {
+function parseGermanNumberToInternationalFormat(value: never) {
     return (value as string).toString().replace('.', '').replace(',', '.') as never;
 }

@@ -69,11 +69,9 @@ export default function ChartTableWrapper({
             {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
                 <BarChart
-                  chartInput={{
-                    data: filteredData,
-                    axisPairs: diagramAttr.axisPairs,
-                    aspect: width / (height - 250),
-                  }}
+                  data={filteredData}
+                  axisPairs={diagramAttr.axisPairs}
+                  aspect={width / (height - 250)}
                 ></BarChart>
               </div>
             ) : (
