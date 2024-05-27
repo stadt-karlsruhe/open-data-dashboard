@@ -11,7 +11,7 @@ export function transformData(resource: TransformableResource, data: unknown) {
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
-    if (resource.dataFormat === 'de') {
+    if (resource.numberFormat === 'de') {
         transformedData = mapData(transformedData, resource);
     }
     return transformedData;

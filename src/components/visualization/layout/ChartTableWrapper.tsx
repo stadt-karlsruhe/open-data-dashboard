@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 import BarChart from '../bar-chart/BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import { DataRecord } from '@/types/visualization';
@@ -72,7 +73,6 @@ export default function ChartTableWrapper({
                     data: filteredData,
                     axisPairs: diagramAttr.axisPairs,
                     aspect: width / (height - 250),
-                    germanFormat: resource.germanFormat,
                   }}
                 ></BarChart>
               </div>

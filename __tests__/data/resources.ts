@@ -52,7 +52,7 @@ export const transformNumberFormatResource: TransformableResource = {
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
-    dataFormat: 'de',
+    numberFormat: 'de',
     visualizations: {
         table: {},
         barChart: {

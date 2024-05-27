@@ -52,7 +52,7 @@ export const TransformableResourceSchema = BaseResourceSchema.extend({
     skipFieldsRegEx: z.string().optional(),
     renameFields: z.record(z.string()).optional(),
     defaultFilters: z.record(z.string(), DefaultFilterSchema).optional(),
-    dataFormat: z
+    numberFormat: z
         .union([z.literal('en'), z.literal('de')])
         .default('de')
         .optional(),
