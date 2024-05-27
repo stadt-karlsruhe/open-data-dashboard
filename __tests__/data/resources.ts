@@ -1,5 +1,6 @@
 import { EmbeddedResource, TransformableResource } from '@/schema';
 
+import Visualization from '@/components/visualization/layout/Visualization';
 import { mock } from 'node:test';
 
 const mockSource = 'https://example.com/';
@@ -47,12 +48,19 @@ export const skipAndRenameFieldsResource: TransformableResource = {
     },
 };
 
-export const transformNumberFormatResource: TransformableResource = {
+export const germanNumberFormatResource: TransformableResource = {
     id: '3',
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
     numberFormat: 'de',
+    visualizations: {
+        table: {},
+    },
+};
+
+export const germanNumberFormatResourceChart: TransformableResource = {
+    ...germanNumberFormatResource,
     visualizations: {
         table: {},
         barChart: {

@@ -1,18 +1,19 @@
 import { describe, expect, it } from '@jest/globals';
 import {
+    germanNumberFormatResource,
+    germanNumberFormatResourceChart,
+    renameFieldsResource,
+    skipAndRenameFieldsResource,
+    skipFieldsResource,
+    skipFieldsResourceNoMatch,
+} from '../data/resources';
+import {
     jsonRenameFields,
     jsonSkipAndRenameFields,
     jsonSkipFields,
     jsonTransformedNumbers,
 } from '../data/dataTransformations';
 import { jsonStandard, jsonStandardGermanFormat } from '../data/dataFormats';
-import {
-    renameFieldsResource,
-    skipAndRenameFieldsResource,
-    skipFieldsResource,
-    skipFieldsResourceNoMatch,
-    transformNumberFormatResource,
-} from '../data/resources';
 
 import { transformData } from '@/transform';
 
@@ -55,7 +56,14 @@ describe('transform data', () => {
     it('should correctly transform number format for numbers in yAxes', () => {
         expect.hasAssertions();
 
-        const result = transformData(transformNumberFormatResource, jsonStandardGermanFormat);
+        const result = transformData(germanNumberFormatResourceChart, jsonStandardGermanFormat);
         expect(result).toStrictEqual(jsonTransformedNumbers);
+    });
+
+    it('should not transform number format for numbers in resource without chart', () => {
+        expect.hasAssertions();
+
+        const result = transformData(germanNumberFormatResource, jsonStandardGermanFormat);
+        expect(result).toStrictEqual(jsonStandardGermanFormat);
     });
 });
