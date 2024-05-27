@@ -92,7 +92,7 @@ function getIcon(color: string) {
     // eslint-disable-next-line unicorn/no-keyword-prefix
     className: 'custom-icon-div',
     html: ReactDOMServer.renderToString(
-      <i aria-label="map-marker" style={{ color, fontSize: '30px' }} className="bi bi-geo-alt-fill" />,
+      <i role="button" aria-label="map-marker" style={{ color, fontSize: '30px' }} className="bi bi-geo-alt-fill" />,
     ),
     iconAnchor: [15, 30],
   });
