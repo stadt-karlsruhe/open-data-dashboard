@@ -18,6 +18,7 @@ const standardPos = {
   zoom: 13.5,
 };
 
+// eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
   resource,
   geoJsonData,
@@ -34,7 +35,10 @@ export default function GeoMap({
         scrollWheelZoom={true}
         zoomControl={false}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+        />
         {geoJsonData.features.map((feature, index) => {
           let colorCode = colorPrimary;
           const label = getLabelForKey(feature.properties, resource.visualizations.map.labelKey);
