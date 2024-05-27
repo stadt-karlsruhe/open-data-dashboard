@@ -1,5 +1,5 @@
 appearance:
-    theme: 'karlsruhe'
+    theme: "karlsruhe"
 resources:
     - id: "1"
       source: https://mocki.io/v1/1442bc5a-869f-4398-96a9-c5c50fc3b1a3
@@ -11,6 +11,10 @@ resources:
           mannlich (%): Männlich (%)
           weiblich (%): Weiblich (%)
       skipFieldsRegEx: ^_id$
+      defaultFilters:
+          Jahr:
+              min: 2009
+              max: 2009
       visualizations:
           barChart:
               axisPairs:
@@ -64,14 +68,14 @@ resources:
       # source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
       type: JSON
       name: Europawahl 2019
-      germanFormat: de
+      dataFormat: de
       visualizations:
           barChart:
               axisPairs:
-                - xAxis: Partei/politische Vereinigung
-                  yAxis: Stimmen
-                - xAxis: Parteiname
-                  yAxis: "%"
+                  - xAxis: Partei/politische Vereinigung
+                    yAxis: Stimmen
+                  - xAxis: Parteiname
+                    yAxis: "%"
     - id: "7"
       source: https://mocki.io/v1/iprobablydontexist
       # source: https://transparenz.karlsruhe.de/datastore/dump/iprobablydontexist?format=json

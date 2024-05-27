@@ -3,12 +3,6 @@
     "title": "Open Data Dashboard",
     "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
   },
-  "Visualization": {
-    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
-    "dataEmptyMessage": "Endpunkt \"{source}\" für Ressource \"{name}\" mit id {id} hat keine/leere Daten zurückgegeben. Melden sie dieses Problem dem Administrator dieser Seite.",
-    "endpointErrorTitle": "Daten konnten nicht geladen werden!",
-    "endpointErrorMessage": "Die Daten der Ressource \"{name}\" mit Id {id} und Endpunkt \"{source}\" konnten nicht geladen werden. Falls dieses Problem weiterhin bestellt, melden sie es dem Administrator der Seite."
-  },
   "ChartTableFilterHead": {
     "searchAll": "Suche in allen Zeilen",
     "collapseTooltipExpand": "Filter öffnen",
@@ -40,10 +34,17 @@
   },
   "Error": {
     "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
     "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
-    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden sie es dem Administrator der Seite.",
-    "returnBtn":"Zurück zur Startseite"
+    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+    "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}",
+    "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
+    "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+    "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
+    "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
+    "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
+    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
+    "returnBtn": "Zurück zur Startseite"
   },
   "Legend": {
     "title": "Legende"
@@ -54,5 +55,4 @@
   "AxisSelector": {
     "title": "X-Achse auswählen:"
   }
-
 }

@@ -1,6 +1,6 @@
 import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from '../data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
-import { TransformableResource } from '@/types/configuration';
+import { TransformableResource } from '@/schema';
 import { transformData } from '@/transform';
 
 const jsonResource: TransformableResource = {

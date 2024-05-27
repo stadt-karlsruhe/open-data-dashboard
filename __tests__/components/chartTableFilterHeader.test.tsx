@@ -5,8 +5,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { filterAllEntries, filterAllEntriesInvalid } from '../data/dataFilters';
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
+import { Filter } from '@/schema';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
@@ -26,10 +28,7 @@ describe('component ChartTableFilterHeader', () => {
   const mockOnChange = jest.fn();
   const mockUseAccordionButton = useAccordionButton as jest.Mock;
 
-  const renderComponent = (
-    activeEventKey?: string,
-    filters: Record<string, string | { min?: string | undefined; max?: string | undefined }> = {},
-  ) => {
+  const renderComponent = (activeEventKey?: string, filters: Record<string, Filter> = {}) => {
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
         <AccordionContext.Provider value={{ activeEventKey }}>

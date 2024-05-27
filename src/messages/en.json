@@ -3,12 +3,6 @@
     "title": "Open Data Dashboard",
     "description": "Visualizations of open data related to the city of Karlsruhe"
   },
-  "Visualization": {
-    "dataEmptyTitle": "Ressource returned no data!",
-    "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" with id {id} returned no/empty data. Please notify this site's administrator.",
-    "endpointErrorTitle": "Data could not be loaded!",
-    "endpointErrorMessage": "The data of resource \"{name}\" with id {id} and endpoint \"{source}\" could not be loaded. Should this problem persist, please notify this site's administrator."
-  },
   "ChartTableFilterHead": {
     "searchAll": "Search all rows",
     "collapseTooltipExpand": "Expand filters",
@@ -40,10 +34,17 @@
   },
   "Error": {
     "notFoundTitle": "Oops! You're lost.",
-    "unexpectedTitle": "An unexpected error ocurred!",
     "notFoundSubtitle": "The page you are looking for was not found.",
+    "dataEmptyTitle": "Resource returned no data!",
+    "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}",
+    "dataNotLoadedTitle": "Data could not be loaded!",
+    "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+    "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
+    "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+    "unexpectedTitle": "An unexpected error ocurred!",
+    "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
     "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
-    "returnBtn":"Return Home"
+    "returnBtn": "Return Home"
   },
   "Legend": {
     "title": "Legend"

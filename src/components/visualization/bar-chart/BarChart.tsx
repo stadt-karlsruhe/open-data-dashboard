@@ -10,7 +10,7 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartInput, DataRecord } from '@/types/visualization';
-import { AxisPair } from '@/types/configuration';
+import { AxisPair } from '@/schema';
 import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { computeIfAbsent } from '@/utils/maputils';

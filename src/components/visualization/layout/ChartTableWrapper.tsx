@@ -6,7 +6,7 @@ import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
 import { DataRecord } from '@/types/visualization';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { TransformableResource } from '@/types/configuration';
+import { TransformableResource } from '@/schema';
 import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';

@@ -1,5 +1,6 @@
 import { DataRecord, TabularJson, TabularJsonResponse } from '@/types/visualization';
-import { TransformableResource } from '@/types/configuration';
+
+import { TransformableResource } from '@/schema';
 import { csv2json } from 'json-2-csv';
 
 export function transformData(resource: TransformableResource, data: unknown) {
@@ -10,7 +11,7 @@ export function transformData(resource: TransformableResource, data: unknown) {
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
-    if (resource.germanFormat === 'de') {
+    if (resource.dataFormat === 'de') {
         transformedData = mapData(transformedData, resource);
     }
     return transformedData;

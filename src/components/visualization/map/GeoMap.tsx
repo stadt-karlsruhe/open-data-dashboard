@@ -3,7 +3,7 @@
 import 'leaflet/dist/leaflet.css';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import L, { LatLngExpression, Layer } from 'leaflet';
-import { GeoJSONResource } from '@/types/configuration';
+import { GeoJSONResource } from '@/schema';
 import Legend from './Legend';
 import React from 'react';
 import ResetView from './ResetView';

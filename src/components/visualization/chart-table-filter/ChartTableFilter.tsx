@@ -1,12 +1,13 @@
+import { Filter, TransformableResource } from '@/schema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHeader } from './ChartTableFilterHeader';
 import CurrentFilters from './CurrentFilters';
 import { DataRecord } from '@/types/visualization';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
-import { TransformableResource } from '@/types/configuration';
 import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -22,21 +23,27 @@ export default function ChartTableFilter({
 }) {
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState(
-    JSON.parse(searchParams.get('search') ?? '{}') as Record<string, string | { min?: string; max?: string }>,
+    searchParams.get('search')
+      ? (JSON.parse(searchParams.get('search') ?? '{}') as Record<string, Filter>)
+      : resource.defaultFilters ?? {},
   );
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    // use query parameters on initial render
+    // use query parameters or default filter on initial render
     filter();
+    // if query parameters are not set, set them to the value of defaultFilters
+    if (!searchParams.get('search') && resource.defaultFilters) {
+      setParams(resource.defaultFilters);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function onChange(key: string, value: string | { min?: string; max?: string }) {
+  function onChange(key: string, value: Filter) {
     let updatedFilters;
     if (value) {
-      updatedFilters = { ...filters } as Record<string, string | { min?: string; max?: string }>;
+      updatedFilters = { ...filters } as Record<string, Filter>;
       updatedFilters[key] = value;
     } else {
       updatedFilters = Object.assign(
@@ -51,11 +58,11 @@ export default function ChartTableFilter({
     setParams(updatedFilters);
   }
 
-  function filter(updatedFilters: Record<string, string | { min?: string; max?: string }> = filters) {
+  function filter(updatedFilters: Record<string, Filter> = filters) {
     onFilter(filterData(data, updatedFilters));
   }
 
-  const setParams = useDebouncedCallback((updatedFilters: Record<string, string | { min?: string; max?: string }>) => {
+  const setParams = useDebouncedCallback((updatedFilters: Record<string, Filter>) => {
     const params = new URLSearchParams(searchParams);
     if (Object.keys(updatedFilters).length === 0) {
       params.delete('search');
