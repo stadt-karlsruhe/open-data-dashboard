@@ -13,6 +13,19 @@ export const jsonStandard = [
     },
 ];
 
+export const jsonStandardGermanFormat = [
+    {
+        StringColumn: 'StringWithCommas,,,AndDots...',
+        NumberWithDotColumn: '10.000',
+        NumberWithCommaColumn: '20,3334',
+    },
+    {
+        StringColumn: 'StringWithDots...AndCommas,,,',
+        NumberWithDotColumn: '20.000',
+        NumberWithCommaColumn: '30,4445',
+    },
+];
+
 export const jsonStandardNoBoolean = [
     {
         StringColumn: 'Seal',

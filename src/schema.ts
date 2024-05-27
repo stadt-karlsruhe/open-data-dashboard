@@ -52,7 +52,10 @@ export const TransformableResourceSchema = BaseResourceSchema.extend({
     skipFieldsRegEx: z.string().optional(),
     renameFields: z.record(z.string()).optional(),
     defaultFilters: z.record(z.string(), DefaultFilterSchema).optional(),
-    dataFormat: z.union([z.literal('en'), z.literal('de')]).default('de'),
+    dataFormat: z
+        .union([z.literal('en'), z.literal('de')])
+        .default('de')
+        .optional(),
     visualizations: z
         .object({
             barChart: z

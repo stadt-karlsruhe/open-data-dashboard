@@ -1,4 +1,5 @@
 import { EmbeddedResource, TransformableResource } from '@/schema';
+
 import { mock } from 'node:test';
 
 const mockSource = 'https://example.com/';
@@ -43,5 +44,28 @@ export const skipAndRenameFieldsResource: TransformableResource = {
     renameFields: {
         StringColumn: 'Name',
         BooleanColumn: 'Boolean',
+    },
+};
+
+export const transformNumberFormatResource: TransformableResource = {
+    id: '3',
+    source: mockSource,
+    name: 'JSON Resource',
+    type: 'JSON',
+    dataFormat: 'de',
+    visualizations: {
+        table: {},
+        barChart: {
+            axisPairs: [
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'NumberWithDotColumn',
+                },
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'NumberWithCommaColumn',
+                },
+            ],
+        },
     },
 };

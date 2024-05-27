@@ -34,3 +34,16 @@ export const jsonSkipAndRenameFields = [
         Boolean: false,
     },
 ];
+
+export const jsonTransformedNumbers = [
+    {
+        StringColumn: 'StringWithCommas,,,AndDots...',
+        NumberWithDotColumn: '10000',
+        NumberWithCommaColumn: '20.3334',
+    },
+    {
+        StringColumn: 'StringWithDots...AndCommas,,,',
+        NumberWithDotColumn: '20000',
+        NumberWithCommaColumn: '30.4445',
+    },
+];
