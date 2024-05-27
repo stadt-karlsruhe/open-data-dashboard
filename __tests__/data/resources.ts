@@ -17,6 +17,7 @@ export const jsonResource: TransformableResource = {
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
+    numberFormat: 'en',
     visualizations: {
         table: {},
     },

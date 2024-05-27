@@ -12,7 +12,7 @@ export function transformData(resource: TransformableResource, data: unknown) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
     if (resource.numberFormat === 'de') {
-        transformedData = mapData(transformedData, resource);
+        transformedData = mapDataToInternationalFormat(transformedData, resource);
     }
     return transformedData;
 }
@@ -111,7 +111,7 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
     return renamedRecords as DataRecord;
 }
 
-function mapData(records: DataRecord, resource: TransformableResource) {
+function mapDataToInternationalFormat(records: DataRecord, resource: TransformableResource) {
     if (resource.visualizations.barChart?.axisPairs === undefined) {
         return records;
     }
