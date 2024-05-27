@@ -19,12 +19,7 @@ interface ApplicationError {
 export default function ErrorComponent({ type, resource, error }: ApplicationError) {
   const t = useTranslations('Error');
   useEffect(() => {
-    if (
-      type === 'dataNotLoaded' ||
-      type === 'dataEmpty' ||
-      type === 'resourceConfigurationInvalid' ||
-      type === 'unexpected'
-    ) {
+    if (type !== 'notFound') {
       console.error(
         t(`${type}Message`, {
           source: resource?.source,
