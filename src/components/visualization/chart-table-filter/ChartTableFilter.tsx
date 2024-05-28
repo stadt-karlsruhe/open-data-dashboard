@@ -1,4 +1,4 @@
-import { Filter, TransformableResource } from '@/schema';
+import { Filter, TransformableResource } from '@/schemas/configuration-schema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -6,8 +6,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHeader } from './ChartTableFilterHeader';
 import CurrentFilters from './CurrentFilters';
-import { DataRecord } from '@/types/visualization';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
+import { TransformedData } from '@/schemas/data-schema';
 import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -18,8 +18,8 @@ export default function ChartTableFilter({
   onFilter,
 }: {
   resource: TransformableResource;
-  data: DataRecord;
-  onFilter: (filteredData: DataRecord) => void;
+  data: TransformedData[];
+  onFilter: (filteredData: TransformedData[]) => void;
 }) {
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState(
@@ -91,7 +91,7 @@ export default function ChartTableFilter({
           <ChartTableFilterBody
             resourceId={resource.id}
             filters={filters}
-            record={data[0]}
+            records={data[0]}
             eventKey="0"
             onChange={onChange}
             onClearAll={onClearAll}

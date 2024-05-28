@@ -1,22 +1,8 @@
+import { csvResource, jsonResource } from '../data/resources';
 import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from '../data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
-import { TransformableResource } from '@/schema';
+
 import { transformData } from '@/transform';
-
-const jsonResource: TransformableResource = {
-    id: '',
-    source: '',
-    name: '',
-    type: 'JSON',
-    visualizations: {
-        table: {},
-    },
-};
-
-const csvResource: TransformableResource = {
-    ...jsonResource,
-    type: 'CSV',
-};
 
 describe('transform JSON formats', () => {
     it('should not transform JSON if it is in standard format', () => {

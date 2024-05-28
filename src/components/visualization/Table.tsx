@@ -1,9 +1,10 @@
 // eslint-disable-next-line import/named
 import DataTable, { TableStyles } from 'react-data-table-component';
 import { colorDark, colorSecondary } from '@/colors';
+import { useFormatter, useTranslations } from 'next-intl';
 
-import { DataRecord } from '@/types/visualization';
-import { useTranslations } from 'next-intl';
+import { TransformedData } from '@/schemas/data-schema';
+import { formatNumber } from '@/format';
 
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts
 // Themed to fit Bootstrap 5 look
@@ -38,12 +39,14 @@ const customStyles: TableStyles = {
   },
 };
 
-export default function Table({ columnNames, records }: { columnNames: string[]; records: DataRecord }) {
+export default function Table({ columnNames, records }: { columnNames: string[]; records: TransformedData[] }) {
   const t = useTranslations('Table');
+  const format = useFormatter();
   const columns = columnNames.map((key) => {
     return {
       name: key,
-      selector: (row: Record<string, never>) => row[key],
+      selector: (row: TransformedData) => row[key],
+      format: (row: TransformedData) => formatNumber(row[key], key, format),
       sortable: true,
       reorder: true,
     };
@@ -52,7 +55,7 @@ export default function Table({ columnNames, records }: { columnNames: string[];
   return (
     <DataTable
       columns={columns}
-      data={records}
+      data={records as Record<string, never>[]}
       pagination
       paginationComponentOptions={{
         rowsPerPageText: t('rowsPerPageText'),

@@ -1,6 +1,4 @@
-import { DataRecord, TabularJson, TabularJsonResponse } from '@/types/visualization';
-
-import { TransformableResource } from '@/schema';
+import { TransformableResource } from '@/schemas/configuration-schema';
 import { csv2json } from 'json-2-csv';
 
 export function transformData(resource: TransformableResource, data: unknown) {
@@ -11,10 +9,7 @@ export function transformData(resource: TransformableResource, data: unknown) {
     if (resource.renameFields !== undefined) {
         transformedData = renameFields(transformedData, resource.renameFields);
     }
-    if (resource.numberFormat === 'de') {
-        transformedData = mapGermanToInternationalNumberFormat(transformedData, resource);
-    }
-    return transformedData;
+    return narrowType(transformedData, resource);
 }
 
 function transformType(resource: TransformableResource, data: unknown) {
@@ -30,23 +25,30 @@ function transformJsonData(json: unknown) {
     }
 
     if (isTabularResponseJson(json)) {
-        return json.result.records as DataRecord;
+        return json.result.records;
     }
 
     if (isTabularJson(json)) {
         const fields = json.fields.map((field) => field.id);
-        const records = [] as DataRecord;
+        const records = [] as Record<string, never>[];
         json.records.forEach((record) => {
             const obj = Object.fromEntries(fields.map((_, i) => [fields[i], record[i]]));
             records.push(obj);
         });
         return records;
     }
-    return [] as DataRecord;
+    return [];
 }
 
-function isStandardJson(json: unknown): json is DataRecord {
+function isStandardJson(json: unknown): json is Record<string, never>[] {
     return Array.isArray(json) && json.every((item) => typeof item === 'object');
+}
+
+interface TabularJsonResponse {
+    result: {
+        fields: [{ type: string; id: string }];
+        records: Record<string, never>[];
+    };
 }
 
 function isTabularResponseJson(json: unknown): json is TabularJsonResponse {
@@ -64,6 +66,11 @@ function isTabularResponseJson(json: unknown): json is TabularJsonResponse {
     );
 }
 
+interface TabularJson {
+    fields: [{ type: string; id: string }];
+    records: never[][];
+}
+
 function isTabularJson(json: unknown): json is TabularJson {
     return (
         json !== null &&
@@ -77,10 +84,10 @@ function isTabularJson(json: unknown): json is TabularJson {
 }
 
 function transformCsvData(csv: unknown) {
-    return csv2json(String(csv)) as DataRecord;
+    return csv2json(String(csv)) as Record<string, never>[];
 }
 
-function skipFields(records: DataRecord, skipFieldsRegex: string) {
+function skipFields(records: Record<string, never>[], skipFieldsRegex: string) {
     if (records.length === 0) {
         return records;
     }
@@ -92,15 +99,14 @@ function skipFields(records: DataRecord, skipFieldsRegex: string) {
         return records;
     }
 
-    const filteredRecords = records.map((record) => {
+    return records.map((record) => {
         const filteredFields = Object.entries(record).filter(([key, _]) => !fieldsToRemove.includes(key));
         return Object.fromEntries(filteredFields);
     });
-    return filteredRecords as DataRecord;
 }
 
-function renameFields(records: DataRecord, renameFieldsObj: Record<string, string>) {
-    const renamedRecords = records.map((record) => {
+function renameFields(records: Record<string, never>[], renameFieldsObj: Record<string, string>) {
+    return records.map((record) => {
         const renamedObj = {} as Record<string, never>;
         Object.entries(record).forEach(([key, value]) => {
             const renamedKey = renameFieldsObj[key] ?? key;
@@ -108,29 +114,32 @@ function renameFields(records: DataRecord, renameFieldsObj: Record<string, strin
         });
         return renamedObj;
     });
-    return renamedRecords as DataRecord;
 }
 
-function mapGermanToInternationalNumberFormat(records: DataRecord, resource: TransformableResource) {
-    if (resource.visualizations.barChart?.axisPairs === undefined) {
-        return records;
-    }
-    const yAxes = resource.visualizations.barChart.axisPairs.map((value) => value.yAxis);
-    const mappedRecords = [] as DataRecord;
-    records.forEach((record) => {
-        const obj = Object.fromEntries(Object.entries(record).map((entry) => parseEntry(entry, yAxes)));
-        mappedRecords.push(obj);
-    });
-    return mappedRecords;
+function narrowType(records: Record<string, never>[], resource: TransformableResource) {
+    return records.map(
+        (record) =>
+            Object.fromEntries(
+                Object.entries(record).map(([key, value]) => {
+                    const stringValue = String(value).toLowerCase();
+                    if (stringValue === 'true') {
+                        return [key, true];
+                    }
+                    if (stringValue === 'false') {
+                        return [key, false];
+                    }
+                    const parsedValue =
+                        resource.numberFormat === 'en' ? Number(value) : parseGermanNumberToInternationalFormat(value);
+                    if (!Number.isNaN(parsedValue)) {
+                        return [key, parsedValue];
+                    }
+                    return [key, String(value)];
+                }),
+            ) as Record<string, string | number | boolean>,
+    );
 }
 
-function parseEntry(entry: [string, never], yAxes: string[]) {
-    if (!yAxes.includes(entry[0])) {
-        return entry;
-    }
-    return [entry[0], parseGermanNumberToInternationalFormat(entry[1])] as [string, never];
-}
-
-function parseGermanNumberToInternationalFormat(value: never) {
-    return (value as string).toString().replace('.', '').replace(',', '.') as never;
+function parseGermanNumberToInternationalFormat(value: string) {
+    const isNumeric = !Number.isNaN(Number(value.replace('.', '').replace(',', '.')));
+    return isNumeric ? Number(value.replace('.', '').replace(',', '.')) : Number.NaN;
 }

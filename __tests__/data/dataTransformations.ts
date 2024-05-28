@@ -38,12 +38,12 @@ export const jsonSkipAndRenameFields = [
 export const jsonTransformedNumbers = [
     {
         StringColumn: 'StringWithCommas,,,AndDots...',
-        NumberWithDotColumn: '10000',
-        NumberWithCommaColumn: '20.3334',
+        NumberWithDotColumn: 10_000,
+        NumberWithCommaColumn: 20.3334,
     },
     {
         StringColumn: 'StringWithDots...AndCommas,,,',
-        NumberWithDotColumn: '20000',
-        NumberWithCommaColumn: '30.4445',
+        NumberWithDotColumn: 20_000,
+        NumberWithCommaColumn: 30.4445,
     },
 ];

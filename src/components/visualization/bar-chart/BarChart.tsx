@@ -10,26 +10,29 @@ import {
   YAxis,
 } from 'recharts';
 
-import { AxisPair } from '@/schema';
+import { AxisPair } from '@/schemas/configuration-schema';
 import AxisSelector from './AxisSelector';
-import { DataRecord } from '@/types/visualization';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
+import { TransformedData } from '@/schemas/data-schema';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
+import { useFormatter } from 'next-intl';
 import { useState } from 'react';
 
 let minValue: number;
 let maxValue: number;
 
+// eslint-disable-next-line max-lines-per-function
 export default function BarChart({
   data,
   axisPairs,
   aspect,
 }: {
-  data: DataRecord;
+  data: TransformedData[];
   axisPairs: AxisPair[];
   aspect: number;
 }) {
+  const format = useFormatter();
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
 
@@ -59,9 +62,21 @@ export default function BarChart({
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
-          <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
+          <YAxis
+            type="number"
+            domain={getDomain(data, axesMap, xAxis)}
+            tickFormatter={(value: number) => format.number(value)}
+            ticks={getTicks()}
+          />
           <ReferenceLine y={0} stroke="#000" />
-          <Tooltip />
+          <Tooltip
+            formatter={(value) => {
+              if (typeof value === 'number') {
+                return format.number(value);
+              }
+              return value;
+            }}
+          />
           <Legend onClick={onLegendClick} />
           {getBars()}
         </BarChartRecharts>
@@ -70,21 +85,22 @@ export default function BarChart({
   );
 }
 
-function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
+function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
   minValue = 0;
   maxValue = 0;
   const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
-  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([_, visible]) => visible).map(([yAxis]) => yAxis));
+  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([, visible]) => visible).map(([yAxis]) => yAxis));
   records.forEach((record) => {
     const valueArray = Object.entries(record)
       .filter(([key]) => visibleYAxes.has(key))
       .map((entry) => entry[1]);
     for (const value of valueArray) {
-      const parsedValue = Number.parseFloat(value);
-      if (parsedValue > maxValue) {
-        maxValue = parsedValue;
-      } else if (parsedValue < minValue) {
-        minValue = parsedValue;
+      if (typeof value === 'number') {
+        if (value > maxValue) {
+          maxValue = value;
+        } else if (value < minValue) {
+          minValue = value;
+        }
       }
     }
   });

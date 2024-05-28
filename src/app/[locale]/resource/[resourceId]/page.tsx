@@ -1,8 +1,8 @@
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import { ResourceSchema } from '@/schema';
 import Visualization from '@/components/visualization/layout/Visualization';
 import { getConfiguration } from '@/configuration';
+import { resourceSchema } from '@/schemas/configuration-schema';
 
 export default async function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
   const configuration = await getConfiguration();
@@ -12,7 +12,7 @@ export default async function Page({ params: { resourceId } }: { params: { resou
     return <ErrorComponent type="notFound" resource={resource} />;
   }
 
-  const parsedResource = ResourceSchema.safeParse(resource);
+  const parsedResource = resourceSchema.safeParse(resource);
   if (!parsedResource.success) {
     return (
       <ErrorComponent
