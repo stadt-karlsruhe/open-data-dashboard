@@ -44,7 +44,7 @@ describe('component ChartTableFilterBody', () => {
     expect.hasAssertions();
 
     renderComponent();
-    const input = screen.getByLabelText(messages.ChartTableFilterBody.search);
+    const [input] = screen.getAllByLabelText(messages.ChartTableFilterBody.search);
     const [minInput] = screen.getAllByLabelText('Min');
     const [maxInput] = screen.getAllByLabelText('Max');
     fireEvent.change(input, { target: { value: 'test' } });
