@@ -8,7 +8,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { ChartTableFilterBody } from '@/components/visualization/chart-table-filter/ChartTableFilterBody';
 import { NextIntlClientProvider } from 'next-intl';
 import { filterMixed } from '../data/dataFilters';
-import { jsonStandardNoBoolean } from '../data/dataFormats';
+import { jsonStandard } from '../data/dataFormats';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line max-lines-per-function
@@ -22,7 +22,7 @@ describe('component ChartTableFilterBody', () => {
         <ChartTableFilterBody
           resourceId="test-resource"
           filters={filterMixed}
-          records={jsonStandardNoBoolean[0] as unknown as Record<string, never>}
+          records={jsonStandard[0] as unknown as Record<string, never>}
           eventKey="1"
           onChange={mockOnChange}
           onClearAll={mockOnClearAll}
