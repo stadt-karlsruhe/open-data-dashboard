@@ -6,7 +6,7 @@ import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-le
 import L, { LatLngExpression } from 'leaflet';
 import { colorPrimary, getColor } from '@/colors';
 
-import { GeoJSONResource } from '@/schema';
+import { GeoJSONResource } from '@/schemas/configuration-schema';
 import Legend from './Legend';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
