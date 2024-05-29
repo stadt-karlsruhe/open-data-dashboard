@@ -109,9 +109,9 @@ function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, 
 
 function collectYAxes(axisPairs: AxisPair[]) {
   const axesMap = new Map<string, Map<string, boolean>>();
-  for (const axisPair of axisPairs) {
+  for (const [i, axisPair] of axisPairs.entries()) {
     const yAxesForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
-    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, true);
+    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, i === 0);
   }
   return axesMap;
 }
