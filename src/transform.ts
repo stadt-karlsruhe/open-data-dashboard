@@ -133,13 +133,14 @@ function narrowType(records: Record<string, never>[], resource: TransformableRes
                     if (!Number.isNaN(parsedValue)) {
                         return [key, parsedValue];
                     }
-                    return [key, String(value)];
+                    return [key, stringValue];
                 }),
             ) as Record<string, string | number | boolean>,
     );
 }
 
 function parseGermanNumberToInternationalFormat(value: string) {
-    const isNumeric = !Number.isNaN(Number(value.replace('.', '').replace(',', '.')));
-    return isNumeric ? Number(value.replace('.', '').replace(',', '.')) : Number.NaN;
+    const parsedValue = value.replace('.', '').replace(',', '.');
+    const isNumeric = !Number.isNaN(Number(parsedValue));
+    return isNumeric ? Number(parsedValue) : Number.NaN;
 }
