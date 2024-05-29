@@ -133,7 +133,7 @@ function narrowType(records: Record<string, never>[], resource: TransformableRes
                     if (!Number.isNaN(parsedValue)) {
                         return [key, parsedValue];
                     }
-                    return [key, stringValue];
+                    return [key, value];
                 }),
             ) as Record<string, string | number | boolean>,
     );
