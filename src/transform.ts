@@ -129,7 +129,9 @@ function narrowType(records: Record<string, never>[], resource: TransformableRes
                         return [key, false];
                     }
                     const parsedValue =
-                        resource.numberFormat === 'en' ? Number(value) : parseGermanNumberToInternationalFormat(value);
+                        resource.numberFormat === 'en'
+                            ? Number(stringValue)
+                            : parseGermanNumberToInternationalFormat(stringValue);
                     if (!Number.isNaN(parsedValue)) {
                         return [key, parsedValue];
                     }
