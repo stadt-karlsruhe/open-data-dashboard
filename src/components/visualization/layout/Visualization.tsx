@@ -1,6 +1,7 @@
 import ChartTableWrapper from './ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { Resource } from '@/schemas/configuration-schema';
+import TransformCache from './TransformCache';
 import dynamic from 'next/dynamic';
 import { transform } from '@/schemas/data-schema';
 
@@ -12,13 +13,14 @@ export default async function Visualization({ resource }: { resource: Resource }
     return <ErrorComponent type="dataNotLoaded" resource={resource} error={String(err)} />;
   }
   if (resource.type === 'JSON' || resource.type === 'CSV') {
-    const transformedData = transform(resource, data);
+    // const transformedData = transform(resource, data);
 
-    if (!transformedData.success) {
-      return <ErrorComponent type="dataEmpty" resource={resource} error={JSON.stringify(transformedData.error)} />;
-    }
+    // if (!transformedData.success) {
+    //   return <ErrorComponent type="dataEmpty" resource={resource} error={JSON.stringify(transformedData.error)} />;
+    // }
 
-    return <ChartTableWrapper resource={resource} transformedData={transformedData.data} />;
+    // return <ChartTableWrapper resource={resource} transformedData={transformedData.data} />;
+    return <TransformCache resource={resource} data={data} />;
   } else if (resource.type === 'GeoJSON') {
     const geoJsonData = data as GeoJSON.FeatureCollection;
     const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
