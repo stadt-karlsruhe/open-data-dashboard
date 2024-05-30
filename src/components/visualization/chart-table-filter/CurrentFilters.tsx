@@ -42,7 +42,7 @@ export default function CurrentFilters({
             return (
               <button
                 key={key}
-                className="btn btn-secondary badge me-1 mb-3"
+                className="btn btn-secondary badge me-1 my-1 my-md-3"
                 onClick={() => {
                   onClear(key, '');
                 }}

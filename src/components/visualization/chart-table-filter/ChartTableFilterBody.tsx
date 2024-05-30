@@ -28,14 +28,14 @@ export function ChartTableFilterBody({
           const filter = filters[key];
           const filterObj = typeof filter === 'object' ? filter : undefined;
           return (
-            <fieldset key={key} className="row my-3">
+            <fieldset key={key} className="row mb-1 mb-md-3">
               <legend id={`${resourceId}-${key}-input`} className="col-sm-2 col-form-label">
                 {key}
               </legend>
               <div className="col-md-10">
                 {typeof value === 'number' ? (
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-6">
                       <ClearableInputGroup
                         id={`${resourceId}-${key}-min`}
                         type="number"
@@ -49,7 +49,7 @@ export function ChartTableFilterBody({
                         }}
                       />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-6">
                       <ClearableInputGroup
                         id={`${resourceId}-${key}-max`}
                         type="number"
@@ -82,7 +82,7 @@ export function ChartTableFilterBody({
             </fieldset>
           );
         })}
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end mt-3">
           <button title={t('clearAllTooltip')} className="btn btn-secondary px-5" onClick={onClearAll}>
             {t('clearAll')}
           </button>

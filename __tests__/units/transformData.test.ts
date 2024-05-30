@@ -15,7 +15,7 @@ import {
 } from '../data/dataTransformations';
 import { jsonStandard, jsonStandardGermanFormat } from '../data/dataFormats';
 
-import { transformData } from '@/transform';
+import { transformData } from '@/transformations/transformFormat';
 
 describe('transform data', () => {
     it('should skip fields IntegerColumn and FloatColumn', () => {

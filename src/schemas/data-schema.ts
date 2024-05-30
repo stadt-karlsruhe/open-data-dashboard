@@ -1,5 +1,5 @@
 import { TransformableResource } from './configuration-schema';
-import { transformData } from '@/transform';
+import { transformData } from '@/transformations/transformFormat';
 import { z } from 'zod';
 
 const transformedDataSchema = z

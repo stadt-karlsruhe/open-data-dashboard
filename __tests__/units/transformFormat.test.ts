@@ -2,7 +2,7 @@ import { csvResource, jsonResource } from '../data/resources';
 import { csvValid, jsonFormatNotSupported, jsonStandard, jsonTabular, jsonTabularResponse } from '../data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
 
-import { transformData } from '@/transform';
+import { transformData } from '@/transformations/transformFormat';
 
 describe('transform JSON formats', () => {
     it('should not transform JSON if it is in standard format', () => {
