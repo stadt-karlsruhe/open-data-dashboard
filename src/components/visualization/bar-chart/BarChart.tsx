@@ -16,13 +16,11 @@ import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/data-schema';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
-import { useFormatter } from 'next-intl';
 import { useState } from 'react';
 
 let minValue: number;
 let maxValue: number;
 
-// eslint-disable-next-line max-lines-per-function
 export default function BarChart({
   data,
   axisPairs,
@@ -32,7 +30,6 @@ export default function BarChart({
   axisPairs: AxisPair[];
   aspect: number;
 }) {
-  const format = useFormatter();
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
 
@@ -62,21 +59,9 @@ export default function BarChart({
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
-          <YAxis
-            type="number"
-            domain={getDomain(data, axesMap, xAxis)}
-            tickFormatter={(value: number) => format.number(value)}
-            ticks={getTicks()}
-          />
+          <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
           <ReferenceLine y={0} stroke="#000" />
-          <Tooltip
-            formatter={(value) => {
-              if (typeof value === 'number') {
-                return format.number(value);
-              }
-              return value;
-            }}
-          />
+          <Tooltip />
           <Legend onClick={onLegendClick} />
           {getBars()}
         </BarChartRecharts>

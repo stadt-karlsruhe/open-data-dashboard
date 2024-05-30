@@ -3,7 +3,7 @@
  */
 import { describe, expect, it } from '@jest/globals';
 // TODO: Investigate why the table is not displaying data of type boolean
-import { jsonStandard, jsonStandardFormattedEn } from '../data/dataFormats';
+import { jsonStandard, jsonStandardFormatted } from '../data/dataFormats';
 
 import { NextIntlClientProvider } from 'next-intl';
 import Table from '@/components/visualization/Table';
@@ -26,7 +26,7 @@ describe('component Table', () => {
       expect(getByText(columnName)).toBeVisible();
     });
 
-    jsonStandardFormattedEn.forEach((record) => {
+    jsonStandardFormatted.forEach((record) => {
       Object.values(record).forEach((value) => {
         expect(getByText(String(value))).toBeVisible();
       });

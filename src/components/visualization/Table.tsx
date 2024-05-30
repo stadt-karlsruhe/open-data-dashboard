@@ -1,10 +1,9 @@
 // eslint-disable-next-line import/named
 import DataTable, { TableStyles } from 'react-data-table-component';
 import { colorDark, colorSecondary } from '@/colors';
-import { useFormatter, useTranslations } from 'next-intl';
 
 import { TransformedData } from '@/schemas/data-schema';
-import { formatNumber } from '@/format';
+import { useTranslations } from 'next-intl';
 
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts
 // Themed to fit Bootstrap 5 look
@@ -41,12 +40,11 @@ const customStyles: TableStyles = {
 
 export default function Table({ columnNames, records }: { columnNames: string[]; records: TransformedData[] }) {
   const t = useTranslations('Table');
-  const format = useFormatter();
   const columns = columnNames.map((key) => {
     return {
       name: key,
       selector: (row: TransformedData) => row[key],
-      format: (row: TransformedData) => formatNumber(row[key], key, format),
+      format: (row: TransformedData) => String(row[key]),
       sortable: true,
       reorder: true,
     };

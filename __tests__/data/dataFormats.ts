@@ -13,7 +13,7 @@ export const jsonStandard = [
     },
 ];
 
-export const jsonStandardFormattedEn = [
+export const jsonStandardFormatted = [
     {
         StringColumn: 'Seal',
         IntegerColumn: '24',
@@ -22,7 +22,7 @@ export const jsonStandardFormattedEn = [
     },
     {
         StringColumn: 'Bear',
-        IntegerColumn: '2,023',
+        IntegerColumn: '2023',
         FloatColumn: '5.1',
         BooleanColumn: 'false',
     },
