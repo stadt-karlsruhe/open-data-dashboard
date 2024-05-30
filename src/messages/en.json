@@ -54,5 +54,15 @@
   },
   "AxisSelector": {
     "title": "Select X-Axis:"
+  },
+  "ResourceDetailsControls": {
+    "download": "Download",
+    "embed": "Embed",
+    "fullscreen": "Fullscreen",
+    "embedTitle": "Embed resource visualization",
+    "embedBody": "The visualization for this resource can be embedded using the following code.",
+    "embedWidth": "Width",
+    "embedHeight": "Height",
+    "keepSearchParams": "Preserve search parameters"
   }
 }

@@ -54,5 +54,15 @@
   },
   "AxisSelector": {
     "title": "X-Achse auswählen:"
+  },
+  "ResourceDetailsControls": {
+    "download": "Herunterladen",
+    "embed": "Einbetten",
+    "fullscreen": "Vollbildschirm",
+    "embedTitle": "Ressourcendarstellung einbetten",
+    "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
+    "embedWidth": "Breite",
+    "embedHeight": "Höhe",
+    "keepSearchParams": "Suchparameter beibehalten"
   }
 }
