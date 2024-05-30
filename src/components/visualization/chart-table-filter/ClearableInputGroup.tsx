@@ -1,6 +1,5 @@
 import { ChangeEvent, ReactNode } from 'react';
-
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export function ClearableInputGroup({
   id,
@@ -20,10 +19,11 @@ export function ClearableInputGroup({
   children?: ReactNode;
 }) {
   const t = useTranslations('ClearableInputGroup');
+  const locale = useLocale();
   return (
     <div className="input-group">
       <div className="form-floating">
-        <input type={type} id={id} className="form-control" value={value} onChange={onChange} />
+        <input type={type} id={id} className="form-control" value={value} lang={locale} onChange={onChange} />
         <label htmlFor={id}>{label}</label>
       </div>
       <button
