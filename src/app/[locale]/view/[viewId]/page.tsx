@@ -5,7 +5,10 @@ import { resourceSchema } from '@/schemas/configuration-schema';
 
 export default async function Page({ params: { viewId } }: { params: { viewId: string } }) {
   const configuration = await getConfiguration();
-  const resource = configuration.resources.find(
+  if (!configuration.success) {
+    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
+  }
+  const resource = configuration.data?.resources.find(
     (item) =>
       `${item.name.trim().replaceAll(/\s+/gu, '-').toLowerCase()}-${item.id.toLowerCase()}` ===
       decodeURIComponent(viewId).toLowerCase(),
