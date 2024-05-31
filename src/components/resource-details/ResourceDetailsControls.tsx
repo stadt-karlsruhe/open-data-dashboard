@@ -1,28 +1,23 @@
 'use client';
 
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Link from 'next/link';
 import Modal from 'react-bootstrap/Modal';
 import { Resource } from '@/schemas/configuration-schema';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 // eslint-disable-next-line max-lines-per-function
 export default function ResourceDetailsControls({ resource }: { resource: Resource }) {
   const [show, setShow] = useState(false);
-  const [origin, setOrigin] = useState('');
   const [iframeWidth, setIframeWidth] = useState('700');
   const [iframeHeight, setIframeHeight] = useState('400');
   const [keepParams, setKeepParams] = useState(true);
   const searchParams = useSearchParams();
   const locale = useLocale();
   const t = useTranslations('ResourceDetailsControls');
-
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
 
   return (
     <div className="d-flex flex-row justify-content-between flex-wrap">
@@ -110,7 +105,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
             <strong>Code:</strong>
           </div>
           <CopyBlock
-            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${origin}/${locale}/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" frameBorder="0" />`}
+            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${window.location.origin}/${locale}/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" frameBorder="0" />`}
             language="html"
             theme={dracula}
             wrapLongLines={true}

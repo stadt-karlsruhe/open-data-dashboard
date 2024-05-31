@@ -1,7 +1,9 @@
 import EmbeddedViewer from '../visualization/EmbeddedViewer';
 import { Resource } from '@/schemas/configuration-schema';
-import ResourceDetailsControls from './ResourceDetailsControls';
 import Visualization from '../visualization/layout/Visualization';
+import dynamic from 'next/dynamic';
+
+const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'), { ssr: false });
 
 export default function ResourceDetails({ resource }: { resource: Resource }) {
   return (
