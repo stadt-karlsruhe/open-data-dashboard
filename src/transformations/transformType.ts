@@ -27,6 +27,5 @@ export function narrowType(records: Record<string, never>[], resource: Transform
 
 function parseGermanNumberToInternationalFormat(value: string) {
     const parsedValue = value.replace('.', '').replace(',', '.');
-    const isNumeric = !Number.isNaN(Number(parsedValue));
-    return isNumeric ? Number(parsedValue) : Number.NaN;
+    return Number.isNaN(Number(parsedValue)) ? Number.NaN : Number(parsedValue);
 }
