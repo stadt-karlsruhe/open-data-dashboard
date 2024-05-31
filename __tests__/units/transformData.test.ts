@@ -15,7 +15,7 @@ import {
 } from '../data/dataTransformations';
 import { jsonStandard, jsonStandardGermanFormat } from '../data/dataFormats';
 
-import { transformData } from '@/transform';
+import { transformData } from '@/transformations/transformFormat';
 
 describe('transform data', () => {
     it('should skip fields IntegerColumn and FloatColumn', () => {
@@ -53,17 +53,10 @@ describe('transform data', () => {
         expect(result).toStrictEqual(jsonSkipAndRenameFields);
     });
 
-    it('should correctly transform number format for numbers in yAxes', () => {
+    it('should correctly transform number format for numbers', () => {
         expect.hasAssertions();
 
         const result = transformData(germanNumberFormatResourceChart, jsonStandardGermanFormat);
         expect(result).toStrictEqual(jsonTransformedNumbers);
-    });
-
-    it('should not transform number format for numbers in resource without chart', () => {
-        expect.hasAssertions();
-
-        const result = transformData(germanNumberFormatResource, jsonStandardGermanFormat);
-        expect(result).toStrictEqual(jsonStandardGermanFormat);
     });
 });

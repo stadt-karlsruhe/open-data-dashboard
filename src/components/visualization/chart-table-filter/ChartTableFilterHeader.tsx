@@ -1,5 +1,6 @@
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ClearableInputGroup } from './ClearableInputGroup';
+import { Filter } from '@/schemas/configuration-schema';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import { useContext } from 'react';
 import { useTranslations } from 'next-intl';
@@ -13,7 +14,7 @@ export function ChartTableFilterHeader({
   onChange,
 }: {
   resourceId: string;
-  filters: Record<string, string | { min?: string; max?: string }>;
+  filters: Record<string, Filter>;
   eventKey: string;
   onChange: (key: string, value: string) => void;
 }) {

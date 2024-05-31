@@ -13,6 +13,21 @@ export const jsonStandard = [
     },
 ];
 
+export const jsonStandardFormatted = [
+    {
+        StringColumn: 'Seal',
+        IntegerColumn: '24',
+        FloatColumn: '9.1',
+        BooleanColumn: 'true',
+    },
+    {
+        StringColumn: 'Bear',
+        IntegerColumn: '2023',
+        FloatColumn: '5.1',
+        BooleanColumn: 'false',
+    },
+];
+
 export const jsonStandardGermanFormat = [
     {
         StringColumn: 'StringWithCommas,,,AndDots...',
@@ -23,19 +38,6 @@ export const jsonStandardGermanFormat = [
         StringColumn: 'StringWithDots...AndCommas,,,',
         NumberWithDotColumn: '20.000',
         NumberWithCommaColumn: '30,4445',
-    },
-];
-
-export const jsonStandardNoBoolean = [
-    {
-        StringColumn: 'Seal',
-        IntegerColumn: 24,
-        FloatColumn: 9.1,
-    },
-    {
-        StringColumn: 'Bear',
-        IntegerColumn: 2023,
-        FloatColumn: 5.1,
     },
 ];
 

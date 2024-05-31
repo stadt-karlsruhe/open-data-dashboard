@@ -4,10 +4,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '../bar-chart/BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
-import { DataRecord } from '@/types/visualization';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { TransformableResource } from '@/schema';
+import { TransformableResource } from '@/schemas/configuration-schema';
+import { TransformedData } from '@/schemas/data-schema';
 import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ export default function ChartTableWrapper({
   transformedData,
 }: {
   resource: TransformableResource;
-  transformedData: DataRecord;
+  transformedData: TransformedData[];
 }) {
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();

@@ -1,7 +1,4 @@
-import { EmbeddedResource, TransformableResource } from '@/schema';
-
-import Visualization from '@/components/visualization/layout/Visualization';
-import { mock } from 'node:test';
+import { EmbeddedResource, TransformableResource } from '@/schemas/configuration-schema';
 
 const mockSource = 'https://example.com/';
 
@@ -17,6 +14,17 @@ export const jsonResource: TransformableResource = {
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
+    numberFormat: 'en',
+    visualizations: {
+        table: {},
+    },
+};
+
+export const csvResource: TransformableResource = {
+    id: '3',
+    source: mockSource,
+    name: 'CSV Resource',
+    type: 'CSV',
     numberFormat: 'en',
     visualizations: {
         table: {},
