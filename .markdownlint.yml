@@ -1,6 +1,7 @@
 ---
 default: true
 MD033: false
+MD038: false
 line-length:
   line_length: 150
   heading_line_length: 80
