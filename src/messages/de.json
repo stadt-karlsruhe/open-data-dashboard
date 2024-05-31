@@ -1,58 +1,58 @@
 {
-  "Metadata": {
-    "title": "Open Data Dashboard",
-    "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe"
-  },
-  "ChartTableFilterHead": {
-    "searchAll": "Suche in allen Zeilen",
-    "collapseTooltipExpand": "Filter öffnen",
-    "collapseTooltipCollapse": "Filter schließen"
-  },
-  "ChartTableFilterBody": {
-    "search": "Suche",
-    "clearAll": "Löschen",
-    "clearAllTooltip": "Alle Filter löschen"
-  },
-  "ChartTableWrapper": {
-    "barChart": "Balkendiagramm",
-    "table": "Tabelle"
-  },
-  "Table": {
-    "rowsPerPageText": "Zeilen pro Seite:",
-    "rangeSeparatorText": "von",
-    "selectAllRowsItemText": "Alle"
-  },
-  "ClearableInputGroup": {
-    "clearTooltip": "Löschen"
-  },
-  "CurrentFilters": {
-    "contains": "enthält",
-    "allEntriesLabel": "Zeile"
-  },
-  "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
-  },
-  "Error": {
-    "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-    "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
-    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
-    "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}",
-    "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
-    "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
-    "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
-    "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
-    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!",
-    "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
-    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
-    "returnBtn": "Zurück zur Startseite"
-  },
-  "Legend": {
-    "title": "Legende"
-  },
-  "ResetView": {
-    "resetTooltip": "Ansicht zurücksetzen"
-  },
-  "AxisSelector": {
-    "title": "X-Achse auswählen:"
-  }
+    "AxisSelector": {
+        "title": "X-Achse auswählen:"
+    },
+    "ChartTableFilterBody": {
+        "clearAll": "Löschen",
+        "clearAllTooltip": "Alle Filter löschen",
+        "search": "Suche"
+    },
+    "ChartTableFilterHead": {
+        "collapseTooltipCollapse": "Filter schließen",
+        "collapseTooltipExpand": "Filter öffnen",
+        "searchAll": "Suche in allen Zeilen"
+    },
+    "ChartTableWrapper": {
+        "barChart": "Balkendiagramm",
+        "table": "Tabelle"
+    },
+    "ClearableInputGroup": {
+        "clearTooltip": "Löschen"
+    },
+    "CurrentFilters": {
+        "allEntriesLabel": "Zeile",
+        "contains": "enthält"
+    },
+    "Error": {
+        "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}",
+        "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+        "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+        "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
+        "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
+        "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
+        "notFoundTitle": "Hoppla! Du hast dich verirrt.",
+        "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+        "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
+        "returnBtn": "Zurück zur Startseite",
+        "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
+        "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
+    },
+    "Legend": {
+        "title": "Legende"
+    },
+    "LocaleSwitcher": {
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
+    },
+    "Metadata": {
+        "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe",
+        "title": "Open Data Dashboard"
+    },
+    "ResetView": {
+        "resetTooltip": "Ansicht zurücksetzen"
+    },
+    "Table": {
+        "rangeSeparatorText": "von",
+        "rowsPerPageText": "Zeilen pro Seite:",
+        "selectAllRowsItemText": "Alle"
+    }
 }
