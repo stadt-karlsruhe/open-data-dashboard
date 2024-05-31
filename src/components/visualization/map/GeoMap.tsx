@@ -27,8 +27,7 @@ export default function GeoMap({
 }) {
   return (
     <MapContainer
-      // className="w-100 h-100 position-relative"
-      style={{ height: '100vh', width: '100%' }}
+      style={{ height: '100dvh', width: '100%' }}
       center={standardPos.latLng}
       zoom={standardPos.zoom}
       scrollWheelZoom={true}

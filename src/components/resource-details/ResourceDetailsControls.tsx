@@ -25,20 +25,20 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
   }, []);
 
   return (
-    <div className="d-flex flex-row justify-content-between mb-1 mb-md-3">
-      <Link className="btn btn-primary" href={`/${locale}/resource/${resource.id}${getParams()}`}>
+    <div className="d-flex flex-row justify-content-between flex-wrap">
+      <Link className="btn btn-primary mb-3" href={`/${locale}/resource/${resource.id}${getParams()}`}>
         <i className="bi bi-arrows-fullscreen" /> {t('fullscreen')}
       </Link>
       <div className="d-flex flex-row">
         <button
-          className="btn btn-primary"
+          className="btn btn-primary mb-3"
           onClick={() => {
             setShow(true);
           }}
         >
           <i className="bi bi-code-slash" /> {t('embed')}
         </button>
-        <Link className="btn btn-primary ms-1 ms-md-3" href={resource.source} target="_blank">
+        <Link className="btn btn-primary ms-1 ms-md-3 mb-3" href={resource.source} target="_blank">
           <i className="bi bi-download" /> {t('download')}
         </Link>
       </div>
@@ -131,7 +131,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
   }
 
   function getParamsFromWindow() {
-    if (resource.type === 'JSON' || resource.type === 'CSV') {
+    if ((resource.type === 'JSON' || resource.type === 'CSV') && window) {
       const filteredParams = new URLSearchParams();
       const params = new URLSearchParams(window.location.search);
       params.forEach((value, key) => {
