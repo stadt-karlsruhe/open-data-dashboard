@@ -13,7 +13,7 @@ export default function ResourceDetails({ resource }: { resource: Resource }) {
       <ResourceDetailsControls resource={resource} />
       <div
         className={`d-flex flex-column ${resource.type === 'GeoJSON' ? 'border border-secondary' : ''}`}
-        style={{ height: '80%' }}
+        style={{ height: '75dvh' }}
       >
         {resource.type === 'Embedded' ? (
           <EmbeddedViewer resource={resource} height="100%" />
