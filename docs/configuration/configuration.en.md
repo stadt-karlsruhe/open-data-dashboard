@@ -20,6 +20,7 @@ By default, the `bootstrap-light` theme will be used.
 By default, the configuration files included in the GitHub repository (`config/` directory) will be loaded.
 
 Alternatively, you can provide a path to a custom configuration directory using the `DEFAULT_CONFIGURATION_DIR` environment variable.
+All configuration files inside this directory and all of its subdirectories will be taken into account.
 
 !!! note
-    All configuration file names must end with either `app.config.yml` or `app.config.yaml`.
+    A configuration file name must end with either `app.config.yml` or `app.config.yaml`.
