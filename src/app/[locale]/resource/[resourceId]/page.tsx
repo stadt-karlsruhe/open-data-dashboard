@@ -6,7 +6,10 @@ import { resourceSchema } from '@/schemas/configuration-schema';
 
 export default async function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
   const configuration = await getConfiguration();
-  const resource = configuration.resources.find((item) => item.id.toLowerCase() === resourceId.toLowerCase());
+  if (!configuration.success) {
+    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
+  }
+  const resource = configuration.data?.resources.find((item) => item.id.toLowerCase() === resourceId.toLowerCase());
 
   if (resource === undefined) {
     return <ErrorComponent type="notFound" resource={resource} />;

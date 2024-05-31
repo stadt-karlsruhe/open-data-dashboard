@@ -24,6 +24,8 @@
         "contains": "enthält"
     },
     "Error": {
+        "configurationNotLoadedMessage": "Beim Laden der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
+        "configurationNotLoadedTitle": "Die Anwendungskonfiguration konnte nicht geladen werden!",
         "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}",
         "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
         "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
