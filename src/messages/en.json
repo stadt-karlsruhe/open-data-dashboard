@@ -1,68 +1,68 @@
 {
-  "Metadata": {
-    "title": "Open Data Dashboard",
-    "description": "Visualizations of open data related to the city of Karlsruhe"
-  },
-  "ChartTableFilterHead": {
-    "searchAll": "Search all rows",
-    "collapseTooltipExpand": "Expand filters",
-    "collapseTooltipCollapse": "Collapse filters"
-  },
-  "ChartTableFilterBody": {
-    "search": "Search",
-    "clearAll": "Clear",
-    "clearAllTooltip": "Clear all filters"
-  },
-  "ChartTableWrapper": {
-    "barChart": "Bar Chart",
-    "table": "Table"
-  },
-  "Table": {
-    "rowsPerPageText": "Rows per page:",
-    "rangeSeparatorText": "of",
-    "selectAllRowsItemText": "All"
-  },
-  "ClearableInputGroup": {
-    "clearTooltip": "Clear"
-  },
-  "CurrentFilters": {
-    "contains": "contains",
-    "allEntriesLabel": "Row"
-  },
-  "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
-  },
-  "Error": {
-    "notFoundTitle": "Oops! You're lost.",
-    "notFoundSubtitle": "The page you are looking for was not found.",
-    "dataEmptyTitle": "Resource returned no data!",
-    "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}",
-    "dataNotLoadedTitle": "Data could not be loaded!",
-    "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
-    "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
-    "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
-    "unexpectedTitle": "An unexpected error ocurred!",
-    "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
-    "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
-    "returnBtn": "Return Home"
-  },
-  "Legend": {
-    "title": "Legend"
-  },
-  "ResetView": {
-    "resetTooltip": "Reset view"
-  },
-  "AxisSelector": {
-    "title": "Select X-Axis:"
-  },
-  "ResourceDetailsControls": {
-    "download": "Download",
-    "embed": "Embed",
-    "fullscreen": "Fullscreen",
-    "embedTitle": "Embed resource visualization",
-    "embedBody": "The visualization for this resource can be embedded using the following code.",
-    "embedWidth": "Width",
-    "embedHeight": "Height",
-    "keepSearchParams": "Preserve search parameters"
-  }
+    "AxisSelector": {
+        "title": "Select X-Axis:"
+    },
+    "ChartTableFilterBody": {
+        "clearAll": "Clear",
+        "clearAllTooltip": "Clear all filters",
+        "search": "Search"
+    },
+    "ChartTableFilterHead": {
+        "collapseTooltipCollapse": "Collapse filters",
+        "collapseTooltipExpand": "Expand filters",
+        "searchAll": "Search all rows"
+    },
+    "ChartTableWrapper": {
+        "barChart": "Bar Chart",
+        "table": "Table"
+    },
+    "ClearableInputGroup": {
+        "clearTooltip": "Clear"
+    },
+    "CurrentFilters": {
+        "allEntriesLabel": "Row",
+        "contains": "contains"
+    },
+    "Error": {
+        "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}",
+        "dataEmptyTitle": "Resource returned no data!",
+        "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+        "dataNotLoadedTitle": "Data could not be loaded!",
+        "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
+        "notFoundSubtitle": "The page you are looking for was not found.",
+        "notFoundTitle": "Oops! You're lost.",
+        "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+        "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
+        "returnBtn": "Return Home",
+        "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
+        "unexpectedTitle": "An unexpected error ocurred!"
+    },
+    "Legend": {
+        "title": "Legend"
+    },
+    "LocaleSwitcher": {
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
+    },
+    "Metadata": {
+        "description": "Visualizations of open data related to the city of Karlsruhe",
+        "title": "Open Data Dashboard"
+    },
+    "ResetView": {
+        "resetTooltip": "Reset view"
+    },
+    "ResourceDetailsControls": {
+        "download": "Download",
+        "embed": "Embed",
+        "embedBody": "The visualization for this resource can be embedded using the following code.",
+        "embedHeight": "Height",
+        "embedTitle": "Embed resource visualization",
+        "embedWidth": "Width",
+        "fullscreen": "Fullscreen",
+        "keepSearchParams": "Preserve search parameters"
+    },
+    "Table": {
+        "rangeSeparatorText": "of",
+        "rowsPerPageText": "Rows per page:",
+        "selectAllRowsItemText": "All"
+    }
 }
