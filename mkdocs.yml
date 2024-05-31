@@ -11,13 +11,13 @@ theme:
         - navigation.tracking
         - navigation.tabs
         - navigation.tabs.sticky
-        - navigation.sections
         - navigation.expand
         - navigation.indexes
         - navigation.top
         - navigation.path
         - navigation.footer
         - content.code.copy
+        - content.code.annotate
     palette:
         - media: "(prefers-color-scheme)"
           toggle:
@@ -42,7 +42,17 @@ nav:
           - features/data-types.md
           - features/visualizations.md
           - features/filters.md
-    - Configuration: configuration/configuration.md
+    - Configuration:
+          - configuration/README.md
+          - Application Configs:
+                - configuration/theme.md
+                - configuration/resources.md
+                - configuration/rename-fields.md
+                - configuration/skip-fields.md
+                - configuration/default-filters.md
+                - configuration/number-format.md
+                - configuration/visualizations.md
+                - configuration/axis-pairs.md
     - Development: development.md
 plugins:
     - search
@@ -76,3 +86,4 @@ markdown_extensions:
     - pymdownx.superfences
     - attr_list
     - md_in_html
+    - tables
