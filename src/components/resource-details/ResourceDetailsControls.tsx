@@ -20,21 +20,26 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
   const t = useTranslations('ResourceDetailsControls');
 
   return (
-    <div className="d-flex flex-row justify-content-between flex-wrap">
-      <Link className="btn btn-primary mb-3" href={`/${locale}/resource/${resource.id}${getParams()}`}>
-        <i className="bi bi-arrows-fullscreen" /> {t('fullscreen')}
+    <div className="d-flex flex-row justify-content-center justify-content-md-between mb-3">
+      <Link
+        className="btn btn-primary"
+        href={`/${locale}/resource/${resource.id}${getParams()}`}
+        title={t('fullscreen')}
+      >
+        <i className="bi bi-arrows-fullscreen" /> <span className="d-none d-md-inline">{t('fullscreen')}</span>
       </Link>
       <div className="d-flex flex-row">
         <button
-          className="btn btn-primary mb-3"
+          className="btn btn-primary ms-1 ms-md-0"
           onClick={() => {
             setShow(true);
           }}
+          title={t('embed')}
         >
-          <i className="bi bi-code-slash" /> {t('embed')}
+          <i className="bi bi-code-slash" /> <span className="d-none d-md-inline">{t('embed')}</span>
         </button>
-        <Link className="btn btn-primary ms-1 ms-md-3 mb-3" href={resource.source} target="_blank">
-          <i className="bi bi-download" /> {t('download')}
+        <Link className="btn btn-primary ms-1 ms-md-3" href={resource.source} target="_blank" title={t('download')}>
+          <i className="bi bi-download" /> <span className="d-none d-md-inline">{t('download')}</span>
         </Link>
       </div>
       <Modal
