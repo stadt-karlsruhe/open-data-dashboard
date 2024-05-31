@@ -1,6 +1,8 @@
 import '../../themes/globals.scss';
 import '../../themes/theme.karlsruhe.scss';
+
 import { getMessages, getTranslations } from 'next-intl/server';
+
 import { NextIntlClientProvider } from 'next-intl';
 import { getConfiguration } from '@/configuration';
 
@@ -17,7 +19,7 @@ export default async function RootLayout({
   const configuration = await getConfiguration();
   return (
     // By default, Bootstrap will ignore themes that are not defined
-    <html lang={locale} data-bs-theme={configuration.appearance.theme}>
+    <html lang={locale} data-bs-theme={configuration.success ? configuration.data?.appearance.theme : ''}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

@@ -12,7 +12,13 @@ const { Link } = createSharedPathnamesNavigation({
 });
 
 interface ApplicationError {
-  type: 'notFound' | 'dataEmpty' | 'dataNotLoaded' | 'resourceConfigurationInvalid' | 'unexpected';
+  type:
+    | 'notFound'
+    | 'dataEmpty'
+    | 'dataNotLoaded'
+    | 'resourceConfigurationInvalid'
+    | 'configurationNotLoaded'
+    | 'unexpected';
   resource?: Resource;
   error?: string;
 }
