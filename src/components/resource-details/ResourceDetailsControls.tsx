@@ -131,7 +131,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
   }
 
   function getParamsFromWindow() {
-    if ((resource.type === 'JSON' || resource.type === 'CSV') && window) {
+    if (resource.type === 'JSON' || resource.type === 'CSV') {
       const filteredParams = new URLSearchParams();
       const params = new URLSearchParams(window.location.search);
       params.forEach((value, key) => {
