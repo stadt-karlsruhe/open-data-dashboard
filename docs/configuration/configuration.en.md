@@ -9,18 +9,18 @@ The `Open Data Dashboard` provides two themes for its visuals:
 
 A theme can be chosen by setting the `appearance.theme` option in the configuration file:
 
-``` title="data-source.config.yml"  linenums="1"
---8<-- "data-source.config.yml:1:2"
+``` title="config/data-source.app.config.yml"  linenums="1"
+--8<-- "config/data-source.app.config.yml:1:2"
 ```
 
 By default, the `bootstrap-light` theme will be used.
 
 ## Providing the Configuration File
 
-By default, the configuration file included in the GitHub repository will be used:
+By default, the configuration files included in the GitHub repository (`config/` directory) will be loaded.
 
-``` title="data-source.config.yml"  linenums="1"
---8<-- "data-source.config.yml:1:10"
-```
+Alternatively, you can provide a path to a custom configuration directory using the `DEFAULT_CONFIGURATION_DIR` environment variable.
+All configuration files inside this directory and all of its subdirectories will be taken into account.
 
-Alternatively, you can provide a path to a custom configuration file using the `CONFIGURATION_PATH` environment variable.
+!!! note
+    A configuration file name must end with either `app.config.yml` or `app.config.yaml`.
