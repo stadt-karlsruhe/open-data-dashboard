@@ -42,6 +42,15 @@ export const geoJSONResource: GeoJSONResource = {
     },
 };
 
+export const geoJSONResourceWithGroupKey: GeoJSONResource = {
+    ...geoJSONResource,
+    visualizations: {
+        map: {
+            groupKey: 'Category',
+        },
+    },
+};
+
 export const jsonSkipPropertiesResource: JSONResource = {
     ...jsonResource,
     skipPropertiesRegEx: '^IntegerColumn|FloatColumn$',

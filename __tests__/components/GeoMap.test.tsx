@@ -1,13 +1,13 @@
 /**
  * @jest-environment jsdom
  */
+import { cleanup, render, screen } from '@testing-library/react';
 import { describe, expect, it } from '@jest/globals';
-import { render, screen } from '@testing-library/react';
+import { geoJSONResource, geoJSONResourceWithGroupKey } from '../data/resources';
 
 import GeoMap from '@/components/visualization/map/GeoMap';
 import { NextIntlClientProvider } from 'next-intl';
-import { geoJSON } from '../data/dataFormats';
-import { geoJSONResource } from '../data/resources';
+import { geoJSONRenamePropertiesResult } from '../data/dataTransformations';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory
@@ -26,9 +26,9 @@ jest.mock('react-leaflet', () => {
 describe('component GeoMap', () => {
   it('should render all map components', () => {
     expect.hasAssertions();
-    const { getByTestId } = render(
+    render(
       <NextIntlClientProvider locale="en" messages={messages}>
-        <GeoMap resource={geoJSONResource} geoJsonData={geoJSON as GeoJSON.FeatureCollection} />
+        <GeoMap resource={geoJSONResource} geoJsonData={geoJSONRenamePropertiesResult as GeoJSON.FeatureCollection} />
       </NextIntlClientProvider>,
     );
 
@@ -40,5 +40,21 @@ describe('component GeoMap', () => {
     const [tooltip] = screen.getAllByTestId('Tooltip');
     expect(tooltip).toBeInTheDocument();
     expect(screen.getByTestId('TileLayer')).toBeInTheDocument();
+
+    cleanup();
+  });
+
+  it('should render the Legend component if a groupKey was provided', () => {
+    expect.hasAssertions();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <GeoMap
+          resource={geoJSONResourceWithGroupKey}
+          geoJsonData={geoJSONRenamePropertiesResult as GeoJSON.FeatureCollection}
+        />
+      </NextIntlClientProvider>,
+    );
+
+    expect(screen.getByText(messages.Legend.title)).toBeInTheDocument();
   });
 });
