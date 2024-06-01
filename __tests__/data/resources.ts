@@ -111,6 +111,25 @@ export const jsonGermanNumberFormatResource: JSONResource = {
     },
 };
 
+export const jsonResourceWithChart: JSONResource = {
+    ...jsonResource,
+    visualizations: {
+        barChart: {
+            axisPairs: [
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'IntegerColumn',
+                },
+                {
+                    xAxis: 'StringColumn',
+                    yAxis: 'FloatColumn',
+                },
+            ],
+        },
+        table: {},
+    },
+};
+
 export const jsonGermanNumberFormatResourceChart: JSONResource = {
     ...jsonGermanNumberFormatResource,
     visualizations: {

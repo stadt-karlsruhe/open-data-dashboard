@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import { cleanup, render, screen } from '@testing-library/react';
 import { describe, expect, it } from '@jest/globals';
 import { geoJSONResource, geoJSONResourceWithGroupKey } from '../data/resources';
+import { render, screen } from '@testing-library/react';
 
 import GeoMap from '@/components/visualization/map/GeoMap';
 import { NextIntlClientProvider } from 'next-intl';
@@ -40,8 +40,6 @@ describe('component GeoMap', () => {
     const [tooltip] = screen.getAllByTestId('Tooltip');
     expect(tooltip).toBeInTheDocument();
     expect(screen.getByTestId('TileLayer')).toBeInTheDocument();
-
-    cleanup();
   });
 
   it('should render the Legend component if a groupKey was provided', () => {
