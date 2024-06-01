@@ -42,17 +42,17 @@ export const geoJSONResource: GeoJSONResource = {
     },
 };
 
-export const skipPropertiesResource: JSONResource = {
+export const jsonSkipPropertiesResource: JSONResource = {
     ...jsonResource,
     skipPropertiesRegEx: '^IntegerColumn|FloatColumn$',
 };
 
-export const geoJSONskipPropertiesResource: GeoJSONResource = {
+export const geoJSONskipPropertyResource: GeoJSONResource = {
     ...geoJSONResource,
     skipPropertiesRegEx: '^UPDATED$',
 };
 
-export const skipPropertiesResourceNoMatch: JSONResource = {
+export const jsonSkipPropertiesResourceNoMatch: JSONResource = {
     ...jsonResource,
     skipPropertiesRegEx: '^notMatchingColumn$',
 };
@@ -62,7 +62,7 @@ export const geoJSONskipPropertiesResourceNoMatch: GeoJSONResource = {
     skipPropertiesRegEx: '^notMatchingColumn$',
 };
 
-export const renamePropertiesResource: JSONResource = {
+export const jsonRenamePropertiesResource: JSONResource = {
     ...jsonResource,
     renameProperties: {
         StringColumn: 'Name',
@@ -78,8 +78,8 @@ export const geoJSONrenamePropertiesResource: GeoJSONResource = {
     },
 };
 
-export const skipAndRenamePropertiesResource: JSONResource = {
-    ...skipPropertiesResource,
+export const jsonSkipAndRenamePropertiesResource: JSONResource = {
+    ...jsonSkipPropertiesResource,
     renameProperties: {
         StringColumn: 'Name',
         BooleanColumn: 'Boolean',
@@ -87,26 +87,23 @@ export const skipAndRenamePropertiesResource: JSONResource = {
 };
 
 export const geoJSONskipAndRenamePropertiesResource: GeoJSONResource = {
-    ...geoJSONskipPropertiesResource,
+    ...geoJSONskipPropertyResource,
     renameProperties: {
         NAME: 'Name',
         GRUPPENNAME_DE: 'Category',
     },
 };
 
-export const germanNumberFormatResource: JSONResource = {
-    id: '3',
-    source: mockSource,
-    name: 'JSON Resource',
-    type: 'JSON',
+export const jsonGermanNumberFormatResource: JSONResource = {
+    ...jsonResource,
     numberFormat: 'de',
     visualizations: {
         table: {},
     },
 };
 
-export const germanNumberFormatResourceChart: JSONResource = {
-    ...germanNumberFormatResource,
+export const jsonGermanNumberFormatResourceChart: JSONResource = {
+    ...jsonGermanNumberFormatResource,
     visualizations: {
         table: {},
         barChart: {

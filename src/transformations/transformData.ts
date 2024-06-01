@@ -18,7 +18,7 @@ export function skipProperties(
             features: records.features.map((feature) => {
                 return {
                     ...feature,
-                    properties: skipObjectProperties(feature.properties, propertiesToRemove),
+                    properties: skipObjectProperties(feature.properties as Record<string, never>, propertiesToRemove),
                 };
             }),
         } as GeoJSON.FeatureCollection;
@@ -41,7 +41,10 @@ export function renameProperties(
             features: records.features.map((feature) => {
                 return {
                     ...feature,
-                    properties: renameObjectProperties(feature.properties, renamePropertiesObj),
+                    properties: renameObjectProperties(
+                        feature.properties as Record<string, never>,
+                        renamePropertiesObj,
+                    ),
                 };
             }),
         } as GeoJSON.FeatureCollection;
@@ -49,22 +52,12 @@ export function renameProperties(
     return records.map((record) => renameObjectProperties(record, renamePropertiesObj)) as Record<string, never>[];
 }
 
-function skipObjectProperties(record: Record<string, never> | GeoJSON.GeoJsonProperties, propertiesToRemove: string[]) {
-    if (!record) {
-        return record;
-    }
-
+function skipObjectProperties(record: Record<string, never>, propertiesToRemove: string[]) {
     const filteredProperties = Object.entries(record).filter(([key, _]) => !propertiesToRemove.includes(key));
     return Object.fromEntries(filteredProperties);
 }
 
-function renameObjectProperties(
-    record: Record<string, never> | GeoJSON.GeoJsonProperties,
-    renamePropertiesObj: Record<string, string>,
-) {
-    if (!record) {
-        return record as GeoJSON.GeoJsonProperties;
-    }
+function renameObjectProperties(record: Record<string, never>, renamePropertiesObj: Record<string, string>) {
     return Object.fromEntries(
         Object.entries(record).map(([key, value]) => {
             return [renamePropertiesObj[key] ?? key, value];

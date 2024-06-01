@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-export const jsonSkipProperties = [
+export const jsonSkipPropertiesResult = [
     {
         StringColumn: 'Seal',
         BooleanColumn: true,
@@ -10,7 +10,7 @@ export const jsonSkipProperties = [
     },
 ];
 
-export const jsonRenameProperties = [
+export const jsonRenamePropertiesResult = [
     {
         Name: 'Seal',
         IntegerColumn: 24,
@@ -25,7 +25,7 @@ export const jsonRenameProperties = [
     },
 ];
 
-export const jsonSkipAndRenameProperties = [
+export const jsonSkipAndRenamePropertiesResult = [
     {
         Name: 'Seal',
         Boolean: true,
@@ -36,7 +36,7 @@ export const jsonSkipAndRenameProperties = [
     },
 ];
 
-export const jsonTransformedNumbers = [
+export const jsonTransformNumbersResult = [
     {
         StringColumn: 'StringWithCommas,,,AndDots...',
         NumberWithDotColumn: 10_000,
@@ -49,7 +49,7 @@ export const jsonTransformedNumbers = [
     },
 ];
 
-export const geoJSONRenamedProperties = {
+export const geoJSONRenamePropertiesResult = {
     type: 'FeatureCollection',
     features: [
         {
@@ -79,7 +79,7 @@ export const geoJSONRenamedProperties = {
     ],
 };
 
-export const geoJSONSkipProperty = {
+export const geoJSONSkipPropertyResult = {
     type: 'FeatureCollection',
     features: [
         {
@@ -107,7 +107,7 @@ export const geoJSONSkipProperty = {
     ],
 };
 
-export const geoJSONSkipAndRenameProperties = {
+export const geoJSONSkipAndRenamePropertiesResult = {
     type: 'FeatureCollection',
     features: [
         {

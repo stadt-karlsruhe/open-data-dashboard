@@ -157,3 +157,25 @@ export const geoJSONNoFeatures = {
     type: 'FeatureCollection',
     features: [],
 };
+
+export const geoJSONNoProperties = {
+    type: 'FeatureCollection',
+    features: [
+        {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [8.413_375_367_834_44, 49.009_543_061_308_4],
+            },
+            properties: null,
+        },
+        {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [8.385_310_004_996_92, 49.000_467_301_111_3],
+            },
+            properties: null,
+        },
+    ],
+};
