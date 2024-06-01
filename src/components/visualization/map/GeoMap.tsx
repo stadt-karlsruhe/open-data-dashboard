@@ -57,11 +57,11 @@ export default function GeoMap({
           return (
             <FeatureGroup key={index}>
               <Tooltip>
-                {Object.entries(feature.properties as Record<string, string>).map(([key, value]) => (
-                  <>
+                {Object.entries(feature.properties as Record<string, string>).map(([key, value], index) => (
+                  <div key={index}>
                     <b>{key}: </b>
                     {value} <br />
-                  </>
+                  </div>
                 ))}
               </Tooltip>
               <Marker

@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { describe, expect, it } from '@jest/globals';
-// TODO: Investigate why the table is not displaying data of type boolean
 import { jsonStandard, jsonStandardFormatted } from '../data/dataFormats';
 
 import { NextIntlClientProvider } from 'next-intl';
