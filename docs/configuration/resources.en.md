@@ -31,13 +31,14 @@ A resource is a configuration for a single dataset. The configuration options di
       defaultFilters:
         <default-filters-configs> # (4)!
       visualizations:
-        <visualization-configs-json>
+        <visualization-config> # (5)!
     ```
 
     1. Specify the input number format. See [numberFormat](#number-format).
     2. Rename fields/properties. See [renameFields](#rename-fields).
     3. Skip fields/properties. See [skipFields](#skip-fields).
     4. Specify default filters for the dataset. See [defaultFilters](#default-filters).
+    5. Visualization-specific configurations. See [Bar Chart](/configuration/visualizations#bar-chart).
 
 ## GeoJSON Data
 
@@ -56,12 +57,13 @@ A resource is a configuration for a single dataset. The configuration options di
         <rename-fields-configs> # (2)!
       skipFieldsRegEx: string # (3)!
       visualizations:
-        <visualization-configs-geojson>
+        <visualization-config> # (4)!
     ```
 
     1. Specify the input number format. See [numberFormat](#number-format).
     2. Rename fields/properties. See [renameFields](#rename-fields).
     3. Skip fields/properties. See [skipFields](#skip-fields).
+    4. Visualization-specific configurations. See [Map](/configuration/visualizations#map).
 
 ## Embedded Resources
 
