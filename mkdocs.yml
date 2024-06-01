@@ -12,10 +12,10 @@ theme:
         - navigation.tabs
         - navigation.tabs.sticky
         - navigation.expand
+        - navigation.sections
         - navigation.indexes
         - navigation.top
         - navigation.path
-        - navigation.footer
         - content.code.copy
         - content.code.annotate
     palette:
@@ -43,16 +43,11 @@ nav:
           - features/visualizations.md
           - features/filters.md
     - Configuration:
-          - configuration/README.md
-          - Application Configs:
+          - configuration/index.md
+          - Configuration Options:
                 - configuration/theme.md
                 - configuration/resources.md
-                - configuration/rename-fields.md
-                - configuration/skip-fields.md
-                - configuration/default-filters.md
-                - configuration/number-format.md
                 - configuration/visualizations.md
-                - configuration/axis-pairs.md
     - Development: development.md
 plugins:
     - search
@@ -76,6 +71,8 @@ extra:
           link: /de/
           lang: de
 markdown_extensions:
+    - toc:
+          permalink: true
     - admonition
     - pymdownx.highlight:
           anchor_linenums: true
