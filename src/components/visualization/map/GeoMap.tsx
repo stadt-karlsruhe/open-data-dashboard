@@ -18,7 +18,6 @@ const standardPos = {
   zoom: 13.5,
 };
 
-// eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
   resource,
   geoJsonData,
@@ -41,7 +40,7 @@ export default function GeoMap({
         />
         {geoJsonData.features.map((feature, index) => {
           let colorCode = colorPrimary;
-          const label = getLabelForKey(feature.properties, resource.visualizations.map.labelKey);
+          const label = getLabelForKey(feature.properties, resource.visualizations.map.groupKey);
           if (label) {
             const mappedColor = collectedLabels.get(label);
             if (mappedColor === undefined) {
@@ -58,14 +57,12 @@ export default function GeoMap({
           return (
             <FeatureGroup key={index}>
               <Tooltip>
-                {Object.entries(feature.properties as Record<string, string>)
-                  .filter(([key]) => resource.visualizations.map.tooltipFields[key])
-                  .map(([key, value]) => (
-                    <>
-                      <b>{resource.visualizations.map.tooltipFields[key]}: </b>
-                      {value} <br />
-                    </>
-                  ))}
+                {Object.entries(feature.properties as Record<string, string>).map(([key, value]) => (
+                  <>
+                    <b>{key}: </b>
+                    {value} <br />
+                  </>
+                ))}
               </Tooltip>
               <Marker
                 position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
@@ -75,15 +72,20 @@ export default function GeoMap({
           );
         })}
         <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-        <Legend labels={collectedLabels} />
+        {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
       </MapContainer>
     </div>
   );
 }
 
-function getLabelForKey(properties: GeoJSON.GeoJsonProperties, keyLabel: string) {
-  if (properties !== null && properties[keyLabel] !== undefined && typeof properties[keyLabel] === 'string') {
-    return properties[keyLabel] as string;
+function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupLabel: string | undefined) {
+  if (
+    groupLabel &&
+    properties !== null &&
+    properties[groupLabel] !== undefined &&
+    typeof properties[groupLabel] === 'string'
+  ) {
+    return properties[groupLabel] as string;
   }
 }
 

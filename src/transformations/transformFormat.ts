@@ -1,21 +1,24 @@
-import { renameFields, skipFields } from './transformData';
+import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
+import { renameProperties, skipProperties } from './transformData';
 
-import { TransformableResource } from '@/schemas/configuration-schema';
 import { csv2json } from 'json-2-csv';
 import { narrowType } from './transformType';
 
-export function transformData(resource: TransformableResource, data: unknown) {
+export function transformData(resource: JSONResource | GeoJSONResource, data: unknown) {
     let transformedData = transformType(resource, data);
-    if (resource.skipFieldsRegEx !== undefined) {
-        transformedData = skipFields(transformedData, resource.skipFieldsRegEx);
+    if (resource.skipPropertiesRegEx !== undefined) {
+        transformedData = skipProperties(transformedData, resource.skipPropertiesRegEx);
     }
-    if (resource.renameFields !== undefined) {
-        transformedData = renameFields(transformedData, resource.renameFields);
+    if (resource.renameProperties !== undefined) {
+        transformedData = renameProperties(transformedData, resource.renameProperties);
     }
     return narrowType(transformedData, resource);
 }
 
-function transformType(resource: TransformableResource, data: unknown) {
+function transformType(resource: JSONResource | GeoJSONResource, data: unknown) {
+    if (resource.type === 'GeoJSON') {
+        return data as GeoJSON.FeatureCollection;
+    }
     if (resource.type === 'JSON') {
         return transformJsonData(data);
     }

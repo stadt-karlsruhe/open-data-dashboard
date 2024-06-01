@@ -1,4 +1,4 @@
-import { EmbeddedResource, TransformableResource } from '@/schemas/configuration-schema';
+import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
 
 const mockSource = 'https://example.com/';
 
@@ -9,7 +9,7 @@ export const embeddedResource: EmbeddedResource = {
     type: 'Embedded',
 };
 
-export const jsonResource: TransformableResource = {
+export const jsonResource: JSONResource = {
     id: '2',
     source: mockSource,
     name: 'JSON Resource',
@@ -20,7 +20,7 @@ export const jsonResource: TransformableResource = {
     },
 };
 
-export const csvResource: TransformableResource = {
+export const csvResource: JSONResource = {
     id: '3',
     source: mockSource,
     name: 'CSV Resource',
@@ -31,33 +31,70 @@ export const csvResource: TransformableResource = {
     },
 };
 
-export const skipFieldsResource: TransformableResource = {
-    ...jsonResource,
-    skipFieldsRegEx: '^IntegerColumn|FloatColumn$',
+export const geoJSONResource: GeoJSONResource = {
+    id: '3',
+    source: mockSource,
+    name: 'GeoJSON Resource',
+    type: 'GeoJSON',
+    numberFormat: 'en',
+    visualizations: {
+        map: {},
+    },
 };
 
-export const skipFieldsResourceNoMatch: TransformableResource = {
+export const skipPropertiesResource: JSONResource = {
     ...jsonResource,
-    skipFieldsRegEx: '^notMatchingColumn$',
+    skipPropertiesRegEx: '^IntegerColumn|FloatColumn$',
 };
 
-export const renameFieldsResource: TransformableResource = {
+export const geoJSONskipPropertiesResource: GeoJSONResource = {
+    ...geoJSONResource,
+    skipPropertiesRegEx: '^UPDATED$',
+};
+
+export const skipPropertiesResourceNoMatch: JSONResource = {
     ...jsonResource,
-    renameFields: {
+    skipPropertiesRegEx: '^notMatchingColumn$',
+};
+
+export const geoJSONskipPropertiesResourceNoMatch: GeoJSONResource = {
+    ...geoJSONResource,
+    skipPropertiesRegEx: '^notMatchingColumn$',
+};
+
+export const renamePropertiesResource: JSONResource = {
+    ...jsonResource,
+    renameProperties: {
         StringColumn: 'Name',
         BooleanColumn: 'Boolean',
     },
 };
 
-export const skipAndRenameFieldsResource: TransformableResource = {
-    ...skipFieldsResource,
-    renameFields: {
+export const geoJSONrenamePropertiesResource: GeoJSONResource = {
+    ...geoJSONResource,
+    renameProperties: {
+        NAME: 'Name',
+        GRUPPENNAME_DE: 'Category',
+    },
+};
+
+export const skipAndRenamePropertiesResource: JSONResource = {
+    ...skipPropertiesResource,
+    renameProperties: {
         StringColumn: 'Name',
         BooleanColumn: 'Boolean',
     },
 };
 
-export const germanNumberFormatResource: TransformableResource = {
+export const geoJSONskipAndRenamePropertiesResource: GeoJSONResource = {
+    ...geoJSONskipPropertiesResource,
+    renameProperties: {
+        NAME: 'Name',
+        GRUPPENNAME_DE: 'Category',
+    },
+};
+
+export const germanNumberFormatResource: JSONResource = {
     id: '3',
     source: mockSource,
     name: 'JSON Resource',
@@ -68,7 +105,7 @@ export const germanNumberFormatResource: TransformableResource = {
     },
 };
 
-export const germanNumberFormatResourceChart: TransformableResource = {
+export const germanNumberFormatResourceChart: JSONResource = {
     ...germanNumberFormatResource,
     visualizations: {
         table: {},

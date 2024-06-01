@@ -7,7 +7,6 @@ import path from 'node:path';
 const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
 
 export async function getConfiguration() {
-    //   TODO: Handle invalid path and parsing errors
     try {
         const configDir = process.env.CONFIGURATION_DIR ?? DEFAULT_CONFIGURATION_DIR;
         const yamlFiles = await getYamlFiles(configDir);
