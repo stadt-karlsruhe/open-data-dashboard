@@ -48,26 +48,26 @@ export default function GeoMap({
           } else {
             colorCode = mappedColor;
           }
-          if (feature.geometry.type !== 'Point') {
-            return;
-          }
-          return (
-            <FeatureGroup key={index}>
-              <Tooltip>
-                {Object.entries(feature.properties as Record<string, string>).map(([key, value], index) => (
-                  <div key={index}>
-                    <b>{key}: </b>
-                    {value} <br />
-                  </div>
-                ))}
-              </Tooltip>
-              <Marker
-                position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
-                icon={getIcon(colorCode)}
-              />
-            </FeatureGroup>
-          );
         }
+        if (feature.geometry.type !== 'Point') {
+          return;
+        }
+        return (
+          <FeatureGroup key={index}>
+            <Tooltip>
+              {Object.entries(feature.properties as Record<string, string>).map(([key, value], index) => (
+                <div key={index}>
+                  <b>{key}: </b>
+                  {value} <br />
+                </div>
+              ))}
+            </Tooltip>
+            <Marker
+              position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
+              icon={getIcon(colorCode)}
+            />
+          </FeatureGroup>
+        );
       })}
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
       {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
