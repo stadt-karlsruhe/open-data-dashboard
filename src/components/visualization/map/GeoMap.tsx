@@ -67,11 +67,11 @@ export default function GeoMap({
               />
             </FeatureGroup>
           );
-        })}
-        <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-        {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
-      </MapContainer>
-    </div>
+        }
+      })}
+      <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
+      {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
+    </MapContainer>
   );
 }
 
