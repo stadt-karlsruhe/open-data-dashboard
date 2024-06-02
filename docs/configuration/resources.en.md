@@ -1,6 +1,7 @@
 # Resources
 
 A resource is a configuration for a single dataset. The configuration options differ based on the type of data to be displayed.
+For more information about supported data types and formats, see [Supported Data](data-types.md).
 
 ## Common Configurations
 
