@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+	 viewBox="0 0 32 32" width="100%" height="100%" style="enable-background:new 0 0 32 32;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#C6C6C6;}
 	.st1{fill:#E30613;}
 	.st2{fill:#FFCC00;}
 </style>
-<polygon class="st0" points="21.2,5.7 11.3,22.6 18.6,22.6 25.1,12.5 "/>
-<polygon class="st1" points="20.1,22.6 30.9,22.6 29.5,20.1 "/>
-<polygon class="st2" points="19.9,22.2 29,19.3 27.6,16.8 "/>
-<polygon class="st1" points="19.6,21.8 27.1,16 25.7,13.5 "/>
-
+  <polygon class="st0" id="svg_1" points="16.54722309112549,6.533333122730255 6.647222518920898,23.433333694934845 13.947222709655762,23.433333694934845 20.44722270965576,13.333333313465118 "/>
+  <polygon class="st1" id="svg_2" points="15.447222709655762,23.433333694934845 26.24722194671631,23.433333694934845 24.847222328186035,20.933333694934845 "/>
+  <polygon class="st2" id="svg_3" points="15.247221946716309,23.03333407640457 24.347222328186035,20.133332550525665 22.94722270965576,17.633332550525665 "/>
+  <polygon class="st1" id="svg_4" points="14.947222709655762,22.633332550525665 22.44722270965576,16.83333331346512 21.04722309112549,14.333333313465118 "/>
 </svg>
