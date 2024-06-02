@@ -89,6 +89,7 @@ Optionally, specify the input format for numbers.
 * Alternatively, German number format (`de`) can be specified.
 
 !!! example
+
     ```yaml title="app.config.yml"
     numberFormat: string
     ```
@@ -99,6 +100,7 @@ Optionally, specify configurations to rename fields/properties as on object with
 `<initial property name>: <new property name>`.
 
 !!! example
+
     ```yaml title="app.config.yml"
     renameFields:
         <rename-fields-configs>
@@ -106,6 +108,7 @@ Optionally, specify configurations to rename fields/properties as on object with
 
 An actual config renaming the property `test_prop` to `test prop` would look like this:
 !!! example
+
     ```yaml title="app.config.yml"
     renameFields:
         test_prop: test prop
@@ -116,19 +119,21 @@ An actual config renaming the property `test_prop` to `test prop` would look lik
 Optionally, specify a regular expression to skip fields/properties.
 
 !!! example
+
     ```yaml title="app.config.yml"
     skipFieldsRegEx: string
     ```
 
 An actual config skipping the property `test_prop` would look like this:
 !!! example
+
     ```yaml title="app.config.yml"
     skipFieldsRegEx: ^test_prop$
     ```
 
 ### Default Filters
 
-!!! Note
+!!! warning
     Currently, this configuration option is only available for **CSV** and **JSON** data.
 
 Optionally, specify a default filter as an object. This filter will be used if the dataset is loading without additional parameters.
@@ -138,13 +143,14 @@ Optionally, specify a default filter as an object. This filter will be used if t
 * For numeric properties, use `min` and/or `max` instead.
 
 !!! example
+
     ```yaml title="app.config.yml"
     defaultFilters:
         <default-filters-configs>
     ```
 
-!!! note
-    In case you are using `defaultFilters` in combination with [`renameFields`](rename-fields.md) make sure to always use the **new** property names.
+!!! warning
+    In case you are using `defaultFilters` in combination with [`renameFields`](#rename-fields), make sure to always use the **new** property names.
 
 An actual config setting the filters:
 
@@ -155,6 +161,7 @@ An actual config setting the filters:
 ... would look like this:
 
 !!! example
+
     ```yaml title="app.config.yml"
     defaultFilters:
         all-entries: test

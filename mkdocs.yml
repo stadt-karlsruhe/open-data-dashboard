@@ -1,6 +1,8 @@
 site_name: Open Data Dashboard
 site_url: https://open-data-dashboard.readthedocs.io
 repo_url: https://github.com/stadt-karlsruhe/open-data-dashboard
+extra_css:
+  - stylesheets/extra.css
 theme:
     name: material
     language: en
@@ -19,36 +21,23 @@ theme:
         - content.code.copy
         - content.code.annotate
     palette:
-        - media: "(prefers-color-scheme)"
-          toggle:
-              icon: material/brightness-auto
-              name: Light Mode
-        - media: "(prefers-color-scheme: light)"
-          scheme: default
-          toggle:
-              icon: material/brightness-7
-              name: Dark Mode
-        - media: "(prefers-color-scheme: dark)"
-          scheme: slate
-          toggle:
-              icon: material/brightness-4
-              name: Default
+        primary: custom
 nav:
     - Home: index.md
-    - About: about/about.md
+    - About:
+          - about/about.md
+          - about/visualizations.md
+          - about/filters.md
     - Getting Started:
-          - getting-started/installation.md
-    - Features:
-          - features/data-types.md
-          - features/visualizations.md
-          - features/filters.md
+          - getting-started/index.md
     - Configuration:
           - configuration/index.md
           - Configuration Options:
                 - configuration/theme.md
                 - configuration/resources.md
                 - configuration/visualizations.md
-    - Development: development.md
+          - Supported Data: configuration/data-types.md
+    - Development: development/index.md
 plugins:
     - search
     - glightbox
