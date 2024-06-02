@@ -3,31 +3,15 @@ import { z } from 'zod';
 const baseResourceSchema = z
     .object({
         id: z.string(),
-        source: z.string(),
+        source: z.string().url(),
         name: z.string(),
         description: z.string().optional(),
     })
     .strict();
 
-export const embeddedResourceSchema = baseResourceSchema
+const embeddedResourceSchema = baseResourceSchema
     .extend({
         type: z.literal('Embedded'),
-    })
-    .strict();
-
-export const GeoJSONResourceSchema = baseResourceSchema
-    .extend({
-        type: z.literal('GeoJSON'),
-        visualizations: z
-            .object({
-                map: z
-                    .object({
-                        labelKey: z.string(),
-                        tooltipFields: z.record(z.string()),
-                    })
-                    .strict(),
-            })
-            .strict(),
     })
     .strict();
 
@@ -51,13 +35,18 @@ const defaultFilterSchema = z.union([
         }),
 ]);
 
-export const transformableResourceSchema = baseResourceSchema
+const transformableResourceSchema = baseResourceSchema
+    .extend({
+        skipPropertiesRegEx: z.string().optional(),
+        renameProperties: z.record(z.string()).optional(),
+        numberFormat: z.union([z.literal('en'), z.literal('de')]).default('en'),
+    })
+    .strict();
+
+const jsonResourceSchema = transformableResourceSchema
     .extend({
         type: z.union([z.literal('JSON'), z.literal('CSV')]),
-        skipFieldsRegEx: z.string().optional(),
-        renameFields: z.record(z.string()).optional(),
         defaultFilters: z.record(z.string(), defaultFilterSchema).optional(),
-        numberFormat: z.union([z.literal('en'), z.literal('de')]).default('en'),
         visualizations: z
             .object({
                 barChart: z
@@ -68,25 +57,53 @@ export const transformableResourceSchema = baseResourceSchema
                     .optional(),
                 table: z.record(z.never()).default({}),
             })
-            .strict()
-            .default({ table: {} }),
+            .strict(),
     })
     .strict()
     .refine(
         (data) => {
-            if (data.skipFieldsRegEx && data.renameFields) {
-                const regex = new RegExp(data.skipFieldsRegEx, 'u');
-                return !Object.keys(data.renameFields).some((key) => regex.test(key));
+            if (data.skipPropertiesRegEx && data.renameProperties) {
+                const regex = new RegExp(data.skipPropertiesRegEx, 'u');
+                return !Object.keys(data.renameProperties).some((key) => regex.test(key));
             }
             return true;
         },
         {
-            message: 'skipFieldsRegEx should not match any keys in renameFields',
-            path: ['skipFieldsRegEx'],
+            message: 'skipPropertiesRegEx should not match any keys in renameProperties',
+            path: ['skipPropertiesRegEx'],
         },
     );
 
-export const resourceSchema = z.union([GeoJSONResourceSchema, transformableResourceSchema, embeddedResourceSchema]);
+const GeoJSONResourceSchema = transformableResourceSchema
+    .extend({
+        type: z.literal('GeoJSON'),
+        visualizations: z
+            .object({
+                map: z
+                    .object({
+                        groupKey: z.string().optional(),
+                    })
+                    .strict()
+                    .default({}),
+            })
+            .strict(),
+    })
+    .strict()
+    .refine(
+        (data) => {
+            if (data.skipPropertiesRegEx && data.renameProperties) {
+                const regex = new RegExp(data.skipPropertiesRegEx, 'u');
+                return !Object.keys(data.renameProperties).some((key) => regex.test(key));
+            }
+            return true;
+        },
+        {
+            message: 'skipPropertiesRegEx should not match any keys in renameProperties',
+            path: ['skipPropertiesRegEx'],
+        },
+    );
+
+export const resourceSchema = z.union([jsonResourceSchema, GeoJSONResourceSchema, embeddedResourceSchema]);
 
 export const configurationSchema = z
     .object({
@@ -101,9 +118,9 @@ export const configurationSchema = z
     .strict();
 
 export type EmbeddedResource = z.infer<typeof embeddedResourceSchema>;
+export type JSONResource = z.infer<typeof jsonResourceSchema>;
 export type GeoJSONResource = z.infer<typeof GeoJSONResourceSchema>;
 export type AxisPair = z.infer<typeof axisPairSchema>;
-export type TransformableResource = z.infer<typeof transformableResourceSchema>;
 export type Resource = z.infer<typeof resourceSchema>;
 export type Configuration = z.infer<typeof configurationSchema>;
 export type Filter = z.infer<typeof defaultFilterSchema>;

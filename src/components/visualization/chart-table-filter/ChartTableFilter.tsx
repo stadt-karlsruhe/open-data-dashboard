@@ -1,4 +1,4 @@
-import { Filter, TransformableResource } from '@/schemas/configuration-schema';
+import { Filter, JSONResource } from '@/schemas/configuration-schema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -16,7 +16,7 @@ export default function ChartTableFilter({
   data,
   onFilter,
 }: {
-  resource: TransformableResource;
+  resource: JSONResource;
   data: TransformedData[];
   onFilter: (filteredData: TransformedData[]) => void;
 }) {

@@ -1,27 +1,43 @@
-import { TransformableResource } from '@/schemas/configuration-schema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
 
-export function narrowType(records: Record<string, never>[], resource: TransformableResource) {
-    return records.map(
-        (record) =>
-            Object.fromEntries(
-                Object.entries(record).map(([key, value]) => {
-                    const stringValue = String(value).toLowerCase();
-                    if (stringValue === 'true') {
-                        return [key, true];
-                    }
-                    if (stringValue === 'false') {
-                        return [key, false];
-                    }
-                    const parsedValue =
-                        resource.numberFormat === 'en'
-                            ? Number(stringValue)
-                            : parseGermanNumberToInternationalFormat(stringValue);
-                    if (!Number.isNaN(parsedValue)) {
-                        return [key, parsedValue];
-                    }
-                    return [key, value];
-                }),
-            ) as Record<string, string | number | boolean>,
+export function narrowType(
+    records: Record<string, never>[] | GeoJSON.FeatureCollection,
+    resource: JSONResource | GeoJSONResource,
+) {
+    if ('features' in records) {
+        return {
+            ...records,
+            features: records.features.map((feature) => {
+                return {
+                    ...feature,
+                    properties: narrowObjectType(feature.properties, resource.numberFormat),
+                };
+            }),
+        } as GeoJSON.FeatureCollection;
+    }
+    return records.map((record) => narrowObjectType(record, resource.numberFormat));
+}
+
+function narrowObjectType(record: Record<string, never> | GeoJSON.GeoJsonProperties, numberFormat: string) {
+    if (!record) {
+        return record;
+    }
+    return Object.fromEntries(
+        Object.entries(record).map(([key, value]) => {
+            const stringValue = String(value).toLowerCase();
+            if (stringValue === 'true') {
+                return [key, true];
+            }
+            if (stringValue === 'false') {
+                return [key, false];
+            }
+            const parsedValue =
+                numberFormat === 'en' ? Number(stringValue) : parseGermanNumberToInternationalFormat(stringValue);
+            if (!Number.isNaN(parsedValue)) {
+                return [key, parsedValue];
+            }
+            return [key, value];
+        }),
     );
 }
 

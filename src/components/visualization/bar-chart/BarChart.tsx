@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { useEffect, useState } from 'react';
 
 import { AxisPair } from '@/schemas/configuration-schema';
 import AxisSelector from './AxisSelector';
@@ -16,7 +17,6 @@ import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/data-schema';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
-import { useState } from 'react';
 
 let minValue: number;
 let maxValue: number;
@@ -32,6 +32,17 @@ export default function BarChart({
 }) {
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
+
+  // TODO: Ignores defaultProps errors. Remove once recharts 2.13.0 is released (https://github.com/recharts/recharts/issues/3615)
+  useEffect(() => {
+    const { error } = console;
+    console.error = (...args: Parameters<typeof console.error>) => {
+      if (typeof args[0] === 'string' && args[0].includes('defaultProps')) {
+        return;
+      }
+      error(...args);
+    };
+  }, []);
 
   function onLegendClick(e: Payload) {
     setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
@@ -109,9 +120,7 @@ function updateAxisMap(xAxis: string, yAxis: string | undefined, axesMap: Map<st
   let bool = yAxesForXAxis.get(yAxis);
   bool = bool === undefined ? true : !bool;
   yAxesForXAxis.set(yAxis, bool);
-  // eslint-disable-next-line sonarjs/prefer-immediate-return
-  const updatedAxesMap = new Map(axesMap);
-  return updatedAxesMap;
+  return new Map(axesMap);
 }
 
 function getTicks() {
