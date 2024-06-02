@@ -7,7 +7,7 @@ import { useShowNavigation } from './NavigationProvider';
 export default function Navigation() {
   const { show, setShow } = useShowNavigation();
   return (
-    <div className="d-flex">
+    <div>
       <Offcanvas
         show={show}
         onHide={() => {

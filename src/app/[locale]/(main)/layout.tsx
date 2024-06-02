@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <NavigationProvider>
       <Header />
-      <div className="container-md">
+      <div className="container-md d-flex">
         <Navigation />
         {children}
       </div>

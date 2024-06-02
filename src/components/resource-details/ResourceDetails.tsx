@@ -7,7 +7,7 @@ const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'
 
 export default function ResourceDetails({ resource }: { resource: Resource }) {
   return (
-    <div className="container-xl" style={{ maxWidth: '1500px', height: '100dvh' }}>
+    <div className="flex-grow-1" style={{ height: '100dvh' }}>
       <h1 className="h1 text-center">{resource.name}</h1>
       <p className="lead text-center">{resource.description}</p>
       <ResourceDetailsControls resource={resource} />
