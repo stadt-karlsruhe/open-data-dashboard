@@ -1,5 +1,5 @@
 import { GeoJSONResource, JSONResource } from './configuration-schema';
-import { transformData } from '@/transformations/transformFormat';
+import { transformDataForType } from '@/transformations/transformFormat';
 import { z } from 'zod';
 
 const transformedDataSchema = z
@@ -33,9 +33,9 @@ export type TransformedData = z.infer<typeof transformedDataSchema>;
 
 export function transform(resource: JSONResource | GeoJSONResource, data: unknown) {
     if (resource.type === 'GeoJSON') {
-        const transformedData = transformData(resource, data);
+        const transformedData = transformDataForType(resource, data);
         return geoJSONSchema.safeParse(transformedData);
     }
-    const transformedData = transformData(resource, data);
+    const transformedData = transformDataForType(resource, data);
     return transformedDataArraySchema.safeParse(transformedData);
 }

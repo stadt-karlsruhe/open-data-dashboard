@@ -4,7 +4,7 @@ import { renameProperties, skipProperties } from './transformData';
 import { csv2json } from 'json-2-csv';
 import { narrowType } from './transformType';
 
-export function transformData(resource: JSONResource | GeoJSONResource, data: unknown) {
+export function transformDataForType(resource: JSONResource | GeoJSONResource, data: unknown) {
     let transformedData = transformType(resource, data);
     if (resource.skipPropertiesRegEx !== undefined) {
         transformedData = skipProperties(transformedData, resource.skipPropertiesRegEx);
