@@ -52,6 +52,16 @@
     "ResetView": {
         "resetTooltip": "Reset view"
     },
+    "ResourceDetailsControls": {
+        "download": "Download",
+        "embed": "Embed",
+        "embedBody": "The visualization for this resource can be embedded using the following code.",
+        "embedHeight": "Height",
+        "embedTitle": "Embed resource visualization",
+        "embedWidth": "Width",
+        "fullscreen": "Fullscreen",
+        "keepSearchParams": "Preserve search parameters"
+    },
     "Table": {
         "rangeSeparatorText": "of",
         "rowsPerPageText": "Rows per page:",

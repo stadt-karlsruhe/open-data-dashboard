@@ -22,7 +22,7 @@ export function ChartTableFilterBody({
 }) {
   const t = useTranslations('ChartTableFilterBody');
   return (
-    <Accordion.Collapse eventKey={eventKey}>
+    <Accordion.Collapse eventKey={eventKey} className="mt-1 mt-md-3">
       <div>
         {Object.entries(records).map(([key, value]) => {
           const filter = filters[key];
