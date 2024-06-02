@@ -49,6 +49,12 @@
         "description": "Visualizations of open data related to the city of Karlsruhe",
         "title": "Open Data Dashboard"
     },
+    "NavigationContent": {
+        "dashboards": "Dashboards",
+        "data": "Data",
+        "home": "Home",
+        "search": "Search"
+    },
     "ResetView": {
         "resetTooltip": "Reset view"
     },

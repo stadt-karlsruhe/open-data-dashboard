@@ -49,6 +49,12 @@
         "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe",
         "title": "Open Data Dashboard"
     },
+    "NavigationContent": {
+        "dashboards": "Dashboards",
+        "data": "Datensätze",
+        "home": "Home",
+        "search": "Suche"
+    },
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
     },

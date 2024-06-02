@@ -88,7 +88,6 @@ function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupLabel: strin
 
 function getIcon(color: string) {
   return L.divIcon({
-    // eslint-disable-next-line unicorn/no-keyword-prefix
     className: 'custom-icon-div',
     html: ReactDOMServer.renderToString(
       <i role="button" aria-label="map-marker" style={{ color, fontSize: '30px' }} className="bi bi-geo-alt-fill" />,
