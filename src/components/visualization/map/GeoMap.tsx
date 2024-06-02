@@ -26,30 +26,27 @@ export default function GeoMap({
   geoJsonData: GeoJSON.FeatureCollection;
 }) {
   return (
-    <div className="w-100 h-100 position-fixed">
-      <MapContainer
-        className="w-100 h-100 position-relative"
-        center={standardPos.latLng}
-        zoom={standardPos.zoom}
-        scrollWheelZoom={true}
-        zoomControl={false}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
-        />
-        {geoJsonData.features.map((feature, index) => {
-          let colorCode = colorPrimary;
-          const label = getLabelForKey(feature.properties, resource.visualizations.map.groupKey);
-          if (label) {
-            const mappedColor = collectedLabels.get(label);
-            if (mappedColor === undefined) {
-              colorCode = getColor(collectedLabels.size);
-              collectedLabels.set(label, colorCode);
-            } else {
-              colorCode = mappedColor;
-            }
+    <MapContainer
+      style={{ height: '100dvh', width: '100%' }}
+      center={standardPos.latLng}
+      zoom={standardPos.zoom}
+      scrollWheelZoom={true}
+      zoomControl={false}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+      />
+      {geoJsonData.features.map((feature, index) => {
+        let colorCode = colorPrimary;
+        const label = getLabelForKey(feature.properties, resource.visualizations.map.groupKey);
+        if (label) {
+          const mappedColor = collectedLabels.get(label);
+          if (mappedColor === undefined) {
+            colorCode = getColor(collectedLabels.size);
             collectedLabels.set(label, colorCode);
+          } else {
+            colorCode = mappedColor;
           }
           if (feature.geometry.type !== 'Point') {
             return;

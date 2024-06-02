@@ -52,6 +52,16 @@
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
     },
+    "ResourceDetailsControls": {
+        "download": "Herunterladen",
+        "embed": "Einbetten",
+        "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
+        "embedHeight": "Höhe",
+        "embedTitle": "Ressourcendarstellung einbetten",
+        "embedWidth": "Breite",
+        "fullscreen": "Vollbild",
+        "keepSearchParams": "Suchparameter beibehalten"
+    },
     "Table": {
         "rangeSeparatorText": "von",
         "rowsPerPageText": "Zeilen pro Seite:",

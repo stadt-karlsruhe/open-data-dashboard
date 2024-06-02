@@ -58,13 +58,14 @@ export default function ChartTableWrapper({
           setActiveVisualization(eventKey ?? '');
           setVisualizationParameter(eventKey ?? '');
         }}
+        className="mt-1 mt-md-3"
       >
         {Object.entries(resource.visualizations).map(([diagramType, diagramAttr], index) => (
           <Tab
             key={`${resource.id}-${diagramType}-${String(index)}}`}
             title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
             eventKey={diagramType}
-            className="m-3"
+            className="p-3"
           >
             {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
