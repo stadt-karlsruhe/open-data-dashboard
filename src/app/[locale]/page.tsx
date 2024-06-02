@@ -1,3 +1,5 @@
+import Outline from '@/components/Outline';
+
 export default function Home() {
-  return <></>;
+  return <Outline />;
 }
