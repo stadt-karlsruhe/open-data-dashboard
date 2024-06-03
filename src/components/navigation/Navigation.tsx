@@ -1,11 +1,19 @@
 'use client';
 
+import { Configuration, categoriesSchema } from '@/schemas/configuration-schema';
+
+import ErrorComponent from '../error-handling/ErrorComponent';
 import NavigationContent from './NavigationContent';
 import { Offcanvas } from 'react-bootstrap';
 import { useShowNavigation } from './NavigationProvider';
 
-export default function Navigation() {
+export default function Navigation({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
+  const categories = categoriesSchema.safeParse(configuration.categories);
+  if (!categories.success) {
+    return <ErrorComponent type="configurationInvalid" error={JSON.stringify(categories.error)} />;
+  }
+
   return (
     <div>
       <Offcanvas
@@ -16,10 +24,10 @@ export default function Navigation() {
       >
         <Offcanvas.Header closeButton>Open Data Dashboard</Offcanvas.Header>
         <Offcanvas.Body>
-          <NavigationContent />
+          <NavigationContent categories={configuration.categories} />
         </Offcanvas.Body>
       </Offcanvas>
-      <NavigationContent className="d-none d-md-block" />
+      <NavigationContent categories={categories.data} className="d-none d-md-block" />
     </div>
   );
 }

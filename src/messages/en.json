@@ -24,6 +24,8 @@
         "contains": "contains"
     },
     "Error": {
+        "configurationInvalidMessage": "The validation for the configuration returned errors.\n\nError: \"{error}\"",
+        "configurationInvalidTitle": "Configuration is invalid!",
         "configurationNotLoadedMessage": "The application returned an error while trying to load the configuration file(s).\n\nError: \"{error}\"",
         "configurationNotLoadedTitle": "The application configuration could not be loaded!",
         "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",

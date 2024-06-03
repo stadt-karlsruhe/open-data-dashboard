@@ -90,3 +90,8 @@ resources:
       name: Empty
       visualizations:
           table: {}
+categories:
+    - name: Mobilität
+      icon: train-front-fill
+    - name: Category 2
+    - name: Category 3
