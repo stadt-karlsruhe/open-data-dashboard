@@ -9,7 +9,7 @@ export default function NavigationContent({ categories, className }: { categorie
   return (
     <ListGroup variant="flush" className={className}>
       <ListGroup.Item>
-        <Link href="#" className="nav-link">
+        <Link href="/" className="nav-link">
           <i className="bi bi-house-door-fill" /> {t('home')}
         </Link>
       </ListGroup.Item>
