@@ -1,8 +1,8 @@
-import { DataRecord } from '@/types/visualization';
+import { TransformedData } from './schemas/data-schema';
 
 const allEntries = 'all-entries';
 
-export function filterData(data: DataRecord, filters: Record<string, string | { min?: string; max?: string }>) {
+export function filterData(data: TransformedData[], filters: Record<string, string | { min?: string; max?: string }>) {
     const searchedData = filters[allEntries]
         ? data.filter((obj) =>
               Object.values(obj).some(
@@ -12,23 +12,24 @@ export function filterData(data: DataRecord, filters: Record<string, string | { 
               ),
           )
         : data;
-    return searchedData.filter((item) => {
-        for (const objKey of Object.keys(item)) {
+    return searchedData.filter((record) => {
+        for (const objKey of Object.keys(record)) {
+            const item = record[objKey];
             const filter = filters[objKey];
             if (
                 filter &&
                 typeof filter === 'string' &&
-                !String(item[objKey]).toLowerCase().includes(filter.toLowerCase())
+                !String(record[objKey]).toLowerCase().includes(filter.toLowerCase())
             ) {
                 return false;
             }
             const filterObj = typeof filter === 'object' ? filter : ({} as { min: string; max: string });
-            const filterMin = Number.parseFloat(filterObj.min ?? '');
-            const filterMax = Number.parseFloat(filterObj.max ?? '');
-            if (!Number.isNaN(filterMin) && Number.parseFloat(item[objKey]) < filterMin) {
+            const filterMin = Number(filterObj.min);
+            const filterMax = Number(filterObj.max);
+            if (!Number.isNaN(filterMin) && typeof item === 'number' && item < filterMin) {
                 return false;
             }
-            if (!Number.isNaN(filterMax) && Number.parseFloat(item[objKey]) > filterMax) {
+            if (!Number.isNaN(filterMax) && typeof item === 'number' && item > filterMax) {
                 return false;
             }
         }

@@ -7,10 +7,10 @@ resources:
       type: JSON
       name: Wohnberechtigte Bevölkerung
       description: dadad
-      renameFields:
+      renameProperties:
           mannlich (%): Männlich (%)
           weiblich (%): Weiblich (%)
-      skipFieldsRegEx: ^_id$
+      skipPropertiesRegEx: ^_id$
       defaultFilters:
           Jahr:
               min: 2009
@@ -34,18 +34,19 @@ resources:
       # source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       type: GeoJSON
       name: Points of Interest Kinos
+      renameProperties:
+          NAME: Name
+          GRUPPENNAME_DE: Kategorie
+      skipPropertiesRegEx: ^UPDATED$
       visualizations:
           map:
-              labelKey: GRUPPENNAME_DE
-              tooltipFields:
-                  GRUPPENNAME_DE: Kategorie
-                  NAME: Name
+              groupKey: Kategorie
     - id: "4"
       source: https://mocki.io/v1/becc7043-0251-46e9-8f2b-81a6b904fe86
       # source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
       type: JSON
       name: Wanderungssaldo
-      skipFieldsRegEx: ^_id$
+      skipPropertiesRegEx: ^_id$
       visualizations:
           barChart:
               axisPairs:
@@ -56,7 +57,7 @@ resources:
       source: https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True
       type: CSV
       name: Hunde insgesamt
-      skipFieldsRegEx: ^_id$
+      skipPropertiesRegEx: ^_id$
       visualizations:
           barChart:
               axisPairs:
@@ -89,3 +90,8 @@ resources:
       name: Empty
       visualizations:
           table: {}
+categories:
+    - name: Mobilität
+      icon: train-front-fill
+    - name: Category 2
+    - name: Category 3

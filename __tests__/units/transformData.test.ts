@@ -1,69 +1,118 @@
 import { describe, expect, it } from '@jest/globals';
 import {
-    germanNumberFormatResource,
-    germanNumberFormatResourceChart,
-    renameFieldsResource,
-    skipAndRenameFieldsResource,
-    skipFieldsResource,
-    skipFieldsResourceNoMatch,
-} from '../data/resources';
+    geoJSON,
+    geoJSONNoFeatures,
+    geoJSONNoProperties,
+    jsonStandard,
+    jsonStandardGermanFormat,
+} from '../data/dataFormats';
 import {
-    jsonRenameFields,
-    jsonSkipAndRenameFields,
-    jsonSkipFields,
-    jsonTransformedNumbers,
+    geoJSONRenamePropertiesResult,
+    geoJSONSkipAndRenamePropertiesResult,
+    geoJSONSkipPropertyResult,
+    jsonRenamePropertiesResult,
+    jsonSkipAndRenamePropertiesResult,
+    jsonSkipPropertiesResult,
+    jsonTransformNumbersResult,
 } from '../data/dataTransformations';
-import { jsonStandard, jsonStandardGermanFormat } from '../data/dataFormats';
+import {
+    geoJSONrenamePropertiesResource,
+    geoJSONskipAndRenamePropertiesResource,
+    geoJSONskipPropertiesResourceNoMatch,
+    geoJSONskipPropertyResource,
+    jsonGermanNumberFormatResourceChart,
+    jsonRenamePropertiesResource,
+    jsonSkipAndRenamePropertiesResource,
+    jsonSkipPropertiesResource,
+    jsonSkipPropertiesResourceNoMatch,
+} from '../data/resources';
 
-import { transformData } from '@/transform';
+import { transformDataForType } from '@/transformations/transformFormat';
 
-describe('transform data', () => {
-    it('should skip fields IntegerColumn and FloatColumn', () => {
+describe('transform CSV and JSON data', () => {
+    it('should skip properties IntegerColumn and FloatColumn', () => {
         expect.hasAssertions();
 
-        const result = transformData(skipFieldsResource, jsonStandard);
-        expect(result).toStrictEqual(jsonSkipFields);
+        const result = transformDataForType(jsonSkipPropertiesResource, jsonStandard);
+        expect(result).toStrictEqual(jsonSkipPropertiesResult);
     });
 
     it('should not do anything if records array is empty', () => {
         expect.hasAssertions();
 
-        const result = transformData(skipFieldsResource, []);
+        const result = transformDataForType(jsonSkipPropertiesResource, []);
         expect(result).toStrictEqual([]);
     });
 
-    it('should not do anything if skipFieldsRegex does not match any column names', () => {
+    it('should not do anything if skipPropertiesRegex does not match any column names', () => {
         expect.hasAssertions();
 
-        const result = transformData(skipFieldsResourceNoMatch, jsonStandard);
+        const result = transformDataForType(jsonSkipPropertiesResourceNoMatch, jsonStandard);
         expect(result).toStrictEqual(jsonStandard);
     });
 
-    it('should rename fields StringColumn and BooleanColumn', () => {
+    it('should rename properties StringColumn and BooleanColumn', () => {
         expect.hasAssertions();
 
-        const result = transformData(renameFieldsResource, jsonStandard);
-        expect(result).toStrictEqual(jsonRenameFields);
+        const result = transformDataForType(jsonRenamePropertiesResource, jsonStandard);
+        expect(result).toStrictEqual(jsonRenamePropertiesResult);
     });
 
-    it('should skip fields IntegerColumn and FloatColumn and rename fields StringColumn and BooleanColumn', () => {
+    it('should skip properties IntegerColumn and FloatColumn and rename properties StringColumn and BooleanColumn', () => {
         expect.hasAssertions();
 
-        const result = transformData(skipAndRenameFieldsResource, jsonStandard);
-        expect(result).toStrictEqual(jsonSkipAndRenameFields);
+        const result = transformDataForType(jsonSkipAndRenamePropertiesResource, jsonStandard);
+        expect(result).toStrictEqual(jsonSkipAndRenamePropertiesResult);
     });
 
-    it('should correctly transform number format for numbers in yAxes', () => {
+    it('should correctly transform number format for numbers', () => {
         expect.hasAssertions();
 
-        const result = transformData(germanNumberFormatResourceChart, jsonStandardGermanFormat);
-        expect(result).toStrictEqual(jsonTransformedNumbers);
+        const result = transformDataForType(jsonGermanNumberFormatResourceChart, jsonStandardGermanFormat);
+        expect(result).toStrictEqual(jsonTransformNumbersResult);
+    });
+});
+
+describe('transform GeoJSON data', () => {
+    it('should skip property UPDATED', () => {
+        expect.hasAssertions();
+
+        const result = transformDataForType(geoJSONskipPropertyResource, geoJSON);
+        expect(result).toStrictEqual(geoJSONSkipPropertyResult);
     });
 
-    it('should not transform number format for numbers in resource without chart', () => {
+    it('should not do anything if data contains no features', () => {
         expect.hasAssertions();
 
-        const result = transformData(germanNumberFormatResource, jsonStandardGermanFormat);
-        expect(result).toStrictEqual(jsonStandardGermanFormat);
+        const result = transformDataForType(geoJSONskipPropertyResource, geoJSONNoFeatures);
+        expect(result).toStrictEqual(geoJSONNoFeatures);
+    });
+
+    it('should not do anything if data contains no properties', () => {
+        expect.hasAssertions();
+
+        const result = transformDataForType(geoJSONskipPropertyResource, geoJSONNoProperties);
+        expect(result).toStrictEqual(geoJSONNoProperties);
+    });
+
+    it('should not do anything if skipPropertiesRegex does not match any property names', () => {
+        expect.hasAssertions();
+
+        const result = transformDataForType(geoJSONskipPropertiesResourceNoMatch, geoJSON);
+        expect(result).toStrictEqual(geoJSON);
+    });
+
+    it('should rename properties NAME and GRUPPENNAME_DE', () => {
+        expect.hasAssertions();
+
+        const result = transformDataForType(geoJSONrenamePropertiesResource, geoJSON);
+        expect(result).toStrictEqual(geoJSONRenamePropertiesResult);
+    });
+
+    it('should skip property UPDATED and rename properties NAME and GRUPPENNAME_DE', () => {
+        expect.hasAssertions();
+
+        const result = transformDataForType(geoJSONskipAndRenamePropertiesResource, geoJSON);
+        expect(result).toStrictEqual(geoJSONSkipAndRenamePropertiesResult);
     });
 });

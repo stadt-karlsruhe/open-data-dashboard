@@ -1,4 +1,4 @@
-import { Filter, TransformableResource } from '@/schema';
+import { Filter, JSONResource } from '@/schemas/configuration-schema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -6,8 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHeader } from './ChartTableFilterHeader';
 import CurrentFilters from './CurrentFilters';
-import { DataRecord } from '@/types/visualization';
-import LocaleSwitcher from '@/components/LocaleSwitcher';
+import { TransformedData } from '@/schemas/data-schema';
 import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -17,9 +16,9 @@ export default function ChartTableFilter({
   data,
   onFilter,
 }: {
-  resource: TransformableResource;
-  data: DataRecord;
-  onFilter: (filteredData: DataRecord) => void;
+  resource: JSONResource;
+  data: TransformedData[];
+  onFilter: (filteredData: TransformedData[]) => void;
 }) {
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState(
@@ -79,25 +78,19 @@ export default function ChartTableFilter({
   }
 
   return (
-    <div>
-      {/* TODO: Move LocaleSwitcher to header component when it is implemented */}
-      <div className="m-3">
-        <LocaleSwitcher />
-      </div>
-      <div className="container-sm">
-        <Accordion flush>
-          <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
-          <CurrentFilters filters={filters} onClear={onChange} />
-          <ChartTableFilterBody
-            resourceId={resource.id}
-            filters={filters}
-            record={data[0]}
-            eventKey="0"
-            onChange={onChange}
-            onClearAll={onClearAll}
-          />
-        </Accordion>
-      </div>
+    <div className="container">
+      <Accordion flush>
+        <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
+        <CurrentFilters filters={filters} onClear={onChange} />
+        <ChartTableFilterBody
+          resourceId={resource.id}
+          filters={filters}
+          records={data[0]}
+          eventKey="0"
+          onChange={onChange}
+          onClearAll={onClearAll}
+        />
+      </Accordion>
     </div>
   );
 }

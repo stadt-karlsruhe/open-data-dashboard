@@ -22,8 +22,8 @@ export default function CurrentFilters({
                 ? `${t('allEntriesLabel')} ${t('contains')} "${value}"`
                 : `${key} ${t('contains')} "${value}"`;
           } else if (value && typeof value === 'object') {
-            const filterMin = Number.parseFloat(value.min ?? '');
-            const filterMax = Number.parseFloat(value.max ?? '');
+            const filterMin = Number(value.min);
+            const filterMax = Number(value.max);
 
             if (!Number.isNaN(filterMin) || !Number.isNaN(filterMax)) {
               if (filterMin === filterMax) {
@@ -39,7 +39,7 @@ export default function CurrentFilters({
             return (
               <button
                 key={key}
-                className="btn btn-secondary badge me-1 mb-3"
+                className="btn btn-secondary badge me-1 my-1 my-md-3"
                 onClick={() => {
                   onClear(key, '');
                 }}

@@ -4,10 +4,11 @@
 
 import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import { ChartTableFilterBody } from '@/components/visualization/chart-table-filter/ChartTableFilterBody';
 import { NextIntlClientProvider } from 'next-intl';
 import { filterMixed } from '../data/dataFilters';
-import { jsonStandardNoBoolean } from '../data/dataFormats';
+import { jsonStandard } from '../data/dataFormats';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line max-lines-per-function
@@ -21,7 +22,7 @@ describe('component ChartTableFilterBody', () => {
         <ChartTableFilterBody
           resourceId="test-resource"
           filters={filterMixed}
-          record={jsonStandardNoBoolean[0] as unknown as Record<string, never>}
+          records={jsonStandard[0] as unknown as Record<string, never>}
           eventKey="1"
           onChange={mockOnChange}
           onClearAll={mockOnClearAll}
@@ -43,7 +44,7 @@ describe('component ChartTableFilterBody', () => {
     expect.hasAssertions();
 
     renderComponent();
-    const input = screen.getByLabelText(messages.ChartTableFilterBody.search);
+    const [input] = screen.getAllByLabelText(messages.ChartTableFilterBody.search);
     const [minInput] = screen.getAllByLabelText('Min');
     const [maxInput] = screen.getAllByLabelText('Max');
     fireEvent.change(input, { target: { value: 'test' } });

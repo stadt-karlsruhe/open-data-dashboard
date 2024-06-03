@@ -9,14 +9,14 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { useEffect, useState } from 'react';
 
-import { AxisPair } from '@/schema';
+import { AxisPair } from '@/schemas/configuration-schema';
 import AxisSelector from './AxisSelector';
-import { DataRecord } from '@/types/visualization';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
+import { TransformedData } from '@/schemas/data-schema';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getColor } from '@/colors';
-import { useState } from 'react';
 
 let minValue: number;
 let maxValue: number;
@@ -26,12 +26,23 @@ export default function BarChart({
   axisPairs,
   aspect,
 }: {
-  data: DataRecord;
+  data: TransformedData[];
   axisPairs: AxisPair[];
   aspect: number;
 }) {
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
+
+  // TODO: Ignores defaultProps errors. Remove once recharts 2.13.0 is released (https://github.com/recharts/recharts/issues/3615)
+  useEffect(() => {
+    const { error } = console;
+    console.error = (...args: Parameters<typeof console.error>) => {
+      if (typeof args[0] === 'string' && args[0].includes('defaultProps')) {
+        return;
+      }
+      error(...args);
+    };
+  }, []);
 
   function onLegendClick(e: Payload) {
     setAxesMap(updateAxisMap(xAxis, e.dataKey?.toString(), axesMap));
@@ -70,21 +81,22 @@ export default function BarChart({
   );
 }
 
-function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
+function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
   minValue = 0;
   maxValue = 0;
   const yAxesMap = axesMap.get(xAxis) ?? new Map<string, boolean>();
-  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([_, visible]) => visible).map(([yAxis]) => yAxis));
+  const visibleYAxes = new Set([...yAxesMap.entries()].filter(([, visible]) => visible).map(([yAxis]) => yAxis));
   records.forEach((record) => {
     const valueArray = Object.entries(record)
       .filter(([key]) => visibleYAxes.has(key))
       .map((entry) => entry[1]);
     for (const value of valueArray) {
-      const parsedValue = Number.parseFloat(value);
-      if (parsedValue > maxValue) {
-        maxValue = parsedValue;
-      } else if (parsedValue < minValue) {
-        minValue = parsedValue;
+      if (typeof value === 'number') {
+        if (value > maxValue) {
+          maxValue = value;
+        } else if (value < minValue) {
+          minValue = value;
+        }
       }
     }
   });
@@ -93,9 +105,9 @@ function getDomain(records: DataRecord, axesMap: Map<string, Map<string, boolean
 
 function collectYAxes(axisPairs: AxisPair[]) {
   const axesMap = new Map<string, Map<string, boolean>>();
-  for (const axisPair of axisPairs) {
+  for (const [i, axisPair] of axisPairs.entries()) {
     const yAxesForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
-    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, true);
+    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, i === 0);
   }
   return axesMap;
 }
@@ -108,9 +120,7 @@ function updateAxisMap(xAxis: string, yAxis: string | undefined, axesMap: Map<st
   let bool = yAxesForXAxis.get(yAxis);
   bool = bool === undefined ? true : !bool;
   yAxesForXAxis.set(yAxis, bool);
-  // eslint-disable-next-line sonarjs/prefer-immediate-return
-  const updatedAxesMap = new Map(axesMap);
-  return updatedAxesMap;
+  return new Map(axesMap);
 }
 
 function getTicks() {

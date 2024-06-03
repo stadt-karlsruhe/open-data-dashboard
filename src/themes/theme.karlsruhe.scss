@@ -8,6 +8,7 @@
   --bs-red: #e2001a;
   --bs-green: #f7f9f5;
   --bs-gray: #7f7f7f;
+  --bs-light: #e8e8eb;
   --bs-font-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
@@ -15,6 +16,7 @@
     'primary': #048500,
     'secondary': #000,
     'danger': #e2001a,
+    'light': #e8e8eb,
   );
   $theme-colors: map-merge($theme-colors, $custom-colors);
   $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
@@ -32,6 +34,8 @@
   .nav-link {
     color: var(--bs-primary) !important;
   }
+  $nav-tabs-border-color: var(--bs-secondary);
+  $nav-tabs-link-active-border-color: var(--bs-secondary) var(--bs-secondary) $nav-tabs-link-active-bg;
   .btn-secondary {
     color: var(--bs-secondary) !important;
     background-color: var(--bs-white) !important;

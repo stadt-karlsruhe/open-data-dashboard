@@ -1,52 +1,41 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { ClearableInputGroup } from './ClearableInputGroup';
+import { Filter } from '@/schemas/configuration-schema';
+import { TransformedData } from '@/schemas/data-schema';
 import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
 export function ChartTableFilterBody({
   resourceId,
   filters,
-  record,
+  records,
   eventKey,
   onChange,
   onClearAll,
 }: {
   resourceId: string;
-  filters: Record<string, string | { min?: string; max?: string }>;
-  record: Record<string, never>;
+  filters: Record<string, Filter>;
+  records: TransformedData;
   eventKey: string;
   onChange: (key: string, value: string | { min?: string; max?: string }) => void;
   onClearAll: () => void;
 }) {
   const t = useTranslations('ChartTableFilterBody');
   return (
-    <Accordion.Collapse eventKey={eventKey}>
+    <Accordion.Collapse eventKey={eventKey} className="mt-1 mt-md-3">
       <div>
-        {Object.entries(record).map(([key, value]) => {
+        {Object.entries(records).map(([key, value]) => {
           const filter = filters[key];
           const filterObj = typeof filter === 'object' ? filter : undefined;
           return (
-            <fieldset key={key} className="row my-3">
+            <fieldset key={key} className="row mb-1 mb-md-3">
               <legend id={`${resourceId}-${key}-input`} className="col-sm-2 col-form-label">
                 {key}
               </legend>
               <div className="col-md-10">
-                {Number.isNaN(Number.parseFloat(String(value))) ? (
-                  <ClearableInputGroup
-                    id={`${resourceId}-${key}-text-input`}
-                    type="text"
-                    value={filter && typeof filter === 'string' ? filter : ''}
-                    label={t('search')}
-                    onChange={(e) => {
-                      onChange(key, e.target.value);
-                    }}
-                    onClear={() => {
-                      onChange(key, '');
-                    }}
-                  />
-                ) : (
+                {typeof value === 'number' ? (
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-6">
                       <ClearableInputGroup
                         id={`${resourceId}-${key}-min`}
                         type="number"
@@ -60,7 +49,7 @@ export function ChartTableFilterBody({
                         }}
                       />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-6">
                       <ClearableInputGroup
                         id={`${resourceId}-${key}-max`}
                         type="number"
@@ -75,12 +64,25 @@ export function ChartTableFilterBody({
                       />
                     </div>
                   </div>
+                ) : (
+                  <ClearableInputGroup
+                    id={`${resourceId}-${key}-text-input`}
+                    type="text"
+                    value={filter && typeof filter === 'string' ? filter : ''}
+                    label={t('search')}
+                    onChange={(e) => {
+                      onChange(key, e.target.value);
+                    }}
+                    onClear={() => {
+                      onChange(key, '');
+                    }}
+                  />
                 )}
               </div>
             </fieldset>
           );
         })}
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end mt-3">
           <button title={t('clearAllTooltip')} className="btn btn-secondary px-5" onClick={onClearAll}>
             {t('clearAll')}
           </button>

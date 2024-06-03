@@ -4,10 +4,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '../bar-chart/BarChart';
 import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
-import { DataRecord } from '@/types/visualization';
+import { JSONResource } from '@/schemas/configuration-schema';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { TransformableResource } from '@/schema';
+import { TransformedData } from '@/schemas/data-schema';
 import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
@@ -22,8 +22,8 @@ export default function ChartTableWrapper({
   resource,
   transformedData,
 }: {
-  resource: TransformableResource;
-  transformedData: DataRecord;
+  resource: JSONResource;
+  transformedData: TransformedData[];
 }) {
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();
@@ -58,13 +58,14 @@ export default function ChartTableWrapper({
           setActiveVisualization(eventKey ?? '');
           setVisualizationParameter(eventKey ?? '');
         }}
+        className="mt-1 mt-md-3"
       >
         {Object.entries(resource.visualizations).map(([diagramType, diagramAttr], index) => (
           <Tab
             key={`${resource.id}-${diagramType}-${String(index)}}`}
             title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
             eventKey={diagramType}
-            className="m-3"
+            className="p-3"
           >
             {diagramType === 'barChart' ? (
               <div className="d-flex flex-column">
