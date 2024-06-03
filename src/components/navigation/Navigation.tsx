@@ -27,7 +27,7 @@ export default function Navigation({ configuration }: { configuration: Configura
           <NavigationContent categories={configuration.categories} />
         </Offcanvas.Body>
       </Offcanvas>
-      <NavigationContent categories={categories.data} className="d-none d-md-block" />
+      <NavigationContent categories={categories.data} className="d-none d-md-block me-md-5" />
     </div>
   );
 }
