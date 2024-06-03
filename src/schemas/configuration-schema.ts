@@ -109,7 +109,7 @@ const categoryBaseSchema = z
     .object({
         name: z.string(),
         description: z.string().optional(),
-        icon: z.string().default('file-earmark'),
+        icon: z.string().default('clipboard-data'),
     })
     .strict();
 
