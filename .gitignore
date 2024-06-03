@@ -38,3 +38,6 @@ next-env.d.ts
 # mkdocs
 docs/.venv
 site/*
+
+# Lighthouse
+.lighthouseci

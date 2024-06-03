@@ -1,0 +1,23 @@
+---
+    name: Lighthouse
+    on: # yamllint disable-line rule:truthy
+        - push
+    jobs:
+        lighthouseci:
+            name: Lighthouse
+            runs-on: ubuntu-latest
+            steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: '21'
+            - name: Install
+              run: npm ci && npm install -g @lhci/cli@0.13.0
+            - name: Build
+              run: npm run build
+            - name: Lighthouse Upload
+              run: lhci upload
+              env:
+                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

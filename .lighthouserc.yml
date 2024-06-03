@@ -1,0 +1,13 @@
+---
+ci:
+    collect:
+        startServerCommand: npm run start
+        startServerReadyPattern: Ready in
+        url:
+            - http://localhost:3000
+        settings:
+            preset: desktop
+    assert:
+        preset: lighthouse:recommended
+    upload:
+        target: temporary-public-storage
