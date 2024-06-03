@@ -6,7 +6,7 @@ import { describe, expect, it } from '@jest/globals';
 import { embeddedResource, jsonResource } from '../data/resources';
 import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
-import Page from '@/app/[locale]/resource/[resourceId]/page';
+import Page from '@/app/[locale]/(embedded)/resource/[resourceId]/page';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
 import messages from '@/messages/en.json';

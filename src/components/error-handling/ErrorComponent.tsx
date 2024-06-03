@@ -16,6 +16,7 @@ interface ApplicationError {
     | 'notFound'
     | 'dataEmpty'
     | 'dataNotLoaded'
+    | 'configurationInvalid'
     | 'resourceConfigurationInvalid'
     | 'configurationNotLoaded'
     | 'unexpected';

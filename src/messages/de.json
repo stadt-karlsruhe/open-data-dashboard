@@ -24,6 +24,8 @@
         "contains": "enthält"
     },
     "Error": {
+        "configurationInvalidMessage": "Die Validierung der Konfiguration hat Fehler zurückgegeben.\n\nFehler: \"{error}\"",
+        "configurationInvalidTitle": "Die Konfiguration ist fehlerhaft!",
         "configurationNotLoadedMessage": "Beim Laden der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
         "configurationNotLoadedTitle": "Die Anwendungskonfiguration konnte nicht geladen werden!",
         "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
@@ -48,6 +50,12 @@
     "Metadata": {
         "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe",
         "title": "Open Data Dashboard"
+    },
+    "NavigationContent": {
+        "dashboards": "Dashboards",
+        "data": "Datensätze",
+        "home": "Home",
+        "search": "Suche"
     },
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"

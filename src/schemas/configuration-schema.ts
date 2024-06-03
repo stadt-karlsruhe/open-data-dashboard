@@ -74,7 +74,7 @@ const jsonResourceSchema = transformableResourceSchema
         },
     );
 
-const GeoJSONResourceSchema = transformableResourceSchema
+const geoJSONResourceSchema = transformableResourceSchema
     .extend({
         type: z.literal('GeoJSON'),
         visualizations: z
@@ -103,7 +103,23 @@ const GeoJSONResourceSchema = transformableResourceSchema
         },
     );
 
-export const resourceSchema = z.union([jsonResourceSchema, GeoJSONResourceSchema, embeddedResourceSchema]);
+export const resourceSchema = z.union([jsonResourceSchema, geoJSONResourceSchema, embeddedResourceSchema]);
+
+const categoryBaseSchema = z
+    .object({
+        name: z.string(),
+        description: z.string().optional(),
+        icon: z.string().default('clipboard-data'),
+    })
+    .strict();
+
+const categorySchema = categoryBaseSchema
+    .extend({
+        subCategories: z.array(categoryBaseSchema).optional(),
+    })
+    .strict();
+
+export const categoriesSchema = z.array(categorySchema);
 
 export const configurationSchema = z
     .object({
@@ -112,15 +128,16 @@ export const configurationSchema = z
             .object({
                 theme: z.union([z.literal('bootstrap-light'), z.literal('karlsruhe')]).default('bootstrap-light'),
             })
-            .strict()
-            .default({}),
+            .strict(),
+        categories: categoriesSchema,
     })
     .strict();
 
 export type EmbeddedResource = z.infer<typeof embeddedResourceSchema>;
 export type JSONResource = z.infer<typeof jsonResourceSchema>;
-export type GeoJSONResource = z.infer<typeof GeoJSONResourceSchema>;
+export type GeoJSONResource = z.infer<typeof geoJSONResourceSchema>;
 export type AxisPair = z.infer<typeof axisPairSchema>;
 export type Resource = z.infer<typeof resourceSchema>;
 export type Configuration = z.infer<typeof configurationSchema>;
 export type Filter = z.infer<typeof defaultFilterSchema>;
+export type Category = z.infer<typeof categorySchema>;

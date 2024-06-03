@@ -24,21 +24,21 @@ extends:
     - prettier
 rules:
     jest/prefer-importing-jest-globals:
-    - error
-    - types:
-        - describe
-        - test
-        - expect
-        - unknown
+        - error
+        - types:
+              - describe
+              - test
+              - expect
+              - unknown
     "@typescript-eslint/no-misused-promises": off
     "@typescript-eslint/no-unused-vars": off
     import/consistent-type-specifier-style:
-    - error
-    - prefer-inline
+        - error
+        - prefer-inline
     import/no-cycle:
-    - error
-    - maxDepth: 4
-      ignoreExternal: true
+        - error
+        - maxDepth: 4
+          ignoreExternal: true
     import/no-empty-named-blocks: error
     import/no-extraneous-dependencies: error
     import/no-unresolved: off
@@ -49,14 +49,18 @@ rules:
     regexp/no-missing-g-flag: error
     regexp/prefer-regexp-exec: error
     unicorn/catch-error-name:
-    - error
-    - name: err
+        - error
+        - name: err
     unicorn/consistent-function-scoping: error
     unicorn/custom-error-definition: error
     unicorn/filename-case: off
     unicorn/no-array-for-each: off
     unicorn/no-document-cookie: error
-    unicorn/no-keyword-prefix: error
+    unicorn/no-keyword-prefix:
+        - error
+        - disallowedPrefixes:
+              - new
+              - for
     unicorn/no-negated-condition: error
     unicorn/no-nested-ternary: error
     unicorn/no-null: off
@@ -77,8 +81,8 @@ rules:
     unicorn/prevent-abbreviations: off
     unicorn/string-content: error
     array-bracket-newline:
-    - error
-    - multiline: true
+        - error
+        - multiline: true
     array-bracket-spacing: error
     arrow-parens: error
     arrow-spacing: error
@@ -87,15 +91,15 @@ rules:
     brace-style: 0
     camelcase: error
     comma-dangle:
-    - error
-    - always-multiline
+        - error
+        - always-multiline
     comma-spacing: 0
     comma-style: error
     computed-property-spacing: error
     consistent-this: error
     curly:
-    - error
-    - all
+        - error
+        - all
     default-case: error
     default-case-last: error
     default-param-last: error
@@ -105,8 +109,8 @@ rules:
     func-call-spacing: 0
     func-name-matching: error
     func-names:
-    - error
-    - never
+        - error
+        - never
     getter-return: error
     grouped-accessor-pairs: error
     handle-callback-err: error
@@ -117,24 +121,24 @@ rules:
     max-classes-per-file: error
     max-depth: error
     max-len:
-    - error
-    - ignoreComments: true
-      ignoreTrailingComments: true
-      ignoreStrings: true
-      ignoreTemplateLiterals: true
-      ignoreUrls: true
-      code: 120
+        - error
+        - ignoreComments: true
+          ignoreTrailingComments: true
+          ignoreStrings: true
+          ignoreTemplateLiterals: true
+          ignoreUrls: true
+          code: 120
     max-lines: error
     max-lines-per-function:
-    - error
-    - max: 60
+        - error
+        - max: 60
     max-nested-callbacks:
-    - error
-    - max: 4
+        - error
+        - max: 4
     max-params: error
     max-statements:
-    - error
-    - max: 25
+        - error
+        - max: 25
     max-statements-per-line: error
     new-parens: error
     no-alert: error
@@ -143,8 +147,8 @@ rules:
     no-buffer-constructor: error
     no-caller: error
     no-confusing-arrow:
-    - error
-    - allowParens: false
+        - error
+        - allowParens: false
     no-console: 0
     no-constant-binary-expression: error
     no-constructor-return: error
@@ -199,10 +203,10 @@ rules:
     no-trailing-spaces: error
     no-undef-init: error
     no-underscore-dangle:
-    - error
-    - allow:
-        - _id
-        - __v
+        - error
+        - allow:
+              - _id
+              - __v
     no-unmodified-loop-condition: error
     no-unneeded-ternary: error
     no-unsafe-optional-chaining: error
@@ -223,18 +227,18 @@ rules:
     nonblock-statement-body-position: error
     object-curly-spacing: 0
     object-property-newline:
-    - error
-    - allowAllPropertiesOnSameLine: true
+        - error
+        - allowAllPropertiesOnSameLine: true
     object-shorthand: error
     one-var:
-    - error
-    - never
+        - error
+        - never
     one-var-declaration-per-line: error
     operator-assignment: error
     operator-linebreak: error
     padded-blocks:
-    - error
-    - never
+        - error
+        - never
     prefer-arrow-callback: error
     prefer-destructuring: error
     prefer-exponentiation-operator: error
@@ -246,16 +250,16 @@ rules:
     prefer-rest-params: error
     prefer-template: error
     quote-props:
-    - error
-    - as-needed
+        - error
+        - as-needed
     radix: error
     require-atomic-updates: error
     require-await: error
     require-unicode-regexp: error
     rest-spread-spacing: error
     semi:
-    - error
-    - always
+        - error
+        - always
     semi-spacing: error
     sort-imports: error
     space-before-blocks: error
@@ -271,5 +275,5 @@ rules:
     wrap-iife: error
     yield-star-spacing: error
     yoda:
-    - error
-    - never
+        - error
+        - never
