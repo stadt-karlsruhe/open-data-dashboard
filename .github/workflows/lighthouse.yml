@@ -17,6 +17,8 @@
               run: npm ci && npm install -g @lhci/cli@0.13.0
             - name: Build
               run: npm run build
+            - name: Lighthouse Collect
+              run: lhci collect
             - name: Lighthouse Upload
               run: lhci upload
               env:
