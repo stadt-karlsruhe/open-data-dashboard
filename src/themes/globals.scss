@@ -6,3 +6,10 @@
     border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
 }
+
+@media (max-width: 1200px) {
+    .item-wrap {
+      order: 4;
+      width: 100%;
+    }
+  }
