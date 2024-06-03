@@ -8,17 +8,17 @@ export default function NavigationContent({ categories, className }: { categorie
   const t = useTranslations('NavigationContent');
   return (
     <ListGroup variant="flush" className={className}>
-      <ListGroup.Item>
+      <ListGroup.Item className="pe-md-5">
         <Link href="/" className="nav-link">
           <i className="bi bi-house-door-fill" /> {t('home')}
         </Link>
       </ListGroup.Item>
-      <ListGroup.Item>
+      <ListGroup.Item className="pe-md-5">
         <Link href="#" className="nav-link">
           <i className="bi bi-search" /> {t('search')}
         </Link>
       </ListGroup.Item>
-      <ListGroup.Item>
+      <ListGroup.Item className="pe-md-5">
         <Link href="#" className="nav-link">
           <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
         </Link>
@@ -40,7 +40,7 @@ export default function NavigationContent({ categories, className }: { categorie
           </Link>
         </div>
       </ListGroup.Item>
-      <ListGroup.Item>
+      <ListGroup.Item className="pe-md-5">
         <Link href="#" className="nav-link">
           <i className="bi bi-folder-fill" /> {t('data')}
         </Link>
