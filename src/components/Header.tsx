@@ -5,9 +5,11 @@ import LogoKarlsruheSmall from '../public/Logo_Digital_Karlsruhe-rechts_rgb_smal
 export default function Header() {
   return (
     <div className="d-flex flex-row fs-2">
-      <div className="d-flex flex-fill p-2 ps-4">Open Data Dashboard</div>
-      <div className="d-flex flex-fill p-2 d-none d-md-block fs-5">Hier könnte ihre Suchleiste stehen</div>
-      <div className="d-flex flex-fill p-2 d-none d-md-block">
+      <div className="d-flex flex-fill align-content-center p-2 ps-4">Open Data Dashboard</div>
+      <div className="d-flex flex-fill d-none d-md-block fs-5 align-content-center p-2">
+        Hier könnte ihre Suchleiste stehen
+      </div>
+      <div className="d-flex flex-fill d-none d-md-block align-content-center p-2">
         <LocaleSwitcher />
       </div>
       <div className="d-flex d-none d-md-block justify-content-end" style={{ height: '2em' }}>
