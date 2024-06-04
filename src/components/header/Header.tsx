@@ -28,9 +28,9 @@ export default function Header() {
             <LogoKarlsruheSmall />
           </div>
         </div>
-        <div className="flex-row flex-wrap fs-2 d-none d-md-flex">
+        <div className="flex-row flex-wrap flex-xl-nowrap d-none d-md-flex fs-2">
           <div className="d-block flex-fill align-content-center p-2 ps-4">{t('title')}</div>
-          <div className="d-block flex-fill fs-5 align-content-center p-2 item-wrap">
+          <div className="d-block flex-fill item-wrap fs-5 align-content-center p-2">
             <input placeholder={t('search')} className="form-control" style={{ maxWidth: '50vw', margin: 'auto' }} />
           </div>
           <div className="d-block flex-fill align-content-center p-2">

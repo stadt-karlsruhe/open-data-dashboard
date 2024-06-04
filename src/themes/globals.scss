@@ -7,7 +7,7 @@
     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
 }
 
-@media (max-width: 1200px) {
+@include media-breakpoint-down(xl) {
     .item-wrap {
       order: 4;
       width: 100%;
