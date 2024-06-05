@@ -4,12 +4,10 @@ import LocaleSwitcher from './LocaleSwitcher';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
 import LogoKarlsruheSmall from '../../public/Logo_Digital_Karlsruhe-rechts_rgb_small.svg';
 import { useShowNavigation } from '../navigation/NavigationProvider';
-import { useShowSearchbar } from './HeaderProvider';
 import { useTranslations } from 'next-intl';
 
-export default function Header() {
+export default function Header({ showSearchbar }: { showSearchbar: boolean }) {
   const { show, setShow } = useShowNavigation();
-  const { showSearchbar } = useShowSearchbar();
   const t = useTranslations('Header');
   return (
     <div className="bg-white pb-3">
