@@ -1,6 +1,7 @@
 import { Configuration } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Header from '@/components/header/Header';
+import HeaderProvider from '@/components/header/HeaderProvider';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
 import { colorLight } from '@/colors';
@@ -19,12 +20,14 @@ export default async function RootLayout({
   return (
     <div style={{ background: colorLight }}>
       <NavigationProvider>
-        <Header />
-        <div className="container-md d-flex bg-white">
-          {/* eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style */}
-          <Navigation configuration={configuration.data as Configuration} />
-          {children}
-        </div>
+        <HeaderProvider>
+          <Header />
+          <div className="container-md d-flex bg-white">
+            {/* eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style */}
+            <Navigation configuration={configuration.data as Configuration} />
+            {children}
+          </div>
+        </HeaderProvider>
       </NavigationProvider>
     </div>
   );
