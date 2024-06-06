@@ -41,6 +41,10 @@
         "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
         "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
     },
+    "Header": {
+        "title": "Open Data Dashboard",
+        "search": "Suche..."
+    },
     "Legend": {
         "title": "Legende"
     },

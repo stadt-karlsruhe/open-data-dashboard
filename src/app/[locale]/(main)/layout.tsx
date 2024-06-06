@@ -15,7 +15,6 @@ export default async function RootLayout({
   if (!configuration.success) {
     return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
   }
-
   return (
     <div style={{ background: colorLight }}>
       <NavigationProvider>

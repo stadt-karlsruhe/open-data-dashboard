@@ -1,3 +1,8 @@
+'use client';
+
+import { redirect, usePathname } from 'next/navigation';
+
 export default function Home() {
-  return <></>;
+  const pathname = usePathname();
+  redirect(`${pathname}/home`);
 }

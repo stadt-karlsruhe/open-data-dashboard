@@ -41,6 +41,10 @@
         "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
         "unexpectedTitle": "An unexpected error ocurred!"
     },
+    "Header": {
+        "title": "Open Data Dashboard",
+        "search": "Search..."
+    },
     "Legend": {
         "title": "Legend"
     },
