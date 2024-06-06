@@ -1,8 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import LocaleSwitcher from './LocaleSwitcher';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
 import LogoKarlsruheSmall from '../../public/Logo_Digital_Karlsruhe-rechts_rgb_small.svg';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { usePathname } from 'next/navigation';
 import { useShowNavigation } from '../navigation/NavigationProvider';
 import { useTranslations } from 'next-intl';
@@ -24,9 +26,12 @@ export default function Header() {
             <i className="bi bi-list" />
           </button>
           <div className="d-block flex-fill align-content-center p-2 ps-4">{t('title')}</div>
-          <div className="d-block justify-content-end" style={{ height: '50px' }}>
-            <LogoKarlsruheSmall />
-          </div>
+          <Image
+            className="d-block justify-content-end"
+            src={LogoKarlsruheSmall as StaticImport}
+            alt={'LogoKarlsruheSmall'}
+            height={50}
+          />
         </div>
         <div className="flex-row flex-wrap flex-xl-nowrap d-none d-md-flex fs-2">
           <div className="d-block flex-fill align-content-center p-2 ps-4">{t('title')}</div>
@@ -38,9 +43,12 @@ export default function Header() {
           <div className="d-block flex-fill align-content-center p-2">
             <LocaleSwitcher />
           </div>
-          <div className="d-block justify-content-end" style={{ height: '60px' }}>
-            <LogoKarlsruhe />
-          </div>
+          <Image
+            className="d-block justify-content-end"
+            src={LogoKarlsruhe as StaticImport}
+            alt={'LogoKarlsruhe'}
+            height={60}
+          />
         </div>
       </div>
     </div>
