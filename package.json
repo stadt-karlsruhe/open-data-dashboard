@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --coverage --testPathIgnorePatterns='configuration\\.test\\.ts'",
-    "test:configurations": "jest --testPathPattern='configuration\\.test\\.ts' --noStackTrace",
+    "test:config-validation": "jest --testPathPattern='configuration\\.test\\.ts' --noStackTrace",
     "docs": "mkdocs serve"
   },
   "devDependencies": {

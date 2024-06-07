@@ -90,7 +90,6 @@ function parseConfigurationSection(
         | typeof categoriesSchema,
 ) {
     const parsedSection = schema.safeParse(section);
-    // console.error(JSON.stringify(parsedSection.data));
     return parsedSection.success ? undefined : fromError(parsedSection.error).toString();
 }
 

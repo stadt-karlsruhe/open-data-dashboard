@@ -1,0 +1,15 @@
+---
+    name: Lint and Test
+    on: # yamllint disable-line rule:truthy
+        - push
+    jobs:
+        config-validation:
+            name: Config Validation
+            runs-on: ubuntu-latest
+            steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Install
+              run: npm ci
+            - name: Validate Default Configuration
+              run: npm run test:config-validation
