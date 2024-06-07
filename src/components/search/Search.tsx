@@ -42,7 +42,7 @@ export default function Search({ configuration, className }: { configuration: Co
       }}
       options={searchResults ?? []}
       placeholder={t('search')}
-      emptyLabel={t('emptryLabel')}
+      emptyLabel={t('entryLabel')}
       renderMenuItemChildren={(option) => {
         const resource = option as Resource;
         const visualizedResource = option as JSONResource | GeoJSONResource;
