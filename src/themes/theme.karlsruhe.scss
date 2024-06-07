@@ -31,6 +31,11 @@
   $form-select-border-width: 1px;
   $form-select-border-color: var(--bs-secondary);
 
+  $dropdown-link-active-bg: var(--bs-primary);
+  $dropdown-link-hover-bg: var(--bs-primary);
+  $dropdown-link-hover-color: var(--bs-white);
+  $dropdown-bg: var(--bs-light);
+
   .nav-link {
     color: var(--bs-primary) !important;
   }

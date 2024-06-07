@@ -1,15 +1,26 @@
 {
-    "files.eol": "\n",
-    "typescript.enablePromptUseWorkspaceTsdk": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
+    "cSpell.language": "en,de-de",
+    "cSpell.words": [
+        "dracula",
+        "karlsruhe",
+        "minisearch",
+        "Offcanvas",
+        "Searchbar",
+        "typeahead",
+        "Typeahead"
+    ],
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "files.eol": "\n",
+    "i18n-ally.keystyle": "nested",
     "i18n-ally.localesPaths": [
         "src/messages"
     ],
-    "i18n-ally.keystyle": "nested",
-    "yaml.schemas": {
-        "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+    "jest.runMode": {
+        "coverage": true,
+        "type": "on-save"
     },
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
     "yaml.customTags": [
         "!ENV scalar",
         "!ENV sequence",
@@ -18,15 +29,7 @@
         "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
         "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
     ],
-    "cSpell.language": "en,de-de",
-    "jest.runMode": {
-        "type": "on-save",
-        "coverage": true
-    },
-    "cSpell.words": [
-        "dracula",
-        "karlsruhe",
-        "Offcanvas",
-        "Searchbar"
-    ]
+    "yaml.schemas": {
+        "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+    }
 }

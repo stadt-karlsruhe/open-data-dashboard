@@ -1,12 +1,6 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
-.tab-content {
-    border-left: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
-    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
-    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
-}
-
 @include media-breakpoint-down(xl) {
     .item-wrap {
       order: 4;
