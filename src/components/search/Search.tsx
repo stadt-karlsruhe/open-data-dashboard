@@ -36,8 +36,8 @@ export default function Search({ configuration, className }: { configuration: Co
       onKeyDown={(event) => {
         if (event.key === 'Enter' && selected.length > 0) {
           const resource = selected[0] as Resource;
-          router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
           setSelected([]);
+          router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
         }
       }}
       options={searchResults ?? []}
