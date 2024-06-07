@@ -9,7 +9,7 @@ const baseResourceSchema = z
     })
     .strict();
 
-const embeddedResourceSchema = baseResourceSchema
+export const embeddedResourceSchema = baseResourceSchema
     .extend({
         type: z.literal('Embedded'),
     })
@@ -43,7 +43,7 @@ const transformableResourceSchema = baseResourceSchema
     })
     .strict();
 
-const jsonResourceSchema = transformableResourceSchema
+export const jsonResourceSchema = transformableResourceSchema
     .extend({
         type: z.union([z.literal('JSON'), z.literal('CSV')]),
         defaultFilters: z.record(z.string(), defaultFilterSchema).optional(),
@@ -74,7 +74,7 @@ const jsonResourceSchema = transformableResourceSchema
         },
     );
 
-const geoJSONResourceSchema = transformableResourceSchema
+export const geoJSONResourceSchema = transformableResourceSchema
     .extend({
         type: z.literal('GeoJSON'),
         visualizations: z
@@ -121,14 +121,16 @@ const categorySchema = categoryBaseSchema
 
 export const categoriesSchema = z.array(categorySchema);
 
+export const appearanceSchema = z
+    .object({
+        theme: z.union([z.literal('bootstrap-light'), z.literal('karlsruhe')]).default('bootstrap-light'),
+    })
+    .strict();
+
 export const configurationSchema = z
     .object({
         resources: z.array(resourceSchema),
-        appearance: z
-            .object({
-                theme: z.union([z.literal('bootstrap-light'), z.literal('karlsruhe')]).default('bootstrap-light'),
-            })
-            .strict(),
+        appearance: appearanceSchema,
         categories: categoriesSchema,
     })
     .strict();
@@ -141,3 +143,4 @@ export type Resource = z.infer<typeof resourceSchema>;
 export type Configuration = z.infer<typeof configurationSchema>;
 export type Filter = z.infer<typeof defaultFilterSchema>;
 export type Category = z.infer<typeof categorySchema>;
+export type Appearance = z.infer<typeof appearanceSchema>;

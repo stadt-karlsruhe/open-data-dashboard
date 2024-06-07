@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --coverage",
+    "test": "jest --coverage --testPathIgnorePatterns='configuration\\.test\\.ts'",
+    "test:configurations": "jest --testPathPattern='configuration\\.test\\.ts' --noStackTrace",
     "docs": "mkdocs serve"
   },
   "devDependencies": {
@@ -60,6 +61,7 @@
     "typescript": "^5",
     "use-debounce": "10.0.1",
     "yaml": "2.4.3",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-validation-error": "3.3.0"
   }
 }

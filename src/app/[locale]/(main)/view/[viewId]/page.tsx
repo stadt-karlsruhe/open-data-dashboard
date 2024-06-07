@@ -1,5 +1,6 @@
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
+import { fromError } from 'zod-validation-error';
 import { getConfiguration } from '@/configuration';
 import { resourceSchema } from '@/schemas/configuration-schema';
 
@@ -24,7 +25,7 @@ export default async function Page({ params: { viewId } }: { params: { viewId: s
       <ErrorComponent
         type="resourceConfigurationInvalid"
         resource={resource}
-        error={JSON.stringify(parsedResource.error)}
+        error={JSON.stringify(fromError(parsedResource.error).toString())}
       />
     );
   }

@@ -35,7 +35,7 @@
         "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
         "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
         "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-        "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+        "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: {error}",
         "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
         "returnBtn": "Zurück zur Startseite",
         "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
