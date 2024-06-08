@@ -19,6 +19,7 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// TODO: We need a way to select the subcategory: Either in the navigation, or inside of a selector component at the top of the overview
 export default function Overview({
   resources,
   categories,
