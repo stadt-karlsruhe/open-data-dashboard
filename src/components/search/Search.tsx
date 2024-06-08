@@ -37,7 +37,7 @@ export default function Search({
       labelKey="name"
       highlightOnlyResult
       onInputChange={(term) => {
-        search(term, { prefix: true, fuzzy: 0.2, combineWith: 'AND' });
+        search(term, { prefix: true, fuzzy: 0.5, maxFuzzy: 5, combineWith: 'AND' });
       }}
       selected={selected}
       onChange={(selected) => {
