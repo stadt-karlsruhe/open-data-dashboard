@@ -5,6 +5,7 @@ import { Configuration, GeoJSONResource, JSONResource, Resource } from '@/schema
 import { Highlighter, Typeahead } from 'react-bootstrap-typeahead';
 
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { getColorForResourceType } from '@/colors';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
 import { useTranslations } from 'next-intl';
@@ -69,7 +70,9 @@ export default function Search({
               (Id: <Highlighter search={props.text}>{resource.id}</Highlighter>)
             </small>
             <div className="my-1">
-              <div className="badge bg-secondary p-2">{resource.type}</div>
+              <div className="badge p-2" style={{ backgroundColor: getColorForResourceType(resource.type) }}>
+                {resource.type}
+              </div>
               {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
               {visualizedResource.visualizations !== undefined &&
                 Object.keys(visualizedResource.visualizations).map((visualization, index) => (

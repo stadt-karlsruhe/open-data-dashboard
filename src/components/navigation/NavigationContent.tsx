@@ -46,7 +46,11 @@ export default function NavigationContent({ categories, className }: { categorie
         </Link>
         <div className="d-flex flex-column">
           {categories.map((category, index) => (
-            <Link key={index} href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
+            <Link
+              key={index}
+              href={`/overview/${category.name.replaceAll(/\s+/gu, '-')}`}
+              className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
+            >
               <i className={`bi bi-${category.icon}`} /> {category.name}
             </Link>
           ))}

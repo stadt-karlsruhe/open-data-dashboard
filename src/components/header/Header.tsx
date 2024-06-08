@@ -43,6 +43,7 @@ export default function Header({ configuration }: { configuration: Configuration
             src={LogoKarlsruhe as StaticImport}
             alt={'LogoKarlsruhe'}
             height={60}
+            priority={true}
           />
         </div>
       </div>

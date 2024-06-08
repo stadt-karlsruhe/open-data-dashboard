@@ -30,8 +30,6 @@ export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'Embe
         case 'Embedded': {
             return 'var(--type-color-embedded)';
         }
-        default: {
-            return '#000';
-        }
+        default:
     }
 }
