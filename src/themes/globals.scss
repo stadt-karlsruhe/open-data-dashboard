@@ -4,6 +4,13 @@
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
 
+:root {
+    --type-color-json: #2e759e;
+    --type-color-geojson: #9855e0;
+    --type-color-csv: #856a00;
+    --type-color-embedded: #e0051e;
+}
+
 $utilities: map-merge(
   $utilities,
   (
