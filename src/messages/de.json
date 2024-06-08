@@ -78,6 +78,7 @@
         "search": "Suche"
     },
     "Table": {
+        "noRecords": "Es gibt keine Einträge die angezeigt werden können",
         "rangeSeparatorText": "von",
         "rowsPerPageText": "Zeilen pro Seite:",
         "selectAllRowsItemText": "Alle"

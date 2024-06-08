@@ -78,6 +78,7 @@
         "search": "Search"
     },
     "Table": {
+        "noRecords": "There are no records to display",
         "rangeSeparatorText": "of",
         "rowsPerPageText": "Rows per page:",
         "selectAllRowsItemText": "All"

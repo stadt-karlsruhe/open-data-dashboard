@@ -2,11 +2,22 @@
 
 import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
 
-import DataTable from 'react-data-table-component';
-import Link from 'next/link';
 import React from 'react';
+// eslint-disable-next-line import/named
+import { TableColumn } from 'react-data-table-component';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import dynamic from 'next/dynamic';
 import { getColorForResourceType } from '@/colors';
+import { locales } from '@/locales';
 import { replaceWhitespaceInString } from '@/utils/stringutils';
+import { useTranslations } from 'next-intl';
+
+// Avoid hydration error inside Table pagination https://stackoverflow.com/questions/77763766/next-js-hydration-error-with-shadcn-dialog-component
+const DataTable = dynamic(() => import('react-data-table-component'), { ssr: false });
+
+const { Link } = createSharedPathnamesNavigation({
+  locales: [...locales.values()],
+});
 
 export default function Overview({
   resources,
@@ -15,13 +26,29 @@ export default function Overview({
   resources: (EmbeddedResource | GeoJSONResource | JSONResource)[];
   categories: string[] | undefined;
 }) {
-  const testColumns = [
+  const tableT = useTranslations('Table');
+  const columns = [
     {
-      name: 'Data',
       cell: (row: { html: React.JSX.Element }) => row.html,
     },
-  ];
-  return <DataTable columns={testColumns} data={getDataForResources(resources, categories)} highlightOnHover />;
+  ] as TableColumn<unknown>[];
+  return (
+    <div className="flex-fill">
+      <DataTable
+        columns={columns}
+        data={getDataForResources(resources, categories)}
+        noDataComponent={tableT('noRecords')}
+        highlightOnHover
+        pagination
+        paginationComponentOptions={{
+          rowsPerPageText: tableT('rowsPerPageText'),
+          rangeSeparatorText: tableT('rangeSeparatorText'),
+          selectAllRowsItem: true,
+          selectAllRowsItemText: tableT('selectAllRowsItemText'),
+        }}
+      />
+    </div>
+  );
 }
 
 function getDataForResources(
