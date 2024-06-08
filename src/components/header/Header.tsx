@@ -18,9 +18,9 @@ export default function Header({ configuration }: { configuration: Configuration
   return (
     <div className="bg-white py-3">
       <div className="container-lg">
-        <div className="d-flex justify-content-center m-2">
+        <div className="d-flex justify-content-center align-items-center m-2">
           <button
-            className="d-block d-lg-none btn btn-secondary"
+            className="d-block d-lg-none btn btn-secondary border-0 fs-2"
             onClick={() => {
               setShow(!show);
             }}
@@ -33,17 +33,12 @@ export default function Header({ configuration }: { configuration: Configuration
             <LocaleSwitcher />
           </div>
           <Image
-            className="d-block d-lg-none justify-content-end"
+            className="d-block d-lg-none"
             src={LogoKarlsruheSmall as StaticImport}
             alt={'LogoKarlsruheSmall'}
             height={50}
           />
-          <Image
-            className="d-none d-lg-block justify-content-end"
-            src={LogoKarlsruhe as StaticImport}
-            alt={'LogoKarlsruhe'}
-            height={60}
-          />
+          <Image className="d-none d-lg-block" src={LogoKarlsruhe as StaticImport} alt={'LogoKarlsruhe'} height={60} />
         </div>
       </div>
       <div className="container-lg justify-content-center d-flex">
