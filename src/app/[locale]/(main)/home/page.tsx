@@ -1,3 +1,4 @@
+import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
@@ -20,15 +21,29 @@ export default async function Home() {
         {/* TODO: Acquire licensed picture or add attribution */}
         {/* Source: https://rp.baden-wuerttemberg.de/rps/presse/artikel/bau-und-kunstdenkmalpflege-schloesser-und-gaerten-in-baden-wuerttemberg/ */}
         <Image
+          className="object-fit-cover"
           src="https://rp.baden-wuerttemberg.de/fileadmin/_processed_/8/0/csm_AdobeStock_516119904_Schloss_Karlsruhe_Markus_Mainka_7fd664f58b.jpeg"
-          alt="Kalrsruher Schloss"
-          objectFit="cover"
+          alt="Karlsruher Schloss"
+          priority
           fill
+          sizes="1700px"
         />
         <Search
           configuration={parsedConfiguration.data}
           className="position-absolute w-100 p-5"
           style={{ bottom: '10%' }}
+        />
+      </div>
+      {/* TODO: Determine the actual content of the homepage preview and make it configurable */}
+      <div className="d-flex flex-wrap justify-content-center mt-3">
+        <EmbeddedViewer
+          height={260}
+          resource={{
+            source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
+            id: '12',
+            name: 'Wetter',
+            type: 'Embedded',
+          }}
         />
       </div>
     </div>

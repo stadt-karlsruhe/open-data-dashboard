@@ -24,6 +24,7 @@ export default function Header({ configuration }: { configuration: Configuration
             onClick={() => {
               setShow(!show);
             }}
+            name="Navigation"
           >
             <i className="bi bi-list" />
           </button>
