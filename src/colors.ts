@@ -15,3 +15,23 @@ const colors: string[] = [colorPrimary, colorYellow, colorPurple, colorTeal, col
 export function getColor(index: number) {
     return colors[index % colors.length];
 }
+
+export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'Embedded') {
+    switch (type) {
+        case 'JSON': {
+            return 'var(--type-color-json)';
+        }
+        case 'GeoJSON': {
+            return 'var(--type-color-geojson)';
+        }
+        case 'CSV': {
+            return 'var(--type-color-csv)';
+        }
+        case 'Embedded': {
+            return 'var(--type-color-embedded)';
+        }
+        default: {
+            return '#000';
+        }
+    }
+}
