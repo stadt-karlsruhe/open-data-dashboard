@@ -3,6 +3,7 @@
 import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
 
 import DataTable from 'react-data-table-component';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Overview({ resources }: { resources: (EmbeddedResource | GeoJSONResource | JSONResource)[] }) {
@@ -65,11 +66,15 @@ function transformResourceOverview(resource: EmbeddedResource | GeoJSONResource 
     }
   }
   return (
-    <div className="m-2">
+    <Link
+      href={`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`}
+      className="text-dark text-decoration-none w-100 m-2"
+      style={{}}
+    >
       <div className="fs-5">{resource.name}</div>
       <br />
       <div className="fs-6">{resource.description}</div>
       {badge}
-    </div>
+    </Link>
   );
 }
