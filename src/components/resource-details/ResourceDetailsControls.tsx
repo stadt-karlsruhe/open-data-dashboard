@@ -3,11 +3,16 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
 import { useLocale, useTranslations } from 'next-intl';
 
-import Link from 'next/link';
 import Modal from 'react-bootstrap/Modal';
 import { Resource } from '@/schemas/configuration-schema';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { locales } from '@/locales';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+
+const { Link } = createSharedPathnamesNavigation({
+  locales: [...locales.values()],
+});
 
 // eslint-disable-next-line max-lines-per-function
 export default function ResourceDetailsControls({ resource }: { resource: Resource }) {
@@ -21,11 +26,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
 
   return (
     <div className="d-flex flex-row justify-content-center justify-content-md-between mb-3">
-      <Link
-        className="btn btn-primary"
-        href={`/${locale}/resource/${resource.id}${getParams()}`}
-        title={t('fullscreen')}
-      >
+      <Link className="btn btn-primary" href={`/resource/${resource.id}${getParams()}`} title={t('fullscreen')}>
         <i className="bi bi-arrows-fullscreen" /> <span className="d-none d-md-inline">{t('fullscreen')}</span>
       </Link>
       <div className="d-flex flex-row">

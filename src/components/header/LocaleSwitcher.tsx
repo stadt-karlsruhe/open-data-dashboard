@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useSearchParams } from 'next/navigation';
@@ -9,7 +10,7 @@ const { useRouter, usePathname } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function LocaleSwitcher() {
+export default function LocaleSwitcher({ className }: { className?: string }) {
   const t = useTranslations('LocaleSwitcher');
   const locale = useLocale();
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function LocaleSwitcher() {
       onChange={onLocaleChange}
       id="locale-switcher"
       aria-label="locale-switcher"
-      className="form-select"
+      className={`form-select ${className ?? ''}`}
       style={{ maxWidth: '200px' }}
     >
       {[...locales.values()].map((lang) => (

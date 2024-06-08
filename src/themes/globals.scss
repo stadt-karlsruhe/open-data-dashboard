@@ -1,15 +1,26 @@
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
 
-.tab-content {
-    border-left: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
-    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
-    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-secondary);
+$utilities: map-merge(
+  $utilities,
+  (
+    'font-size':
+      map-merge(
+        map-get($utilities, 'font-size'),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
+
+.dropdown-menu {
+  max-height: fit-content !important;
 }
 
-@include media-breakpoint-down(xl) {
-    .item-wrap {
-      order: 4;
-      width: 100%;
-    }
-  }
+@import 'bootstrap/scss/utilities/api';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';

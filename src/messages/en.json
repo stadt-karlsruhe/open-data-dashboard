@@ -42,8 +42,7 @@
         "unexpectedTitle": "An unexpected error ocurred!"
     },
     "Header": {
-        "title": "Open Data Dashboard",
-        "search": "Search..."
+        "title": "Open Data Dashboard"
     },
     "Legend": {
         "title": "Legend"
@@ -73,6 +72,10 @@
         "embedWidth": "Width",
         "fullscreen": "Fullscreen",
         "keepSearchParams": "Preserve search parameters"
+    },
+    "Search": {
+        "emptyLabel": "No resources found.",
+        "search": "Search"
     },
     "Table": {
         "rangeSeparatorText": "of",
