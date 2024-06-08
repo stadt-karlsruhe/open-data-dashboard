@@ -36,6 +36,9 @@ export default function Search({
       id="search"
       labelKey="name"
       highlightOnlyResult
+      inputProps={{
+        id: 'search-input',
+      }}
       onInputChange={(term) => {
         search(term, { prefix: true, fuzzy: 0.5, maxFuzzy: 5, combineWith: 'AND' });
       }}
