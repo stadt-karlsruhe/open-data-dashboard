@@ -74,7 +74,7 @@
         "keepSearchParams": "Preserve search parameters"
     },
     "Search": {
-        "entryLabel": "No resources found.",
+        "emptyLabel": "No resources found.",
         "search": "Search"
     },
     "Table": {

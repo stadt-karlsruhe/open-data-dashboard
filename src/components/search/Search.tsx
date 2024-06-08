@@ -1,19 +1,28 @@
 'use client';
 
+import { CSSProperties, useState } from 'react';
 import { Configuration, GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration-schema';
+import { Highlighter, Typeahead } from 'react-bootstrap-typeahead';
 
-import { Typeahead } from 'react-bootstrap-typeahead';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 const { useRouter } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function Search({ configuration, className }: { configuration: Configuration; className?: string }) {
+// eslint-disable-next-line max-lines-per-function
+export default function Search({
+  configuration,
+  className,
+  style,
+}: {
+  configuration: Configuration;
+  className?: string;
+  style?: CSSProperties;
+}) {
   const { search, searchResults } = useMiniSearch(configuration.resources, { fields: ['id', 'name', 'description'] });
   const t = useTranslations('Search');
   const [selected, setSelected] = useState([] as (object | string)[]);
@@ -22,12 +31,13 @@ export default function Search({ configuration, className }: { configuration: Co
   return (
     <Typeahead
       className={className}
+      style={style}
       filterBy={() => true}
       id="search"
       labelKey="name"
       highlightOnlyResult
       onInputChange={(term) => {
-        search(term, { prefix: true });
+        search(term, { prefix: true, fuzzy: 2, combineWith: 'AND' });
       }}
       selected={selected}
       onChange={(selected) => {
@@ -41,17 +51,24 @@ export default function Search({ configuration, className }: { configuration: Co
           router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
         }
       }}
-      options={searchResults ?? []}
+      options={searchResults?.slice(0, 6) ?? []}
       placeholder={t('search')}
-      emptyLabel={t('entryLabel')}
-      renderMenuItemChildren={(option) => {
+      emptyLabel={t('emptyLabel')}
+      renderMenuItemChildren={(option, props) => {
         const resource = option as Resource;
         const visualizedResource = option as JSONResource | GeoJSONResource;
         return (
           <div className="d-flex flex-column text-center text-wrap">
-            <span>{resource.name}</span>
-            <small className="fst-italic">{resource.description}</small>
-            <div className="align-self-start my-1">
+            <div className="fw-bold">
+              <Highlighter search={props.text}>{resource.name}</Highlighter>
+            </div>
+            <small className="fst-italic">
+              {resource.description && <Highlighter search={props.text}>{resource.description}</Highlighter>}
+            </small>
+            <small>
+              (Id: <Highlighter search={props.text}>{resource.id}</Highlighter>)
+            </small>
+            <div className="my-1">
               <div className="badge bg-secondary p-2">{resource.type}</div>
               {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
               {visualizedResource.visualizations !== undefined &&

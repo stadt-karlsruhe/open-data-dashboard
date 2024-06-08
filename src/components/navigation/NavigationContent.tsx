@@ -20,11 +20,6 @@ export default function NavigationContent({ categories, className }: { categorie
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
         <Link href="#" className="nav-link text-nowrap">
-          <i className="bi bi-search" /> {t('search')}
-        </Link>
-      </ListGroup.Item>
-      <ListGroup.Item className="pe-md-5">
-        <Link href="#" className="nav-link text-nowrap">
           <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
         </Link>
         <div className="d-flex flex-column">

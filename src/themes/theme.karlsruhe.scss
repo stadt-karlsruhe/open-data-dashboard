@@ -1,6 +1,9 @@
 // https://getbootstrap.com/docs/5.3/customize/color-modes/#custom-color-modes
-@import '~bootstrap/scss/_functions.scss';
-@import '~bootstrap/scss/_variables.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
 [data-bs-theme='karlsruhe'] {
   --bs-primary: #048500;
   --bs-secondary: #000;
@@ -21,6 +24,19 @@
   $theme-colors: map-merge($theme-colors, $custom-colors);
   $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  $utilities: map-merge(
+    $utilities,
+    (
+      'font-size':
+        map-merge(
+          map-get($utilities, 'font-size'),
+          (
+            responsive: true,
+          )
+        ),
+    )
+  );
 
   $btn-font-weight: 600;
   $btn-padding-y: 12px;
@@ -56,5 +72,6 @@
     box-shadow: 0 0 0 0.2rem rgba(4, 133, 0, 0.5) !important;
   }
 
-  @import '~bootstrap/scss/bootstrap.scss';
+  @import 'bootstrap/scss/utilities/api';
+  @import 'bootstrap/scss/bootstrap';
 }

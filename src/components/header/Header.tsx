@@ -27,8 +27,7 @@ export default function Header({ configuration }: { configuration: Configuration
           >
             <i className="bi bi-list" />
           </button>
-          <div className="d-block d-lg-none flex-fill align-content-center p-2 ps-4 fs-5">{t('title')}</div>
-          <div className="d-none d-lg-block flex-fill align-content-center p-2 ps-4 fs-2 text-nowrap">{t('title')}</div>
+          <div className="flex-fill align-content-center p-2 ps-4 fs-5 fs-lg-2 text-nowrap">{t('title')}</div>
           {showSearchbar && <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />}
           <div className="d-none d-md-block flex-fill align-content-center p-2">
             <LocaleSwitcher />
@@ -47,8 +46,14 @@ export default function Header({ configuration }: { configuration: Configuration
           />
         </div>
       </div>
-      <div className="container-lg">
-        {showSearchbar && <Search configuration={configuration} className="d-block d-md-none flex-fill m-2" />}
+      <div className="container-lg justify-content-center d-flex">
+        {showSearchbar && (
+          <Search
+            configuration={configuration}
+            className="d-block d-md-none flex-fill m-2"
+            style={{ maxWidth: '70vw' }}
+          />
+        )}
       </div>
     </div>
   );
