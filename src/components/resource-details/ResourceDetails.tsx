@@ -7,13 +7,13 @@ const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'
 
 export default function ResourceDetails({ resource }: { resource: Resource }) {
   return (
-    <div className="flex-grow-1" style={{ height: '100dvh' }}>
+    <div className="flex-grow-1">
       <h1 className="h1 text-center">{resource.name}</h1>
       <p className="lead text-center">{resource.description}</p>
       <ResourceDetailsControls resource={resource} />
       <div
-        className={`d-flex flex-column ${resource.type === 'GeoJSON' ? 'border border-secondary' : ''}`}
-        style={{ height: '75dvh' }}
+        className={`d-flex flex-column flex-grow-1 ${resource.type === 'GeoJSON' ? 'border border-secondary' : ''}`}
+        style={{ height: resource.type === 'GeoJSON' ? '75dvh' : undefined }}
       >
         {resource.type === 'Embedded' ? (
           <EmbeddedViewer resource={resource} height="100%" />
