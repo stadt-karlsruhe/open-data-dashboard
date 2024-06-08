@@ -41,7 +41,7 @@ export default function NavigationContent({ categories, className }: { categorie
         </div>
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
-        <Link href="#" className="nav-link">
+        <Link href="/overview" className="nav-link">
           <i className="bi bi-folder-fill" /> {t('data')}
         </Link>
         <div className="d-flex flex-column">
