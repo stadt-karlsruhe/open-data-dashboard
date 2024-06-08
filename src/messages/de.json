@@ -42,8 +42,7 @@
         "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
     },
     "Header": {
-        "title": "Open Data Dashboard",
-        "search": "Suche..."
+        "title": "Open Data Dashboard"
     },
     "Legend": {
         "title": "Legende"
@@ -73,6 +72,10 @@
         "embedWidth": "Breite",
         "fullscreen": "Vollbild",
         "keepSearchParams": "Suchparameter beibehalten"
+    },
+    "Search": {
+        "emptyLabel": "Keine Ressourcen gefunden.",
+        "search": "Suche"
     },
     "Table": {
         "rangeSeparatorText": "von",
