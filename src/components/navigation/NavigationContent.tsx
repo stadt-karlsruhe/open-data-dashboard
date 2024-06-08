@@ -14,7 +14,7 @@ export default function NavigationContent({ categories, className }: { categorie
   return (
     <ListGroup variant="flush" className={className}>
       <ListGroup.Item className="pe-md-5">
-        <Link href="/" className="nav-link text-nowrap">
+        <Link href="/home" className="nav-link text-nowrap">
           <i className="bi bi-house-door-fill" /> {t('home')}
         </Link>
       </ListGroup.Item>

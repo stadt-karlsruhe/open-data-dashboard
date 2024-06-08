@@ -1,9 +1,2 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
-
-@include media-breakpoint-down(xl) {
-    .item-wrap {
-      order: 4;
-      width: 100%;
-    }
-  }

@@ -17,37 +17,38 @@ export default function Header({ configuration }: { configuration: Configuration
   const showSearchbar = !usePathname().endsWith('/home');
   return (
     <div className="bg-white py-3">
-      <div className="container-md">
-        <div className="d-flex flex-row d-md-none fs-5 m-2">
+      <div className="container-lg">
+        <div className="d-flex justify-content-center m-2">
           <button
-            className="d-block btn btn-secondary"
+            className="d-block d-lg-none btn btn-secondary"
             onClick={() => {
               setShow(!show);
             }}
           >
             <i className="bi bi-list" />
           </button>
-          <div className="d-block flex-fill align-content-center p-2 ps-4">{t('title')}</div>
+          <div className="d-block d-lg-none flex-fill align-content-center p-2 ps-4 fs-5">{t('title')}</div>
+          <div className="d-none d-lg-block flex-fill align-content-center p-2 ps-4 fs-2 text-nowrap">{t('title')}</div>
+          {showSearchbar && <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />}
+          <div className="d-none d-md-block flex-fill align-content-center p-2">
+            <LocaleSwitcher />
+          </div>
           <Image
-            className="d-block justify-content-end"
+            className="d-block d-lg-none justify-content-end"
             src={LogoKarlsruheSmall as StaticImport}
             alt={'LogoKarlsruheSmall'}
             height={50}
           />
-        </div>
-        <div className="flex-row flex-wrap flex-xl-nowrap d-none d-md-flex fs-2">
-          <div className="d-block flex-fill align-content-center p-2 ps-4">{t('title')}</div>
-          {showSearchbar && <Search configuration={configuration} className="d-block flex-fill p-2 m-auto" />}
-          <div className="d-block flex-fill align-content-center p-2">
-            <LocaleSwitcher />
-          </div>
           <Image
-            className="d-block justify-content-end"
+            className="d-none d-lg-block justify-content-end"
             src={LogoKarlsruhe as StaticImport}
             alt={'LogoKarlsruhe'}
             height={60}
           />
         </div>
+      </div>
+      <div className="container-lg">
+        {showSearchbar && <Search configuration={configuration} className="d-block d-md-none flex-fill m-2" />}
       </div>
     </div>
   );
