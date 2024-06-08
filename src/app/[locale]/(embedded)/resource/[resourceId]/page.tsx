@@ -3,6 +3,7 @@ import { GeoJSONResource, JSONResource, resourceSchema } from '@/schemas/configu
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Visualization from '@/components/visualization/layout/Visualization';
+import { fromError } from 'zod-validation-error';
 import { getConfiguration } from '@/configuration';
 
 export default async function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
@@ -22,7 +23,7 @@ export default async function Page({ params: { resourceId } }: { params: { resou
       <ErrorComponent
         type="resourceConfigurationInvalid"
         resource={resource}
-        error={JSON.stringify(parsedResource.error)}
+        error={JSON.stringify(fromError(parsedResource.error).toString())}
       />
     );
   }
