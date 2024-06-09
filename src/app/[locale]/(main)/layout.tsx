@@ -1,4 +1,5 @@
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import Footer from '@/components/Footer';
 import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
@@ -20,14 +21,15 @@ export default async function RootLayout({
     return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
   }
   return (
-    <div style={{ background: colorLight }}>
-      <NavigationProvider>
+    <NavigationProvider>
+      <div className="d-flex flex-column min-vh-100" style={{ background: colorLight }}>
         <Header configuration={parsedConfiguration.data} />
-        <div className="container-lg d-flex bg-white">
+        <div className="container-lg d-flex bg-white flex-fill">
           <Navigation configuration={parsedConfiguration.data} />
           {children}
         </div>
-      </NavigationProvider>
-    </div>
+      </div>
+      <Footer className="mt-auto" />
+    </NavigationProvider>
   );
 }
