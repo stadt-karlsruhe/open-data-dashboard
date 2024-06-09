@@ -5,7 +5,7 @@ export default function DashboardContent({ dashboard }: { dashboard: Dashboard }
   return (
     <div className="d-flex flex-wrap justify-content-center mt-3">
       {dashboard.contents?.map((content, index) => {
-        if (content.kind === 'EXTERNAL') {
+        if (content.type === 'EXTERNAL') {
           return (
             <EmbeddedViewer
               key={index}
@@ -14,7 +14,7 @@ export default function DashboardContent({ dashboard }: { dashboard: Dashboard }
               resource={{
                 source: content.source,
                 id: 'external',
-                name: 'external',
+                name: content.name,
                 type: 'HTML',
               }}
             />

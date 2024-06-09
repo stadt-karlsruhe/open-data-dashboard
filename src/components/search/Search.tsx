@@ -16,10 +16,12 @@ const { useRouter } = createSharedPathnamesNavigation({
 
 export default function Search({
   configuration,
+  id,
   className,
   style,
 }: {
   configuration: Configuration;
+  id: string;
   className?: string;
   style?: CSSProperties;
 }) {
@@ -33,11 +35,11 @@ export default function Search({
       className={className}
       style={style}
       filterBy={() => true}
-      id="search"
+      id={id}
       labelKey="name"
       highlightOnlyResult
       inputProps={{
-        id: 'search-input',
+        id: `${id}-input`,
       }}
       onInputChange={(term) => {
         search(term, { prefix: true, fuzzy: 0.5, maxFuzzy: 5, combineWith: 'AND' });

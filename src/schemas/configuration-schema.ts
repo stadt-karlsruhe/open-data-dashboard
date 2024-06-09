@@ -129,7 +129,7 @@ export const appearanceSchema = z
 
 const resourceContentSchema = z
     .object({
-        kind: z.literal('RESOURCE'),
+        type: z.literal('RESOURCE'),
         id: z.string(),
         preview: z.boolean(),
     })
@@ -137,7 +137,8 @@ const resourceContentSchema = z
 
 const externalContentSchema = z
     .object({
-        kind: z.literal('EXTERNAL'),
+        type: z.literal('EXTERNAL'),
+        name: z.string(),
         source: z.string().url(),
     })
     .strict();

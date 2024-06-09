@@ -41,7 +41,11 @@ export default function Header({ configuration }: { configuration: Configuration
           </Link>
           <div className="d-flex flex-fill mx-lg-3 mx-xl-5">
             {showSearchbar && (
-              <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />
+              <Search
+                configuration={configuration}
+                id="desktop-search"
+                className="d-none d-md-block flex-fill p-2 m-auto"
+              />
             )}
             <LocaleSwitcher className="d-none d-md-block p-2" />
           </div>
@@ -58,6 +62,7 @@ export default function Header({ configuration }: { configuration: Configuration
         {showSearchbar && (
           <Search
             configuration={configuration}
+            id="mobile-search"
             className="d-block d-md-none flex-fill m-2"
             style={{ maxWidth: '70vw' }}
           />
