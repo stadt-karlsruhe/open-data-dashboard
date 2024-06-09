@@ -7,9 +7,14 @@ import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
 import LogoKarlsruheSmall from '../../public/Logo_Digital_Karlsruhe-rechts_rgb_small.svg';
 import Search from '../search/Search';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import { usePathname } from 'next/navigation';
+import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { locales } from '@/locales';
 import { useShowNavigation } from '../navigation/NavigationProvider';
 import { useTranslations } from 'next-intl';
+
+const { Link, usePathname } = createSharedPathnamesNavigation({
+  locales: [...locales.values()],
+});
 
 export default function Header({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
@@ -28,7 +33,12 @@ export default function Header({ configuration }: { configuration: Configuration
           >
             <i className="bi bi-list" />
           </button>
-          <div className="fs-5 fs-lg-2 text-nowrap">{t('title')}</div>
+          <Link
+            href="/home"
+            className="link link-secondary link-underline-opacity-0 text-black fs-5 fs-lg-2 text-nowrap"
+          >
+            {t('title')}
+          </Link>
           <div className="d-flex flex-fill mx-lg-3 mx-xl-5">
             {showSearchbar && (
               <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />
