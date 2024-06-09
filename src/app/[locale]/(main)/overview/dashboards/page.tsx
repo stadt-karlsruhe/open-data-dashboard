@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { categories: string[] 
     <Overview
       content={[]}
       header={{
-        title: t('dashboardsTitle'),
+        name: t('dashboardsTitle'),
         description: t('dashboardsDescription'),
       }}
     />

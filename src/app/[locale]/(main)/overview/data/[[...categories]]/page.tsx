@@ -15,9 +15,9 @@ import { getIconForResource } from '@/icons';
 import { getTranslations } from 'next-intl/server';
 import { replaceWhitespaceInString } from '@/utils/stringutils';
 
-const paramsToHeader: Map<string[], { title: string; description?: string }> = new Map<
-  string[],
-  { title: string; description?: string }
+const paramsToCategory: Map<{ category: string; subcategory: string }, Category> = new Map<
+  { category: string; subcategory: string },
+  Category
 >();
 
 interface CategoryPair {
@@ -44,7 +44,7 @@ export default async function Page({ params }: { params: { categories?: string[]
   }
 
   const header = getHeader(categoryPair, parsedConfiguration.data.categories) ?? {
-    title: t('dataTitle'),
+    name: t('dataTitle'),
     description: t('dataDescription'),
   };
   return <Overview content={getContent(parsedConfiguration.data, categoryPair)} header={header} />;
@@ -62,39 +62,15 @@ function parseParams(categories: string[]) {
 function getHeader(categoryPair: { category?: string; subcategory?: string }, configCategories: Category[]) {
   if (categoryPair.category !== undefined) {
     const header = computeIfAbsent(
-      paramsToHeader,
+      paramsToCategory,
       categoryPair,
-      computeHeader(configCategories, categoryPair.category, categoryPair.subcategory),
+      computeCategory(configCategories, categoryPair.category, categoryPair.subcategory),
     );
     if (header !== undefined) {
       return header as {
-        title: string;
+        name: string;
         description: string;
       };
-    }
-  }
-}
-
-function computeHeader(configCategories: Category[], category: string, subcategory?: string) {
-  for (const configCategory of configCategories) {
-    if (decodeURIComponent(category) === replaceWhitespaceInString(configCategory.name)) {
-      if (subcategory === undefined) {
-        return {
-          title: configCategory.name,
-          description: configCategory.description,
-        };
-      }
-      if (configCategory.subCategories === undefined) {
-        return;
-      }
-      for (const configSubcategory of configCategory.subCategories) {
-        if (decodeURIComponent(subcategory) === replaceWhitespaceInString(configSubcategory.name)) {
-          return {
-            title: configSubcategory.name,
-            description: configSubcategory.description,
-          };
-        }
-      }
     }
   }
 }
@@ -125,16 +101,37 @@ function addCategoriesToContent(
     return;
   }
   if (categoryPair.subcategory === undefined) {
-    for (const category of configuration.categories) {
-      if (category.subCategories !== undefined && replaceWhitespaceInString(category.name) === categoryPair.category) {
-        for (const subcategory of category.subCategories) {
-          content.push({
-            title: subcategory.name,
-            description: subcategory.description,
-            href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
-            isCategory: true,
-            icon: subcategory.icon,
-          });
+    const category = computeIfAbsent(
+      paramsToCategory,
+      categoryPair.category,
+      computeCategory(configuration.categories, categoryPair.category),
+    ) as Category;
+    if (category.subCategories !== undefined) {
+      for (const subcategory of category.subCategories) {
+        content.push({
+          title: subcategory.name,
+          description: subcategory.description,
+          href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
+          isCategory: true,
+          icon: subcategory.icon,
+        });
+      }
+    }
+  }
+}
+
+function computeCategory(configCategories: Category[], category: string, subcategory?: string) {
+  for (const configCategory of configCategories) {
+    if (saveStringCompare(category, configCategory.name, true)) {
+      if (subcategory === undefined) {
+        return configCategory;
+      }
+      if (configCategory.subCategories === undefined) {
+        return;
+      }
+      for (const configSubcategory of configCategory.subCategories) {
+        if (saveStringCompare(subcategory, configSubcategory.name, true)) {
+          return configSubcategory;
         }
       }
     }
@@ -168,21 +165,17 @@ function resourceShouldBeDisplayed(
   if (categoryPair.category === undefined) {
     return false;
   }
-  if (
-    resourceCategory === undefined ||
-    decodeURIComponent(categoryPair.category) !== replaceWhitespaceInString(resourceCategory)
-  ) {
+  if (resourceCategory === undefined || saveStringCompare(categoryPair.category, resourceCategory, false)) {
     return false;
   }
   if (categoryPair.subcategory === undefined) {
     return true;
   }
-  return (
-    resourceSubcategory !== undefined &&
-    decodeURIComponent(categoryPair.subcategory) === replaceWhitespaceInString(resourceSubcategory)
-  );
+  return resourceSubcategory !== undefined && saveStringCompare(categoryPair.subcategory, resourceSubcategory, true);
 }
 
-function saveStringCompare(paramString: string, configString: string) {
-  return decodeURIComponent(paramString).toLowerCase() === replaceWhitespaceInString(configString).toLowerCase();
+function saveStringCompare(paramString: string, configString: string, equals: boolean) {
+  return (
+    (decodeURIComponent(paramString).toLowerCase() === replaceWhitespaceInString(configString).toLowerCase()) === equals
+  );
 }

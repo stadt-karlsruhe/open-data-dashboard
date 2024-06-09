@@ -30,7 +30,7 @@ export default function Overview({
 }: {
   content: OverviewRow[];
   header: {
-    title: string;
+    name: string;
     description: string;
   };
 }) {
@@ -43,7 +43,7 @@ export default function Overview({
   ] as TableColumn<unknown>[];
   return (
     <div className="flex-fill">
-      <h3>{header.title}</h3>
+      <h3>{header.name}</h3>
       <p className="lead">{header.description}</p>
       <DataTable
         dense={true}
