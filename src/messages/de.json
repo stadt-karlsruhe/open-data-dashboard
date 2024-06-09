@@ -81,5 +81,10 @@
         "rangeSeparatorText": "von",
         "rowsPerPageText": "Zeilen pro Seite:",
         "selectAllRowsItemText": "Alle"
+    },
+    "Footer": {
+        "imprint": "Impressum",
+        "dataProtection": "Datenschutz"
+
     }
 }

@@ -81,5 +81,10 @@
         "rangeSeparatorText": "of",
         "rowsPerPageText": "Rows per page:",
         "selectAllRowsItemText": "All"
+    },
+    "Footer": {
+        "imprint": "Imprint",
+        "dataProtection": "Data Protection Policy"
+
     }
 }
