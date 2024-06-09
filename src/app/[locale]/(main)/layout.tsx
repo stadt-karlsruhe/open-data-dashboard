@@ -24,7 +24,7 @@ export default async function RootLayout({
     <NavigationProvider>
       <div className="d-flex flex-column min-vh-100" style={{ background: colorLight }}>
         <Header configuration={parsedConfiguration.data} />
-        <div className="container-lg d-flex bg-white flex-fill">
+        <div className="container-lg d-flex bg-white flex-fill p-0">
           <Navigation configuration={parsedConfiguration.data} />
           {children}
         </div>

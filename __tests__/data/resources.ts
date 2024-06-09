@@ -6,7 +6,7 @@ export const embeddedResource: EmbeddedResource = {
     id: '1',
     source: mockSource,
     name: 'Embedded Resource',
-    type: 'Embedded',
+    type: 'PDF',
 };
 
 export const jsonResource: JSONResource = {

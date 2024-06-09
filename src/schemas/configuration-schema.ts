@@ -11,7 +11,7 @@ const baseResourceSchema = z
 
 export const embeddedResourceSchema = baseResourceSchema
     .extend({
-        type: z.literal('Embedded'),
+        type: z.union([z.literal('HTML'), z.literal('PDF')]),
     })
     .strict();
 
@@ -127,11 +127,44 @@ export const appearanceSchema = z
     })
     .strict();
 
+const resourceContentSchema = z
+    .object({
+        type: z.literal('RESOURCE'),
+        id: z.string(),
+        preview: z.boolean(),
+    })
+    .strict();
+
+const externalContentSchema = z
+    .object({
+        type: z.literal('EXTERNAL'),
+        name: z.string(),
+        source: z.string().url(),
+    })
+    .strict();
+
+const dashboardSchema = z
+    .object({
+        id: z.string(),
+        name: z.string(),
+        icon: z.string().default('clipboard-data'),
+        description: z.string().optional(),
+        contents: z.array(z.union([resourceContentSchema, externalContentSchema])).optional(),
+    })
+    .strict();
+
+export const dashboardsSchema = z
+    .array(dashboardSchema)
+    .refine((dashboards) => dashboards.some((dashboard) => dashboard.id === 'homepage'), {
+        message: 'The homepage must be configured.',
+    });
+
 export const configurationSchema = z
     .object({
         resources: z.array(resourceSchema),
         appearance: appearanceSchema,
         categories: categoriesSchema,
+        dashboards: dashboardsSchema,
     })
     .strict();
 
@@ -144,3 +177,4 @@ export type Configuration = z.infer<typeof configurationSchema>;
 export type Filter = z.infer<typeof defaultFilterSchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type Appearance = z.infer<typeof appearanceSchema>;
+export type Dashboard = z.infer<typeof dashboardSchema>;

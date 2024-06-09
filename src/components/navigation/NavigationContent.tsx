@@ -1,4 +1,5 @@
-import { Category } from '@/schemas/configuration-schema';
+import { Category, Dashboard } from '@/schemas/configuration-schema';
+
 import { ListGroup } from 'react-bootstrap';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
@@ -8,14 +9,22 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-// TODO: Replace with actual data from configuration
-export default function NavigationContent({ categories, className }: { categories: Category[]; className?: string }) {
+export default function NavigationContent({
+  categories,
+  dashboards: providedDashboards,
+  className,
+}: {
+  categories: Category[];
+  dashboards: Dashboard[];
+  className?: string;
+}) {
   const t = useTranslations('NavigationContent');
+  const [homepage, ...dashboards] = providedDashboards;
   return (
     <ListGroup variant="flush" className={className}>
       <ListGroup.Item className="pe-md-5">
         <Link href="/home" className="nav-link text-nowrap">
-          <i className="bi bi-house-door-fill" /> {t('home')}
+          <i className={`bi bi-${homepage.icon}`} /> {t('home')}
         </Link>
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
@@ -23,21 +32,11 @@ export default function NavigationContent({ categories, className }: { categorie
           <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
         </Link>
         <div className="d-flex flex-column">
-          <Link href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
-            <i className="bi bi-book-half" /> Bevölkerung
-          </Link>
-          <Link href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
-            <i className="bi bi-book-half" /> Verwaltung
-          </Link>
-          <Link href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
-            <i className="bi bi-book-half" /> Bildung
-          </Link>
-          <Link href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
-            <i className="bi bi-book-half" /> Kultur
-          </Link>
-          <Link href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
-            <i className="bi bi-book-half" /> Mobilität
-          </Link>
+          {dashboards.map((dashboard, index) => (
+            <Link key={index} href="#" className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap">
+              <i className={`bi bi-${dashboard.icon}`} /> {dashboard.name}
+            </Link>
+          ))}
         </div>
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
