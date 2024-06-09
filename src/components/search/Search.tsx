@@ -23,7 +23,7 @@ export default function Search({
   className?: string;
   style?: CSSProperties;
 }) {
-  const { search, searchResults } = useMiniSearch(configuration.resources, { fields: ['id', 'name', 'description'] });
+  const { search, searchResults } = useMiniSearch(configuration.resources, { fields: ['name', 'description'] });
   const t = useTranslations('Search');
   const [selected, setSelected] = useState([] as (object | string)[]);
   const router = useRouter();
