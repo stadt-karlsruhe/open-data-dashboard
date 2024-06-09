@@ -99,7 +99,7 @@ dashboards:
     - id: homepage
       name: Homepage
       icon: house-door-fill
-      content:
+      contents:
           - kind: EXTERNAL
             source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
     - id: "1"

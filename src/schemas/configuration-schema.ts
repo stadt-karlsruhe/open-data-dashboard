@@ -148,7 +148,7 @@ const dashboardSchema = z
         name: z.string(),
         icon: z.string().default('clipboard-data'),
         description: z.string().optional(),
-        content: z.array(z.union([resourceContentSchema, externalContentSchema])).optional(),
+        contents: z.array(z.union([resourceContentSchema, externalContentSchema])).optional(),
     })
     .strict();
 
