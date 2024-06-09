@@ -18,7 +18,7 @@ export default function Header({ configuration }: { configuration: Configuration
   return (
     <div className="bg-white py-3">
       <div className="container-lg">
-        <div className="d-flex justify-content-center align-items-center m-2">
+        <div className="d-flex justify-content-between align-items-center m-2">
           <button
             className="d-block d-lg-none btn btn-secondary border-0 fs-2"
             onClick={() => {
@@ -28,10 +28,12 @@ export default function Header({ configuration }: { configuration: Configuration
           >
             <i className="bi bi-list" />
           </button>
-          <div className="flex-fill align-content-center p-2 ps-4 fs-5 fs-lg-2 text-nowrap">{t('title')}</div>
-          {showSearchbar && <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />}
-          <div className="d-none d-md-block flex-fill align-content-center p-2">
-            <LocaleSwitcher />
+          <div className="fs-5 fs-lg-2 text-nowrap">{t('title')}</div>
+          <div className="d-flex flex-fill mx-lg-3 mx-xl-5">
+            {showSearchbar && (
+              <Search configuration={configuration} className="d-none d-md-block flex-fill p-2 m-auto" />
+            )}
+            <LocaleSwitcher className="d-none d-md-block p-2" />
           </div>
           <Image
             className="d-block d-lg-none"
