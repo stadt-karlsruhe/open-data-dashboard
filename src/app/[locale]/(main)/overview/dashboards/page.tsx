@@ -29,19 +29,16 @@ export default async function Page() {
 
 // TODO: Implement proper dashboard link
 function getContent(dashboards: Dashboard[]) {
-  const content: OverviewRow[] = [];
-  for (const dashboard of dashboards) {
-    if (dashboard.id === 'homepage') {
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-    content.push({
-      title: dashboard.name,
-      description: dashboard.description,
-      href: `#`,
-      isCategory: false,
-      icon: dashboard.icon,
-    });
-  }
-  return content;
+  return dashboards
+    .filter((dashboard) => dashboard.id !== 'homepage')
+    .map(
+      (dashboard) =>
+        ({
+          title: dashboard.name,
+          description: dashboard.description,
+          href: `#`,
+          isCategory: false,
+          icon: dashboard.icon,
+        }) as OverviewRow,
+    );
 }

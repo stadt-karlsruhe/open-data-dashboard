@@ -46,27 +46,27 @@ export default async function Page({ params }: { params: { categories?: string[]
 }
 
 function parseParams(configCategories: Category[], categories?: string[]) {
-  if (categories !== undefined) {
-    if (categories.length > 2) {
-      return;
-    }
-    const [category] = categories;
-    const subcategory = categories.length > 1 ? categories[1] : undefined;
-    if (
-      computeIfAbsent(
-        paramsToCategory,
-        { category, subcategory },
-        computeCategory(configCategories, category, subcategory),
-      ) === undefined
-    ) {
-      return;
-    }
-    return {
-      category,
-      subcategory,
-    } as CategoryPair;
+  if (categories === undefined) {
+    return {};
   }
-  return {};
+  if (categories.length > 2) {
+    return;
+  }
+  const [category] = categories;
+  const subcategory = categories.length > 1 ? categories[1] : undefined;
+  if (
+    computeIfAbsent(
+      paramsToCategory,
+      { category, subcategory },
+      computeCategory(configCategories, category, subcategory),
+    ) === undefined
+  ) {
+    return;
+  }
+  return {
+    category,
+    subcategory,
+  } as CategoryPair;
 }
 
 function getHeader(categoryPair: CategoryPair, configCategories: Category[]) {
@@ -91,15 +91,15 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
   const content: OverviewRow[] = [];
 
   if (categoryPair.category === undefined) {
-    for (const category of configuration.categories) {
+    configuration.categories.forEach((category) =>
       content.push({
         title: category.name,
         description: category.description,
         href: `/overview/data/${replaceWhitespaceInString(category.name)}`,
         isCategory: true,
         icon: category.icon,
-      });
-    }
+      }),
+    );
     return content;
   }
 
@@ -109,21 +109,20 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
       categoryPair.category,
       computeCategory(configuration.categories, categoryPair.category),
     ) as Category;
-    if (category.subCategories !== undefined) {
-      for (const subcategory of category.subCategories) {
-        content.push({
-          title: subcategory.name,
-          description: subcategory.description,
-          href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
-          isCategory: true,
-          icon: subcategory.icon,
-        });
-      }
-    }
+    category.subCategories?.forEach((subcategory) =>
+      content.push({
+        title: subcategory.name,
+        description: subcategory.description,
+        href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
+        isCategory: true,
+        icon: subcategory.icon,
+      }),
+    );
   }
 
-  for (const resource of configuration.resources) {
-    if (resourceShouldBeDisplayed(categoryPair, resource.category, resource.subcategory)) {
+  configuration.resources
+    .filter((resource) => resourceShouldBeDisplayed(categoryPair, resource.category, resource.subcategory))
+    .forEach((resource) =>
       content.push({
         title: resource.name,
         description: resource.description,
@@ -131,9 +130,8 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
         isCategory: false,
         resourceType: resource.type,
         icon: getIconForResource(resource),
-      });
-    }
-  }
+      }),
+    );
   return content;
 }
 
@@ -146,11 +144,9 @@ function computeCategory(configCategories: Category[], category: string, subcate
       if (configCategory.subCategories === undefined) {
         return;
       }
-      for (const configSubcategory of configCategory.subCategories) {
-        if (saveStringCompare(subcategory, configSubcategory.name, true)) {
-          return configSubcategory;
-        }
-      }
+      return configCategory.subCategories
+        .filter((configSubcategory) => saveStringCompare(subcategory, configSubcategory.name, true))
+        .pop();
     }
   }
 }
@@ -163,7 +159,7 @@ function resourceShouldBeDisplayed(categoryPair: CategoryPair, resourceCategory:
     return false;
   }
   if (categoryPair.subcategory === undefined) {
-    return true;
+    return resourceSubcategory === undefined;
   }
   return resourceSubcategory !== undefined && saveStringCompare(categoryPair.subcategory, resourceSubcategory, true);
 }
