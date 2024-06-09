@@ -3,6 +3,7 @@ import '../../themes/theme.karlsruhe.scss';
 
 import { getMessages, getTranslations } from 'next-intl/server';
 
+import Footer from '@/components/Footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { getConfiguration } from '@/configuration';
 
@@ -25,6 +26,7 @@ export default async function RootLayout({
       </body>
     </html>
   );
+  <Footer></Footer>;
 }
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
