@@ -1,4 +1,4 @@
-import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
+import DashboardContent from '@/components/dashboard/DashboardContent';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
@@ -35,26 +35,7 @@ export default async function Home() {
           style={{ bottom: '10%' }}
         />
       </div>
-      <div className="d-flex flex-wrap justify-content-center mt-3">
-        {homepage.content?.map((cont, index) => {
-          if (cont.kind === 'EXTERNAL') {
-            return (
-              <EmbeddedViewer
-                key={index}
-                // TODO: Properly handle height
-                height={260}
-                resource={{
-                  source: cont.source,
-                  id: 'external',
-                  name: 'external',
-                  type: 'HTML',
-                }}
-              />
-            );
-          }
-          //   TODO: Handle internal content
-        })}
-      </div>
+      <DashboardContent dashboard={homepage} />
     </div>
   );
 }
