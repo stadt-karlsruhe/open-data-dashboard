@@ -42,7 +42,7 @@ export default async function Home() {
             source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
             id: '12',
             name: 'Wetter',
-            type: 'Embedded',
+            type: 'HTML',
           }}
         />
       </div>

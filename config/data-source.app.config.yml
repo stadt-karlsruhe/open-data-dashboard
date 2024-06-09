@@ -27,7 +27,7 @@ resources:
           table: {}
     - id: "2"
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
-      type: Embedded
+      type: PDF
       name: Karlsruher Mietspiegel 2023
     - id: "3"
       source: https://mocki.io/v1/56ffb4b7-49d5-4763-98ec-db1a67feb0a5

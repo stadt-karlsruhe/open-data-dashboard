@@ -11,7 +11,7 @@ const baseResourceSchema = z
 
 export const embeddedResourceSchema = baseResourceSchema
     .extend({
-        type: z.literal('Embedded'),
+        type: z.union([z.literal('HTML'), z.literal('PDF')]),
     })
     .strict();
 

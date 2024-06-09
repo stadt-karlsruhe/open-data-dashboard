@@ -43,7 +43,8 @@ function toBeValidConfiguration(configuration: Configuration) {
                               resourceError = parseConfigurationSection(resource, geoJSONResourceSchema);
                               break;
                           }
-                          case 'Embedded': {
+                          case 'HTML':
+                          case 'PDF': {
                               resourceError = parseConfigurationSection(resource, embeddedResourceSchema);
                               break;
                           }

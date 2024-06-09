@@ -90,7 +90,7 @@ function getIcon(color: string) {
   return L.divIcon({
     className: 'custom-icon-div',
     html: ReactDOMServer.renderToString(
-      <i role="button" aria-label="map-marker" style={{ color, fontSize: '30px' }} className="bi bi-geo-alt-fill" />,
+      <i role="button" aria-label="map-marker" style={{ color }} className="bi bi-geo-alt-fill fs-2" />,
     ),
     iconAnchor: [15, 30],
   });
