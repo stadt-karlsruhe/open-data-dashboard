@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: { categories?: string[]
 
 function parseParams(categories: string[]) {
   const [category] = categories;
-  const subcategory = categories.length > 1 ? categories[0] : undefined;
+  const subcategory = categories.length > 1 ? categories[1] : undefined;
   return {
     category,
     subcategory,
