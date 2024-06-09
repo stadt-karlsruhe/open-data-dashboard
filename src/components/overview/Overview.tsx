@@ -43,7 +43,7 @@ export default function Overview({
   return (
     <div className="flex-fill">
       <h3>{header.title}</h3>
-      <p className="fs-6">{header.description}</p>
+      <p className="lead">{header.description}</p>
       <DataTable
         dense={true}
         columns={columns}
