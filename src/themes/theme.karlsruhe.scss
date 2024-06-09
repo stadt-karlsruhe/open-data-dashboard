@@ -14,10 +14,11 @@
   --bs-light: #e8e8eb;
   --bs-font-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --type-color-json: #2e759e;
+  --type-color-json: #d63b00;
   --type-color-geojson: #9855e0;
   --type-color-csv: #856a00;
-  --type-color-embedded: #e0051e;
+  --type-color-pdf: #e0051e;
+  --type-color-html: #2e759e;
 
   $custom-colors: (
     'primary': #048500,

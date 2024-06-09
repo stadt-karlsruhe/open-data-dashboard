@@ -36,6 +36,7 @@ resources:
       # source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       type: GeoJSON
       name: Points of Interest Kinos
+      category: Gesellschaft
       renameProperties:
           NAME: Name
           GRUPPENNAME_DE: Kategorie
@@ -87,6 +88,7 @@ resources:
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
       type: HTML
       name: Mietspiegelrechner
+      category: Gesellschaft
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.

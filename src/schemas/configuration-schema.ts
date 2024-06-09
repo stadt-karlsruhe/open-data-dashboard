@@ -6,7 +6,7 @@ const baseResourceSchema = z
         source: z.string().url(),
         name: z.string(),
         description: z.string().optional(),
-        category: z.string().optional(),
+        category: z.string(),
         subcategory: z.string().optional(),
     })
     .strict();

@@ -16,6 +16,7 @@ const { Link, usePathname } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function Header({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
   const t = useTranslations('Header');

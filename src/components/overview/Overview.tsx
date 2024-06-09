@@ -20,7 +20,8 @@ export interface OverviewRow {
   description?: string;
   href: string;
   isCategory: boolean;
-  resourceType?: 'Embedded' | 'JSON' | 'GeoJSON' | 'CSV';
+  icon: string;
+  resourceType?: 'PDF' | 'HTML' | 'JSON' | 'GeoJSON' | 'CSV';
 }
 
 export default function Overview({
@@ -67,15 +68,18 @@ function transformContentToHTMLElement(contentRow: OverviewRow) {
   const badgeColor = getColorForResourceType(contentRow.resourceType);
   const titleColor = contentRow.isCategory ? 'nav-link' : '';
   return (
-    <Link href={contentRow.href} className="text-dark text-decoration-none w-100 p-2">
-      <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
-      <br />
-      <div className="fs-6">{contentRow.description}</div>
-      {!contentRow.isCategory && (
-        <span className="badge" style={{ backgroundColor: badgeColor }}>
-          {contentRow.resourceType}
-        </span>
-      )}
+    <Link href={contentRow.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
+      <i className={`bi bi-${contentRow.icon} ${titleColor} fs-1 me-3`} />
+      <div>
+        <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
+        <br />
+        <div className="fs-6">{contentRow.description}</div>
+        {!contentRow.isCategory && (
+          <span className="badge" style={{ backgroundColor: badgeColor }}>
+            {contentRow.resourceType}
+          </span>
+        )}
+      </div>
     </Link>
   );
 }

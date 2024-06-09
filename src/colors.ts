@@ -20,10 +20,11 @@ const colorForType: Map<string, string> = new Map<string, string>([
     ['JSON', 'var(--type-color-json)'],
     ['GeoJSON', 'var(--type-color-geojson)'],
     ['CSV', 'var(--type-color-csv)'],
-    ['Embedded', 'var(--type-color-embedded)'],
+    ['PDF', 'var(--type-color-pdf)'],
+    ['HTML', 'var(--type-color-html)'],
 ]);
 
-export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'Embedded' | undefined) {
+export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'PDF' | 'HTML' | undefined) {
     if (type === undefined) {
         return;
     }
