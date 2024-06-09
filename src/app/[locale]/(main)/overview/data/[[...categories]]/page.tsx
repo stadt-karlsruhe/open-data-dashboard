@@ -99,7 +99,7 @@ function resourceShouldBeDisplayed(
   categories: string[] | undefined,
 ) {
   if (categories === undefined) {
-    return true;
+    return resourceCategory === undefined;
   }
   if (
     resourceCategory === undefined ||
