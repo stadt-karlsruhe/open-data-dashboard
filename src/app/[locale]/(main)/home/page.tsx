@@ -14,6 +14,7 @@ export default async function Home() {
   if (!parsedConfiguration.success) {
     return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
   }
+  const [homepage] = parsedConfiguration.data.dashboards;
 
   return (
     <div className="d-flex flex-column flex-grow-1">
@@ -34,17 +35,25 @@ export default async function Home() {
           style={{ bottom: '10%' }}
         />
       </div>
-      {/* TODO: Determine the actual content of the homepage preview and make it configurable */}
       <div className="d-flex flex-wrap justify-content-center mt-3">
-        <EmbeddedViewer
-          height={260}
-          resource={{
-            source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
-            id: '12',
-            name: 'Wetter',
-            type: 'HTML',
-          }}
-        />
+        {homepage.content?.map((cont, index) => {
+          if (cont.kind === 'EXTERNAL') {
+            return (
+              <EmbeddedViewer
+                key={index}
+                // TODO: Properly handle height
+                height={260}
+                resource={{
+                  source: cont.source,
+                  id: 'external',
+                  name: 'external',
+                  type: 'HTML',
+                }}
+              />
+            );
+          }
+          //   TODO: Handle internal content
+        })}
       </div>
     </div>
   );

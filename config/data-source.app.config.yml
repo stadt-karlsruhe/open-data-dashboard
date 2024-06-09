@@ -95,3 +95,19 @@ categories:
       icon: train-front-fill
     - name: Category 2
     - name: Category 3
+dashboards:
+    - id: homepage
+      name: Homepage
+      icon: house-door-fill
+      content:
+          - kind: EXTERNAL
+            source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
+    - id: "1"
+      name: Bevölkerung
+      icon: people-fill
+    - id: "2"
+      name: Bildung
+    - id: "3"
+      name: Mobilität
+      icon: train-front-fill
+
