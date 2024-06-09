@@ -35,12 +35,9 @@ export default async function Page({ params }: { params: { categories?: string[]
   if (!parsedConfiguration.success) {
     return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
   }
-  let categoryPair: CategoryPair = {};
-  if (params.categories !== undefined) {
-    if (params.categories.length > 2) {
-      return <ErrorComponent type="notFound" />;
-    }
-    categoryPair = parseParams(params.categories);
+  const categoryPair = parseParams(parsedConfiguration.data.categories, params.categories);
+  if (categoryPair === undefined) {
+    return <ErrorComponent type="notFound" />;
   }
 
   const header = getHeader(categoryPair, parsedConfiguration.data.categories) ?? {
@@ -50,13 +47,25 @@ export default async function Page({ params }: { params: { categories?: string[]
   return <Overview content={getContent(parsedConfiguration.data, categoryPair)} header={header} />;
 }
 
-function parseParams(categories: string[]) {
-  const [category] = categories;
-  const subcategory = categories.length > 1 ? categories[1] : undefined;
-  return {
-    category,
-    subcategory,
-  } as CategoryPair;
+function parseParams(configCategories: Category[], categories?: string[]) {
+  if (categories !== undefined) {
+    if (categories.length > 2) {
+      return;
+    }
+    const [category] = categories;
+    const subcategory = categories.length > 1 ? categories[1] : undefined;
+    if (
+      computeIfAbsent(paramsToCategory, category, computeCategory(configCategories, category, subcategory)) ===
+      undefined
+    ) {
+      return;
+    }
+    return {
+      category,
+      subcategory,
+    } as CategoryPair;
+  }
+  return {};
 }
 
 function getHeader(categoryPair: { category?: string; subcategory?: string }, configCategories: Category[]) {

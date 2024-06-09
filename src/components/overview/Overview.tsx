@@ -63,7 +63,6 @@ export default function Overview({
   );
 }
 
-// TODO: add logos for categories and datasets
 function transformContentToHTMLElement(contentRow: OverviewRow) {
   const badgeColor = getColorForResourceType(contentRow.resourceType);
   const titleColor = contentRow.isCategory ? 'nav-link' : '';
