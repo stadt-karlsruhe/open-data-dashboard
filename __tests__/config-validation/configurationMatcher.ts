@@ -6,6 +6,7 @@ import {
     appearanceSchema,
     categoriesSchema,
     configurationSchema,
+    dashboardsSchema,
     embeddedResourceSchema,
     geoJSONResourceSchema,
     jsonResourceSchema,
@@ -43,7 +44,8 @@ function toBeValidConfiguration(configuration: Configuration) {
                               resourceError = parseConfigurationSection(resource, geoJSONResourceSchema);
                               break;
                           }
-                          case 'Embedded': {
+                          case 'HTML':
+                          case 'PDF': {
                               resourceError = parseConfigurationSection(resource, embeddedResourceSchema);
                               break;
                           }
@@ -57,6 +59,7 @@ function toBeValidConfiguration(configuration: Configuration) {
                   })
                   .filter((error) => error !== undefined) as string[]);
     const categoriesError = parseConfigurationSection(configuration.categories, categoriesSchema);
+    const dashboardsError = parseConfigurationSection(configuration.dashboards, dashboardsSchema);
 
     const errorMessages = ['The configuration contains errors.'];
     errorMessages.push(`Summary: ${fromError(parsedConfiguration.error).toString()}\n\nSee the details below:\n`);
@@ -69,6 +72,9 @@ function toBeValidConfiguration(configuration: Configuration) {
     }
     if (categoriesError) {
         errorMessages.push(`Categories Error: ${categoriesError}`);
+    }
+    if (dashboardsError) {
+        errorMessages.push(`Dashboards Error: ${dashboardsError}`);
     }
 
     const message = errorMessages.join('\n');
@@ -87,7 +93,8 @@ function parseConfigurationSection(
         | typeof jsonResourceSchema
         | typeof geoJSONResourceSchema
         | typeof appearanceSchema
-        | typeof categoriesSchema,
+        | typeof categoriesSchema
+        | typeof dashboardsSchema,
 ) {
     const parsedSection = schema.safeParse(section);
     return parsedSection.success ? undefined : fromError(parsedSection.error).toString();

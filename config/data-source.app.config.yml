@@ -28,7 +28,7 @@ resources:
           table: {}
     - id: "2"
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
-      type: Embedded
+      type: PDF
       name: Karlsruher Mietspiegel 2023
       category: Gesellschaft
     - id: "3"
@@ -84,18 +84,9 @@ resources:
                   - xAxis: Parteiname
                     yAxis: "%"
     - id: "7"
-      source: https://mocki.io/v1/iprobablydontexist
-      # source: https://transparenz.karlsruhe.de/datastore/dump/iprobablydontexist?format=json
-      type: JSON
-      name: Not Found
-      visualizations:
-          table: {}
-    - id: "8"
-      source: https://mocki.io/v1/5e610643-2531-4aba-9191-aa1c2524e96e
-      type: JSON
-      name: Empty
-      visualizations:
-          table: {}
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
+      type: HTML
+      name: Mietspiegelrechner
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
@@ -109,3 +100,19 @@ categories:
             icon: award-fill
     - name: Category 3
       description: Die dritte Kategorie.
+dashboards:
+    - id: homepage
+      name: Homepage
+      icon: house-door-fill
+      contents:
+          - type: EXTERNAL
+            source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
+            name: Weather
+    - id: "1"
+      name: Bevölkerung
+      icon: people-fill
+    - id: "2"
+      name: Bildung
+    - id: "3"
+      name: Mobilität
+      icon: train-front-fill

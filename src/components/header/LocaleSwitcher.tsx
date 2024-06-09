@@ -23,19 +23,21 @@ export default function LocaleSwitcher({ className }: { className?: string }) {
   };
 
   return (
-    <select
-      defaultValue={locale}
-      onChange={onLocaleChange}
-      id="locale-switcher"
-      aria-label="locale-switcher"
-      className={`form-select ${className ?? ''}`}
-      style={{ maxWidth: '200px' }}
-    >
-      {[...locales.values()].map((lang) => (
-        <option key={lang} value={lang}>
-          {t('locale', { locale: lang })}
-        </option>
-      ))}
-    </select>
+    <div className={className}>
+      <select
+        defaultValue={locale}
+        onChange={onLocaleChange}
+        id="locale-switcher"
+        aria-label="locale-switcher"
+        className="form-select"
+        style={{ maxWidth: '200px' }}
+      >
+        {[...locales.values()].map((lang) => (
+          <option key={lang} value={lang}>
+            {t('locale', { locale: lang })}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

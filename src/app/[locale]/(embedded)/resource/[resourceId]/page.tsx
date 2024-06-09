@@ -28,8 +28,8 @@ export default async function Page({ params: { resourceId } }: { params: { resou
     );
   }
 
-  if (resource.type === 'Embedded') {
-    return <EmbeddedViewer resource={parsedResource.data} />;
+  if (resource.type === 'HTML' || resource.type === 'PDF') {
+    return <EmbeddedViewer resource={parsedResource.data} className="d-flex h-100" />;
   }
   return <Visualization resource={parsedResource.data as JSONResource | GeoJSONResource} />;
 }

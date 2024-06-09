@@ -23,7 +23,7 @@ export function ClearableInputGroup({
   return (
     <div className="input-group">
       <div className="form-floating">
-        <input type={type} id={id} className="form-control" value={value} onChange={onChange} />
+        <input type={type} id={id} className="form-control border-end-0" value={value} onChange={onChange} />
         <label htmlFor={id}>{label}</label>
       </div>
       <button

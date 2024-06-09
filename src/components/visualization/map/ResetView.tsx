@@ -8,8 +8,8 @@ export default function ResetView({ latLng, zoom }: { latLng: LatLngExpression; 
   const t = useTranslations('ResetView');
   return (
     <button
-      style={{ zIndex: 400, fontSize: '20px' }}
-      className="btn btn-secondary m-3 position-absolute"
+      style={{ zIndex: 400 }}
+      className="btn btn-secondary m-3 position-absolute fs-5"
       onClick={() => {
         map.setView(latLng, zoom);
       }}

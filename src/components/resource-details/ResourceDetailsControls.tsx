@@ -111,7 +111,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
             <strong>Code:</strong>
           </div>
           <CopyBlock
-            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${window.location.origin}/${locale}/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" frameBorder="0" />`}
+            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${window.location.origin}/${locale}/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" />`}
             language="html"
             theme={dracula}
             wrapLongLines={true}

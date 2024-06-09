@@ -4,6 +4,7 @@ ci:
         startServerCommand: npm run start
         startServerReadyPattern: Ready in
         url:
+            - http://localhost:3000/en/home
             - http://localhost:3000/en/view/Wohnberechtigte-Bevölkerung-1
             - http://localhost:3000/en/view/Points-of-Interest-Kinos-3
         numberOfRuns: 1
