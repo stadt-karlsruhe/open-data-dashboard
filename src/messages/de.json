@@ -61,8 +61,8 @@
         "search": "Suche"
     },
     "Overview": {
-        "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien und Datensätze.",
-        "dataTitle": "Datenkategorien und Datensätze",
+        "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien.",
+        "dataTitle": "Datenkategorien",
         "dashboardsDescription": "Auf dieser Seite finden sie eine Übersicht der Dashboards.",
         "dashboardsTitle": "Dashboards"
     },

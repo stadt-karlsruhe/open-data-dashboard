@@ -1,22 +1,47 @@
+import { Dashboard, configurationSchema } from '@/schemas/configuration-schema';
+import Overview, { OverviewRow } from '@/components/overview/Overview';
+
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import Overview from '@/components/overview/Overview';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
 
-export default async function Page({ params }: { params: { categories: string[] | undefined } }) {
+export default async function Page() {
   const configuration = await getConfiguration();
   const t = await getTranslations('Overview');
   if (!configuration.success || configuration.data?.resources === undefined) {
     return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
   }
-  // TODO: Actually add dashboard content
+  const parsedConfiguration = configurationSchema.safeParse(configuration.data);
+  if (!parsedConfiguration.success) {
+    return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
+  }
+
   return (
     <Overview
-      content={[]}
+      content={getContent(parsedConfiguration.data.dashboards)}
       header={{
         name: t('dashboardsTitle'),
         description: t('dashboardsDescription'),
       }}
     />
   );
+}
+
+// TODO: Implement proper dashboard link
+function getContent(dashboards: Dashboard[]) {
+  const content: OverviewRow[] = [];
+  for (const dashboard of dashboards) {
+    if (dashboard.id === 'homepage') {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+    content.push({
+      title: dashboard.name,
+      description: dashboard.description,
+      href: `#`,
+      isCategory: false,
+      icon: dashboard.icon,
+    });
+  }
+  return content;
 }

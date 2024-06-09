@@ -7,6 +7,7 @@ export const embeddedResource: EmbeddedResource = {
     source: mockSource,
     name: 'Embedded Resource',
     type: 'PDF',
+    category: 'category',
 };
 
 export const jsonResource: JSONResource = {
@@ -14,6 +15,7 @@ export const jsonResource: JSONResource = {
     source: mockSource,
     name: 'JSON Resource',
     type: 'JSON',
+    category: 'category',
     numberFormat: 'en',
     visualizations: {
         table: {},
@@ -25,6 +27,7 @@ export const csvResource: JSONResource = {
     source: mockSource,
     name: 'CSV Resource',
     type: 'CSV',
+    category: 'category',
     numberFormat: 'en',
     visualizations: {
         table: {},
@@ -36,6 +39,7 @@ export const geoJSONResource: GeoJSONResource = {
     source: mockSource,
     name: 'GeoJSON Resource',
     type: 'GeoJSON',
+    category: 'category',
     numberFormat: 'en',
     visualizations: {
         map: {},

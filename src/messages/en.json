@@ -61,8 +61,8 @@
         "search": "Search"
     },
     "Overview": {
-        "dataDescription": "On this site you will find an overview of all available data categories and datasets.",
-        "dataTitle": "Data Categories and Datasets",
+        "dataDescription": "On this site you will find an overview of all available data categories.",
+        "dataTitle": "Data Categories",
         "dashboardsDescription": "On this site you will find an overview of all dashboards.",
         "dashboardsTitle": "Dashboards"
     },

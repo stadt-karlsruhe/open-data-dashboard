@@ -15,10 +15,8 @@ import { getIconForResource } from '@/icons';
 import { getTranslations } from 'next-intl/server';
 import { replaceWhitespaceInString } from '@/utils/stringutils';
 
-const paramsToCategory: Map<{ category: string; subcategory: string }, Category> = new Map<
-  { category: string; subcategory: string },
-  Category
->();
+const paramsToCategory: Map<CategoryPair, Category> = new Map<CategoryPair, Category>();
+const paramsToContent: Map<CategoryPair, OverviewRow[]> = new Map<CategoryPair, OverviewRow[]>();
 
 interface CategoryPair {
   category?: string;
@@ -55,8 +53,11 @@ function parseParams(configCategories: Category[], categories?: string[]) {
     const [category] = categories;
     const subcategory = categories.length > 1 ? categories[1] : undefined;
     if (
-      computeIfAbsent(paramsToCategory, category, computeCategory(configCategories, category, subcategory)) ===
-      undefined
+      computeIfAbsent(
+        paramsToCategory,
+        { category, subcategory },
+        computeCategory(configCategories, category, subcategory),
+      ) === undefined
     ) {
       return;
     }
@@ -68,35 +69,27 @@ function parseParams(configCategories: Category[], categories?: string[]) {
   return {};
 }
 
-function getHeader(categoryPair: { category?: string; subcategory?: string }, configCategories: Category[]) {
+function getHeader(categoryPair: CategoryPair, configCategories: Category[]) {
   if (categoryPair.category !== undefined) {
     const header = computeIfAbsent(
       paramsToCategory,
       categoryPair,
       computeCategory(configCategories, categoryPair.category, categoryPair.subcategory),
     );
-    if (header !== undefined) {
-      return header as {
-        name: string;
-        description: string;
-      };
-    }
+    return header as {
+      name: string;
+      description: string;
+    };
   }
 }
 
-function getContent(configuration: Configuration, categoryPair: { category?: string; subcategory?: string }) {
-  const content: OverviewRow[] = [];
-  addCategoriesToContent(content, configuration, categoryPair);
-  addDatasetsToContent(content, configuration.resources, categoryPair);
-  return content;
+function getContent(configuration: Configuration, categoryPair: CategoryPair) {
+  return computeIfAbsent(paramsToContent, categoryPair, computeContent(configuration, categoryPair)) as OverviewRow[];
 }
 
-// TODO: make this function nicer and more compact
-function addCategoriesToContent(
-  content: OverviewRow[],
-  configuration: Configuration,
-  categoryPair: { category?: string; subcategory?: string },
-) {
+function computeContent(configuration: Configuration, categoryPair: CategoryPair) {
+  const content: OverviewRow[] = [];
+
   if (categoryPair.category === undefined) {
     for (const category of configuration.categories) {
       content.push({
@@ -107,8 +100,9 @@ function addCategoriesToContent(
         icon: category.icon,
       });
     }
-    return;
+    return content;
   }
+
   if (categoryPair.subcategory === undefined) {
     const category = computeIfAbsent(
       paramsToCategory,
@@ -127,6 +121,20 @@ function addCategoriesToContent(
       }
     }
   }
+
+  for (const resource of configuration.resources) {
+    if (resourceShouldBeDisplayed(categoryPair, resource.category, resource.subcategory)) {
+      content.push({
+        title: resource.name,
+        description: resource.description,
+        href: `/view/${replaceWhitespaceInString(resource.name)}-${resource.id}`,
+        isCategory: false,
+        resourceType: resource.type,
+        icon: getIconForResource(resource),
+      });
+    }
+  }
+  return content;
 }
 
 function computeCategory(configCategories: Category[], category: string, subcategory?: string) {
@@ -147,34 +155,11 @@ function computeCategory(configCategories: Category[], category: string, subcate
   }
 }
 
-function addDatasetsToContent(
-  content: OverviewRow[],
-  resources: (EmbeddedResource | GeoJSONResource | JSONResource)[],
-  categoryPair: { category?: string; subcategory?: string },
-) {
-  for (const resource of resources) {
-    if (resourceShouldBeDisplayed(categoryPair, resource.category, resource.subcategory)) {
-      content.push({
-        title: resource.name,
-        description: resource.description,
-        href: `/view/${replaceWhitespaceInString(resource.name)}-${resource.id}`,
-        isCategory: false,
-        resourceType: resource.type,
-        icon: getIconForResource(resource),
-      });
-    }
-  }
-}
-
-function resourceShouldBeDisplayed(
-  categoryPair: { category?: string; subcategory?: string },
-  resourceCategory?: string,
-  resourceSubcategory?: string,
-) {
+function resourceShouldBeDisplayed(categoryPair: CategoryPair, resourceCategory: string, resourceSubcategory?: string) {
   if (categoryPair.category === undefined) {
     return false;
   }
-  if (resourceCategory === undefined || saveStringCompare(categoryPair.category, resourceCategory, false)) {
+  if (saveStringCompare(categoryPair.category, resourceCategory, false)) {
     return false;
   }
   if (categoryPair.subcategory === undefined) {
