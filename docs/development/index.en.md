@@ -1,5 +1,10 @@
 # Development
 
+## Development Environment
+
+It is highly recommended to use [Visual Studio Code](https://code.visualstudio.com/) for working on the `Open Data Dashboard`.
+The project contains useful preset VSCode settings that will be applied once you open the project. Additionally, make sure to install the recommended extension.
+
 ## Application
 
 To start developing the `Open Data Dashboard` [Next.js](https://nextjs.org/) application,
@@ -25,6 +30,10 @@ npm run lint
 
 ```bash title="Execute tests"
 npm test
+```
+
+```bash title="Validate configuration files"
+npm run test:config-validation
 ```
 
 ```bash title="Build application"

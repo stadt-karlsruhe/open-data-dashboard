@@ -39,7 +39,7 @@ For more information about supported data types and formats, see [Supported Data
     2. Rename fields/properties. See [renameFields](#rename-fields).
     3. Skip fields/properties. See [skipFields](#skip-fields).
     4. Specify default filters for the dataset. See [defaultFilters](#default-filters).
-    5. Visualization-specific configurations. See [Bar Chart](/configuration/visualizations#bar-chart).
+    5. Visualization-specific configurations. See [Bar Chart](visualizations.md#bar-chart).
 
 ## GeoJSON Data
 
@@ -64,12 +64,12 @@ For more information about supported data types and formats, see [Supported Data
     1. Specify the input number format. See [numberFormat](#number-format).
     2. Rename fields/properties. See [renameFields](#rename-fields).
     3. Skip fields/properties. See [skipFields](#skip-fields).
-    4. Visualization-specific configurations. See [Map](/configuration/visualizations#map).
+    4. Visualization-specific configurations. See [Map](visualizations.md#map).
 
-## Embedded Resources
+## HTML and PDF Data
 
 !!! example
-    For embedded resources, no configuration options beyond the commons are available:
+    For HTML and PDF resources, no configuration options beyond the commons are available:
 
     ```yaml title="app.config.yml"
     resources:
@@ -77,7 +77,7 @@ For more information about supported data types and formats, see [Supported Data
       name: string
       description: string
       source: string
-      type: Embedded
+      type: HTML | PDF
     ```
 
 ## Configurations for CSV, JSON and GeoJSON Data

@@ -36,6 +36,7 @@ nav:
                 - configuration/theme.md
                 - configuration/resources.md
                 - configuration/visualizations.md
+                - configuration/categories.md
           - Supported Data: configuration/data-types.md
     - Development: development/index.md
 plugins:
