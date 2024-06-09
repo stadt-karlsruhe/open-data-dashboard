@@ -2,6 +2,7 @@ import { Category } from '@/schemas/configuration-schema';
 import { ListGroup } from 'react-bootstrap';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
+import { replaceWhitespaceInString } from '@/utils/stringutils';
 import { useTranslations } from 'next-intl';
 
 const { Link } = createSharedPathnamesNavigation({
@@ -19,7 +20,7 @@ export default function NavigationContent({ categories, className }: { categorie
         </Link>
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
-        <Link href="#" className="nav-link text-nowrap">
+        <Link href="/overview/dashboards" className="nav-link text-nowrap">
           <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
         </Link>
         <div className="d-flex flex-column">
@@ -41,14 +42,14 @@ export default function NavigationContent({ categories, className }: { categorie
         </div>
       </ListGroup.Item>
       <ListGroup.Item className="pe-md-5">
-        <Link href="/overview" className="nav-link text-nowrap">
+        <Link href="/overview/data" className="nav-link text-nowrap">
           <i className="bi bi-folder-fill" /> {t('data')}
         </Link>
         <div className="d-flex flex-column">
           {categories.map((category, index) => (
             <Link
               key={index}
-              href={`/overview/${category.name.replaceAll(/\s+/gu, '-')}`}
+              href={`/overview/data/${replaceWhitespaceInString(category.name)}`}
               className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
             >
               <i className={`bi bi-${category.icon}`} /> {category.name}

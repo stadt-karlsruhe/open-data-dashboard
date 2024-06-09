@@ -16,20 +16,16 @@ export function getColor(index: number) {
     return colors[index % colors.length];
 }
 
-export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'Embedded') {
-    switch (type) {
-        case 'JSON': {
-            return 'var(--type-color-json)';
-        }
-        case 'GeoJSON': {
-            return 'var(--type-color-geojson)';
-        }
-        case 'CSV': {
-            return 'var(--type-color-csv)';
-        }
-        case 'Embedded': {
-            return 'var(--type-color-embedded)';
-        }
-        default:
+const colorForType: Map<string, string> = new Map<string, string>([
+    ['JSON', 'var(--type-color-json)'],
+    ['GeoJSON', 'var(--type-color-geojson)'],
+    ['CSV', 'var(--type-color-csv)'],
+    ['Embedded', 'var(--type-color-embedded)'],
+]);
+
+export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'Embedded' | undefined) {
+    if (type === undefined) {
+        return;
     }
+    return colorForType.get(type);
 }

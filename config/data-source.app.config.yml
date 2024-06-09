@@ -7,7 +7,7 @@ resources:
       type: JSON
       name: Wohnberechtigte Bevölkerung
       description: Die Beschreibung für die Wohnberechtigte Bevölkerung
-      category: Category 3
+      category: Gesellschaft
       renameProperties:
           mannlich (%): Männlich (%)
           weiblich (%): Weiblich (%)
@@ -30,7 +30,7 @@ resources:
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
       type: Embedded
       name: Karlsruher Mietspiegel 2023
-      category: Category 3
+      category: Gesellschaft
     - id: "3"
       source: https://mocki.io/v1/56ffb4b7-49d5-4763-98ec-db1a67feb0a5
       # source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
@@ -48,7 +48,7 @@ resources:
       # source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
       type: JSON
       name: Wanderungssaldo
-      category: Category 2
+      category: Category 3
       skipPropertiesRegEx: ^_id$
       visualizations:
           barChart:
@@ -60,6 +60,7 @@ resources:
       source: https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True
       type: CSV
       name: Hunde insgesamt
+      category: Mobilität
       skipPropertiesRegEx: ^_id$
       visualizations:
           barChart:
@@ -73,6 +74,8 @@ resources:
       type: JSON
       name: Europawahl 2019
       numberFormat: de
+      category: Gesellschaft
+      subcategory: Politik
       visualizations:
           barChart:
               axisPairs:
@@ -95,6 +98,14 @@ resources:
           table: {}
 categories:
     - name: Mobilität
+      description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
       icon: train-front-fill
-    - name: Category 2
+    - name: Gesellschaft
+      description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
+      icon: people-fill
+      subCategories:
+          - name: Politik
+            description: In dieser Unterkategorie findet man alle politischen Daten.
+            icon: award-fill
     - name: Category 3
+      description: Die dritte Kategorie.

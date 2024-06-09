@@ -1,15 +1,11 @@
 'use client';
 
-import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
-
-import React from 'react';
 // eslint-disable-next-line import/named
 import { TableColumn } from 'react-data-table-component';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import dynamic from 'next/dynamic';
 import { getColorForResourceType } from '@/colors';
 import { locales } from '@/locales';
-import { replaceWhitespaceInString } from '@/utils/stringutils';
 import { useTranslations } from 'next-intl';
 
 // Avoid hydration error inside Table pagination https://stackoverflow.com/questions/77763766/next-js-hydration-error-with-shadcn-dialog-component
@@ -19,25 +15,39 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-// TODO: We need a way to select the subcategory: Either in the navigation, or inside of a selector component at the top of the overview
+export interface OverviewRow {
+  title: string;
+  description?: string;
+  href: string;
+  isCategory: boolean;
+  resourceType?: 'Embedded' | 'JSON' | 'GeoJSON' | 'CSV';
+}
+
 export default function Overview({
-  resources,
-  categories,
+  content,
+  header,
 }: {
-  resources: (EmbeddedResource | GeoJSONResource | JSONResource)[];
-  categories: string[] | undefined;
+  content: OverviewRow[];
+  header: {
+    title: string;
+    description: string;
+  };
 }) {
   const tableT = useTranslations('Table');
   const columns = [
     {
-      cell: (row: { html: React.JSX.Element }) => row.html,
+      cell: (row: OverviewRow) => transformContentToHTMLElement(row),
+      compact: true,
     },
   ] as TableColumn<unknown>[];
   return (
     <div className="flex-fill">
+      <h3>{header.title}</h3>
+      <p className="fs-6">{header.description}</p>
       <DataTable
+        dense={true}
         columns={columns}
-        data={getDataForResources(resources, categories)}
+        data={content}
         noDataComponent={tableT('noRecords')}
         highlightOnHover
         pagination
@@ -52,52 +62,18 @@ export default function Overview({
   );
 }
 
-function getDataForResources(
-  resources: (EmbeddedResource | GeoJSONResource | JSONResource)[],
-  categories: string[] | undefined,
-) {
-  const dataArray = [];
-  for (const resource of resources) {
-    if (resourceShouldBeDisplayed(resource.category, resource.subcategory, categories)) {
-      dataArray.push({
-        html: transformResourceOverview(resource),
-      });
-    }
-  }
-  return dataArray;
-}
-
-function resourceShouldBeDisplayed(
-  resourceCategory: string | undefined,
-  resourceSubcategory: string | undefined,
-  categories: string[] | undefined,
-) {
-  if (categories === undefined) {
-    return true;
-  }
-  if (resourceCategory === undefined || categories[0] !== replaceWhitespaceInString(resourceCategory)) {
-    return false;
-  }
-  if (categories.length < 2) {
-    return true;
-  }
-  return resourceSubcategory !== undefined && categories[1] === replaceWhitespaceInString(resourceSubcategory);
-}
-
-function transformResourceOverview(resource: EmbeddedResource | GeoJSONResource | JSONResource) {
-  const badgeColor = getColorForResourceType(resource.type);
+// TODO: add logos for categories and datasets
+function transformContentToHTMLElement(contentRow: OverviewRow) {
+  const badgeColor = getColorForResourceType(contentRow.resourceType);
+  const titleColor = contentRow.isCategory ? 'nav-link' : '';
   return (
-    <Link
-      href={`/view/${replaceWhitespaceInString(resource.name)}-${resource.id}`}
-      className="text-dark text-decoration-none w-100 m-2"
-      style={{}}
-    >
-      <div className="fs-5">{resource.name}</div>
+    <Link href={contentRow.href} className="text-dark text-decoration-none w-100 p-2">
+      <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
       <br />
-      <div className="fs-6">{resource.description}</div>
-      {badgeColor && (
+      <div className="fs-6">{contentRow.description}</div>
+      {!contentRow.isCategory && (
         <span className="badge" style={{ backgroundColor: badgeColor }}>
-          {resource.type}
+          {contentRow.resourceType}
         </span>
       )}
     </Link>
