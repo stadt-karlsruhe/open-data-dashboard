@@ -1,11 +1,4 @@
-import {
-  Category,
-  Configuration,
-  EmbeddedResource,
-  GeoJSONResource,
-  JSONResource,
-  configurationSchema,
-} from '@/schemas/configuration-schema';
+import { Category, Configuration, configurationSchema } from '@/schemas/configuration-schema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
@@ -124,8 +117,6 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
     }),
   );
 
-  console.log(category);
-
   configuration.resources
     .filter((resource) => category.resources?.includes(resource.id))
     .forEach((resource) =>
@@ -157,12 +148,6 @@ function computeCategory(configCategories: Category[], category: string, subcate
   }
 }
 
-function saveStringCompare(paramString?: string, configString?: string) {
-  if (paramString === undefined) {
-    return configString === undefined;
-  }
-  if (configString === undefined) {
-    return false;
-  }
+function saveStringCompare(paramString: string, configString: string) {
   return decodeURIComponent(paramString).toLowerCase() === replaceWhitespaceInString(configString).toLowerCase();
 }
