@@ -62,7 +62,7 @@
     "ts-node": "10.9.2",
     "typescript": "^5",
     "use-debounce": "10.0.1",
-    "yaml": "2.4.3",
+    "yaml": "2.4.5",
     "zod": "^3.23.8",
     "zod-validation-error": "3.3.0"
   }
