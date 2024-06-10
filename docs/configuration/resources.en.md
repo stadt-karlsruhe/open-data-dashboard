@@ -5,13 +5,15 @@ For more information about supported data types and formats, see [Supported Data
 
 ## Common Configurations
 
-| Parameter     | Description                                                                  | Type     |
-| ------------- | ---------------------------------------------------------------------------- | -------- |
-| `id`          | The unique resource id.                                                      | Required |
-| `name`        | The resource name.                                                           | Required |
-| `description` | The resource description.                                                    | Optional |
-| `source`      | The data source URL.                                                         | Required |
-| `type`        | The data type. Available values are `CSV`, `JSON`, `GeoJSON` and `Embedded`. | Required |
+| Parameter     | Description                                                                                       | Type     |
+| ------------- | ------------------------------------------------------------------------------------------------- | -------- |
+| `id`          | The unique resource id.                                                                           | Required |
+| `name`        | The resource name.                                                                                | Required |
+| `description` | The resource description.                                                                         | Optional |
+| `source`      | The data source URL.                                                                              | Required |
+| `type`        | The data type. Available values are `CSV`, `JSON`, `GeoJSON`, `HTML` and `PDF`.                   | Required |
+| `category`    | The resource category. Must be a category name present in the [categories](categories.md) section | Required |
+| `subcategory` | The resource subcategory. Must be a subcategory belonging to the specified category name.         | Optional |
 
 ## CSV and JSON Data
 

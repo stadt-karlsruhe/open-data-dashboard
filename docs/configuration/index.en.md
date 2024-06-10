@@ -14,14 +14,18 @@ They are located in the `/config` directory and are tailor-made for the needs of
     ```yaml title="app.config.yml"
     appearance:
         theme: string # (1)!
-    resources: [resource] # (2)!
-    categories: [category] # (3)!
-    dashboards: [dashboard]
+    resources: [<resource>] # (2)!
+    categories: [<category>] # (3)!
+    dashboards: [<dashboard>] # (4)!
     ```
 
     1. The application [theme](theme.md).
     2. A list of configured [resources](resources.md).
     3. A list of configured [categories](categories.md).
+    4. A list of configured [dashboards](dashboards.md).
+
+!!! note
+    The homepage is configured as a [dashboard](dashboards.md) with the reserved id `homepage`.
 
 ## Working on the Configuration
 
