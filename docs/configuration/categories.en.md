@@ -6,11 +6,12 @@ Categories can be used to group resources in the UI to simplify navigating betwe
 
 Categories and subcategories expose identical configuration options:
 
-| Parameter     | Description                                                                                       | Type     |
-| ------------- | ------------------------------------------------------------------------------------------------- | -------- |
-| `name`        | The unique category/subcategory name.                                                             | Required |
-| `description` | The category/subcategory description.                                                             | Optional |
-| `icon`        | The category/subcategory [icon](#icons) name.                                                     | Optional |
+| Parameter     | Description                                                                          | Type     |
+| ------------- | ------------------------------------------------------------------------------------ | -------- |
+| `name`        | The unique category/subcategory name.                                                | Required |
+| `description` | The category/subcategory description.                                                | Optional |
+| `icon`        | The category/subcategory [icon](#icons) name.                                        | Optional |
+| `resources`   | The resources belonging to a given category/subcategory as an array of resource ids. | Required |
 
 !!! example
     The following example is a list of all available categories configurations:
@@ -20,12 +21,13 @@ Categories and subcategories expose identical configuration options:
     - name: string
       description: string
       icon: string
+      resources: [string]
       subcategories: [category]
     ```
 
 ## Icons
 
-The `Open Data Dashboard` is using the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any available icon can be used.
+The `Open Data Dashboard` is using the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any icon available there can be used.
 
 !!! note
     Use the **icon name**, not the CSS class when specifying an icon.

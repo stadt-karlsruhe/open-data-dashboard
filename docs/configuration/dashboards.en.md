@@ -69,7 +69,7 @@ The homepage is configured as a dashboard with the reserved id `homepage`. It mu
 
 ## Icons
 
-The `Open Data Dashboard` is using the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any available icon can be used.
+The `Open Data Dashboard` is using the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any icon available there can be used.
 
 !!! note
     Use the **icon name**, not the CSS class when specifying an icon.
