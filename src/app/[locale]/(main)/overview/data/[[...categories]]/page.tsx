@@ -2,6 +2,7 @@ import { Category, Configuration } from '@/schemas/configuration-schema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import PageWrapper from '@/components/PageWrapper';
 import { computeIfAbsent } from '@/utils/maputils';
 import { getConfiguration } from '@/configuration';
 import { getIconForResource } from '@/icons';
@@ -30,11 +31,11 @@ export default async function Page({ params }: { params: { categories?: string[]
     return <ErrorComponent type="notFound" />;
   }
 
-  const header = getHeader(categoryPair, configuration.categories) ?? {
-    name: t('dataTitle'),
-    description: t('dataDescription'),
-  };
-  return <Overview content={getContent(configuration, categoryPair)} header={header} />;
+  return (
+    <PageWrapper title={t('dataTitle')} description={t('dataDescription')}>
+      <Overview content={getContent(configuration, categoryPair)} />
+    </PageWrapper>
+  );
 }
 
 function parseParams(configCategories: Category[], categories?: string[]) {

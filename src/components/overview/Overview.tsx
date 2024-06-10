@@ -24,16 +24,7 @@ export interface OverviewRow {
   resourceType?: 'PDF' | 'HTML' | 'JSON' | 'GeoJSON' | 'CSV';
 }
 
-export default function Overview({
-  content,
-  header,
-}: {
-  content: OverviewRow[];
-  header: {
-    name: string;
-    description: string;
-  };
-}) {
+export default function Overview({ content }: { content: OverviewRow[] }) {
   const tableT = useTranslations('Table');
   const columns = [
     {
@@ -41,24 +32,20 @@ export default function Overview({
     },
   ] as TableColumn<unknown>[];
   return (
-    <div className="flex-fill ms-2">
-      <h3>{header.name}</h3>
-      <p className="lead">{header.description}</p>
-      <DataTable
-        dense={true}
-        columns={columns}
-        data={content}
-        noDataComponent={tableT('noRecords')}
-        highlightOnHover
-        pagination={content.length > 10}
-        paginationComponentOptions={{
-          rowsPerPageText: tableT('rowsPerPageText'),
-          rangeSeparatorText: tableT('rangeSeparatorText'),
-          selectAllRowsItem: true,
-          selectAllRowsItemText: tableT('selectAllRowsItemText'),
-        }}
-      />
-    </div>
+    <DataTable
+      dense={true}
+      columns={columns}
+      data={content}
+      noDataComponent={tableT('noRecords')}
+      highlightOnHover
+      pagination={content.length > 10}
+      paginationComponentOptions={{
+        rowsPerPageText: tableT('rowsPerPageText'),
+        rangeSeparatorText: tableT('rangeSeparatorText'),
+        selectAllRowsItem: true,
+        selectAllRowsItemText: tableT('selectAllRowsItemText'),
+      }}
+    />
   );
 }
 

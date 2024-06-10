@@ -8,12 +8,7 @@ const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'
 
 export default function ResourceDetails({ resource }: { resource: Resource }) {
   return (
-    <div
-      className="flex-grow-1 p-2"
-      style={{ height: resource.type === 'HTML' || resource.type === 'PDF' ? '100dvh' : undefined }}
-    >
-      <h1 className="h1 text-center">{resource.name}</h1>
-      <p className="lead text-center">{resource.description}</p>
+    <div>
       <ResourceDetailsControls resource={resource} />
       <div
         className={`d-flex flex-column flex-grow-1 ${resource.type === 'GeoJSON' ? 'border border-secondary' : ''}`}

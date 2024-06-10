@@ -2,6 +2,7 @@ import Overview, { OverviewRow } from '@/components/overview/Overview';
 
 import { Dashboard } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import PageWrapper from '@/components/PageWrapper';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
 
@@ -14,13 +15,9 @@ export default async function Page() {
   }
 
   return (
-    <Overview
-      content={getContent(configuration.dashboards)}
-      header={{
-        name: t('dashboardsTitle'),
-        description: t('dashboardsDescription'),
-      }}
-    />
+    <PageWrapper title={t('dashboardsTitle')} description={t('dashboardsDescription')}>
+      <Overview content={getContent(configuration.dashboards)} />
+    </PageWrapper>
   );
 }
 
