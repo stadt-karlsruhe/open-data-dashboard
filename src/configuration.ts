@@ -12,8 +12,9 @@ type ParsedConfiguration =
 
 const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
 
-export async function getConfiguration(): Promise<ParsedConfiguration> {
+export async function getConfiguration(options?: { validate: boolean }): Promise<ParsedConfiguration> {
     try {
+        const { validate = true } = options ?? {};
         const configDir = process.env.CONFIGURATION_DIR ?? DEFAULT_CONFIGURATION_DIR;
         const yamlFiles = await getYamlFiles(configDir);
 
@@ -23,9 +24,14 @@ export async function getConfiguration(): Promise<ParsedConfiguration> {
 
         const configurations = await Promise.all(yamlFiles.map((element) => readYamlFile(element)));
 
-        return validateConfiguration(
-            merge.withOptions({ mergeArrays: false }, ...configurations) as unknown as Configuration,
-        );
+        const mergedConfigurations = merge.withOptions(
+            { mergeArrays: false },
+            ...configurations,
+        ) as unknown as Configuration;
+
+        return validate
+            ? validateConfiguration(mergedConfigurations)
+            : { success: true, configuration: mergedConfigurations, error: undefined };
     } catch (err) {
         return { success: false, configuration: undefined, error: String(err) };
     }
