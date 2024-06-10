@@ -11,7 +11,7 @@ Categories and subcategories expose identical configuration options:
 | `name`        | The unique category/subcategory name.                                                | Required |
 | `description` | The category/subcategory description.                                                | Optional |
 | `icon`        | The category/subcategory [icon](#icons) name.                                        | Optional |
-| `resources`   | The resources belonging to a given category/subcategory as an array of resource ids. | Required |
+| `resources`   | The resources belonging to a given category/subcategory as an array of resource ids. | Optional |
 
 !!! example
     The following example is a list of all available categories configurations:
