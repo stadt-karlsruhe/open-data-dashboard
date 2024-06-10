@@ -60,6 +60,12 @@
         "home": "Home",
         "search": "Suche"
     },
+    "Overview": {
+        "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien.",
+        "dataTitle": "Datenkategorien",
+        "dashboardsDescription": "Auf dieser Seite finden sie eine Übersicht der Dashboards.",
+        "dashboardsTitle": "Dashboards"
+    },
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
     },
@@ -78,6 +84,7 @@
         "search": "Suche"
     },
     "Table": {
+        "noRecords": "Es gibt keine Einträge die angezeigt werden können",
         "rangeSeparatorText": "von",
         "rowsPerPageText": "Zeilen pro Seite:",
         "selectAllRowsItemText": "Alle"

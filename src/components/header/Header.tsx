@@ -16,6 +16,7 @@ const { Link, usePathname } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function Header({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
   const t = useTranslations('Header');
@@ -55,7 +56,13 @@ export default function Header({ configuration }: { configuration: Configuration
             alt={'LogoKarlsruheSmall'}
             height={50}
           />
-          <Image className="d-none d-lg-block" src={LogoKarlsruhe as StaticImport} alt={'LogoKarlsruhe'} height={60} />
+          <Image
+            className="d-none d-lg-block"
+            src={LogoKarlsruhe as StaticImport}
+            alt={'LogoKarlsruhe'}
+            height={60}
+            priority={true}
+          />
         </div>
       </div>
       <div className="container-lg justify-content-center d-flex">

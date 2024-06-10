@@ -54,6 +54,7 @@ export default function Table({ columnNames, records }: { columnNames: string[];
     <DataTable
       columns={columns}
       data={records as Record<string, never>[]}
+      noDataComponent={t('noRecords')}
       pagination
       paginationComponentOptions={{
         rowsPerPageText: t('rowsPerPageText'),

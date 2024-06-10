@@ -15,3 +15,18 @@ const colors: string[] = [colorPrimary, colorYellow, colorPurple, colorTeal, col
 export function getColor(index: number) {
     return colors[index % colors.length];
 }
+
+const colorForType: Map<string, string> = new Map<string, string>([
+    ['JSON', 'var(--type-color-json)'],
+    ['GeoJSON', 'var(--type-color-geojson)'],
+    ['CSV', 'var(--type-color-csv)'],
+    ['PDF', 'var(--type-color-pdf)'],
+    ['HTML', 'var(--type-color-html)'],
+]);
+
+export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'PDF' | 'HTML' | undefined) {
+    if (type === undefined) {
+        return;
+    }
+    return colorForType.get(type);
+}

@@ -60,6 +60,12 @@
         "home": "Home",
         "search": "Search"
     },
+    "Overview": {
+        "dataDescription": "On this site you will find an overview of all available data categories.",
+        "dataTitle": "Data Categories",
+        "dashboardsDescription": "On this site you will find an overview of all dashboards.",
+        "dashboardsTitle": "Dashboards"
+    },
     "ResetView": {
         "resetTooltip": "Reset view"
     },
@@ -78,12 +84,13 @@
         "search": "Search"
     },
     "Table": {
+        "noRecords": "There are no records to display",
         "rangeSeparatorText": "of",
         "rowsPerPageText": "Rows per page:",
         "selectAllRowsItemText": "All"
     },
     "Footer": {
-        "imprint": "Imprint",
+        "imprint": "Legal Notice",
         "dataProtection": "Data Protection Policy"
 
     }

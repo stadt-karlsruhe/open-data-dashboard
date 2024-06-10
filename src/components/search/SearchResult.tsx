@@ -2,6 +2,7 @@
 import { Highlighter, TypeaheadMenuProps } from 'react-bootstrap-typeahead';
 
 import { Resource } from '@/schemas/configuration-schema';
+import { getColorForResourceType } from '@/colors';
 import { getIconForResource } from '@/icons';
 
 export default function SearchResult({ resource, menuProps }: { resource: Resource; menuProps: TypeaheadMenuProps }) {
@@ -18,7 +19,9 @@ export default function SearchResult({ resource, menuProps }: { resource: Resour
           {resource.description && <Highlighter search={menuProps.text}>{resource.description}</Highlighter>}
         </small>
         <div className="my-1">
-          <div className="badge bg-secondary p-2">{resource.type}</div>
+          <div className="badge  p-2" style={{ backgroundColor: getColorForResourceType(resource.type) }}>
+            {resource.type}
+          </div>
         </div>
       </div>
     </div>
