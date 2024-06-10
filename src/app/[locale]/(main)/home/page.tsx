@@ -27,8 +27,8 @@ export default async function Home() {
         <Search
           configuration={configuration}
           id="homepage-search"
-          className="position-absolute w-50 start-50"
-          style={{ bottom: '20%', transform: 'translateX(-50%)' }}
+          className="position-absolute w-100 start-50 px-2"
+          style={{ bottom: '20%', transform: 'translateX(-50%)', maxWidth: '600px' }}
         />
       </div>
       <DashboardContent dashboard={homepage} />
