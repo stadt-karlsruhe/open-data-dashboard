@@ -38,11 +38,10 @@ export default function Overview({
   const columns = [
     {
       cell: (row: OverviewRow) => transformContentToHTMLElement(row),
-      compact: true,
     },
   ] as TableColumn<unknown>[];
   return (
-    <div className="flex-fill">
+    <div className="flex-fill ms-2">
       <h3>{header.name}</h3>
       <p className="lead">{header.description}</p>
       <DataTable
@@ -51,7 +50,7 @@ export default function Overview({
         data={content}
         noDataComponent={tableT('noRecords')}
         highlightOnHover
-        pagination
+        pagination={content.length > 10}
         paginationComponentOptions={{
           rowsPerPageText: tableT('rowsPerPageText'),
           rangeSeparatorText: tableT('rangeSeparatorText'),

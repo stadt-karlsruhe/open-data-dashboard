@@ -2,8 +2,7 @@ appearance:
     theme: "karlsruhe"
 resources:
     - id: "1"
-      source: https://mocki.io/v1/1442bc5a-869f-4398-96a9-c5c50fc3b1a3
-      #   source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?format=json
+      source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?format=json
       type: JSON
       name: Wohnberechtigte Bevölkerung
       description: Die Beschreibung für die Wohnberechtigte Bevölkerung
@@ -32,8 +31,7 @@ resources:
       name: Karlsruher Mietspiegel 2023
       category: Gesellschaft
     - id: "3"
-      source: https://mocki.io/v1/56ffb4b7-49d5-4763-98ec-db1a67feb0a5
-      # source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       type: GeoJSON
       name: Points of Interest Kinos
       category: Gesellschaft
@@ -45,8 +43,7 @@ resources:
           map:
               groupKey: Kategorie
     - id: "4"
-      source: https://mocki.io/v1/becc7043-0251-46e9-8f2b-81a6b904fe86
-      # source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
+      source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
       type: JSON
       name: Wanderungssaldo
       category: Category 3
@@ -70,8 +67,7 @@ resources:
                     yAxis: Hunde
           table: {}
     - id: "6"
-      source: https://mocki.io/v1/8b010dfa-a1ab-4139-9f84-f213098ec1f1
-      # source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
+      source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
       type: JSON
       name: Europawahl 2019
       numberFormat: de

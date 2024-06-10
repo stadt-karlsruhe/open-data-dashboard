@@ -21,6 +21,7 @@ const paramsToContent: Map<CategoryPair, OverviewRow[]> = new Map<CategoryPair, 
 interface CategoryPair {
   category?: string;
   subcategory?: string;
+  inValid?: boolean;
 }
 
 export default async function Page({ params }: { params: { categories?: string[] } }) {
@@ -34,7 +35,7 @@ export default async function Page({ params }: { params: { categories?: string[]
     return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
   }
   const categoryPair = parseParams(parsedConfiguration.data.categories, params.categories);
-  if (categoryPair === undefined) {
+  if (categoryPair.inValid) {
     return <ErrorComponent type="notFound" />;
   }
 
@@ -50,7 +51,9 @@ function parseParams(configCategories: Category[], categories?: string[]) {
     return {};
   }
   if (categories.length > 2) {
-    return;
+    return {
+      inValid: true,
+    } as CategoryPair;
   }
   const [category] = categories;
   const subcategory = categories.length > 1 ? categories[1] : undefined;
@@ -61,7 +64,9 @@ function parseParams(configCategories: Category[], categories?: string[]) {
       computeCategory(configCategories, category, subcategory),
     ) === undefined
   ) {
-    return;
+    return {
+      inValid: true,
+    } as CategoryPair;
   }
   return {
     category,
