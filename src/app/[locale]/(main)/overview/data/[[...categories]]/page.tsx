@@ -137,7 +137,7 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
 
 function computeCategory(configCategories: Category[], category: string, subcategory?: string) {
   for (const configCategory of configCategories) {
-    if (saveStringCompare(category, configCategory.name, true)) {
+    if (saveStringCompare(category, configCategory.name)) {
       if (subcategory === undefined) {
         return configCategory;
       }
@@ -145,27 +145,25 @@ function computeCategory(configCategories: Category[], category: string, subcate
         return;
       }
       return configCategory.subCategories
-        .filter((configSubcategory) => saveStringCompare(subcategory, configSubcategory.name, true))
+        .filter((configSubcategory) => saveStringCompare(subcategory, configSubcategory.name))
         .pop();
     }
   }
 }
 
 function resourceShouldBeDisplayed(categoryPair: CategoryPair, resourceCategory: string, resourceSubcategory?: string) {
-  if (categoryPair.category === undefined) {
-    return false;
-  }
-  if (saveStringCompare(categoryPair.category, resourceCategory, false)) {
-    return false;
-  }
-  if (categoryPair.subcategory === undefined) {
-    return resourceSubcategory === undefined;
-  }
-  return resourceSubcategory !== undefined && saveStringCompare(categoryPair.subcategory, resourceSubcategory, true);
+  return (
+    saveStringCompare(categoryPair.category, resourceCategory) &&
+    saveStringCompare(categoryPair.subcategory, resourceSubcategory)
+  );
 }
 
-function saveStringCompare(paramString: string, configString: string, equals: boolean) {
-  return (
-    (decodeURIComponent(paramString).toLowerCase() === replaceWhitespaceInString(configString).toLowerCase()) === equals
-  );
+function saveStringCompare(paramString?: string, configString?: string) {
+  if (paramString === undefined) {
+    return configString === undefined;
+  }
+  if (configString === undefined) {
+    return false;
+  }
+  return decodeURIComponent(paramString).toLowerCase() === replaceWhitespaceInString(configString).toLowerCase();
 }
