@@ -108,25 +108,26 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
     return content;
   }
 
-  if (categoryPair.subcategory === undefined) {
-    const category = computeIfAbsent(
-      paramsToCategory,
-      categoryPair.category,
-      computeCategory(configuration.categories, categoryPair.category),
-    ) as Category;
-    category.subCategories?.forEach((subcategory) =>
-      content.push({
-        title: subcategory.name,
-        description: subcategory.description,
-        href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
-        isCategory: true,
-        icon: subcategory.icon,
-      }),
-    );
-  }
+  const category = computeIfAbsent(
+    paramsToCategory,
+    categoryPair,
+    computeCategory(configuration.categories, categoryPair.category, categoryPair.subcategory),
+  ) as Category;
+
+  category.subcategories?.forEach((subcategory) =>
+    content.push({
+      title: subcategory.name,
+      description: subcategory.description,
+      href: `/overview/data/${replaceWhitespaceInString(category.name)}/${replaceWhitespaceInString(subcategory.name)}`,
+      isCategory: true,
+      icon: subcategory.icon,
+    }),
+  );
+
+  console.log(category);
 
   configuration.resources
-    .filter((resource) => resourceShouldBeDisplayed(categoryPair, resource.category, resource.subcategory))
+    .filter((resource) => category.resources?.includes(resource.id))
     .forEach((resource) =>
       content.push({
         title: resource.name,
@@ -146,21 +147,14 @@ function computeCategory(configCategories: Category[], category: string, subcate
       if (subcategory === undefined) {
         return configCategory;
       }
-      if (configCategory.subCategories === undefined) {
+      if (configCategory.subcategories === undefined) {
         return;
       }
-      return configCategory.subCategories
+      return configCategory.subcategories
         .filter((configSubcategory) => saveStringCompare(subcategory, configSubcategory.name))
         .pop();
     }
   }
-}
-
-function resourceShouldBeDisplayed(categoryPair: CategoryPair, resourceCategory: string, resourceSubcategory?: string) {
-  return (
-    saveStringCompare(categoryPair.category, resourceCategory) &&
-    saveStringCompare(categoryPair.subcategory, resourceSubcategory)
-  );
 }
 
 function saveStringCompare(paramString?: string, configString?: string) {

@@ -16,7 +16,6 @@ export default function DashboardContent({ dashboard }: { dashboard: Dashboard }
                 id: 'external',
                 name: content.name,
                 type: 'HTML',
-                category: 'External-HTML',
               }}
             />
           );

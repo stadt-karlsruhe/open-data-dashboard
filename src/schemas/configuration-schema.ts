@@ -6,8 +6,6 @@ const baseResourceSchema = z
         source: z.string().url(),
         name: z.string(),
         description: z.string().optional(),
-        category: z.string(),
-        subcategory: z.string().optional(),
     })
     .strict();
 
@@ -112,12 +110,13 @@ const categoryBaseSchema = z
         name: z.string(),
         description: z.string().optional(),
         icon: z.string().default('clipboard-data'),
+        resources: z.array(z.string()).optional(),
     })
     .strict();
 
 const categorySchema = categoryBaseSchema
     .extend({
-        subCategories: z.array(categoryBaseSchema).optional(),
+        subcategories: z.array(categoryBaseSchema).optional(),
     })
     .strict();
 
