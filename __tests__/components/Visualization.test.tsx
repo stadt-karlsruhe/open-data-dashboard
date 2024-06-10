@@ -24,12 +24,20 @@ jest.mock('@/components/visualization/layout/ChartTableWrapper', () =>
   jest.fn(() => <div>Mocked ChartTableWrapper</div>),
 );
 
+function mockResponse(body: unknown): Response {
+  return {
+    ok: true,
+    status: 200,
+    statusText: 'OK',
+    headers: new Headers(),
+    json: () => Promise.resolve(body),
+    text: () => Promise.resolve(body),
+  } as Response;
+}
 describe('component Visualization', () => {
   it('should render the ChartTableWrapper component for valid JSON data', async () => {
     expect.hasAssertions();
-    (global.fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(jsonStandard),
-    });
+    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(jsonStandard));
 
     const VisualizationComponent = await Visualization({ resource: jsonResource });
     render(VisualizationComponent);
@@ -39,9 +47,7 @@ describe('component Visualization', () => {
 
   it('should render the ChartTableWrapper component for valid CSV data', async () => {
     expect.hasAssertions();
-    (global.fetch as jest.Mock).mockResolvedValueOnce({
-      text: () => Promise.resolve(csvValid),
-    });
+    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(csvValid));
 
     const VisualizationComponent = await Visualization({ resource: csvResource });
     render(VisualizationComponent);
@@ -51,9 +57,7 @@ describe('component Visualization', () => {
 
   it('should render the GeoMap component for valid GeoJSON data', async () => {
     expect.hasAssertions();
-    (global.fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(geoJSON),
-    });
+    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(geoJSON));
 
     const VisualizationComponent = await Visualization({ resource: geoJSONResource });
     render(VisualizationComponent);
@@ -63,9 +67,7 @@ describe('component Visualization', () => {
 
   it('should render the Error component for invalid JSON data', async () => {
     expect.hasAssertions();
-    (global.fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(jsonFormatNotSupported),
-    });
+    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(geoJSON));
 
     const VisualizationComponent = await Visualization({ resource: jsonResource });
     render(VisualizationComponent);

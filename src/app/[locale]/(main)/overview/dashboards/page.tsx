@@ -1,24 +1,21 @@
-import { Dashboard, configurationSchema } from '@/schemas/configuration-schema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
 
+import { Dashboard } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Page() {
-  const configuration = await getConfiguration();
+  const { success, configuration, error } = await getConfiguration();
   const t = await getTranslations('Overview');
-  if (!configuration.success || configuration.data?.resources === undefined) {
-    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
-  }
-  const parsedConfiguration = configurationSchema.safeParse(configuration.data);
-  if (!parsedConfiguration.success) {
-    return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
+
+  if (!success) {
+    return <ErrorComponent type="configurationError" error={error} />;
   }
 
   return (
     <Overview
-      content={getContent(parsedConfiguration.data.dashboards)}
+      content={getContent(configuration.dashboards)}
       header={{
         name: t('dashboardsTitle'),
         description: t('dashboardsDescription'),

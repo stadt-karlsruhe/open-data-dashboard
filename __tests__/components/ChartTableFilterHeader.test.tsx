@@ -8,7 +8,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
-import { Filter } from '@/schema';
+import { Filter } from '@/schemas/configuration-schema';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
@@ -26,7 +26,7 @@ jest.mock<typeof import('react-bootstrap/AccordionButton')>('react-bootstrap/Acc
 // eslint-disable-next-line max-lines-per-function
 describe('component ChartTableFilterHeader', () => {
   const mockOnChange = jest.fn();
-  const mockUseAccordionButton = useAccordionButton as jest.Mock;
+  const mockUseAccordionButton = jest.mocked(useAccordionButton);
 
   const renderComponent = (activeEventKey?: string, filters: Record<string, Filter> = {}) => {
     render(

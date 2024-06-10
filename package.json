@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir src __tests__",
     "test": "jest --coverage --testPathIgnorePatterns='configuration\\.test\\.ts'",
     "test:config-validation": "jest --testPathPattern='configuration\\.test\\.ts' --noStackTrace",
     "docs": "mkdocs serve"

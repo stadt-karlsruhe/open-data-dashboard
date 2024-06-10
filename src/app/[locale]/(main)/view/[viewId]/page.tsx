@@ -1,15 +1,14 @@
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
-import { fromError } from 'zod-validation-error';
 import { getConfiguration } from '@/configuration';
-import { resourceSchema } from '@/schemas/configuration-schema';
 
 export default async function Page({ params: { viewId } }: { params: { viewId: string } }) {
-  const configuration = await getConfiguration();
-  if (!configuration.success) {
-    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
+  const { success, configuration, error } = await getConfiguration();
+  if (!success) {
+    return <ErrorComponent type="configurationError" error={error} />;
   }
-  const resource = configuration.data?.resources.find(
+
+  const resource = configuration.resources.find(
     (item) =>
       `${item.name.trim().replaceAll(/\s+/gu, '-').toLowerCase()}-${item.id.toLowerCase()}` ===
       decodeURIComponent(viewId).toLowerCase(),
@@ -19,16 +18,5 @@ export default async function Page({ params: { viewId } }: { params: { viewId: s
     return <ErrorComponent type="notFound" resource={resource} />;
   }
 
-  const parsedResource = resourceSchema.safeParse(resource);
-  if (!parsedResource.success) {
-    return (
-      <ErrorComponent
-        type="resourceConfigurationInvalid"
-        resource={resource}
-        error={JSON.stringify(fromError(parsedResource.error).toString())}
-      />
-    );
-  }
-
-  return <ResourceDetails resource={parsedResource.data} />;
+  return <ResourceDetails resource={resource} />;
 }
