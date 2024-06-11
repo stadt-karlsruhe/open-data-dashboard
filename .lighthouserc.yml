@@ -5,8 +5,10 @@ ci:
         startServerReadyPattern: Ready in
         url:
             - http://localhost:3000/en/home
-            - http://localhost:3000/en/view/Wohnberechtigte-Bevölkerung-1
-            - http://localhost:3000/en/view/Points-of-Interest-Kinos-3
+            - http://localhost:3000/en/overview/resources
+            - http://localhost:3000/en/overview/dashboards
+            - http://localhost:3000/en/resource/Wohnberechtigte-Bevölkerung-1
+            - http://localhost:3000/en/resource/Points-of-Interest-Kinos-3
         numberOfRuns: 1
         settings:
             preset: desktop
