@@ -1,6 +1,7 @@
 import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import PageWrapper from '@/components/PageWrapper';
 import { getConfiguration } from '@/configuration';
 
 export default async function Page({ params: { dashboardNameAndId } }: { params: { dashboardNameAndId: string } }) {
@@ -16,5 +17,9 @@ export default async function Page({ params: { dashboardNameAndId } }: { params:
     return <ErrorComponent type="notFound" />;
   }
 
-  return <>Dashboard {dashboard.name}</>;
+  return (
+    <PageWrapper title={dashboard.name} description={dashboard.description}>
+      <>Some dashboard content</>
+    </PageWrapper>
+  );
 }
