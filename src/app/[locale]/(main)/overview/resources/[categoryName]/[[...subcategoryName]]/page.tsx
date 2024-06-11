@@ -70,7 +70,7 @@ function getResourcesForCategory(configuration: Configuration, category: Categor
     .map((resource) => ({
       title: resource.name,
       description: resource.description,
-      href: `/view/${concatenateNameAndId(resource.name, resource.id)}`,
+      href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
       isCategory: false,
       resourceType: resource.type,
       icon: getIconForResource(resource),
