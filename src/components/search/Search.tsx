@@ -5,6 +5,7 @@ import { Configuration, Resource } from '@/schemas/configuration-schema';
 
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
+import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
@@ -53,7 +54,7 @@ export default function Search({
           const resource = selected[0] as Resource;
           setSelected([]);
           search('');
-          router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
+          router.push(`/resource/${concatenateNameAndId(resource.name, resource.id)}`);
         }
       }}
       options={searchResults?.slice(0, 6) ?? []}

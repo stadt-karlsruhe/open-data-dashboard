@@ -1,18 +1,18 @@
-import { replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
+import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
 import { getConfiguration } from '@/configuration';
 
-export default async function Page({ params: { viewId } }: { params: { viewId: string } }) {
+export default async function Page({ params: { resourceNameAndId } }: { params: { resourceNameAndId: string } }) {
   const { success, configuration, error } = await getConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }
 
   const resource = configuration.resources.find((item) =>
-    safeStringCompare(viewId, `${replaceWhitespaceInString(item.name)}-${item.id.toLowerCase()}`),
+    safeStringCompare(resourceNameAndId, concatenateNameAndId(item.name, item.id)),
   );
 
   if (resource === undefined) {

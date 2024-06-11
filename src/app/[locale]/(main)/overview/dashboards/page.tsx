@@ -3,6 +3,7 @@ import Overview, { OverviewRow } from '@/components/overview/Overview';
 import { Dashboard } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
+import { concatenateNameAndId } from '@/utils/stringUtils';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
 
@@ -21,7 +22,6 @@ export default async function Page() {
   );
 }
 
-// TODO: Implement proper dashboard link
 function getContent(dashboards: Dashboard[]) {
   return dashboards
     .filter((dashboard) => dashboard.id !== 'homepage')
@@ -30,7 +30,7 @@ function getContent(dashboards: Dashboard[]) {
         ({
           title: dashboard.name,
           description: dashboard.description,
-          href: `#`,
+          href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
           isCategory: false,
           icon: dashboard.icon,
         }) as OverviewRow,

@@ -1,6 +1,6 @@
 import { Category, Configuration } from '@/schemas/configuration-schema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
-import { replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
+import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
@@ -48,7 +48,7 @@ function getCategoryContent(configuration: Configuration, category: Category) {
     category.subcategories?.map((subcategory) => ({
       title: subcategory.name,
       description: subcategory.description,
-      href: `/overview/data/${replaceWhitespaceInString(category.name).toLowerCase()}/${replaceWhitespaceInString(subcategory.name)}`,
+      href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
       isCategory: true,
       icon: subcategory.icon,
     })) ?? [];
@@ -70,7 +70,7 @@ function getResourcesForCategory(configuration: Configuration, category: Categor
     .map((resource) => ({
       title: resource.name,
       description: resource.description,
-      href: `/view/${replaceWhitespaceInString(resource.name)}-${resource.id}`,
+      href: `/view/${concatenateNameAndId(resource.name, resource.id)}`,
       isCategory: false,
       resourceType: resource.type,
       icon: getIconForResource(resource),

@@ -2,7 +2,7 @@ import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { getConfiguration } from '@/configuration';
 import { safeStringCompare } from '@/utils/stringUtils';
 
-export default async function Page({ params: { resourceId: dashboardId } }: { params: { resourceId: string } }) {
+export default async function Page({ params: { dashboardId } }: { params: { dashboardId: string } }) {
   const { success, configuration, error } = await getConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
@@ -13,5 +13,5 @@ export default async function Page({ params: { resourceId: dashboardId } }: { pa
     return <ErrorComponent type="notFound" />;
   }
 
-  return <>Dashboard {dashboard.name}</>;
+  return <>Dashboard {dashboard.name} (embedded)</>;
 }

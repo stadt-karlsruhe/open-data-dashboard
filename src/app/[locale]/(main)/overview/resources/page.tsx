@@ -25,7 +25,7 @@ function getCategories(configuration: Configuration) {
   return configuration.categories.map((category) => ({
     title: category.name,
     description: category.description,
-    href: `/overview/data/${replaceWhitespaceInString(category.name).toLowerCase()}`,
+    href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}`,
     isCategory: true,
     icon: category.icon,
   }));
