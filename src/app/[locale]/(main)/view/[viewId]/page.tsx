@@ -1,4 +1,4 @@
-import { replaceWhitespaceInString, saveStringCompare } from '@/utils/stringUtils';
+import { replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
@@ -12,7 +12,7 @@ export default async function Page({ params: { viewId } }: { params: { viewId: s
   }
 
   const resource = configuration.resources.find((item) =>
-    saveStringCompare(viewId, `${replaceWhitespaceInString(item.name)}-${item.id.toLowerCase()}`),
+    safeStringCompare(viewId, `${replaceWhitespaceInString(item.name)}-${item.id.toLowerCase()}`),
   );
 
   if (resource === undefined) {

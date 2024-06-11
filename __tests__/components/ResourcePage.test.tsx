@@ -8,9 +8,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Configuration } from '@/schemas/configuration-schema';
 import { NextIntlClientProvider } from 'next-intl';
-import Page from '@/app/[locale]/(embedded)/resource/[resourceId]/page';
-import YAML from 'yaml';
-import { promises as fs } from 'node:fs';
+import Page from '@/app/[locale]/(embed)/embed/resource/[resourceId]/page';
 import { getConfiguration } from '@/configuration';
 import messages from '@/messages/en.json';
 

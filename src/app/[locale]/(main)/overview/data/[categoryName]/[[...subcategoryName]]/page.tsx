@@ -1,6 +1,6 @@
 import { Category, Configuration } from '@/schemas/configuration-schema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
-import { replaceWhitespaceInString, saveStringCompare } from '@/utils/stringUtils';
+import { replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
@@ -17,7 +17,7 @@ export default async function Page({
     return <ErrorComponent type="configurationError" error={error} />;
   }
 
-  const category = configuration.categories.find((item) => saveStringCompare(categoryName, item.name));
+  const category = configuration.categories.find((item) => safeStringCompare(categoryName, item.name));
   if (!category) {
     return <ErrorComponent type="notFound" />;
   }
@@ -31,7 +31,7 @@ export default async function Page({
   }
 
   const [subcategoryNameString] = subcategoryName;
-  const subcategory = category.subcategories?.find((sub) => saveStringCompare(subcategoryNameString, sub.name));
+  const subcategory = category.subcategories?.find((sub) => safeStringCompare(subcategoryNameString, sub.name));
   if (subcategoryName.length > 1 || !subcategory) {
     return <ErrorComponent type="notFound" />;
   }
