@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
-import { colorLight } from '@/colors';
+import { colorLight } from '@/utils/colors';
 import { getConfiguration } from '@/configuration';
 
 export default async function RootLayout({

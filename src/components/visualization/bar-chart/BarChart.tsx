@@ -15,8 +15,8 @@ import { AxisPair } from '@/schemas/configuration-schema';
 import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/data-schema';
-import { computeIfAbsent } from '@/utils/maputils';
-import { getColor } from '@/colors';
+import { computeIfAbsent } from '@/utils/mapUtils';
+import { getColor } from '@/utils/colors';
 
 let minValue: number;
 let maxValue: number;

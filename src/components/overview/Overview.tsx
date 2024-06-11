@@ -4,7 +4,7 @@
 import { TableColumn } from 'react-data-table-component';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import dynamic from 'next/dynamic';
-import { getColorForResourceType } from '@/colors';
+import { getColorForResourceType } from '@/utils/colors';
 import { locales } from '@/locales';
 import { useTranslations } from 'next-intl';
 
@@ -60,7 +60,7 @@ function transformContentToHTMLElement(contentRow: OverviewRow) {
         <br />
         <div className="fs-6">{contentRow.description}</div>
         {!contentRow.isCategory && (
-          <span className="badge" style={{ backgroundColor: badgeColor }}>
+          <span className="badge my-1" style={{ backgroundColor: badgeColor }}>
             {contentRow.resourceType}
           </span>
         )}

@@ -1,7 +1,7 @@
 'use client';
 
 import { Resource } from '@/schemas/configuration-schema';
-import { colorRed } from '@/colors';
+import { colorRed } from '@/utils/colors';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useEffect } from 'react';
@@ -33,7 +33,7 @@ export default function ErrorComponent({ type, resource, error }: ApplicationErr
   });
 
   return (
-    <div className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
+    <div className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center flex-fill">
       <div className="container">
         <div className="row">
           <div className="col-12 text-center">

@@ -6,7 +6,6 @@ import { Configuration, Resource } from '@/schemas/configuration-schema';
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
-import { getColorForResourceType } from '@/colors';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
 import { useTranslations } from 'next-intl';

@@ -3,7 +3,7 @@ import { Category, Dashboard } from '@/schemas/configuration-schema';
 import { ListGroup } from 'react-bootstrap';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
-import { replaceWhitespaceInString } from '@/utils/stringutils';
+import { replaceWhitespaceInString } from '@/utils/stringUtils';
 import { useTranslations } from 'next-intl';
 
 const { Link } = createSharedPathnamesNavigation({

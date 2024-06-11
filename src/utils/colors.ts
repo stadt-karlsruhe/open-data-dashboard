@@ -16,17 +16,23 @@ export function getColor(index: number) {
     return colors[index % colors.length];
 }
 
-const colorForType: Map<string, string> = new Map<string, string>([
-    ['JSON', 'var(--type-color-json)'],
-    ['GeoJSON', 'var(--type-color-geojson)'],
-    ['CSV', 'var(--type-color-csv)'],
-    ['PDF', 'var(--type-color-pdf)'],
-    ['HTML', 'var(--type-color-html)'],
-]);
-
-export function getColorForResourceType(type: 'JSON' | 'GeoJSON' | 'CSV' | 'PDF' | 'HTML' | undefined) {
-    if (type === undefined) {
-        return;
+export function getColorForResourceType(type?: 'JSON' | 'GeoJSON' | 'CSV' | 'PDF' | 'HTML') {
+    switch (type) {
+        case 'CSV': {
+            return 'var(--type-color-csv)';
+        }
+        case 'JSON': {
+            return 'var(--type-color-json)';
+        }
+        case 'GeoJSON': {
+            return 'var(--type-color-geojson)';
+        }
+        case 'PDF': {
+            return 'var(--type-color-pdf)';
+        }
+        case 'HTML': {
+            return 'var(--type-color-html)';
+        }
+        default:
     }
-    return colorForType.get(type);
 }

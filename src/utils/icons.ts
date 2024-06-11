@@ -1,4 +1,4 @@
-import { JSONResource, Resource } from './schemas/configuration-schema';
+import { JSONResource, Resource } from '../schemas/configuration-schema';
 
 export function getIconForResource(resource: Resource) {
     switch (resource.type) {

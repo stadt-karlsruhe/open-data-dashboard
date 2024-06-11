@@ -1,3 +1,5 @@
+import { replaceWhitespaceInString, saveStringCompare } from '@/utils/stringUtils';
+
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/PageWrapper';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
@@ -9,10 +11,8 @@ export default async function Page({ params: { viewId } }: { params: { viewId: s
     return <ErrorComponent type="configurationError" error={error} />;
   }
 
-  const resource = configuration.resources.find(
-    (item) =>
-      `${item.name.trim().replaceAll(/\s+/gu, '-').toLowerCase()}-${item.id.toLowerCase()}` ===
-      decodeURIComponent(viewId).toLowerCase(),
+  const resource = configuration.resources.find((item) =>
+    saveStringCompare(viewId, `${replaceWhitespaceInString(item.name)}-${item.id.toLowerCase()}`),
   );
 
   if (resource === undefined) {
@@ -28,6 +28,4 @@ export default async function Page({ params: { viewId } }: { params: { viewId: s
       <ResourceDetails resource={resource} />
     </PageWrapper>
   );
-
-  //   return <ResourceDetails resource={resource} />;
 }
