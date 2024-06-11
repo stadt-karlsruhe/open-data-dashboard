@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
-    "@swc/core": "1.5.27",
+    "@swc/core": "1.5.28",
     "@swc/jest": "0.2.36",
     "@testing-library/jest-dom": "6.4.5",
     "@testing-library/react": "16.0.0",
