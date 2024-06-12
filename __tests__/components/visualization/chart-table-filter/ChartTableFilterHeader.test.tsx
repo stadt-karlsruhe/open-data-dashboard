@@ -3,7 +3,7 @@
  */
 
 import { describe, expect, it } from '@jest/globals';
-import { filterAllEntries, filterAllEntriesInvalid } from '../data/dataFilters';
+import { filterAllEntries, filterAllEntriesInvalid } from '~/data/dataFilters';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import AccordionContext from 'react-bootstrap/AccordionContext';

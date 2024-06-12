@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { describe, expect, it } from '@jest/globals';
-import { jsonStandard, jsonStandardFormatted } from '../data/dataFormats';
+import { jsonStandard, jsonStandardFormatted } from '~/data/dataFormats';
 
 import { NextIntlClientProvider } from 'next-intl';
 import Table from '@/components/visualization/Table';

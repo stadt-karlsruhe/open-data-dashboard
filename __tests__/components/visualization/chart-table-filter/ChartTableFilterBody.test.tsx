@@ -7,8 +7,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { ChartTableFilterBody } from '@/components/visualization/chart-table-filter/ChartTableFilterBody';
 import { NextIntlClientProvider } from 'next-intl';
-import { filterMixed } from '../data/dataFilters';
-import { jsonStandard } from '../data/dataFormats';
+import { filterMixed } from '~/data/dataFilters';
+import { jsonStandard } from '~/data/dataFormats';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line max-lines-per-function

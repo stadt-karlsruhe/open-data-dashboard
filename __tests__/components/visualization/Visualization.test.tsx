@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { csvResource, geoJSONResource, jsonResource } from '../data/resources';
-import { csvValid, geoJSON, jsonFormatNotSupported, jsonStandard } from '../data/dataFormats';
+import { csvResource, geoJSONResource, jsonResource } from '~/data/resources';
+import { csvValid, geoJSON, jsonFormatNotSupported, jsonStandard } from '~/data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 

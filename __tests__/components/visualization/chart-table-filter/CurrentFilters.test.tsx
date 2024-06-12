@@ -4,9 +4,10 @@
 
 import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import CurrentFilters from '@/components/visualization/chart-table-filter/CurrentFilters';
 import { NextIntlClientProvider } from 'next-intl';
-import { filterMixed } from '../data/dataFilters';
+import { filterMixed } from '~/data/dataFilters';
 import messages from '@/messages/en.json';
 
 const allEntries = 'all-entries';

@@ -6,8 +6,8 @@ import { render, screen } from '@testing-library/react';
 
 import BarChart from '@/components/visualization/bar-chart/BarChart';
 import { NextIntlClientProvider } from 'next-intl';
-import { jsonResourceWithChart } from '../data/resources';
-import { jsonStandard } from '../data/dataFormats';
+import { jsonResourceWithChart } from '~/data/resources';
+import { jsonStandard } from '~/data/dataFormats';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory

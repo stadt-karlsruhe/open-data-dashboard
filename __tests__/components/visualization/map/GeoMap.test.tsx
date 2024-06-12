@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 import { describe, expect, it } from '@jest/globals';
-import { geoJSONResource, geoJSONResourceWithGroupKey } from '../data/resources';
+import { geoJSONResource, geoJSONResourceWithGroupKey } from '~/data/resources';
 import { render, screen } from '@testing-library/react';
 
 import GeoMap from '@/components/visualization/map/GeoMap';
 import { NextIntlClientProvider } from 'next-intl';
-import { geoJSONRenamePropertiesResult } from '../data/dataTransformations';
+import { geoJSONRenamePropertiesResult } from '~/data/dataTransformations';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory

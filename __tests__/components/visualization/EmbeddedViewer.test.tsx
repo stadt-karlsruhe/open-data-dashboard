@@ -3,8 +3,9 @@
  */
 
 import { describe, expect, it } from '@jest/globals';
+
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
-import { embeddedResource } from '../data/resources';
+import { embeddedResource } from '~/data/resources';
 import { render } from '@testing-library/react';
 
 describe('component EmbeddedViewer', () => {

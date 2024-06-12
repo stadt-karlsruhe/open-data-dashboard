@@ -8,7 +8,7 @@ import { render, screen } from '@testing-library/react';
 import Legend from '@/components/visualization/map/Legend';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
-import { standardLabels } from '../data/mapComponentData';
+import { standardLabels } from '~/data/mapComponentData';
 
 describe('component Legend', () => {
   const renderComponent = () => {
