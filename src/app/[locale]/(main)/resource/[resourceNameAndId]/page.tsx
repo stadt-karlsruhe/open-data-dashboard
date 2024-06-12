@@ -3,10 +3,10 @@ import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Page({ params: { resourceNameAndId } }: { params: { resourceNameAndId: string } }) {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }

@@ -8,8 +8,7 @@ describe('application configuration', () => {
     it('should be a valid configuration according to the schema', async () => {
         expect.hasAssertions();
 
-        const { success, configuration } = await getConfiguration({ validate: false });
-        expect(success).toBe(true);
+        const configuration = await getConfiguration();
 
         // @ts-expect-error: Ignore ts(2339)
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call

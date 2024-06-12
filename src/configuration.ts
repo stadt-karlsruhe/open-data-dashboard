@@ -1,20 +1,13 @@
-import { Configuration, configurationSchema } from '@/schemas/configurationSchema';
-
+import { Configuration } from '@/schemas/configurationSchema';
 import YAML from 'yaml';
-import { fromError } from 'zod-validation-error';
 import { promises as fs } from 'node:fs';
 import { merge } from 'ts-deepmerge';
 import path from 'node:path';
 
-type ParsedConfiguration =
-    | { success: true; configuration: Configuration; error: undefined }
-    | { success: false; configuration: undefined; error: string };
-
 const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
 
-export async function getConfiguration(options?: { validate: boolean }): Promise<ParsedConfiguration> {
+export async function getConfiguration() {
     try {
-        const { validate = true } = options ?? {};
         const configDir = process.env.CONFIGURATION_DIR ?? DEFAULT_CONFIGURATION_DIR;
         const yamlFiles = await getYamlFiles(configDir);
 
@@ -24,16 +17,12 @@ export async function getConfiguration(options?: { validate: boolean }): Promise
 
         const configurations = await Promise.all(yamlFiles.map((element) => readYamlFile(element)));
 
-        const mergedConfigurations = merge.withOptions(
-            { mergeArrays: false },
-            ...configurations,
-        ) as unknown as Configuration;
-
-        return validate
-            ? validateConfiguration(mergedConfigurations)
-            : { success: true, configuration: mergedConfigurations, error: undefined };
+        return merge.withOptions({ mergeArrays: false }, ...configurations) as unknown as Configuration;
     } catch (err) {
-        return { success: false, configuration: undefined, error: String(err) };
+        // Only log errors instead of erroring the application at this stage
+        // Allows using the custom ErrorComponent in case of i.e. I/O errors
+        console.error(err);
+        return {} as Configuration;
     }
 }
 
@@ -51,11 +40,4 @@ async function getYamlFiles(dir: string): Promise<string[]> {
 async function readYamlFile(filePath: string) {
     const fileBuffer = await fs.readFile(filePath);
     return YAML.parse(fileBuffer.toString('utf8')) as Configuration;
-}
-
-function validateConfiguration(configuration: Configuration): ParsedConfiguration {
-    const parsedConfiguration = configurationSchema.safeParse(configuration);
-    return parsedConfiguration.success
-        ? { success: true, configuration: parsedConfiguration.data, error: undefined }
-        : { success: false, configuration: undefined, error: fromError(parsedConfiguration.error).toString() };
 }

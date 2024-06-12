@@ -4,14 +4,14 @@ import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
 import { colorLight } from '@/utils/colors';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }

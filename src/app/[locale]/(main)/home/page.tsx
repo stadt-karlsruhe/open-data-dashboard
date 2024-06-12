@@ -2,10 +2,10 @@ import DashboardContent from '@/components/dashboard/DashboardContent';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Home() {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }

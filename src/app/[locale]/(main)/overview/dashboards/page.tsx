@@ -4,11 +4,11 @@ import { Dashboard } from '@/schemas/configurationSchema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
 import { concatenateNameAndId } from '@/utils/stringUtils';
-import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Page() {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   const t = await getTranslations('Overview');
 
   if (!success) {

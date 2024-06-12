@@ -1,9 +1,9 @@
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 import { safeStringCompare } from '@/utils/stringUtils';
 
 export default async function Page({ params: { dashboardId } }: { params: { dashboardId: string } }) {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }

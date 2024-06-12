@@ -13,6 +13,11 @@ import Visualization from '@/components/visualization/Visualization';
 global.fetch = jest.fn();
 
 // eslint-disable-next-line jest/no-untyped-mock-factory
+jest.mock('yaml', () => ({
+  parse: jest.fn(),
+}));
+
+// eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('next/dynamic', () => {
   // eslint-disable-next-line react/display-name
   return jest.fn(() => () => <div>Mocked GeoMap</div>);

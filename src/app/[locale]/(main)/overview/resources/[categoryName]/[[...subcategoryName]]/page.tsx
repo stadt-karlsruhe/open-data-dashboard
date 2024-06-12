@@ -4,15 +4,15 @@ import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } fr
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
-import { getConfiguration } from '@/configuration';
 import { getIconForResource } from '@/utils/icons';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Page({
   params: { categoryName, subcategoryName },
 }: {
   params: { categoryName: string; subcategoryName?: string[] };
 }) {
-  const { success, configuration, error } = await getConfiguration();
+  const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }

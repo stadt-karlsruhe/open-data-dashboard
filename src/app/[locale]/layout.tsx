@@ -14,11 +14,11 @@ export default async function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }>) {
-  const { success, configuration } = await getConfiguration();
+  const configuration = await getConfiguration();
   const messages = await getMessages();
   return (
     // By default, Bootstrap will ignore themes that are not defined
-    <html lang={locale} data-bs-theme={success ? configuration.appearance.theme : ''}>
+    <html lang={locale} data-bs-theme={String(configuration.appearance.theme)}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

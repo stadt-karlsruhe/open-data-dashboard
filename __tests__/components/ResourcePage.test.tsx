@@ -9,7 +9,7 @@ import { render, screen } from '@testing-library/react';
 import { Configuration } from '@/schemas/configurationSchema';
 import { NextIntlClientProvider } from 'next-intl';
 import Page from '@/app/[locale]/(embed)/embed/resource/[resourceId]/page';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory
@@ -29,9 +29,10 @@ jest.mock<typeof import('node:fs')>('node:fs', () => {
   };
 });
 
-jest.mock<typeof import('@/configuration')>('@/configuration', () => {
+jest.mock<typeof import('@/schemas/validate')>('@/schemas/validate', () => {
   return {
-    getConfiguration: jest.fn(),
+    getValidatedData: jest.fn(),
+    getValidatedConfiguration: jest.fn(),
   };
 });
 
@@ -44,7 +45,7 @@ describe('resource page', () => {
     expect.hasAssertions();
 
     jest
-      .mocked(getConfiguration)
+      .mocked(getValidatedConfiguration)
       .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: '1' } };
 
@@ -58,7 +59,7 @@ describe('resource page', () => {
     expect.hasAssertions();
 
     jest
-      .mocked(getConfiguration)
+      .mocked(getValidatedConfiguration)
       .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: '2' } };
 
@@ -76,7 +77,7 @@ describe('resource page', () => {
     expect.hasAssertions();
 
     jest
-      .mocked(getConfiguration)
+      .mocked(getValidatedConfiguration)
       .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: 'non-existent-resource' } };
 
