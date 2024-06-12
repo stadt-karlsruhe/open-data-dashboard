@@ -61,9 +61,9 @@
         "search": "Search"
     },
     "Overview": {
-        "dashboardsDescription": "On this site you will find an overview of all dashboards.",
+        "dashboardsDescription": "On this page you will find an overview of all dashboards.",
         "dashboardsTitle": "Dashboards",
-        "dataDescription": "On this site you will find an overview of all available data categories.",
+        "dataDescription": "On this page you will find an overview of all available data categories.",
         "dataTitle": "Data Categories"
     },
     "ResetView": {
