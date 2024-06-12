@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '@/components/visualization/bar-chart/BarChart';
@@ -11,7 +12,6 @@ import { TransformedData } from '@/schemas/data-schema';
 import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
 import useWindowDimensions from '@/components/helper/WindowDimensions';
 
 // Avoid hydration error inside Table pagination https://stackoverflow.com/questions/77763766/next-js-hydration-error-with-shadcn-dialog-component
@@ -28,6 +28,7 @@ export default function ChartTableWrapper({
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const locale = useLocale();
   const router = useRouter();
   const [filteredData, setFilteredData] = useState(transformedData);
   const { width, height } = useWindowDimensions();
@@ -50,7 +51,7 @@ export default function ChartTableWrapper({
   }
 
   return (
-    <>
+    <div className={pathname.startsWith(`/${locale}/embed`) ? 'm-2' : ''}>
       <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
       <Tabs
         defaultActiveKey={activeVisualization}
@@ -81,6 +82,6 @@ export default function ChartTableWrapper({
           </Tab>
         ))}
       </Tabs>
-    </>
+    </div>
   );
 }
