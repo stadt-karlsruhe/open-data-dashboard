@@ -7,7 +7,7 @@ import { csvValid, geoJSON, jsonFormatNotSupported, jsonStandard } from '../data
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 
-import Visualization from '@/components/visualization/layout/Visualization';
+import Visualization from '@/components/visualization/Visualization';
 
 // eslint-disable-next-line jest/prefer-spy-on
 global.fetch = jest.fn();

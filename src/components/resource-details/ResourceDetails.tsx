@@ -1,7 +1,7 @@
 import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration-schema';
 
 import EmbeddedViewer from '../visualization/EmbeddedViewer';
-import Visualization from '../visualization/layout/Visualization';
+import Visualization from '../visualization/Visualization';
 import dynamic from 'next/dynamic';
 
 const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'), { ssr: false });

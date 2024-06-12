@@ -2,7 +2,7 @@ import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
 
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import Visualization from '@/components/visualization/layout/Visualization';
+import Visualization from '@/components/visualization/Visualization';
 import { getConfiguration } from '@/configuration';
 import { safeStringCompare } from '@/utils/stringUtils';
 

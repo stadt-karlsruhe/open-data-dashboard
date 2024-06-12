@@ -1,7 +1,7 @@
 import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration-schema';
 import { TransformedData, transform } from '@/schemas/data-schema';
 
-import ChartTableWrapper from './ChartTableWrapper';
+import ChartTableWrapper from './layout/ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import dynamic from 'next/dynamic';
 
