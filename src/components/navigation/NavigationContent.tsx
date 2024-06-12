@@ -52,7 +52,7 @@ export default function NavigationContent({
           {categories.map((category, index) => (
             <Link
               key={index}
-              href={`/overview/resources/${replaceWhitespaceInString(category.name)}`}
+              href={`/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}`}
               className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
             >
               <i className={`bi bi-${category.icon}`} /> {category.name}
