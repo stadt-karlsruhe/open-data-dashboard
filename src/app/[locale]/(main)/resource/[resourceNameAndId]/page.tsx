@@ -1,7 +1,7 @@
 import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import PageWrapper from '@/components/PageWrapper';
+import PageWrapper from '@/components/layout/PageWrapper';
 import ResourceDetails from '@/components/resource-details/ResourceDetails';
 import { getConfiguration } from '@/configuration';
 

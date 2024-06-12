@@ -20,9 +20,7 @@ jest.mock('next/dynamic', () => {
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('@/components/error-handling/ErrorComponent', () => jest.fn(() => <div>Mocked ErrorComponent</div>));
 // eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('@/components/visualization/layout/ChartTableWrapper', () =>
-  jest.fn(() => <div>Mocked ChartTableWrapper</div>),
-);
+jest.mock('@/components/layout/ChartTableWrapper', () => jest.fn(() => <div>Mocked ChartTableWrapper</div>));
 
 function mockResponse(body: unknown): Response {
   return {

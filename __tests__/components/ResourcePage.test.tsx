@@ -13,7 +13,7 @@ import { getConfiguration } from '@/configuration';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('@/components/visualization/layout/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
+jest.mock('@/components/visualization/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('yaml', () => ({
   parse: jest.fn(),

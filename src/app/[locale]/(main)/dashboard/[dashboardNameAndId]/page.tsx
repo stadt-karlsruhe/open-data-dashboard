@@ -1,7 +1,7 @@
 import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import PageWrapper from '@/components/PageWrapper';
+import PageWrapper from '@/components/layout/PageWrapper';
 import { getConfiguration } from '@/configuration';
 
 export default async function Page({ params: { dashboardNameAndId } }: { params: { dashboardNameAndId: string } }) {

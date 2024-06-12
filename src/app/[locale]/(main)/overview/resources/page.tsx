@@ -1,7 +1,7 @@
 import { Configuration } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Overview from '@/components/overview/Overview';
-import PageWrapper from '@/components/PageWrapper';
+import PageWrapper from '@/components/layout/PageWrapper';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
 import { replaceWhitespaceInString } from '@/utils/stringUtils';

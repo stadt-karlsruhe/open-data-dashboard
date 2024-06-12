@@ -3,7 +3,7 @@ import Overview, { OverviewRow } from '@/components/overview/Overview';
 import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import PageWrapper from '@/components/PageWrapper';
+import PageWrapper from '@/components/layout/PageWrapper';
 import { getConfiguration } from '@/configuration';
 import { getIconForResource } from '@/utils/icons';
 

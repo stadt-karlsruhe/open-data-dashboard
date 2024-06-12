@@ -2,8 +2,8 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import BarChart from '../bar-chart/BarChart';
-import ChartTableFilter from '../chart-table-filter/ChartTableFilter';
+import BarChart from '@/components/visualization/bar-chart/BarChart';
+import ChartTableFilter from '@/components/visualization/chart-table-filter/ChartTableFilter';
 import { JSONResource } from '@/schemas/configuration-schema';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import useWindowDimensions from '../../helper/WindowDimensions';
+import useWindowDimensions from '@/components/helper/WindowDimensions';
 
 // Avoid hydration error inside Table pagination https://stackoverflow.com/questions/77763766/next-js-hydration-error-with-shadcn-dialog-component
 const Table = dynamic(() => import('@/components/visualization/Table'), { ssr: false });

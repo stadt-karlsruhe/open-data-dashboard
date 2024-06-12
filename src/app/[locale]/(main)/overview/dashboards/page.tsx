@@ -2,7 +2,7 @@ import Overview, { OverviewRow } from '@/components/overview/Overview';
 
 import { Dashboard } from '@/schemas/configuration-schema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import PageWrapper from '@/components/PageWrapper';
+import PageWrapper from '@/components/layout/PageWrapper';
 import { concatenateNameAndId } from '@/utils/stringUtils';
 import { getConfiguration } from '@/configuration';
 import { getTranslations } from 'next-intl/server';
