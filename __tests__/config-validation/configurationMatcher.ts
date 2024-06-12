@@ -11,7 +11,7 @@ import {
     geoJSONResourceSchema,
     jsonResourceSchema,
     resourceSchema,
-} from '@/schemas/configuration-schema';
+} from '@/schemas/configurationSchema';
 
 import { expect } from '@jest/globals';
 import { fromError } from 'zod-validation-error';

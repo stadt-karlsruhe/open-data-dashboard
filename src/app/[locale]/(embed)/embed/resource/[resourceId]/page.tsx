@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
 
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';

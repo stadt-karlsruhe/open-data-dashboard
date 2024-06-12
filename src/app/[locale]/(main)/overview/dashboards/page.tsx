@@ -1,6 +1,6 @@
 import Overview, { OverviewRow } from '@/components/overview/Overview';
 
-import { Dashboard } from '@/schemas/configuration-schema';
+import { Dashboard } from '@/schemas/configurationSchema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
 import { concatenateNameAndId } from '@/utils/stringUtils';

@@ -1,4 +1,4 @@
-import { Category, Dashboard } from '@/schemas/configuration-schema';
+import { Category, Dashboard } from '@/schemas/configurationSchema';
 import { concatenateNameAndId, replaceWhitespaceInString } from '@/utils/stringUtils';
 
 import { ListGroup } from 'react-bootstrap';

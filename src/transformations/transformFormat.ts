@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
 import { renameProperties, skipProperties } from './transformData';
 
 import { csv2json } from 'json-2-csv';

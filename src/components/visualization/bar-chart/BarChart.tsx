@@ -11,10 +11,10 @@ import {
 } from 'recharts';
 import { useEffect, useState } from 'react';
 
-import { AxisPair } from '@/schemas/configuration-schema';
+import { AxisPair } from '@/schemas/configurationSchema';
 import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import { computeIfAbsent } from '@/utils/mapUtils';
 import { getColor } from '@/utils/colors';
 

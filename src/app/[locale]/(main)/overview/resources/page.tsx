@@ -1,4 +1,4 @@
-import { Configuration } from '@/schemas/configuration-schema';
+import { Configuration } from '@/schemas/configurationSchema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Overview from '@/components/overview/Overview';
 import PageWrapper from '@/components/layout/PageWrapper';

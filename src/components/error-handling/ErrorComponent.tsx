@@ -1,6 +1,6 @@
 'use client';
 
-import { Resource } from '@/schemas/configuration-schema';
+import { Resource } from '@/schemas/configurationSchema';
 import { colorRed } from '@/utils/colors';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';

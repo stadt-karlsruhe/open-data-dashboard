@@ -1,5 +1,5 @@
-import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration-schema';
-import { TransformedData, transform } from '@/schemas/data-schema';
+import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configurationSchema';
+import { TransformedData, transform } from '@/schemas/dataSchema';
 
 import ChartTableWrapper from '@/components/layout/ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';

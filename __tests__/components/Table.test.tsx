@@ -6,7 +6,7 @@ import { jsonStandard, jsonStandardFormatted } from '../data/dataFormats';
 
 import { NextIntlClientProvider } from 'next-intl';
 import Table from '@/components/visualization/Table';
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import messages from '@/messages/en.json';
 import { render } from '@testing-library/react';
 

@@ -4,7 +4,7 @@ import { CopyBlock, dracula } from 'react-code-blocks';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Modal from 'react-bootstrap/Modal';
-import { Resource } from '@/schemas/configuration-schema';
+import { Resource } from '@/schemas/configurationSchema';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useSearchParams } from 'next/navigation';

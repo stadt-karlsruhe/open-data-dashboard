@@ -2,7 +2,7 @@
 import DataTable, { TableStyles } from 'react-data-table-component';
 import { colorDark, colorSecondary } from '@/utils/colors';
 
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import { useTranslations } from 'next-intl';
 
 // Source: https://github.com/jbetancur/react-data-table-component/blob/next/src/DataTable/themes.ts

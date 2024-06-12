@@ -1,6 +1,6 @@
 'use client';
 
-import { Resource } from '@/schemas/configuration-schema';
+import { Resource } from '@/schemas/configurationSchema';
 import useWindowDimensions from '../helper/WindowDimensions';
 
 export default function EmbeddedViewer({

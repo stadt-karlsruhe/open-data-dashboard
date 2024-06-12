@@ -1,4 +1,4 @@
-import { Configuration, configurationSchema } from '@/schemas/configuration-schema';
+import { Configuration, configurationSchema } from '@/schemas/configurationSchema';
 
 import YAML from 'yaml';
 import { fromError } from 'zod-validation-error';

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/named
 import { Highlighter, TypeaheadMenuProps } from 'react-bootstrap-typeahead';
 
-import { Resource } from '@/schemas/configuration-schema';
+import { Resource } from '@/schemas/configurationSchema';
 import { getColorForResourceType } from '@/utils/colors';
 import { getIconForResource } from '@/utils/icons';
 

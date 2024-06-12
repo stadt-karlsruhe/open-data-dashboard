@@ -65,7 +65,7 @@ describe('component Visualization', () => {
 
   it('should render the Error component for invalid JSON data', async () => {
     expect.hasAssertions();
-    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(geoJSON));
+    jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(jsonFormatNotSupported));
 
     const VisualizationComponent = await Visualization({ resource: jsonResource });
     render(VisualizationComponent);

@@ -5,10 +5,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '@/components/visualization/bar-chart/BarChart';
 import ChartTableFilter from '@/components/visualization/chart-table-filter/ChartTableFilter';
-import { JSONResource } from '@/schemas/configuration-schema';
+import { JSONResource } from '@/schemas/configurationSchema';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import dynamic from 'next/dynamic';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';

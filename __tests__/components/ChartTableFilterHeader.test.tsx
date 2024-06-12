@@ -8,7 +8,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
-import { Filter } from '@/schemas/configuration-schema';
+import { Filter } from '@/schemas/configurationSchema';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';

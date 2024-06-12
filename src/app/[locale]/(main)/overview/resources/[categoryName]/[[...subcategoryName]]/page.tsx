@@ -1,4 +1,4 @@
-import { Category, Configuration } from '@/schemas/configuration-schema';
+import { Category, Configuration } from '@/schemas/configurationSchema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
 import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 

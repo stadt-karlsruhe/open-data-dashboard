@@ -1,6 +1,6 @@
 'use client';
 
-import { Configuration } from '@/schemas/configuration-schema';
+import { Configuration } from '@/schemas/configurationSchema';
 import Image from 'next/image';
 import LocaleSwitcher from './LocaleSwitcher';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';

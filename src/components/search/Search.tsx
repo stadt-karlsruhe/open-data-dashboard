@@ -1,7 +1,7 @@
 'use client';
 
 import { CSSProperties, useState } from 'react';
-import { Configuration, Resource } from '@/schemas/configuration-schema';
+import { Configuration, Resource } from '@/schemas/configurationSchema';
 
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
