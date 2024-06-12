@@ -17,15 +17,15 @@ export default async function Visualization({ resource }: { resource: JSONResour
     return <ErrorComponent type="dataNotLoaded" resource={resource} error={String(err)} />;
   }
 
-  const transformedData = transform(resource, data);
-  if (!transformedData.success) {
-    return <ErrorComponent type="dataEmpty" resource={resource} error={JSON.stringify(transformedData.error)} />;
+  const { success, transformedData, error } = transform(resource, data);
+  if (!success) {
+    return <ErrorComponent type="dataEmpty" resource={resource} error={error} />;
   }
 
   if (resource.type === 'GeoJSON') {
-    return <GeoMap resource={resource} geoJsonData={transformedData.data as GeoJSON.FeatureCollection} />;
+    return <GeoMap resource={resource} geoJsonData={transformedData as GeoJSON.FeatureCollection} />;
   }
-  return <ChartTableWrapper resource={resource} transformedData={transformedData.data as TransformedData[]} />;
+  return <ChartTableWrapper resource={resource} transformedData={transformedData as TransformedData[]} />;
 }
 
 async function fetchData(resource: Resource) {

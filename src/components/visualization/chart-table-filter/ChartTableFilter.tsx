@@ -78,7 +78,7 @@ export default function ChartTableFilter({
   }
 
   return (
-    <div className="container">
+    <div>
       <Accordion flush>
         <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
         <CurrentFilters filters={filters} onClear={onChange} />

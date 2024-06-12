@@ -1,4 +1,5 @@
 import { GeoJSONResource, JSONResource } from './configuration-schema';
+import { fromError } from 'zod-validation-error';
 import { transformDataForType } from '@/transformations/transformFormat';
 import { z } from 'zod';
 
@@ -32,10 +33,11 @@ const geoJSONSchema = z.object({
 export type TransformedData = z.infer<typeof transformedDataSchema>;
 
 export function transform(resource: JSONResource | GeoJSONResource, data: unknown) {
-    if (resource.type === 'GeoJSON') {
-        const transformedData = transformDataForType(resource, data);
-        return geoJSONSchema.safeParse(transformedData);
-    }
-    const transformedData = transformDataForType(resource, data);
-    return transformedDataArraySchema.safeParse(transformedData);
+    const transformedData =
+        resource.type === 'GeoJSON'
+            ? geoJSONSchema.safeParse(transformDataForType(resource, data))
+            : transformedDataArraySchema.safeParse(transformDataForType(resource, data));
+    return transformedData.success
+        ? { success: true, transformedData: transformedData.data, error: undefined }
+        : { success: false, transformedData: undefined, error: fromError(transformedData.error).toString() };
 }
