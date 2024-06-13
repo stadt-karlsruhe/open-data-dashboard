@@ -91,7 +91,7 @@
     },
     "Footer": {
         "imprint": "Legal Notice",
-        "dataProtection": "Data Protection Policy"
-
+        "dataProtection": "Privacy Policy",
+         "sourceCode" : "Sourcecode"
     }
 }

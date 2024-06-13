@@ -91,7 +91,7 @@
     },
     "Footer": {
         "imprint": "Impressum",
-        "dataProtection": "Datenschutz"
-
+        "dataProtection": "Datenschutz",
+        "sourceCode" : "Quellcode"
     }
 }

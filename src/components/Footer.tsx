@@ -9,19 +9,19 @@ const { Link } = createSharedPathnamesNavigation({
 export default function Footer({ className }: { className?: string }) {
   const t = useTranslations('Footer');
   return (
-    <footer className={`footer bg-black py-2 d-flex flex-wrap ${className ?? ''}`}>
+    <footer className={`footer bg-black py-3 d-flex flex-wrap ${className ?? ''}`}>
       <div className="container-sm d-flex flex-wrap justify-content-around">
         <a
           href="/imprint"
           className="lead link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
         >
-          {t('imprint')}
+          {t('imprint')} & <br /> {t('dataProtection')}
         </a>
         <a
           href="#"
           className="lead link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
         >
-          {t('dataProtection')}
+          {t('sourceCode')}
         </a>
       </div>
     </footer>
