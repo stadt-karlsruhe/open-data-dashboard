@@ -54,15 +54,17 @@ function getCategoryContent(configuration: Configuration, category: Category, ca
 }
 
 function computeCategoryContent(configuration: Configuration, category: Category) {
-  const subcategories =
-    category.subcategories?.map((subcategory) => ({
-      title: subcategory.name,
-      description: subcategory.description,
-      href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
-      isCategory: true,
-      icon: subcategory.icon,
-    })) ?? [];
   const resources = getResourcesForCategory(configuration, category);
+  if (!category.subcategories) {
+    return resources as OverviewRow[];
+  }
+  const subcategories = category.subcategories.map((subcategory) => ({
+    title: subcategory.name,
+    description: subcategory.description,
+    href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
+    isCategory: true,
+    icon: subcategory.icon,
+  }));
   return [...subcategories, ...resources] as OverviewRow[];
 }
 
