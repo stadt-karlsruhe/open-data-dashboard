@@ -63,15 +63,7 @@ function computeCategoryContent(configuration: Configuration, category: Category
       icon: subcategory.icon,
     })) ?? [];
   const resources = getResourcesForCategory(configuration, category);
-  return [...resources, ...subcategories].sort((a, b) => {
-    if (a.isCategory && !b.isCategory) {
-      return -1;
-    }
-    if (!a.isCategory && b.isCategory) {
-      return 1;
-    }
-    return 0;
-  }) as OverviewRow[];
+  return [...subcategories, ...resources] as OverviewRow[];
 }
 
 function getResourcesForCategory(configuration: Configuration, category: Category) {
