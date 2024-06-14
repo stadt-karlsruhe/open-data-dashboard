@@ -21,6 +21,7 @@ describe('application configuration', () => {
 
         const configuration = await getConfiguration();
 
+        expect(configuration).not.toStrictEqual({});
         expect(configuration).toBeValidConfiguration();
     });
 });
