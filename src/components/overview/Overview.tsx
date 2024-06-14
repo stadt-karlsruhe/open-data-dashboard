@@ -53,7 +53,7 @@ function transformContentToHTMLElement(contentRow: OverviewRow) {
   const badgeColor = getColorForResourceType(contentRow.resourceType);
   const titleColor = contentRow.isCategory ? 'nav-link' : '';
   return (
-    <Link href={contentRow.href} className="d-flex align-items-center text-dark text-decoration-none w-100 px-2 py-4">
+    <Link href={contentRow.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
       <i className={`bi bi-${contentRow.icon} ${titleColor} fs-1 me-3`} />
       <div>
         <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
