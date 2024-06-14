@@ -51,9 +51,7 @@ function parseParams(configCategories: Category[], categories?: string[]) {
   const [category] = categories;
   const subcategory = categories.length > 1 ? categories[1] : undefined;
   if (
-    computeIfAbsent(
-      paramsToCategory,
-      { category, subcategory },
+    computeIfAbsent(paramsToCategory, { category, subcategory }, () =>
       computeCategory(configCategories, category, subcategory),
     ) === undefined
   ) {
@@ -69,10 +67,8 @@ function parseParams(configCategories: Category[], categories?: string[]) {
 
 function getHeader(categoryPair: CategoryPair, configCategories: Category[]) {
   if (categoryPair.category !== undefined) {
-    const header = computeIfAbsent(
-      paramsToCategory,
-      categoryPair,
-      computeCategory(configCategories, categoryPair.category, categoryPair.subcategory),
+    const header = computeIfAbsent(paramsToCategory, categoryPair, () =>
+      computeCategory(configCategories, categoryPair.category as string, categoryPair.subcategory),
     );
     return header as {
       name: string;
@@ -82,7 +78,9 @@ function getHeader(categoryPair: CategoryPair, configCategories: Category[]) {
 }
 
 function getContent(configuration: Configuration, categoryPair: CategoryPair) {
-  return computeIfAbsent(paramsToContent, categoryPair, computeContent(configuration, categoryPair)) as OverviewRow[];
+  return computeIfAbsent(paramsToContent, categoryPair, () =>
+    computeContent(configuration, categoryPair),
+  ) as OverviewRow[];
 }
 
 function computeContent(configuration: Configuration, categoryPair: CategoryPair) {
@@ -101,10 +99,8 @@ function computeContent(configuration: Configuration, categoryPair: CategoryPair
     return content;
   }
 
-  const category = computeIfAbsent(
-    paramsToCategory,
-    categoryPair,
-    computeCategory(configuration.categories, categoryPair.category, categoryPair.subcategory),
+  const category = computeIfAbsent(paramsToCategory, categoryPair, () =>
+    computeCategory(configuration.categories, categoryPair.category as string, categoryPair.subcategory),
   ) as Category;
 
   category.subcategories?.forEach((subcategory) =>
