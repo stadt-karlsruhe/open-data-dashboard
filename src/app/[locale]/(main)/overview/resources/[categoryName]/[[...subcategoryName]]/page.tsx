@@ -4,8 +4,11 @@ import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } fr
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
+import { computeIfAbsent } from '@/utils/mapUtils';
 import { getIconForResource } from '@/utils/icons';
 import { getValidatedConfiguration } from '@/schemas/validate';
+
+const categoryToContent: Map<string, OverviewRow[]> = new Map<string, OverviewRow[]>();
 
 export default async function Page({
   params: { categoryName, subcategoryName },
@@ -38,12 +41,19 @@ export default async function Page({
 
   return (
     <PageWrapper title={subcategory.name} description={subcategory.description}>
-      <Overview content={getCategoryContent(configuration, subcategory)} />
+      <Overview content={getCategoryContent(configuration, subcategory, categoryName)} />
     </PageWrapper>
   );
 }
 
-function getCategoryContent(configuration: Configuration, category: Category) {
+function getCategoryContent(configuration: Configuration, category: Category, categoryName?: string) {
+  const mapKey = categoryName === undefined ? category.name : categoryName + category.name;
+  return computeIfAbsent(categoryToContent, mapKey, () =>
+    computeCategoryContent(configuration, category),
+  ) as OverviewRow[];
+}
+
+function computeCategoryContent(configuration: Configuration, category: Category) {
   const subcategories =
     category.subcategories?.map((subcategory) => ({
       title: subcategory.name,
