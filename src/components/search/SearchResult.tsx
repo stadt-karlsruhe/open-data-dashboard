@@ -1,26 +1,25 @@
 // eslint-disable-next-line import/named
 import { Highlighter, TypeaheadMenuProps } from 'react-bootstrap-typeahead';
 
-import { Resource } from '@/schemas/configurationSchema';
+import { DataElement } from '@/types/data';
 import { getColorForResourceType } from '@/utils/colors';
-import { getIconForResource } from '@/utils/icons';
 
-export default function SearchResult({ resource, menuProps }: { resource: Resource; menuProps: TypeaheadMenuProps }) {
+export default function SearchResult({ element, menuProps }: { element: DataElement; menuProps: TypeaheadMenuProps }) {
   return (
     <div className="d-flex align-items-center">
       <div>
-        <i className={`bi bi-${getIconForResource(resource)} fs-1`} />
+        <i className={`bi bi-${element.icon} fs-1`} />
       </div>
       <div className="d-flex flex-column text-center text-wrap flex-fill">
         <div className="fw-bold">
-          <Highlighter search={menuProps.text}>{resource.name}</Highlighter>
+          {element.type === 'category' && <i className="bi bi-collection-fill me-1" />}
+          {element.type === 'dashboard' && <i className="bi bi-bar-chart-fill me-1" />}
+          <Highlighter search={menuProps.text}>{element.name}</Highlighter>
         </div>
-        <small>
-          {resource.description && <Highlighter search={menuProps.text}>{resource.description}</Highlighter>}
-        </small>
+        <small>{element.description && <Highlighter search={menuProps.text}>{element.description}</Highlighter>}</small>
         <div className="my-1">
-          <div className="badge  p-2" style={{ backgroundColor: getColorForResourceType(resource.type) }}>
-            {resource.type}
+          <div className="badge p-2" style={{ backgroundColor: getColorForResourceType(element.resourceType) }}>
+            {element.resourceType}
           </div>
         </div>
       </div>

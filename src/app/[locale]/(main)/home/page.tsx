@@ -9,7 +9,7 @@ export default async function Home() {
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }
-  const [homepage] = configuration.dashboards;
+  const homepage = configuration.dashboards.find((dashboard) => dashboard.name === 'homepage');
 
   return (
     <div className="d-flex flex-column flex-grow-1">
@@ -31,7 +31,7 @@ export default async function Home() {
           style={{ bottom: '20%', transform: 'translateX(-50%)', maxWidth: '600px' }}
         />
       </div>
-      <DashboardContent dashboard={homepage} />
+      {homepage && <DashboardContent dashboard={homepage} />}
     </div>
   );
 }

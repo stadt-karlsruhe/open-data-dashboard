@@ -80,7 +80,7 @@
         "keepSearchParams": "Suchparameter beibehalten"
     },
     "Search": {
-        "emptyLabel": "Keine Ressourcen gefunden.",
+        "emptyLabel": "Keine Einträge gefunden.",
         "search": "Suche"
     },
     "Table": {
