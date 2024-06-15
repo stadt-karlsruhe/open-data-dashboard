@@ -23,6 +23,20 @@
         "allEntriesLabel": "Zeile",
         "contains": "enthält"
     },
+    "DetailsPageControls": {
+        "download": "Herunterladen",
+        "embed": "Einbetten",
+        "fullscreen": "Vollbild"
+    },
+    "EmbedModal": {
+        "dashboardBody": "Das Dashboard kann mithilfe des folgenden Codes eingebettet werden.",
+        "dashboardTitle": "Dashboard einbetten",
+        "embedHeight": "Höhe",
+        "embedWidth": "Breite",
+        "keepSearchParams": "Suchparameter beibehalten",
+        "resourceBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
+        "resourceTitle": "Ressourcendarstellung einbetten"
+    },
     "Error": {
         "configurationErrorMessage": "Beim Laden und Validieren der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
         "configurationErrorTitle": "Die Anwendungskonfiguration ist invalide oder konnte nicht geladen werden!",
@@ -68,16 +82,6 @@
     },
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
-    },
-    "ResourceDetailsControls": {
-        "download": "Herunterladen",
-        "embed": "Einbetten",
-        "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
-        "embedHeight": "Höhe",
-        "embedTitle": "Ressourcendarstellung einbetten",
-        "embedWidth": "Breite",
-        "fullscreen": "Vollbild",
-        "keepSearchParams": "Suchparameter beibehalten"
     },
     "Search": {
         "emptyLabel": "Keine Einträge gefunden.",

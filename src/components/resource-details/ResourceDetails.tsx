@@ -4,12 +4,12 @@ import EmbeddedViewer from '../visualization/EmbeddedViewer';
 import Visualization from '../visualization/Visualization';
 import dynamic from 'next/dynamic';
 
-const ResourceDetailsControls = dynamic(() => import('./ResourceDetailsControls'), { ssr: false });
+const DetailsPageControls = dynamic(() => import('../details-page/DetailsPageControls'), { ssr: false });
 
 export default function ResourceDetails({ resource }: { resource: Resource }) {
   return (
     <div>
-      <ResourceDetailsControls resource={resource} />
+      <DetailsPageControls type="resource" element={resource} />
       <div
         className={`d-flex flex-column flex-grow-1 ${resource.type === 'GeoJSON' ? 'border border-secondary' : ''}`}
         style={{
