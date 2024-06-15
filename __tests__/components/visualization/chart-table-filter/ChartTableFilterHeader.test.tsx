@@ -90,7 +90,7 @@ describe('component ChartTableFilterHeader', () => {
 
     const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipCollapse });
     expect(button).toBeInTheDocument();
-    expect(button).toContainHTML('<i class="bi bi-caret-up-square"></i>');
+    expect(button).toContainHTML('<i class="bi bi-caret-up"/>');
   });
 
   it('should show expand icon and title when activeEventKey does not match eventKey', () => {
@@ -100,6 +100,6 @@ describe('component ChartTableFilterHeader', () => {
 
     const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand });
     expect(button).toBeInTheDocument();
-    expect(button).toContainHTML('<i class="bi bi-caret-down-square"></i>');
+    expect(button).toContainHTML('<i class="bi bi-caret-down"/>');
   });
 });
