@@ -10,7 +10,7 @@
     "ChartTableFilterHead": {
         "collapseTooltipCollapse": "Filter schließen",
         "collapseTooltipExpand": "Filter öffnen",
-        "searchAll": "Suche in allen Zeilen"
+        "searchAll": "Filter in allen Zeilen"
     },
     "ChartTableWrapper": {
         "barChart": "Balkendiagramm",

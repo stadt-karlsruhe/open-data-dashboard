@@ -43,7 +43,8 @@ export function ChartTableFilterHeader({
         title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         onClick={decoratedOnClick}
       >
-        {isCurrentEventKey ? <i className="bi bi-caret-up-square"></i> : <i className="bi bi-caret-down-square"></i>}
+        <i className="bi bi-funnel-fill fs-5" />
+        {isCurrentEventKey ? <i className="bi bi-caret-up" /> : <i className="bi bi-caret-down" />}
       </button>
     </ClearableInputGroup>
   );

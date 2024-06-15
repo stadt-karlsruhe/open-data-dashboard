@@ -10,7 +10,7 @@
     "ChartTableFilterHead": {
         "collapseTooltipCollapse": "Collapse filters",
         "collapseTooltipExpand": "Expand filters",
-        "searchAll": "Search all rows"
+        "searchAll": "Filter all rows"
     },
     "ChartTableWrapper": {
         "barChart": "Bar Chart",
