@@ -28,7 +28,7 @@ export default async function Page({
   if (!subcategoryName || subcategoryName.length === 0) {
     return (
       <PageWrapper title={category.name} description={category.description}>
-        <Overview content={getCategoryContent(configuration, category)} />
+        <Overview content={getCategoryContent(configuration, category, category.name)} />
       </PageWrapper>
     );
   }
@@ -41,14 +41,13 @@ export default async function Page({
 
   return (
     <PageWrapper title={subcategory.name} description={subcategory.description}>
-      <Overview content={getCategoryContent(configuration, subcategory, categoryName)} />
+      <Overview content={getCategoryContent(configuration, subcategory, `${category.name}-${subcategory.name}`)} />
     </PageWrapper>
   );
 }
 
-function getCategoryContent(configuration: Configuration, category: Category, categoryName?: string) {
-  const mapKey = categoryName === undefined ? category.name : categoryName + category.name;
-  return computeIfAbsent(categoryToContent, mapKey, () =>
+function getCategoryContent(configuration: Configuration, category: Category, categoryKey: string) {
+  return computeIfAbsent(categoryToContent, categoryKey, () =>
     computeCategoryContent(configuration, category),
   ) as OverviewRow[];
 }
