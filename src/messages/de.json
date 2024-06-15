@@ -92,6 +92,17 @@
     "Footer": {
         "imprint": "Impressum",
         "dataProtection": "Datenschutz",
-        "sourceCode" : "Quellcode"
+        "sourceCode" : "Quellcode",
+        "publisher": "Herausgeber",
+        "authorizedRepresentative": "Vertretungsberechtigter",
+        "supervisoryAuthority": "Aufsichtsbehörde",
+        "vatId": "Umsatzsteuer-Identifikationsnummer",
+        "postalAddress": "Postanschrift",
+        "responsibleEditorialDepartment": "Verantwortliche Redaktion",
+        "technicalImplementation": "Technische Umsetzung und Gestaltung",
+        "dataProtectionText1": "Wir speichern keinerlei Daten über unsere Benutzer und erheben keine Statistiken über Zugriffe. Soweit möglich, halten wir alle Abhängigkeiten auf unserem eigenen Server.",
+        "externalLinks": "Externe Links",
+        "dataProtectionText2": "Unsere Webseite kann Links zu externen Webseiten enthalten. Bitte beachten Sie, dass wir für die Datenschutzpraktiken dieser anderen Webseiten nicht verantwortlich sind. Wir empfehlen Ihnen, die Datenschutzerklärungen der verlinkten Webseiten zu lesen."
+
     }
 }

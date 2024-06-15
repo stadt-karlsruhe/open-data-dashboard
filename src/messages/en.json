@@ -92,6 +92,17 @@
     "Footer": {
         "imprint": "Legal Notice",
         "dataProtection": "Privacy Policy",
-         "sourceCode" : "Sourcecode"
+         "sourceCode" : "Sourcecode",
+         "publisher": "Publisher",
+         "authorizedRepresentative": "Authorized Representative",
+         "supervisoryAuthority": "Supervisory Authority",
+         "vatId": "VAT Identification Number",
+         "postalAddress": "Postal address",
+         "responsibleEditorialDepartment": "Responsible Editorial Department",
+         "technicalImplementation": "Technical Implementation and Design",
+         "dataProtectionText1": "We do not store any data about our users and do not collect statistics on accesses. Wherever possible, we keep all dependencies on our own server.",
+         "externalLinks": "External Links",
+         "dataProtectionText2": "Our website may contain links to external websites. Please note that we are not responsible for the privacy practices of these other websites. We recommend reading the privacy policies of linked websites."
+
     }
 }

@@ -18,9 +18,11 @@ export default function Footer({ className }: { className?: string }) {
           {t('imprint')} & <br /> {t('dataProtection')}
         </a>
         <a
-          href="#"
+          href="https://github.com/stadt-karlsruhe/open-data-dashboard"
+          target="_blank"
           className="lead link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
         >
+          <i className="bi bi-box-arrow-up-right me-2"></i>
           {t('sourceCode')}
         </a>
       </div>
