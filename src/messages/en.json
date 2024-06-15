@@ -24,10 +24,8 @@
         "contains": "contains"
     },
     "Error": {
-        "configurationInvalidMessage": "The validation for the configuration returned errors.\n\nError: \"{error}\"",
-        "configurationInvalidTitle": "Configuration is invalid!",
-        "configurationNotLoadedMessage": "The application returned an error while trying to load the configuration file(s).\n\nError: \"{error}\"",
-        "configurationNotLoadedTitle": "The application configuration could not be loaded!",
+        "configurationErrorMessage": "The application returned an error while trying to load and validate the configuration file(s).\n\nError: \"{error}\"",
+        "configurationErrorTitle": "The application configuration is invalid or could not be loaded!",
         "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
         "dataEmptyTitle": "Resource returned no data!",
         "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
@@ -35,11 +33,13 @@
         "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
         "notFoundSubtitle": "The page you are looking for was not found.",
         "notFoundTitle": "Oops! You're lost.",
-        "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: {error}",
-        "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
         "returnBtn": "Return Home",
         "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
         "unexpectedTitle": "An unexpected error ocurred!"
+    },
+    "Footer": {
+        "dataProtection": "Data Protection Policy",
+        "imprint": "Legal Notice"
     },
     "Header": {
         "title": "Open Data Dashboard"
@@ -61,10 +61,10 @@
         "search": "Search"
     },
     "Overview": {
-        "dataDescription": "On this site you will find an overview of all available data categories.",
-        "dataTitle": "Data Categories",
-        "dashboardsDescription": "On this site you will find an overview of all dashboards.",
-        "dashboardsTitle": "Dashboards"
+        "dashboardsDescription": "On this page you will find an overview of all dashboards.",
+        "dashboardsTitle": "Dashboards",
+        "dataDescription": "On this page you will find an overview of all available data categories.",
+        "dataTitle": "Data Categories"
     },
     "ResetView": {
         "resetTooltip": "Reset view"
@@ -88,10 +88,5 @@
         "rangeSeparatorText": "of",
         "rowsPerPageText": "Rows per page:",
         "selectAllRowsItemText": "All"
-    },
-    "Footer": {
-        "imprint": "Legal Notice",
-        "dataProtection": "Data Protection Policy"
-
     }
 }

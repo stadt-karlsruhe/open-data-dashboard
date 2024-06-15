@@ -1,4 +1,4 @@
-import { Filter, JSONResource } from '@/schemas/configuration-schema';
+import { Filter, JSONResource } from '@/schemas/configurationSchema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -6,7 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { ChartTableFilterBody } from './ChartTableFilterBody';
 import { ChartTableFilterHeader } from './ChartTableFilterHeader';
 import CurrentFilters from './CurrentFilters';
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -78,7 +78,7 @@ export default function ChartTableFilter({
   }
 
   return (
-    <div className="container">
+    <div>
       <Accordion flush>
         <ChartTableFilterHeader resourceId={resource.id} filters={filters} onChange={onChange} eventKey="0" />
         <CurrentFilters filters={filters} onClear={onChange} />

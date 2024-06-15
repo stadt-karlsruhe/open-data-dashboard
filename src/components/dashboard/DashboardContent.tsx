@@ -1,4 +1,4 @@
-import { Dashboard } from '@/schemas/configuration-schema';
+import { Dashboard } from '@/schemas/configurationSchema';
 import EmbeddedViewer from '../visualization/EmbeddedViewer';
 
 export default function DashboardContent({ dashboard }: { dashboard: Dashboard }) {

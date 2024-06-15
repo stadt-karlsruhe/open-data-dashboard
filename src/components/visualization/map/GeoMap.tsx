@@ -4,9 +4,9 @@ import 'leaflet/dist/leaflet.css';
 
 import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import L, { LatLngExpression } from 'leaflet';
-import { colorPrimary, getColor } from '@/colors';
+import { colorPrimary, getColor } from '@/utils/colors';
 
-import { GeoJSONResource } from '@/schemas/configuration-schema';
+import { GeoJSONResource } from '@/schemas/configurationSchema';
 import Legend from './Legend';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';

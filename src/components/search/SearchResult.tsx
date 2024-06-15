@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/named
 import { Highlighter, TypeaheadMenuProps } from 'react-bootstrap-typeahead';
 
-import { Resource } from '@/schemas/configuration-schema';
-import { getColorForResourceType } from '@/colors';
-import { getIconForResource } from '@/icons';
+import { Resource } from '@/schemas/configurationSchema';
+import { getColorForResourceType } from '@/utils/colors';
+import { getIconForResource } from '@/utils/icons';
 
 export default function SearchResult({ resource, menuProps }: { resource: Resource; menuProps: TypeaheadMenuProps }) {
   return (
@@ -15,7 +15,7 @@ export default function SearchResult({ resource, menuProps }: { resource: Resour
         <div className="fw-bold">
           <Highlighter search={menuProps.text}>{resource.name}</Highlighter>
         </div>
-        <small className="fst-italic">
+        <small>
           {resource.description && <Highlighter search={menuProps.text}>{resource.description}</Highlighter>}
         </small>
         <div className="my-1">

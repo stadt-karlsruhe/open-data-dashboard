@@ -4,22 +4,21 @@ import '../../themes/theme.karlsruhe.scss';
 import { getMessages, getTranslations } from 'next-intl/server';
 
 import { NextIntlClientProvider } from 'next-intl';
+import { ReactNode } from 'react';
 import { getConfiguration } from '@/configuration';
-
-export const dynamicParams = false;
 
 export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
   params: { locale: string };
 }>) {
-  const messages = await getMessages();
   const configuration = await getConfiguration();
+  const messages = await getMessages();
   return (
     // By default, Bootstrap will ignore themes that are not defined
-    <html lang={locale} data-bs-theme={configuration.success ? configuration.data?.appearance.theme : ''}>
+    <html lang={locale} data-bs-theme={String(configuration.appearance.theme)}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

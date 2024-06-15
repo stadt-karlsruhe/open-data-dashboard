@@ -1,4 +1,4 @@
-import { TransformedData } from './schemas/data-schema';
+import { TransformedData } from './schemas/dataSchema';
 
 const allEntries = 'all-entries';
 

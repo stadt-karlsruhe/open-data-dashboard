@@ -1,12 +1,12 @@
 'use client';
 
 import { CSSProperties, useState } from 'react';
-import { Configuration, Resource } from '@/schemas/configuration-schema';
+import { Configuration, Resource } from '@/schemas/configurationSchema';
 
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
+import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
-import { getColorForResourceType } from '@/colors';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
 import { useTranslations } from 'next-intl';
@@ -54,7 +54,7 @@ export default function Search({
           const resource = selected[0] as Resource;
           setSelected([]);
           search('');
-          router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
+          router.push(`/resource/${concatenateNameAndId(resource.name, resource.id)}`);
         }
       }}
       options={searchResults?.slice(0, 6) ?? []}

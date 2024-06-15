@@ -8,7 +8,8 @@ const createJestConfig = nextJest({
 
 const jestConfig: Config.InitialOptions = {
     extensionsToTreatAsEsm: ['.ts', '.tsx'],
-    moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
+    // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+    moduleNameMapper: { '^~/data/(.*)$': '<rootDir>/_tests__/data/$1', '^@/(.*)$': '<rootDir>/src/$1' },
     transform: {
         '^.+\\.(t|j)sx?$': [
             '@swc/jest',

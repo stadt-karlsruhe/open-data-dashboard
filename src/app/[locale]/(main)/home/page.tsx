@@ -2,19 +2,14 @@ import DashboardContent from '@/components/dashboard/DashboardContent';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
-import { configurationSchema } from '@/schemas/configuration-schema';
-import { getConfiguration } from '@/configuration';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Home() {
-  const configuration = await getConfiguration();
-  if (!configuration.success) {
-    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
+  const { success, configuration, error } = await getValidatedConfiguration();
+  if (!success) {
+    return <ErrorComponent type="configurationError" error={error} />;
   }
-  const parsedConfiguration = configurationSchema.safeParse(configuration.data);
-  if (!parsedConfiguration.success) {
-    return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
-  }
-  const [homepage] = parsedConfiguration.data.dashboards;
+  const [homepage] = configuration.dashboards;
 
   return (
     <div className="d-flex flex-column flex-grow-1">
@@ -30,10 +25,10 @@ export default async function Home() {
           sizes="1700px"
         />
         <Search
-          configuration={parsedConfiguration.data}
+          configuration={configuration}
           id="homepage-search"
-          className="position-absolute w-50 start-50"
-          style={{ bottom: '20%', transform: 'translateX(-50%)' }}
+          className="position-absolute w-100 start-50 px-2"
+          style={{ bottom: '20%', transform: 'translateX(-50%)', maxWidth: '600px' }}
         />
       </div>
       <DashboardContent dashboard={homepage} />

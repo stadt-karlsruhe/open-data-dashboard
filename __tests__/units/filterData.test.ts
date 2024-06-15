@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { filterAllEntries, filterFloat, filterInteger, filterString } from '../data/dataFilters';
 
-import { TransformedData } from '@/schemas/data-schema';
+import { TransformedData } from '@/schemas/dataSchema';
 import { filterData } from '@/filter';
 import { jsonStandard } from '../data/dataFormats';
 

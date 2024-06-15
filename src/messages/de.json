@@ -24,10 +24,8 @@
         "contains": "enthält"
     },
     "Error": {
-        "configurationInvalidMessage": "Die Validierung der Konfiguration hat Fehler zurückgegeben.\n\nFehler: \"{error}\"",
-        "configurationInvalidTitle": "Die Konfiguration ist fehlerhaft!",
-        "configurationNotLoadedMessage": "Beim Laden der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
-        "configurationNotLoadedTitle": "Die Anwendungskonfiguration konnte nicht geladen werden!",
+        "configurationErrorMessage": "Beim Laden und Validieren der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
+        "configurationErrorTitle": "Die Anwendungskonfiguration ist invalide oder konnte nicht geladen werden!",
         "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
         "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
         "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
@@ -35,11 +33,13 @@
         "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
         "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
         "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-        "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: {error}",
-        "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
         "returnBtn": "Zurück zur Startseite",
         "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
         "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
+    },
+    "Footer": {
+        "dataProtection": "Datenschutz",
+        "imprint": "Impressum"
     },
     "Header": {
         "title": "Open Data Dashboard"
@@ -61,10 +61,10 @@
         "search": "Suche"
     },
     "Overview": {
-        "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien.",
-        "dataTitle": "Datenkategorien",
-        "dashboardsDescription": "Auf dieser Seite finden sie eine Übersicht der Dashboards.",
-        "dashboardsTitle": "Dashboards"
+        "dashboardsDescription": "Auf dieser Seite finden Sie eine Übersicht der Dashboards.",
+        "dashboardsTitle": "Dashboards",
+        "dataDescription": "Auf dieser Seite finden Sie eine Übersicht aller verfügbaren Datenkategorien.",
+        "dataTitle": "Datenkategorien"
     },
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
@@ -88,10 +88,5 @@
         "rangeSeparatorText": "von",
         "rowsPerPageText": "Zeilen pro Seite:",
         "selectAllRowsItemText": "Alle"
-    },
-    "Footer": {
-        "imprint": "Impressum",
-        "dataProtection": "Datenschutz"
-
     }
 }

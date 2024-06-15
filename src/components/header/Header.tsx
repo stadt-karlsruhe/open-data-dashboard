@@ -1,6 +1,6 @@
 'use client';
 
-import { Configuration } from '@/schemas/configuration-schema';
+import { Configuration } from '@/schemas/configurationSchema';
 import Image from 'next/image';
 import LocaleSwitcher from './LocaleSwitcher';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
@@ -22,7 +22,7 @@ export default function Header({ configuration }: { configuration: Configuration
   const t = useTranslations('Header');
   const showSearchbar = !usePathname().endsWith('/home');
   return (
-    <div className="bg-white py-3">
+    <div className="bg-white py-1 py-lg-3">
       <div className="container-lg">
         <div className="d-flex justify-content-between align-items-center m-2">
           <button
@@ -70,7 +70,7 @@ export default function Header({ configuration }: { configuration: Configuration
           <Search
             configuration={configuration}
             id="mobile-search"
-            className="d-block d-md-none flex-fill m-2"
+            className="d-block d-md-none flex-fill m-0"
             style={{ maxWidth: '70vw' }}
           />
         )}

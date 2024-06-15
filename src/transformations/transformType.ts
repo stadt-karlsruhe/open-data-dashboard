@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configuration-schema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
 
 export function narrowType(
     records: Record<string, never>[] | GeoJSON.FeatureCollection,

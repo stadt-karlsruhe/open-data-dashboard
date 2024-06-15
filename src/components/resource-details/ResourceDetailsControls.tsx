@@ -4,7 +4,7 @@ import { CopyBlock, dracula } from 'react-code-blocks';
 import { useLocale, useTranslations } from 'next-intl';
 
 import Modal from 'react-bootstrap/Modal';
-import { Resource } from '@/schemas/configuration-schema';
+import { Resource } from '@/schemas/configurationSchema';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { useSearchParams } from 'next/navigation';
@@ -26,7 +26,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
 
   return (
     <div className="d-flex flex-row justify-content-center justify-content-md-between mb-3">
-      <Link className="btn btn-primary" href={`/resource/${resource.id}${getParams()}`} title={t('fullscreen')}>
+      <Link className="btn btn-primary" href={`/embed/resource/${resource.id}${getParams()}`} title={t('fullscreen')}>
         <i className="bi bi-arrows-fullscreen" /> <span className="d-none d-md-inline">{t('fullscreen')}</span>
       </Link>
       <div className="d-flex flex-row">
@@ -111,7 +111,7 @@ export default function ResourceDetailsControls({ resource }: { resource: Resour
             <strong>Code:</strong>
           </div>
           <CopyBlock
-            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${window.location.origin}/${locale}/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" />`}
+            text={`<iframe width="${iframeWidth}" height="${iframeHeight}" src="${window.location.origin}/${locale}/embed/resource/${resource.id}${keepParams ? getParamsFromWindow() : ''}" />`}
             language="html"
             theme={dracula}
             wrapLongLines={true}
