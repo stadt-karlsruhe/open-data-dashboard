@@ -12,7 +12,6 @@
     "docs": "mkdocs serve"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.12.39",
     "@jest/globals": "^29.7.0",
     "@swc/core": "1.5.29",
     "@swc/jest": "0.2.36",
@@ -51,7 +50,6 @@
     "lru-cache": "^10.2.2",
     "next": "14.2.4",
     "next-intl": "3.15.0",
-    "nyc": "^17.0.0",
     "prettier-eslint": "16.3.0",
     "react": "18.3.1",
     "react-bootstrap": "2.10.2",
@@ -64,7 +62,6 @@
     "recharts": "2.12.7",
     "sass": "1.77.5",
     "styled-components": "6.1.11",
-    "swc-plugin-coverage-instrument": "^0.0.21",
     "ts-deepmerge": "7.0.0",
     "ts-node": "10.9.2",
     "typescript": "^5",

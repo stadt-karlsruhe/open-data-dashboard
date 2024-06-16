@@ -42,5 +42,5 @@
         "*.mjs",
         "*.d.ts",
         "__tests__/*"
-, "cypress.config.js"    ]
+    ]
 }
