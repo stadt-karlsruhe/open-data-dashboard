@@ -1,0 +1,7 @@
+---
+extends:
+    - plugin:cypress/recommended
+rules:
+    jest/prefer-importing-jest-globals: off
+    jest/expect-expect: off
+    jest/prefer-expect-assertions: off
