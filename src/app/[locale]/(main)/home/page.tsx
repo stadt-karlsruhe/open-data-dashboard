@@ -1,4 +1,4 @@
-import DashboardContent from '@/components/dashboard/DashboardContent';
+import DashboardContent from '@/components/dashboard-resource/DashboardContent';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
