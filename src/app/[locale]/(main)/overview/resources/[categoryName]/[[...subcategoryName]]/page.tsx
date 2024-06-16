@@ -1,14 +1,19 @@
 import { Category, Configuration } from '@/schemas/configurationSchema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
+import { computeIfAbsent, computeIfAbsentCache } from '@/utils/mapUtils';
 import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import { LRUCache } from 'lru-cache';
 import PageWrapper from '@/components/layout/PageWrapper';
-import { computeIfAbsent } from '@/utils/mapUtils';
 import { getIconForResource } from '@/utils/icons';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
-const categoryToContent: Map<string, OverviewRow[]> = new Map<string, OverviewRow[]>();
+const options = {
+  max: 100,
+};
+
+const categoryToContentCache: LRUCache<string, OverviewRow[]> = new LRUCache<string, OverviewRow[]>(options);
 
 export default async function Page({
   params: { categoryName, subcategoryName },
@@ -47,12 +52,13 @@ export default async function Page({
 }
 
 function getCategoryContent(configuration: Configuration, category: Category, categoryKey: string) {
-  return computeIfAbsent(categoryToContent, categoryKey, () =>
+  return computeIfAbsentCache(categoryToContentCache, categoryKey, () =>
     computeCategoryContent(configuration, category),
   ) as OverviewRow[];
 }
 
 function computeCategoryContent(configuration: Configuration, category: Category) {
+  console.log('recalculate');
   const resources = getResourcesForCategory(configuration, category);
   if (!category.subcategories) {
     return resources as OverviewRow[];

@@ -65,5 +65,8 @@
     "yaml": "2.4.5",
     "zod": "^3.23.8",
     "zod-validation-error": "3.3.0"
+  },
+  "dependencies": {
+    "lru-cache": "^10.2.2"
   }
 }
