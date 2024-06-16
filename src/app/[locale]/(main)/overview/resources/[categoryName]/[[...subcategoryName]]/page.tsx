@@ -58,7 +58,6 @@ function getCategoryContent(configuration: Configuration, category: Category, ca
 }
 
 function computeCategoryContent(configuration: Configuration, category: Category) {
-  console.log('recalculate');
   const resources = getResourcesForCategory(configuration, category);
   if (!category.subcategories) {
     return resources as OverviewRow[];

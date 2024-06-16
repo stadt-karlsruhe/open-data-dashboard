@@ -10,9 +10,8 @@ export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaul
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function computeIfAbsentCache(cache: LRUCache<any, any, any>, key: unknown, defaultValueFn: () => unknown) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    let value = cache.get(key);
+export function computeIfAbsentCache(cache: LRUCache<any, any>, key: unknown, defaultValueFn: () => unknown) {
+    let value = cache.get(key) as unknown;
     if (value === undefined) {
         console.debug(`cache miss! key: ${key as string}`);
         value = defaultValueFn();
@@ -20,6 +19,5 @@ export function computeIfAbsentCache(cache: LRUCache<any, any, any>, key: unknow
     } else {
         console.debug('cache hit!');
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return value;
 }
