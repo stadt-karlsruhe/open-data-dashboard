@@ -1,108 +1,107 @@
 {
-    "AxisSelector": {
-        "title": "Select X-Axis:"
-    },
-    "ChartTableFilterBody": {
-        "clearAll": "Clear",
-        "clearAllTooltip": "Clear all filters",
-        "search": "Search"
-    },
-    "ChartTableFilterHead": {
-        "collapseTooltipCollapse": "Collapse filters",
-        "collapseTooltipExpand": "Expand filters",
-        "searchAll": "Search all rows"
-    },
-    "ChartTableWrapper": {
-        "barChart": "Bar Chart",
-        "table": "Table"
-    },
-    "ClearableInputGroup": {
-        "clearTooltip": "Clear"
-    },
-    "CurrentFilters": {
-        "allEntriesLabel": "Row",
-        "contains": "contains"
-    },
-    "Error": {
-        "configurationInvalidMessage": "The validation for the configuration returned errors.\n\nError: \"{error}\"",
-        "configurationInvalidTitle": "Configuration is invalid!",
-        "configurationNotLoadedMessage": "The application returned an error while trying to load the configuration file(s).\n\nError: \"{error}\"",
-        "configurationNotLoadedTitle": "The application configuration could not be loaded!",
-        "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
-        "dataEmptyTitle": "Resource returned no data!",
-        "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
-        "dataNotLoadedTitle": "Data could not be loaded!",
-        "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
-        "notFoundSubtitle": "The page you are looking for was not found.",
-        "notFoundTitle": "Oops! You're lost.",
-        "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: {error}",
-        "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
-        "returnBtn": "Return Home",
-        "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
-        "unexpectedTitle": "An unexpected error ocurred!"
-    },
-    "Header": {
-        "title": "Open Data Dashboard"
-    },
-    "Legend": {
-        "title": "Legend"
-    },
-    "LocaleSwitcher": {
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
-    },
-    "Metadata": {
-        "description": "Visualizations of open data related to the city of Karlsruhe",
-        "title": "Open Data Dashboard"
-    },
-    "NavigationContent": {
-        "dashboards": "Dashboards",
-        "data": "Data",
-        "home": "Home",
-        "search": "Search"
-    },
-    "Overview": {
-        "dataDescription": "On this site you will find an overview of all available data categories.",
-        "dataTitle": "Data Categories",
-        "dashboardsDescription": "On this site you will find an overview of all dashboards.",
-        "dashboardsTitle": "Dashboards"
-    },
-    "ResetView": {
-        "resetTooltip": "Reset view"
-    },
-    "ResourceDetailsControls": {
-        "download": "Download",
-        "embed": "Embed",
-        "embedBody": "The visualization for this resource can be embedded using the following code.",
-        "embedHeight": "Height",
-        "embedTitle": "Embed resource visualization",
-        "embedWidth": "Width",
-        "fullscreen": "Fullscreen",
-        "keepSearchParams": "Preserve search parameters"
-    },
-    "Search": {
-        "emptyLabel": "No resources found.",
-        "search": "Search"
-    },
-    "Table": {
-        "noRecords": "There are no records to display",
-        "rangeSeparatorText": "of",
-        "rowsPerPageText": "Rows per page:",
-        "selectAllRowsItemText": "All"
-    },
-    "Footer": {
-        "imprint": "Legal Notice",
-        "dataProtection": "Privacy Policy",
-         "sourceCode" : "Sourcecode",
-         "publisher": "Publisher",
-         "authorizedRepresentative": "Authorized Representative",
-         "supervisoryAuthority": "Supervisory Authority",
-         "vatId": "VAT Identification Number",
-         "postalAddress": "Postal address",
-         "responsibleEditorialDepartment": "Responsible Editorial Department",
-         "technicalImplementation": "Technical Implementation and Design",
-         "dataProtectionText1": "We do not store any data about our users and do not collect statistics on accesses. Wherever possible, we keep all dependencies on our own server.",
-         "externalLinks": "External Links",
-         "dataProtectionText2": "Our website may contain links to external websites. Please note that we are not responsible for the privacy practices of these other websites. We recommend reading the privacy policies of linked websites."
-
-    }
+  "AxisSelector": {
+    "title": "Select X-Axis:"
+  },
+  "ChartTableFilterBody": {
+    "clearAll": "Clear",
+    "clearAllTooltip": "Clear all filters",
+    "search": "Search"
+  },
+  "ChartTableFilterHead": {
+    "collapseTooltipCollapse": "Collapse filters",
+    "collapseTooltipExpand": "Expand filters",
+    "searchAll": "Search all rows"
+  },
+  "ChartTableWrapper": {
+    "barChart": "Bar Chart",
+    "table": "Table"
+  },
+  "ClearableInputGroup": {
+    "clearTooltip": "Clear"
+  },
+  "CurrentFilters": {
+    "allEntriesLabel": "Row",
+    "contains": "contains"
+  },
+  "Error": {
+    "configurationInvalidMessage": "The validation for the configuration returned errors.\n\nError: \"{error}\"",
+    "configurationInvalidTitle": "Configuration is invalid!",
+    "configurationNotLoadedMessage": "The application returned an error while trying to load the configuration file(s).\n\nError: \"{error}\"",
+    "configurationNotLoadedTitle": "The application configuration could not be loaded!",
+    "dataEmptyMessage": "Endpoint \"{source}\" for resource \"{name}\" returned no/empty data.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+    "dataEmptyTitle": "Resource returned no data!",
+    "dataNotLoadedMessage": "The data for resource \"{name}\" could not be loaded.\nId: {id}\nName: {name}\nSource: {source}\n\nError: \"{error}\"",
+    "dataNotLoadedTitle": "Data could not be loaded!",
+    "genericSubtitle": "Should this problem persist, please notify this site's administrator.",
+    "notFoundSubtitle": "The page you are looking for was not found.",
+    "notFoundTitle": "Oops! You're lost.",
+    "resourceConfigurationInvalidMessage": "The validation for resource \"{name}\" returned errors.\nId: {id}\nName: {name}\nSource: {source}\n\nError: {error}",
+    "resourceConfigurationInvalidTitle": "Resource configuration is invalid!",
+    "returnBtn": "Return Home",
+    "unexpectedMessage": "An unexpected error ocurred!\n\nError: \"{error}\"",
+    "unexpectedTitle": "An unexpected error ocurred!"
+  },
+  "Header": {
+    "title": "Open Data Dashboard"
+  },
+  "Legend": {
+    "title": "Legend"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unknown}}"
+  },
+  "Metadata": {
+    "description": "Visualizations of open data related to the city of Karlsruhe",
+    "title": "Open Data Dashboard"
+  },
+  "NavigationContent": {
+    "dashboards": "Dashboards",
+    "data": "Data",
+    "home": "Home",
+    "search": "Search"
+  },
+  "Overview": {
+    "dataDescription": "On this site you will find an overview of all available data categories.",
+    "dataTitle": "Data Categories",
+    "dashboardsDescription": "On this site you will find an overview of all dashboards.",
+    "dashboardsTitle": "Dashboards"
+  },
+  "ResetView": {
+    "resetTooltip": "Reset view"
+  },
+  "ResourceDetailsControls": {
+    "download": "Download",
+    "embed": "Embed",
+    "embedBody": "The visualization for this resource can be embedded using the following code.",
+    "embedHeight": "Height",
+    "embedTitle": "Embed resource visualization",
+    "embedWidth": "Width",
+    "fullscreen": "Fullscreen",
+    "keepSearchParams": "Preserve search parameters"
+  },
+  "Search": {
+    "emptyLabel": "No resources found.",
+    "search": "Search"
+  },
+  "Table": {
+    "noRecords": "There are no records to display",
+    "rangeSeparatorText": "of",
+    "rowsPerPageText": "Rows per page:",
+    "selectAllRowsItemText": "All"
+  },
+  "Footer": {
+    "legalNotice": "Legal Notice",
+    "dataProtection": "Privacy Policy",
+    "source": "Source",
+    "publisher": "Publisher",
+    "authorizedRepresentative": "Authorized Representative",
+    "supervisoryAuthority": "Supervisory Authority",
+    "vatId": "VAT Identification Number",
+    "postalAddress": "Postal address",
+    "responsibleEditorialDepartment": "Responsible Editorial Department",
+    "technicalImplementation": "Technical Implementation and Design",
+    "dataProtectionText1": "We do not store any data about our users and do not collect statistics on accesses. Wherever possible, we keep all dependencies on our own server.",
+    "externalLinks": "External Links",
+    "dataProtectionText2": "Our website may contain links to external websites. Please note that we are not responsible for the privacy practices of these other websites. We recommend reading the privacy policies of linked websites."
+  }
 }

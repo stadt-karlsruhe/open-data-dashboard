@@ -1,15 +1,13 @@
-import '@/themes/theme.karlsruhe.scss';
-
 import { useTranslations } from 'next-intl';
 
 export default function Imprint() {
   const t = useTranslations('Footer');
   return (
     <div className="container mt-4">
-      <h1 className="custom-heading">{t('imprint')}</h1>
+      <h1>{t('legalNotice')}</h1>
       <br />
       <div className="mb-4">
-        <h2 className="custom-heading">{t('publisher')}</h2>
+        <h2>{t('publisher')}</h2>
         <address>
           Stadt Karlsruhe <br />
           Karl-Friedrich-Str. 10 <br />
@@ -37,7 +35,7 @@ export default function Imprint() {
       </div>
 
       <div className="mb-4">
-        <h3 className="custom-heading">{t('responsibleEditorialDepartment')}</h3>
+        <h3>{t('responsibleEditorialDepartment')}</h3>
         <p>
           Amt für Informationstechnik und Digitalisierung <br />
           Open Government und Open Data <br />
@@ -46,11 +44,11 @@ export default function Imprint() {
       </div>
 
       <div className="mb-4">
-        <h3 className="custom-heading">{t('technicalImplementation')}</h3>
+        <h3>{t('technicalImplementation')}</h3>
         <p>Anwendungsprojekt Hochschule Karlsruhe</p>
       </div>
       <div className="mb-4">
-        <h2 className="custom-heading">{t('dataProtection')}</h2>
+        <h2>{t('dataProtection')}</h2>
         <p>{t('dataProtectionText1')}</p>
         <p>
           <b>{t('externalLinks')}</b> <br />

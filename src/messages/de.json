@@ -1,108 +1,107 @@
 {
-    "AxisSelector": {
-        "title": "X-Achse auswählen:"
-    },
-    "ChartTableFilterBody": {
-        "clearAll": "Löschen",
-        "clearAllTooltip": "Alle Filter löschen",
-        "search": "Suche"
-    },
-    "ChartTableFilterHead": {
-        "collapseTooltipCollapse": "Filter schließen",
-        "collapseTooltipExpand": "Filter öffnen",
-        "searchAll": "Suche in allen Zeilen"
-    },
-    "ChartTableWrapper": {
-        "barChart": "Balkendiagramm",
-        "table": "Tabelle"
-    },
-    "ClearableInputGroup": {
-        "clearTooltip": "Löschen"
-    },
-    "CurrentFilters": {
-        "allEntriesLabel": "Zeile",
-        "contains": "enthält"
-    },
-    "Error": {
-        "configurationInvalidMessage": "Die Validierung der Konfiguration hat Fehler zurückgegeben.\n\nFehler: \"{error}\"",
-        "configurationInvalidTitle": "Die Konfiguration ist fehlerhaft!",
-        "configurationNotLoadedMessage": "Beim Laden der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
-        "configurationNotLoadedTitle": "Die Anwendungskonfiguration konnte nicht geladen werden!",
-        "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
-        "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
-        "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
-        "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
-        "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
-        "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
-        "notFoundTitle": "Hoppla! Du hast dich verirrt.",
-        "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: {error}",
-        "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
-        "returnBtn": "Zurück zur Startseite",
-        "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
-        "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
-    },
-    "Header": {
-        "title": "Open Data Dashboard"
-    },
-    "Legend": {
-        "title": "Legende"
-    },
-    "LocaleSwitcher": {
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
-    },
-    "Metadata": {
-        "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe",
-        "title": "Open Data Dashboard"
-    },
-    "NavigationContent": {
-        "dashboards": "Dashboards",
-        "data": "Datensätze",
-        "home": "Home",
-        "search": "Suche"
-    },
-    "Overview": {
-        "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien.",
-        "dataTitle": "Datenkategorien",
-        "dashboardsDescription": "Auf dieser Seite finden sie eine Übersicht der Dashboards.",
-        "dashboardsTitle": "Dashboards"
-    },
-    "ResetView": {
-        "resetTooltip": "Ansicht zurücksetzen"
-    },
-    "ResourceDetailsControls": {
-        "download": "Herunterladen",
-        "embed": "Einbetten",
-        "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
-        "embedHeight": "Höhe",
-        "embedTitle": "Ressourcendarstellung einbetten",
-        "embedWidth": "Breite",
-        "fullscreen": "Vollbild",
-        "keepSearchParams": "Suchparameter beibehalten"
-    },
-    "Search": {
-        "emptyLabel": "Keine Ressourcen gefunden.",
-        "search": "Suche"
-    },
-    "Table": {
-        "noRecords": "Es gibt keine Einträge die angezeigt werden können",
-        "rangeSeparatorText": "von",
-        "rowsPerPageText": "Zeilen pro Seite:",
-        "selectAllRowsItemText": "Alle"
-    },
-    "Footer": {
-        "imprint": "Impressum",
-        "dataProtection": "Datenschutz",
-        "sourceCode" : "Quellcode",
-        "publisher": "Herausgeber",
-        "authorizedRepresentative": "Vertretungsberechtigter",
-        "supervisoryAuthority": "Aufsichtsbehörde",
-        "vatId": "Umsatzsteuer-Identifikationsnummer",
-        "postalAddress": "Postanschrift",
-        "responsibleEditorialDepartment": "Verantwortliche Redaktion",
-        "technicalImplementation": "Technische Umsetzung und Gestaltung",
-        "dataProtectionText1": "Wir speichern keinerlei Daten über unsere Benutzer und erheben keine Statistiken über Zugriffe. Soweit möglich, halten wir alle Abhängigkeiten auf unserem eigenen Server.",
-        "externalLinks": "Externe Links",
-        "dataProtectionText2": "Unsere Webseite kann Links zu externen Webseiten enthalten. Bitte beachten Sie, dass wir für die Datenschutzpraktiken dieser anderen Webseiten nicht verantwortlich sind. Wir empfehlen Ihnen, die Datenschutzerklärungen der verlinkten Webseiten zu lesen."
-
-    }
+  "AxisSelector": {
+    "title": "X-Achse auswählen:"
+  },
+  "ChartTableFilterBody": {
+    "clearAll": "Löschen",
+    "clearAllTooltip": "Alle Filter löschen",
+    "search": "Suche"
+  },
+  "ChartTableFilterHead": {
+    "collapseTooltipCollapse": "Filter schließen",
+    "collapseTooltipExpand": "Filter öffnen",
+    "searchAll": "Suche in allen Zeilen"
+  },
+  "ChartTableWrapper": {
+    "barChart": "Balkendiagramm",
+    "table": "Tabelle"
+  },
+  "ClearableInputGroup": {
+    "clearTooltip": "Löschen"
+  },
+  "CurrentFilters": {
+    "allEntriesLabel": "Zeile",
+    "contains": "enthält"
+  },
+  "Error": {
+    "configurationInvalidMessage": "Die Validierung der Konfiguration hat Fehler zurückgegeben.\n\nFehler: \"{error}\"",
+    "configurationInvalidTitle": "Die Konfiguration ist fehlerhaft!",
+    "configurationNotLoadedMessage": "Beim Laden der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
+    "configurationNotLoadedTitle": "Die Anwendungskonfiguration konnte nicht geladen werden!",
+    "dataEmptyMessage": "Der Endpunkt \"{source}\" für Ressource \"{name}\" hat keine/leere Daten zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+    "dataEmptyTitle": "Ressource beinhaltet keine Daten!",
+    "dataNotLoadedMessage": "Die Daten der Ressource \"{name}\" konnten nicht geladen werden.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: \"{error}\"",
+    "dataNotLoadedTitle": "Daten konnten nicht geladen werden!",
+    "genericSubtitle": "Falls dieses Problem weiterhin besteht, melden Sie es dem Administrator der Seite.",
+    "notFoundSubtitle": "Die gesuchte Seite wurde nicht gefunden.",
+    "notFoundTitle": "Hoppla! Du hast dich verirrt.",
+    "resourceConfigurationInvalidMessage": "Die Validierung der Ressource \"{name}\" hat Fehler zurückgegeben.\nId: {id}\nName: {name}\nEndpunkt: {source}\n\nFehler: {error}",
+    "resourceConfigurationInvalidTitle": "Konfiguration der Ressource ist fehlerhaft!",
+    "returnBtn": "Zurück zur Startseite",
+    "unexpectedMessage": "Es ist ein unerwarteter Fehler aufgetreten!\n\nFehler: \"{error}\"",
+    "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
+  },
+  "Header": {
+    "title": "Open Data Dashboard"
+  },
+  "Legend": {
+    "title": "Legende"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇬🇧 English} other {Unbekannt}}"
+  },
+  "Metadata": {
+    "description": "Visualisierungen verschiedener Datensätze der Stadt Karlsruhe",
+    "title": "Open Data Dashboard"
+  },
+  "NavigationContent": {
+    "dashboards": "Dashboards",
+    "data": "Datensätze",
+    "home": "Home",
+    "search": "Suche"
+  },
+  "Overview": {
+    "dataDescription": "Auf dieser Seite finden sie eine Übersicht aller verfügbaren Datenkategorien.",
+    "dataTitle": "Datenkategorien",
+    "dashboardsDescription": "Auf dieser Seite finden sie eine Übersicht der Dashboards.",
+    "dashboardsTitle": "Dashboards"
+  },
+  "ResetView": {
+    "resetTooltip": "Ansicht zurücksetzen"
+  },
+  "ResourceDetailsControls": {
+    "download": "Herunterladen",
+    "embed": "Einbetten",
+    "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
+    "embedHeight": "Höhe",
+    "embedTitle": "Ressourcendarstellung einbetten",
+    "embedWidth": "Breite",
+    "fullscreen": "Vollbild",
+    "keepSearchParams": "Suchparameter beibehalten"
+  },
+  "Search": {
+    "emptyLabel": "Keine Ressourcen gefunden.",
+    "search": "Suche"
+  },
+  "Table": {
+    "noRecords": "Es gibt keine Einträge die angezeigt werden können",
+    "rangeSeparatorText": "von",
+    "rowsPerPageText": "Zeilen pro Seite:",
+    "selectAllRowsItemText": "Alle"
+  },
+  "Footer": {
+    "legalNotice": "Impressum",
+    "dataProtection": "Datenschutz",
+    "source": "Quellcode",
+    "publisher": "Herausgeber",
+    "authorizedRepresentative": "Vertretungsberechtigter",
+    "supervisoryAuthority": "Aufsichtsbehörde",
+    "vatId": "Umsatzsteuer-Identifikationsnummer",
+    "postalAddress": "Postanschrift",
+    "responsibleEditorialDepartment": "Verantwortliche Redaktion",
+    "technicalImplementation": "Technische Umsetzung und Gestaltung",
+    "dataProtectionText1": "Wir speichern keinerlei Daten über unsere Benutzer und erheben keine Statistiken über Zugriffe. Soweit möglich, halten wir alle Abhängigkeiten auf unserem eigenen Server.",
+    "externalLinks": "Externe Links",
+    "dataProtectionText2": "Unsere Webseite kann Links zu externen Webseiten enthalten. Bitte beachten Sie, dass wir für die Datenschutzpraktiken dieser anderen Webseiten nicht verantwortlich sind. Wir empfehlen Ihnen, die Datenschutzerklärungen der verlinkten Webseiten zu lesen."
+  }
 }
