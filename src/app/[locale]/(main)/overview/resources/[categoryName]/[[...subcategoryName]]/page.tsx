@@ -1,11 +1,11 @@
 import { Category, Configuration } from '@/schemas/configurationSchema';
 import Overview, { OverviewRow } from '@/components/overview/Overview';
-import { computeIfAbsent, computeIfAbsentCache } from '@/utils/mapUtils';
 import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { LRUCache } from 'lru-cache';
 import PageWrapper from '@/components/layout/PageWrapper';
+import { computeIfAbsentCache } from '@/utils/mapUtils';
 import { getIconForResource } from '@/utils/icons';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
