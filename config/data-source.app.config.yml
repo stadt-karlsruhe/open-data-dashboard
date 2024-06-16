@@ -92,6 +92,7 @@ categories:
       icon: train-front-fill
       resources:
           - "5"
+          - "8"
     - name: Gesellschaft
       description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
       icon: people-fill
