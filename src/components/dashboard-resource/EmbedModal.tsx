@@ -1,23 +1,21 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
+import { Dashboard, Resource } from '@/schemas/configurationSchema';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 
+type EmbedModalProps =
+  | {
+      type: 'dashboard';
+      element: Dashboard;
+      show: boolean;
+      setShow: (show: boolean) => void;
+    }
+  | { type: 'resource'; element: Resource; show: boolean; setShow: (show: boolean) => void };
+
 // eslint-disable-next-line max-lines-per-function
-export default function EmbedModal({
-  show,
-  type,
-  embedId,
-  hasSearchParams,
-  setShow,
-}: {
-  show: boolean;
-  hasSearchParams: boolean;
-  type: 'dashboard' | 'resource';
-  embedId: string;
-  setShow: (show: boolean) => void;
-}) {
+export default function EmbedModal({ show, type, element, setShow }: EmbedModalProps) {
   const [iFrameWidth, setIFrameWidth] = useState('700');
   const [iFrameHeight, setIFrameHeight] = useState('400');
   const [keepParams, setKeepParams] = useState(true);
@@ -71,7 +69,7 @@ export default function EmbedModal({
             />
           </div>
         </div>
-        {hasSearchParams ? (
+        {type === 'resource' && (element.type === 'JSON' || element.type === 'CSV') && (
           <div className="form-check">
             <input
               className="form-check-input"
@@ -86,14 +84,12 @@ export default function EmbedModal({
               {t('keepSearchParams')}
             </label>
           </div>
-        ) : (
-          <></>
         )}
         <div className="form-label">
           <strong>Code:</strong>
         </div>
         <CopyBlock
-          text={`<iframe width="${iFrameWidth}" height="${iFrameHeight}" src="${window.location.origin}/${locale}/embed/${type}/${embedId}${keepParams ? getParamsFromWindow() : ''}" />`}
+          text={`<iframe width="${iFrameWidth}" height="${iFrameHeight}" src="${window.location.origin}/${locale}/embed/${type}/${element.id}${keepParams ? getParamsFromWindow() : ''}" title="${element.name}" />`}
           language="html"
           theme={dracula}
           wrapLongLines={true}
@@ -103,7 +99,7 @@ export default function EmbedModal({
   );
 
   function getParamsFromWindow() {
-    if (hasSearchParams) {
+    if (type === 'resource' && (element.type === 'JSON' || element.type === 'CSV')) {
       const filteredParams = new URLSearchParams();
       const params = new URLSearchParams(window.location.search);
       params.forEach((value, key) => {

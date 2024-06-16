@@ -13,14 +13,14 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-type Props =
+type DashboardResourceControlsProps =
   | {
       type: 'dashboard';
       element: Dashboard;
     }
   | { type: 'resource'; element: Resource };
 
-export default function DetailsPageControls({ type, element }: Props) {
+export default function DashboardResourceControls({ type, element }: DashboardResourceControlsProps) {
   const [show, setShow] = useState(false);
   const searchParams = useSearchParams();
   const t = useTranslations('DetailsPageControls');
@@ -46,13 +46,11 @@ export default function DetailsPageControls({ type, element }: Props) {
           </Link>
         )}
       </div>
-      <EmbedModal
-        show={show}
-        type={type}
-        embedId={element.id}
-        hasSearchParams={type === 'resource' && (element.type === 'JSON' || element.type === 'CSV')}
-        setShow={setShow}
-      />
+      {type === 'dashboard' ? (
+        <EmbedModal show={show} type="dashboard" element={element} setShow={setShow} />
+      ) : (
+        <EmbedModal show={show} type="resource" element={element} setShow={setShow} />
+      )}
     </div>
   );
 
