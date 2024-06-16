@@ -1,9 +1,7 @@
-import Overview, { OverviewRow } from '@/components/overview/Overview';
-
-import { Dashboard } from '@/schemas/configurationSchema';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import Overview from '@/components/overview/Overview';
 import PageWrapper from '@/components/layout/PageWrapper';
-import { concatenateNameAndId } from '@/utils/stringUtils';
+import { configurationToDashboards } from '@/utils/mapUtils';
 import { getTranslations } from 'next-intl/server';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
@@ -17,22 +15,7 @@ export default async function Page() {
 
   return (
     <PageWrapper title={t('dashboardsTitle')} description={t('dashboardsDescription')}>
-      <Overview content={getContent(configuration.dashboards)} />
+      <Overview content={configurationToDashboards(configuration)} />
     </PageWrapper>
   );
-}
-
-function getContent(dashboards: Dashboard[]) {
-  return dashboards
-    .filter((dashboard) => dashboard.id !== 'homepage')
-    .map(
-      (dashboard) =>
-        ({
-          title: dashboard.name,
-          description: dashboard.description,
-          href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
-          isCategory: false,
-          icon: dashboard.icon,
-        }) as OverviewRow,
-    );
 }

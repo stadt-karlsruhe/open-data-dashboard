@@ -5,12 +5,12 @@
     "ChartTableFilterBody": {
         "clearAll": "Clear",
         "clearAllTooltip": "Clear all filters",
-        "search": "Search"
+        "filter": "Filter"
     },
-    "ChartTableFilterHead": {
+    "ChartTableFilterHeader": {
         "collapseTooltipCollapse": "Collapse filters",
         "collapseTooltipExpand": "Expand filters",
-        "searchAll": "Search all rows"
+        "filterAll": "Filter all rows"
     },
     "ChartTableWrapper": {
         "barChart": "Bar Chart",
@@ -22,6 +22,20 @@
     "CurrentFilters": {
         "allEntriesLabel": "Row",
         "contains": "contains"
+    },
+    "DetailsPageControls": {
+        "download": "Download",
+        "embed": "Embed",
+        "fullscreen": "Fullscreen"
+    },
+    "EmbedModal": {
+        "dashboardBody": "This dashboard can be embedded using the following code:",
+        "dashboardTitle": "Embed dashboard",
+        "embedHeight": "Height",
+        "embedWidth": "Width",
+        "keepSearchParams": "Preserve search parameters",
+        "resourceBody": "The visualization for this resource can be embedded using the following code:",
+        "resourceTitle": "Embed resource visualization"
     },
     "Error": {
         "configurationErrorMessage": "The application returned an error while trying to load and validate the configuration file(s).\n\nError: \"{error}\"",
@@ -69,18 +83,8 @@
     "ResetView": {
         "resetTooltip": "Reset view"
     },
-    "ResourceDetailsControls": {
-        "download": "Download",
-        "embed": "Embed",
-        "embedBody": "The visualization for this resource can be embedded using the following code.",
-        "embedHeight": "Height",
-        "embedTitle": "Embed resource visualization",
-        "embedWidth": "Width",
-        "fullscreen": "Fullscreen",
-        "keepSearchParams": "Preserve search parameters"
-    },
     "Search": {
-        "emptyLabel": "No resources found.",
+        "emptyLabel": "No entries found.",
         "search": "Search"
     },
     "Table": {

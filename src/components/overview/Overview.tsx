@@ -1,5 +1,6 @@
 'use client';
 
+import { DataElement } from '@/types/data';
 // eslint-disable-next-line import/named
 import { TableColumn } from 'react-data-table-component';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
@@ -15,20 +16,11 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export interface OverviewRow {
-  title: string;
-  description?: string;
-  href: string;
-  isCategory: boolean;
-  icon: string;
-  resourceType?: 'PDF' | 'HTML' | 'JSON' | 'GeoJSON' | 'CSV';
-}
-
-export default function Overview({ content }: { content: OverviewRow[] }) {
+export default function Overview({ content }: { content: DataElement[] }) {
   const tableT = useTranslations('Table');
   const columns = [
     {
-      cell: (row: OverviewRow) => transformContentToHTMLElement(row),
+      cell: (row: DataElement) => transformContentToHTMLElement(row),
     },
   ] as TableColumn<unknown>[];
   return (
@@ -49,19 +41,21 @@ export default function Overview({ content }: { content: OverviewRow[] }) {
   );
 }
 
-function transformContentToHTMLElement(contentRow: OverviewRow) {
-  const badgeColor = getColorForResourceType(contentRow.resourceType);
-  const titleColor = contentRow.isCategory ? 'nav-link' : '';
+function transformContentToHTMLElement(element: DataElement) {
+  const badgeColor = getColorForResourceType(element.resourceType);
+  const titleColor = element.type === 'category' ? 'var(--bs-green)' : '';
   return (
-    <Link href={contentRow.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
-      <i className={`bi bi-${contentRow.icon} ${titleColor} fs-1 me-3`} />
+    <Link href={element.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
+      <i className={`bi bi-${element.icon} fs-1 me-3`} style={{ color: titleColor }} />
       <div>
-        <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
+        <div className={`fs-5`} style={{ color: titleColor }}>
+          {element.name}
+        </div>
         <br />
-        <div className="fs-6">{contentRow.description}</div>
-        {!contentRow.isCategory && (
+        <div className="fs-6">{element.description}</div>
+        {element.type !== 'category' && element.type !== 'dashboard' && (
           <span className="badge my-1" style={{ backgroundColor: badgeColor }}>
-            {contentRow.resourceType}
+            {element.resourceType}
           </span>
         )}
       </div>

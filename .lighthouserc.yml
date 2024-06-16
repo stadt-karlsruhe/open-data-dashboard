@@ -7,8 +7,9 @@ ci:
             - http://localhost:3000/en/home
             - http://localhost:3000/en/overview/resources
             - http://localhost:3000/en/overview/dashboards
-            - http://localhost:3000/en/resource/Wohnberechtigte-Bevölkerung-1
-            - http://localhost:3000/en/resource/Points-of-Interest-Kinos-3
+            - http://localhost:3000/en/dashboard/bevölkerung-1
+            - http://localhost:3000/en/resource/wohnberechtigte-bevölkerung-1
+            - http://localhost:3000/en/resource/points-of-interest-kinos-3
         numberOfRuns: 1
         settings:
             preset: desktop
