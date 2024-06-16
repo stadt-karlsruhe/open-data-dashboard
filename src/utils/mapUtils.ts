@@ -2,6 +2,7 @@ import { Category, Configuration } from '@/schemas/configurationSchema';
 import { concatenateNameAndId, replaceWhitespaceInString } from './stringUtils';
 
 import { DataElement } from '@/types/data';
+import { LRUCache } from 'lru-cache';
 import { getIconForResource } from './icons';
 
 export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaultValueFn: () => unknown) {
@@ -9,6 +10,19 @@ export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaul
     if (value === undefined) {
         value = defaultValueFn();
         map.set(key, value);
+    }
+    return value;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defaultValueFn: () => unknown) {
+    let value = cache.get(key) as unknown;
+    if (value === undefined) {
+        console.debug(`cache miss! key: ${key as string}`);
+        value = defaultValueFn();
+        cache.set(key, value);
+    } else {
+        console.debug('cache hit!');
     }
     return value;
 }
