@@ -23,6 +23,13 @@ jest.mock('react-leaflet', () => {
   };
 });
 
+// eslint-disable-next-line jest/no-untyped-mock-factory
+jest.mock('react-leaflet/GeoJSON', () => {
+  return {
+    GeoJSON: jest.fn(({ children }) => <div data-testid="GeoJSON">{children}</div>),
+  };
+});
+
 describe('component GeoMap', () => {
   it('should render all map components', () => {
     expect.hasAssertions();

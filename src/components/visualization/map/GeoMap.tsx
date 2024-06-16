@@ -60,7 +60,7 @@ export default function GeoMap({
                 </div>
               ))}
             </Tooltip>
-            {feature.geometry.type === 'Polygon' && <GeoJSON data={feature}></GeoJSON>}
+            {feature.geometry.type === 'Polygon' && <GeoJSON data={feature} />}
             {feature.geometry.type === 'Point' && (
               <Marker
                 position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
