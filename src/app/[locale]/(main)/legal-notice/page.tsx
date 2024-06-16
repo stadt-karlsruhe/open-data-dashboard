@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-export default function Imprint() {
+export default function LegalNotice() {
   const t = useTranslations('Footer');
   return (
     <div className="container mt-4">
