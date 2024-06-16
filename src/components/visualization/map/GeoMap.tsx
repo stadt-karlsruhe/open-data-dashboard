@@ -6,6 +6,7 @@ import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-le
 import L, { LatLngExpression } from 'leaflet';
 import { colorPrimary, getColor } from '@/utils/colors';
 
+import { GeoJSON } from 'react-leaflet/GeoJSON';
 import { GeoJSONResource } from '@/schemas/configurationSchema';
 import Legend from './Legend';
 import ReactDOMServer from 'react-dom/server';
@@ -49,9 +50,6 @@ export default function GeoMap({
             colorCode = mappedColor;
           }
         }
-        if (feature.geometry.type !== 'Point') {
-          return;
-        }
         return (
           <FeatureGroup key={index}>
             <Tooltip>
@@ -62,15 +60,18 @@ export default function GeoMap({
                 </div>
               ))}
             </Tooltip>
-            <Marker
-              position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
-              icon={getIcon(colorCode)}
-            />
+            {feature.geometry.type === 'Polygon' && <GeoJSON data={feature}></GeoJSON>}
+            {feature.geometry.type === 'Point' && (
+              <Marker
+                position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
+                icon={getIcon(colorCode)}
+              />
+            )}
           </FeatureGroup>
         );
       })}
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-      {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
+      {collectedLabels.size > 0 && <Legend labels={collectedLabels} />}
     </MapContainer>
   );
 }

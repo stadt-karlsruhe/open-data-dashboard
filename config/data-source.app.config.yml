@@ -77,6 +77,15 @@ resources:
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
       type: HTML
       name: Mietspiegelrechner
+    - id: "8"
+      source: https://transparenz.karlsruhe.de/dataset/8474ba52-f851-4f4b-b05a-1cba9bbd1f4d/resource/2a7fd644-bc67-477a-bb9e-cf88f076b7af/download/stadtteile.json
+      type: GeoJSON
+      name: Stadtteile Karlsruhe
+      renameProperties:
+          NAME: Name
+      skipPropertiesRegEx: ^NUMMER$
+      visualizations:
+          map: {}
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
