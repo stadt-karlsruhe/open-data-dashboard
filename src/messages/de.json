@@ -34,7 +34,7 @@
         "embedHeight": "Höhe",
         "embedWidth": "Breite",
         "keepSearchParams": "Suchparameter beibehalten",
-        "resourceBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
+        "resourceBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden:",
         "resourceTitle": "Ressourcendarstellung einbetten"
     },
     "Error": {

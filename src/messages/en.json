@@ -34,7 +34,7 @@
         "embedHeight": "Height",
         "embedWidth": "Width",
         "keepSearchParams": "Preserve search parameters",
-        "resourceBody": "The visualization for this resource can be embedded using the following code.",
+        "resourceBody": "The visualization for this resource can be embedded using the following code:",
         "resourceTitle": "Embed resource visualization"
     },
     "Error": {
