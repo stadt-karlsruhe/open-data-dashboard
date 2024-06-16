@@ -43,9 +43,9 @@ describe('component ChartTableFilterHeader', () => {
 
     renderComponent(undefined, filterAllEntries);
 
-    expect(screen.getByLabelText(messages.ChartTableFilterHead.searchAll)).toBeInTheDocument();
+    expect(screen.getByLabelText(messages.ChartTableFilterHeader.filterAll)).toBeInTheDocument();
     expect(
-      screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand }),
+      screen.getByRole('button', { name: messages.ChartTableFilterHeader.collapseTooltipExpand }),
     ).toBeInTheDocument();
   });
 
@@ -53,7 +53,7 @@ describe('component ChartTableFilterHeader', () => {
     expect.hasAssertions();
 
     renderComponent(undefined, filterAllEntries);
-    const input = screen.getByLabelText(messages.ChartTableFilterHead.searchAll);
+    const input = screen.getByLabelText(messages.ChartTableFilterHeader.filterAll);
     fireEvent.change(input, { target: { value: 'test' } });
 
     expect(mockOnChange).toHaveBeenCalledWith('all-entries', 'test');
@@ -77,7 +77,7 @@ describe('component ChartTableFilterHeader', () => {
 
     renderComponent(undefined, filterAllEntries);
 
-    const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand });
+    const button = screen.getByRole('button', { name: messages.ChartTableFilterHeader.collapseTooltipExpand });
     fireEvent.click(button);
 
     expect(mockDecoratedOnClick).toHaveBeenCalledTimes(1);
@@ -88,7 +88,7 @@ describe('component ChartTableFilterHeader', () => {
 
     renderComponent('1', filterAllEntriesInvalid);
 
-    const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipCollapse });
+    const button = screen.getByRole('button', { name: messages.ChartTableFilterHeader.collapseTooltipCollapse });
     expect(button).toBeInTheDocument();
     expect(button).toContainHTML('<i class="bi bi-caret-up"/>');
   });
@@ -98,7 +98,7 @@ describe('component ChartTableFilterHeader', () => {
 
     renderComponent('2', filterAllEntries);
 
-    const button = screen.getByRole('button', { name: messages.ChartTableFilterHead.collapseTooltipExpand });
+    const button = screen.getByRole('button', { name: messages.ChartTableFilterHeader.collapseTooltipExpand });
     expect(button).toBeInTheDocument();
     expect(button).toContainHTML('<i class="bi bi-caret-down"/>');
   });
