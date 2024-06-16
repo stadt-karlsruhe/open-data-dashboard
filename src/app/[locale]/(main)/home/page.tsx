@@ -9,7 +9,7 @@ export default async function Home() {
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }
-  const homepage = configuration.dashboards.find((dashboard) => dashboard.name === 'homepage');
+  const homepage = configuration.dashboards.find((dashboard) => dashboard.id === 'homepage');
 
   return (
     <div className="d-flex flex-column flex-grow-1">
