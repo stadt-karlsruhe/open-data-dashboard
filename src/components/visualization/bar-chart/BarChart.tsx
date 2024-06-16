@@ -2,6 +2,7 @@ import {
   Bar,
   BarChart as BarChartRecharts,
   CartesianGrid,
+  DefaultTooltipContent,
   Legend,
   ReferenceLine,
   ResponsiveContainer,
@@ -54,7 +55,6 @@ export default function BarChart({
       <Bar key={index} dataKey={yAxis} hide={!visible} fill={getColor(index)} isAnimationActive={false} />
     ));
   }
-
   return (
     <div>
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
@@ -72,7 +72,7 @@ export default function BarChart({
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
           <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
           <ReferenceLine y={0} stroke="#000" />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip axesMap={axesMap} xAxis={xAxis} />} />
           <Legend onClick={onLegendClick} />
           {getBars()}
         </BarChartRecharts>
@@ -80,6 +80,23 @@ export default function BarChart({
     </div>
   );
 }
+
+const CustomTooltip = (props) => {
+  if (!props.active) {
+    return null;
+  }
+  const yAxes = [...props.axesMap.get(props.xAxis).keys()] ?? [];
+  const payloadAddition = Object.entries(props.payload[0].payload)
+    .filter((entry) => entry[0] !== props.xAxis && !yAxes.includes(entry[0]))
+    .map((entry) => {
+      return {
+        name: entry[0],
+        value: entry[1],
+      };
+    });
+
+  return <DefaultTooltipContent {...props} payload={[...payloadAddition, ...props.payload]} />;
+};
 
 function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
   minValue = 0;
