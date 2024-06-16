@@ -5,12 +5,12 @@
     "ChartTableFilterBody": {
         "clearAll": "Clear",
         "clearAllTooltip": "Clear all filters",
-        "search": "Search"
+        "filter": "Filter"
     },
-    "ChartTableFilterHead": {
+    "ChartTableFilterHeader": {
         "collapseTooltipCollapse": "Collapse filters",
         "collapseTooltipExpand": "Expand filters",
-        "searchAll": "Filter all rows"
+        "filterAll": "Filter all rows"
     },
     "ChartTableWrapper": {
         "barChart": "Bar Chart",
@@ -29,7 +29,7 @@
         "fullscreen": "Fullscreen"
     },
     "EmbedModal": {
-        "dashboardBody": "This dashboard can be embedded using the following code.",
+        "dashboardBody": "This dashboard can be embedded using the following code:",
         "dashboardTitle": "Embed dashboard",
         "embedHeight": "Height",
         "embedWidth": "Width",

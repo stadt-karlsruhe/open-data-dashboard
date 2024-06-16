@@ -22,13 +22,13 @@ export function ChartTableFilterHeader({
   const decoratedOnClick = useAccordionButton(eventKey);
   const isCurrentEventKey = activeEventKey === eventKey;
 
-  const t = useTranslations('ChartTableFilterHead');
+  const t = useTranslations('ChartTableFilterHeader');
   return (
     <ClearableInputGroup
       id={`${resourceId}-search`}
       type="text"
       value={typeof filters[allEntries] === 'string' && filters[allEntries] ? filters[allEntries] : ''}
-      label={t('searchAll')}
+      label={t('filterAll')}
       onChange={(e) => {
         onChange(allEntries, e.target.value);
       }}

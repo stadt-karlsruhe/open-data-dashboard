@@ -5,12 +5,12 @@
     "ChartTableFilterBody": {
         "clearAll": "Löschen",
         "clearAllTooltip": "Alle Filter löschen",
-        "search": "Suche"
+        "filter": "Filtern"
     },
-    "ChartTableFilterHead": {
+    "ChartTableFilterHeader": {
         "collapseTooltipCollapse": "Filter schließen",
         "collapseTooltipExpand": "Filter öffnen",
-        "searchAll": "Filter in allen Zeilen"
+        "filterAll": "Filter in allen Zeilen"
     },
     "ChartTableWrapper": {
         "barChart": "Balkendiagramm",
@@ -29,7 +29,7 @@
         "fullscreen": "Vollbild"
     },
     "EmbedModal": {
-        "dashboardBody": "Das Dashboard kann mithilfe des folgenden Codes eingebettet werden.",
+        "dashboardBody": "Das Dashboard kann mithilfe des folgenden Codes eingebettet werden:",
         "dashboardTitle": "Dashboard einbetten",
         "embedHeight": "Höhe",
         "embedWidth": "Breite",
