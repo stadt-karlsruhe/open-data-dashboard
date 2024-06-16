@@ -1,19 +1,19 @@
 import { Category, Configuration } from '@/schemas/configurationSchema';
-import Overview, { OverviewRow } from '@/components/overview/Overview';
-import { concatenateNameAndId, replaceWhitespaceInString, safeStringCompare } from '@/utils/stringUtils';
+import { computeIfUncached, configurationToResources, configurationToSubcategories } from '@/utils/mapUtils';
 
+import { DataElement } from '@/types/data';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { LRUCache } from 'lru-cache';
+import Overview from '@/components/overview/Overview';
 import PageWrapper from '@/components/layout/PageWrapper';
-import { computeIfAbsentCache } from '@/utils/mapUtils';
-import { getIconForResource } from '@/utils/icons';
 import { getValidatedConfiguration } from '@/schemas/validate';
+import { safeStringCompare } from '@/utils/stringUtils';
 
 const options = {
   max: 100,
 };
 
-const categoryToContentCache: LRUCache<string, OverviewRow[]> = new LRUCache<string, OverviewRow[]>(options);
+const categoryToContentCache: LRUCache<string, DataElement[]> = new LRUCache<string, DataElement[]>(options);
 
 export default async function Page({
   params: { categoryName, subcategoryName },
@@ -52,35 +52,16 @@ export default async function Page({
 }
 
 function getCategoryContent(configuration: Configuration, category: Category, categoryKey: string) {
-  return computeIfAbsentCache(categoryToContentCache, categoryKey, () =>
+  return computeIfUncached(categoryToContentCache, categoryKey, () =>
     computeCategoryContent(configuration, category),
-  ) as OverviewRow[];
+  ) as DataElement[];
 }
 
 function computeCategoryContent(configuration: Configuration, category: Category) {
-  const resources = getResourcesForCategory(configuration, category);
+  const resources = configurationToResources(configuration, category);
   if (!category.subcategories) {
-    return resources as OverviewRow[];
+    return resources;
   }
-  const subcategories = category.subcategories.map((subcategory) => ({
-    title: subcategory.name,
-    description: subcategory.description,
-    href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
-    isCategory: true,
-    icon: subcategory.icon,
-  }));
-  return [...subcategories, ...resources] as OverviewRow[];
-}
-
-function getResourcesForCategory(configuration: Configuration, category: Category) {
-  return configuration.resources
-    .filter((resource) => category.resources?.includes(resource.id.toLowerCase()))
-    .map((resource) => ({
-      title: resource.name,
-      description: resource.description,
-      href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
-      isCategory: false,
-      resourceType: resource.type,
-      icon: getIconForResource(resource),
-    }));
+  const subcategories = configurationToSubcategories(configuration, category);
+  return [...subcategories, ...resources];
 }
