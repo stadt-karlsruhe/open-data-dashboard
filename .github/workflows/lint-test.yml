@@ -33,3 +33,20 @@
               uses: codecov/codecov-action@v4.5.0
               with:
                 token: ${{ secrets.CODECOV_TOKEN }}
+        cypress-run:
+            name: E2E (Cypress)
+            runs-on: ubuntu-22.04
+            steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                build: npm run build
+                start: npm start
+            - name: Convert coverage report
+              run: npx nyc report --reporter=lcov
+            - name: Upload coverage reports to Codecov
+              uses: codecov/codecov-action@v4.5.0
+              with:
+                token: ${{ secrets.CODECOV_TOKEN }}
