@@ -11,21 +11,23 @@ export const transformedDataArraySchema = z.array(transformedDataSchema).min(1, 
     message: 'At least one data object must be contained. The endpoint probably returned empty or malformed data.',
 });
 
+type AllowedGeometry = GeoJSON.Point | GeoJSON.Polygon;
+
 const pointGeometrySchema = z.object({
-    coordinates: z.number().array(),
+    coordinates: z.tuple([z.number(), z.number()]),
     type: z.literal('Point'),
-}) satisfies z.ZodType<GeoJSON.Point>;
+});
 
 const polygonGeometrySchema = z.object({
-    coordinates: z.number().array().array().array(),
+    coordinates: z.tuple([z.number(), z.number()]).array().array(),
     type: z.literal('Polygon'),
-}) satisfies z.ZodType<GeoJSON.Polygon>;
+});
 
 const featureSchema = z.object({
     type: z.literal('Feature'),
     properties: transformedDataSchema,
     geometry: z.union([pointGeometrySchema, polygonGeometrySchema]),
-});
+}) satisfies z.ZodType<GeoJSON.Feature<AllowedGeometry>>;
 
 export const geoJSONSchema = z.object({
     type: z.literal('FeatureCollection'),
