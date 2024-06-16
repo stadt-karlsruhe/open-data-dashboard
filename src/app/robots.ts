@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: ['/resource/*'],
+                disallow: ['/embed/resource/*', '/embed/dashboard/*'],
             },
         ],
     };
