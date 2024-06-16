@@ -1,3 +1,5 @@
+import { cy, describe, it } from 'local-cypress';
+
 const searchbar = 'input[placeholder="Search"]';
 
 describe('homepage tests', () => {
