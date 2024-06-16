@@ -2,7 +2,7 @@ import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
-import ResourceDetails from '@/components/resource-details/ResourceDetails';
+import ResourceDetails from '@/components/dashboard-resource/ResourceDetails';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function Page({ params: { resourceNameAndId } }: { params: { resourceNameAndId: string } }) {
