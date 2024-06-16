@@ -1,3 +1,4 @@
+import codeCoverageTask from '@cypress/code-coverage/task';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -5,7 +6,8 @@ export default defineConfig({
     fixturesFolder: '__tests__/cypress/fixtures',
     e2e: {
         setupNodeEvents(on, config) {
-            // implement node event listeners here
+            codeCoverageTask(on, config);
+            return config;
         },
         baseUrl: 'http://localhost:3000',
         supportFolder: '__tests__/cypress/support',

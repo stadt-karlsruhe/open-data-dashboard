@@ -12,6 +12,9 @@ const nextConfig = {
             },
         ],
     },
+    experimental: {
+        swcPlugins: [['swc-plugin-coverage-instrument', {}]],
+    },
 };
 
 export default withNextIntl(nextConfig);
