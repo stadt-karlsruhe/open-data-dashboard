@@ -69,7 +69,7 @@ export function ChartTableFilterBody({
                     id={`${resourceId}-${key}-text-input`}
                     type="text"
                     value={filter && typeof filter === 'string' ? filter : ''}
-                    label={t('search')}
+                    label={t('filter')}
                     onChange={(e) => {
                       onChange(key, e.target.value);
                     }}

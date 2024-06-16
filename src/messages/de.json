@@ -5,12 +5,12 @@
     "ChartTableFilterBody": {
         "clearAll": "Löschen",
         "clearAllTooltip": "Alle Filter löschen",
-        "search": "Suche"
+        "filter": "Filtern"
     },
-    "ChartTableFilterHead": {
+    "ChartTableFilterHeader": {
         "collapseTooltipCollapse": "Filter schließen",
         "collapseTooltipExpand": "Filter öffnen",
-        "searchAll": "Suche in allen Zeilen"
+        "filterAll": "Filter in allen Zeilen"
     },
     "ChartTableWrapper": {
         "barChart": "Balkendiagramm",
@@ -22,6 +22,20 @@
     "CurrentFilters": {
         "allEntriesLabel": "Zeile",
         "contains": "enthält"
+    },
+    "DetailsPageControls": {
+        "download": "Herunterladen",
+        "embed": "Einbetten",
+        "fullscreen": "Vollbild"
+    },
+    "EmbedModal": {
+        "dashboardBody": "Das Dashboard kann mithilfe des folgenden Codes eingebettet werden:",
+        "dashboardTitle": "Dashboard einbetten",
+        "embedHeight": "Höhe",
+        "embedWidth": "Breite",
+        "keepSearchParams": "Suchparameter beibehalten",
+        "resourceBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden:",
+        "resourceTitle": "Ressourcendarstellung einbetten"
     },
     "Error": {
         "configurationErrorMessage": "Beim Laden und Validieren der Konfigurationsdatei(en) ist ein Fehler aufgetreten.\n\nFehler: \"{error}\"",
@@ -69,18 +83,8 @@
     "ResetView": {
         "resetTooltip": "Ansicht zurücksetzen"
     },
-    "ResourceDetailsControls": {
-        "download": "Herunterladen",
-        "embed": "Einbetten",
-        "embedBody": "Die Visualisierung dieser Ressource kann mithilfe des folgenden Codes eingebettet werden.",
-        "embedHeight": "Höhe",
-        "embedTitle": "Ressourcendarstellung einbetten",
-        "embedWidth": "Breite",
-        "fullscreen": "Vollbild",
-        "keepSearchParams": "Suchparameter beibehalten"
-    },
     "Search": {
-        "emptyLabel": "Keine Ressourcen gefunden.",
+        "emptyLabel": "Keine Einträge gefunden.",
         "search": "Suche"
     },
     "Table": {
