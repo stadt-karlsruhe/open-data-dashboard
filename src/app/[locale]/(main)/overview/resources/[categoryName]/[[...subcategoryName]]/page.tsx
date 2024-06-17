@@ -1,14 +1,19 @@
 import { Category, Configuration } from '@/schemas/configurationSchema';
-import { computeIfAbsent, configurationToResources, configurationToSubcategories } from '@/utils/mapUtils';
+import { computeIfUncached, configurationToResources, configurationToSubcategories } from '@/utils/mapUtils';
 
 import { DataElement } from '@/types/data';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
+import { LRUCache } from 'lru-cache';
 import Overview from '@/components/overview/Overview';
 import PageWrapper from '@/components/layout/PageWrapper';
 import { getValidatedConfiguration } from '@/schemas/validate';
 import { safeStringCompare } from '@/utils/stringUtils';
 
-const categoryToContent: Map<string, DataElement[]> = new Map<string, DataElement[]>();
+const options = {
+  max: 100,
+};
+
+const categoryToContentCache: LRUCache<string, DataElement[]> = new LRUCache<string, DataElement[]>(options);
 
 export default async function Page({
   params: { categoryName, subcategoryName },
@@ -47,7 +52,7 @@ export default async function Page({
 }
 
 function getCategoryContent(configuration: Configuration, category: Category, categoryKey: string) {
-  return computeIfAbsent(categoryToContent, categoryKey, () =>
+  return computeIfUncached(categoryToContentCache, categoryKey, () =>
     computeCategoryContent(configuration, category),
   ) as DataElement[];
 }

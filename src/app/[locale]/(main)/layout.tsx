@@ -1,5 +1,5 @@
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
-import Footer from '@/components/Footer';
+import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
