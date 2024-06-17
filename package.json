@@ -61,6 +61,7 @@
     "react-minisearch": "6.3.0",
     "recharts": "2.12.7",
     "sass": "1.77.5",
+    "sharp": "^0.33.4",
     "styled-components": "6.1.11",
     "ts-deepmerge": "7.0.0",
     "ts-node": "10.9.2",
