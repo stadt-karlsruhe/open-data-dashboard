@@ -82,7 +82,7 @@ export default function GeoMap({
             {feature.geometry.type === 'Point' && (
               <Marker
                 position={utmToWgs(
-                  [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+                  [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
                   resource.coordinateFormat,
                 )}
                 icon={getIcon(colorCode)}
@@ -119,9 +119,10 @@ function getIcon(color: string) {
 }
 
 function utmToWgs(coords: [number, number] | [number, number, number], format: 'WGS84' | 'UTM') {
+  const [longitude, latitude] = coords;
   if (format === 'WGS84') {
-    return L.latLng(coords);
+    return L.latLng([latitude, longitude]);
   }
-  const [longitude, latitude] = proj4(utm, wgs84, coords);
-  return L.latLng([latitude, longitude]);
+  const [transformedLongitude, transformedLatitude] = proj4(utm, wgs84, [longitude, latitude]);
+  return L.latLng([transformedLatitude, transformedLongitude]);
 }
