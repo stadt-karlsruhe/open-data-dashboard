@@ -13,11 +13,14 @@ import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
 import { TransformedData } from '@/schemas/dataSchema';
+import proj4 from 'proj4';
 
 const standardPos = {
   latLng: [49.013_677_698_392_264, 8.404_375_426_378_891] as LatLngExpression,
   zoom: 13.5,
 };
+const utm = '+proj=utm +zone=32';
+const wgs84 = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
 
 // eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
@@ -70,11 +73,18 @@ export default function GeoMap({
               ))}
             </Tooltip>
             {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
-              <GeoJSONLeaflet data={feature} style={{ color: colorCode }} />
+              <GeoJSONLeaflet
+                data={feature}
+                coordsToLatLng={(coords) => utmToWgs(coords, resource.coordinateFormat)}
+                style={{ color: colorCode }}
+              />
             )}
             {feature.geometry.type === 'Point' && (
               <Marker
-                position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
+                position={utmToWgs(
+                  [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+                  resource.coordinateFormat,
+                )}
                 icon={getIcon(colorCode)}
               />
             )}
@@ -106,4 +116,12 @@ function getIcon(color: string) {
     ),
     iconAnchor: [15, 30],
   });
+}
+
+function utmToWgs(coords: [number, number] | [number, number, number], format: 'WGS84' | 'UTM') {
+  if (format === 'WGS84') {
+    return L.latLng(coords);
+  }
+  const [longitude, latitude] = proj4(utm, wgs84, coords);
+  return L.latLng([latitude, longitude]);
 }
