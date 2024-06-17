@@ -11,12 +11,12 @@ import {
 } from 'recharts';
 import { useEffect, useState } from 'react';
 
-import { AxisPair } from '@/schemas/configuration-schema';
+import { AxisPair } from '@/schemas/configurationSchema';
 import AxisSelector from './AxisSelector';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
-import { TransformedData } from '@/schemas/data-schema';
-import { computeIfAbsent } from '@/utils/maputils';
-import { getColor } from '@/colors';
+import { TransformedData } from '@/schemas/dataSchema';
+import { computeIfAbsent } from '@/utils/mapUtils';
+import { getColor } from '@/utils/colors';
 
 let minValue: number;
 let maxValue: number;
@@ -106,8 +106,11 @@ function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, 
 function collectYAxes(axisPairs: AxisPair[]) {
   const axesMap = new Map<string, Map<string, boolean>>();
   for (const [i, axisPair] of axisPairs.entries()) {
-    const yAxesForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, new Map<string, boolean>()) as Map<string, boolean>;
-    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, i === 0);
+    const yAxesForXAxis = computeIfAbsent(axesMap, axisPair.xAxis, () => new Map<string, boolean>()) as Map<
+      string,
+      boolean
+    >;
+    computeIfAbsent(yAxesForXAxis, axisPair.yAxis, () => i === 0);
   }
   return axesMap;
 }
@@ -116,7 +119,7 @@ function updateAxisMap(xAxis: string, yAxis: string | undefined, axesMap: Map<st
   if (yAxis === undefined) {
     return axesMap;
   }
-  const yAxesForXAxis = computeIfAbsent(axesMap, xAxis, new Map<string, boolean>()) as Map<string, boolean>;
+  const yAxesForXAxis = computeIfAbsent(axesMap, xAxis, () => new Map<string, boolean>()) as Map<string, boolean>;
   let bool = yAxesForXAxis.get(yAxis);
   bool = bool === undefined ? true : !bool;
   yAxesForXAxis.set(yAxis, bool);

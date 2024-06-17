@@ -1,12 +1,18 @@
 'use client';
 
 import { CSSProperties, useState } from 'react';
-import { Configuration, Resource } from '@/schemas/configuration-schema';
+import {
+  configurationToCategories,
+  configurationToDashboards,
+  configurationToResources,
+  configurationToSubcategories,
+} from '@/utils/mapUtils';
 
+import { Configuration } from '@/schemas/configurationSchema';
+import { DataElement } from '@/types/data';
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
-import { getColorForResourceType } from '@/colors';
 import { locales } from '@/locales';
 import { useMiniSearch } from 'react-minisearch';
 import { useTranslations } from 'next-intl';
@@ -26,7 +32,9 @@ export default function Search({
   className?: string;
   style?: CSSProperties;
 }) {
-  const { search, searchResults } = useMiniSearch(configuration.resources, { fields: ['name', 'description'] });
+  const { search, searchResults } = useMiniSearch(getSearchableElements(configuration), {
+    fields: ['name', 'description'],
+  });
   const t = useTranslations('Search');
   const [selected, setSelected] = useState([] as (object | string)[]);
   const router = useRouter();
@@ -51,18 +59,26 @@ export default function Search({
       }}
       onKeyDown={(event) => {
         if (event.key === 'Enter' && selected.length > 0) {
-          const resource = selected[0] as Resource;
+          const dataElement = selected[0] as DataElement;
           setSelected([]);
           search('');
-          router.push(`/view/${resource.name.trim().replaceAll(/\s+/gu, '-')}-${resource.id}`);
+          router.push(dataElement.href);
         }
       }}
       options={searchResults?.slice(0, 6) ?? []}
       placeholder={t('search')}
       emptyLabel={t('emptyLabel')}
       renderMenuItemChildren={(option, props) => {
-        return <SearchResult resource={option as Resource} menuProps={props} />;
+        return <SearchResult element={option as DataElement} menuProps={props} />;
       }}
     />
   );
+}
+
+function getSearchableElements(configuration: Configuration) {
+  const resources = configurationToResources(configuration);
+  const categories = configurationToCategories(configuration);
+  const subcategories = configurationToSubcategories(configuration);
+  const dashboards = configurationToDashboards(configuration);
+  return [...resources, ...dashboards, ...categories, ...subcategories];
 }

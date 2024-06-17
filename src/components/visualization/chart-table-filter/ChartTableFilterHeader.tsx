@@ -1,6 +1,6 @@
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import { ClearableInputGroup } from './ClearableInputGroup';
-import { Filter } from '@/schemas/configuration-schema';
+import { Filter } from '@/schemas/configurationSchema';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import { useContext } from 'react';
 import { useTranslations } from 'next-intl';
@@ -22,13 +22,13 @@ export function ChartTableFilterHeader({
   const decoratedOnClick = useAccordionButton(eventKey);
   const isCurrentEventKey = activeEventKey === eventKey;
 
-  const t = useTranslations('ChartTableFilterHead');
+  const t = useTranslations('ChartTableFilterHeader');
   return (
     <ClearableInputGroup
       id={`${resourceId}-search`}
       type="text"
       value={typeof filters[allEntries] === 'string' && filters[allEntries] ? filters[allEntries] : ''}
-      label={t('searchAll')}
+      label={t('filterAll')}
       onChange={(e) => {
         onChange(allEntries, e.target.value);
       }}
@@ -43,7 +43,8 @@ export function ChartTableFilterHeader({
         title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         onClick={decoratedOnClick}
       >
-        {isCurrentEventKey ? <i className="bi bi-caret-up-square"></i> : <i className="bi bi-caret-down-square"></i>}
+        <i className="bi bi-funnel-fill fs-5" />
+        {isCurrentEventKey ? <i className="bi bi-caret-up" /> : <i className="bi bi-caret-down" />}
       </button>
     </ClearableInputGroup>
   );

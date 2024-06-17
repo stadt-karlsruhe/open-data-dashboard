@@ -1,7 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { ClearableInputGroup } from './ClearableInputGroup';
-import { Filter } from '@/schemas/configuration-schema';
-import { TransformedData } from '@/schemas/data-schema';
+import { Filter } from '@/schemas/configurationSchema';
+import { TransformedData } from '@/schemas/dataSchema';
 import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
@@ -69,7 +69,7 @@ export function ChartTableFilterBody({
                     id={`${resourceId}-${key}-text-input`}
                     type="text"
                     value={filter && typeof filter === 'string' ? filter : ''}
-                    label={t('search')}
+                    label={t('filter')}
                     onChange={(e) => {
                       onChange(key, e.target.value);
                     }}

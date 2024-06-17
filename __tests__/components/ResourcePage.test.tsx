@@ -5,14 +5,15 @@
 import { describe, expect, it } from '@jest/globals';
 import { embeddedResource, jsonResource } from '../data/resources';
 import { render, screen } from '@testing-library/react';
+
+import { Configuration } from '@/schemas/configurationSchema';
 import { NextIntlClientProvider } from 'next-intl';
-import Page from '@/app/[locale]/(embedded)/resource/[resourceId]/page';
-import YAML from 'yaml';
-import { promises as fs } from 'node:fs';
+import Page from '@/app/[locale]/(embed)/embed/resource/[resourceId]/page';
+import { getValidatedConfiguration } from '@/schemas/validate';
 import messages from '@/messages/en.json';
 
 // eslint-disable-next-line jest/no-untyped-mock-factory
-jest.mock('@/components/visualization/layout/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
+jest.mock('@/components/visualization/Visualization', () => jest.fn(() => <div>Mocked Visualization</div>));
 // eslint-disable-next-line jest/no-untyped-mock-factory
 jest.mock('yaml', () => ({
   parse: jest.fn(),
@@ -28,6 +29,13 @@ jest.mock<typeof import('node:fs')>('node:fs', () => {
   };
 });
 
+jest.mock<typeof import('@/schemas/validate')>('@/schemas/validate', () => {
+  return {
+    getValidatedData: jest.fn(),
+    getValidatedConfiguration: jest.fn(),
+  };
+});
+
 const mockConfiguration = {
   resources: [embeddedResource, jsonResource],
 };
@@ -36,8 +44,9 @@ describe('resource page', () => {
   it('should render the EmbeddedViewer component for an embedded resource', async () => {
     expect.hasAssertions();
 
-    (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
-    (YAML.parse as jest.Mock).mockReturnValueOnce(mockConfiguration);
+    jest
+      .mocked(getValidatedConfiguration)
+      .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: '1' } };
 
     const PageComponent = await Page({ params });
@@ -49,8 +58,9 @@ describe('resource page', () => {
   it('should render the Visualization component for non-embedded resources', async () => {
     expect.hasAssertions();
 
-    (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
-    (YAML.parse as jest.Mock).mockReturnValueOnce(mockConfiguration);
+    jest
+      .mocked(getValidatedConfiguration)
+      .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: '2' } };
 
     const PageComponent = await Page({ params });
@@ -66,8 +76,9 @@ describe('resource page', () => {
   it('should render the Error component if the resource is not found', async () => {
     expect.hasAssertions();
 
-    (fs.readFile as jest.Mock).mockResolvedValueOnce(JSON.stringify(mockConfiguration));
-    (YAML.parse as jest.Mock).mockReturnValueOnce(mockConfiguration);
+    jest
+      .mocked(getValidatedConfiguration)
+      .mockResolvedValueOnce({ success: true, configuration: mockConfiguration as Configuration, error: undefined });
     const { params } = { params: { resourceId: 'non-existent-resource' } };
 
     const PageComponent = await Page({ params });

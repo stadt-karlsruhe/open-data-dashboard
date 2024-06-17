@@ -1,43 +1,46 @@
 {
-  "extends": "@tsconfig/node21/tsconfig.json",
-  "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "noEmit": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+    "compilerOptions": {
+        "allowJs": true,
+        "incremental": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "noEmit": true,
+        "paths": {
+            "~/data/*": [
+                "./__tests__/data/*"
+            ],
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "resolveJsonModule": true,
+        "types": [
+            "@testing-library/jest-dom"
+        ]
     },
-    "types": [
-      "@testing-library/jest-dom"
+    "exclude": [
+        "node_modules"
+    ],
+    "extends": "@tsconfig/node21/tsconfig.json",
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "*.mjs",
+        "*.d.ts",
+        "__tests__/*"
     ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "*.mjs",
-    "*.d.ts",
-    "__tests__/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
 }

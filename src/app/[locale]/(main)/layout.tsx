@@ -3,29 +3,24 @@ import Footer from '@/components/Footer';
 import Header from '@/components/header/Header';
 import Navigation from '@/components/navigation/Navigation';
 import NavigationProvider from '@/components/navigation/NavigationProvider';
-import { colorLight } from '@/colors';
-import { configurationSchema } from '@/schemas/configuration-schema';
-import { getConfiguration } from '@/configuration';
+import { colorLight } from '@/utils/colors';
+import { getValidatedConfiguration } from '@/schemas/validate';
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const configuration = await getConfiguration();
-  if (!configuration.success) {
-    return <ErrorComponent type="configurationNotLoaded" error={String(configuration.error)} />;
-  }
-  const parsedConfiguration = configurationSchema.safeParse(configuration.data);
-  if (!parsedConfiguration.success) {
-    return <ErrorComponent type="configurationInvalid" error={JSON.stringify(parsedConfiguration.error)} />;
+  const { success, configuration, error } = await getValidatedConfiguration();
+  if (!success) {
+    return <ErrorComponent type="configurationError" error={error} />;
   }
   return (
     <NavigationProvider>
       <div className="d-flex flex-column min-vh-100" style={{ background: colorLight }}>
-        <Header configuration={parsedConfiguration.data} />
+        <Header configuration={configuration} />
         <div className="container-lg d-flex bg-white flex-fill p-0">
-          <Navigation configuration={parsedConfiguration.data} />
+          <Navigation configuration={configuration} />
           {children}
         </div>
       </div>

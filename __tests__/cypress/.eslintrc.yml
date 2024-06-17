@@ -1,0 +1,5 @@
+---
+extends:
+    - plugin:cypress/recommended
+rules:
+    jest/require-hook: off

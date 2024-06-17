@@ -1,10 +1,11 @@
 'use client';
 
+import { DataElement } from '@/types/data';
 // eslint-disable-next-line import/named
 import { TableColumn } from 'react-data-table-component';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import dynamic from 'next/dynamic';
-import { getColorForResourceType } from '@/colors';
+import { getColorForResourceType } from '@/utils/colors';
 import { locales } from '@/locales';
 import { useTranslations } from 'next-intl';
 
@@ -15,66 +16,46 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export interface OverviewRow {
-  title: string;
-  description?: string;
-  href: string;
-  isCategory: boolean;
-  icon: string;
-  resourceType?: 'PDF' | 'HTML' | 'JSON' | 'GeoJSON' | 'CSV';
-}
-
-export default function Overview({
-  content,
-  header,
-}: {
-  content: OverviewRow[];
-  header: {
-    name: string;
-    description: string;
-  };
-}) {
+export default function Overview({ content }: { content: DataElement[] }) {
   const tableT = useTranslations('Table');
   const columns = [
     {
-      cell: (row: OverviewRow) => transformContentToHTMLElement(row),
+      cell: (row: DataElement) => transformContentToHTMLElement(row),
     },
   ] as TableColumn<unknown>[];
   return (
-    <div className="flex-fill ms-2">
-      <h3>{header.name}</h3>
-      <p className="lead">{header.description}</p>
-      <DataTable
-        dense={true}
-        columns={columns}
-        data={content}
-        noDataComponent={tableT('noRecords')}
-        highlightOnHover
-        pagination={content.length > 10}
-        paginationComponentOptions={{
-          rowsPerPageText: tableT('rowsPerPageText'),
-          rangeSeparatorText: tableT('rangeSeparatorText'),
-          selectAllRowsItem: true,
-          selectAllRowsItemText: tableT('selectAllRowsItemText'),
-        }}
-      />
-    </div>
+    <DataTable
+      dense={true}
+      columns={columns}
+      data={content}
+      noDataComponent={tableT('noRecords')}
+      highlightOnHover
+      pagination={content.length > 10}
+      paginationComponentOptions={{
+        rowsPerPageText: tableT('rowsPerPageText'),
+        rangeSeparatorText: tableT('rangeSeparatorText'),
+        selectAllRowsItem: true,
+        selectAllRowsItemText: tableT('selectAllRowsItemText'),
+      }}
+    />
   );
 }
 
-function transformContentToHTMLElement(contentRow: OverviewRow) {
-  const badgeColor = getColorForResourceType(contentRow.resourceType);
-  const titleColor = contentRow.isCategory ? 'nav-link' : '';
+function transformContentToHTMLElement(element: DataElement) {
+  const badgeColor = getColorForResourceType(element.resourceType);
+  const titleColor = element.type === 'category' ? 'var(--bs-green)' : '';
   return (
-    <Link href={contentRow.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
-      <i className={`bi bi-${contentRow.icon} ${titleColor} fs-1 me-3`} />
+    <Link href={element.href} className="d-flex align-items-center text-dark text-decoration-none w-100 p-2">
+      <i className={`bi bi-${element.icon} fs-1 me-3`} style={{ color: titleColor }} />
       <div>
-        <div className={`fs-5 ${titleColor}`}>{contentRow.title}</div>
+        <div className={`fs-5`} style={{ color: titleColor }}>
+          {element.name}
+        </div>
         <br />
-        <div className="fs-6">{contentRow.description}</div>
-        {!contentRow.isCategory && (
-          <span className="badge" style={{ backgroundColor: badgeColor }}>
-            {contentRow.resourceType}
+        <div className="fs-6">{element.description}</div>
+        {element.type !== 'category' && element.type !== 'dashboard' && (
+          <span className="badge my-1" style={{ backgroundColor: badgeColor }}>
+            {element.resourceType}
           </span>
         )}
       </div>

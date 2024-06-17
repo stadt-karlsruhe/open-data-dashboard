@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import { getColor } from '@/colors';
+
+import { getColor } from '@/utils/colors';
 
 const cssVariableRegex = /var\(--[a-zA-Z0-9-]+\)/u;
 
