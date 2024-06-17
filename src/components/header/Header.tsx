@@ -2,7 +2,6 @@
 
 import { Configuration } from '@/schemas/configurationSchema';
 import Image from 'next/image';
-import LocaleSwitcher from './LocaleSwitcher';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
 import LogoKarlsruheSmall from '../../public/Logo_Digital_Karlsruhe-rechts_rgb_small.svg';
 import Search from '../search/Search';
@@ -16,7 +15,6 @@ const { Link, usePathname } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-// eslint-disable-next-line max-lines-per-function
 export default function Header({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
   const t = useTranslations('Header');
@@ -48,7 +46,6 @@ export default function Header({ configuration }: { configuration: Configuration
                 className="d-none d-md-block flex-fill p-2 m-auto"
               />
             )}
-            <LocaleSwitcher className="d-none d-md-block p-2" />
           </div>
           <Image
             className="d-block d-lg-none"

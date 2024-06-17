@@ -5,7 +5,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import LocaleSwitcher from '@/components/header/LocaleSwitcher';
+import LocaleSwitcher from '@/components/footer/LocaleSwitcher';
 import { NextIntlClientProvider } from 'next-intl';
 import { locales } from '@/locales';
 import messages from '@/messages/en.json';
