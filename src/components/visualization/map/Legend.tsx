@@ -8,7 +8,7 @@ export default function Legend({ labels }: { labels: Map<string, string> }) {
       style={{ width: '200px', maxWidth: '50vw', maxHeight: '200px' }}
     >
       <div className="card-header text-center">{t('title')}</div>
-      <div className="card-body overflow-y-scroll">
+      <div className="card-body overflow-y-auto">
         {[...labels.entries()].map(([label, color]) => (
           <div className="row" key={label}>
             <div className="col-1 bi bi-circle-fill" style={{ color }} />
