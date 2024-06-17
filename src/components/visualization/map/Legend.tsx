@@ -5,14 +5,15 @@ import { useTranslations } from 'next-intl';
 
 export default function Legend({ labels }: { labels: Map<string, string> }) {
   const t = useTranslations('Legend');
-  const divLegend = useRef(null);
+  const legendRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if(divLegend.current !== null){
-        L.DomEvent.disableScrollPropagation(divLegend.current);
+    if (legendRef.current !== null) {
+      L.DomEvent.disableScrollPropagation(legendRef.current);
     }
-  })
+  });
   return (
-    <div ref={divLegend}
+    <div
+      ref={legendRef}
       className="bg-white card position-absolute m-3 fs-6"
       style={{ width: '200px', maxWidth: '50vw', maxHeight: '200px', zIndex: 400, bottom: '6px', left: '6px' }}
     >
