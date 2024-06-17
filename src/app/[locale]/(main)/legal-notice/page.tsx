@@ -1,11 +1,12 @@
+import Link from 'next/link';
+import PageWrapper from '@/components/layout/PageWrapper';
 import { useTranslations } from 'next-intl';
 
+// eslint-disable-next-line max-lines-per-function
 export default function LegalNotice() {
-  const t = useTranslations('Footer');
+  const t = useTranslations('LegalNotice');
   return (
-    <div className="container mt-4">
-      <h1>{t('legalNotice')}</h1>
-      <br />
+    <PageWrapper title={t('title')}>
       <div className="mb-4">
         <h2>{t('publisher')}</h2>
         <address>
@@ -13,7 +14,12 @@ export default function LegalNotice() {
           Karl-Friedrich-Str. 10 <br />
           76133 Karlsruhe <br />
           Telefon: 0721 133-0 <br />
-          E-Mail: <a href="mailto:stadt@karlsruhe.de">stadt[at]karlsruhe.de</a>
+          <div className="d-flex">
+            E-Mail:
+            <Link href="mailto:stadt@karlsruhe.de" className="nav-link ms-1">
+              stadt[at]karlsruhe.de
+            </Link>
+          </div>
         </address>
         <p>
           <b>{t('authorizedRepresentative')}</b> <br />
@@ -36,16 +42,28 @@ export default function LegalNotice() {
 
       <div className="mb-4">
         <h3>{t('responsibleEditorialDepartment')}</h3>
-        <p>
+        <div className="text-nowrap">
           Amt für Informationstechnik und Digitalisierung <br />
           Open Government und Open Data <br />
-          E-Mail: <a href="mailto:transparenz@karlsruhe.de">transparenz[at]karlsruhe.de</a>
-        </p>
+          <div className="d-flex">
+            E-Mail:
+            <Link href="mailto:transparenz@karlsruhe.de" className="nav-link ms-1">
+              transparenz[at]karlsruhe.de
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div className="mb-4">
         <h3>{t('technicalImplementation')}</h3>
-        <p>Anwendungsprojekt Hochschule Karlsruhe</p>
+        <Link href="https://www.h-ka.de/" className="nav-link" target="_blank" rel="noopener noreferrer">
+          {t('awp')}
+        </Link>
+        Chiara Scheurer <br />
+        Abdullah Atak <br />
+        Christian Holst <br />
+        Jan Kuhnmünch <br />
+        Daniel Purtov
       </div>
       <div className="mb-4">
         <h2>{t('dataProtection')}</h2>
@@ -55,6 +73,6 @@ export default function LegalNotice() {
           {t('dataProtectionText2')}
         </p>
       </div>
-    </div>
+    </PageWrapper>
   );
 }

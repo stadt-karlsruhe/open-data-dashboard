@@ -15,9 +15,10 @@ export default function Footer({ className }: { className?: string }) {
           href="/legal-notice"
           className="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
         >
-          {t('legalNotice')} & {t('dataProtection')}
+          <i className="bi bi-info-circle-fill me-2"></i>
+          {t('legalNotice')}
         </Link>
-        <a
+        <Link
           href="https://github.com/stadt-karlsruhe/open-data-dashboard"
           target="_blank"
           rel="noopener noreferrer"
@@ -25,7 +26,7 @@ export default function Footer({ className }: { className?: string }) {
         >
           <i className="bi bi-github me-2"></i>
           {t('source')}
-        </a>
+        </Link>
       </div>
     </footer>
   );

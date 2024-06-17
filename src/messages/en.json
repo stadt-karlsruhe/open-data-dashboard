@@ -52,22 +52,26 @@
         "unexpectedTitle": "An unexpected error ocurred!"
     },
     "Footer": {
+        "legalNotice": "Legal Notice and Privacy Policy",
+        "source": "Source"
+    },
+    "Header": {
+        "title": "Open Data Dashboard"
+    },
+    "LegalNotice": {
         "authorizedRepresentative": "Authorized Representative",
+        "awp": "Anwendungsprojekt University of Applied Sciences Karlsruhe",
         "dataProtection": "Privacy Policy",
         "dataProtectionText1": "We do not store any data about our users and do not collect statistics on accesses. Wherever possible, we keep all dependencies on our own server.",
         "dataProtectionText2": "Our website may contain links to external websites. Please note that we are not responsible for the privacy practices of these other websites. We recommend reading the privacy policies of linked websites.",
         "externalLinks": "External Links",
-        "legalNotice": "Legal Notice",
         "postalAddress": "Postal address",
         "publisher": "Publisher",
         "responsibleEditorialDepartment": "Responsible Editorial Department",
-        "source": "Source",
         "supervisoryAuthority": "Supervisory Authority",
         "technicalImplementation": "Technical Implementation and Design",
+        "title": "Legal Notice and Privacy Policy",
         "vatId": "VAT Identification Number"
-    },
-    "Header": {
-        "title": "Open Data Dashboard"
     },
     "Legend": {
         "title": "Legend"
