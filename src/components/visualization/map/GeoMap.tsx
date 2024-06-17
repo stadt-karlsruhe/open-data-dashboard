@@ -9,6 +9,7 @@ import { colorPrimary, getColor } from '@/utils/colors';
 import { GeoJSON } from 'react-leaflet/GeoJSON';
 import { GeoJSONResource } from '@/schemas/configurationSchema';
 import Legend from './Legend';
+import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
 
@@ -36,7 +37,11 @@ export default function GeoMap({
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+        attribution={ReactDOMServer.renderToString(
+          <>
+            &copy; <Link href="https://osm.org/copyright">OpenStreetMap</Link>
+          </>,
+        )}
       />
       {geoJsonData.features.map((feature, index) => {
         let colorCode = colorPrimary;
@@ -76,14 +81,14 @@ export default function GeoMap({
   );
 }
 
-function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupLabel: string | undefined) {
+function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupKey: string | undefined) {
   if (
-    groupLabel &&
+    groupKey &&
     properties !== null &&
-    properties[groupLabel] !== undefined &&
-    typeof properties[groupLabel] === 'string'
+    properties[groupKey] !== undefined &&
+    typeof properties[groupKey] === 'string'
   ) {
-    return properties[groupLabel] as string;
+    return properties[groupKey] as string;
   }
 }
 
