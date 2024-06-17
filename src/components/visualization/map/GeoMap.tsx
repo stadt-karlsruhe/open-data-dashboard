@@ -13,13 +13,12 @@ import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
 
-const collectedLabels = new Map<string, string>();
-
 const standardPos = {
   latLng: [49.013_677_698_392_264, 8.404_375_426_378_891] as LatLngExpression,
   zoom: 13.5,
 };
 
+// eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
   resource,
   geoJsonData,
@@ -27,6 +26,7 @@ export default function GeoMap({
   resource: GeoJSONResource;
   geoJsonData: GeoJSON.FeatureCollection;
 }) {
+  const collectedLabels = new Map<string, string>();
   return (
     <MapContainer
       style={{ height: '100dvh', width: '100%' }}
@@ -39,7 +39,10 @@ export default function GeoMap({
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution={ReactDOMServer.renderToString(
           <>
-            &copy; <Link href="https://osm.org/copyright">OpenStreetMap</Link>
+            &copy;{' '}
+            <Link href="https://osm.org/copyright" target="_blank">
+              OpenStreetMap
+            </Link>
           </>,
         )}
       />
