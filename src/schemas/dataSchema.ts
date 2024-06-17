@@ -11,11 +11,16 @@ export const transformedDataArraySchema = z.array(transformedDataSchema).min(1, 
     message: 'At least one data object must be contained. The endpoint probably returned empty or malformed data.',
 });
 
-type AllowedGeometry = GeoJSON.Point | GeoJSON.Polygon;
+type AllowedGeometry = GeoJSON.Point | GeoJSON.LineString | GeoJSON.Polygon;
 
 const pointGeometrySchema = z.object({
     coordinates: z.tuple([z.number(), z.number()]),
     type: z.literal('Point'),
+});
+
+const lineGeometrySchema = z.object({
+    coordinates: z.tuple([z.number(), z.number()]).array(),
+    type: z.literal('LineString'),
 });
 
 const polygonGeometrySchema = z.object({
@@ -26,7 +31,7 @@ const polygonGeometrySchema = z.object({
 const featureSchema = z.object({
     type: z.literal('Feature'),
     properties: transformedDataSchema,
-    geometry: z.union([pointGeometrySchema, polygonGeometrySchema]),
+    geometry: z.union([pointGeometrySchema, lineGeometrySchema, polygonGeometrySchema]),
 }) satisfies z.ZodType<GeoJSON.Feature<AllowedGeometry>>;
 
 export const geoJSONSchema = z.object({

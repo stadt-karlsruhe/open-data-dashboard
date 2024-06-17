@@ -86,6 +86,13 @@ resources:
       skipPropertiesRegEx: ^NUMMER$
       visualizations:
           map: {}
+    - id: "9"
+      # TODO: Convert coordinates format
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_radnetz&outputFormat=application%2Fjson
+      type: GeoJSON
+      name: Radnetz Stadt Karlsruhe
+      visualizations:
+          map: {}
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.

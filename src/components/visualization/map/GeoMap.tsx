@@ -6,7 +6,7 @@ import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-le
 import L, { LatLngExpression } from 'leaflet';
 import { colorPrimary, getColor } from '@/utils/colors';
 
-import { GeoJSON } from 'react-leaflet/GeoJSON';
+import { GeoJSON as GeoJSONLeaflet } from 'react-leaflet/GeoJSON';
 import { GeoJSONResource } from '@/schemas/configurationSchema';
 import Legend from './Legend';
 import Link from 'next/link';
@@ -69,7 +69,9 @@ export default function GeoMap({
                 </div>
               ))}
             </Tooltip>
-            {feature.geometry.type === 'Polygon' && <GeoJSON data={feature} style={{ color: colorCode }} />}
+            {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
+              <GeoJSONLeaflet data={feature} style={{ color: colorCode }} />
+            )}
             {feature.geometry.type === 'Point' && (
               <Marker
                 position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
