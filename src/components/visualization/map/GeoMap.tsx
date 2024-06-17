@@ -12,6 +12,7 @@ import Legend from './Legend';
 import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
+import { TransformedData } from '@/schemas/dataSchema';
 
 const standardPos = {
   latLng: [49.013_677_698_392_264, 8.404_375_426_378_891] as LatLngExpression,
@@ -61,7 +62,7 @@ export default function GeoMap({
         return (
           <FeatureGroup key={index}>
             <Tooltip>
-              {Object.entries(feature.properties as Record<string, string>).map(([key, value], index) => (
+              {Object.entries(feature.properties as TransformedData).map(([key, value], index) => (
                 <div key={index}>
                   <b>{key}: </b>
                   {value} <br />
