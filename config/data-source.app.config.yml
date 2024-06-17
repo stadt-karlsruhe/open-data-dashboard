@@ -107,6 +107,7 @@ categories:
       resources:
           - "5"
           - "8"
+          - "9"
     - name: Gesellschaft
       description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
       icon: people-fill
