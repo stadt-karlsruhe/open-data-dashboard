@@ -75,13 +75,13 @@ export default function GeoMap({
             {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
               <GeoJSONLeaflet
                 data={feature}
-                coordsToLatLng={(coords) => utmToWgs(coords, resource.coordinateFormat)}
+                coordsToLatLng={(coords) => utmToLatLng(coords, resource.coordinateFormat)}
                 style={{ color: colorCode }}
               />
             )}
             {feature.geometry.type === 'Point' && (
               <Marker
-                position={utmToWgs(
+                position={utmToLatLng(
                   [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
                   resource.coordinateFormat,
                 )}
@@ -118,7 +118,7 @@ function getIcon(color: string) {
   });
 }
 
-function utmToWgs(coords: [number, number] | [number, number, number], format: 'LatLng' | 'UTM') {
+function utmToLatLng(coords: [number, number] | [number, number, number], format: 'LatLng' | 'UTM') {
   const [longitude, latitude] = coords;
   if (format === 'LatLng') {
     return L.latLng([latitude, longitude]);
