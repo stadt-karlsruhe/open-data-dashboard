@@ -54,17 +54,19 @@ For more information about supported data types and formats, see [Supported Data
       source: string
       type: GeoJSON
       numberFormat: string # (1)!
+      coordinateFormat: string # (2)!
       renameFields:
-        <rename-fields-configs> # (2)!
-      skipFieldsRegEx: string # (3)!
+        <rename-fields-configs> # (3)!
+      skipFieldsRegEx: string # (4)!
       visualizations:
-        <visualization-config> # (4)!
+        <visualization-config> # (5)!
     ```
 
-    1. Specify the input number format. See [numberFormat](#number-format).
-    2. Rename fields/properties. See [renameFields](#rename-fields).
-    3. Skip fields/properties. See [skipFields](#skip-fields).
-    4. Visualization-specific configurations. See [Map](visualizations.md#map).
+    1. Specify the input number format for the GeoJSON properties. See [numberFormat](#number-format).
+    2. Specify the coordinate format. See [coordinateFormat](#coordinate-format).
+    3. Rename fields/properties. See [renameFields](#rename-fields).
+    4. Skip fields/properties. See [skipFields](#skip-fields).
+    5. Visualization-specific configurations. See [Map](visualizations.md#map).
 
 ## HTML and PDF Data
 
@@ -132,10 +134,9 @@ An actual config skipping the property `test_prop` would look like this:
     skipFieldsRegEx: ^test_prop$
     ```
 
-### Default Filters
+## Configurations for CSV and JSON Data
 
-!!! warning
-    Currently, this configuration option is only available for **CSV** and **JSON** data.
+### Default Filters
 
 Optionally, specify a default filter as an object. This filter will be used if the dataset is loading without additional parameters.
 
@@ -171,3 +172,25 @@ An actual config setting the filters:
             min: 5
             max: 100
     ```
+
+## Configurations for GeoJSON Data
+
+### Coordinate Format
+
+Optionally, specify the coordinate format.
+
+* By default, Latitude Longitude coordinates (`LatLng`) will be assumed.
+* Alternatively, the [UTM](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system) coordinate system can be specified.
+
+!!! example
+
+    ```yaml title="app.config.yml"
+    coordinateFormat: string
+    ```
+
+To provide a concrete example, see the difference in format for the coordinates of [Karlsruhe](https://maps.app.goo.gl/gSD9YuYEbVSw9Ugx8) below:
+
+| `LatLng`                                | `UTM`                     |
+| --------------------------------------- | ------------------------- |
+| [49.018071401430845, 8.404381570202148] | [456450.836, 5429635.580] |
+|                                         |                           |

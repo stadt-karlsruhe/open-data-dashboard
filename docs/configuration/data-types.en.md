@@ -8,8 +8,9 @@ Depending on the data type, different [visualizations](visualizations.md) for th
 CSV data can be visualized as Table and as Bar Chart.
 Internally, it will be converted to JSON using [json-2-csv](https://www.npmjs.com/package/json-2-csv).
 
-- The source must return the data as plain text.
-- All lines must have the same exact number of CSV values.
+!!! note
+    - The source must return the data as plain text.
+    - All lines must have the same exact number of CSV values.
 
 !!! example
 
@@ -119,8 +120,9 @@ See examples of the supported JSON formats below.
 
 GeoJSON data can be visualized as Map.
 
-- The source must return valid GeoJSON data in accordance to [geojson.org](https://geojson.org/).
-
+!!! note
+    - The source must return valid GeoJSON data in accordance to the [GeoJSON specification](https://geojson.org/).
+    - The data must be of one of the following geometries: `Point`, `LineString` or `Polygon`. `FeatureCollection`'s containing mixed geometries are supported.
 !!! example
 
     ````json
