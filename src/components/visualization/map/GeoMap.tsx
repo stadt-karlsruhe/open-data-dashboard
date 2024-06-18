@@ -20,7 +20,7 @@ const standardPos = {
   zoom: 13.5,
 };
 const utm = '+proj=utm +zone=32';
-const wgs84 = '+proj=latlon +ellps=WGS84 +datum=WGS84 +no_defs';
+const wgs84 = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
 
 // eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
