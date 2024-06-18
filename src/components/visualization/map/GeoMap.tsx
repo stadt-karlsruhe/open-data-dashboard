@@ -20,7 +20,7 @@ const standardPos = {
   zoom: 13.5,
 };
 const utm = '+proj=utm +zone=32';
-const wgs84 = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+const wgs84 = '+proj=latlon +ellps=WGS84 +datum=WGS84 +no_defs';
 
 // eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
@@ -118,9 +118,9 @@ function getIcon(color: string) {
   });
 }
 
-function utmToWgs(coords: [number, number] | [number, number, number], format: 'WGS84' | 'UTM') {
+function utmToWgs(coords: [number, number] | [number, number, number], format: 'LatLng' | 'UTM') {
   const [longitude, latitude] = coords;
-  if (format === 'WGS84') {
+  if (format === 'LatLng') {
     return L.latLng([latitude, longitude]);
   }
   const [transformedLongitude, transformedLatitude] = proj4(utm, wgs84, [longitude, latitude]);
