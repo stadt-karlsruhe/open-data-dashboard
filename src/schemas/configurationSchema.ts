@@ -77,6 +77,7 @@ export const jsonResourceSchema = transformableResourceSchema
 export const geoJSONResourceSchema = transformableResourceSchema
     .extend({
         type: z.literal('GeoJSON'),
+        coordinateFormat: z.union([z.literal('LatLng'), z.literal('UTM')]).default('LatLng'),
         visualizations: z
             .object({
                 map: z
