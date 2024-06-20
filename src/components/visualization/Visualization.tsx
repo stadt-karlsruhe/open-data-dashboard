@@ -13,6 +13,8 @@ const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
 export default async function Visualization({ resource }: { resource: JSONResource | GeoJSONResource }) {
   let data;
   try {
+    // TODO: Remove this, once the issue with the server is fixed
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     data = (await fetchData(resource)) as never;
   } catch (err) {
     return <ErrorComponent type="dataNotLoaded" resource={resource} error={String(err)} />;

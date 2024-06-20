@@ -6,18 +6,23 @@ import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-le
 import L, { LatLngExpression } from 'leaflet';
 import { colorPrimary, getColor } from '@/utils/colors';
 
+import { GeoJSON as GeoJSONLeaflet } from 'react-leaflet/GeoJSON';
 import { GeoJSONResource } from '@/schemas/configurationSchema';
 import Legend from './Legend';
+import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
 import ResetView from './ResetView';
-
-const collectedLabels = new Map<string, string>();
+import { TransformedData } from '@/schemas/dataSchema';
+import proj4 from 'proj4';
 
 const standardPos = {
   latLng: [49.013_677_698_392_264, 8.404_375_426_378_891] as LatLngExpression,
   zoom: 13.5,
 };
+const utm = '+proj=utm +zone=32';
+const latLng = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
 
+// eslint-disable-next-line max-lines-per-function
 export default function GeoMap({
   resource,
   geoJsonData,
@@ -25,6 +30,7 @@ export default function GeoMap({
   resource: GeoJSONResource;
   geoJsonData: GeoJSON.FeatureCollection;
 }) {
+  const collectedLabels = new Map<string, string>();
   return (
     <MapContainer
       style={{ height: '100dvh', width: '100%' }}
@@ -35,7 +41,14 @@ export default function GeoMap({
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+        attribution={ReactDOMServer.renderToString(
+          <>
+            &copy;{' '}
+            <Link href="https://osm.org/copyright" target="_blank">
+              OpenStreetMap
+            </Link>
+          </>,
+        )}
       />
       {geoJsonData.features.map((feature, index) => {
         let colorCode = colorPrimary;
@@ -49,40 +62,49 @@ export default function GeoMap({
             colorCode = mappedColor;
           }
         }
-        if (feature.geometry.type !== 'Point') {
-          return;
-        }
         return (
           <FeatureGroup key={index}>
             <Tooltip>
-              {Object.entries(feature.properties as Record<string, string>).map(([key, value], index) => (
+              {Object.entries(feature.properties as TransformedData).map(([key, value], index) => (
                 <div key={index}>
                   <b>{key}: </b>
                   {value} <br />
                 </div>
               ))}
             </Tooltip>
-            <Marker
-              position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
-              icon={getIcon(colorCode)}
-            />
+            {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
+              <GeoJSONLeaflet
+                data={feature}
+                coordsToLatLng={(coords) => utmToLatLng(coords, resource.coordinateFormat)}
+                style={{ color: colorCode }}
+              />
+            )}
+            {feature.geometry.type === 'Point' && (
+              <Marker
+                position={utmToLatLng(
+                  [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
+                  resource.coordinateFormat,
+                )}
+                icon={getIcon(colorCode)}
+              />
+            )}
           </FeatureGroup>
         );
       })}
       <ResetView zoom={standardPos.zoom} latLng={standardPos.latLng} />
-      {collectedLabels.size > 0 ? <Legend labels={collectedLabels} /> : <></>}
+      {collectedLabels.size > 0 && <Legend labels={collectedLabels} />}
     </MapContainer>
   );
 }
 
-function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupLabel: string | undefined) {
+function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupKey: string | undefined) {
   if (
-    groupLabel &&
+    groupKey &&
     properties !== null &&
-    properties[groupLabel] !== undefined &&
-    typeof properties[groupLabel] === 'string'
+    properties[groupKey] !== undefined &&
+    typeof properties[groupKey] === 'string'
   ) {
-    return properties[groupLabel] as string;
+    return properties[groupKey] as string;
   }
 }
 
@@ -94,4 +116,13 @@ function getIcon(color: string) {
     ),
     iconAnchor: [15, 30],
   });
+}
+
+function utmToLatLng(coords: [number, number] | [number, number, number], format: 'LatLng' | 'UTM') {
+  const [longitude, latitude] = coords;
+  if (format === 'LatLng') {
+    return L.latLng([latitude, longitude]);
+  }
+  const [transformedLongitude, transformedLatitude] = proj4(utm, latLng, [longitude, latitude]);
+  return L.latLng([transformedLatitude, transformedLongitude]);
 }

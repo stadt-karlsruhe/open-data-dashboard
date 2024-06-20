@@ -10,6 +10,7 @@ ci:
             - http://localhost:3000/en/dashboard/bevölkerung-1
             - http://localhost:3000/en/resource/wohnberechtigte-bevölkerung-1
             - http://localhost:3000/en/resource/points-of-interest-kinos-3
+            - http://localhost:3000/en/legal-notice
         numberOfRuns: 1
         settings:
             preset: desktop

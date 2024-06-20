@@ -52,11 +52,26 @@
         "unexpectedTitle": "Es ist ein unerwarteter Fehler aufgetreten!"
     },
     "Footer": {
-        "dataProtection": "Datenschutz",
-        "imprint": "Impressum"
+        "legalNotice": "Impressum und Datenschutz",
+        "source": "Quellcode"
     },
     "Header": {
         "title": "Open Data Dashboard"
+    },
+    "LegalNotice": {
+        "authorizedRepresentative": "Vertretungsberechtigter",
+        "awp": "Anwendungsprojekt Hochschule Karlsruhe",
+        "dataProtection": "Datenschutz",
+        "dataProtectionText1": "Wir speichern keinerlei Daten über unsere Benutzer und erheben keine Statistiken über Zugriffe. Soweit möglich, halten wir alle Abhängigkeiten auf unserem eigenen Server.",
+        "dataProtectionText2": "Unsere Webseite kann Links zu externen Webseiten enthalten. Bitte beachten Sie, dass wir für die Datenschutzpraktiken dieser anderen Webseiten nicht verantwortlich sind. Wir empfehlen Ihnen, die Datenschutzerklärungen der verlinkten Webseiten zu lesen.",
+        "externalLinks": "Externe Links",
+        "postalAddress": "Postanschrift",
+        "publisher": "Herausgeber",
+        "responsibleEditorialDepartment": "Verantwortliche Redaktion",
+        "supervisoryAuthority": "Aufsichtsbehörde",
+        "technicalImplementation": "Technische Umsetzung und Gestaltung",
+        "title": "Impressum und Datenschutz",
+        "vatId": "Umsatzsteuer-Identifikationsnummer"
     },
     "Legend": {
         "title": "Legende"

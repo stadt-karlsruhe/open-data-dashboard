@@ -77,12 +77,37 @@ resources:
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
       type: HTML
       name: Mietspiegelrechner
+    - id: "8"
+      source: https://transparenz.karlsruhe.de/dataset/8474ba52-f851-4f4b-b05a-1cba9bbd1f4d/resource/2a7fd644-bc67-477a-bb9e-cf88f076b7af/download/stadtteile.json
+      type: GeoJSON
+      name: Stadtteile Karlsruhe
+      renameProperties:
+          NAME: Name
+      skipPropertiesRegEx: ^NUMMER$
+      visualizations:
+          map: {}
+    - id: "9"
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_radnetz&outputFormat=application%2Fjson
+      type: GeoJSON
+      name: Radnetz Stadt Karlsruhe
+      renameProperties:
+          strasse: Straße
+          wegart: Wegart
+          belag: Belag
+          ueberoert_name: Route
+      skipPropertiesRegEx: ^abschnitt_id|gemeinde|abschnitt_name|verkehrsbedeutung|klassifizierung|hausnummern$
+      coordinateFormat: UTM
+      visualizations:
+          map:
+            groupKey: Route
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
       icon: train-front-fill
       resources:
           - "5"
+          - "8"
+          - "9"
     - name: Gesellschaft
       description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
       icon: people-fill
