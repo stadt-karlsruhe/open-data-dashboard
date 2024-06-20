@@ -7,6 +7,7 @@ import {
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -22,11 +23,17 @@ import { getColor } from '@/utils/colors';
 let minValue: number;
 let maxValue: number;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface CustomTooltipProps extends TooltipProps<any, any> {
+  axesMap: Map<string, Map<string, boolean>>;
+  xAxis: string;
+}
+
 export default function BarChart({
   data,
   axisPairs,
   aspect,
-}: {
+  }: {
   data: TransformedData[];
   axisPairs: AxisPair[];
   aspect: number;
@@ -81,13 +88,16 @@ export default function BarChart({
   );
 }
 
-const CustomTooltip = (props) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = (props) => {
   if (!props.active) {
     return null;
   }
-  const yAxes = [...props.axesMap.get(props.xAxis).keys()] ?? [];
+  if (props.payload === undefined) {
+    return <DefaultTooltipContent {...props} />;
+  }
+  const yAxes = (computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>);
   const payloadAddition = Object.entries(props.payload[0].payload)
-    .filter((entry) => entry[0] !== props.xAxis && !yAxes.includes(entry[0]))
+    .filter((entry) => entry[0] !== props.xAxis && !yAxes.has(entry[0]))
     .map((entry) => {
       return {
         name: entry[0],
