@@ -7,7 +7,7 @@ import {
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
-  TooltipProps,
+  type TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -33,7 +33,7 @@ export default function BarChart({
   data,
   axisPairs,
   aspect,
-  }: {
+}: {
   data: TransformedData[];
   axisPairs: AxisPair[];
   aspect: number;
@@ -95,7 +95,8 @@ const CustomTooltip: React.FC<CustomTooltipProps> = (props) => {
   if (props.payload === undefined) {
     return <DefaultTooltipContent {...props} />;
   }
-  const yAxes = (computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>);
+  const yAxes = computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const payloadAddition = Object.entries(props.payload[0].payload)
     .filter((entry) => entry[0] !== props.xAxis && !yAxes.has(entry[0]))
     .map((entry) => {
