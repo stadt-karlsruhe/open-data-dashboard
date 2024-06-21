@@ -7,7 +7,7 @@ interface CustomTooltipProps extends TooltipProps<any, any> {
   xAxis: string;
 }
 
-export const CustomTooltip: React.FC<CustomTooltipProps> = (props) => {
+export default function CustomTooltip(props: CustomTooltipProps) {
   if (!props.active) {
     return null;
   }
@@ -26,4 +26,4 @@ export const CustomTooltip: React.FC<CustomTooltipProps> = (props) => {
     });
 
   return <DefaultTooltipContent {...props} payload={[...payloadAddition, ...props.payload]} />;
-};
+}

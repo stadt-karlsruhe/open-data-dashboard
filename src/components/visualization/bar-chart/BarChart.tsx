@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 
 import { AxisPair } from '@/schemas/configurationSchema';
 import AxisSelector from './AxisSelector';
-import { CustomTooltip } from './CustomTooltip';
+import CustomTooltip from './CustomTooltip';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/dataSchema';
 import { computeIfAbsent } from '@/utils/mapUtils';
