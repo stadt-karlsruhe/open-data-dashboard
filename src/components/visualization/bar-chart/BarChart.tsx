@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 
 import { AxisPair } from '@/schemas/configurationSchema';
 import AxisSelector from './AxisSelector';
+import { CustomTooltip } from './CustomTooltip';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/dataSchema';
 import { computeIfAbsent } from '@/utils/mapUtils';
@@ -22,12 +23,6 @@ import { getColor } from '@/utils/colors';
 
 let minValue: number;
 let maxValue: number;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface CustomTooltipProps extends TooltipProps<any, any> {
-  axesMap: Map<string, Map<string, boolean>>;
-  xAxis: string;
-}
 
 export default function BarChart({
   data,
@@ -87,27 +82,6 @@ export default function BarChart({
     </div>
   );
 }
-
-const CustomTooltip: React.FC<CustomTooltipProps> = (props) => {
-  if (!props.active) {
-    return null;
-  }
-  if (props.payload === undefined) {
-    return <DefaultTooltipContent {...props} />;
-  }
-  const yAxes = computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const payloadAddition = Object.entries(props.payload[0].payload)
-    .filter((entry) => entry[0] !== props.xAxis && !yAxes.has(entry[0]))
-    .map((entry) => {
-      return {
-        name: entry[0],
-        value: entry[1],
-      };
-    });
-
-  return <DefaultTooltipContent {...props} payload={[...payloadAddition, ...props.payload]} />;
-};
 
 function getDomain(records: TransformedData[], axesMap: Map<string, Map<string, boolean>>, xAxis: string) {
   minValue = 0;
