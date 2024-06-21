@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 
 import { AxisPair } from '@/schemas/configurationSchema';
 import AxisSelector from './AxisSelector';
+import CustomTooltip from './CustomTooltip';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';
 import { TransformedData } from '@/schemas/dataSchema';
 import { computeIfAbsent } from '@/utils/mapUtils';
@@ -54,7 +55,6 @@ export default function BarChart({
       <Bar key={index} dataKey={yAxis} hide={!visible} fill={getColor(index)} isAnimationActive={false} />
     ));
   }
-
   return (
     <div>
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
@@ -72,7 +72,7 @@ export default function BarChart({
           <XAxis dataKey={xAxis} label={xAxis} tick={false} />
           <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
           <ReferenceLine y={0} stroke="#000" />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip axesMap={axesMap} xAxis={xAxis} />} />
           <Legend onClick={onLegendClick} />
           {getBars()}
         </BarChartRecharts>
