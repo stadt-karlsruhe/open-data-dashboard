@@ -24,7 +24,7 @@
     "@types/proj4": "2.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "7.13.0",
+    "@typescript-eslint/eslint-plugin": "7.13.1",
     "@typescript-eslint/parser": "7.13.0",
     "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
