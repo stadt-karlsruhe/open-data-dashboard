@@ -1,6 +1,6 @@
 # Categories
 
-Categories can be used to group resources in the UI to simplify navigating between them. Each resource must have a category and can optionally have a subcategory.
+Categories can be used to group resources in the UI to simplify navigating between them. Each resource must belong to a category or subcategory.
 
 ## Configurations
 

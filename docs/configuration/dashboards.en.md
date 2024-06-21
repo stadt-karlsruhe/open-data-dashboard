@@ -1,5 +1,8 @@
 # Dashboards
 
+!!! warning
+    This section is still work-in-progress. Breaking changes to the configuration of dashboards may happen at any time.
+
 Dashboards can be used to display multiple resources related to a single topic on one page. Additionally, the homepage is configured this way.
 
 ## Configurations

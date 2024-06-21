@@ -97,6 +97,13 @@ Optionally, specify the input format for numbers.
     numberFormat: string
     ```
 
+To provide a concrete example, see the difference in format below:
+
+| `en`     | `de`     |
+| -------- | -------- |
+| 1,234.56 | 1.234,56 |
+|          |          |
+
 ### Rename Fields
 
 Optionally, specify configurations to rename fields/properties as on object with key-value pairs of the form
