@@ -2,12 +2,10 @@ import {
   Bar,
   BarChart as BarChartRecharts,
   CartesianGrid,
-  DefaultTooltipContent,
   Legend,
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
-  type TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts';
