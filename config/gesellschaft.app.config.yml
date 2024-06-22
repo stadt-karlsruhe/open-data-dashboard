@@ -1,21 +1,6 @@
 resources:
-    - name: Bundestagswahl 2013 - Ergebnisse (Wahlbezirke)
-      source: https://transparenz.karlsruhe.de/dataset/0788d395-b5e4-4ca0-963d-99801ab4682c/resource/ae1bfdcc-2884-45b6-828c-56c3fe2b2f7a/download/bundestagswahl_2013.csv
-      type: CSV
-      id: ae1bfdcc-2884-45b6-828c-56c3fe2b2f7a
-      skipPropertiesRegEx: ^_id$
-      renameProperties:
-          Wahler/-innen: Wähler/-innen
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Wahlbezirksname
-                    yAxis: Wähler/-innen
-                  - xAxis: Wahlbezirksname
-                    yAxis: Wahlberechtigte insgesamt
-          table: {}
     - name: Bundestagswahl 2017 - Ergebnisse (Stadtteile)
-      source: https://transparenz.karlsruhe.de/dataset/389770de-7b1c-4736-9d96-8da132fc1d62/resource/62b3b78e-7357-49dc-beb7-5a72531abe45/download/bundestagswahl_2017_ergebnisse_stadtteile.csv
+      source: https://transparenz.karlsruhe.de/datastore/dump/62b3b78e-7357-49dc-beb7-5a72531abe45?bom=True
       type: CSV
       id: 62b3b78e-7357-49dc-beb7-5a72531abe45
       skipPropertiesRegEx: ^_id$
@@ -27,21 +12,6 @@ resources:
                   - xAxis: Stadtteilname
                     yAxis: Wähler/-innen
                   - xAxis: Stadtteilname
-                    yAxis: Wahlberechtigte insgesamt
-          table: {}
-    - name: Bundestagswahl 2017 - Ergebnisse (Wahlbezirke)
-      source: https://transparenz.karlsruhe.de/dataset/389770de-7b1c-4736-9d96-8da132fc1d62/resource/780a08c7-938e-4615-8559-0d72acaf04e5/download/bundestagswahl_2017_ergebnisse_wahlbezirke.csv
-      type: CSV
-      id: 780a08c7-938e-4615-8559-0d72acaf04e5
-      skipPropertiesRegEx: ^_id$
-      renameProperties:
-          Wahler/-innen: Wähler/-innen
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Wahlbezirksname
-                    yAxis: Wähler/-innen
-                  - xAxis: Wahlbezirksname
                     yAxis: Wahlberechtigte insgesamt
           table: {}
     - name: Schülerinnen und Schüler insgesamt
@@ -1894,9 +1864,7 @@ categories:
           - name: Politik
             description: ToDo
             resources:
-                - ae1bfdcc-2884-45b6-828c-56c3fe2b2f7a
                 - 62b3b78e-7357-49dc-beb7-5a72531abe45
-                - 780a08c7-938e-4615-8559-0d72acaf04e5
           - name: Religion
             description: ToDo
             resources:
