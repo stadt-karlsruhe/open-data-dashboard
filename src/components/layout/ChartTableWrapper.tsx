@@ -10,6 +10,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { TransformedData } from '@/schemas/dataSchema';
 import dynamic from 'next/dynamic';
+import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
 import useWindowDimensions from '@/components/helper/WindowDimensions';
@@ -21,16 +22,24 @@ const Table = dynamic(() => import('@/components/visualization/Table'), { ssr: f
 export default function ChartTableWrapper({
   resource,
   transformedData,
+  showFilter = true,
+  useQueryParams = true,
+  height: constantHeight,
 }: {
   resource: JSONResource;
   transformedData: TransformedData[];
+  showFilter?: boolean;
+  useQueryParams?: boolean;
+  height?: string | number;
 }) {
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const locale = useLocale();
   const router = useRouter();
-  const [filteredData, setFilteredData] = useState(transformedData);
+  const [filteredData, setFilteredData] = useState(
+    showFilter ? transformedData : filterData(transformedData, resource.defaultFilters ?? {}),
+  );
   const { width, height } = useWindowDimensions();
 
   const setVisualizationParameter = useDebouncedCallback((eventKey: string) => {
@@ -40,19 +49,21 @@ export default function ChartTableWrapper({
   });
   const [activeVisualization, setActiveVisualization] = useState(getAndUpdateVisualizationParameter());
   function getAndUpdateVisualizationParameter() {
-    const passedInitialParameter = searchParams.get('visualization');
-    const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
-    if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
-      const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
-      setVisualizationParameter(initialParameter);
-      return initialParameter;
+    if (useQueryParams) {
+      const passedInitialParameter = searchParams.get('visualization');
+      const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
+      if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
+        const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
+        setVisualizationParameter(initialParameter);
+        return initialParameter;
+      }
+      return passedInitialParameter;
     }
-    return passedInitialParameter;
   }
 
   return (
     <div className={pathname.startsWith(`/${locale}/embed`) ? 'm-2' : ''}>
-      <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
+      {showFilter && <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />}
       <Tabs
         defaultActiveKey={activeVisualization}
         onSelect={(eventKey) => {
@@ -67,15 +78,14 @@ export default function ChartTableWrapper({
             title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
             eventKey={diagramType}
             className="p-3"
+            style={{ height: constantHeight && typeof constantHeight === 'number' ? constantHeight - 75 : undefined }}
           >
             {diagramType === 'barChart' ? (
-              <div className="d-flex flex-column">
-                <BarChart
-                  data={filteredData}
-                  axisPairs={diagramAttr.axisPairs}
-                  aspect={width / (height - 250)}
-                ></BarChart>
-              </div>
+              <BarChart
+                data={filteredData}
+                axisPairs={diagramAttr.axisPairs}
+                aspect={constantHeight ? undefined : width / (height - 250)}
+              />
             ) : (
               <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
             )}

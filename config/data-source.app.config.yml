@@ -99,7 +99,7 @@ resources:
       coordinateFormat: UTM
       visualizations:
           map:
-            groupKey: Route
+              groupKey: Route
 categories:
     - name: Mobilität
       description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
@@ -131,12 +131,27 @@ dashboards:
       name: Homepage
       icon: house-door-fill
       contents:
-          - type: EXTERNAL
-            source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
-            name: Weather
+          - - type: EXTERNAL
+              source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
+              name: Weather
     - id: "1"
       name: Bevölkerung
       icon: people-fill
+      contents:
+        - - type: RESOURCE
+            id: "1"
+            preview: false
+        - - - type: RESOURCE
+              id: "8"
+              preview: false
+              size: M
+            - type: RESOURCE
+              id: "8"
+              preview: false
+              size: M
+          - type: RESOURCE
+            id: "9"
+            preview: false
     - id: "2"
       name: Bildung
     - id: "3"

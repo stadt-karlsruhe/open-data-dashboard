@@ -10,7 +10,17 @@ const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
   ssr: false,
 });
 
-export default async function Visualization({ resource }: { resource: JSONResource | GeoJSONResource }) {
+export default async function Visualization({
+  resource,
+  showFilters = true,
+  useQueryParams = true,
+  height,
+}: {
+  resource: JSONResource | GeoJSONResource;
+  showFilters?: boolean;
+  useQueryParams?: boolean;
+  height?: string | number;
+}) {
   let data;
   try {
     // TODO: Remove this, once the issue with the server is fixed
@@ -26,9 +36,17 @@ export default async function Visualization({ resource }: { resource: JSONResour
   }
 
   if (resource.type === 'GeoJSON') {
-    return <GeoMap resource={resource} geoJsonData={validatedData as GeoJSON.FeatureCollection} />;
+    return <GeoMap resource={resource} geoJsonData={validatedData as GeoJSON.FeatureCollection} height={height} />;
   }
-  return <ChartTableWrapper resource={resource} transformedData={validatedData as TransformedData[]} />;
+  return (
+    <ChartTableWrapper
+      resource={resource}
+      transformedData={validatedData as TransformedData[]}
+      showFilter={showFilters}
+      useQueryParams={useQueryParams}
+      height={height}
+    />
+  );
 }
 
 async function fetchData(resource: Resource) {

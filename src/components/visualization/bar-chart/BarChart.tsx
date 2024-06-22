@@ -29,7 +29,7 @@ export default function BarChart({
 }: {
   data: TransformedData[];
   axisPairs: AxisPair[];
-  aspect: number;
+  aspect?: number;
 }) {
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
@@ -56,16 +56,16 @@ export default function BarChart({
     ));
   }
   return (
-    <div>
+    <>
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
       <ResponsiveContainer debounce={200} aspect={aspect}>
         <BarChartRecharts
           data={data}
           margin={{
-            top: 5,
-            right: 30,
-            left: 5,
-            bottom: 5,
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -77,7 +77,7 @@ export default function BarChart({
           {getBars()}
         </BarChartRecharts>
       </ResponsiveContainer>
-    </div>
+    </>
   );
 }
 

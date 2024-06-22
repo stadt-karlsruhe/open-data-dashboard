@@ -1,4 +1,4 @@
-import DashboardContent from '@/components/dashboard-resource/DashboardContent';
+import DashboardContents from '@/components/dashboard-resource/DashboardContents';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
 import Search from '@/components/search/Search';
@@ -31,7 +31,7 @@ export default async function Home() {
           style={{ bottom: '20%', transform: 'translateX(-50%)', maxWidth: '600px' }}
         />
       </div>
-      {homepage && <DashboardContent dashboard={homepage} />}
+      {homepage && <DashboardContents dashboard={homepage} configuration={configuration} />}
     </div>
   );
 }

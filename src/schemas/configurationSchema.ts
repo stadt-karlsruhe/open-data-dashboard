@@ -134,6 +134,7 @@ const resourceContentSchema = z
         type: z.literal('RESOURCE'),
         id: z.string(),
         preview: z.boolean(),
+        size: z.union([z.literal('L'), z.literal('M'), z.literal('S')]).default('L'),
     })
     .strict();
 
@@ -142,8 +143,11 @@ const externalContentSchema = z
         type: z.literal('EXTERNAL'),
         name: z.string(),
         source: z.string().url(),
+        size: z.union([z.literal('L'), z.literal('M'), z.literal('S')]).default('L'),
     })
     .strict();
+
+const dashboardContentSchema = z.union([resourceContentSchema, externalContentSchema]);
 
 const dashboardSchema = z
     .object({
@@ -151,7 +155,7 @@ const dashboardSchema = z
         name: z.string(),
         icon: z.string().default('clipboard-data'),
         description: z.string().optional(),
-        contents: z.array(z.union([resourceContentSchema, externalContentSchema])).optional(),
+        contents: z.array(z.array(z.union([dashboardContentSchema, z.array(dashboardContentSchema)]))).optional(),
     })
     .strict();
 
@@ -180,3 +184,4 @@ export type Filter = z.infer<typeof defaultFilterSchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type Appearance = z.infer<typeof appearanceSchema>;
 export type Dashboard = z.infer<typeof dashboardSchema>;
+export type DashboardContent = z.infer<typeof dashboardContentSchema>;

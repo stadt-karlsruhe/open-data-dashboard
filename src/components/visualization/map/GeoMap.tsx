@@ -26,14 +26,16 @@ const latLng = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
 export default function GeoMap({
   resource,
   geoJsonData,
+  height = '100dvh',
 }: {
   resource: GeoJSONResource;
   geoJsonData: GeoJSON.FeatureCollection;
+  height?: string | number;
 }) {
   const collectedLabels = new Map<string, string>();
   return (
     <MapContainer
-      style={{ height: '100dvh', width: '100%' }}
+      style={{ height, width: '100%' }}
       center={standardPos.latLng}
       zoom={standardPos.zoom}
       scrollWheelZoom={true}
