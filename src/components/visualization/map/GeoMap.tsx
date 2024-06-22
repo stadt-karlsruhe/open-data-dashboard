@@ -102,13 +102,11 @@ export default function GeoMap({
 }
 
 function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupKey: string | undefined) {
-  if (
-    groupKey &&
-    properties !== null &&
-    properties[groupKey] !== undefined &&
-    typeof properties[groupKey] === 'string'
-  ) {
-    return properties[groupKey];
+  if (groupKey && properties !== null) {
+    const groupKeyString = String(groupKey);
+    if (properties[groupKeyString] !== undefined) {
+      return String(properties[groupKey]);
+    }
   }
 }
 

@@ -96,6 +96,42 @@ resources:
       visualizations:
           map:
               groupKey: Art
+    - id: be248122-b2a1-46c4-b05c-3552a72665b9
+      name: Bahnhöfe
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_OEPNV/MapServer/0/query?where=GRUPPENNAME_DE+%3D+%27Bahnh%C3%B6fe%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^UPDATED$
+      renameProperties:
+          NAME: Name
+          GRUPPENNAME_DE: Kategorie
+      visualizations:
+          map:
+              groupKey: Kategorie
+    - id: fd00b237-7eef-4f38-bd85-cd0c27f32cd4
+      name: Haltestellen
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_OEPNV/MapServer/1/query?where=GRUPPENNAME_DE+%3D+%27Haltestellen%20(S-Bahn/Tram/Bus)%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^UPDATED$
+      renameProperties:
+          NAME: Name
+          GRUPPENNAME_DE: Kategorie
+      visualizations:
+          map:
+              groupKey: Kategorie
+    - id: 81ee59ea-feaf-48d1-a169-1c3e012e0138
+      name: Geschwindigkeiten
+      description: |
+        Zu sehen sind Straßen mit Geschwindigkeitslimits in Karlsruhe.
+      type: GeoJSON
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_geschwindigkeiten&outputFormat=application%2Fjson
+      coordinateFormat: UTM
+    #   skipPropertiesRegEx: ^UPDATED$
+      renameProperties:
+          strassenname: Straßenname
+          geschwindigkeit: Geschwindigkeit
+      visualizations:
+          map:
+              groupKey: Geschwindigkeit
 
 dashboards:
     - id: homepage
