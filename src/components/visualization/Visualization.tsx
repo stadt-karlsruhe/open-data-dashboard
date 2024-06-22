@@ -21,7 +21,7 @@ export default async function Visualization({
 }: {
   resource: JSONResource | GeoJSONResource;
   height?: string | number;
-  options: {
+  options?: {
     showFilter?: boolean;
     useQueryParams?: boolean;
     showOnlyFirstVis?: boolean;

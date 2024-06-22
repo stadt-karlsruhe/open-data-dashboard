@@ -1,5 +1,6 @@
-import { Category, Configuration, Dashboard, Resource } from '@/schemas/configurationSchema';
+import { Category, Configuration, Resource } from '@/schemas/configurationSchema';
 
+import { Dashboard } from './schemas/configuration/dashboardsSchema';
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
 import { merge } from 'ts-deepmerge';
