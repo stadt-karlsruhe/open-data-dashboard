@@ -58,7 +58,7 @@ resources:
       category: Gesellschaft
       subcategory: Schulen
     - name: Grundschulen
-      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/607e618b-d89a-42e9-bfe5-b7bf4b784b28/download/allgemeinbildende-schulen-grundschulen.csv
+      source: https://transparenz.karlsruhe.de/datastore/dump/607e618b-d89a-42e9-bfe5-b7bf4b784b28?bom=True
       type: CSV
       id: 607e618b-d89a-42e9-bfe5-b7bf4b784b28
       defaultFilters:
@@ -69,7 +69,7 @@ resources:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
-                    yAxis: Schüler/-innen
+                    yAxis: Schuler/-innen
           table: {}
       category: Gesellschaft
       subcategory: Schulen
@@ -1187,7 +1187,7 @@ resources:
       category: Gesellschaft
       subcategory: Wohnungen
     - name: Wohngebäude mit einer Wohnung
-      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/6c020f39-ade1-42fa-af9e-cefac1717b9a/download/gebaudegroenstruktur-wohngebaude-mit-einer-wohnung.csv
+      source: https://transparenz.karlsruhe.de/datastore/dump/6c020f39-ade1-42fa-af9e-cefac1717b9a?bom=True
       type: CSV
       id: 6c020f39-ade1-42fa-af9e-cefac1717b9a
       defaultFilters:
