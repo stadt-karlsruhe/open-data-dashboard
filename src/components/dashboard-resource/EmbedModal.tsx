@@ -1,8 +1,9 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { Dashboard, Resource } from '@/schemas/configurationSchema';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
 import { Modal } from 'react-bootstrap';
+import { Resource } from '@/schemas/configurationSchema';
 import { useState } from 'react';
 
 type EmbedModalProps =
