@@ -1,0 +1,1873 @@
+resources:
+    - name: Bundestagswahl 2013 - Ergebnisse (Wahlbezirke)
+      source: https://transparenz.karlsruhe.de/dataset/0788d395-b5e4-4ca0-963d-99801ab4682c/resource/ae1bfdcc-2884-45b6-828c-56c3fe2b2f7a/download/bundestagswahl_2013.csv
+      type: CSV
+      id: ae1bfdcc-2884-45b6-828c-56c3fe2b2f7a
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Wahlbezirksname
+                    yAxis: Wähler/-innen
+                  - xAxis: Wahlbezirksname
+                    yAxis: Wahlberechtigte insgesamt
+          table: {}
+      category: Gesellschaft
+      subcategory: Politik
+    - name: Bundestagswahl 2017 - Ergebnisse (Stadtteile)
+      source: https://transparenz.karlsruhe.de/dataset/389770de-7b1c-4736-9d96-8da132fc1d62/resource/62b3b78e-7357-49dc-beb7-5a72531abe45/download/bundestagswahl_2017_ergebnisse_stadtteile.csv
+      type: CSV
+      id: 62b3b78e-7357-49dc-beb7-5a72531abe45
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteilname
+                    yAxis: Wähler/-innen
+                  - xAxis: Stadtteilname
+                    yAxis: Wahlberechtigte insgesamt
+          table: {}
+      category: Gesellschaft
+      subcategory: Politik
+    - name: Bundestagswahl 2017 - Ergebnisse (Wahlbezirke)
+      source: https://transparenz.karlsruhe.de/dataset/389770de-7b1c-4736-9d96-8da132fc1d62/resource/780a08c7-938e-4615-8559-0d72acaf04e5/download/bundestagswahl_2017_ergebnisse_wahlbezirke.csv
+      type: CSV
+      id: 780a08c7-938e-4615-8559-0d72acaf04e5
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Wahlbezirksname
+                    yAxis: Wähler/-innen
+                  - xAxis: Wahlbezirksname
+                    yAxis: Wahlberechtigte insgesamt
+          table: {}
+      category: Gesellschaft
+      subcategory: Politik
+    - name: Schülerinnen und Schüler insgesamt
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/de830f9b-e610-4afd-aafa-e71f8d9b7dc3/download/allgemeinbildende-schulen-schulerinnen-und-schuler-insgesamt.csv
+      type: CSV
+      id: de830f9b-e610-4afd-aafa-e71f8d9b7dc3
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Grundschulen
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/607e618b-d89a-42e9-bfe5-b7bf4b784b28/download/allgemeinbildende-schulen-grundschulen.csv
+      type: CSV
+      id: 607e618b-d89a-42e9-bfe5-b7bf4b784b28
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Gemeinschaftsschulen (nur Sekundarstufe I)
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/2c7f968e-86bf-44ac-b45e-7c3943990476/download/allgemeinbildende-schulen-gemeinschaftsschulen-nur-sekundarstufe-i.csv
+      type: CSV
+      id: 2c7f968e-86bf-44ac-b45e-7c3943990476
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Realschulen
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/c93d37d8-2fdb-4e2c-97de-a5eded70af58/download/allgemeinbildende-schulen-realschulen.csv
+      type: CSV
+      id: c93d37d8-2fdb-4e2c-97de-a5eded70af58
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Sonderpädagogische Bildungs- und Beratungszentren (SBBZ - Sonder-/Förderschulen)
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/4d682cab-33e1-48ce-b947-91143eca1344/download/allgemeinbildende-schulen-sonderpadagogische-bildungs-und-beratungszentren-sbbz-sonder-fordersch.csv
+      type: CSV
+      id: 4d682cab-33e1-48ce-b947-91143eca1344
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Gymnasien
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/6f1f000e-ff6f-4b4f-aa8a-77956797e91f/download/allgemeinbildende-schulen-gymnasien.csv
+      type: CSV
+      id: 6f1f000e-ff6f-4b4f-aa8a-77956797e91f
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Werkrealschulen
+      source: https://transparenz.karlsruhe.de/dataset/3ce2c581-b9d8-4d58-b4e9-e656779d041c/resource/b0807118-2928-493c-b4c4-5336e67a2f5b/download/allgemeinbildende-schulen-werkrealschulen.csv
+      type: CSV
+      id: b0807118-2928-493c-b4c4-5336e67a2f5b
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Unter 3 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/565c1c6e-a50c-46d2-8638-22896d21096f/download/altersstruktur-der-bevolkerung-unter-3-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 565c1c6e-a50c-46d2-8638-22896d21096f
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Unter 3 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/32bd3b93-7008-42a4-9736-bb83e726beb7/download/altersstruktur-der-bevolkerung-unter-3-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 32bd3b93-7008-42a4-9736-bb83e726beb7
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 3 bis unter 6 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/a92cd46b-7243-46f6-ac72-4fa3dcdeb35f/download/altersstruktur-der-bevolkerung-3-bis-unter-6-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: a92cd46b-7243-46f6-ac72-4fa3dcdeb35f
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 6 bis unter 15 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/807eda39-ace2-4269-9b6a-00a607a4a615/download/altersstruktur-der-bevolkerung-6-bis-unter-15-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 807eda39-ace2-4269-9b6a-00a607a4a615
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 3 bis unter 6 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/c74cb50a-e3c4-43bf-950f-6a01a783791b/download/altersstruktur-der-bevolkerung-3-bis-unter-6-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: c74cb50a-e3c4-43bf-950f-6a01a783791b
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 6 bis unter 15 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/593b2d5f-36bf-4f50-ac49-763ee5cadb1f/download/altersstruktur-der-bevolkerung-6-bis-unter-15-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 593b2d5f-36bf-4f50-ac49-763ee5cadb1f
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 15 bis unter 18 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/72110d58-727f-4e04-a68d-2a907ba7d4fb/download/altersstruktur-der-bevolkerung-15-bis-unter-18-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 72110d58-727f-4e04-a68d-2a907ba7d4fb
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 18 bis unter 25 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/c604d6d8-66bd-4175-8689-e657429127b0/download/altersstruktur-der-bevolkerung-18-bis-unter-25-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: c604d6d8-66bd-4175-8689-e657429127b0
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 15 bis unter 18 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/9fd0555a-327c-4e65-8693-521c7b7fb350/download/altersstruktur-der-bevolkerung-15-bis-unter-18-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 9fd0555a-327c-4e65-8693-521c7b7fb350
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 18 bis unter 25 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/79797678-30ab-4ccf-bcf7-6067be9794c4/download/altersstruktur-der-bevolkerung-18-bis-unter-25-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 79797678-30ab-4ccf-bcf7-6067be9794c4
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 25 bis unter 45 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/7cff3291-8e9e-4c41-894a-71791ea55e37/download/altersstruktur-der-bevolkerung-25-bis-unter-45-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 7cff3291-8e9e-4c41-894a-71791ea55e37
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 45 bis unter 65 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/5114726f-cdce-4816-80f0-edc8c7786cab/download/altersstruktur-der-bevolkerung-45-bis-unter-65-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 5114726f-cdce-4816-80f0-edc8c7786cab
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 65 bis unter 75 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/ea8303b4-0494-4f95-b624-f695753d1a2c/download/altersstruktur-der-bevolkerung-65-bis-unter-75-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: ea8303b4-0494-4f95-b624-f695753d1a2c
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 45 bis unter 65 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/bbb9dd88-ffff-4b95-b065-3d74973d4a7f/download/altersstruktur-der-bevolkerung-45-bis-unter-65-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: bbb9dd88-ffff-4b95-b065-3d74973d4a7f
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 75 bis unter 85 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/a5b8df62-dbe2-43bb-94d9-c468648a565f/download/altersstruktur-der-bevolkerung-75-bis-unter-85-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: a5b8df62-dbe2-43bb-94d9-c468648a565f
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 75 bis unter 85 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/2af3b5ef-d5da-404b-ac8d-c1fc78124e66/download/altersstruktur-der-bevolkerung-75-bis-unter-85-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 2af3b5ef-d5da-404b-ac8d-c1fc78124e66
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 85 und mehr Jährigen nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/dd5adbd5-bd8b-4a14-b685-198aa4cca1f9/download/altersstruktur-der-bevolkerung-85-und-mehr-jahrigen-nach-geschlecht-anteil.csv
+      type: CSV
+      id: dd5adbd5-bd8b-4a14-b685-198aa4cca1f9
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 85 und mehr Jährigen nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/2b8abad2-16c2-4e52-afbc-d57a9d252e89/download/altersstruktur-der-bevolkerung-85-und-mehr-jahrigen-nach-geschlecht.csv
+      type: CSV
+      id: 2b8abad2-16c2-4e52-afbc-d57a9d252e89
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Unter 20 Jährige
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/c952a134-caa0-42b9-b482-204bba736e4c/download/altersstruktur-der-bevolkerung-unter-20-jahrige.csv
+      type: CSV
+      id: c952a134-caa0-42b9-b482-204bba736e4c
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Zwischen 20 und unter 65 Jährige
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/da54e683-f5d9-4f57-8efe-e5f88dada06f/download/altersstruktur-der-bevolkerung-zwischen-20-und-unter-65-jahrige.csv
+      type: CSV
+      id: da54e683-f5d9-4f57-8efe-e5f88dada06f
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 65 bis unter 75 Jährige nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/4d9dd7d7-9b4d-4ece-86a8-a087ffc38cb3/download/altersstruktur-der-bevolkerung-65-bis-unter-75-jahrige-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 4d9dd7d7-9b4d-4ece-86a8-a087ffc38cb3
+      renameProperties:
+          Altersklasse %: Altersklasse
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altersklasse
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 65 Jährige und Ältere
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/9b34d206-c2cd-41b6-8ed0-f817cc69dd11/download/altersstruktur-der-bevolkerung-65-jahrige-und-altere.csv
+      type: CSV
+      id: 9b34d206-c2cd-41b6-8ed0-f817cc69dd11
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: 25 bis unter 45 Jährige nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/49eeae6e-98d4-46c7-bec3-a92e79b2c275/download/altersstruktur-der-bevolkerung-25-bis-unter-45-jahrige-nach-geschlecht.csv
+      type: CSV
+      id: 49eeae6e-98d4-46c7-bec3-a92e79b2c275
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Jugendquotient
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/c3d707e4-c89a-4c43-ac06-fe8fdf1fd405/download/altersstruktur-der-bevolkerung-jugendquotient.csv
+      type: CSV
+      id: c3d707e4-c89a-4c43-ac06-fe8fdf1fd405
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Jugendquotient
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Altenquotient
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/7847b72d-1fd2-43a6-a611-907403ecdc99/download/altersstruktur-der-bevolkerung-altenquotient.csv
+      type: CSV
+      id: 7847b72d-1fd2-43a6-a611-907403ecdc99
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Altenquotient
+          table: {}
+      category: Gesellschaft
+      subcategory: Altersstruktur
+    - name: Wohnberechtigte Bevölkerung
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/71ef348f-0f5b-46a0-8250-e87aae9f91bd/download/bevolkerung-wohnberechtigte-bevolkerung.csv
+      type: CSV
+      id: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohnberechtigte
+                  - xAxis: Stadtteil
+                    yAxis: Hauptwohnung (%)
+                  - xAxis: Stadtteil
+                    yAxis: Nebenwohnung (%)
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Bevölkerung mit Hauptwohnung
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/d8be5f4a-0788-4ee3-abe5-b36313ce3799/download/bevolkerung-bevolkerung-mit-hauptwohnung.csv
+      type: CSV
+      id: d8be5f4a-0788-4ee3-abe5-b36313ce3799
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Hauptwohnung
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Bevölkerung mit Hauptwohnung (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/026da0ed-7df8-4446-b4fb-e756c0dde2a5/download/bevolkerung-anteil-der-bevolkerung-mit-hauptwohnung.csv
+      type: CSV
+      id: 026da0ed-7df8-4446-b4fb-e756c0dde2a5
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Hauptwohnung
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Bevölkerung mit Nebenwohnung (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/241f96ab-5bcc-43c5-91bd-bde8dc3e74f3/download/bevolkerung-anteil-der-bevolkerung-mit-nebenwohnung.csv
+      type: CSV
+      id: 241f96ab-5bcc-43c5-91bd-bde8dc3e74f3
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Nebenwohnung
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Frauen
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/85259275-a944-4357-aee5-b7451c2fce99/download/bevolkerung-frauen.csv
+      type: CSV
+      id: 85259275-a944-4357-aee5-b7451c2fce99
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Frauen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Frauen (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/638f0166-3713-4497-a64e-5db0e07bbd9b/download/bevolkerung-frauenanteil.csv
+      type: CSV
+      id: 638f0166-3713-4497-a64e-5db0e07bbd9b
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Frauenanteil
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Bevölkerung mit Nebenwohnung
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/8213c5d8-7b28-4f9e-ab97-a1bc6da9112f/download/bevolkerung-bevolkerung-mit-nebenwohnung.csv
+      type: CSV
+      id: 8213c5d8-7b28-4f9e-ab97-a1bc6da9112f
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Nebenwohnung
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Bevölkerung mit sonstiger/keiner Religionszugehörigkeit
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/f2128444-47e7-40ba-ab1d-eb426e69c009/download/bevolkerung-bevolkerung-mit-sonstigerkeiner-religionszugehorigkeit.csv
+      type: CSV
+      id: f2128444-47e7-40ba-ab1d-eb426e69c009
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: sonstige/keine Religion
+          table: {}
+      category: Gesellschaft
+      subcategory: Religion
+    - name: Männer
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/d49eda6f-3c69-4fd9-8076-3689329e5711/download/bevolkerung-manner.csv
+      type: CSV
+      id: d49eda6f-3c69-4fd9-8076-3689329e5711
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Männer
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Katholische Bevölkerung
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/ac2e81d4-7a1c-499b-89e4-22acd5cea109/download/bevolkerung-katholische-bevolkerung.csv
+      type: CSV
+      id: ac2e81d4-7a1c-499b-89e4-22acd5cea109
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Katholisch
+          table: {}
+      category: Gesellschaft
+      subcategory: Religion
+    - name: Männer (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/168a04b0-c066-4314-8b78-db30959f46ef/download/bevolkerung-manneranteil.csv
+      type: CSV
+      id: 168a04b0-c066-4314-8b78-db30959f46ef
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Männeranteil
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Evangelische Bevölkerung
+      source: https://transparenz.karlsruhe.de/dataset/74561f6a-4783-4d70-b86a-008deec09441/resource/227edd1a-e547-4de6-b153-9294ebde4ba6/download/bevolkerung-evangelische-bevolkerung.csv
+      type: CSV
+      id: 227edd1a-e547-4de6-b153-9294ebde4ba6
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Evangelisch
+          table: {}
+      category: Gesellschaft
+      subcategory: Religion
+    - name: Geburtenüberschuss(+)/-defizit(-)
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/bceaadbd-5004-49ae-848f-b7a3dacc2f0c/download/bevolkerungsbewegungen-geburtenuberschuss-defizit-.csv
+      type: CSV
+      id: bceaadbd-5004-49ae-848f-b7a3dacc2f0c
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Zuzüge nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/63f40b50-56d9-4c35-aa82-7cd8ddbfad25/download/bevolkerungsbewegungen-zuzuge-nach-geschlecht.csv
+      type: CSV
+      id: 63f40b50-56d9-4c35-aa82-7cd8ddbfad25
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Geburten je 1000 Einwohner/-innen
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/5296efff-037d-4cbe-8d5a-fe3ccf17c528/download/bevolkerungsbewegungen-geburten-je-1000-einwohner-innen.csv
+      type: CSV
+      id: 5296efff-037d-4cbe-8d5a-fe3ccf17c528
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Geburten
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Geburten nach Staatsangehörigkeit
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/9e50219d-83a2-4e57-887f-f21cf03c2a3c/download/bevolkerungsbewegungen-geburten-nach-staatsangehorigkeit.csv
+      type: CSV
+      id: 9e50219d-83a2-4e57-887f-f21cf03c2a3c
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Geburten
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Wegzüge nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/66b5eb29-617c-4f67-8ffe-237d6836f14f/download/bevolkerungsbewegungen-wegzuge-nach-geschlecht.csv
+      type: CSV
+      id: 66b5eb29-617c-4f67-8ffe-237d6836f14f
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Wanderungssaldo je 1000 Einwohner/-innen
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/e3e69806-4903-44c4-a17d-bce2a940d3a0/download/bevolkerungsbewegungen-wanderungssaldo-je-1000-einwohner-innen.csv
+      type: CSV
+      id: e3e69806-4903-44c4-a17d-bce2a940d3a0
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Wanderungssaldo Gewinn(+)/Verlust(-)
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509/download/bevolkerungsbewegungen-wanderungssaldo-gewinnverlust-.csv
+      type: CSV
+      id: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Wanderungsvolumen
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6/download/bevolkerungsbewegungen-wanderungsvolumen.csv
+      type: CSV
+      id: b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Zuzüge nach Staatsangehörigkeit
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/3d1c9c93-3bc6-44ba-bf48-bf0f9c0d1126/download/bevolkerungsbewegungen-zuzuge-nach-staatsangehorigkeit.csv
+      type: CSV
+      id: 3d1c9c93-3bc6-44ba-bf48-bf0f9c0d1126
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Wegzüge nach Staatsangehörigkeit
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/1a9b69ef-b5e2-432f-8399-0d2c737bd320/download/bevolkerungsbewegungen-wegzuge-nach-staatsangehorigkeit.csv
+      type: CSV
+      id: 1a9b69ef-b5e2-432f-8399-0d2c737bd320
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Wanderungsvolumen je 1000 Einwohner/-innen
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/d89f8702-30ac-4fb9-9f3a-ef1139e55365/download/bevolkerungsbewegungen-wanderungsvolumen-je-1000-einwohner-innen.csv
+      type: CSV
+      id: d89f8702-30ac-4fb9-9f3a-ef1139e55365
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Sterbefälle nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/68998f09-d2ce-428d-ac59-0b7baaa4a376/download/bevolkerungsbewegungen-sterbefalle-nach-geschlecht.csv
+      type: CSV
+      id: 68998f09-d2ce-428d-ac59-0b7baaa4a376
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Gestorbene
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Geburten nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/4eb21bba-693b-4b12-a15c-c0550ed6224d/download/bevolkerungsbewegungen-geburten-nach-geschlecht.csv
+      type: CSV
+      id: 4eb21bba-693b-4b12-a15c-c0550ed6224d
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Geburten
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerungswachstum
+    - name: Wohngebäudebestand
+      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/6e384bac-8ebc-4418-95ba-b43e343d9faa/download/gebaudegroenstruktur-wohngebaudebestand.csv
+      type: CSV
+      id: 6e384bac-8ebc-4418-95ba-b43e343d9faa
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngebäude
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohngebäude mit zwei Wohnungen
+      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/fd159d95-5aba-4eb1-be4d-f2ec92fa8f42/download/gebaudegroenstruktur-wohngebaude-mit-zwei-wohnungen.csv
+      type: CSV
+      id: fd159d95-5aba-4eb1-be4d-f2ec92fa8f42
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngeb. mit 2 Wohnungen
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohngebäude mit einer Wohnung
+      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/6c020f39-ade1-42fa-af9e-cefac1717b9a/download/gebaudegroenstruktur-wohngebaude-mit-einer-wohnung.csv
+      type: CSV
+      id: 6c020f39-ade1-42fa-af9e-cefac1717b9a
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngeb. mit 1 Wohnung
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohngebäude mit drei bis sechs Wohnungen
+      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/dad2aa2f-3c0a-478b-bbad-035d1de7c9e1/download/gebaudegroenstruktur-wohngebaude-mit-drei-bis-sechs-wohnungen.csv
+      type: CSV
+      id: dad2aa2f-3c0a-478b-bbad-035d1de7c9e1
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngeb. mit 3-6 Wohnungen
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohngebäude mit sieben und mehr Wohnungen
+      source: https://transparenz.karlsruhe.de/dataset/74bf19a3-bf3a-43bf-947d-28b8fb5c80e5/resource/e031fe5f-90e0-4398-8824-a9fcc213a768/download/gebaudegroenstruktur-wohngebaude-mit-sieben-und-mehr-wohnungen.csv
+      type: CSV
+      id: e031fe5f-90e0-4398-8824-a9fcc213a768
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngeb. mit 7 u. mehr Wohnungen
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohngebäude
+      source: https://transparenz.karlsruhe.de/dataset/f98ff9c1-9be1-4412-afeb-751708836f1b/resource/6016eae2-4594-470b-8c1f-9da19bfaa2a4/download/wohngebaude.csv
+      type: CSV
+      id: 6016eae2-4594-470b-8c1f-9da19bfaa2a4
+      renameProperties:
+          Wohngebaeude: Wohngebäude
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohngebäude
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Wohnungen
+      source: https://transparenz.karlsruhe.de/dataset/f98ff9c1-9be1-4412-afeb-751708836f1b/resource/125e65b0-9c9b-4643-afb7-3fc458636173/download/gebaude-und-wohnungen-wohnungen.csv
+      type: CSV
+      id: 125e65b0-9c9b-4643-afb7-3fc458636173
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohnungen
+          table: {}
+      category: Gesellschaft
+      subcategory: Wohnungen
+    - name: Haushalte insgesamt
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/ac4f2de9-44ac-419f-afd6-bbf670bc2a4e/download/haushalte-haushalte-insgesamt.csv
+      type: CSV
+      id: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/d2917c81-f983-47c9-a56d-b5e2570d1185/download/haushalte-einpersonenhaushalte-anteil.csv
+      type: CSV
+      id: d2917c81-f983-47c9-a56d-b5e2570d1185
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/2bae1cfa-14e1-45d3-b90d-3b375b9ef3ad/download/haushalte-einpersonenhaushalte.csv
+      type: CSV
+      id: 2bae1cfa-14e1-45d3-b90d-3b375b9ef3ad
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte im Alter unter 30 Jahren
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/a976c36f-0d65-49a8-9471-c3f3f8fc6bee/download/haushalte-einpersonenhaushalte-im-alter-unter-30-jahren.csv
+      type: CSV
+      id: a976c36f-0d65-49a8-9471-c3f3f8fc6bee
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte im Alter unter 30 Jahren (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/aa5497ab-82fe-4338-8bcb-a689a790b110/download/haushalte-einpersonenhaushalte-im-alter-unter-30-jahren-anteil.csv
+      type: CSV
+      id: aa5497ab-82fe-4338-8bcb-a689a790b110
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte im Alter 60 Jahre und älter (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/dc4af0a6-32fe-4ab4-95ad-839f6e2c180c/download/haushalte-einpersonenhaushalte-im-alter-60-jahre-und-alter-anteil.csv
+      type: CSV
+      id: dc4af0a6-32fe-4ab4-95ad-839f6e2c180c
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Einpersonenhaushalte im Alter 60 Jahre und älter
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/7693fd39-3469-4374-a7b2-4dd2cac9e4f0/download/haushalte-einpersonenhaushalte-im-alter-60-jahre-und-alter.csv
+      type: CSV
+      id: 7693fd39-3469-4374-a7b2-4dd2cac9e4f0
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Mehrpersonenhaushalte
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/7937471b-d832-4c59-ab9d-032e1434aff9/download/haushalte-mehrpersonenhaushalte.csv
+      type: CSV
+      id: 7937471b-d832-4c59-ab9d-032e1434aff9
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Mehrpersonenhaushalte (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/17817ebe-5e64-4dab-88db-6cdecf7d8b85/download/haushalte-mehrpersonenhaushalte-anteil.csv
+      type: CSV
+      id: 17817ebe-5e64-4dab-88db-6cdecf7d8b85
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Haushalte mit Kindern unter 18 Jahren
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/45757a1d-ea7b-40a4-858a-b83727d5ce12/download/haushalte-haushalte-mit-kindern-unter-18-jahren.csv
+      type: CSV
+      id: 45757a1d-ea7b-40a4-858a-b83727d5ce12
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Haushalte mit Kindern unter 18 Jahren (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/8ab3a67d-cc4c-4d6a-b0cc-d52db63f702d/download/haushalte-haushalte-mit-kindern-unter-18-jahren-anteil.csv
+      type: CSV
+      id: 8ab3a67d-cc4c-4d6a-b0cc-d52db63f702d
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Paare mit Kindern
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/fa16ad9e-fea8-41e2-8572-6bf38ef1d192/download/haushalte-paare-mit-kindern.csv
+      type: CSV
+      id: fa16ad9e-fea8-41e2-8572-6bf38ef1d192
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Paare mit Kindern (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/379176a1-27d3-4217-ab09-82e457a7a3d4/download/haushalte-paare-mit-kindern-anteil.csv
+      type: CSV
+      id: 379176a1-27d3-4217-ab09-82e457a7a3d4
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Haushalte von Alleinerziehenden
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/7def7a9d-3059-4d0f-bc3c-fcb74ea44003/download/haushalte-haushalte-von-alleinerziehenden.csv
+      type: CSV
+      id: 7def7a9d-3059-4d0f-bc3c-fcb74ea44003
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Haushalte von Alleinerziehenden (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/9c4d9f87-ffdf-4cb4-90fc-02030e0b4c78/download/haushalte-haushalte-von-alleinerziehenden-anteil.csv
+      type: CSV
+      id: 9c4d9f87-ffdf-4cb4-90fc-02030e0b4c78
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Paare ohne Kinder
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/06210b52-ffc1-4866-8b3b-1a6d3638e3cc/download/haushalte-paare-ohne-kinder.csv
+      type: CSV
+      id: 06210b52-ffc1-4866-8b3b-1a6d3638e3cc
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Paare ohne Kinder (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/6076f756-4940-4b1d-80af-e9ff597478ea/download/haushalte-paare-ohne-kinder-anteil.csv
+      type: CSV
+      id: 6076f756-4940-4b1d-80af-e9ff597478ea
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Sonstige Mehrpersonenhaushalte
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/225a1572-d661-4ac3-b23d-76f6a32a2621/download/haushalte-sonstige-mehrpersonenhaushalte.csv
+      type: CSV
+      id: 225a1572-d661-4ac3-b23d-76f6a32a2621
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Sonstige Mehrpersonenhaushalte (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/42049995-8339-4e5d-9535-ff214d4ca81b/resource/503666dd-cb8d-448f-a84e-856e0c89ce1a/download/haushalte-sonstige-mehrpersonenhaushalte-anteil.csv
+      type: CSV
+      id: 503666dd-cb8d-448f-a84e-856e0c89ce1a
+      renameProperties:
+          Haushalte %: Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Haushalte
+    - name: Ausländer/-innen im Alter ab 65 Jahren nach Geschlecht (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/2fe18edf-867a-41e0-b2c5-c0d18367dba0/download/migration-auslander-innen-im-alter-ab-65-jahren-nach-geschlecht-anteil.csv
+      type: CSV
+      id: 2fe18edf-867a-41e0-b2c5-c0d18367dba0
+      renameProperties:
+          männlich (%): Männlich
+          weiblich (%): Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Bevölkerung mit Migrationshintergrund nach Art (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/2568dff2-4716-45ae-95ac-1a1ca18d3502/download/migration-bevolkerung-mit-migrationshintergrund-nach-art-anteil.csv
+      type: CSV
+      id: 2568dff2-4716-45ae-95ac-1a1ca18d3502
+      renameProperties:
+          Migrant/-innen %: Migrant/-innen
+          Deutsche mit Migrationshintergrund (%): Deutsche mit Migrationshintergrund
+          Ausländer/-innen (%): Ausländer/-innen
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Migrant/-innen
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche mit Migrationshintergrund
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Ausländer/-innen im Alter ab 65 Jahren nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/35a66b1b-4ba0-4606-b015-2e32a407d727/download/migration-auslander-innen-im-alter-ab-65-jahren-nach-geschlecht.csv
+      type: CSV
+      id: 35a66b1b-4ba0-4606-b015-2e32a407d727
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Unter 18 Jährige mit Migrationshintergrund nach Geschlecht
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/a5c2cb40-d185-405d-8350-039144dd7f2d/download/migration-unter-18-jahrige-mit-migrationshintergrund-nach-geschlecht.csv
+      type: CSV
+      id: a5c2cb40-d185-405d-8350-039144dd7f2d
+      renameProperties:
+          männlich: Männlich
+          weiblich: Weiblich
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Männlich
+                  - xAxis: Stadtteil
+                    yAxis: Weiblich
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Unter 18 Jährige mit Migrationshintergrund nach Art (Anteil)
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/aea75426-a745-4515-b144-ef213a3ea96e/download/migration-unter-18-jahrige-mit-migrationshintergrund-nach-art-anteil.csv
+      type: CSV
+      id: aea75426-a745-4515-b144-ef213a3ea96e
+      renameProperties:
+          Deutsche mit Migrationshintergrund (%): Deutsche mit Migrationshintergrund
+          Ausländer/-innen (%): Ausländer/-innen
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche mit Migrationshintergrund
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Unter 18 Jährige mit Migrationshintergrund nach Art
+      source: https://transparenz.karlsruhe.de/dataset/9bc7289b-ba18-47cc-a5bb-75bb622759ab/resource/b221c736-5d15-4841-a3ef-e9be8386a1ea/download/migration-unter-18-jahrige-mit-migrationshintergrund-nach-art.csv
+      type: CSV
+      id: b221c736-5d15-4841-a3ef-e9be8386a1ea
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+                  - xAxis: Stadtteil
+                    yAxis: Deutsche mit Migrationshintergrund
+                  - xAxis: Stadtteil
+                    yAxis: Ausländer/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Migration
+    - name: Hunde insgesamt
+      source: https://transparenz.karlsruhe.de/dataset/5ee4244d-943f-4b26-9c86-c11e843e8351/resource/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1/download/registrierte-hunde-hunde-insgesamt.csv
+      type: CSV
+      id: a5f04b45-528a-41b5-8d8c-eb9677bf2fd1
+      renameProperties:
+          Hunde je 1.000 Bewohner/-innen (Wohnberechtigte): Hunde je 1.000 Wohnberechtigte
+          Hunde je 1.000 Haushalte (HH): Hunde je 1.000 Haushalte
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Hunde
+                  - xAxis: Stadtteil
+                    yAxis: Hunde je 1.000 Wohnberechtigte
+                  - xAxis: Stadtteil
+                    yAxis: Hunde je 1.000 Haushalte
+          table: {}
+      category: Gesellschaft
+      subcategory: Bevölkerung
+    - name: Kinderspielplätze
+      source: https://transparenz.karlsruhe.de/dataset/5e1001f4-2cef-4a37-b6c8-16896fa74678/resource/6a8f8357-8151-4afc-958a-dc869b284d79/download/spielflachenversorgung-kinderspielplatze.csv
+      type: CSV
+      id: 6a8f8357-8151-4afc-958a-dc869b284d79
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Anzahl
+          table: {}
+      category: Ohne Kategorie
+      subcategory: Spielflächenversorgung
+    - name: Schülerinnen und Schüler der 4. Klassenstufe insgesamt
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/d674d5dc-1c00-4868-973a-595c47d7d1b6/download/ubergange-auf-weiterfuhrende-schulen-schulerinnen-und-schuler-der-4.-klassenstufe-insgesamt.csv
+      type: CSV
+      id: d674d5dc-1c00-4868-973a-595c47d7d1b6
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: übergegangene Schüler/-innen
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Übergangsquoten auf Realschulen
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/aa2d2b17-15ea-4827-ac5a-a5b2b295aed8/download/ubergange-auf-weiterfuhrende-schulen-ubergangsquoten-auf-realschulen.csv
+      type: CSV
+      id: aa2d2b17-15ea-4827-ac5a-a5b2b295aed8
+      renameProperties:
+          Realschule %: Realschule
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Realschule
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Übergangsquoten auf Haupt-/Werkrealschulen
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/46b95145-d15c-4e55-a74d-993afa714ec6/download/ubergange-auf-weiterfuhrende-schulen-ubergangsquoten-auf-haupt-werkrealschulen.csv
+      type: CSV
+      id: 46b95145-d15c-4e55-a74d-993afa714ec6
+      renameProperties:
+          Haupt-/Werkrealschule %: Haupt-/Werkrealschule
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haupt-/Werkrealschule
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Übergangsquoten auf Gymnasien
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/222adad1-baf0-421e-9cdd-d723f6a22bf9/download/ubergange-auf-weiterfuhrende-schulen-ubergangsquoten-auf-gymnasien.csv
+      type: CSV
+      id: 222adad1-baf0-421e-9cdd-d723f6a22bf9
+      renameProperties:
+          Gymnasium %: Gymnasium
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Gymnasium
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Übergangsquoten auf Gemeinschaftsschulen
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/a6d8f29a-5136-46e7-8245-c5b8c3b09244/download/ubergange-auf-weiterfuhrende-schulen-ubergangsquoten-auf-gemeinschaftsschulen.csv
+      type: CSV
+      id: a6d8f29a-5136-46e7-8245-c5b8c3b09244
+      renameProperties:
+          Gemeinschaftsschule %: Gemeinschaftsschule
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Gemeinschaftsschule
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
+    - name: Wiederholer und sonstige Ab-/Übergänge
+      source: https://transparenz.karlsruhe.de/dataset/890dc375-684f-4693-99fd-134b594bc83f/resource/98645f11-afb5-4a16-95e5-b74e989270a3/download/ubergange-auf-weiterfuhrende-schulen-wiederholer-und-sonstige-ab-ubergange.csv
+      type: CSV
+      id: 98645f11-afb5-4a16-95e5-b74e989270a3
+      renameProperties:
+          Wiederholer/ Sonstige %: Wiederholer/Sonstige
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wiederholer/Sonstige
+          table: {}
+      category: Gesellschaft
+      subcategory: Schulen
