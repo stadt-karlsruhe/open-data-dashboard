@@ -148,6 +148,39 @@ resources:
           NAME: Name
       visualizations:
           map: {}
+    - id: c2408d6a-d77e-4b76-80fb-15039d48a43b
+      name: Hochschulen und Universitäten
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Hochschulen_Forschung/MapServer/0/query?where=GRUPPENNAME_DE+%3D+%27Hochschulen%20/%20Universit%C3%A4ten%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^UPDATED|GRUPPENNAME_DE$
+      renameProperties:
+          NAME: Name
+      visualizations:
+          map: {}
+    - id: 1d147d5e-28ea-4e2c-a71b-413c5d1f12ec
+      name: eScooter in Karlsruhe
+      description: |
+        Zu sehen sind die Standorte der eScooter in Karlsruhe. Anbieter: Voi, Bolt, Lime.
+      type: GeoJSON
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_escooter&outputFormat=application%2Fjson
+      coordinateFormat: UTM
+      skipPropertiesRegEx: ^id|bike_id|fahrzeug_typ|soc|reichweite$
+      renameProperties:
+          anbieter: Anbieter
+          stand: Stand
+      visualizations:
+          map:
+            groupKey: Anbieter
+    - id: 533a6e1c-4899-4fd6-8a2e-156ed97fd073
+      name: Sportvereine
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Sportanlagen/MapServer/6/query?where=GRUPPENNAME_DE+%3D+%27Sportvereine%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^UPDATED|GRUPPENNAME_DE$
+      renameProperties:
+          NAME: Name
+          stand: Stand
+      visualizations:
+          map: {}
 
 dashboards:
     - id: homepage
@@ -156,7 +189,7 @@ dashboards:
       contents:
           - - type: EXTERNAL
               source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
-              name: Weather
+              name: Wetter
     - id: "1"
       name: Bevölkerung
       description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.
@@ -213,3 +246,42 @@ dashboards:
               resourceId: 66d4ff14-96f9-44ee-8f23-4e069a3a600d
             - type: RESOURCE
               resourceId: 81ee59ea-feaf-48d1-a169-1c3e012e0138
+          - - type: TEXT
+              header: Kultur und öffentliches Leben
+    - id: "5"
+      name: Für Studierende
+      icon: mortarboard-fill
+      contents:
+          - - type: RESOURCE
+              resourceId: c2408d6a-d77e-4b76-80fb-15039d48a43b
+              size: L
+            - - type: LINK_EXTERNAL
+                text: AStA Karlsruhe
+                icon: send
+                target: https://asta-karlsruhe.de/
+                backgroundColor: "#E5231F"
+              - type: LINK_EXTERNAL
+                text: Studierendenwerk Karlsruhe
+                icon: card-heading
+                target: https://www.sw-ka.de/de/
+                backgroundColor: "#FFED00"
+                color: black
+              - type: LINK_EXTERNAL
+                text: Mensa Speisepläne
+                icon: card-heading
+                target: https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_adenauerring/
+                backgroundColor: "#FFED00"
+                color: black
+              - type: LINK_EXTERNAL
+                text: Veranstaltungen in Karlsruhe
+                # icon: card-heading
+                target: https://www.karlsruhe-erleben.de/veranstaltungen
+                backgroundColor: "#522980"
+                # color: black
+              - type: EXTERNAL
+                source: https://www.kvv-nextbike.de/en/
+                name: KVV Nextbike
+                size: M
+              - type: RESOURCE
+                resourceId: 533a6e1c-4899-4fd6-8a2e-156ed97fd073
+                size: S
