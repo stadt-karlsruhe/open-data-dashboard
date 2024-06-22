@@ -23,23 +23,24 @@ function narrowObjectType(record: Record<string, never> | GeoJSON.GeoJsonPropert
         return record;
     }
     return Object.fromEntries(
-        Object.entries(record)
-            .filter(([, value]) => value !== null)
-            .map(([key, value]) => {
-                const stringValue = String(value).toLowerCase();
-                if (stringValue === 'true') {
-                    return [key, true];
-                }
-                if (stringValue === 'false') {
-                    return [key, false];
-                }
-                const parsedValue =
-                    numberFormat === 'en' ? Number(stringValue) : parseGermanNumberToInternationalFormat(stringValue);
-                if (!Number.isNaN(parsedValue)) {
-                    return [key, parsedValue];
-                }
-                return [key, value];
-            }),
+        Object.entries(record).map(([key, value]) => {
+            if (value === null) {
+                return [key, ''];
+            }
+            const stringValue = String(value).toLowerCase();
+            if (stringValue === 'true') {
+                return [key, true];
+            }
+            if (stringValue === 'false') {
+                return [key, false];
+            }
+            const parsedValue =
+                numberFormat === 'en' ? Number(stringValue) : parseGermanNumberToInternationalFormat(stringValue);
+            if (!Number.isNaN(parsedValue)) {
+                return [key, parsedValue];
+            }
+            return [key, value];
+        }),
     );
 }
 

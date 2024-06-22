@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import L, { LatLngExpression } from 'leaflet';
-import { colorPrimary, getColor } from '@/utils/colors';
+import { colorDark, colorPrimary, getColor } from '@/utils/colors';
 
 import { GeoJSON as GeoJSONLeaflet } from 'react-leaflet/GeoJSON';
 import { GeoJSONResource } from '@/schemas/configurationSchema';
@@ -63,6 +63,8 @@ export default function GeoMap({
           } else {
             colorCode = mappedColor;
           }
+        } else if (!label && resource.visualizations.map.groupKey) {
+          colorCode = colorDark;
         }
         return (
           <FeatureGroup key={index}>
@@ -74,7 +76,7 @@ export default function GeoMap({
                 </div>
               ))}
             </Tooltip>
-            {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
+            {feature.geometry.type !== 'Point' && (
               <GeoJSONLeaflet
                 data={feature}
                 coordsToLatLng={(coords) => utmToLatLng(coords, resource.coordinateFormat)}

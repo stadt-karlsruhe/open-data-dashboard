@@ -49,19 +49,19 @@ resources:
       type: PDF
       name: Daten und Fakten (2023/2024)
       description: |
-        Die jährlich erscheinende Broschüre „Daten und Fakten“ enthält die wichtigsten Zahlen und Fakten zum Karlsruher Stadtgebiet.
+          Die jährlich erscheinende Broschüre „Daten und Fakten“ enthält die wichtigsten Zahlen und Fakten zum Karlsruher Stadtgebiet.
     - id: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
       source: https://web4.karlsruhe.de/Stadtentwicklung/statistik/pdf/2023/2023-jahrbuch.pdf
       type: PDF
       name: Statistisches Jahrbuch (2023)
       description: |
-        Die jährlich erscheinende Veröffentlichung „Statistisches Jahrbuch“ enthält umfassende und vielfältige Zahlen und Daten zum Karlsruher Stadtgebiet. Es werden die Themengebiete Bevölkerung, Bauen und Wohnen, Wirtschaft und Verkehr, Ökologie, Ver- und Entsorgung, Gesundheit und Soziales, Bildung, Kultur und Freizeit sowie Politik und Verwaltung abgedeckt.
+          Die jährlich erscheinende Veröffentlichung „Statistisches Jahrbuch“ enthält umfassende und vielfältige Zahlen und Daten zum Karlsruher Stadtgebiet. Es werden die Themengebiete Bevölkerung, Bauen und Wohnen, Wirtschaft und Verkehr, Ökologie, Ver- und Entsorgung, Gesundheit und Soziales, Bildung, Kultur und Freizeit sowie Politik und Verwaltung abgedeckt.
     - id: 2de3dfff-5657-4644-a512-70795745899e
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/2021/2021-bevoelkerung.pdf
       type: PDF
       name: Bevölkerung Jahresbericht (2021)
       description: |
-        Der jährlich erscheinende Bericht „Bevölkerung in Karlsruhe“ beschreibt die aktuelle Entwicklung des Karlsruher Bevölkerungsbestands, die aktuellen Bevölkerungsbewegungen sowie Entwicklungen in den letzten zehn Jahren.
+          Der jährlich erscheinende Bericht „Bevölkerung in Karlsruhe“ beschreibt die aktuelle Entwicklung des Karlsruher Bevölkerungsbestands, die aktuellen Bevölkerungsbewegungen sowie Entwicklungen in den letzten zehn Jahren.
     - id: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
       name: Haushalte insgesamt
       type: CSV
@@ -79,6 +79,23 @@ resources:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Haushalte
+    - id: 66d4ff14-96f9-44ee-8f23-4e069a3a600d
+      name: Baustellen
+      type: GeoJSON
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Abaustellen&outputFormat=application%2Fjson
+      description: |
+          Zu sehen sind die Baustellen in Karlsruhe.
+      coordinateFormat: UTM
+      skipPropertiesRegEx: ^gemeinde|projektnummer|vorgangsnummer|lage$
+      renameProperties:
+          art: Art
+          vorgangszeitraum_von: Von
+          vorgangszeitraum_bis: Bis
+          verursacher: Verursacher
+          sperrung: Sperrung
+      visualizations:
+          map:
+              groupKey: Art
 
 dashboards:
     - id: homepage
@@ -110,7 +127,7 @@ dashboards:
               resourceId: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
               size: M
               overrides:
-                name: Haushalte
+                  name: Haushalte
             - - type: LINK_RESOURCE
                 resourceId: 2de3dfff-5657-4644-a512-70795745899e
                 overrides:
@@ -123,5 +140,5 @@ dashboards:
                 resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
                 size: S
     - id: "2"
-      name: Mobilität
-      icon: train-front-fill
+      name: Infrastruktur
+      icon: map-fill
