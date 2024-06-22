@@ -1771,7 +1771,8 @@ resources:
           table: {}
 categories:
     - name: Gesellschaft
-      description: ToDo
+      description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
+      icon: people-fill
       subcategories:
           - name: Altersstruktur
             description: ToDo
