@@ -1,3 +1,4 @@
+import { dashboardsSchema } from './configuration/dashboardsSchema';
 import { z } from 'zod';
 
 const baseResourceSchema = z
@@ -52,6 +53,7 @@ export const jsonResourceSchema = transformableResourceSchema
                 barChart: z
                     .object({
                         axisPairs: z.array(axisPairSchema),
+                        layout: z.union([z.literal('horizontal'), z.literal('vertical')]).default('horizontal'),
                     })
                     .strict()
                     .optional(),
@@ -129,42 +131,6 @@ export const appearanceSchema = z
     })
     .strict();
 
-const resourceContentSchema = z
-    .object({
-        type: z.literal('RESOURCE'),
-        id: z.string(),
-        preview: z.boolean(),
-        size: z.union([z.literal('L'), z.literal('M'), z.literal('S')]).default('L'),
-    })
-    .strict();
-
-const externalContentSchema = z
-    .object({
-        type: z.literal('EXTERNAL'),
-        name: z.string(),
-        source: z.string().url(),
-        size: z.union([z.literal('L'), z.literal('M'), z.literal('S')]).default('L'),
-    })
-    .strict();
-
-const dashboardContentSchema = z.union([resourceContentSchema, externalContentSchema]);
-
-const dashboardSchema = z
-    .object({
-        id: z.string(),
-        name: z.string(),
-        icon: z.string().default('clipboard-data'),
-        description: z.string().optional(),
-        contents: z.array(z.array(z.union([dashboardContentSchema, z.array(dashboardContentSchema)]))).optional(),
-    })
-    .strict();
-
-export const dashboardsSchema = z
-    .array(dashboardSchema)
-    .refine((dashboards) => dashboards.some((dashboard) => dashboard.id === 'homepage'), {
-        message: 'The homepage must be configured.',
-    });
-
 export const configurationSchema = z
     .object({
         resources: z.array(resourceSchema),
@@ -183,5 +149,3 @@ export type Configuration = z.infer<typeof configurationSchema>;
 export type Filter = z.infer<typeof defaultFilterSchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type Appearance = z.infer<typeof appearanceSchema>;
-export type Dashboard = z.infer<typeof dashboardSchema>;
-export type DashboardContent = z.infer<typeof dashboardContentSchema>;

@@ -6,13 +6,13 @@ import {
     appearanceSchema,
     categoriesSchema,
     configurationSchema,
-    dashboardsSchema,
     embeddedResourceSchema,
     geoJSONResourceSchema,
     jsonResourceSchema,
     resourceSchema,
 } from '@/schemas/configurationSchema';
 
+import { dashboardsSchema } from '@/schemas/configuration/dashboardsSchema';
 import { expect } from '@jest/globals';
 import { fromError } from 'zod-validation-error';
 

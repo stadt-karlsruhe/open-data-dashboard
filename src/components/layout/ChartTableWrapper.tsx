@@ -22,15 +22,21 @@ const Table = dynamic(() => import('@/components/visualization/Table'), { ssr: f
 export default function ChartTableWrapper({
   resource,
   transformedData,
-  showFilter = true,
-  useQueryParams = true,
   height: constantHeight,
+  options = {
+    showFilter: true,
+    useQueryParams: true,
+    showOnlyFirstVis: false,
+  },
 }: {
   resource: JSONResource;
   transformedData: TransformedData[];
-  showFilter?: boolean;
-  useQueryParams?: boolean;
   height?: string | number;
+  options: {
+    showFilter?: boolean;
+    useQueryParams?: boolean;
+    showOnlyFirstVis?: boolean;
+  };
 }) {
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();
@@ -38,7 +44,7 @@ export default function ChartTableWrapper({
   const locale = useLocale();
   const router = useRouter();
   const [filteredData, setFilteredData] = useState(
-    showFilter ? transformedData : filterData(transformedData, resource.defaultFilters ?? {}),
+    options.showFilter ? transformedData : filterData(transformedData, resource.defaultFilters ?? {}),
   );
   const { width, height } = useWindowDimensions();
 
@@ -49,21 +55,39 @@ export default function ChartTableWrapper({
   });
   const [activeVisualization, setActiveVisualization] = useState(getAndUpdateVisualizationParameter());
   function getAndUpdateVisualizationParameter() {
-    if (useQueryParams) {
+    const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
+    const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
+    if (options.useQueryParams) {
       const passedInitialParameter = searchParams.get('visualization');
-      const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
       if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
-        const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
         setVisualizationParameter(initialParameter);
         return initialParameter;
       }
       return passedInitialParameter;
     }
+    return initialParameter;
+  }
+
+  if (options.showOnlyFirstVis) {
+    return getAndUpdateVisualizationParameter() === 'barChart' ? (
+      <div className="d-flex" style={{ height: constantHeight }}>
+        <BarChart
+          data={filteredData}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          axisPairs={resource.visualizations.barChart!.axisPairs}
+          aspect={constantHeight ? undefined : width / (height - 250)}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          layout={resource.visualizations.barChart!.layout}
+        />
+      </div>
+    ) : (
+      <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
+    );
   }
 
   return (
     <div className={pathname.startsWith(`/${locale}/embed`) ? 'm-2' : ''}>
-      {showFilter && <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />}
+      {options.showFilter && <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />}
       <Tabs
         defaultActiveKey={activeVisualization}
         onSelect={(eventKey) => {
@@ -85,6 +109,7 @@ export default function ChartTableWrapper({
                 data={filteredData}
                 axisPairs={diagramAttr.axisPairs}
                 aspect={constantHeight ? undefined : width / (height - 250)}
+                layout={diagramAttr.layout}
               />
             ) : (
               <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />

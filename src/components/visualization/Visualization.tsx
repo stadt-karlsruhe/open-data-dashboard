@@ -12,14 +12,20 @@ const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
 
 export default async function Visualization({
   resource,
-  showFilters = true,
-  useQueryParams = true,
   height,
+  options = {
+    showFilter: true,
+    useQueryParams: true,
+    showOnlyFirstVis: false,
+  },
 }: {
   resource: JSONResource | GeoJSONResource;
-  showFilters?: boolean;
-  useQueryParams?: boolean;
   height?: string | number;
+  options: {
+    showFilter?: boolean;
+    useQueryParams?: boolean;
+    showOnlyFirstVis?: boolean;
+  };
 }) {
   let data;
   try {
@@ -42,8 +48,7 @@ export default async function Visualization({
     <ChartTableWrapper
       resource={resource}
       transformedData={validatedData as TransformedData[]}
-      showFilter={showFilters}
-      useQueryParams={useQueryParams}
+      options={options}
       height={height}
     />
   );

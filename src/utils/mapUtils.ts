@@ -1,6 +1,7 @@
 import { Category, Configuration } from '@/schemas/configurationSchema';
-import { concatenateNameAndId, replaceWhitespaceInString } from './stringUtils';
+import { concatenateNameAndId, sanitizeString } from './stringUtils';
 
+import { DashboardContentSize } from '@/schemas/configuration/dashboardsSchema';
 import { DataElement } from '@/types/data';
 import { LRUCache } from 'lru-cache';
 import { getIconForResource } from './icons';
@@ -60,7 +61,7 @@ export function configurationToCategories(configuration: Configuration) {
         name: category.name,
         icon: category.icon,
         description: category.description,
-        href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}`,
+        href: `/overview/resources/${sanitizeString(category.name).toLowerCase()}`,
         type: 'category',
     })) as DataElement[];
 }
@@ -79,7 +80,27 @@ export function configurationToSubcategories(configuration: Configuration, categ
             name: subcategory.name,
             icon: subcategory.icon,
             description: subcategory.description,
-            href: `/overview/resources/${replaceWhitespaceInString(subcategory.categoryName).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
+            href: `/overview/resources/${sanitizeString(subcategory.categoryName).toLowerCase()}/${sanitizeString(subcategory.name).toLowerCase()}`,
             type: 'category',
         })) as DataElement[];
+}
+
+export function sizeClassToHeight(size: DashboardContentSize) {
+    switch (size) {
+        case 'L': {
+            return 1000;
+        }
+        case 'M': {
+            return 500;
+        }
+        case 'S': {
+            return 250;
+        }
+        case 'XS': {
+            return 125;
+        }
+        default: {
+            return 500;
+        }
+    }
 }

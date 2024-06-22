@@ -1,3 +1,4 @@
+import DashboardContents from '@/components/dashboard-resource/dashboard/DashboardContents';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { getValidatedConfiguration } from '@/schemas/validate';
 import { safeStringCompare } from '@/utils/stringUtils';
@@ -13,5 +14,5 @@ export default async function Page({ params: { dashboardId } }: { params: { dash
     return <ErrorComponent type="notFound" />;
   }
 
-  return <>Dashboard {dashboard.name} (embedded)</>;
+  return <DashboardContents dashboard={dashboard} configuration={configuration} className="m-2" />;
 }

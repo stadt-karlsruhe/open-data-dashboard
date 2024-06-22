@@ -22,14 +22,17 @@ import { getColor } from '@/utils/colors';
 let minValue: number;
 let maxValue: number;
 
+// eslint-disable-next-line max-lines-per-function
 export default function BarChart({
   data,
   axisPairs,
   aspect,
+  layout,
 }: {
   data: TransformedData[];
   axisPairs: AxisPair[];
   aspect?: number;
+  layout: 'horizontal' | 'vertical';
 }) {
   const [axesMap, setAxesMap] = useState(collectYAxes(axisPairs));
   const [xAxis, setXAxis] = useState(axisPairs[0].xAxis);
@@ -60,6 +63,7 @@ export default function BarChart({
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
       <ResponsiveContainer debounce={200} aspect={aspect}>
         <BarChartRecharts
+          layout={layout}
           data={data}
           margin={{
             top: 0,
@@ -69,8 +73,17 @@ export default function BarChart({
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={xAxis} label={xAxis} tick={false} />
-          <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
+          {layout === 'vertical' ? (
+            <>
+              <XAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
+              <YAxis dataKey={xAxis} label={xAxis} tick={false} type="category" />
+            </>
+          ) : (
+            <>
+              <XAxis dataKey={xAxis} label={xAxis} tick={false} />
+              <YAxis type="number" domain={getDomain(data, axesMap, xAxis)} ticks={getTicks()} />
+            </>
+          )}
           <ReferenceLine y={0} stroke="#000" />
           <Tooltip content={<CustomTooltip axesMap={axesMap} xAxis={xAxis} />} />
           <Legend onClick={onLegendClick} />

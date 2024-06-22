@@ -1,0 +1,127 @@
+# TODO: Move to different configuration file
+resources:
+    - id: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
+      name: Bevölkerung mit Hauptwohnung
+      type: CSV
+      source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?bom=True
+      description: |
+          Zu sehen ist die wohnberechtigte Bevölkerung sowie die Anteile der Bevölkerung am Ort der Hauptwohnung (HW) und mit Nebenwohnung (NW) dargestellt.
+          Zur wohnberechtigten Bevölkerung zählen alle Personen, die in der Gemeinde eine Wohnung haben („gemeldet sind"), unabhängig davon, ob es sich um eine Hauptwohnung oder eine Nebenwohnung handelt.
+      skipPropertiesRegEx: ^_id$
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              layout: vertical
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Wohnberechtigte
+    - id: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
+      name: Wanderungssaldo Gewinn(+)/Verlust(-)
+      type: CSV
+      source: https://transparenz.karlsruhe.de/datastore/dump/8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509?bom=True
+      description: |
+          Zu sehen ist die Differenz der Zuzüge und Fortzüge nach und von Karlsruhe.
+      skipPropertiesRegEx: ^_id$
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              layout: vertical
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Personen
+    - id: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+      source: https://transparenz.karlsruhe.de/dataset/8474ba52-f851-4f4b-b05a-1cba9bbd1f4d/resource/2a7fd644-bc67-477a-bb9e-cf88f076b7af/download/stadtteile.json
+      type: GeoJSON
+      name: Stadtteile Stadt Karlsruhe
+      renameProperties:
+          NAME: Name
+      skipPropertiesRegEx: ^NUMMER$
+      visualizations:
+          map: {}
+    - id: 6ea017ac-f3db-4f99-b587-09de9048ad0c
+      source: https://web4.karlsruhe.de/Stadtentwicklung/statistik/pdf/2023/2023-24-daten-und-fakten.pdf
+      type: PDF
+      name: Daten und Fakten (2023/2024)
+      description: |
+        Die jährlich erscheinende Broschüre „Daten und Fakten“ enthält die wichtigsten Zahlen und Fakten zum Karlsruher Stadtgebiet.
+    - id: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
+      source: https://web4.karlsruhe.de/Stadtentwicklung/statistik/pdf/2023/2023-jahrbuch.pdf
+      type: PDF
+      name: Statistisches Jahrbuch (2023)
+      description: |
+        Die jährlich erscheinende Veröffentlichung „Statistisches Jahrbuch“ enthält umfassende und vielfältige Zahlen und Daten zum Karlsruher Stadtgebiet. Es werden die Themengebiete Bevölkerung, Bauen und Wohnen, Wirtschaft und Verkehr, Ökologie, Ver- und Entsorgung, Gesundheit und Soziales, Bildung, Kultur und Freizeit sowie Politik und Verwaltung abgedeckt.
+    - id: 2de3dfff-5657-4644-a512-70795745899e
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/2021/2021-bevoelkerung.pdf
+      type: PDF
+      name: Bevölkerung Jahresbericht (2021)
+      description: |
+        Der jährlich erscheinende Bericht „Bevölkerung in Karlsruhe“ beschreibt die aktuelle Entwicklung des Karlsruher Bevölkerungsbestands, die aktuellen Bevölkerungsbewegungen sowie Entwicklungen in den letzten zehn Jahren.
+    - id: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
+      name: Haushalte insgesamt
+      type: CSV
+      source: https://transparenz.karlsruhe.de/datastore/dump/ac4f2de9-44ac-419f-afd6-bbf670bc2a4e?bom=True
+      description: |
+          Zu sehen ist die Zahl der Haushalte insgesamt. Nach der Definition der amtlichen Statistik bilden Personen, die gemeinsam wohnen und wirtschaften, einen Haushalt. Wer allein wirtschaftet, bildet einen Einpersonenhaushalt.
+      skipPropertiesRegEx: ^_id$
+      defaultFilters:
+          Jahr:
+              min: 2021
+              max: 2021
+      visualizations:
+          barChart:
+              layout: vertical
+              axisPairs:
+                  - xAxis: Stadtteil
+                    yAxis: Haushalte
+
+dashboards:
+    - id: homepage
+      name: Homepage
+      icon: house-door-fill
+      contents:
+          - - type: EXTERNAL
+              source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
+              name: Weather
+    - id: "1"
+      name: Bevölkerung
+      description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.
+      icon: people-fill
+      contents:
+          - - type: RESOURCE
+              resourceId: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
+              size: L
+              overrides:
+                  name: Bevölkerung pro Stadtteil (2021)
+            - - type: RESOURCE
+                resourceId: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
+                size: M
+                overrides:
+                    name: Zuzüge und Fortzüge (2021)
+              - type: RESOURCE
+                resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+                size: M
+          - - type: RESOURCE
+              resourceId: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
+              size: M
+              overrides:
+                name: Haushalte
+            - - type: LINK_RESOURCE
+                resourceId: 2de3dfff-5657-4644-a512-70795745899e
+                overrides:
+                    description: ""
+              - type: LINK_RESOURCE
+                resourceId: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
+                overrides:
+                    description: ""
+              - type: RESOURCE
+                resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
+                size: S
+    - id: "2"
+      name: Mobilität
+      icon: train-front-fill

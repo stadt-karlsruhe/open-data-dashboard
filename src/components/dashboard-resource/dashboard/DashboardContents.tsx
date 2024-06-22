@@ -1,24 +1,26 @@
-import { Configuration, Dashboard } from '@/schemas/configurationSchema';
-
+import { Configuration } from '@/schemas/configurationSchema';
+import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
 import DashboardContent from './DashboardContent';
 
 export default function DashboardContents({
   dashboard,
   configuration,
+  className,
 }: {
   dashboard: Dashboard;
   configuration: Configuration;
+  className?: string;
 }) {
   return (
-    <>
+    <div className={className}>
       {dashboard.contents?.map((rows, index) => (
-        <div key={index} className="d-flex justify-content-center flex-wrap flex-lg-nowrap mt-3">
+        <div key={index} className="row align-items-center mb-2">
           {rows.map((row, index) => {
             if (Array.isArray(row)) {
               return (
                 <div
                   key={index}
-                  className={`d-flex flex-column flex-grow-1 ${row.length > 0 && index < row.length - 1 ? 'me-2' : ''}`}
+                  className={`col ${row.length > 0 && index < row.length - 1 ? 'me-2' : ''}`}
                   style={{ minWidth: 300 }}
                 >
                   {row.map((content, index) => {
@@ -36,17 +38,13 @@ export default function DashboardContents({
               );
             }
             return (
-              <DashboardContent
-                key={index}
-                content={row}
-                configuration={configuration}
-                className={`flex-grow-1 ${rows.length > 0 && index < rows.length - 1 ? 'me-2' : ''}`}
-                style={{ minWidth: 300 }}
-              />
+              <div key={index} className={`col ${rows.length > 0 && index < rows.length - 1 ? 'me-2' : ''}`}>
+                <DashboardContent content={row} configuration={configuration} style={{ minWidth: 300 }} />
+              </div>
             );
           })}
         </div>
       ))}
-    </>
+    </div>
   );
 }
