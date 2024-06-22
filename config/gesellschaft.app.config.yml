@@ -760,7 +760,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Nebenwohnung
           table: {}
-    - name: Bevölkerung mit sonstiger/keiner Religionszugehörigkeit
+    - name: Bevölkerung mit sonstiger Religionszugehörigkeit
       source: https://transparenz.karlsruhe.de/datastore/dump/f2128444-47e7-40ba-ab1d-eb426e69c009?bom=True
       type: CSV
       id: f2128444-47e7-40ba-ab1d-eb426e69c009
@@ -874,7 +874,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Weiblich
           table: {}
-    - name: Geburten je 1000 Einwohner/-innen
+    - name: Geburten je 1000 Einwohner
       source: https://transparenz.karlsruhe.de/datastore/dump/5296efff-037d-4cbe-8d5a-fe3ccf17c528?bom=True
       type: CSV
       id: 5296efff-037d-4cbe-8d5a-fe3ccf17c528
@@ -932,7 +932,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Weiblich
           table: {}
-    - name: Wanderungssaldo je 1000 Einwohner/-innen
+    - name: Wanderungssaldo je 1000 Einwohner
       source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?bom=True
       type: CSV
       id: e3e69806-4903-44c4-a17d-bce2a940d3a0
@@ -1019,7 +1019,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Ausländer/-innen
           table: {}
-    - name: Wanderungsvolumen je 1000 Einwohner/-innen
+    - name: Wanderungsvolumen je 1000 Einwohner
       source: https://transparenz.karlsruhe.de/datastore/dump/d89f8702-30ac-4fb9-9f3a-ef1139e55365?bom=True
       type: CSV
       id: d89f8702-30ac-4fb9-9f3a-ef1139e55365
@@ -1498,7 +1498,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Haushalte
           table: {}
-    - name: Ausländer/-innen im Alter ab 65 Jahren nach Geschlecht (Anteil)
+    - name: Ausländer im Alter ab 65 Jahren nach Geschlecht (Anteil)
       source: https://transparenz.karlsruhe.de/datastore/dump/2fe18edf-867a-41e0-b2c5-c0d18367dba0?bom=True
       type: CSV
       id: 2fe18edf-867a-41e0-b2c5-c0d18367dba0
@@ -1543,7 +1543,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Ausländer/-innen
           table: {}
-    - name: Ausländer/-innen im Alter ab 65 Jahren nach Geschlecht
+    - name: Ausländer im Alter ab 65 Jahren nach Geschlecht
       source: https://transparenz.karlsruhe.de/datastore/dump/35a66b1b-4ba0-4606-b015-2e32a407d727?bom=True
       type: CSV
       id: 35a66b1b-4ba0-4606-b015-2e32a407d727
