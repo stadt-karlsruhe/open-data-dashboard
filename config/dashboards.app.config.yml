@@ -202,6 +202,15 @@ resources:
           tarife_oeffnungszeiten: Öffnungszeiten
       visualizations:
           map: {}
+    - id: 7797d105-c1b9-4ead-b41f-66790c83534b
+      name: Gastronomie
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/2/query?where=GRUPPENNAME_DE+%3D+%27Gastronomie%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
+      renameProperties:
+          NAME: Name
+      visualizations:
+          map: {}
 
 dashboards:
     - id: homepage
@@ -210,7 +219,6 @@ dashboards:
       contents:
           - - type: RESOURCE
               resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
-              size: M
             - - type: LINK_INTERNAL
                 kind: dashboard
                 uniqueIdentifier: "1"
@@ -224,16 +232,14 @@ dashboards:
                 target: https://www.karlsruhe-erleben.de/veranstaltungen
                 backgroundColor: "#522980"
               - type: LINK_EXTERNAL
-                target: https://www.kvv.de/
-                text: Karlsruher Verkehrsbetriebe
-                icon: train-lightrail-front
-                backgroundColor: "#C30A37"
-              - type: LINK_EXTERNAL
                 target: https://www.karlsruhe.de/stadt-rathaus/service-buergerinformation/buergerdienste
                 text: Bürgerdienste eService
                 icon: info-circle
                 color: black
                 backgroundColor: "#FDCB00"
+              - type: RESOURCE
+                resourceId: 7797d105-c1b9-4ead-b41f-66790c83534b
+                size: S
     - id: "1"
       name: Bevölkerung
       description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.
