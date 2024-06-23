@@ -25,7 +25,7 @@ export default async function Home() {
           alt={t('imageAlt')}
           priority
           fill
-          sizes="1700px"
+          sizes="1010px"
         />
         <Search
           configuration={configuration}
