@@ -108,20 +108,6 @@ categories:
           - "5"
           - "8"
           - "9"
-    - name: Gesellschaft
-      description: Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.
-      icon: people-fill
-      resources:
-          - "1"
-          - "2"
-          - "3"
-          - "7"
-      subcategories:
-          - name: Politik
-            description: In dieser Unterkategorie findet man alle politischen Daten.
-            icon: award-fill
-            resources:
-                - "6"
     - name: Category 3
       description: Die dritte Kategorie.
       resources:
