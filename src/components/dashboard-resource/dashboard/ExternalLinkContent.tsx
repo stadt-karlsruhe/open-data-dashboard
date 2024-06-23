@@ -18,7 +18,7 @@ export default function ExternalLinkContent({
 }) {
   return (
     <Link
-      className={`btn btn-primary d-flex align-content-center justify-content-center ${className ?? ''}`}
+      className={`btn btn-primary d-flex align-content-center justify-content-center custom-opacity ${className ?? ''}`}
       href={content.target}
       target="_blank"
       title={content.text}

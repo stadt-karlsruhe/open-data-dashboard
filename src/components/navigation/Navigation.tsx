@@ -24,7 +24,7 @@ export default function Navigation({ configuration }: { configuration: Configura
       <NavigationContent
         categories={configuration.categories}
         dashboards={configuration.dashboards}
-        className="d-none d-lg-block me-lg-5"
+        className="d-none d-lg-block me-lg-2"
       />
     </div>
   );

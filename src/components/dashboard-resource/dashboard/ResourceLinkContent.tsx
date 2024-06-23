@@ -56,9 +56,9 @@ export default function ResourceLinkContent({
             </button>
           </OverlayTrigger>
         )}
-        <Link href={`/resource/${concatenateNameAndId(resource.name, resource.id)}`} className="nav-link fs-5">
+        <button className="nav-link fs-5">
           <i className="bi bi-box-arrow-up-right" />
-        </Link>
+        </button>
       </div>
     </Link>
   );
