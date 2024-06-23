@@ -11,7 +11,7 @@ export default function CustomTooltip(props: CustomTooltipProps) {
   if (!props.active) {
     return null;
   }
-  if (props.payload === undefined) {
+  if (!props.payload?.[0]?.payload) {
     return <DefaultTooltipContent {...props} />;
   }
   const yAxes = computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>;
