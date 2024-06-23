@@ -290,9 +290,34 @@ dashboards:
                 icon: info-circle
                 color: black
                 backgroundColor: "#FDCB00"
-              - type: RESOURCE
-                resourceId: 7797d105-c1b9-4ead-b41f-66790c83534b
+              - type: TEXT_CAROUSEL
                 size: S
+                backgroundColor: "#555555"
+                slides:
+                  - title: Wusstest du schon?
+                    text: Durlach ist älter als die Stadt Karlsruhe selbst.
+                  - title: Wusstest du schon?
+                    text: Carl Benz wurde 1844 in Mühlburg geboren.
+                  - title: Wusstest du schon?
+                    text: Die Hoepfnerburg ist an Schloss Neuschwanstein angelehnt und besitzt sogar eine sehr akkurate Kopie des Schlossturms.
+                  - title: Wusstest du schon?
+                    text: Die YouTuber MrWissen2Go und Alexander Giesecke (Simpleclub) studierten beide am KIT.
+                  - title: Wusstest du schon?
+                    text: Karlsruhe hält den Rekord für das größte Biertasting der Welt mit 1520 Teilnehmerinnen und Teilnehmern.
+                  - title: Wusstest du schon?
+                    text: Die Günther-Klotz-Anlage erstreckt sich über insgesamt fünf Stadtteile.
+                  - title: Wusstest du schon?
+                    text: Der Filmpalast im ZKM gilt als eines der besten zehn Multiplex-Kinos in Deutschland.
+                  - title: Wusstest du schon?
+                    text: Die längste Straße Karlsruhes ist die Kriegsstraße mit 3,8 km.
+                  - title: Wusstest du schon?
+                    text: Im Bundesgerichtshof steht ein einmaliges Kunstwerk der Justitia ohne Augenbinde.
+                  - title: Wusstest du schon?
+                    text: Das KIT war die erste deutsche Forschungsstätte, die ein Experiment im Weltraum durchführte.
+                  - title: Wusstest du schon?
+                    text: Der älteste Fußballverein in Karlsruhe ist der Karlsruher FV (KFV). Er wurde im Jahr 1891 gegründet und zählt damit zu den ältesten Fußballvereinen Deutschlands.
+                  - title: Wusstest du schon?
+                    text: Der größte Arbeitgeber in Karlsruhe ist das KIT und hat mehr Angestellte als die zweitgrößte Hochschule der Stadt Studierende.
     - id: "1"
       name: Bevölkerung
       description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.

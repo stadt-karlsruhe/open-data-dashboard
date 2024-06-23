@@ -2,6 +2,7 @@ import { DashboardContent as Content, DashboardExternalLinkContent } from '@/sch
 import { categoryToDataElement, dashboardToDataElement, resourceToDataElement } from '@/utils/mapUtils';
 
 import { CSSProperties } from 'react';
+import CarouselContent from './CarouselContent';
 import { Configuration } from '@/schemas/configurationSchema';
 import { DataElement } from '@/types/data';
 import ErrorComponent from '../../error-handling/ErrorComponent';
@@ -28,6 +29,9 @@ export default function DashboardContent({
   }
   if (content.type === 'TEXT') {
     return <TextContent content={content} className={className} style={style} />;
+  }
+  if (content.type === 'TEXT_CAROUSEL') {
+    return <CarouselContent content={content} />;
   }
   if (content.type === 'RESOURCE') {
     const resource = configuration.resources.find((resource) => resource.id === content.resourceId);

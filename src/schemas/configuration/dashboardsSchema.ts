@@ -57,6 +57,22 @@ const textContentSchema = z
     })
     .strict();
 
+const carouselContentSchema = z.object({
+    type: z.literal('TEXT_CAROUSEL'),
+    size: dashboardContentSizeSchema,
+    color: z.string().optional(),
+    backgroundColor: z.string().optional(),
+    slides: z
+        .object({
+            title: z.string(),
+            text: z.string(),
+            color: z.string().optional(),
+            backgroundColor: z.string().optional(),
+        })
+        .strict()
+        .array(),
+});
+
 const externalContentSchema = z
     .object({
         type: z.literal('EXTERNAL'),
@@ -69,6 +85,7 @@ const externalContentSchema = z
 const dashboardContentSchema = z.union([
     resourceContentSchema,
     textContentSchema,
+    carouselContentSchema,
     linkContentSchema,
     externalContentSchema,
 ]);
@@ -94,6 +111,7 @@ export type Dashboard = z.infer<typeof dashboardSchema>;
 export type DashboardContent = z.infer<typeof dashboardContentSchema>;
 export type DashboardResourceContent = z.infer<typeof resourceContentSchema>;
 export type DashboardTextContent = z.infer<typeof textContentSchema>;
+export type DashboardCarouselContent = z.infer<typeof carouselContentSchema>;
 export type DashboardExternalContent = z.infer<typeof externalContentSchema>;
 export type DashboardResourceLinkContent = z.infer<typeof resourceLinkContentSchema>;
 export type DashboardExternalLinkContent = z.infer<typeof externalLinkContentSchema>;
