@@ -239,6 +239,31 @@ resources:
       skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
       renameProperties:
           NAME: Name
+    - id: 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
+      name: Karlsruher Mietspiegel (2023)
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
+      type: PDF
+    - id: c867155b-5f28-4d25-882e-422fb3ae18aa
+      name: Mietspiegelrechner für Wohnungen 2023/24
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
+      type: HTML
+    - id: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
+      name: Mietspiegelrechner für Einfamilienhäuser 2023/24
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-efh-2023.html
+      type: HTML
+    - id: e3650edd-9b8d-435c-b9d8-3901265b3f99
+      name: Wohnbauflächen
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Baulandflaechen/MapServer/6/query?where=GRUPPENNAME_DE+%3D+%27Wohnbaufl%C3%A4chen%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
+      renameProperties:
+          NAME: Name
 
 dashboards:
     - id: homepage
@@ -386,6 +411,22 @@ dashboards:
     - id: "5"
       name: Für Zugezogene
       icon: house-heart
+      contents:
+          - - type: RESOURCE
+              resourceId: 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
+            - - type: LINK_INTERNAL
+                kind: resource
+                uniqueIdentifier: c867155b-5f28-4d25-882e-422fb3ae18aa
+              - type: LINK_INTERNAL
+                kind: resource
+                uniqueIdentifier: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
+              - type: RESOURCE
+                resourceId: e3650edd-9b8d-435c-b9d8-3901265b3f99
+                size: S
+          - - type: RESOURCE
+              resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+            - type: RESOURCE
+              resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
     - id: "6"
       name: Für Studierende
       icon: mortarboard-fill

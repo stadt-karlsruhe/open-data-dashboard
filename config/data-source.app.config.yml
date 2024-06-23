@@ -1,10 +1,6 @@
 appearance:
     theme: "karlsruhe"
 resources:
-    - id: "2"
-      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
-      type: PDF
-      name: Karlsruher Mietspiegel 2023
     - id: "3"
       source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       type: GeoJSON
@@ -28,7 +24,3 @@ resources:
                     yAxis: Stimmen
                   - xAxis: Parteiname
                     yAxis: "%"
-    - id: "7"
-      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
-      type: HTML
-      name: Mietspiegelrechner
