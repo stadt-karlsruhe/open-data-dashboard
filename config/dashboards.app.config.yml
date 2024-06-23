@@ -356,7 +356,7 @@ dashboards:
                 size: S
     - id: "2"
       name: Verkehr und Infrastruktur
-      description: Neben aktuellen Baustellen und Geschwindigkeitsbegrenzungen findest du hier auch alle wichtigen Informationen zum ÖPNV der Stadt Karlsruhe
+      description: Neben aktuellen Baustellen und Geschwindigkeitsbegrenzungen findest du hier auch alle wichtigen Informationen zum ÖPNV der Stadt Karlsruhe.
       icon: map-fill
       contents:
           - - - type: RESOURCE
@@ -413,7 +413,7 @@ dashboards:
               resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
     - id: "4"
       name: Freizeitangebote
-      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein, mithilfe des Freizeitdashboards.
+      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein, mithilfe des Freizeit-Dashboards.
       icon: person-arms-up
       contents:
           - - - type: RESOURCE
