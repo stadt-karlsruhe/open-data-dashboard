@@ -1092,15 +1092,14 @@ resources:
           Wohngebaude: Wohngebäude
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude
-          table: {}
     - name: Wohngebäude mit zwei Wohnungen
       source: https://transparenz.karlsruhe.de/datastore/dump/fd159d95-5aba-4eb1-be4d-f2ec92fa8f42?bom=True
       type: CSV
@@ -1109,15 +1108,14 @@ resources:
           Wohngeb. mit 2 Wohnungen: Wohngebäude mit 2 Wohnungen
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude mit 2 Wohnungen
-          table: {}
     - name: Wohngebäude mit einer Wohnung
       source: https://transparenz.karlsruhe.de/datastore/dump/6c020f39-ade1-42fa-af9e-cefac1717b9a?bom=True
       type: CSV
@@ -1126,15 +1124,14 @@ resources:
           Wohngeb. mit 1 Wohnung: Wohngebäude mit 1 Wohnung
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude mit 1 Wohnung
-          table: {}
     - name: Wohngebäude mit drei bis sechs Wohnungen
       source: https://transparenz.karlsruhe.de/datastore/dump/dad2aa2f-3c0a-478b-bbad-035d1de7c9e1?bom=True
       type: CSV
@@ -1143,15 +1140,14 @@ resources:
           Wohngeb. mit 3-6 Wohnungen: Wohngebäude mit 3-6 Wohnungen
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude mit 3-6 Wohnungen
-          table: {}
     - name: Wohngebäude mit sieben und mehr Wohnungen
       source: https://transparenz.karlsruhe.de/datastore/dump/e031fe5f-90e0-4398-8824-a9fcc213a768?bom=True
       type: CSV
@@ -1160,15 +1156,14 @@ resources:
           Wohngeb. mit 7 u. mehr Wohnungen: Wohngebäude mit 7+ Wohnungen
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude mit 7+ Wohnungen
-          table: {}
     - name: Wohngebäude
       source: https://transparenz.karlsruhe.de/datastore/dump/6016eae2-4594-470b-8c1f-9da19bfaa2a4?bom=True
       type: CSV
@@ -1177,30 +1172,28 @@ resources:
           Wohngebaeude: Wohngebäude
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohngebäude
-          table: {}
     - name: Wohnungen
       source: https://transparenz.karlsruhe.de/datastore/dump/125e65b0-9c9b-4643-afb7-3fc458636173?bom=True
       type: CSV
       id: 125e65b0-9c9b-4643-afb7-3fc458636173
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohnungen
-          table: {}
     - name: Haushalte insgesamt
       description: |
           Zu sehen ist die Zahl der Haushalte insgesamt. Nach der Definition der amtlichen Statistik bilden Personen, die gemeinsam wohnen und wirtschaften, einen Haushalt. Wer allein wirtschaftet, bildet einen Einpersonenhaushalt.
