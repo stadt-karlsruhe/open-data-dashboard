@@ -1,29 +1,6 @@
 appearance:
     theme: "karlsruhe"
 resources:
-    - id: "1"
-      source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?format=json
-      type: JSON
-      name: Wohnberechtigte Bevölkerung
-      description: Die Beschreibung für die Wohnberechtigte Bevölkerung
-      renameProperties:
-          mannlich (%): Männlich (%)
-          weiblich (%): Weiblich (%)
-      skipPropertiesRegEx: ^_id$
-      defaultFilters:
-          Jahr:
-              min: 2009
-              max: 2009
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Wohnberechtigte
-                  - xAxis: Stadtteil
-                    yAxis: Hauptwohnung (%)
-                  - xAxis: Stadtteil
-                    yAxis: Nebenwohnung (%)
-          table: {}
     - id: "2"
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
       type: PDF
@@ -39,28 +16,6 @@ resources:
       visualizations:
           map:
               groupKey: Kategorie
-    - id: "4"
-      source: https://transparenz.karlsruhe.de/datastore/dump/e3e69806-4903-44c4-a17d-bce2a940d3a0?format=json
-      type: JSON
-      name: Wanderungssaldo
-      skipPropertiesRegEx: ^_id$
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Personen
-          table: {}
-    - id: "5"
-      source: https://transparenz.karlsruhe.de/datastore/dump/a5f04b45-528a-41b5-8d8c-eb9677bf2fd1?bom=True
-      type: CSV
-      name: Hunde insgesamt
-      skipPropertiesRegEx: ^_id$
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Hunde
-          table: {}
     - id: "6"
       source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
       type: JSON
@@ -77,38 +32,3 @@ resources:
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
       type: HTML
       name: Mietspiegelrechner
-    - id: "8"
-      source: https://transparenz.karlsruhe.de/dataset/8474ba52-f851-4f4b-b05a-1cba9bbd1f4d/resource/2a7fd644-bc67-477a-bb9e-cf88f076b7af/download/stadtteile.json
-      type: GeoJSON
-      name: Stadtteile Karlsruhe
-      renameProperties:
-          NAME: Name
-      skipPropertiesRegEx: ^NUMMER$
-      visualizations:
-          map: {}
-    - id: "9"
-      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_radnetz&outputFormat=application%2Fjson
-      type: GeoJSON
-      name: Radnetz Stadt Karlsruhe
-      renameProperties:
-          strasse: Straße
-          wegart: Wegart
-          belag: Belag
-          ueberoert_name: Route
-      skipPropertiesRegEx: ^abschnitt_id|gemeinde|abschnitt_name|verkehrsbedeutung|klassifizierung|hausnummern$
-      coordinateFormat: UTM
-      visualizations:
-          map:
-              groupKey: Route
-categories:
-    - name: Mobilität
-      description: Eine Kategorie, in der Daten im Bereich Mobilität zusammengefasst werden.
-      icon: train-front-fill
-      resources:
-          - "5"
-          - "8"
-          - "9"
-    - name: Category 3
-      description: Die dritte Kategorie.
-      resources:
-          - "4"

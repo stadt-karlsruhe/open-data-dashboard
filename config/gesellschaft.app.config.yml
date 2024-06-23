@@ -645,6 +645,9 @@ resources:
                     yAxis: Altenquotient
           table: {}
     - name: Wohnberechtigte Bevölkerung
+      description: |
+          Zu sehen ist die wohnberechtigte Bevölkerung sowie die Anteile der Bevölkerung am Ort der Hauptwohnung (HW) und mit Nebenwohnung (NW) dargestellt.
+          Zur wohnberechtigten Bevölkerung zählen alle Personen, die in der Gemeinde eine Wohnung haben („gemeldet sind"), unabhängig davon, ob es sich um eine Hauptwohnung oder eine Nebenwohnung handelt.
       source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?bom=True
       type: CSV
       id: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
@@ -655,6 +658,7 @@ resources:
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
+              layout: vertical
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Wohnberechtigte
@@ -948,6 +952,8 @@ resources:
                     yAxis: Personen
           table: {}
     - name: Wanderungssaldo Gewinn(+)/Verlust(-)
+      description: |
+          Zu sehen ist die Differenz der Zuzüge und Fortzüge nach und von Karlsruhe.
       source: https://transparenz.karlsruhe.de/datastore/dump/8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509?bom=True
       type: CSV
       id: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
@@ -958,10 +964,10 @@ resources:
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
+              layout: vertical
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Personen
-          table: {}
     - name: Wanderungsvolumen
       source: https://transparenz.karlsruhe.de/datastore/dump/b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6?bom=True
       type: CSV
@@ -1196,6 +1202,8 @@ resources:
                     yAxis: Wohnungen
           table: {}
     - name: Haushalte insgesamt
+      description: |
+          Zu sehen ist die Zahl der Haushalte insgesamt. Nach der Definition der amtlichen Statistik bilden Personen, die gemeinsam wohnen und wirtschaften, einen Haushalt. Wer allein wirtschaftet, bildet einen Einpersonenhaushalt.
       source: https://transparenz.karlsruhe.de/datastore/dump/ac4f2de9-44ac-419f-afd6-bbf670bc2a4e?bom=True
       type: CSV
       id: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
@@ -1206,10 +1214,10 @@ resources:
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
+              layout: vertical
               axisPairs:
                   - xAxis: Stadtteil
                     yAxis: Haushalte
-          table: {}
     - name: Einpersonenhaushalte (Anteil)
       source: https://transparenz.karlsruhe.de/datastore/dump/d2917c81-f983-47c9-a56d-b5e2570d1185?bom=True
       type: CSV

@@ -1,40 +1,5 @@
 # TODO: Move to different configuration file
 resources:
-    - id: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
-      name: Bevölkerung mit Hauptwohnung
-      type: CSV
-      source: https://transparenz.karlsruhe.de/datastore/dump/71ef348f-0f5b-46a0-8250-e87aae9f91bd?bom=True
-      description: |
-          Zu sehen ist die wohnberechtigte Bevölkerung sowie die Anteile der Bevölkerung am Ort der Hauptwohnung (HW) und mit Nebenwohnung (NW) dargestellt.
-          Zur wohnberechtigten Bevölkerung zählen alle Personen, die in der Gemeinde eine Wohnung haben („gemeldet sind"), unabhängig davon, ob es sich um eine Hauptwohnung oder eine Nebenwohnung handelt.
-      skipPropertiesRegEx: ^_id$
-      defaultFilters:
-          Jahr:
-              min: 2021
-              max: 2021
-      visualizations:
-          barChart:
-              layout: vertical
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Wohnberechtigte
-    - id: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
-      name: Wanderungssaldo Gewinn(+)/Verlust(-)
-      type: CSV
-      source: https://transparenz.karlsruhe.de/datastore/dump/8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509?bom=True
-      description: |
-          Zu sehen ist die Differenz der Zuzüge und Fortzüge nach und von Karlsruhe.
-      skipPropertiesRegEx: ^_id$
-      defaultFilters:
-          Jahr:
-              min: 2021
-              max: 2021
-      visualizations:
-          barChart:
-              layout: vertical
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Personen
     - id: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
       source: https://transparenz.karlsruhe.de/dataset/8474ba52-f851-4f4b-b05a-1cba9bbd1f4d/resource/2a7fd644-bc67-477a-bb9e-cf88f076b7af/download/stadtteile.json
       type: GeoJSON
@@ -60,23 +25,6 @@ resources:
       name: Bevölkerung Jahresbericht (2021)
       description: |
           Der jährlich erscheinende Bericht „Bevölkerung in Karlsruhe“ beschreibt die aktuelle Entwicklung des Karlsruher Bevölkerungsbestands, die aktuellen Bevölkerungsbewegungen sowie Entwicklungen in den letzten zehn Jahren.
-    - id: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
-      name: Haushalte insgesamt
-      type: CSV
-      source: https://transparenz.karlsruhe.de/datastore/dump/ac4f2de9-44ac-419f-afd6-bbf670bc2a4e?bom=True
-      description: |
-          Zu sehen ist die Zahl der Haushalte insgesamt. Nach der Definition der amtlichen Statistik bilden Personen, die gemeinsam wohnen und wirtschaften, einen Haushalt. Wer allein wirtschaftet, bildet einen Einpersonenhaushalt.
-      skipPropertiesRegEx: ^_id$
-      defaultFilters:
-          Jahr:
-              min: 2021
-              max: 2021
-      visualizations:
-          barChart:
-              layout: vertical
-              axisPairs:
-                  - xAxis: Stadtteil
-                    yAxis: Haushalte
     - id: 66d4ff14-96f9-44ee-8f23-4e069a3a600d
       name: Baustellen
       type: GeoJSON
@@ -226,8 +174,8 @@ resources:
       source: https://raw.githubusercontent.com/wo-ist-markt/wo-ist-markt.github.io/master/cities/karlsruhe.json
       skipPropertiesRegEx: ^location$
       renameProperties:
-        title: Name
-        opening_hours: Öffnungszeiten
+          title: Name
+          opening_hours: Öffnungszeiten
     - id: adbc6827-c3e9-438a-a2d1-069139315454
       name: Veranstaltungsorte und Märkte
       type: GeoJSON
@@ -260,6 +208,34 @@ resources:
       name: Städtische Behörden
       type: GeoJSON
       source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Behoerden_oeffentliche_Einrichtungen/MapServer/2/query?where=GRUPPENNAME_DE+%3D+%27St%C3%A4dtische%20Beh%C3%B6rden%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
+      renameProperties:
+          NAME: Name
+    - id: 215d49b7-c494-4e25-8981-3a805ac512e3
+      source: https://mobil.trk.de/geoserver/TBA/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=TBA%3Aka_radnetz&outputFormat=application%2Fjson
+      type: GeoJSON
+      name: Radnetz Stadt Karlsruhe
+      renameProperties:
+          strasse: Straße
+          wegart: Wegart
+          belag: Belag
+          ueberoert_name: Route
+      skipPropertiesRegEx: ^abschnitt_id|gemeinde|abschnitt_name|verkehrsbedeutung|klassifizierung|hausnummern$
+      coordinateFormat: UTM
+      visualizations:
+          map:
+              groupKey: Route
+    - id: 12c1a52d-bd53-48e9-8d40-e17a83e40ee3
+      name: Schwimmbäder
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Sportanlagen/MapServer/0/query?where=GRUPPENNAME_DE+%3D+%27B%C3%A4der%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
+      skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
+      renameProperties:
+          NAME: Name
+    - id: cdb979b4-8f2a-4383-bb73-9585a38f94db
+      name: Sporthallen
+      type: GeoJSON
+      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Sportanlagen/MapServer/4/query?where=GRUPPENNAME_DE+%3D+%27Sporthallen%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       skipPropertiesRegEx: ^GRUPPENNAME_DE|UPDATED$
       renameProperties:
           NAME: Name
@@ -367,11 +343,11 @@ dashboards:
       contents:
           - - - type: RESOURCE
                 resourceId: 6fe4e024-bc8a-467b-8ae7-8e0fbe625e2b
-                size: S
-              - type: RESOURCE
+                size: L
+            - - type: RESOURCE
                 resourceId: 266c9670-2e65-49b3-b0f4-ca0a057913ad
                 size: S
-            - - type: RESOURCE
+              - type: RESOURCE
                 resourceId: 6dae7ff8-6bca-4b8e-8c6b-629c46b5bf8e
                 size: S
               - type: RESOURCE
@@ -387,14 +363,26 @@ dashboards:
       name: Freizeitangebote
       icon: person-arms-up
       contents:
+          - - - type: RESOURCE
+                resourceId: ed7fdf0f-7acf-4e3d-bde8-fb4977a63c65
+                size: S
+              - type: RESOURCE
+                resourceId: 0cdb2501-b393-44b4-b3f1-8aa284f333a4
+                size: S
+            - type: RESOURCE
+              resourceId: 215d49b7-c494-4e25-8981-3a805ac512e3
+              overrides:
+                  name: Fahrradwege
           - - type: RESOURCE
-              resourceId: ed7fdf0f-7acf-4e3d-bde8-fb4977a63c65
-          - - type: RESOURCE
-              resourceId: 0cdb2501-b393-44b4-b3f1-8aa284f333a4
+              resourceId: cdb979b4-8f2a-4383-bb73-9585a38f94db
+              size: S
+            - type: RESOURCE
+              resourceId: 12c1a52d-bd53-48e9-8d40-e17a83e40ee3
+              size: S
           - - type: RESOURCE
               resourceId: befa8f52-27f6-46c9-b2f8-45702932b5b0
               overrides:
-                name: Sportvereine
+                  name: Sportvereine
     - id: "5"
       name: Für Zugezogene
       icon: house-heart
