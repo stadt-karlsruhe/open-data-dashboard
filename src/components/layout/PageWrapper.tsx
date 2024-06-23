@@ -15,8 +15,12 @@ export default function PageWrapper({
     <div className="flex-grow-1 m-2" style={style}>
       <div className="d-flex align-items-center justify-content-center">
         <div className="d-flex flex-column text-center text-wrap">
-          <h1 className="h1 text-center">{title}</h1>
-          <p className="lead text-center">{description}</p>
+          <h1 className="h1 text-center" data-cy="page-title">
+            {title}
+          </h1>
+          <p className="lead text-center" data-cy="page-description">
+            {description}
+          </p>
         </div>
       </div>
       {children}

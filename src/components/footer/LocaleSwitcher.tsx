@@ -23,7 +23,7 @@ export default function LocaleSwitcher({ className }: { className?: string }) {
   };
 
   return (
-    <div className={className}>
+    <div className={className} data-cy="locale-switcher">
       <select
         defaultValue={locale}
         onChange={onLocaleChange}
