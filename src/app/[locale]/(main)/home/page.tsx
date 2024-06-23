@@ -1,7 +1,7 @@
 import DashboardContents from '@/components/dashboard-resource/dashboard/DashboardContents';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
-import KarlsruheCastle from '@/public/Karlsruhe_Palace.jpg';
+import KarlsruheCastle from '@/public/Karlsruhe_Palace.png';
 import Link from 'next/link';
 import Search from '@/components/search/Search';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
