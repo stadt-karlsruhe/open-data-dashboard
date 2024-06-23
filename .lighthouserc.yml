@@ -14,8 +14,8 @@ ci:
             - http://localhost:3000/en/overview/resources
             - http://localhost:3000/en/overview/dashboards
             - http://localhost:3000/en/dashboard/bevölkerung-1
-            - http://localhost:3000/en/resource/wohnberechtigte-bevölkerung-1
-            - http://localhost:3000/en/resource/points-of-interest-kinos-3
+            - http://localhost:3000/en/resource/wohnberechtigte-bevölkerung-71ef348f-0f5b-46a0-8250-e87aae9f91bd
+            - http://localhost:3000/en/resource/stadtteile-stadt-karlsruhe-2a7fd644-bc67-477a-bb9e-cf88f076b7af
             - http://localhost:3000/en/legal-notice
         numberOfRuns: 1
         settings:
