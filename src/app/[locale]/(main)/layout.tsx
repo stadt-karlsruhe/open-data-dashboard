@@ -19,9 +19,9 @@ export default async function RootLayout({
     <NavigationProvider>
       <div className="d-flex flex-column min-vh-100" style={{ background: colorLight }}>
         <Header configuration={configuration} />
-        <div className="container-lg d-flex bg-white flex-fill p-0">
+        <div className="container-lg d-flex bg-white flex-fill p-0 position-relative">
           <Navigation configuration={configuration} />
-          {children}
+          <div className="flex-fill overflow-hidden">{children}</div>
         </div>
       </div>
       <Footer className="mt-auto" />

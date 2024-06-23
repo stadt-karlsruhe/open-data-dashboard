@@ -59,7 +59,8 @@ export const jsonResourceSchema = transformableResourceSchema
                     .optional(),
                 table: z.record(z.never()).default({}),
             })
-            .strict(),
+            .strict()
+            .default({ table: {} }),
     })
     .strict()
     .refine(
@@ -89,7 +90,8 @@ export const geoJSONResourceSchema = transformableResourceSchema
                     .strict()
                     .default({}),
             })
-            .strict(),
+            .strict()
+            .default({ map: {} }),
     })
     .strict()
     .refine(

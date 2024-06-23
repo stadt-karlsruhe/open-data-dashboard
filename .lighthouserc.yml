@@ -8,7 +8,9 @@ ci:
             - http://localhost:3000/en/dashboard/bevölkerung-1
             - http://localhost:3000/en/dashboard/verkehr-und-infrastruktur-2
             - http://localhost:3000/en/dashboard/kultur-und-öffentliches-leben-3
-            - http://localhost:3000/en/dashboard/für-studierende-5
+            - http://localhost:3000/en/dashboard/freizeitangebote-4
+            - http://localhost:3000/en/dashboard/für-zugezogene-5
+            - http://localhost:3000/en/dashboard/für-studierende-6
             - http://localhost:3000/en/overview/resources
             - http://localhost:3000/en/overview/dashboards
             - http://localhost:3000/en/dashboard/bevölkerung-1
