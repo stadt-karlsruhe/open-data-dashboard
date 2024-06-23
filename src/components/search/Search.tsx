@@ -42,7 +42,7 @@ export default function Search({
   return (
     <Typeahead
       className={className}
-      style={style}
+      style={{ ...style, zIndex: 500 }}
       filterBy={() => true}
       id={id}
       labelKey="name"
