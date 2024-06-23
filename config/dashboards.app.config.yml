@@ -208,9 +208,17 @@ dashboards:
       name: Homepage
       icon: house-door-fill
       contents:
-          - - type: EXTERNAL
-              source: https://www.wetter.de/widget/heute/u0tyz1rj/false/
-              name: Wetter
+          - - type: RESOURCE
+              resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+              size: M
+            - - type: LINK_INTERNAL
+                kind: dashboard
+                uniqueIdentifier: "1"
+              - type: LINK_EXTERNAL
+                text: ka-news.de
+                icon: info-circle
+                target: https://www.ka-news.de/
+                backgroundColor: "#0078BF"
     - id: "1"
       name: Bevölkerung
       description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.

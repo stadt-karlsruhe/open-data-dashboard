@@ -22,7 +22,12 @@ export default function ExternalLinkContent({
       href={content.target}
       target="_blank"
       title={content.text}
-      style={{ ...style, color: content.color, backgroundColor: content.backgroundColor }}
+      style={{
+        ...style,
+        color: content.color,
+        backgroundColor: content.backgroundColor,
+        borderColor: content.backgroundColor,
+      }}
     >
       {content.icon && <i className={`bi bi-${content.icon} me-1`} />}
       <span className="d-none d-md-inline text-wrap">{content.text}</span>

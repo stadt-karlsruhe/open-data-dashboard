@@ -31,7 +31,7 @@ export default async function Home() {
           style={{ bottom: '20%', transform: 'translateX(-50%)', maxWidth: '600px' }}
         />
       </div>
-      {homepage && <DashboardContents dashboard={homepage} configuration={configuration} />}
+      {homepage && <DashboardContents dashboard={homepage} configuration={configuration} className="m-2" />}
     </div>
   );
 }
