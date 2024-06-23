@@ -320,7 +320,7 @@ dashboards:
                     text: Der größte Arbeitgeber in Karlsruhe ist das KIT und hat mehr Angestellte als die zweitgrößte Hochschule der Stadt Studierende.
     - id: "1"
       name: Bevölkerung
-      description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.
+      description: Hier findest Du aktuelle Informationen zur Demografie der Stadt Karlsruhe.
       icon: people-fill
       contents:
           - - type: RESOURCE
@@ -356,6 +356,7 @@ dashboards:
                 size: S
     - id: "2"
       name: Verkehr und Infrastruktur
+      description: Neben aktuellen Baustellen und Geschwindigkeitsbegrenzungen findest du hier auch alle wichtigen Informationen zum ÖPNV der Stadt Karlsruhe
       icon: map-fill
       contents:
           - - - type: RESOURCE
@@ -389,6 +390,7 @@ dashboards:
                 resourceId: 528cc3da-baf5-403d-a6c7-906113281c83
     - id: "3"
       name: Kultur und öffentliches Leben
+      description: Neben Kulturangeboten und Wochenmärkte, findest Du hier Informationen zu städtischen Behörden.
       icon: music-note-beamed
       contents:
           - - - type: RESOURCE
@@ -411,6 +413,7 @@ dashboards:
               resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
     - id: "4"
       name: Freizeitangebote
+      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein, mithilfe des Freizeitdashboards.
       icon: person-arms-up
       contents:
           - - - type: RESOURCE
@@ -435,6 +438,7 @@ dashboards:
                   name: Sportvereine
     - id: "5"
       name: Für Zugezogene
+      description: Hier sind alle Informationen aufgelistet, die Du für deinen Umzug nach Karlsruhe brauchst.
       icon: house-heart
       contents:
           - - type: RESOURCE
@@ -454,6 +458,7 @@ dashboards:
               resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
     - id: "6"
       name: Für Studierende
+      description: Alle wichtigen Informationen für Studierende findest Du hier auf einem Blick, egal ob Mensapläne oder ÖPNV.
       icon: mortarboard-fill
       contents:
           - - type: RESOURCE
