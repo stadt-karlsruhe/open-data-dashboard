@@ -12,7 +12,7 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
-export default function ResourceLinkContent({
+export default function InternalLinkContent({
   content,
   element,
   className,

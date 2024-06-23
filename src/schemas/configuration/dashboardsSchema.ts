@@ -30,7 +30,7 @@ const externalLinkContentSchema = z
     })
     .strict();
 
-const resourceLinkContentSchema = z
+const internalLinkContentSchema = z
     .object({
         type: z.literal('LINK_INTERNAL'),
         uniqueIdentifier: z.string(),
@@ -46,7 +46,7 @@ const resourceLinkContentSchema = z
     })
     .strict();
 
-const linkContentSchema = z.union([resourceLinkContentSchema, externalLinkContentSchema]);
+const linkContentSchema = z.union([internalLinkContentSchema, externalLinkContentSchema]);
 
 const textContentSchema = z
     .object({
@@ -113,5 +113,5 @@ export type DashboardResourceContent = z.infer<typeof resourceContentSchema>;
 export type DashboardTextContent = z.infer<typeof textContentSchema>;
 export type DashboardCarouselContent = z.infer<typeof carouselContentSchema>;
 export type DashboardExternalContent = z.infer<typeof externalContentSchema>;
-export type DashboardResourceLinkContent = z.infer<typeof resourceLinkContentSchema>;
+export type DashboardResourceLinkContent = z.infer<typeof internalLinkContentSchema>;
 export type DashboardExternalLinkContent = z.infer<typeof externalLinkContentSchema>;

@@ -8,8 +8,8 @@ import { DataElement } from '@/types/data';
 import ErrorComponent from '../../error-handling/ErrorComponent';
 import ExternalContent from './ExternalContent';
 import ExternalLinkContent from './ExternalLinkContent';
+import InternalLinkContent from './InternalLinkContent';
 import ResourceContent from './ResourceContent';
-import ResourceLinkContent from './ResourceLinkContent';
 import TextContent from './TextContent';
 
 // eslint-disable-next-line max-lines-per-function, max-statements
@@ -77,7 +77,7 @@ export default function DashboardContent({
     }
 
     return element ? (
-      <ResourceLinkContent content={content} element={element} className={className} style={style} />
+      <InternalLinkContent content={content} element={element} className={className} style={style} />
     ) : (
       <ErrorComponent type="configurationError" error={'Dashboard resource not found in configuration!'} />
     );

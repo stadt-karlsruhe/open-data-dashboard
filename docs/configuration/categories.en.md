@@ -10,7 +10,7 @@ Categories and subcategories expose identical configuration options:
 | ------------- | ------------------------------------------------------------------------------------ | -------- |
 | `name`        | The unique category/subcategory name.                                                | Required |
 | `description` | The category/subcategory description.                                                | Optional |
-| `icon`        | The category/subcategory [icon](#icons) name.                                        | Optional |
+| `icon`        | The category/subcategory [icon](icons.md) name.                                        | Optional |
 | `resources`   | The resources belonging to a given category/subcategory as an array of resource ids. | Optional |
 
 !!! example
@@ -24,11 +24,3 @@ Categories and subcategories expose identical configuration options:
       resources: [string]
       subcategories: [category]
     ```
-
-## Icons
-
-The `Open Data Dashboard` is using the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any icon available there can be used.
-
-!!! note
-    Use the **icon name**, not the CSS class when specifying an icon.
-    For example, to use the [House door fill](https://icons.getbootstrap.com/icons/house-door-fill/) icon, the value of the `icon` property should be `house-door-fill`.
