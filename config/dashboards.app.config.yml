@@ -219,6 +219,21 @@ dashboards:
                 icon: info-circle
                 target: https://www.ka-news.de/
                 backgroundColor: "#0078BF"
+              - type: LINK_EXTERNAL
+                text: Events in Karlsruhe
+                target: https://www.karlsruhe-erleben.de/veranstaltungen
+                backgroundColor: "#522980"
+              - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Karlsruher Verkehrsbetriebe
+                icon: train-lightrail-front
+                backgroundColor: "#C30A37"
+              - type: LINK_EXTERNAL
+                target: https://www.karlsruhe.de/stadt-rathaus/service-buergerinformation/buergerdienste
+                text: Bürgerdienste eService
+                icon: info-circle
+                color: black
+                backgroundColor: "#FDCB00"
     - id: "1"
       name: Bevölkerung
       description: Auf dieser Übersicht sind Daten und Fakten zur Demografie der Stadt Karlsruhe zu sehen.
@@ -319,7 +334,7 @@ dashboards:
                 backgroundColor: "#FFED00"
                 color: black
               - type: LINK_EXTERNAL
-                text: Veranstaltungen in Karlsruhe
+                text: Events in Karlsruhe
                 target: https://www.karlsruhe-erleben.de/veranstaltungen
                 backgroundColor: "#522980"
               - type: EXTERNAL
