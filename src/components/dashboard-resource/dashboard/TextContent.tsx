@@ -16,9 +16,7 @@ export default function TextContent({
       className={`card d-flex flex-column ${className ?? ''}`}
       style={{ ...style, maxHeight: sizeClassToHeight(content.size) }}
     >
-      <h5 className="card-header text-center" style={{ minHeight: 50 }}>
-        {content.header}
-      </h5>
+      <h5 className="card-header text-center">{content.header}</h5>
       {content.body && (
         <div className="card-body overflow-y-auto text-center">
           <p>{content.body}</p>

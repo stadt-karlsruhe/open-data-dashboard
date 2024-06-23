@@ -7,6 +7,7 @@ import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import Visualization from '@/components/visualization/Visualization';
 import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { getIconForResource } from '@/utils/icons';
 import { locales } from '@/locales';
 import { sizeClassToHeight } from '@/utils/mapUtils';
 
@@ -14,6 +15,7 @@ const { Link } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function ResourceContent({
   content,
   resource,
@@ -29,11 +31,26 @@ export default function ResourceContent({
   const displayDescription = content.overrides?.description ?? resource.description;
   return (
     <div className={`card d-flex flex-column ${className ?? ''}`} style={{ ...style }}>
-      <div className="card-header" style={{ minHeight: 50 }}>
-        <div className="d-flex align-items-center justify-content-center">
-          <h5 className="flex-fill text-center">{displayName}</h5>
+      <Link
+        href={`/resource/${concatenateNameAndId(resource.name, resource.id)}`}
+        className="card-header btn btn-secondary"
+        style={{ borderWidth: 0, borderBottomWidth: 1 }}
+      >
+        <div className="d-flex align-items-baseline">
+          <h5 className="flex-fill text-center">
+            <i className={`bi bi-${getIconForResource(resource)} me-1 fs-5`} />
+            {displayName}
+          </h5>
           {displayDescription && (
-            <OverlayTrigger overlay={<Tooltip>{displayDescription}</Tooltip>} placement="bottom-end">
+            <OverlayTrigger
+              overlay={
+                <Tooltip>
+                  <h6>{displayName}</h6>
+                  <p>{displayDescription}</p>
+                </Tooltip>
+              }
+              placement="bottom-end"
+            >
               <button className="nav-link me-2 fs-5">
                 <i className="bi bi-info-square-fill" />
               </button>
@@ -43,8 +60,8 @@ export default function ResourceContent({
             <i className="bi bi-box-arrow-up-right" />
           </Link>
         </div>
-      </div>
-      <div className="card-body overflow-y-auto">
+      </Link>
+      <div className="card-body overflow-auto">
         {resource.type === 'HTML' || resource.type === 'PDF' ? (
           <EmbeddedViewer resource={resource} height={sizeClassToHeight(content.size)} />
         ) : (

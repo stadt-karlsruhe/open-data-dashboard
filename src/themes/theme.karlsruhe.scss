@@ -47,10 +47,10 @@
   $btn-padding-y: 12px;
   $btn-padding-x: 18px;
 
-  $input-border-color: var(--bs-secondary);
+  $input-border-color: var(--bs-border-color-translucent);
 
   $form-select-border-width: 1px;
-  $form-select-border-color: var(--bs-secondary);
+  $form-select-border-color: var(--bs-border-color-translucent);
 
   $dropdown-link-active-bg: var(--bs-primary);
   $dropdown-link-hover-bg: var(--bs-primary);
@@ -63,11 +63,13 @@
   .nav-link:hover {
     color: var(--bs-secondary) !important;
   }
-  $nav-tabs-border-color: var(--bs-secondary);
-  $nav-tabs-link-active-border-color: var(--bs-secondary) var(--bs-secondary) $nav-tabs-link-active-bg;
+  $nav-tabs-border-color: var(--bs-border-color-translucent);
+  $nav-tabs-link-active-border-color: var(--bs-border-color-translucent) var(--bs-border-color-translucent)
+    $nav-tabs-link-active-bg;
   .btn-secondary {
     color: var(--bs-secondary) !important;
     background-color: var(--bs-white) !important;
+    border-color: var(--bs-border-color-translucent) !important;
   }
   .btn-secondary:hover {
     border-color: var(--bs-gray) !important;

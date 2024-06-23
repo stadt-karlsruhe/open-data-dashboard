@@ -14,7 +14,7 @@ export default function DashboardContents({
   return (
     <div className={className}>
       {dashboard.contents?.map((rows, index) => (
-        <div key={index} className="row align-items-center mb-2">
+        <div key={index} className="row mb-2">
           {rows.map((row, index) => {
             if (Array.isArray(row)) {
               return (

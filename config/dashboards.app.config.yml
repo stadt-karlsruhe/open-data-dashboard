@@ -278,9 +278,12 @@ dashboards:
                 backgroundColor: "#004F8F"
               - type: RESOURCE
                 resourceId: 528cc3da-baf5-403d-a6c7-906113281c83
-    - id: "4"
+    - id: "3"
       name: Kultur und öffentliches Leben
       icon: music-note-beamed
+      contents:
+        - - type: RESOURCE
+            resourceId: 6fe4e024-bc8a-467b-8ae7-8e0fbe625e2b
     - id: "5"
       name: Für Studierende
       icon: mortarboard-fill
