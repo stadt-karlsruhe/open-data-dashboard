@@ -1,5 +1,7 @@
 import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
 
+import { object } from 'zod';
+
 export function narrowType(
     records: Record<string, never>[] | GeoJSON.FeatureCollection,
     resource: JSONResource | GeoJSONResource,
@@ -26,6 +28,9 @@ function narrowObjectType(record: Record<string, never> | GeoJSON.GeoJsonPropert
         Object.entries(record).map(([key, value]) => {
             if (value === null) {
                 return [key, ''];
+            }
+            if (Array.isArray(value) || typeof value === 'object') {
+                return [key, JSON.stringify(value)];
             }
             const stringValue = String(value).toLowerCase();
             if (stringValue === 'true') {
