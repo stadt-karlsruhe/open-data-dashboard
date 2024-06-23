@@ -2,10 +2,9 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { CSSProperties } from 'react';
 import { DashboardResourceLinkContent } from '@/schemas/configuration/dashboardsSchema';
-import { Resource } from '@/schemas/configurationSchema';
+import { DataElement } from '@/types/data';
 import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
-import { getIconForResource } from '@/utils/icons';
 import { locales } from '@/locales';
 import { sizeClassToHeight } from '@/utils/mapUtils';
 
@@ -15,21 +14,21 @@ const { Link } = createSharedPathnamesNavigation({
 
 export default function ResourceLinkContent({
   content,
-  resource,
+  element,
   className,
   style,
 }: {
   content: DashboardResourceLinkContent;
-  resource: Resource;
+  element: DataElement;
   className?: string;
   style?: CSSProperties;
 }) {
-  const displayName = content.overrides?.name ?? resource.name;
-  const displayDescription = content.overrides?.description ?? resource.description;
+  const displayName = content.overrides?.name ?? element.name;
+  const displayDescription = content.overrides?.description ?? element.description;
 
   return (
     <Link
-      href={`/resource/${concatenateNameAndId(resource.name, resource.id)}`}
+      href={`/resource/${concatenateNameAndId(element.name, element.id)}`}
       className={`btn btn-secondary d-flex flex-column ${className ?? ''}`}
       style={{
         ...style,
@@ -38,7 +37,7 @@ export default function ResourceLinkContent({
     >
       <div className="d-flex align-items-baseline">
         <h5 className="flex-fill text-center">
-          <i className={`bi bi-${getIconForResource(resource)} me-1 fs-5`} />
+          <i className={`bi bi-${element.icon} me-1 fs-5`} />
           {displayName}
         </h5>
         {displayDescription && (

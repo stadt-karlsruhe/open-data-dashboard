@@ -234,12 +234,14 @@ dashboards:
               size: M
               overrides:
                   name: Haushalte
-            - - type: LINK_RESOURCE
-                resourceId: 2de3dfff-5657-4644-a512-70795745899e
+            - - type: LINK_INTERNAL
+                kind: resource
+                uniqueIdentifier: 2de3dfff-5657-4644-a512-70795745899e
                 overrides:
                     description: ""
-              - type: LINK_RESOURCE
-                resourceId: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
+              - type: LINK_INTERNAL
+                kind: resource
+                uniqueIdentifier: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
                 overrides:
                     description: ""
               - type: RESOURCE

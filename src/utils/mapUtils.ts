@@ -1,7 +1,7 @@
-import { Category, Configuration } from '@/schemas/configurationSchema';
+import { Category, Configuration, Resource } from '@/schemas/configurationSchema';
+import { Dashboard, DashboardContentSize } from '@/schemas/configuration/dashboardsSchema';
 import { concatenateNameAndId, sanitizeString } from './stringUtils';
 
-import { DashboardContentSize } from '@/schemas/configuration/dashboardsSchema';
 import { DataElement } from '@/types/data';
 import { LRUCache } from 'lru-cache';
 import { getIconForResource } from './icons';
@@ -31,39 +31,17 @@ export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defau
 export function configurationToDashboards(configuration: Configuration) {
     return configuration.dashboards
         .filter((dashboard) => dashboard.id !== 'homepage')
-        .map((dashboard) => ({
-            id: `dashboard-${dashboard.id}`,
-            name: dashboard.name,
-            icon: dashboard.icon,
-            description: dashboard.description,
-            href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
-            type: 'dashboard',
-        })) as DataElement[];
+        .map((dashboard) => dashboardToDataElement(dashboard));
 }
 
 export function configurationToResources(configuration: Configuration, category?: Category) {
     return configuration.resources
         .filter((resource) => category === undefined || category.resources?.includes(resource.id.toLowerCase()))
-        .map((resource) => ({
-            id: `resource-${resource.id}`,
-            name: resource.name,
-            icon: getIconForResource(resource),
-            description: resource.description,
-            href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
-            type: 'resource',
-            resourceType: resource.type,
-        })) as DataElement[];
+        .map((resource) => resourceToDataElement(resource));
 }
 
 export function configurationToCategories(configuration: Configuration) {
-    return configuration.categories.map((category) => ({
-        id: `category-${category.name}`,
-        name: category.name,
-        icon: category.icon,
-        description: category.description,
-        href: `/overview/resources/${sanitizeString(category.name).toLowerCase()}`,
-        type: 'category',
-    })) as DataElement[];
+    return configuration.categories.map((category) => categoryToDataElement(category));
 }
 
 export function configurationToSubcategories(configuration: Configuration, category?: Category) {
@@ -75,14 +53,43 @@ export function configurationToSubcategories(configuration: Configuration, categ
                 categoryName: cat.name,
             })),
         )
-        .map((subcategory) => ({
-            id: `subcategory-${subcategory.name}`,
-            name: subcategory.name,
-            icon: subcategory.icon,
-            description: subcategory.description,
-            href: `/overview/resources/${sanitizeString(subcategory.categoryName).toLowerCase()}/${sanitizeString(subcategory.name).toLowerCase()}`,
-            type: 'category',
-        })) as DataElement[];
+        .map((subcategory) => categoryToDataElement(subcategory, subcategory.categoryName));
+}
+
+export function resourceToDataElement(resource: Resource) {
+    return {
+        id: `resource-${resource.id}`,
+        name: resource.name,
+        icon: getIconForResource(resource),
+        description: resource.description,
+        href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
+        type: 'resource',
+        resourceType: resource.type,
+    } as DataElement;
+}
+
+export function categoryToDataElement(category: Category, parentCategory?: string) {
+    return {
+        id: `subcategory-${category.name}`,
+        name: category.name,
+        icon: category.icon,
+        description: category.description,
+        href: parentCategory
+            ? `/overview/resources/${sanitizeString(parentCategory).toLowerCase()}/${sanitizeString(category.name).toLowerCase()}`
+            : `/overview/resources/${sanitizeString(category.name).toLowerCase()}`,
+        type: 'category',
+    } as DataElement;
+}
+
+export function dashboardToDataElement(dashboard: Dashboard) {
+    return {
+        id: `dashboard-${dashboard.id}`,
+        name: dashboard.name,
+        icon: dashboard.icon,
+        description: dashboard.description,
+        href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
+        type: 'dashboard',
+    } as DataElement;
 }
 
 export function sizeClassToHeight(size: DashboardContentSize) {
