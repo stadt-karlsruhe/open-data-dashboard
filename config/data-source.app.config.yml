@@ -1,26 +1,2 @@
 appearance:
     theme: "karlsruhe"
-resources:
-    - id: "3"
-      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Kinos%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
-      type: GeoJSON
-      name: Points of Interest Kinos
-      renameProperties:
-          NAME: Name
-          GRUPPENNAME_DE: Kategorie
-      skipPropertiesRegEx: ^UPDATED$
-      visualizations:
-          map:
-              groupKey: Kategorie
-    - id: "6"
-      source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?format=json
-      type: JSON
-      name: Europawahl 2019
-      numberFormat: de
-      visualizations:
-          barChart:
-              axisPairs:
-                  - xAxis: Partei/politische Vereinigung
-                    yAxis: Stimmen
-                  - xAxis: Parteiname
-                    yAxis: "%"

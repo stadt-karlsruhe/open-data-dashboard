@@ -1,0 +1,42 @@
+resources:
+    - id: 6ea017ac-f3db-4f99-b587-09de9048ad0c
+      source: https://web4.karlsruhe.de/Stadtentwicklung/statistik/pdf/2023/2023-24-daten-und-fakten.pdf
+      type: PDF
+      name: Daten und Fakten (2023/2024)
+      description: |
+          Die jährlich erscheinende Broschüre „Daten und Fakten“ enthält die wichtigsten Zahlen und Fakten zum Karlsruher Stadtgebiet.
+    - id: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
+      source: https://web4.karlsruhe.de/Stadtentwicklung/statistik/pdf/2023/2023-jahrbuch.pdf
+      type: PDF
+      name: Statistisches Jahrbuch (2023)
+      description: |
+          Die jährlich erscheinende Veröffentlichung „Statistisches Jahrbuch“ enthält umfassende und vielfältige Zahlen und Daten zum Karlsruher Stadtgebiet. Es werden die Themengebiete Bevölkerung, Bauen und Wohnen, Wirtschaft und Verkehr, Ökologie, Ver- und Entsorgung, Gesundheit und Soziales, Bildung, Kultur und Freizeit sowie Politik und Verwaltung abgedeckt.
+    - id: 2de3dfff-5657-4644-a512-70795745899e
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/2021/2021-bevoelkerung.pdf
+      type: PDF
+      name: Bevölkerung Jahresbericht (2021)
+      description: |
+          Der jährlich erscheinende Bericht „Bevölkerung in Karlsruhe“ beschreibt die aktuelle Entwicklung des Karlsruher Bevölkerungsbestands, die aktuellen Bevölkerungsbewegungen sowie Entwicklungen in den letzten zehn Jahren.
+    - id: 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
+      name: Karlsruher Mietspiegel (2023)
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/pdf/mietspiegel/karlsruher-mietspiegel-2023.pdf
+      type: PDF
+    - id: c867155b-5f28-4d25-882e-422fb3ae18aa
+      name: Mietspiegelrechner für Wohnungen 2023/24
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
+      type: HTML
+    - id: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
+      name: Mietspiegelrechner für Einfamilienhäuser 2023/24
+      description: |
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+      source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-efh-2023.html
+      type: HTML
+    - id: ff2dedf5-9e8b-4d65-b38d-a36664a8a132
+      name: Wochenmärkte Marktzeiten
+      description: Veranstaltungsorte und Öffnungszeiten der Karlsruher Wochenmärkte.
+      type: PDF
+      source: https://www.karlsruhe.de/securedl/sdl-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzQ3NDcwNjIsImV4cCI6MzMyMTc2MjY0NTYsInVzZXIiOjAsImdyb3VwcyI6WzAsLTFdLCJmaWxlIjoiZmlsZWFkbWluXC91c2VyX3VwbG9hZFwvMDRfS3VsdHVyX0ZyZWl6ZWl0XC8wNDlfVmVyYW5zdGFsdHVuZ2VuXC9NYWVya3RlXC9NYXJrdHplaXRlbi5wZGYiLCJwYWdlIjoyNDg1fQ.siTlYNUOfNNoJtKgz7dNM3w76QYyV8fyy4Oyu-kLBMo/Marktzeiten.pdf
