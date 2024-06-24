@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '@/components/visualization/bar-chart/BarChart';
 import ChartTableFilter from '@/components/visualization/chart-table-filter/ChartTableFilter';
-import { JSONResource } from '@/schemas/configurationSchema';
+import { JSONResource } from '@/schemas/configuration/configurationSchema';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { TransformedData } from '@/schemas/dataSchema';

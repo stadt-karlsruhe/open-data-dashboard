@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 import { useEffect, useState } from 'react';
 
-import { AxisPair } from '@/schemas/configurationSchema';
+import { AxisPair } from '@/schemas/configuration/configurationSchema';
 import AxisSelector from './AxisSelector';
 import CustomTooltip from './CustomTooltip';
 import { Payload } from 'recharts/types/component/DefaultLegendContent';

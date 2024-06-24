@@ -1,6 +1,6 @@
 'use client';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import NavigationContent from './NavigationContent';
 import { Offcanvas } from 'react-bootstrap';
 import { useShowNavigation } from './NavigationProvider';

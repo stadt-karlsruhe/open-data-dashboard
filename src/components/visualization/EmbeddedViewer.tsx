@@ -1,7 +1,7 @@
 'use client';
 
 import { CSSProperties } from 'react';
-import { Resource } from '@/schemas/configurationSchema';
+import { Resource } from '@/schemas/configuration/configurationSchema';
 import useWindowDimensions from '../helper/WindowDimensions';
 
 export default function EmbeddedViewer({

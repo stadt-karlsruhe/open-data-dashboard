@@ -1,4 +1,4 @@
-import { Category, Configuration, Resource } from '@/schemas/configurationSchema';
+import { Category, Configuration, Resource } from '@/schemas/configuration/configurationSchema';
 import { Dashboard, DashboardContentSize } from '@/schemas/configuration/dashboardsSchema';
 import { concatenateNameAndId, sanitizeString } from './stringUtils';
 

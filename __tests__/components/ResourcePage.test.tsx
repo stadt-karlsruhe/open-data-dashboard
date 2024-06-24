@@ -6,7 +6,7 @@ import { describe, expect, it } from '@jest/globals';
 import { embeddedResource, jsonResource } from '../data/resources';
 import { render, screen } from '@testing-library/react';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import { NextIntlClientProvider } from 'next-intl';
 import Page from '@/app/[locale]/(embed)/embed/resource/[resourceId]/page';
 import { getValidatedConfiguration } from '@/schemas/validate';

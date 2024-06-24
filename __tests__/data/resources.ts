@@ -1,4 +1,4 @@
-import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
+import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration/configurationSchema';
 
 const mockSource = 'https://example.com/';
 

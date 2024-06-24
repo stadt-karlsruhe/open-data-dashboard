@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configuration/configurationSchema';
 
 import { object } from 'zod';
 

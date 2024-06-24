@@ -1,4 +1,4 @@
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
 import DashboardContent from './DashboardContent';
 

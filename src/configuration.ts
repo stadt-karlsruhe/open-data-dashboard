@@ -1,4 +1,4 @@
-import { Category, Configuration, Resource } from '@/schemas/configurationSchema';
+import { Category, Configuration, Resource } from '@/schemas/configuration/configurationSchema';
 
 import { Dashboard } from './schemas/configuration/dashboardsSchema';
 import YAML from 'yaml';

@@ -10,7 +10,7 @@ import {
     geoJSONResourceSchema,
     jsonResourceSchema,
     resourceSchema,
-} from '@/schemas/configurationSchema';
+} from '@/schemas/configuration/configurationSchema';
 
 import { dashboardsSchema } from '@/schemas/configuration/dashboardsSchema';
 import { expect } from '@jest/globals';

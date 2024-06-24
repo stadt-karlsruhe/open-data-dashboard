@@ -1,4 +1,4 @@
-import { Configuration, GeoJSONResource, JSONResource, configurationSchema } from './configurationSchema';
+import { Configuration, GeoJSONResource, JSONResource, configurationSchema } from './configuration/configurationSchema';
 import { geoJSONSchema, transformedDataArraySchema } from './dataSchema';
 
 import { fromError } from 'zod-validation-error';

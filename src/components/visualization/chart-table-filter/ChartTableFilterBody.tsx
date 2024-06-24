@@ -1,6 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { ClearableInputGroup } from './ClearableInputGroup';
-import { Filter } from '@/schemas/configurationSchema';
+import { Filter } from '@/schemas/configuration/configurationSchema';
 import { TransformedData } from '@/schemas/dataSchema';
 import { useTranslations } from 'next-intl';
 

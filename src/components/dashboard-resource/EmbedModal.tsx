@@ -3,7 +3,7 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
 import { Modal } from 'react-bootstrap';
-import { Resource } from '@/schemas/configurationSchema';
+import { Resource } from '@/schemas/configuration/configurationSchema';
 import { useState } from 'react';
 
 type EmbedModalProps =

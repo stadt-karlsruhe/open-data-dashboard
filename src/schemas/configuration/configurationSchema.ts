@@ -1,4 +1,4 @@
-import { dashboardsSchema } from './configuration/dashboardsSchema';
+import { dashboardsSchema } from './dashboardsSchema';
 import { z } from 'zod';
 
 const baseResourceSchema = z

@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration/configurationSchema';
 
 import ChartTableWrapper from '@/components/layout/ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';

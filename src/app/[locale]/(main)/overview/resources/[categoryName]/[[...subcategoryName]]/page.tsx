@@ -1,4 +1,4 @@
-import { Category, Configuration } from '@/schemas/configurationSchema';
+import { Category, Configuration } from '@/schemas/configuration/configurationSchema';
 import { computeIfUncached, configurationToResources, configurationToSubcategories } from '@/utils/mapUtils';
 
 import { DataElement } from '@/types/data';

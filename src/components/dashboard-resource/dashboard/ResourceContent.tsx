@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration/configurationSchema';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { CSSProperties } from 'react';

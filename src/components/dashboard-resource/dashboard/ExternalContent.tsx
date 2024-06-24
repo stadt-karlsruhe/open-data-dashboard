@@ -15,6 +15,7 @@ export default function ExternalContent({
   return (
     <EmbeddedViewer
       className={className}
+      style={style}
       height={sizeClassToHeight(content.size)}
       resource={{
         source: content.source,

@@ -1,6 +1,6 @@
 'use client';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import Image from 'next/image';
 import LogoKarlsruhe from '../../public/Logo_Digital_Karlsruhe-rechts_rgb.svg';
 import LogoKarlsruheSmall from '../../public/Logo_Digital_Karlsruhe-rechts_rgb_small.svg';

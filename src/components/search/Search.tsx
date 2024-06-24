@@ -8,7 +8,7 @@ import {
   configurationToSubcategories,
 } from '@/utils/mapUtils';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import { DataElement } from '@/types/data';
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';

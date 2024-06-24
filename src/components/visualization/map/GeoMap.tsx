@@ -7,7 +7,7 @@ import L, { LatLngExpression } from 'leaflet';
 import { colorDark, colorPrimary, getColor } from '@/utils/colors';
 
 import { GeoJSON as GeoJSONLeaflet } from 'react-leaflet/GeoJSON';
-import { GeoJSONResource } from '@/schemas/configurationSchema';
+import { GeoJSONResource } from '@/schemas/configuration/configurationSchema';
 import Legend from './Legend';
 import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
