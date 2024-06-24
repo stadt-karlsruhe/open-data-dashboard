@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { DashboardExternalLinkContent } from '@/schemas/configuration/dashboardsSchema';
+import { DashboardExternalLinkContent } from '@/schemas/configuration/configurationSchema';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 

@@ -1,8 +1,12 @@
-import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration/configurationSchema';
+import {
+  DashboardResourceContent,
+  GeoJSONResource,
+  JSONResource,
+  Resource,
+} from '@/schemas/configuration/configurationSchema';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { CSSProperties } from 'react';
-import { DashboardResourceContent } from '@/schemas/configuration/dashboardsSchema';
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import Visualization from '@/components/visualization/Visualization';
 import { concatenateNameAndId } from '@/utils/stringUtils';

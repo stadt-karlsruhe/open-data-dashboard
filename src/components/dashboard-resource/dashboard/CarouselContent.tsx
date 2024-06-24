@@ -1,7 +1,7 @@
 'use client';
 
 import { Carousel } from 'react-bootstrap';
-import { DashboardCarouselContent } from '@/schemas/configuration/dashboardsSchema';
+import { DashboardCarouselContent } from '@/schemas/configuration/configurationSchema';
 import { sizeClassToHeight } from '@/utils/mapUtils';
 
 export default function CarouselContent({ content }: { content: DashboardCarouselContent }) {

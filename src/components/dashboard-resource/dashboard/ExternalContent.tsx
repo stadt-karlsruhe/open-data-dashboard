@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { DashboardExternalContent } from '@/schemas/configuration/dashboardsSchema';
+import { DashboardExternalContent } from '@/schemas/configuration/configurationSchema';
 import EmbeddedViewer from '@/components/visualization/EmbeddedViewer';
 import { sizeClassToHeight } from '@/utils/mapUtils';
 

@@ -1,7 +1,6 @@
+import { Category, Dashboard } from '@/schemas/configuration/configurationSchema';
 import { concatenateNameAndId, sanitizeString } from '@/utils/stringUtils';
 
-import { Category } from '@/schemas/configuration/configurationSchema';
-import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
 import { ListGroup } from 'react-bootstrap';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';

@@ -6,11 +6,13 @@ import {
     appearanceSchema,
     categoriesSchema,
     configurationSchema,
+} from '@/schemas/configuration/configurationSchema';
+import {
     embeddedResourceSchema,
     geoJSONResourceSchema,
     jsonResourceSchema,
     resourceSchema,
-} from '@/schemas/configuration/configurationSchema';
+} from '@/schemas/configuration/resourcesSchema';
 
 import { dashboardsSchema } from '@/schemas/configuration/dashboardsSchema';
 import { expect } from '@jest/globals';

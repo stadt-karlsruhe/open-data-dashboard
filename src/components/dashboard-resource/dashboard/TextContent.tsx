@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { DashboardTextContent } from '@/schemas/configuration/dashboardsSchema';
+import { DashboardTextContent } from '@/schemas/configuration/configurationSchema';
 import { sizeClassToHeight } from '@/utils/mapUtils';
 
 export default function TextContent({

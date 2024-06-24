@@ -1,7 +1,7 @@
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { CSSProperties } from 'react';
-import { DashboardResourceLinkContent } from '@/schemas/configuration/dashboardsSchema';
+import { DashboardResourceLinkContent } from '@/schemas/configuration/configurationSchema';
 import { DataElement } from '@/types/data';
 import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';

@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-const dashboardContentSizeSchema = z
+export const dashboardContentSizeSchema = z
     .union([z.literal('L'), z.literal('M'), z.literal('S'), z.literal('XS')])
     .default('M');
 
-const resourceContentSchema = z
+export const resourceContentSchema = z
     .object({
         type: z.literal('RESOURCE'),
         resourceId: z.string(),
@@ -19,7 +19,7 @@ const resourceContentSchema = z
     })
     .strict();
 
-const externalLinkContentSchema = z
+export const externalLinkContentSchema = z
     .object({
         type: z.literal('LINK_EXTERNAL'),
         target: z.string().url(),
@@ -30,7 +30,7 @@ const externalLinkContentSchema = z
     })
     .strict();
 
-const internalLinkContentSchema = z
+export const internalLinkContentSchema = z
     .object({
         type: z.literal('LINK_INTERNAL'),
         uniqueIdentifier: z.string(),
@@ -46,9 +46,9 @@ const internalLinkContentSchema = z
     })
     .strict();
 
-const linkContentSchema = z.union([internalLinkContentSchema, externalLinkContentSchema]);
+export const linkContentSchema = z.union([internalLinkContentSchema, externalLinkContentSchema]);
 
-const textContentSchema = z
+export const textContentSchema = z
     .object({
         type: z.literal('TEXT'),
         size: dashboardContentSizeSchema,
@@ -57,7 +57,7 @@ const textContentSchema = z
     })
     .strict();
 
-const carouselContentSchema = z.object({
+export const carouselContentSchema = z.object({
     type: z.literal('TEXT_CAROUSEL'),
     size: dashboardContentSizeSchema,
     color: z.string().optional(),
@@ -73,7 +73,7 @@ const carouselContentSchema = z.object({
         .array(),
 });
 
-const externalContentSchema = z
+export const externalContentSchema = z
     .object({
         type: z.literal('EXTERNAL'),
         name: z.string(),
@@ -82,7 +82,7 @@ const externalContentSchema = z
     })
     .strict();
 
-const dashboardContentSchema = z.union([
+export const dashboardContentSchema = z.union([
     resourceContentSchema,
     textContentSchema,
     carouselContentSchema,
@@ -90,7 +90,7 @@ const dashboardContentSchema = z.union([
     externalContentSchema,
 ]);
 
-const dashboardSchema = z
+export const dashboardSchema = z
     .object({
         id: z.string(),
         name: z.string(),
@@ -105,13 +105,3 @@ export const dashboardsSchema = z
     .refine((dashboards) => dashboards.some((dashboard) => dashboard.id === 'homepage'), {
         message: 'The homepage must be configured.',
     });
-
-export type DashboardContentSize = z.infer<typeof dashboardContentSizeSchema>;
-export type Dashboard = z.infer<typeof dashboardSchema>;
-export type DashboardContent = z.infer<typeof dashboardContentSchema>;
-export type DashboardResourceContent = z.infer<typeof resourceContentSchema>;
-export type DashboardTextContent = z.infer<typeof textContentSchema>;
-export type DashboardCarouselContent = z.infer<typeof carouselContentSchema>;
-export type DashboardExternalContent = z.infer<typeof externalContentSchema>;
-export type DashboardResourceLinkContent = z.infer<typeof internalLinkContentSchema>;
-export type DashboardExternalLinkContent = z.infer<typeof externalLinkContentSchema>;

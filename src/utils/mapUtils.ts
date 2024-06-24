@@ -1,5 +1,10 @@
-import { Category, Configuration, Resource } from '@/schemas/configuration/configurationSchema';
-import { Dashboard, DashboardContentSize } from '@/schemas/configuration/dashboardsSchema';
+import {
+    Category,
+    Configuration,
+    Dashboard,
+    DashboardContentSize,
+    Resource,
+} from '@/schemas/configuration/configurationSchema';
 import { concatenateNameAndId, sanitizeString } from './stringUtils';
 
 import { DataElement } from '@/types/data';

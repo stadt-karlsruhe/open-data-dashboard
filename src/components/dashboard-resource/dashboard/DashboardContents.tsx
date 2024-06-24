@@ -1,5 +1,5 @@
-import { Configuration } from '@/schemas/configuration/configurationSchema';
-import { Dashboard } from '@/schemas/configuration/dashboardsSchema';
+import { Configuration, Dashboard } from '@/schemas/configuration/configurationSchema';
+
 import DashboardContent from './DashboardContent';
 
 export default function DashboardContents({

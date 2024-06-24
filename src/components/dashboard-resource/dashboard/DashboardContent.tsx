@@ -1,9 +1,8 @@
+import { Configuration, DashboardContent as Content } from '@/schemas/configuration/configurationSchema';
 import { categoryToDataElement, dashboardToDataElement, resourceToDataElement } from '@/utils/mapUtils';
 
 import { CSSProperties } from 'react';
 import CarouselContent from './CarouselContent';
-import { Configuration } from '@/schemas/configuration/configurationSchema';
-import { DashboardContent as Content } from '@/schemas/configuration/dashboardsSchema';
 import { DataElement } from '@/types/data';
 import ErrorComponent from '../../error-handling/ErrorComponent';
 import ExternalContent from './ExternalContent';
