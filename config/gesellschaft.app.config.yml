@@ -1640,8 +1640,8 @@ resources:
           Hunde je 1.000 Haushalte (HH): Hunde je 1000 Haushalte
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
@@ -1659,8 +1659,8 @@ resources:
       id: 6a8f8357-8151-4afc-958a-dc869b284d79
       defaultFilters:
           Jahr:
-              min: 2021
-              max: 2021
+              min: 2020
+              max: 2020
       skipPropertiesRegEx: "^_id$"
       visualizations:
           barChart:
