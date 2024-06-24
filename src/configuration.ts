@@ -9,7 +9,7 @@ const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
 
 export async function getConfiguration() {
     try {
-        const configDir = process.env.CONFIGURATION_DIR ?? DEFAULT_CONFIGURATION_DIR;
+        const configDir = getConfigurationPath();
         const yamlFiles = await getYamlFiles(configDir);
 
         if (yamlFiles.length === 0) {
@@ -24,6 +24,15 @@ export async function getConfiguration() {
         console.error(err);
         return {} as Configuration;
     }
+}
+
+function getConfigurationPath() {
+    return (
+        process.env.CONFIGURATION_DIR_ABS ??
+        (process.env.CONFIGURATION_DIR_REL
+            ? process.cwd() + process.env.CONFIGURATION_DIR_REL
+            : DEFAULT_CONFIGURATION_DIR)
+    );
 }
 
 async function getYamlFiles(dir: string): Promise<string[]> {

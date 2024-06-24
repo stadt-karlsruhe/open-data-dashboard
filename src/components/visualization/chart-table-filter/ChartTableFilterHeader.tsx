@@ -42,6 +42,7 @@ export function ChartTableFilterHeader({
         name={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         title={isCurrentEventKey ? t('collapseTooltipCollapse') : t('collapseTooltipExpand')}
         onClick={decoratedOnClick}
+        data-cy="toggle-filters"
       >
         <i className="bi bi-funnel-fill fs-5" />
         {isCurrentEventKey ? <i className="bi bi-caret-up" /> : <i className="bi bi-caret-down" />}

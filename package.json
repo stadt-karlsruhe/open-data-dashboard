@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "dev:cypress": "cross-env CONFIGURATION_DIR_REL=/__tests__/cypress/config next dev",
+    "build:cypress": "cross-env CONFIGURATION_DIR_REL=/__tests__/cypress/config next build",
+    "start:cypress": "cross-env CONFIGURATION_DIR_REL=/__tests__/cypress/config next start",
     "lint": "next lint --dir src __tests__",
     "test": "jest --coverage",
     "test:config-validation": "jest --testPathPattern='validateConfiguration\\.test\\.ts' --noStackTrace",
-    "test:e2e": "npx cypress run --spec __tests__/cypress/e2e/*.cy.ts",
-    "test:e2e-unstable": "npx cypress run --spec __tests__/cypress/e2e/unstable/*.cy.ts",
     "docs": "mkdocs serve"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@typescript-eslint/parser": "7.13.0",
     "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
+    "cross-env": "^7.0.3",
     "cypress": "^13.11.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.4",

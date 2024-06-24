@@ -13,5 +13,5 @@
               - name: Cypress run
                 uses: cypress-io/github-action@v6
                 with:
-                  build: npm run build
-                  start: npm start
+                  build: npm run build:cypress
+                  start: npm run start:cypress
