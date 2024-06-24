@@ -1770,3 +1770,15 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Wiederholer/Sonstige
           table: {}
+    - id: b97c9405-ecb8-42a8-9854-560d2f921531
+      source: https://transparenz.karlsruhe.de/datastore/dump/b97c9405-ecb8-42a8-9854-560d2f921531?bom=True
+      type: CSV
+      name: Ergebnisse Europawahl 2019
+      numberFormat: de
+      visualizations:
+          barChart:
+              axisPairs:
+                  - xAxis: Partei/politische Vereinigung
+                    yAxis: Stimmen
+                  - xAxis: Parteiname
+                    yAxis: "%"
