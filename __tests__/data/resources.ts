@@ -36,6 +36,7 @@ export const geoJSONResource: GeoJSONResource = {
     source: mockSource,
     name: 'GeoJSON Resource',
     type: 'GeoJSON',
+    coordinateFormat: 'LatLng',
     numberFormat: 'en',
     visualizations: {
         map: {},
@@ -115,6 +116,7 @@ export const jsonResourceWithChart: JSONResource = {
     ...jsonResource,
     visualizations: {
         barChart: {
+            layout: 'horizontal',
             axisPairs: [
                 {
                     xAxis: 'StringColumn',
@@ -135,6 +137,7 @@ export const jsonGermanNumberFormatResourceChart: JSONResource = {
     visualizations: {
         table: {},
         barChart: {
+            layout: 'horizontal',
             axisPairs: [
                 {
                     xAxis: 'StringColumn',
