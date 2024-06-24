@@ -104,7 +104,7 @@ function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupKey: string 
     properties[groupKey] !== undefined &&
     typeof properties[groupKey] === 'string'
   ) {
-    return properties[groupKey] as string;
+    return properties[groupKey];
   }
 }
 

@@ -31,7 +31,7 @@ function toBeValidConfiguration(configuration: Configuration) {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         configuration.resources === undefined
             ? []
-            : (configuration.resources
+            : configuration.resources
                   .map((resource) => {
                       let resourceError;
                       switch (resource.type) {
@@ -57,7 +57,7 @@ function toBeValidConfiguration(configuration: Configuration) {
                           ? undefined
                           : `Resource: ${resource.id}\n    Errors: ${resourceError}`;
                   })
-                  .filter((error) => error !== undefined) as string[]);
+                  .filter((error) => error !== undefined);
     const categoriesError = parseConfigurationSection(configuration.categories, categoriesSchema);
     const dashboardsError = parseConfigurationSection(configuration.dashboards, dashboardsSchema);
 

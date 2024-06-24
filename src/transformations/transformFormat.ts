@@ -90,5 +90,6 @@ function isTabularJson(json: unknown): json is TabularJson {
 }
 
 function transformCsvData(csv: unknown) {
-    return csv2json(String(csv)) as Record<string, never>[];
+    const csvCleaned = String(csv).replaceAll('\r', '');
+    return csv2json(csvCleaned) as Record<string, never>[];
 }
