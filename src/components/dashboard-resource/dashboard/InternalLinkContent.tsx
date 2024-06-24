@@ -3,7 +3,6 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { CSSProperties } from 'react';
 import { DashboardResourceLinkContent } from '@/schemas/configuration/configurationSchema';
 import { DataElement } from '@/types/data';
-import { concatenateNameAndId } from '@/utils/stringUtils';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { locales } from '@/locales';
 import { sizeClassToHeight } from '@/utils/mapUtils';
@@ -28,7 +27,7 @@ export default function InternalLinkContent({
 
   return (
     <Link
-      href={`/resource/${concatenateNameAndId(element.name, element.id)}`}
+      href={element.href}
       className={`btn btn-secondary d-flex flex-column ${className ?? ''}`}
       style={{
         ...style,
