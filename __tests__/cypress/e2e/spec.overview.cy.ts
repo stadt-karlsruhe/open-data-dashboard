@@ -1,7 +1,10 @@
-import { beforeEach, cy, describe, it } from 'local-cypress';
+import { beforeEach, cy, describe, expect, it } from 'local-cypress';
+
+import cypressConfig from '../../../cypress.config';
 
 const resourcesPath = 'en/overview/resources';
 const dashboardsPath = 'en/overview/dashboards';
+const baseUrl = cypressConfig.e2e?.baseUrl ?? '';
 
 describe('resources overview tests', () => {
     beforeEach(() => {
@@ -26,7 +29,7 @@ describe('resources overview tests', () => {
     });
     it('clicking elements should redirect', () => {
         cy.get('[id*=row-category').first().click();
-        cy.url().should('not.equal', `${Cypress.config().baseUrl ?? ''}${resourcesPath}`);
+        cy.url().should('not.equal', `${baseUrl}${resourcesPath}`);
         cy.get('[id*=row-resource').first().click();
         cy.url().should('not.contain', resourcesPath);
         cy.url().should('contain', 'en/resource');
