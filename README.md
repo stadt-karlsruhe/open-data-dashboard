@@ -14,7 +14,7 @@ Check out the <a href="https://open-data-dashboard.netlify.app/en/home">Open Dat
 
 <p align="center">
   <a href="https://open-data-dashboard.netlify.app/en/home" target="_blank">
-    <img src="https://github.com/stadt-karlsruhe/open-data-dashboard/assets/93288603/d332d241-a0bb-44bf-9b84-af9725fbef75" alt="Open Data Dashboard">
+    <img src="https://github.com/stadt-karlsruhe/open-data-dashboard/assets/93288603/f6c81311-f10b-476c-a383-75be7e3ffd86" alt="Open Data Dashboard">
   </a>
 </p>
 
