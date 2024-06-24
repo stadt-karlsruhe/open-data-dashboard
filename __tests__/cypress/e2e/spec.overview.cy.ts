@@ -1,10 +1,8 @@
-import { beforeEach, cy, describe, expect, it } from 'local-cypress';
-
-import cypressConfig from '../../../cypress.config';
+import { Cypress, beforeEach, cy, describe, expect, it } from 'local-cypress';
 
 const resourcesPath = 'en/overview/resources';
 const dashboardsPath = 'en/overview/dashboards';
-const baseUrl = cypressConfig.e2e?.baseUrl ?? '';
+const baseUrl = Cypress.config().baseUrl ?? '';
 
 describe('resources overview tests', () => {
     beforeEach(() => {

@@ -5,11 +5,11 @@ import { promises as fs } from 'node:fs';
 import { merge } from 'ts-deepmerge';
 import path from 'node:path';
 
-const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
+const DEFAULT_CONFIGURATION_DIR = './config';
 
 export async function getConfiguration() {
     try {
-        const configDir = getConfigurationPath();
+        const configDir = process.env.CONFIGURATION_DIR ?? DEFAULT_CONFIGURATION_DIR;
         const yamlFiles = await getYamlFiles(configDir);
 
         if (yamlFiles.length === 0) {
@@ -24,15 +24,6 @@ export async function getConfiguration() {
         console.error(err);
         return {} as Configuration;
     }
-}
-
-function getConfigurationPath() {
-    return (
-        process.env.CONFIGURATION_DIR_ABS ??
-        (process.env.CONFIGURATION_DIR_REL
-            ? process.cwd() + process.env.CONFIGURATION_DIR_REL
-            : DEFAULT_CONFIGURATION_DIR)
-    );
 }
 
 async function getYamlFiles(dir: string): Promise<string[]> {
