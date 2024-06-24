@@ -33,12 +33,11 @@ nav:
     - Configuration:
           - configuration/index.md
           - Configuration Options:
-                - configuration/theme.md
+                - configuration/appearance.md
                 - configuration/resources.md
                 - configuration/visualizations.md
                 - configuration/categories.md
                 - configuration/dashboards.md
-                - configuration/icons.md
           - Supported Data: configuration/data-types.md
     - Development: development/index.md
 plugins:
