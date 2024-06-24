@@ -2,6 +2,10 @@
 
 The Open Data Dashboard uses Cypress end-to-end tests to ensure that our application can always meet certain user expectations.
 
+!!!note
+    Since our application is dependent on data from other applications, some tests might fail if that data should change.
+    In that case, the tests will need to be adjusted.
+
 ## Running Cypress tests on your local system
 
 ### Setup
