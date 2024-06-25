@@ -40,10 +40,13 @@ nav:
                 - configuration/dashboards.md
           - Supported Data: configuration/data-types.md
     - Development: development/index.md
-    - Testing:
-          - testing/index.md
-          - E2E:
-                - testing/cypress.md
+    - CI/CD and Testing:
+          - Continuous Integration:
+                - cicd-testing/ci.md
+          - Continuous Development:
+                - cicd-testing/cd.md
+          - Testing:
+                - cicd-testing/testing.md
 plugins:
     - search
     - glightbox
