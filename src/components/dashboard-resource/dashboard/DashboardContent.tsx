@@ -48,7 +48,7 @@ export default function DashboardContent({
   if (content.type === 'LINK_INTERNAL') {
     let element: DataElement | undefined;
 
-    switch (content.kind) {
+    switch (content.linkedType) {
       case 'dashboard': {
         const dashboard = configuration.dashboards.find((dashboard) => dashboard.id === content.uniqueIdentifier);
         element = dashboard && dashboardToDataElement(dashboard);

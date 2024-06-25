@@ -34,7 +34,12 @@ export const internalLinkContentSchema = z
     .object({
         type: z.literal('LINK_INTERNAL'),
         uniqueIdentifier: z.string(),
-        kind: z.union([z.literal('dashboard'), z.literal('category'), z.literal('subcategory'), z.literal('resource')]),
+        linkedType: z.union([
+            z.literal('dashboard'),
+            z.literal('category'),
+            z.literal('subcategory'),
+            z.literal('resource'),
+        ]),
         size: dashboardContentSizeSchema,
         overrides: z
             .object({

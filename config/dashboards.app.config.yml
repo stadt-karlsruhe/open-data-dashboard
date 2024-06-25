@@ -6,7 +6,7 @@ dashboards:
           - - type: RESOURCE
               resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
             - - type: LINK_INTERNAL
-                kind: dashboard
+                linkedType: dashboard
                 uniqueIdentifier: "1"
               - type: LINK_EXTERNAL
                 text: ka-news.de
@@ -75,12 +75,12 @@ dashboards:
               overrides:
                   name: Haushalte
             - - type: LINK_INTERNAL
-                kind: resource
+                linkedType: resource
                 uniqueIdentifier: 2de3dfff-5657-4644-a512-70795745899e
                 overrides:
                     description: ""
               - type: LINK_INTERNAL
-                kind: resource
+                linkedType: resource
                 uniqueIdentifier: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
                 overrides:
                     description: ""
@@ -177,10 +177,10 @@ dashboards:
           - - type: RESOURCE
               resourceId: 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
             - - type: LINK_INTERNAL
-                kind: resource
+                linkedType: resource
                 uniqueIdentifier: c867155b-5f28-4d25-882e-422fb3ae18aa
               - type: LINK_INTERNAL
-                kind: resource
+                linkedType: resource
                 uniqueIdentifier: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
               - type: RESOURCE
                 resourceId: e3650edd-9b8d-435c-b9d8-3901265b3f99
