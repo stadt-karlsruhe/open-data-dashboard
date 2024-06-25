@@ -93,6 +93,7 @@ categories:
     - aea75426-a745-4515-b144-ef213a3ea96e
     - b221c736-5d15-4841-a3ef-e9be8386a1ea
 - name: Infrastruktur und Verwaltung
+  icon: rulers
   description: ToDo
   resources:
   - 2a7fd644-bc67-477a-bb9e-cf88f076b7af
@@ -160,6 +161,7 @@ categories:
     - 254d89d7-c2b0-4b83-8aea-c6a1cb5b5b7a
     - 9c04c76e-943d-40ec-a07c-f47e0ff050fd
 - name: Gesellschaft und Kultur
+  icon: music-note-beamed
   description: ToDo
   subcategories:
   - name: Tourismus und Kultur
@@ -254,6 +256,7 @@ categories:
     - e237204a-66ca-404b-9ee2-0ac26031d482
     - 641099e3-3b0c-41c9-a469-64274b110c4d
 - name: Bildung und Forschung
+  icon: mortarboard-fill
   description: ToDo
   subcategories:
   - name: Hochschulen und Forschung

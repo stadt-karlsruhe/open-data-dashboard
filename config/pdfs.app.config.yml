@@ -26,13 +26,13 @@ resources:
     - id: c867155b-5f28-4d25-882e-422fb3ae18aa
       name: Mietspiegelrechner für Wohnungen 2023/24
       description: |
-          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete). Mit diesem Mietspiegelrechner kann die ortsübliche Vergleichsmiete für Wohnungen berechnet werden.
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-2023.html
       type: HTML
     - id: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
       name: Mietspiegelrechner für Einfamilienhäuser 2023/24
       description: |
-          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete).
+          Der Mietspiegel ist eine Übersicht über die Mieten, die in Karlsruhe für frei finanzierte Wohnungen bezahlt werden (ortsübliche Vergleichsmiete). Mit diesem Mietspiegelrechner kann die ortsübliche Vergleichsmiete für Wohnungen berechnet werden.
       source: https://web6.karlsruhe.de/Stadtentwicklung/statistik/mietspiegelrechner/mietspiegel-efh-2023.html
       type: HTML
     - id: ff2dedf5-9e8b-4d65-b38d-a36664a8a132
