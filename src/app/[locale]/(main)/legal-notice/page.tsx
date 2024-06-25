@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PageWrapper from '@/components/layout/PageWrapper';
+import TeamMemberRows from './teammembers';
 import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
@@ -59,11 +60,11 @@ export default function LegalNotice() {
         <Link href="https://www.h-ka.de/" className="nav-link" target="_blank" rel="noopener noreferrer">
           {t('awp')}
         </Link>
-        Chiara Scheurer <br />
-        Abdullah Atak <br />
-        Christian Holst <br />
-        Jan Kuhnmünch <br />
-        Daniel Purtov
+        <table className="table table-borderless table-sm w-auto">
+          <tbody>
+            <TeamMemberRows />
+          </tbody>
+        </table>
       </div>
       <div className="mb-4">
         <h2>{t('dataProtection')}</h2>
