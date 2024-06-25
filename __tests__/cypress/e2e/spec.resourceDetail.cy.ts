@@ -4,14 +4,16 @@
 /* eslint-disable max-statements */
 import { beforeEach, cy, describe, it } from 'local-cypress';
 
+const resourceId = 'a5f04b45-528a-41b5-8d8c-eb9677bf2fd1';
 const embedModal = '[data-cy="embed-modal"]';
-const barChart = '[data-cy="bar-chart"]';
+const barChart = '[id*="barChart"]';
 const barRectangle = '.recharts-bar-rectangle';
 const tableBody = '.rdt_TableBody';
+const filterToggle = '@toggle';
 
 describe('resource detail page tests', () => {
     it('detail page should contain title and buttons, embed button should work, fullscreen should redirect', () => {
-        cy.visit('/en/resource/hunde-insgesamt-5');
+        cy.visit(`/en/resource/hunde-insgesamt-${resourceId}`);
         cy.url().should('contain', 'visualization=barChart');
 
         cy.get('[data-cy="page-title"]').contains('Hunde insgesamt');
@@ -31,10 +33,14 @@ describe('resource detail page tests', () => {
         cy.get(embedModal).find('.modal-header').find('button').click();
 
         cy.get('[data-cy="control-fullscreen"]').click();
-        cy.url().should('contain', '/embed/resource/5');
+        cy.url().should('contain', `/embed/resource/${resourceId}`);
     });
     it('detail page should have working bar chart, table, and filter', () => {
-        cy.visit('/en/resource/hunde-insgesamt-5');
+        cy.visit(`/en/resource/hunde-insgesamt-${resourceId}`);
+        cy.get('.input-group').find('[data-cy="toggle-filters"]').as('toggle').click();
+        cy.get('[data-cy="clear-all"]').click();
+        cy.get(filterToggle).click();
+
         cy.get(barChart).contains('Hunde');
         cy.get(barChart).find(barRectangle).first().click();
         cy.get(barChart).contains('Hunde : 101');
@@ -49,24 +55,24 @@ describe('resource detail page tests', () => {
         cy.get(tableBody).children().first().contains('0');
 
         cy.get('[data-cy="layout-tabs"]').find('button').contains('Bar Chart').as('chartButton').click();
-        cy.get('[id="5-search"]').type('Grünwinkel');
+        cy.get(`[id="${resourceId}-search"]`).type('Grünwinkel');
         cy.get(barChart).find(barRectangle).first().click();
         cy.get(barChart).contains('Hunde : 388');
         cy.get(barChart).contains('Grünwinkel');
 
-        cy.get('.input-group').find('[data-cy="toggle-filters"]').as('toggle').click();
+        cy.get(filterToggle).click();
         cy.get('.input-group').find('[data-cy="clear"]').first().click();
-        cy.get('[id="5-Stadtteil-text-input"]').type('Knielingen');
-        cy.get('[id="5-Jahr-min"]').type('2019');
-        cy.get('[id="5-Jahr-max"]').type('2019');
-        cy.get('[id="5-Hunde-min"]').type('456');
+        cy.get(`[id="${resourceId}-Stadtteil-text-input"]`).type('Knielingen');
+        cy.get(`[id="${resourceId}-Jahr-min"]`).type('2019');
+        cy.get(`[id="${resourceId}-Jahr-max"]`).type('2019');
+        cy.get(`[id="${resourceId}-Hunde-min"]`).type('456');
 
         cy.get(barChart).find(barRectangle).click();
         cy.get(barChart).contains('Hunde : 456');
         cy.get(barChart).contains('Knielingen');
 
         cy.get('[data-cy="clear-all"]').click();
-        cy.get('@toggle').click();
+        cy.get(filterToggle).click();
 
         cy.get(barChart).find(barRectangle).first().click();
         cy.get(barChart).contains('Hunde : 101');
