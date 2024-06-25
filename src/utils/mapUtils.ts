@@ -1,11 +1,17 @@
-import { Category, Configuration } from '@/schemas/configurationSchema';
-import { concatenateNameAndId, replaceWhitespaceInString } from './stringUtils';
+import {
+    Category,
+    Configuration,
+    Dashboard,
+    DashboardContentSize,
+    Resource,
+} from '@/schemas/configuration/configurationSchema';
+import { concatenateNameAndId, sanitizeString } from './stringUtils';
 
 import { DataElement } from '@/types/data';
 import { LRUCache } from 'lru-cache';
 import { getIconForResource } from './icons';
 
-export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaultValueFn: () => unknown) {
+export function computeIfAbsent<K, V>(map: Map<K, V>, key: K, defaultValueFn: () => V) {
     let value = map.get(key);
     if (value === undefined) {
         value = defaultValueFn();
@@ -14,15 +20,18 @@ export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaul
     return value;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defaultValueFn: () => unknown) {
-    let value = cache.get(key) as unknown;
+export function computeIfUncached<V extends object>(
+    cache: LRUCache<string, V>,
+    key: string,
+    defaultValueFn: () => V,
+): V {
+    let value = cache.get(key);
     if (value === undefined) {
-        console.debug(`cache miss! key: ${key as string}`);
+        console.debug(`cache miss! key: ${String(key)}`);
         value = defaultValueFn();
         cache.set(key, value);
     } else {
-        console.debug('cache hit!');
+        console.debug(`cache hit! key: ${String(key)}`);
     }
     return value;
 }
@@ -30,39 +39,21 @@ export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defau
 export function configurationToDashboards(configuration: Configuration) {
     return configuration.dashboards
         .filter((dashboard) => dashboard.id !== 'homepage')
-        .map((dashboard) => ({
-            id: `dashboard-${dashboard.id}`,
-            name: dashboard.name,
-            icon: dashboard.icon,
-            description: dashboard.description,
-            href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
-            type: 'dashboard',
-        })) as DataElement[];
+        .map((dashboard) => dashboardToDataElement(dashboard))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToResources(configuration: Configuration, category?: Category) {
     return configuration.resources
         .filter((resource) => category === undefined || category.resources?.includes(resource.id.toLowerCase()))
-        .map((resource) => ({
-            id: `resource-${resource.id}`,
-            name: resource.name,
-            icon: getIconForResource(resource),
-            description: resource.description,
-            href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
-            type: 'resource',
-            resourceType: resource.type,
-        })) as DataElement[];
+        .map((resource) => resourceToDataElement(resource))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToCategories(configuration: Configuration) {
-    return configuration.categories.map((category) => ({
-        id: `category-${category.name}`,
-        name: category.name,
-        icon: category.icon,
-        description: category.description,
-        href: `/overview/resources/${replaceWhitespaceInString(category.name).toLowerCase()}`,
-        type: 'category',
-    })) as DataElement[];
+    return configuration.categories
+        .map((category) => categoryToDataElement(category))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToSubcategories(configuration: Configuration, category?: Category) {
@@ -74,12 +65,62 @@ export function configurationToSubcategories(configuration: Configuration, categ
                 categoryName: cat.name,
             })),
         )
-        .map((subcategory) => ({
-            id: `subcategory-${subcategory.name}`,
-            name: subcategory.name,
-            icon: subcategory.icon,
-            description: subcategory.description,
-            href: `/overview/resources/${replaceWhitespaceInString(subcategory.categoryName).toLowerCase()}/${replaceWhitespaceInString(subcategory.name).toLowerCase()}`,
-            type: 'category',
-        })) as DataElement[];
+        .map((subcategory) => categoryToDataElement(subcategory, subcategory.categoryName))
+        .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function resourceToDataElement(resource: Resource) {
+    return {
+        id: `resource-${resource.id}`,
+        name: resource.name,
+        icon: getIconForResource(resource),
+        description: resource.description,
+        href: `/resource/${concatenateNameAndId(resource.name, resource.id)}`,
+        type: 'resource',
+        resourceType: resource.type,
+    } as DataElement;
+}
+
+export function categoryToDataElement(category: Category, parentCategory?: string) {
+    return {
+        id: `subcategory-${category.name}`,
+        name: category.name,
+        icon: category.icon,
+        description: category.description,
+        href: parentCategory
+            ? `/overview/resources/${sanitizeString(parentCategory).toLowerCase()}/${sanitizeString(category.name).toLowerCase()}`
+            : `/overview/resources/${sanitizeString(category.name).toLowerCase()}`,
+        type: 'category',
+    } as DataElement;
+}
+
+export function dashboardToDataElement(dashboard: Dashboard) {
+    return {
+        id: `dashboard-${dashboard.id}`,
+        name: dashboard.name,
+        icon: dashboard.icon,
+        description: dashboard.description,
+        href: `/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`,
+        type: 'dashboard',
+    } as DataElement;
+}
+
+export function sizeClassToHeight(size: DashboardContentSize) {
+    switch (size) {
+        case 'L': {
+            return 1000;
+        }
+        case 'M': {
+            return 500;
+        }
+        case 'S': {
+            return 250;
+        }
+        case 'XS': {
+            return 125;
+        }
+        default: {
+            return 500;
+        }
+    }
 }

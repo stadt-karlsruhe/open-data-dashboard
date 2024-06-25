@@ -1,6 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { ClearableInputGroup } from './ClearableInputGroup';
-import { Filter } from '@/schemas/configurationSchema';
+import { Filter } from '@/schemas/configuration/configurationSchema';
 import { TransformedData } from '@/schemas/dataSchema';
 import { useTranslations } from 'next-intl';
 
@@ -29,7 +29,7 @@ export function ChartTableFilterBody({
           const filterObj = typeof filter === 'object' ? filter : undefined;
           return (
             <fieldset key={key} className="row mb-1 mb-md-3">
-              <legend id={`${resourceId}-${key}-input`} className="col-sm-2 col-form-label text-nowrap">
+              <legend id={`${resourceId}-${key}-input`} className="col-sm-2 col-form-label">
                 {key}
               </legend>
               <div className="col-md-10">

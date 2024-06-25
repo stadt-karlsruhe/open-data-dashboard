@@ -1,0 +1,232 @@
+dashboards:
+    - id: homepage
+      name: Homepage
+      icon: house-door-fill
+      contents:
+          - - type: RESOURCE
+              resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+            - - type: LINK_INTERNAL
+                linkedType: dashboard
+                uniqueIdentifier: "1"
+              - type: LINK_EXTERNAL
+                text: ka-news.de
+                icon: info-circle
+                target: https://www.ka-news.de/
+                backgroundColor: "#0078BF"
+              - type: LINK_EXTERNAL
+                text: Events in Karlsruhe
+                target: https://www.karlsruhe-erleben.de/veranstaltungen
+                backgroundColor: "#522980"
+              - type: LINK_EXTERNAL
+                target: https://www.karlsruhe.de/stadt-rathaus/service-buergerinformation/buergerdienste
+                text: Bürgerdienste eService
+                icon: info-circle
+                color: black
+                backgroundColor: "#FDCB00"
+              - type: TEXT_CAROUSEL
+                size: S
+                backgroundColor: "#555555"
+                slides:
+                    - title: Wusstest du schon?
+                      text: Der Stadtteil Durlach ist älter als die Stadt Karlsruhe selbst.
+                    - title: Wusstest du schon?
+                      text: Carl Benz wurde 1844 in Mühlburg geboren.
+                    - title: Wusstest du schon?
+                      text: Die Hoepfnerburg ist an Schloss Neuschwanstein angelehnt und besitzt sogar eine sehr akkurate Kopie des Schlossturms.
+                    - title: Wusstest du schon?
+                      text: Die YouTuber Mirko Drotschmann (MrWissen2Go) und Alexander Giesecke (Simpleclub) studierten beide am KIT.
+                    - title: Wusstest du schon?
+                      text: Karlsruhe hält den Rekord für das größte Biertasting der Welt mit 1520 Teilnehmenden.
+                    - title: Wusstest du schon?
+                      text: Die Günther-Klotz-Anlage erstreckt sich über insgesamt fünf Stadtteile.
+                    - title: Wusstest du schon?
+                      text: Der Filmpalast im ZKM gilt als eines der zehn besten Multiplex-Kinos in Deutschland.
+                    - title: Wusstest du schon?
+                      text: Die längste Straße Karlsruhes ist die Kriegsstraße mit einer Länge von 3,8 Kilometern.
+                    - title: Wusstest du schon?
+                      text: Im Bundesgerichtshof steht steht das einzige Bildnis der Justitia ohne Augenbinde.
+                    - title: Wusstest du schon?
+                      text: Das KIT war die erste deutsche Forschungsstätte, die ein Experiment im Weltraum durchführte.
+                    - title: Wusstest du schon?
+                      text: Der älteste Fußballverein in Karlsruhe ist der Karlsruher FV (KFV). Er wurde im Jahr 1891 gegründet und zählt damit zu den ältesten Fußballvereinen Deutschlands.
+                    - title: Wusstest du schon?
+                      text: Der größte Arbeitgeber in Karlsruhe ist das KIT. Es hat mehr Angestellte als die zweitgrößte Hochschule der Stadt Studierende.
+    - id: "1"
+      name: Bevölkerung
+      description: Hier findest Du aktuelle Informationen zur Demografie der Stadt Karlsruhe.
+      icon: people-fill
+      contents:
+          - - type: RESOURCE
+              resourceId: 71ef348f-0f5b-46a0-8250-e87aae9f91bd
+              size: L
+              overrides:
+                  name: Bevölkerung pro Stadtteil (2021)
+            - - type: RESOURCE
+                resourceId: 8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509
+                size: M
+                overrides:
+                    name: Zuzüge und Fortzüge (2021)
+              - type: RESOURCE
+                resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+                size: M
+          - - type: RESOURCE
+              resourceId: ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
+              size: M
+              overrides:
+                  name: Haushalte
+            - - type: LINK_INTERNAL
+                linkedType: resource
+                uniqueIdentifier: 2de3dfff-5657-4644-a512-70795745899e
+                overrides:
+                    description: ""
+              - type: LINK_INTERNAL
+                linkedType: resource
+                uniqueIdentifier: a443b70a-b27e-4bbc-84f5-dbaa5f5d0fc2
+                overrides:
+                    description: ""
+              - type: RESOURCE
+                resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
+                size: S
+    - id: "2"
+      name: Verkehr und Infrastruktur
+      description: Neben aktuellen Baustellen und Geschwindigkeitsbegrenzungen findest du hier auch alle wichtigen Informationen zum ÖPNV der Stadt Karlsruhe.
+      icon: map-fill
+      contents:
+          - - - type: RESOURCE
+                resourceId: fd00b237-7eef-4f38-bd85-cd0c27f32cd4
+                size: S
+              - type: RESOURCE
+                resourceId: be248122-b2a1-46c4-b05c-3552a72665b9
+                size: S
+            - - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Karlsruher Verkehrsbetriebe
+                icon: train-lightrail-front
+                backgroundColor: "#C30A37"
+              - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Abfahrten KA Hauptbahnhof
+                icon: train-front
+                backgroundColor: "#192176"
+              - type: RESOURCE
+                resourceId: 66d4ff14-96f9-44ee-8f23-4e069a3a600d
+          - - type: RESOURCE
+              resourceId: 81ee59ea-feaf-48d1-a169-1c3e012e0138
+          - - type: RESOURCE
+              resourceId: 1a1386d5-fb92-40dc-b4b6-96a1eee1a750
+            - - type: LINK_EXTERNAL
+                text: Stau.info
+                icon: car-front-fill
+                target: https://stau.info/stadt/karlsruhe
+                backgroundColor: "#004F8F"
+              - type: RESOURCE
+                resourceId: 528cc3da-baf5-403d-a6c7-906113281c83
+    - id: "3"
+      name: Kultur und öffentliches Leben
+      description: Neben Kulturangeboten und Wochenmärkten findest Du hier Informationen zu städtischen Behörden.
+      icon: music-note-beamed
+      contents:
+          - - - type: RESOURCE
+                resourceId: 6fe4e024-bc8a-467b-8ae7-8e0fbe625e2b
+                size: L
+            - - type: RESOURCE
+                resourceId: 266c9670-2e65-49b3-b0f4-ca0a057913ad
+                size: S
+              - type: RESOURCE
+                resourceId: 6dae7ff8-6bca-4b8e-8c6b-629c46b5bf8e
+                size: S
+              - type: RESOURCE
+                resourceId: a5eef58f-6583-4d40-a947-bafcbe4ba354
+                size: S
+          - - type: RESOURCE
+              resourceId: adbc6827-c3e9-438a-a2d1-069139315454
+            - type: RESOURCE
+              resourceId: ff2dedf5-9e8b-4d65-b38d-a36664a8a132
+          - - type: RESOURCE
+              resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
+    - id: "4"
+      name: Freizeitangebote
+      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein mithilfe des Freizeit-Dashboards.
+      icon: person-arms-up
+      contents:
+          - - - type: RESOURCE
+                resourceId: ed7fdf0f-7acf-4e3d-bde8-fb4977a63c65
+                size: S
+              - type: RESOURCE
+                resourceId: 0cdb2501-b393-44b4-b3f1-8aa284f333a4
+                size: S
+            - type: RESOURCE
+              resourceId: 215d49b7-c494-4e25-8981-3a805ac512e3
+              overrides:
+                  name: Fahrradwege
+          - - type: RESOURCE
+              resourceId: cdb979b4-8f2a-4383-bb73-9585a38f94db
+              size: S
+            - type: RESOURCE
+              resourceId: 12c1a52d-bd53-48e9-8d40-e17a83e40ee3
+              size: S
+          - - type: RESOURCE
+              resourceId: befa8f52-27f6-46c9-b2f8-45702932b5b0
+              overrides:
+                  name: Sportvereine
+    - id: "5"
+      name: Für Zugezogene
+      description: Hier sind alle Informationen aufgelistet, die Du für deine Ankunft in Karlsruhe brauchst.
+      icon: house-heart
+      contents:
+          - - type: RESOURCE
+              resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
+            - - type: LINK_INTERNAL
+                linkedType: resource
+                uniqueIdentifier: c867155b-5f28-4d25-882e-422fb3ae18aa
+              - type: LINK_INTERNAL
+                linkedType: resource
+                uniqueIdentifier: a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
+              - type: RESOURCE
+                resourceId: e3650edd-9b8d-435c-b9d8-3901265b3f99
+                size: S
+          - - type: RESOURCE
+              resourceId: 2a7fd644-bc67-477a-bb9e-cf88f076b7af
+            - type: RESOURCE
+              resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
+    - id: "6"
+      name: Für Studierende
+      description: Alle wichtigen Informationen für Studierende findest Du hier auf einem Blick.
+      icon: mortarboard-fill
+      contents:
+          - - type: RESOURCE
+              resourceId: c2408d6a-d77e-4b76-80fb-15039d48a43b
+              size: L
+            - - type: LINK_EXTERNAL
+                text: AStA Karlsruhe
+                icon: send
+                target: https://asta-karlsruhe.de/
+                backgroundColor: "#E5231F"
+              - type: LINK_EXTERNAL
+                text: Studierendenwerk Karlsruhe
+                icon: card-heading
+                target: https://www.sw-ka.de/de/
+                backgroundColor: "#FFED00"
+                color: black
+              - type: LINK_EXTERNAL
+                text: Mensa Speisepläne
+                icon: card-heading
+                target: https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_adenauerring/
+                backgroundColor: "#FFED00"
+                color: black
+              - type: LINK_EXTERNAL
+                text: Events in Karlsruhe
+                target: https://www.karlsruhe-erleben.de/veranstaltungen
+                backgroundColor: "#522980"
+              - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Karlsruher Verkehrsbetriebe
+                icon: train-lightrail-front
+                backgroundColor: "#C30A37"
+              - type: EXTERNAL
+                source: https://www.kvv-nextbike.de/en/
+                name: KVV Nextbike
+                size: M
+              - type: RESOURCE
+                resourceId: 533a6e1c-4899-4fd6-8a2e-156ed97fd073
+                size: S

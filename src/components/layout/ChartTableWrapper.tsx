@@ -5,11 +5,12 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import BarChart from '@/components/visualization/bar-chart/BarChart';
 import ChartTableFilter from '@/components/visualization/chart-table-filter/ChartTableFilter';
-import { JSONResource } from '@/schemas/configurationSchema';
+import { JSONResource } from '@/schemas/configuration/configurationSchema';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { TransformedData } from '@/schemas/dataSchema';
 import dynamic from 'next/dynamic';
+import { filterData } from '@/filter';
 import { useDebouncedCallback } from 'use-debounce';
 import { useState } from 'react';
 import useWindowDimensions from '@/components/helper/WindowDimensions';
@@ -21,16 +22,30 @@ const Table = dynamic(() => import('@/components/visualization/Table'), { ssr: f
 export default function ChartTableWrapper({
   resource,
   transformedData,
+  height: constantHeight,
+  options = {
+    showFilter: true,
+    useQueryParams: true,
+    showOnlyFirstVis: false,
+  },
 }: {
   resource: JSONResource;
   transformedData: TransformedData[];
+  height?: string | number;
+  options: {
+    showFilter?: boolean;
+    useQueryParams?: boolean;
+    showOnlyFirstVis?: boolean;
+  };
 }) {
   const t = useTranslations('ChartTableWrapper');
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const locale = useLocale();
   const router = useRouter();
-  const [filteredData, setFilteredData] = useState(transformedData);
+  const [filteredData, setFilteredData] = useState(
+    options.showFilter ? transformedData : filterData(transformedData, resource.defaultFilters ?? {}),
+  );
   const { width, height } = useWindowDimensions();
 
   const setVisualizationParameter = useDebouncedCallback((eventKey: string) => {
@@ -40,19 +55,41 @@ export default function ChartTableWrapper({
   });
   const [activeVisualization, setActiveVisualization] = useState(getAndUpdateVisualizationParameter());
   function getAndUpdateVisualizationParameter() {
-    const passedInitialParameter = searchParams.get('visualization');
     const resourceTypes = new Set(Object.entries(resource.visualizations).map(([diagramType]) => diagramType));
-    if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
-      const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
-      setVisualizationParameter(initialParameter);
-      return initialParameter;
+    const initialParameter = resourceTypes.has('barChart') ? 'barChart' : 'table';
+    if (options.useQueryParams) {
+      const passedInitialParameter = searchParams.get('visualization');
+      if (!passedInitialParameter || !resourceTypes.has(passedInitialParameter)) {
+        setVisualizationParameter(initialParameter);
+        return initialParameter;
+      }
+      return passedInitialParameter;
     }
-    return passedInitialParameter;
+    return initialParameter;
+  }
+
+  if (options.showOnlyFirstVis) {
+    return getAndUpdateVisualizationParameter() === 'barChart' ? (
+      <div className="d-flex" style={{ height: constantHeight }}>
+        <BarChart
+          data={filteredData}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          axisPairs={resource.visualizations.barChart!.axisPairs}
+          aspect={constantHeight ? undefined : width / (height - 250)}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          layout={resource.visualizations.barChart!.layout}
+        />
+      </div>
+    ) : (
+      <div style={{ maxHeight: constantHeight }}>
+        <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
+      </div>
+    );
   }
 
   return (
     <div className={pathname.startsWith(`/${locale}/embed`) ? 'm-2' : ''}>
-      <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />
+      {options.showFilter && <ChartTableFilter resource={resource} data={transformedData} onFilter={setFilteredData} />}
       <Tabs
         defaultActiveKey={activeVisualization}
         onSelect={(eventKey) => {
@@ -68,15 +105,15 @@ export default function ChartTableWrapper({
             title={diagramType === 'barChart' || diagramType === 'table' ? t(diagramType) : ''}
             eventKey={diagramType}
             className="p-3"
+            style={{ height: constantHeight && typeof constantHeight === 'number' ? constantHeight - 75 : undefined }}
           >
             {diagramType === 'barChart' ? (
-              <div className="d-flex flex-column">
-                <BarChart
-                  data={filteredData}
-                  axisPairs={diagramAttr.axisPairs}
-                  aspect={width / (height - 250)}
-                ></BarChart>
-              </div>
+              <BarChart
+                data={filteredData}
+                axisPairs={diagramAttr.axisPairs}
+                aspect={constantHeight ? undefined : width / (height - 250)}
+                layout={diagramAttr.layout}
+              />
             ) : (
               <Table key={resource.id} columnNames={Object.keys(transformedData[0])} records={filteredData} />
             )}

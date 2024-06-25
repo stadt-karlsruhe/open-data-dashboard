@@ -1,4 +1,4 @@
-import { Category, Configuration } from '@/schemas/configurationSchema';
+import { Category, Configuration } from '@/schemas/configuration/configurationSchema';
 import { computeIfUncached, configurationToResources, configurationToSubcategories } from '@/utils/mapUtils';
 
 import { DataElement } from '@/types/data';
@@ -52,9 +52,7 @@ export default async function Page({
 }
 
 function getCategoryContent(configuration: Configuration, category: Category, categoryKey: string) {
-  return computeIfUncached(categoryToContentCache, categoryKey, () =>
-    computeCategoryContent(configuration, category),
-  ) as DataElement[];
+  return computeIfUncached(categoryToContentCache, categoryKey, () => computeCategoryContent(configuration, category));
 }
 
 function computeCategoryContent(configuration: Configuration, category: Category) {

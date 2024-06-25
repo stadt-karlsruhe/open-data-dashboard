@@ -1,6 +1,6 @@
 'use client';
 
-import { Dashboard, Resource } from '@/schemas/configurationSchema';
+import { Dashboard, Resource } from '@/schemas/configuration/configurationSchema';
 
 import EmbedModal from './EmbedModal';
 import { createSharedPathnamesNavigation } from 'next-intl/navigation';

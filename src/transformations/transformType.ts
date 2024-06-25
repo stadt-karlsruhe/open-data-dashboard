@@ -1,4 +1,6 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configuration/configurationSchema';
+
+import { object } from 'zod';
 
 export function narrowType(
     records: Record<string, never>[] | GeoJSON.FeatureCollection,
@@ -23,23 +25,27 @@ function narrowObjectType(record: Record<string, never> | GeoJSON.GeoJsonPropert
         return record;
     }
     return Object.fromEntries(
-        Object.entries(record)
-            .filter(([, value]) => value !== null)
-            .map(([key, value]) => {
-                const stringValue = String(value).toLowerCase();
-                if (stringValue === 'true') {
-                    return [key, true];
-                }
-                if (stringValue === 'false') {
-                    return [key, false];
-                }
-                const parsedValue =
-                    numberFormat === 'en' ? Number(stringValue) : parseGermanNumberToInternationalFormat(stringValue);
-                if (!Number.isNaN(parsedValue)) {
-                    return [key, parsedValue];
-                }
-                return [key, value];
-            }),
+        Object.entries(record).map(([key, value]) => {
+            if (value === null) {
+                return [key, ''];
+            }
+            if (Array.isArray(value) || typeof value === 'object') {
+                return [key, JSON.stringify(value)];
+            }
+            const stringValue = String(value).toLowerCase();
+            if (stringValue === 'true') {
+                return [key, true];
+            }
+            if (stringValue === 'false') {
+                return [key, false];
+            }
+            const parsedValue =
+                numberFormat === 'en' ? Number(stringValue) : parseGermanNumberToInternationalFormat(stringValue);
+            if (!Number.isNaN(parsedValue)) {
+                return [key, parsedValue];
+            }
+            return [key, value];
+        }),
     );
 }
 

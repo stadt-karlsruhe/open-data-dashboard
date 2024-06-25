@@ -25,15 +25,13 @@ theme:
 nav:
     - Home: index.md
     - About:
-          - about/about.md
+          - about/index.md
           - about/visualizations.md
           - about/filters.md
-    - Getting Started:
-          - getting-started/index.md
     - Configuration:
           - configuration/index.md
           - Configuration Options:
-                - configuration/theme.md
+                - configuration/appearance.md
                 - configuration/resources.md
                 - configuration/visualizations.md
                 - configuration/categories.md

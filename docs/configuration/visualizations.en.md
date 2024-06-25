@@ -28,10 +28,25 @@ In addition to tables, CSV and JSON data can be visualized as bar charts. For th
     ```yaml title="app.config.yml"
     visualizations:
         barChart:
-            axisPairs: [<axis-pair>] # (1)!
+            layout: string # (1)!
+            axisPairs: [<axis-pair>] # (2)!
     ```
 
-    1. A list of [axis pairs](#axis-pairs).
+    1. The [layout/orientation](#layout) of the chart.
+    2. A list of [axis pairs](#axis-pairs).
+
+### Layout
+
+Optionally, specify the [layout](https://recharts.org/en-US/api/BarChart#layout) of the bar chart.
+
+* By default, the horizontal layout (`horizontal`) will be used.
+* Alternatively, a vertical layout (`vertical`) can be used instead.
+
+!!! example
+
+    ```yaml title="app.config.yml"
+    layout: string
+    ```
 
 ### Axis Pairs
 

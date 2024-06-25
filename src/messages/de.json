@@ -58,6 +58,9 @@
     "Header": {
         "title": "Open Data Dashboard"
     },
+    "Homepage": {
+        "imageAlt": "Karlsruher Schloss"
+    },
     "LegalNotice": {
         "authorizedRepresentative": "Vertretungsberechtigter",
         "awp": "Anwendungsprojekt Hochschule Karlsruhe",

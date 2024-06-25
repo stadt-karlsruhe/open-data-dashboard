@@ -8,7 +8,7 @@ import {
   configurationToSubcategories,
 } from '@/utils/mapUtils';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import { DataElement } from '@/types/data';
 import SearchResult from './SearchResult';
 import { Typeahead } from 'react-bootstrap-typeahead';
@@ -42,7 +42,7 @@ export default function Search({
   return (
     <Typeahead
       className={className}
-      style={style}
+      style={{ ...style, zIndex: 500 }}
       filterBy={() => true}
       id={id}
       labelKey="name"

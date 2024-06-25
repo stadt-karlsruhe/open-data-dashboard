@@ -1,5 +1,5 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { Dashboard, Resource } from '@/schemas/configurationSchema';
+import { Dashboard, Resource } from '@/schemas/configuration/configurationSchema';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { Modal } from 'react-bootstrap';

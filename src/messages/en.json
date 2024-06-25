@@ -58,6 +58,9 @@
     "Header": {
         "title": "Open Data Dashboard"
     },
+    "Homepage": {
+        "imageAlt": "Karlsruhe Palace"
+    },
     "LegalNotice": {
         "authorizedRepresentative": "Authorized Representative",
         "awp": "Anwendungsprojekt University of Applied Sciences Karlsruhe",

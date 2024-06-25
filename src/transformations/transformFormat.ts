@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource } from '@/schemas/configuration/configurationSchema';
 import { renameProperties, skipProperties } from './transformData';
 
 import { csv2json } from 'json-2-csv';
@@ -90,6 +90,14 @@ function isTabularJson(json: unknown): json is TabularJson {
 }
 
 function transformCsvData(csv: unknown) {
-    const csvCleaned = String(csv).replaceAll('\r', '');
-    return csv2json(csvCleaned) as Record<string, never>[];
+    return csv2json(preprocessCsv(csv)) as Record<string, never>[];
+}
+
+function preprocessCsv(csv: unknown) {
+    const csvString = String(csv).replaceAll('\r', '');
+    const lines = csvString.split('\n');
+    // Escape unescaped dots in the CSV header to ensure correct parsing
+    const headers = lines[0].split(',').map((header) => header.replaceAll(/([^\\])\./gu, String.raw`$1\.`));
+    lines[0] = headers.join(',');
+    return lines.join('\n');
 }

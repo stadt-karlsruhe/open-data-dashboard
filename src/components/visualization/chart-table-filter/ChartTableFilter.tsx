@@ -1,4 +1,4 @@
-import { Filter, JSONResource } from '@/schemas/configurationSchema';
+import { Filter, JSONResource } from '@/schemas/configuration/configurationSchema';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 

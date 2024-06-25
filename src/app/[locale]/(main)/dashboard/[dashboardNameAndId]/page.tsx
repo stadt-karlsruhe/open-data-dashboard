@@ -1,5 +1,6 @@
 import { concatenateNameAndId, safeStringCompare } from '@/utils/stringUtils';
 
+import DashboardContents from '@/components/dashboard-resource/dashboard/DashboardContents';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import PageWrapper from '@/components/layout/PageWrapper';
 import dynamic from 'next/dynamic';
@@ -25,7 +26,7 @@ export default async function Page({ params: { dashboardNameAndId } }: { params:
   return (
     <PageWrapper title={dashboard.name} description={dashboard.description}>
       <DashboardResourceControls type="dashboard" element={dashboard} />
-      <>Some dashboard content</>
+      <DashboardContents dashboard={dashboard} configuration={configuration} />
     </PageWrapper>
   );
 }

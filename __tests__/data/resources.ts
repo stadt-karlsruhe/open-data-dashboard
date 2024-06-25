@@ -1,4 +1,4 @@
-import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configurationSchema';
+import { EmbeddedResource, GeoJSONResource, JSONResource } from '@/schemas/configuration/configurationSchema';
 
 const mockSource = 'https://example.com/';
 
@@ -32,13 +32,25 @@ export const csvResource: JSONResource = {
 };
 
 export const geoJSONResource: GeoJSONResource = {
-    id: '3',
+    id: '4',
     source: mockSource,
     name: 'GeoJSON Resource',
     type: 'GeoJSON',
+    coordinateFormat: 'LatLng',
     numberFormat: 'en',
     visualizations: {
         map: {},
+    },
+};
+
+export const jsonResourceInvalid: JSONResource = {
+    id: '5',
+    source: mockSource,
+    name: 'JSON Resource',
+    type: 'JSON',
+    numberFormat: 'en',
+    visualizations: {
+        table: {},
     },
 };
 
@@ -115,6 +127,7 @@ export const jsonResourceWithChart: JSONResource = {
     ...jsonResource,
     visualizations: {
         barChart: {
+            layout: 'horizontal',
             axisPairs: [
                 {
                     xAxis: 'StringColumn',
@@ -135,6 +148,7 @@ export const jsonGermanNumberFormatResourceChart: JSONResource = {
     visualizations: {
         table: {},
         barChart: {
+            layout: 'horizontal',
             axisPairs: [
                 {
                     xAxis: 'StringColumn',

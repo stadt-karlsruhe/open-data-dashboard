@@ -122,7 +122,8 @@ GeoJSON data can be visualized as Map.
 
 !!! note
     - The source must return valid GeoJSON data in accordance to the [GeoJSON specification](https://geojson.org/).
-    - The data must be of one of the following geometries: `Point`, `LineString` or `Polygon`. `FeatureCollection`'s containing mixed geometries are supported.
+    - The data must be of one of the following geometries:
+    `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon` or `MultiPolygon`. `FeatureCollection`'s containing mixed geometries are supported.
 !!! example
 
     ````json

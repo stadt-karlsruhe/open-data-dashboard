@@ -26,7 +26,7 @@ describe('resources overview tests', () => {
             });
     });
     it('clicking elements should redirect', () => {
-        cy.get('[id*=row-category').first().click();
+        cy.get('[id*=row-subcategory').eq(3).click();
         cy.url().should('not.equal', `${baseUrl}${resourcesPath}`);
         cy.get('[id*=row-resource').first().click();
         cy.url().should('not.contain', resourcesPath);

@@ -29,6 +29,7 @@ describe('component BarChart', () => {
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
         <BarChart
+          layout="horizontal"
           data={jsonStandard}
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           axisPairs={jsonResourceWithChart.visualizations.barChart!.axisPairs}

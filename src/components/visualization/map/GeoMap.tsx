@@ -4,10 +4,10 @@ import 'leaflet/dist/leaflet.css';
 
 import { FeatureGroup, MapContainer, Marker, TileLayer, Tooltip } from 'react-leaflet';
 import L, { LatLngExpression } from 'leaflet';
-import { colorPrimary, getColor } from '@/utils/colors';
+import { colorDark, colorPrimary, getColor } from '@/utils/colors';
 
 import { GeoJSON as GeoJSONLeaflet } from 'react-leaflet/GeoJSON';
-import { GeoJSONResource } from '@/schemas/configurationSchema';
+import { GeoJSONResource } from '@/schemas/configuration/configurationSchema';
 import Legend from './Legend';
 import Link from 'next/link';
 import ReactDOMServer from 'react-dom/server';
@@ -26,14 +26,16 @@ const latLng = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
 export default function GeoMap({
   resource,
   geoJsonData,
+  height = '100dvh',
 }: {
   resource: GeoJSONResource;
   geoJsonData: GeoJSON.FeatureCollection;
+  height?: string | number;
 }) {
   const collectedLabels = new Map<string, string>();
   return (
     <MapContainer
-      style={{ height: '100dvh', width: '100%' }}
+      style={{ height, width: '100%' }}
       center={standardPos.latLng}
       zoom={standardPos.zoom}
       scrollWheelZoom={true}
@@ -61,6 +63,8 @@ export default function GeoMap({
           } else {
             colorCode = mappedColor;
           }
+        } else if (!label && resource.visualizations.map.groupKey) {
+          colorCode = colorDark;
         }
         return (
           <FeatureGroup key={index}>
@@ -72,7 +76,7 @@ export default function GeoMap({
                 </div>
               ))}
             </Tooltip>
-            {(feature.geometry.type === 'LineString' || feature.geometry.type === 'Polygon') && (
+            {feature.geometry.type !== 'Point' && (
               <GeoJSONLeaflet
                 data={feature}
                 coordsToLatLng={(coords) => utmToLatLng(coords, resource.coordinateFormat)}
@@ -98,13 +102,11 @@ export default function GeoMap({
 }
 
 function getLabelForKey(properties: GeoJSON.GeoJsonProperties, groupKey: string | undefined) {
-  if (
-    groupKey &&
-    properties !== null &&
-    properties[groupKey] !== undefined &&
-    typeof properties[groupKey] === 'string'
-  ) {
-    return properties[groupKey];
+  if (groupKey && properties !== null) {
+    const groupKeyString = String(groupKey);
+    if (properties[groupKeyString] !== undefined) {
+      return String(properties[groupKey]);
+    }
   }
 }
 

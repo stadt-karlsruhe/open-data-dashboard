@@ -1,11 +1,11 @@
-import { Category, Configuration, Dashboard, Resource } from '@/schemas/configurationSchema';
+import { Category, Configuration, Dashboard, Resource } from '@/schemas/configuration/configurationSchema';
 
 import YAML from 'yaml';
 import { promises as fs } from 'node:fs';
 import { merge } from 'ts-deepmerge';
 import path from 'node:path';
 
-const DEFAULT_CONFIGURATION_DIR = './config';
+const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
 
 export async function getConfiguration() {
     try {

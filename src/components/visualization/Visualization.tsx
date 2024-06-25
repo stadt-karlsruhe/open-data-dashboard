@@ -1,4 +1,4 @@
-import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configurationSchema';
+import { GeoJSONResource, JSONResource, Resource } from '@/schemas/configuration/configurationSchema';
 
 import ChartTableWrapper from '@/components/layout/ChartTableWrapper';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
@@ -10,7 +10,23 @@ const GeoMap = dynamic(() => import('@/components/visualization/map/GeoMap'), {
   ssr: false,
 });
 
-export default async function Visualization({ resource }: { resource: JSONResource | GeoJSONResource }) {
+export default async function Visualization({
+  resource,
+  height,
+  options = {
+    showFilter: true,
+    useQueryParams: true,
+    showOnlyFirstVis: false,
+  },
+}: {
+  resource: JSONResource | GeoJSONResource;
+  height?: string | number;
+  options?: {
+    showFilter?: boolean;
+    useQueryParams?: boolean;
+    showOnlyFirstVis?: boolean;
+  };
+}) {
   let data;
   try {
     // TODO: Remove this, once the issue with the server is fixed
@@ -26,9 +42,16 @@ export default async function Visualization({ resource }: { resource: JSONResour
   }
 
   if (resource.type === 'GeoJSON') {
-    return <GeoMap resource={resource} geoJsonData={validatedData as GeoJSON.FeatureCollection} />;
+    return <GeoMap resource={resource} geoJsonData={validatedData as GeoJSON.FeatureCollection} height={height} />;
   }
-  return <ChartTableWrapper resource={resource} transformedData={validatedData as TransformedData[]} />;
+  return (
+    <ChartTableWrapper
+      resource={resource}
+      transformedData={validatedData as TransformedData[]}
+      options={options}
+      height={height}
+    />
+  );
 }
 
 async function fetchData(resource: Resource) {

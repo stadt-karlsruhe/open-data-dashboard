@@ -1,6 +1,6 @@
 'use client';
 
-import { Configuration } from '@/schemas/configurationSchema';
+import { Configuration } from '@/schemas/configuration/configurationSchema';
 import NavigationContent from './NavigationContent';
 import { Offcanvas } from 'react-bootstrap';
 import { useShowNavigation } from './NavigationProvider';
@@ -24,7 +24,7 @@ export default function Navigation({ configuration }: { configuration: Configura
       <NavigationContent
         categories={configuration.categories}
         dashboards={configuration.dashboards}
-        className="d-none d-lg-block me-lg-5"
+        className="d-none d-lg-block me-lg-2"
       />
     </div>
   );

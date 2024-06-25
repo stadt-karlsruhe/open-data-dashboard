@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { csvResource, geoJSONResource, jsonResource } from '~/data/resources';
+import { csvResource, geoJSONResource, jsonResource, jsonResourceInvalid } from '~/data/resources';
 import { csvValid, geoJSON, jsonFormatNotSupported, jsonStandard } from '~/data/dataFormats';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
@@ -72,7 +72,7 @@ describe('component Visualization', () => {
     expect.hasAssertions();
     jest.mocked(global.fetch).mockResolvedValueOnce(mockResponse(jsonFormatNotSupported));
 
-    const VisualizationComponent = await Visualization({ resource: jsonResource });
+    const VisualizationComponent = await Visualization({ resource: jsonResourceInvalid });
     render(VisualizationComponent);
 
     expect(screen.getByText('Mocked ErrorComponent')).toBeInTheDocument();

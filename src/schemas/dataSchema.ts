@@ -11,11 +11,22 @@ export const transformedDataArraySchema = z.array(transformedDataSchema).min(1, 
     message: 'At least one data object must be contained. The endpoint probably returned empty or malformed data.',
 });
 
-type AllowedGeometry = GeoJSON.Point | GeoJSON.LineString | GeoJSON.Polygon;
+type AllowedGeometry =
+    | GeoJSON.Point
+    | GeoJSON.MultiPoint
+    | GeoJSON.LineString
+    | GeoJSON.MultiLineString
+    | GeoJSON.Polygon
+    | GeoJSON.MultiPolygon;
 
 const pointGeometrySchema = z.object({
     coordinates: z.tuple([z.number(), z.number()]),
     type: z.literal('Point'),
+});
+
+const multiPointGeometrySchema = z.object({
+    coordinates: z.tuple([z.number(), z.number()]).array(),
+    type: z.literal('MultiPoint'),
 });
 
 const lineGeometrySchema = z.object({
@@ -23,15 +34,32 @@ const lineGeometrySchema = z.object({
     type: z.literal('LineString'),
 });
 
+const multiLineGeometrySchema = z.object({
+    coordinates: z.tuple([z.number(), z.number()]).array().array(),
+    type: z.literal('MultiLineString'),
+});
+
 const polygonGeometrySchema = z.object({
     coordinates: z.tuple([z.number(), z.number()]).array().array(),
     type: z.literal('Polygon'),
 });
 
+const multiPolygonGeometrySchema = z.object({
+    coordinates: z.tuple([z.number(), z.number()]).array().array().array(),
+    type: z.literal('MultiPolygon'),
+});
+
 const featureSchema = z.object({
     type: z.literal('Feature'),
     properties: transformedDataSchema,
-    geometry: z.union([pointGeometrySchema, lineGeometrySchema, polygonGeometrySchema]),
+    geometry: z.union([
+        pointGeometrySchema,
+        multiPointGeometrySchema,
+        lineGeometrySchema,
+        multiLineGeometrySchema,
+        polygonGeometrySchema,
+        multiPolygonGeometrySchema,
+    ]),
 }) satisfies z.ZodType<GeoJSON.Feature<AllowedGeometry>>;
 
 export const geoJSONSchema = z.object({

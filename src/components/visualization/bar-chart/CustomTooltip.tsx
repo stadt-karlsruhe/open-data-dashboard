@@ -11,10 +11,10 @@ export default function CustomTooltip(props: CustomTooltipProps) {
   if (!props.active) {
     return null;
   }
-  if (props.payload === undefined) {
+  if (!props.payload?.[0]?.payload) {
     return <DefaultTooltipContent {...props} />;
   }
-  const yAxes = computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>()) as Map<string, boolean>;
+  const yAxes = computeIfAbsent(props.axesMap, props.xAxis, () => new Map<string, boolean>());
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const payloadAddition = Object.entries(props.payload[0].payload)
     .filter((entry) => entry[0] !== props.xAxis && !yAxes.has(entry[0]))
