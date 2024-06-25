@@ -29,6 +29,10 @@ $utilities: map-merge(
   max-height: fit-content !important;
 }
 
+.custom-opacity:hover {
+    opacity: 0.7;
+}
+
 @import 'bootstrap/scss/utilities/api';
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
