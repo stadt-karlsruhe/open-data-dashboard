@@ -32,7 +32,7 @@ export const csvResource: JSONResource = {
 };
 
 export const geoJSONResource: GeoJSONResource = {
-    id: '3',
+    id: '4',
     source: mockSource,
     name: 'GeoJSON Resource',
     type: 'GeoJSON',
@@ -40,6 +40,17 @@ export const geoJSONResource: GeoJSONResource = {
     numberFormat: 'en',
     visualizations: {
         map: {},
+    },
+};
+
+export const jsonResourceInvalid: JSONResource = {
+    id: '5',
+    source: mockSource,
+    name: 'JSON Resource',
+    type: 'JSON',
+    numberFormat: 'en',
+    visualizations: {
+        table: {},
     },
 };
 
