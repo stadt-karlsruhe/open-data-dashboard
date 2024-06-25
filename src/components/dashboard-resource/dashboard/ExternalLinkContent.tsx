@@ -30,7 +30,7 @@ export default function ExternalLinkContent({
       }}
     >
       {content.icon && <i className={`bi bi-${content.icon} me-1`} />}
-      <span className="d-none d-md-inline text-wrap">{content.text}</span>
+      <span className="text-wrap">{content.text}</span>
     </Link>
   );
 }
