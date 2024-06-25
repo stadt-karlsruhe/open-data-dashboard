@@ -19,6 +19,9 @@ type ParsedData =
     | { success: false; validatedData: undefined; error: string };
 
 export function getValidatedConfiguration(): Promise<ParsedConfiguration> {
+    if (process.env.NODE_ENV === 'development') {
+        return validateConfiguration();
+    }
     return computeIfUncached(configurationCache, 'configuration', () => validateConfiguration());
 }
 

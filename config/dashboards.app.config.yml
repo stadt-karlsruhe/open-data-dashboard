@@ -171,11 +171,11 @@ dashboards:
                   name: Sportvereine
     - id: "5"
       name: Für Zugezogene
-      description: Hier sind alle Informationen aufgelistet, die Du für deinen Umzug nach Karlsruhe brauchst.
+      description: Hier sind alle Informationen aufgelistet, die Du für deine Ankunft in Karlsruhe brauchst.
       icon: house-heart
       contents:
           - - type: RESOURCE
-              resourceId: 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
+              resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
             - - type: LINK_INTERNAL
                 linkedType: resource
                 uniqueIdentifier: c867155b-5f28-4d25-882e-422fb3ae18aa
@@ -218,6 +218,11 @@ dashboards:
                 text: Events in Karlsruhe
                 target: https://www.karlsruhe-erleben.de/veranstaltungen
                 backgroundColor: "#522980"
+              - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Karlsruher Verkehrsbetriebe
+                icon: train-lightrail-front
+                backgroundColor: "#C30A37"
               - type: EXTERNAL
                 source: https://www.kvv-nextbike.de/en/
                 name: KVV Nextbike
