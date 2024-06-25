@@ -1,7 +1,7 @@
 import DashboardContents from '@/components/dashboard-resource/dashboard/DashboardContents';
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import Image from 'next/image';
-import KarlsruheCastle from '@/public/Karlsruhe_Palace.png';
+import KarlsruhePalace from '@/public/Karlsruhe_Palace.png';
 import Link from 'next/link';
 import Search from '@/components/search/Search';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
@@ -21,7 +21,7 @@ export default async function Home() {
       <div className="position-relative w-100" style={{ height: '500px' }}>
         <Image
           className="object-fit-cover"
-          src={KarlsruheCastle as StaticImport}
+          src={KarlsruhePalace as StaticImport}
           alt={t('imageAlt')}
           priority
           fill

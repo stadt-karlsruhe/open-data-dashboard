@@ -35,7 +35,12 @@ export default function DashboardContent({
   if (content.type === 'RESOURCE') {
     const resource = configuration.resources.find((resource) => resource.id === content.resourceId);
     if (!resource) {
-      return <ErrorComponent type="configurationError" error={'Dashboard resource not found in configuration!'} />;
+      return (
+        <ErrorComponent
+          type="configurationError"
+          error={`'Dashboard resource with id ${content.resourceId} not found in configuration!'`}
+        />
+      );
     }
     return <ResourceContent content={content} resource={resource} className={className} style={style} />;
   }
@@ -78,7 +83,10 @@ export default function DashboardContent({
     return element ? (
       <InternalLinkContent content={content} element={element} className={className} style={style} />
     ) : (
-      <ErrorComponent type="configurationError" error={'Dashboard resource not found in configuration!'} />
+      <ErrorComponent
+        type="configurationError"
+        error={`'Dashboard resource with uniqueIdentifier ${content.uniqueIdentifier} not found in configuration!'`}
+      />
     );
   }
   return <ExternalLinkContent content={content} className={className} style={style} />;
