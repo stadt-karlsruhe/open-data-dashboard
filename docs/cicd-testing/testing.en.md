@@ -20,7 +20,7 @@ npm run dev:cypress
 or
 
 ```bash title="Build Next.js application for Cypress and start application"
-npm run build:cypress
+npm run build
 npm run start:cypress
 ```
 
