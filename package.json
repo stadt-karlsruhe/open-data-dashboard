@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "dev:cypress": "cross-env CONFIGURATION_DIR=./__tests__/cypress/config next dev",
-    "build:cypress": "cross-env CONFIGURATION_DIR=./__tests__/cypress/config next build",
     "start:cypress": "cross-env CONFIGURATION_DIR=./__tests__/cypress/config next start",
     "lint": "next lint --dir src __tests__ --no-cache && tsc --noEmit",
     "test": "jest --coverage",
