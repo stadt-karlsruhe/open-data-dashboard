@@ -9,7 +9,7 @@ export default function Navigation({ configuration }: { configuration: Configura
   const { show, setShow } = useShowNavigation();
 
   return (
-    <div>
+    <div data-cy="navigation">
       <Offcanvas
         show={show}
         onHide={() => {

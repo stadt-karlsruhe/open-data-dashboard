@@ -40,5 +40,10 @@ Otherwise, you can check the validity of the configuration by taking a look at t
 
 By default, the application will look for configuration files in the `/config` directory and all of its subdirectories.
 You can specify a different configuration location by setting the `CONFIGURATION_DIR` environment variable.
+The `CONFIGURATION_DIR` environment variable can contain an absolute or a relative path
+
+!!! example
+    `CONFIGURATION_DIR`=C:/Users/MaxMustermann/Dashboard/config <br>
+    `CONFIGURATION_DIR`=./config"
 
 Make sure the all configuration file names end either with `app.config.yml` or `app.config.yaml`.

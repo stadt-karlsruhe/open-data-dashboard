@@ -3,3 +3,4 @@ extends:
     - plugin:cypress/recommended
 rules:
     jest/require-hook: off
+    jest/valid-expect: off

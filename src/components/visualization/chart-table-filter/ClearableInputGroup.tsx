@@ -31,6 +31,7 @@ export function ClearableInputGroup({
         name={t('clearTooltip')}
         title={t('clearTooltip')}
         onClick={onClear}
+        data-cy="clear"
       >
         <i className="bi bi-x-lg"></i>
       </button>
