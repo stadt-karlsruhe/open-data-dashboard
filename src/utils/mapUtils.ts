@@ -39,17 +39,21 @@ export function computeIfUncached<V extends object>(
 export function configurationToDashboards(configuration: Configuration) {
     return configuration.dashboards
         .filter((dashboard) => dashboard.id !== 'homepage')
-        .map((dashboard) => dashboardToDataElement(dashboard));
+        .map((dashboard) => dashboardToDataElement(dashboard))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToResources(configuration: Configuration, category?: Category) {
     return configuration.resources
         .filter((resource) => category === undefined || category.resources?.includes(resource.id.toLowerCase()))
-        .map((resource) => resourceToDataElement(resource));
+        .map((resource) => resourceToDataElement(resource))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToCategories(configuration: Configuration) {
-    return configuration.categories.map((category) => categoryToDataElement(category));
+    return configuration.categories
+        .map((category) => categoryToDataElement(category))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function configurationToSubcategories(configuration: Configuration, category?: Category) {
@@ -61,7 +65,8 @@ export function configurationToSubcategories(configuration: Configuration, categ
                 categoryName: cat.name,
             })),
         )
-        .map((subcategory) => categoryToDataElement(subcategory, subcategory.categoryName));
+        .map((subcategory) => categoryToDataElement(subcategory, subcategory.categoryName))
+        .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function resourceToDataElement(resource: Resource) {
