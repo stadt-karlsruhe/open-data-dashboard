@@ -28,8 +28,8 @@ jest.mock<typeof import('node:fs')>('node:fs', () => {
     },
   };
 });
-
-jest.mock<typeof import('@/schemas/validate')>('@/schemas/validate', () => {
+// eslint-disable-next-line jest/no-untyped-mock-factory
+jest.mock('@/schemas/validate', () => {
   return {
     getValidatedData: jest.fn(),
     getValidatedConfiguration: jest.fn(),

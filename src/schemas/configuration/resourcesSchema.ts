@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const baseResourceSchema = z
     .object({
-        id: z.string(),
+        id: z.string().regex(/^[\w-]+$/u, 'ID must contain only alphanumeric characters, dashes, and underscores'),
         source: z.string().url(),
         name: z.string(),
         description: z.string().optional(),

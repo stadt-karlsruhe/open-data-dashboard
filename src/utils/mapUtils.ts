@@ -11,7 +11,7 @@ import { DataElement } from '@/types/data';
 import { LRUCache } from 'lru-cache';
 import { getIconForResource } from './icons';
 
-export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaultValueFn: () => unknown) {
+export function computeIfAbsent<K, V>(map: Map<K, V>, key: K, defaultValueFn: () => V) {
     let value = map.get(key);
     if (value === undefined) {
         value = defaultValueFn();
@@ -20,15 +20,18 @@ export function computeIfAbsent(map: Map<unknown, unknown>, key: unknown, defaul
     return value;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defaultValueFn: () => unknown) {
-    let value = cache.get(key) as unknown;
+export function computeIfUncached<V extends object>(
+    cache: LRUCache<string, V>,
+    key: string,
+    defaultValueFn: () => V,
+): V {
+    let value = cache.get(key);
     if (value === undefined) {
-        console.debug(`cache miss! key: ${key as string}`);
+        console.debug(`cache miss! key: ${String(key)}`);
         value = defaultValueFn();
         cache.set(key, value);
     } else {
-        console.debug(`cache hit! key: ${key as string}`);
+        console.debug(`cache hit! key: ${String(key)}`);
     }
     return value;
 }
