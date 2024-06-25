@@ -44,15 +44,17 @@ export default function NavigationContent({
             <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
           </Link>
           <div className="d-flex flex-column">
-            {dashboards.map((dashboard, index) => (
-              <Link
-                key={index}
-                href={`/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`}
-                className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
-              >
-                <i className={`bi bi-${dashboard.icon}`} /> {dashboard.name}
-              </Link>
-            ))}
+            {dashboards
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((dashboard, index) => (
+                <Link
+                  key={index}
+                  href={`/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`}
+                  className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
+                >
+                  <i className={`bi bi-${dashboard.icon}`} /> {dashboard.name}
+                </Link>
+              ))}
           </div>
         </ListGroup.Item>
         <ListGroup.Item className="pe-md-5">
@@ -60,15 +62,17 @@ export default function NavigationContent({
             <i className="bi bi-folder-fill" /> {t('data')}
           </Link>
           <div className="d-flex flex-column">
-            {categories.map((category, index) => (
-              <Link
-                key={index}
-                href={`/overview/resources/${sanitizeString(category.name).toLowerCase()}`}
-                className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
-              >
-                <i className={`bi bi-${category.icon}`} /> {category.name}
-              </Link>
-            ))}
+            {categories
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((category, index) => (
+                <Link
+                  key={index}
+                  href={`/overview/resources/${sanitizeString(category.name).toLowerCase()}`}
+                  className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
+                >
+                  <i className={`bi bi-${category.icon}`} /> {category.name}
+                </Link>
+              ))}
           </div>
         </ListGroup.Item>
       </ListGroup>
