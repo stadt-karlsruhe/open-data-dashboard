@@ -34,7 +34,7 @@ dashboards:
                     - title: Wusstest du schon?
                       text: Die Hoepfnerburg ist an Schloss Neuschwanstein angelehnt und besitzt sogar eine sehr akkurate Kopie des Schlossturms.
                     - title: Wusstest du schon?
-                      text: Die YouTuber MrWissen2Go und Alexander Giesecke (Simpleclub) studierten beide am KIT.
+                      text: Die YouTuber Mirko Drotschmann (MrWissen2Go) und Alexander Giesecke (Simpleclub) studierten beide am KIT.
                     - title: Wusstest du schon?
                       text: Karlsruhe hält den Rekord für das größte Biertasting der Welt mit 1520 Teilnehmerinnen und Teilnehmern.
                     - title: Wusstest du schon?
@@ -123,7 +123,7 @@ dashboards:
                 resourceId: 528cc3da-baf5-403d-a6c7-906113281c83
     - id: "3"
       name: Kultur und öffentliches Leben
-      description: Neben Kulturangeboten und Wochenmärkte, findest Du hier Informationen zu städtischen Behörden.
+      description: Neben Kulturangeboten und Wochenmärkten, findest Du hier Informationen zu städtischen Behörden.
       icon: music-note-beamed
       contents:
           - - - type: RESOURCE
@@ -146,7 +146,7 @@ dashboards:
               resourceId: 31876be7-9487-461e-bc10-c470c4a05f1b
     - id: "4"
       name: Freizeitangebote
-      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein, mithilfe des Freizeit-Dashboards.
+      description: Entdecke die tollen Radwege Deiner Stadt oder finde Deinen neuen Sportverein mithilfe des Freizeit-Dashboards.
       icon: person-arms-up
       contents:
           - - - type: RESOURCE
@@ -191,7 +191,7 @@ dashboards:
               resourceId: 6ea017ac-f3db-4f99-b587-09de9048ad0c
     - id: "6"
       name: Für Studierende
-      description: Alle wichtigen Informationen für Studierende findest Du hier auf einem Blick, egal ob Mensapläne oder ÖPNV.
+      description: Alle wichtigen Informationen für Studierende findest Du hier auf einem Blick.
       icon: mortarboard-fill
       contents:
           - - type: RESOURCE
