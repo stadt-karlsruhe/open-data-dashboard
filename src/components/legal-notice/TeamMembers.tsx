@@ -3,19 +3,22 @@ const teamMembers = [
   {
     name: 'Chiara Scheurer',
     github: 'https://github.com/ChiaraScheurer',
+    linkedIn: 'https://www.linkedin.com/in/chiara-scheurer/',
   },
   {
     name: 'Abdullah Atak',
     github: 'https://github.com/Abdryy',
-    linkedIn: 'https://www.linkedin.com/in/abdullah-atak',
+    linkedIn: 'https://www.linkedin.com/in/abdullah-atak/',
   },
   {
     name: 'Christian Holst',
     github: 'https://github.com/ChromatisGit',
+    linkedIn: 'https://www.linkedin.com/in/christian-business-it/',
   },
   {
     name: 'Jan Kuhnmünch',
     github: 'https://github.com/Zerdados',
+    linkedIn: 'http://www.linkedin.com/in/jan-kuhnmuench/',
   },
   {
     name: 'Daniel Purtov',
