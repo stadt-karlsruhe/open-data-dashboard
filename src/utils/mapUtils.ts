@@ -28,7 +28,7 @@ export function computeIfUncached(cache: LRUCache<any, any>, key: unknown, defau
         value = defaultValueFn();
         cache.set(key, value);
     } else {
-        console.debug('cache hit!');
+        console.debug(`cache hit! key: ${key as string}`);
     }
     return value;
 }
