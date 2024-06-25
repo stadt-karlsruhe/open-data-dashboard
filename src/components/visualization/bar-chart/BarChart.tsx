@@ -59,7 +59,7 @@ export default function BarChart({
     ));
   }
   return (
-    <>
+    <div data-cy="bar-chart">
       <AxisSelector axesMap={axesMap} setAxis={setXAxis} />
       <ResponsiveContainer debounce={200} aspect={aspect}>
         <BarChartRecharts
@@ -90,7 +90,7 @@ export default function BarChart({
           {getBars()}
         </BarChartRecharts>
       </ResponsiveContainer>
-    </>
+    </div>
   );
 }
 

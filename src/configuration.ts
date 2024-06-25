@@ -5,7 +5,7 @@ import { promises as fs } from 'node:fs';
 import { merge } from 'ts-deepmerge';
 import path from 'node:path';
 
-const DEFAULT_CONFIGURATION_DIR = `${process.cwd()}/config`;
+const DEFAULT_CONFIGURATION_DIR = './config';
 
 export async function getConfiguration() {
     try {

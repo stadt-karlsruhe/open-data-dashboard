@@ -38,6 +38,10 @@ nav:
                 - configuration/dashboards.md
           - Supported Data: configuration/data-types.md
     - Development: development/index.md
+    - CI/CD and Testing:
+          - cicd-testing/ci.md
+          - cicd-testing/cd.md
+          - cicd-testing/testing.md
 plugins:
     - search
     - glightbox

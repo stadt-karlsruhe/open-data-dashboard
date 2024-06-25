@@ -1,28 +1,19 @@
 import { cy, describe, it } from 'local-cypress';
 
-const searchbar = 'input[placeholder="Search"]';
-
 describe('homepage tests', () => {
-    it('visiting root should redirect to homepage', () => {
+    // TODO: Add checks for additional homepage content
+    it('visiting root should redirect to homepage, homepage should contain elements, search should work', () => {
         cy.visit('');
         cy.url().should('include', '/home');
-    });
-    it('homepage should contain title', () => {
-        cy.visit('');
-        cy.get('title').contains('Open Data Dashboard');
-    });
-    it('homepage should contain searchbar', () => {
-        cy.visit('');
-        cy.get(searchbar);
-    });
-    it('searchbar should find entry', () => {
-        cy.visit('');
-        cy.get(searchbar).type('Wohnberechtigte');
+
+        cy.get('[data-cy="header"]');
+        cy.get('[data-cy="footer"]');
+        cy.get('[data-cy="navigation"]');
+
+        cy.get('input[placeholder="Search"]').as('inputField').type('Wohnberechtigte');
         cy.contains('Wohnberechtigte Bevölkerung');
-    });
-    it('searchbar should find entry with typos', () => {
-        cy.visit('');
-        cy.get(searchbar).type('Wohnerecht');
+        cy.get('@inputField').clear();
+        cy.get('@inputField').type('Wohnerecht');
         cy.contains('Wohnberechtigte Bevölkerung');
     });
 });

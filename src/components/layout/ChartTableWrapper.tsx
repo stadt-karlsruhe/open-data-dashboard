@@ -97,6 +97,7 @@ export default function ChartTableWrapper({
           setVisualizationParameter(eventKey ?? '');
         }}
         className="mt-1 mt-md-3"
+        data-cy="layout-tabs"
       >
         {Object.entries(resource.visualizations).map(([diagramType, diagramAttr], index) => (
           <Tab

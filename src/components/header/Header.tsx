@@ -15,6 +15,7 @@ const { Link, usePathname } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function Header({ configuration }: { configuration: Configuration }) {
   const { show, setShow } = useShowNavigation();
   const t = useTranslations('Header');
@@ -22,7 +23,7 @@ export default function Header({ configuration }: { configuration: Configuration
   return (
     <div className="bg-white py-1 py-lg-3">
       <div className="container-lg">
-        <div className="d-flex justify-content-between align-items-center m-2">
+        <div className="d-flex justify-content-between align-items-center m-2" data-cy="header">
           <button
             className="d-block d-lg-none btn btn-secondary border-0 fs-2"
             onClick={() => {
@@ -35,10 +36,11 @@ export default function Header({ configuration }: { configuration: Configuration
           <Link
             href="/home"
             className="link link-secondary link-underline-opacity-0 text-black fs-5 fs-lg-2 text-nowrap"
+            data-cy="title"
           >
             {t('title')}
           </Link>
-          <div className="d-flex flex-fill mx-lg-3 mx-xl-5">
+          <div className="d-flex flex-fill mx-lg-3 mx-xl-5" data-cy="header-searchbar">
             {showSearchbar && (
               <Search
                 configuration={configuration}
@@ -52,6 +54,7 @@ export default function Header({ configuration }: { configuration: Configuration
             src={LogoKarlsruheSmall as StaticImport}
             alt={'LogoKarlsruheSmall'}
             height={50}
+            data-cy="header-logo-small"
           />
           <Image
             className="d-none d-lg-block"
@@ -59,6 +62,7 @@ export default function Header({ configuration }: { configuration: Configuration
             alt={'LogoKarlsruhe'}
             height={60}
             priority={true}
+            data-cy="header-logo"
           />
         </div>
       </div>

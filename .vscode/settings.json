@@ -3,6 +3,7 @@
     "cSpell.words": [
         "backreference",
         "camelcase",
+        "cicd",
         "concat",
         "deepmerge",
         "defaulticon",
@@ -25,6 +26,7 @@
         "parens",
         "Parens",
         "proto",
+        "searchbar",
         "Searchbar",
         "sonarjs",
         "typeahead",

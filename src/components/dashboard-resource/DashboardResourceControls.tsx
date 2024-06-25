@@ -27,7 +27,12 @@ export default function DashboardResourceControls({ type, element }: DashboardRe
 
   return (
     <div className="d-flex flex-row justify-content-center justify-content-md-between mb-3">
-      <Link className="btn btn-primary" href={`/embed/${type}/${element.id}${getParams()}`} title={t('fullscreen')}>
+      <Link
+        className="btn btn-primary"
+        href={`/embed/${type}/${element.id}${getParams()}`}
+        title={t('fullscreen')}
+        data-cy="control-fullscreen"
+      >
         <i className="bi bi-arrows-fullscreen" /> <span className="d-none d-md-inline">{t('fullscreen')}</span>
       </Link>
       <div className="d-flex flex-row">
@@ -37,11 +42,18 @@ export default function DashboardResourceControls({ type, element }: DashboardRe
             setShow(true);
           }}
           title={t('embed')}
+          data-cy="control-embed"
         >
           <i className="bi bi-code-slash" /> <span className="d-none d-md-inline">{t('embed')}</span>
         </button>
         {type === 'resource' && (
-          <Link className="btn btn-primary ms-1 ms-md-3" href={element.source} target="_blank" title={t('download')}>
+          <Link
+            className="btn btn-primary ms-1 ms-md-3"
+            href={element.source}
+            target="_blank"
+            title={t('download')}
+            data-cy="control-download"
+          >
             <i className="bi bi-download" /> <span className="d-none d-md-inline">{t('download')}</span>
           </Link>
         )}

@@ -31,6 +31,7 @@ export default function EmbedModal({ show, type, element, setShow }: EmbedModalP
         setIFrameHeight('400');
         setKeepParams(true);
       }}
+      data-cy="embed-modal"
     >
       <Modal.Header closeButton>
         <Modal.Title>{t(`${type}Title`)}</Modal.Title>
@@ -51,6 +52,7 @@ export default function EmbedModal({ show, type, element, setShow }: EmbedModalP
               className="form-control"
               id="widthInput"
               aria-describedby="widthInput"
+              data-cy="embed-width"
             />
           </div>
           <div className="col-6">
@@ -66,6 +68,7 @@ export default function EmbedModal({ show, type, element, setShow }: EmbedModalP
               className="form-control"
               id="heightInput"
               aria-describedby="heightInput"
+              data-cy="embed-height"
             />
           </div>
         </div>

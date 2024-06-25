@@ -35,12 +35,12 @@ export default function NavigationContent({
         }}
       >
         <ListGroup.Item className="pe-md-5">
-          <Link href="/home" className="nav-link text-nowrap">
+          <Link href="/home" className="nav-link text-nowrap" data-cy="navigation-home">
             <i className={`bi bi-${homepage.icon}`} /> {t('home')}
           </Link>
         </ListGroup.Item>
         <ListGroup.Item className="pe-md-5">
-          <Link href="/overview/dashboards" className="nav-link text-nowrap">
+          <Link href="/overview/dashboards" className="nav-link text-nowrap" data-cy="navigation-dashboards">
             <i className="bi bi-bar-chart-fill" /> {t('dashboards')}
           </Link>
           <div className="d-flex flex-column">
@@ -51,6 +51,7 @@ export default function NavigationContent({
                   key={index}
                   href={`/dashboard/${concatenateNameAndId(dashboard.name, dashboard.id)}`}
                   className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
+                  data-cy="navigation-dashboards-secondary"
                 >
                   <i className={`bi bi-${dashboard.icon}`} /> {dashboard.name}
                 </Link>
@@ -58,7 +59,7 @@ export default function NavigationContent({
           </div>
         </ListGroup.Item>
         <ListGroup.Item className="pe-md-5">
-          <Link href="/overview/resources" className="nav-link text-nowrap">
+          <Link href="/overview/resources" className="nav-link text-nowrap" data-cy="navigation-data">
             <i className="bi bi-folder-fill" /> {t('data')}
           </Link>
           <div className="d-flex flex-column">
@@ -69,6 +70,7 @@ export default function NavigationContent({
                   key={index}
                   href={`/overview/resources/${sanitizeString(category.name).toLowerCase()}`}
                   className="link-secondary link-underline-opacity-0 m-1 ms-3 text-nowrap"
+                  data-cy="navigation-data-secondary"
                 >
                   <i className={`bi bi-${category.icon}`} /> {category.name}
                 </Link>

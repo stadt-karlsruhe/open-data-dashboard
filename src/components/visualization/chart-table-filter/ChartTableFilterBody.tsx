@@ -83,7 +83,12 @@ export function ChartTableFilterBody({
           );
         })}
         <div className="d-flex justify-content-end mt-3">
-          <button title={t('clearAllTooltip')} className="btn btn-secondary px-5" onClick={onClearAll}>
+          <button
+            title={t('clearAllTooltip')}
+            className="btn btn-secondary px-5"
+            onClick={onClearAll}
+            data-cy="clear-all"
+          >
             {t('clearAll')}
           </button>
         </div>
