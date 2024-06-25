@@ -2,7 +2,7 @@
 
 !!! warning
     Dashboards in their current form are a **proof-of-concept (POC) implementation**.
-    Certainly, not all edge-cases are covered and the configuration is not particularly beginner-friendly.
+    Not all edge-cases are covered and the configuration is not particularly beginner-friendly.
     Make sure you are well-familiar with the `Open Data Dashboard` before configuring.
 
 Dashboards can be used to display multiple resources related to a single topic on one page.
@@ -53,7 +53,7 @@ In the example below, two rows are created where their contents fill the entire 
         - - <content-configuration>
     ```
 
-To position element within the same row but below each other, an optional third level of the array can be used.
+To position an element within the same row but below each other, an optional third level of the array can be used.
 In the example below, a single row is created.
 There, the first content takes up all vertical space of the row while the second and third contents share the vertical space between them:
 
@@ -65,10 +65,10 @@ There, the first content takes up all vertical space of the row while the second
           - - <content-configuration>
             - <content-configuration>
     ```
-**Recommendation:** Do not put more than three contents next to each other horizontally.
+**Recommendation:** Do not put more than three content elements next to each other horizontally.
 
 !!! note
-    For complex examples, refer to the configuration in the GitHub repository.
+    For complex examples, refer to the configuration in the [GitHub repository](https://github.com/stadt-karlsruhe/open-data-dashboard).
 
 ### Sizing
 

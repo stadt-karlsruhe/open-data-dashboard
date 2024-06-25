@@ -17,7 +17,7 @@ Available Themes:
 
 ## Icons
 
-Some configurations allow specifying a custom icon.
+Some configuration options allow specifying a custom icon.
 The `Open Data Dashboard` uses the [Bootstrap Icons](https://icons.getbootstrap.com/) library. Any icon available there can be used.
 
 !!! note
@@ -26,6 +26,6 @@ The `Open Data Dashboard` uses the [Bootstrap Icons](https://icons.getbootstrap.
 
 ## Colors
 
-Some configurations allow specifying a custom [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color) or [background color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color).
+Some configuration options allow specifying a custom [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color) or [background color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color).
 Any [legal CSS color values](https://www.w3schools.com/cssref/css_colors_legal.php) can be used. Additionally, Bootstrap CSS color variables are allowed.
 For a full list of available Bootstrap color variables refer to the [documentation](https://getbootstrap.com/docs/5.2/customize/css-variables/#root-variables).
