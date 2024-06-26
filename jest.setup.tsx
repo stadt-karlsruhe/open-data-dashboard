@@ -15,6 +15,7 @@ jest.mock<typeof import('next/navigation')>('next/navigation', () => {
       push: jest.fn(),
       replace: jest.fn(),
     }),
+    notFound: jest.fn() as unknown as () => never,
     useSearchParams: () =>
       ({
         // eslint-disable-next-line no-empty-function, @typescript-eslint/no-empty-function

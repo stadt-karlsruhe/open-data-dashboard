@@ -11,7 +11,7 @@ import { render } from '@testing-library/react';
 const mockPathname = usePathname as jest.Mocked<typeof usePathname>;
 
 describe('overview page', () => {
-  it('redirects to the "/resources" path appended to current pathname', () => {
+  it('should redirect to the "/resources" path appended to current pathname', () => {
     expect.hasAssertions();
 
     mockPathname.mockReturnValueOnce('/overview');
