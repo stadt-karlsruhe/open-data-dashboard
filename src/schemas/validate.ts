@@ -27,7 +27,7 @@ export function getValidatedConfiguration(): Promise<ParsedConfiguration> {
 
 export function getValidatedData(resource: JSONResource | GeoJSONResource, data: unknown) {
     if (process.env.NODE_ENV === 'development') {
-        validateData(resource, data) as ParsedData;
+        return validateData(resource, data) as ParsedData;
     }
     return computeIfUncached(dataCache, resource.id, () => validateData(resource, data) as ParsedData);
 }
