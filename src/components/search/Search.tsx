@@ -21,6 +21,7 @@ const { useRouter } = createSharedPathnamesNavigation({
   locales: [...locales.values()],
 });
 
+// eslint-disable-next-line max-lines-per-function
 export default function Search({
   configuration,
   id,
@@ -41,7 +42,7 @@ export default function Search({
 
   return (
     <Typeahead
-      className={className}
+      className={`d-flex ${className ?? ''}`}
       style={{ ...style, zIndex: 500 }}
       filterBy={() => true}
       id={id}
@@ -71,7 +72,22 @@ export default function Search({
       renderMenuItemChildren={(option, props) => {
         return <SearchResult element={option as DataElement} menuProps={props} />;
       }}
-    />
+    >
+      <button
+        className="d-flex align-items-center bottom-0 justify-content-center position-absolute end-0 top-0 bg-transparent me-lg-2 my-lg-2 border-0 custom-opacity"
+        style={{ color: 'var(--bs-gray-600)' }}
+        onClick={() => {
+          if (selected.length > 0) {
+            const dataElement = selected[0] as DataElement;
+            setSelected([]);
+            search('');
+            router.push(dataElement.href);
+          }
+        }}
+      >
+        <i className="bi bi-search" />
+      </button>
+    </Typeahead>
   );
 }
 
