@@ -8,7 +8,9 @@ export default async function Page({ params: { dashboardId } }: { params: { dash
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }
-  const dashboard = configuration.dashboards.find((item) => safeStringCompare(dashboardId, item.id));
+  const dashboard = configuration.dashboards
+    .filter((item) => item.id !== 'homepage')
+    .find((item) => safeStringCompare(dashboardId, item.id));
 
   if (dashboard === undefined) {
     return <ErrorComponent type="notFound" />;

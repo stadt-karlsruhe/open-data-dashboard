@@ -1,5 +1,7 @@
+import { Configuration } from '@/schemas/configuration/configurationSchema';
+
 /* eslint-disable sonarjs/no-duplicate-string */
-export const mockConfiguration = {
+export const mockConfiguration: Configuration = {
     appearance: {
         theme: 'karlsruhe',
     },
@@ -10,6 +12,7 @@ export const mockConfiguration = {
             type: 'JSON',
             name: 'Wohnberechtigte Bevölkerung',
             description: 'Die Beschreibung für die Wohnberechtigte Bevölkerung',
+            numberFormat: 'en',
             renameProperties: {
                 'mannlich (%)': 'Männlich (%)',
                 'weiblich (%)': 'Weiblich (%)',
@@ -17,12 +20,13 @@ export const mockConfiguration = {
             skipPropertiesRegEx: '^_id$',
             defaultFilters: {
                 Jahr: {
-                    min: 2009,
-                    max: 2009,
+                    min: '2009',
+                    max: '2009',
                 },
             },
             visualizations: {
                 barChart: {
+                    layout: 'horizontal',
                     axisPairs: [
                         {
                             xAxis: 'Stadtteil',
@@ -54,17 +58,33 @@ export const mockConfiguration = {
             name: 'Homepage',
             icon: 'house-door-fill',
             contents: [
-                {
-                    type: 'EXTERNAL',
-                    source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
-                    name: 'Weather',
-                },
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
+            ],
+        },
+        {
+            id: '1',
+            name: 'FirstDashboard',
+            icon: 'house-door-fill',
+            contents: [
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
             ],
         },
     ],
 };
 
-export const mockConfigurationPart1 = {
+export const mockConfigurationPart1: Partial<Configuration> = {
     appearance: {
         theme: 'karlsruhe',
     },
@@ -75,6 +95,7 @@ export const mockConfigurationPart1 = {
             type: 'JSON',
             name: 'Wohnberechtigte Bevölkerung',
             description: 'Die Beschreibung für die Wohnberechtigte Bevölkerung',
+            numberFormat: 'en',
             renameProperties: {
                 'mannlich (%)': 'Männlich (%)',
                 'weiblich (%)': 'Weiblich (%)',
@@ -82,12 +103,13 @@ export const mockConfigurationPart1 = {
             skipPropertiesRegEx: '^_id$',
             defaultFilters: {
                 Jahr: {
-                    min: 2009,
-                    max: 2009,
+                    min: '2009',
+                    max: '2009',
                 },
             },
             visualizations: {
                 barChart: {
+                    layout: 'horizontal',
                     axisPairs: [
                         {
                             xAxis: 'Stadtteil',
@@ -113,17 +135,33 @@ export const mockConfigurationPart1 = {
             name: 'Homepage',
             icon: 'house-door-fill',
             contents: [
-                {
-                    type: 'EXTERNAL',
-                    source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
-                    name: 'Weather',
-                },
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
+            ],
+        },
+        {
+            id: '1',
+            name: 'FirstDashboard',
+            icon: 'house-door-fill',
+            contents: [
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
             ],
         },
     ],
 };
 
-export const mockConfigurationPart2 = {
+export const mockConfigurationPart2: Partial<Configuration> = {
     appearance: {
         theme: 'karlsruhe',
     },
@@ -149,11 +187,27 @@ export const mockConfigurationPart2 = {
             name: 'Homepage',
             icon: 'house-door-fill',
             contents: [
-                {
-                    type: 'EXTERNAL',
-                    source: 'https://www.wetter.de/widget/heute/u0tyz1rj/false/',
-                    name: 'Weather',
-                },
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
+            ],
+        },
+        {
+            id: '1',
+            name: 'FirstDashboard',
+            icon: 'house-door-fill',
+            contents: [
+                [
+                    {
+                        type: 'RESOURCE',
+                        resourceId: '1',
+                        size: 'M',
+                    },
+                ],
             ],
         },
     ],
