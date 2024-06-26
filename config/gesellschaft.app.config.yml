@@ -188,7 +188,7 @@ resources:
                     yAxis: Weiblich
           table: {}
     - name: 6 bis unter 15 Jährige nach Geschlecht (Anteil)
-      source: https://transparenz.karlsruhe.de/datastore/dump/807eda39-ace2-4269-9b6a-00a607a4a615?bom=True
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/807eda39-ace2-4269-9b6a-00a607a4a615/download/altersstruktur-der-bevolkerung-6-bis-unter-15-jahrige-nach-geschlecht-anteil.csv
       type: CSV
       id: 807eda39-ace2-4269-9b6a-00a607a4a615
       renameProperties:
@@ -233,7 +233,7 @@ resources:
                     yAxis: Weiblich
           table: {}
     - name: 6 bis unter 15 Jährige nach Geschlecht
-      source: https://transparenz.karlsruhe.de/datastore/dump/593b2d5f-36bf-4f50-ac49-763ee5cadb1f?bom=True
+      source: https://transparenz.karlsruhe.de/dataset/cc50eb96-6c3d-4d6f-9dcd-c56c4969ff59/resource/593b2d5f-36bf-4f50-ac49-763ee5cadb1f/download/altersstruktur-der-bevolkerung-6-bis-unter-15-jahrige-nach-geschlecht.csv
       type: CSV
       id: 593b2d5f-36bf-4f50-ac49-763ee5cadb1f
       renameProperties:
@@ -969,7 +969,7 @@ resources:
                   - xAxis: Stadtteil
                     yAxis: Personen
     - name: Wanderungsvolumen
-      source: https://transparenz.karlsruhe.de/datastore/dump/b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6?bom=True
+      source: https://transparenz.karlsruhe.de/dataset/fdc3049d-14cf-4c14-b59a-1b82809242d5/resource/b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6/download/bevolkerungsbewegungen-wanderungsvolumen.csv
       type: CSV
       id: b738c1c1-8b1f-4b3a-9d7c-ffaf74c12fc6
       defaultFilters:
@@ -1247,6 +1247,7 @@ resources:
       source: https://transparenz.karlsruhe.de/datastore/dump/a976c36f-0d65-49a8-9471-c3f3f8fc6bee?bom=True
       type: CSV
       id: a976c36f-0d65-49a8-9471-c3f3f8fc6bee
+      numberFormat: de
       defaultFilters:
           Jahr:
               min: 2021
