@@ -55,6 +55,7 @@ describe('dashboard page', () => {
 
     render(PageComponent);
 
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     expect(screen.getByText('Mocked ErrorComponent')).toBeInTheDocument();
   });
 
@@ -64,6 +65,20 @@ describe('dashboard page', () => {
     jest
       .mocked(getValidatedConfiguration)
       .mockResolvedValueOnce({ success: true, configuration: mockConfiguration, error: undefined });
+    const { params } = { params: { dashboardNameAndId: 'Homepage-homepage' } };
+    const PageComponent = await Page({ params });
+
+    render(PageComponent);
+
+    expect(screen.getByText('Mocked ErrorComponent')).toBeInTheDocument();
+  });
+
+  it('should render the ErrorComponent component if the configuration returned errors', async () => {
+    expect.hasAssertions();
+
+    jest
+      .mocked(getValidatedConfiguration)
+      .mockResolvedValueOnce({ success: false, configuration: undefined, error: 'error' });
     const { params } = { params: { dashboardNameAndId: 'Homepage-homepage' } };
     const PageComponent = await Page({ params });
 

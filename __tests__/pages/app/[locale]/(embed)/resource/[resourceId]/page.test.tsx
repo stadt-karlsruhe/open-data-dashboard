@@ -65,4 +65,18 @@ describe('embedded resource page', () => {
 
     expect(screen.getByText('Mocked ErrorComponent')).toBeInTheDocument();
   });
+
+  it('should render the ErrorComponent component if the configuration returned errors', async () => {
+    expect.hasAssertions();
+
+    jest
+      .mocked(getValidatedConfiguration)
+      .mockResolvedValueOnce({ success: false, configuration: undefined, error: 'error' });
+    const { params } = { params: { resourceId: 'non-existent-resource' } };
+    const PageComponent = await Page({ params });
+
+    render(PageComponent);
+
+    expect(screen.getByText('Mocked ErrorComponent')).toBeInTheDocument();
+  });
 });
