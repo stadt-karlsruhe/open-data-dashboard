@@ -50,6 +50,13 @@ export const mockConfiguration: Configuration = {
             description: 'Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.',
             icon: 'people-fill',
             resources: ['1', '2'],
+            subcategories: [
+                {
+                    name: 'Politik',
+                    icon: 'people-fill',
+                    resources: ['1'],
+                },
+            ],
         },
     ],
     dashboards: [
@@ -127,6 +134,13 @@ export const mockConfigurationPart1: Partial<Configuration> = {
             description: 'Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.',
             icon: 'people-fill',
             resources: ['1', '2'],
+            subcategories: [
+                {
+                    name: 'Politik',
+                    icon: 'people-fill',
+                    resources: ['1'],
+                },
+            ],
         },
     ],
     dashboards: [
@@ -179,6 +193,13 @@ export const mockConfigurationPart2: Partial<Configuration> = {
             description: 'Hier sind Daten aus dem Bereich Gesellschaft zusammengefasst.',
             icon: 'people-fill',
             resources: ['1', '2'],
+            subcategories: [
+                {
+                    name: 'Politik',
+                    icon: 'people-fill',
+                    resources: ['1'],
+                },
+            ],
         },
     ],
     dashboards: [
