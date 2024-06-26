@@ -7,11 +7,25 @@ export const colorTeal = 'var(--bs-teal)';
 export const colorCyan = 'var(--bs-orange)';
 export const colorOrange = 'var(--bs-cyan)';
 export const colorRed = 'var(--bs-red)';
+export const colorBlue = 'var(--bs-blue)';
+export const colorPink = 'var(--bs-pink)';
+export const colorIndigo = 'var(--bs-indigo)';
 export const colorDark = 'var(--bs-dark)';
 export const colorLight = 'var(--bs-light)';
 export const colorGray = 'var(--bs-gray)';
 
-const colors: string[] = [colorPrimary, colorYellow, colorPurple, colorTeal, colorCyan, colorOrange];
+const colors: string[] = [
+    colorPrimary,
+    colorYellow,
+    colorPurple,
+    colorTeal,
+    colorCyan,
+    colorOrange,
+    colorBlue,
+    colorPink,
+    colorIndigo,
+    colorRed,
+];
 
 export function getColor(index: number) {
     return colors[index % colors.length];
