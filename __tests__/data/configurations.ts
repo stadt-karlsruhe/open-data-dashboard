@@ -86,6 +86,20 @@ export const mockConfiguration: Configuration = {
                         size: 'M',
                     },
                 ],
+                [
+                    [
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                    ],
+                ],
             ],
         },
     ],
@@ -170,6 +184,20 @@ export const mockConfigurationPart1: Partial<Configuration> = {
                         size: 'M',
                     },
                 ],
+                [
+                    [
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                    ],
+                ],
             ],
         },
     ],
@@ -228,6 +256,20 @@ export const mockConfigurationPart2: Partial<Configuration> = {
                         resourceId: '1',
                         size: 'M',
                     },
+                ],
+                [
+                    [
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                        {
+                            type: 'RESOURCE',
+                            resourceId: '2',
+                            size: 'M',
+                        },
+                    ],
                 ],
             ],
         },
