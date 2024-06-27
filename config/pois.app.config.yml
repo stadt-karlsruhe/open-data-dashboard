@@ -877,15 +877,6 @@ resources:
       skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
       visualizations:
           map: {}
-    - name: Barrierefrei zugängliche Parkhäuser
-      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Parken_Autoservices/MapServer/0/query?where=GRUPPENNAME_DE+%3D+%27barrierefrei%20zugängliche%20Parkhäuser%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
-      id: 42dc6869-cbfc-412a-b6b5-14feacb1e4eb
-      type: GeoJSON
-      renameProperties:
-          NAME: Name
-      skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
-      visualizations:
-          map: {}
     - name: Abschleppdienste
       source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Parken_Autoservices/MapServer/4/query?where=GRUPPENNAME_DE+%3D+%27Abschleppdienste%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       id: adbd9fbd-85d6-45ee-81c3-ed8089fa2b23

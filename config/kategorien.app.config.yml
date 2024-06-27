@@ -1,11 +1,11 @@
 ---
 categories:
 - name: Bevölkerung und Demographie
-  description: ToDo
+  description: Hier sind alle Datensätze zur Zusammensetzung und Veränderung der Bevölkerung in Karlsruhe nach Stadtteil aufgelistet.
   icon: people-fill
   subcategories:
   - name: Altersstruktur
-    description: ToDo
+    description: Hier sind Daten über die Alterverteilung der Bevölkerung zusammengefasst.
     resources:
     - 565c1c6e-a50c-46d2-8638-22896d21096f
     - 32bd3b93-7008-42a4-9736-bb83e726beb7
@@ -33,7 +33,7 @@ categories:
     - c3d707e4-c89a-4c43-ac06-fe8fdf1fd405
     - 7847b72d-1fd2-43a6-a611-907403ecdc99
   - name: Bevölkerung
-    description: ToDo
+    description: Hier sind Daten zur Gesamtzahl und Anteile der Bevölkerung mit Wohnsitz in Karlsruhe zu finden.
     resources:
     - 71ef348f-0f5b-46a0-8250-e87aae9f91bd
     - d8be5f4a-0788-4ee3-abe5-b36313ce3799
@@ -46,7 +46,7 @@ categories:
     - 168a04b0-c066-4314-8b78-db30959f46ef
     - a5f04b45-528a-41b5-8d8c-eb9677bf2fd1
   - name: Bevölkerungswachstum
-    description: ToDo
+    description: Hier befinden sich Daten zu Faktoren, die die Bevölkerungszahl beeinflussen, wie Geburten- und Sterberaten sowie Zu- und Abwanderungen.
     resources:
     - bceaadbd-5004-49ae-848f-b7a3dacc2f0c
     - 63f40b50-56d9-4c35-aa82-7cd8ddbfad25
@@ -59,7 +59,7 @@ categories:
     - 68998f09-d2ce-428d-ac59-0b7baaa4a376
     - 4eb21bba-693b-4b12-a15c-c0550ed6224d
   - name: Haushalte
-    description: ToDo
+    description: Hier sind Daten zur Zusammensetzung der Haushalte zu finden.
     resources:
     - ac4f2de9-44ac-419f-afd6-bbf670bc2a4e
     - d2917c81-f983-47c9-a56d-b5e2570d1185
@@ -81,7 +81,7 @@ categories:
     - 225a1572-d661-4ac3-b23d-76f6a32a2621
     - 503666dd-cb8d-448f-a84e-856e0c89ce1a
   - name: Migration
-    description: ToDo
+    description: Hier sind Daten, die den Anteil an Migranten in verschiedenen Bevölkerungsgruppen erfassen.
     resources:
     - 9e50219d-83a2-4e57-887f-f21cf03c2a3c
     - 3d1c9c93-3bc6-44ba-bf48-bf0f9c0d1126
@@ -94,25 +94,25 @@ categories:
     - b221c736-5d15-4841-a3ef-e9be8386a1ea
 - name: Infrastruktur und Verwaltung
   icon: rulers
-  description: ToDo
+  description: Hier sind relevante Informationen zu öffentlichen Einrichtungen, Wohnungsbeständen, wirtschaftlichen und infrastrukturellen Standorten sowie Entsorgungsmöglichkeiten in Karlsruhe enthalten.
   resources:
   - 2a7fd644-bc67-477a-bb9e-cf88f076b7af
   subcategories:
   - name: Mietspiegel
-    description: ToDo
+    description: Hier sind Übersichten aufgeführt, die zum Ermitteln der ortsüblichen Vergleichsmiete dienen.
     resources:
     - c867155b-5f28-4d25-882e-422fb3ae18aa
     - 0c1a9d7c-159b-4e16-a5c2-c6f74b7b2347
     - a73cda70-e38f-4f6b-9d7a-d1a004f8cc0d
   - name: Bauflächen
-    description: ToDo
+    description: Hier sind Baulandflächen nach Art aufgelistet.
     resources:
     - f9179118-0efa-478a-850a-798cabe9ad81
     - 6c0d48ce-75b2-498e-b757-8d8a2b350117
     - e4f28b19-7ede-4f95-bc30-e99a26b2ddd3
     - e3650edd-9b8d-435c-b9d8-3901265b3f99
   - name: Behörden und öffentliche Einrichtungen
-    description: ToDo
+    description: Hier sind die Standorte verschiedener Behörden und öffentliche Einrichtungen gelistet.
     resources:
     - c15a4896-fbc2-4646-a446-9fc3e2ad4031
     - 1fa2e661-3d82-49c1-be99-de0cb147a485
@@ -122,7 +122,7 @@ categories:
     - 75b7f8a8-de50-4857-a2cd-e4cdaa4961f8
     - ad314c22-6599-4f93-9c42-0c8c1fe3b147
   - name: Wohnungen
-    description: ToDo
+    description: Hier sind Daten zur Veränderung der Bestände unterschiedlicher Arten von Wohnungen.
     resources:
     - 6e384bac-8ebc-4418-95ba-b43e343d9faa
     - fd159d95-5aba-4eb1-be4d-f2ec92fa8f42
@@ -132,7 +132,7 @@ categories:
     - 6016eae2-4594-470b-8c1f-9da19bfaa2a4
     - 125e65b0-9c9b-4643-afb7-3fc458636173
   - name: Wirtschaft und Infrastruktur
-    description: ToDo
+    description: Hier sind die Standorte zu wirtschaftlichen und infrastrukturellen Einrichtungen der Stadt aufgelistet, einschließlich Banken, Einkaufszentren, Wasserwerke und mehr.
     resources:
     - 9ec1bac3-5c65-43fe-ba85-fa57066a39fd
     - 116b78ce-03da-4eb4-bff0-2aae48d0e6ee
@@ -151,7 +151,7 @@ categories:
     - 9800fd0d-40d5-4268-b3ab-b73747769af4
     - 9a787cde-8d16-4603-9bf2-191ae755e0b1
   - name: Entsorgung und Recycling
-    description: ToDo
+    description: Hier ist eine Übersicht der unerschiedlichen Entsorgungsstandorte.
     resources:
     - 609c92a9-26f1-4dc9-bc5f-9d877d33f6dc
     - b87db8ea-7a7a-4812-98e1-9a7382496685
@@ -162,10 +162,10 @@ categories:
     - 9c04c76e-943d-40ec-a07c-f47e0ff050fd
 - name: Gesellschaft und Kultur
   icon: music-note-beamed
-  description: ToDo
+  description: Hier ist eine Vielzahl von Daten zum kulturellen, gesellschaftlichen und sozialen Angebot Karlsruhes aufgeführt.
   subcategories:
   - name: Tourismus und Kultur
-    description: ToDo
+    description: Hier sind die Standorte verschiedener kultureller und touristischer Angeboten gelistet.
     resources:
     - 40de0c77-be1b-423d-93fb-4f86ca30d0ae
     - 050a4a4a-b8bb-4598-8ffb-7669c71b4174
@@ -183,7 +183,7 @@ categories:
     - 2e58711f-4215-4c98-92f8-17d2f37cc2f2
     - 3a25f335-90a8-40e1-9048-be35c3d99170
   - name: Freizeit und Erholung
-    description: ToDo
+    description: Hier sind die Standorte verschiedener Freizeitangebote aufgeführt.
     resources:
     - befa8f52-27f6-46c9-b2f8-45702932b5b0
     - 4d3d003d-806a-4568-bdfe-9bc763170df2
@@ -205,7 +205,7 @@ categories:
     - 76f0101d-c31c-46e3-b49b-8ac218459225
     - a3b17755-8ca4-4727-b25d-4033217f07e8
   - name: Barrierefreiheit
-    description: ToDo
+    description: Hier sind Daten zu verschiedenen Einrichtungen und Standorten erfasst, die für Menschen mit Behinderungen zugänglich sind.
     resources:
     - f67f6150-5126-4922-b15c-c7c8114e7fcc
     - b3bed9d7-709b-4306-8b8f-f8ff64b9030c
@@ -214,10 +214,8 @@ categories:
     - f371b885-5cc5-4eb3-adfa-485075754ca5
     - fb443de5-3238-4815-9845-a07f95a36526
     - b95c0b7e-62d1-4283-9a1f-6a6145ee65f5
-    - 77a729ff-d947-4166-97d7-2d32a6983225
-    - 42dc6869-cbfc-412a-b6b5-14feacb1e4eb
   - name: Gesundheit und Soziales
-    description: ToDo
+    description: Hier sind Standorte von Dienstleistungen und Einrichtungen erfasst, die auf Beratung, Betreuung und medizinische Versorgung in verschiedenen Lebenssituationen spezialisiert sind.
     resources:
     - 123e810a-340a-4f3f-9507-3492bec706db
     - 7b2dfd28-80ff-4cbf-a66b-9dd872f3b4c9
@@ -231,43 +229,43 @@ categories:
     - 5a569fc5-b394-4820-ba78-c1b5af06bce0
     - 5db4c77e-842f-42b0-ae0b-90f6353a2282
   - name: Politik
-    description: ToDo
+    description: Hier sind Wahlergebnisse verschiedener politischer Wahlen gelistet.
     resources:
     - b97c9405-ecb8-42a8-9854-560d2f921531
     - 62b3b78e-7357-49dc-beb7-5a72531abe45
   - name: Religion
-    description: ToDo
+    description: Hier sind Daten zu verschiedenen religiösen Gruppen und Gemeinschaften aufgeführt.
     resources:
     - f2128444-47e7-40ba-ab1d-eb426e69c009
     - ac2e81d4-7a1c-499b-89e4-22acd5cea109
     - 227edd1a-e547-4de6-b153-9294ebde4ba6
     - 07b52448-ca28-4f25-9c90-c45850a3425e
   - name: Bestattung
-    description: ToDo
+    description: Hier sind die Standorte von Bestattungsinstituten, Friedhöfen, Friedhofsgärtnereien sowie Steinmetzen und Grabmalen aufgeführt.
     resources:
     - af1b2dc1-55c7-469c-9097-697872ce9366
     - b06b1564-4dae-46c8-a778-3c82fb048276
     - d5c5dd23-92d0-4354-9fe6-f559b0344ae6
     - a70197c5-eedf-453b-bafa-d2156009af53
   - name: Sonstige
-    description: ToDo
+    description: Hier sind Standortinformationen über weitere Aspekte des sozialen und kulturellen Lebens gelistet, die nicht in andere spezifische Kategorien eingeordnet werden können.
     resources:
     - f02f1eb7-e7e8-4b51-b0a5-ed81ce5bf937
     - e237204a-66ca-404b-9ee2-0ac26031d482
     - 641099e3-3b0c-41c9-a469-64274b110c4d
 - name: Bildung und Forschung
   icon: mortarboard-fill
-  description: ToDo
+  description: Hier sind Informationen über verschiedene Bildungseinrichtungen und Forschungsinstitute sowie Daten zur Schulbildung und Weiterbildung von Kindern, Jugendlichen und Erwachsenen.
   subcategories:
   - name: Hochschulen und Forschung
-    description: ToDo
+    description: Hier sind die Standorte von Hochschulen und Forschungsinstituten gelistet.
     resources:
     - c2408d6a-d77e-4b76-80fb-15039d48a43b
     - 5ff578ef-328f-4195-a5e9-0f49eb09b868
     - be464ec6-4683-4efc-8e02-07d41e590225
     - 59100518-3028-4ef5-b970-9e75a1958286
   - name: Schulen
-    description: ToDo
+    description: Hier sind die Standorte und die Anzahl Schüler/-innen sortiert nach verschiedenen Schularten aufgeführt.
     resources:
     - de830f9b-e610-4afd-aafa-e71f8d9b7dc3
     - 607e618b-d89a-42e9-bfe5-b7bf4b784b28
@@ -294,7 +292,7 @@ categories:
     - 2202401b-572b-4d21-b08a-ad1cbf51ac0c
     - 27832f16-8e60-4661-8db4-db5ce89462dd
   - name: Bildung und Betreuung
-    description: ToDo
+    description: Hier sind Daten zur Weiterbildung und Betreuung von Kindern und Jugendlichen gelistet.
     resources:
     - 22cba468-e1e8-4e09-834f-0b817325aedf
     - b8368b22-cbbc-412b-a058-82175a800014
@@ -307,11 +305,11 @@ categories:
     - 8925eb09-fbec-4e39-aa1f-00943f7f8153
     - 6a8f8357-8151-4afc-958a-dc869b284d79
 - name: Mobilität
-  description: ToDo
+  description: Hier sind alle Daten, die sich auf die Verkehrsmittel Auto, Bahn und Fahrrad beziehen.
   icon: train-front-fill
   subcategories:
   - name: Parken und Verkehr
-    description: ToDo
+    description: Hier sind alle Standortdaten, die Autofahrer betreffen.
     resources:
     - 66d4ff14-96f9-44ee-8f23-4e069a3a600d
     - ea903b2c-ef9f-40c9-8ad6-dece24e29d27
@@ -331,7 +329,7 @@ categories:
     - 528cc3da-baf5-403d-a6c7-906113281c83
     - 1a1386d5-fb92-40dc-b4b6-96a1eee1a750
   - name: Öffentliche Verkehrsmittel
-    description: ToDo
+    description: Hier sind alle Strecken der Trams und S-Bahnen und die Haltestellen aufgeführt.
     resources:
     - be248122-b2a1-46c4-b05c-3552a72665b9
     - 1036a42f-3f8b-44d6-a946-a5bb4785c2f4
@@ -354,7 +352,7 @@ categories:
     - fb206486-d155-4dd2-8b7a-069b95a107c5
     - 847415f4-038e-4b53-8c87-35018801f1bf
   - name: Fahrradverkehr
-    description: ToDo
+    description: Hier sind alle Standortdaten, die Radfahrer betreffen.
     resources:
     - 215d49b7-c494-4e25-8981-3a805ac512e3
     - 6e765236-c255-4e6a-90a2-28700030c609
