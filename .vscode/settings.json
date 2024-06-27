@@ -41,7 +41,7 @@
     ],
     "jest.runMode": {
         "coverage": true,
-        "type": "on-save"
+        "type": "on-demand"
     },
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.tsdk": "node_modules/typescript/lib",
