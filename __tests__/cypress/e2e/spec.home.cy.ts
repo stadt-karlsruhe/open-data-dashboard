@@ -1,7 +1,6 @@
 import { cy, describe, it } from 'local-cypress';
 
 describe('homepage tests', () => {
-    // TODO: Add checks for additional homepage content
     it('visiting root should redirect to homepage, homepage should contain elements, search should work', () => {
         cy.visit('');
         cy.url().should('include', '/home');
