@@ -20,6 +20,8 @@
         "linebreak",
         "longlat",
         "lookaround",
+        "mannlich",
+        "Mentrup",
         "minisearch",
         "nonblock",
         "nonconstructor",
@@ -34,6 +36,8 @@
         "searchbar",
         "Searchbar",
         "sonarjs",
+        "stadt",
+        "transparenz",
         "typeahead",
         "Typeahead",
         "yoda"
