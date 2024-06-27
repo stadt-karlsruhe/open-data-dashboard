@@ -20,32 +20,32 @@ type AllowedGeometry =
     | GeoJSON.MultiPolygon;
 
 const pointGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]),
+    coordinates: z.number().array(),
     type: z.literal('Point'),
 });
 
 const multiPointGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]).array(),
+    coordinates: z.number().array().array(),
     type: z.literal('MultiPoint'),
 });
 
 const lineGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]).array(),
+    coordinates: z.number().array().array(),
     type: z.literal('LineString'),
 });
 
 const multiLineGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]).array().array(),
+    coordinates: z.number().array().array().array(),
     type: z.literal('MultiLineString'),
 });
 
 const polygonGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]).array().array(),
+    coordinates: z.number().array().array().array(),
     type: z.literal('Polygon'),
 });
 
 const multiPolygonGeometrySchema = z.object({
-    coordinates: z.tuple([z.number(), z.number()]).array().array().array(),
+    coordinates: z.number().array().array().array().array(),
     type: z.literal('MultiPolygon'),
 });
 

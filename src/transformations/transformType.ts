@@ -7,17 +7,32 @@ export function narrowType(
     resource: JSONResource | GeoJSONResource,
 ) {
     if ('features' in records) {
+        if (resource.type === 'GeoJSON' && resource.visualizations.map.groupKey) {
+            const { groupKey } = resource.visualizations.map;
+            return {
+                ...records,
+                features: mapGeoJSONFeatures(records.features, resource.numberFormat).sort((a, b) => {
+                    const aValue = a.properties ? String(a.properties[groupKey]) : '';
+                    const bValue = b.properties ? String(b.properties[groupKey]) : '';
+                    return aValue.localeCompare(bValue);
+                }),
+            } as GeoJSON.FeatureCollection;
+        }
         return {
             ...records,
-            features: records.features.map((feature) => {
-                return {
-                    ...feature,
-                    properties: narrowObjectType(feature.properties, resource.numberFormat),
-                };
-            }),
+            features: mapGeoJSONFeatures(records.features, resource.numberFormat),
         } as GeoJSON.FeatureCollection;
     }
     return records.map((record) => narrowObjectType(record, resource.numberFormat));
+}
+
+function mapGeoJSONFeatures(features: GeoJSON.Feature[], numberFormat: string) {
+    return features.map((feature) => {
+        return {
+            ...feature,
+            properties: narrowObjectType(feature.properties, numberFormat),
+        };
+    });
 }
 
 function narrowObjectType(record: Record<string, never> | GeoJSON.GeoJsonProperties, numberFormat: string) {

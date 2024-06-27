@@ -19,14 +19,12 @@ export default function Legend({ labels }: { labels: Map<string, string> }) {
     >
       <div className="card-header text-center">{t('title')}</div>
       <div className="card-body overflow-y-auto">
-        {[...labels.entries()]
-          .sort(([a], [b]) => a.localeCompare(b))
-          .map(([label, color]) => (
-            <div className="row" key={label}>
-              <div className="col-1 bi bi-circle-fill" style={{ color }} />
-              <div className="col-10">{label}</div>
-            </div>
-          ))}
+        {[...labels.entries()].map(([label, color]) => (
+          <div className="row" key={label}>
+            <div className="col-1 bi bi-circle-fill" style={{ color }} />
+            <div className="col-10">{label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

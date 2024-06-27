@@ -410,7 +410,7 @@ resources:
       id: 5d21abee-b135-4496-b7ae-8ffdfc47287e
       type: GeoJSON
       renameProperties:
-          NAME: Name
+          TITEL: Ort
       skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
       visualizations:
           map: {}
