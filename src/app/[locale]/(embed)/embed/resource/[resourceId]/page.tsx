@@ -6,7 +6,7 @@ import Visualization from '@/components/visualization/Visualization';
 import { getValidatedConfiguration } from '@/schemas/validate';
 import { safeStringCompare } from '@/utils/stringUtils';
 
-export default async function Page({ params: { resourceId } }: { params: { resourceId: string } }) {
+export default async function EmbeddedResourcePage({ params: { resourceId } }: { params: { resourceId: string } }) {
   const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;

@@ -5,7 +5,7 @@ import { configurationToDashboards } from '@/utils/mapUtils';
 import { getTranslations } from 'next-intl/server';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
-export default async function Page() {
+export default async function DashboardsPage() {
   const { success, configuration, error } = await getValidatedConfiguration();
   const t = await getTranslations('Overview');
 

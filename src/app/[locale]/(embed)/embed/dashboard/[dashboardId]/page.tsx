@@ -3,7 +3,7 @@ import ErrorComponent from '@/components/error-handling/ErrorComponent';
 import { getValidatedConfiguration } from '@/schemas/validate';
 import { safeStringCompare } from '@/utils/stringUtils';
 
-export default async function Page({ params: { dashboardId } }: { params: { dashboardId: string } }) {
+export default async function EmbeddedDashboardPage({ params: { dashboardId } }: { params: { dashboardId: string } }) {
   const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;

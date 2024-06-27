@@ -6,7 +6,7 @@ import NavigationProvider from '@/components/navigation/NavigationProvider';
 import { colorLight } from '@/utils/colors';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
-export default async function RootLayout({
+export default async function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

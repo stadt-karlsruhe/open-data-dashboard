@@ -8,7 +8,7 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { getTranslations } from 'next-intl/server';
 import { getValidatedConfiguration } from '@/schemas/validate';
 
-export default async function Home() {
+export default async function HomePage() {
   const { success, configuration, error } = await getValidatedConfiguration();
   const t = await getTranslations('Homepage');
   if (!success) {

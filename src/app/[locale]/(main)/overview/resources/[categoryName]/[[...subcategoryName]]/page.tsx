@@ -15,7 +15,7 @@ const options = {
 
 const categoryToContentCache: LRUCache<string, DataElement[]> = new LRUCache<string, DataElement[]>(options);
 
-export default async function Page({
+export default async function CategoriesPage({
   params: { categoryName, subcategoryName },
 }: {
   params: { categoryName: string; subcategoryName?: string[] };
