@@ -1,10 +1,13 @@
+import {
+    bevoelkerungProStadtteil,
+    datenUndFakten,
+    embedModal,
+    innenstadtOst,
+    leafletMap,
+    staedtischeBehoerden,
+    zuzuegeUndFortzuege,
+} from './cypressConstants';
 import { cy, describe, it } from 'local-cypress';
-
-const embedModal = '[data-cy="embed-modal"]';
-const staedtischeBehoerden = '[data-cy="dashboard-resource-31876be7-9487-461e-bc10-c470c4a05f1b"]';
-const datenUndFakten = '[data-cy="dashboard-resource-6ea017ac-f3db-4f99-b587-09de9048ad0c"]';
-const bevoelkerungProStadtteil = '[data-cy="dashboard-resource-71ef348f-0f5b-46a0-8250-e87aae9f91bd"]';
-const zuzuegeUndFortzuege = '[data-cy="dashboard-resource-8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509"]';
 
 describe('dashboard tests', () => {
     it('dashboard view should contain relevant fields, basic buttons should work', () => {
@@ -29,7 +32,8 @@ describe('dashboard tests', () => {
     it('dashboard view for zugezogene should contain dashboard specific elements, e.g. correct maps', () => {
         cy.visit('en/dashboard/f%C3%BCr-zugezogene-5');
 
-        cy.get(staedtischeBehoerden).find('.leaflet-container').find('[data-cy="map-reset-button"]');
+        // eslint-disable-next-line unicorn/no-array-callback-reference
+        cy.get(staedtischeBehoerden).find(leafletMap).find('[data-cy="map-reset-button"]');
         cy.get(staedtischeBehoerden).find('.leaflet-marker-icon');
 
         cy.get(datenUndFakten).contains('Daten und Fakten');
@@ -41,13 +45,13 @@ describe('dashboard tests', () => {
 
         cy.get(bevoelkerungProStadtteil).contains('Bevölkerung pro Stadtteil');
         cy.get(bevoelkerungProStadtteil).find('.recharts-bar-rectangle').first().click();
-        cy.contains('Innenstadt-Ost');
+        cy.contains(innenstadtOst);
         cy.contains('Jahr : 2021');
         cy.contains('Wohnberechtigte : 6450');
 
         cy.get(zuzuegeUndFortzuege).contains('Zuzüge und Fortzüge');
         cy.get(zuzuegeUndFortzuege).find('.recharts-bar-rectangle').first().click();
-        cy.contains('Innenstadt-Ost');
+        cy.contains(innenstadtOst);
         cy.contains('Jahr : 2021');
         cy.contains('Personen : -10');
     });

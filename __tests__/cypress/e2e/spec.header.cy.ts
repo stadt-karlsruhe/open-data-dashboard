@@ -2,7 +2,7 @@
 /* eslint-disable unicorn/no-array-callback-reference */
 import { cy, describe, it } from 'local-cypress';
 
-const searchbar = '[data-cy="header-searchbar"]';
+import { searchbar } from './cypressConstants';
 
 describe('header tests', () => {
     it('header on homepage should contain title, logos, and empty searchbar', () => {

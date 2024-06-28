@@ -2,16 +2,19 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable unicorn/no-array-callback-reference */
 /* eslint-disable max-statements */
+import {
+    barChart,
+    barRectangle,
+    embedModal,
+    hundeId,
+    innenstadtOst,
+    kinoId,
+    leafletMap,
+    tableBody,
+} from './cypressConstants';
 import { cy, describe, it } from 'local-cypress';
 
-const hundeId = 'a5f04b45-528a-41b5-8d8c-eb9677bf2fd1';
-const kinoId = 'e5e6b5fa-c32b-4477-9e99-01037bce51e0';
-const embedModal = '[data-cy="embed-modal"]';
-const barChart = '[id*="barChart"]';
-const barRectangle = '.recharts-bar-rectangle';
-const tableBody = '.rdt_TableBody';
 const filterToggle = '@toggle';
-const leafletMap = '.leaflet-container';
 
 describe('resource detail page tests', () => {
     it.only('detail page should contain title and buttons, embed button should work, fullscreen should redirect', () => {
@@ -46,7 +49,7 @@ describe('resource detail page tests', () => {
         cy.get(barChart).contains('Hunde');
         cy.get(barChart).find(barRectangle).first().click();
         cy.get(barChart).contains('Hunde : 101');
-        cy.get(barChart).contains('Innenstadt-Ost');
+        cy.get(barChart).contains(innenstadtOst);
 
         cy.get('[data-cy="layout-tabs"]').find('button').contains('Table').as('tableButton').click();
         cy.get('.rdt_TableHead').contains('Hunde je 1');
@@ -78,7 +81,7 @@ describe('resource detail page tests', () => {
 
         cy.get(barChart).find(barRectangle).first().click();
         cy.get(barChart).contains('Hunde : 101');
-        cy.get(barChart).contains('Innenstadt-Ost');
+        cy.get(barChart).contains(innenstadtOst);
     });
     it('detail page for geoJSON resource should contain map with legend, resetButton and tooltips', () => {
         cy.visit(`/en/resource/kinos-${kinoId}`);

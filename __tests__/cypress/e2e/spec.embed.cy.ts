@@ -1,15 +1,16 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/no-array-callback-reference */
+import {
+    barChart,
+    barRectangle,
+    bevoelkerungProStadtteil,
+    hundeId,
+    innenstadtOst,
+    kinoId,
+    leafletMap,
+    zuzuegeUndFortzuege,
+} from './cypressConstants';
 import { cy, describe, it } from 'local-cypress';
-
-const hundeId = 'a5f04b45-528a-41b5-8d8c-eb9677bf2fd1';
-const kinoId = 'e5e6b5fa-c32b-4477-9e99-01037bce51e0';
-const barChart = '[id*="barChart"]';
-const barRectangle = '.recharts-bar-rectangle';
-const innenstadtOst = 'Innenstadt-Ost';
-const leafletMap = '.leaflet-container';
-const bevoelkerungProStadtteil = '[data-cy="dashboard-resource-71ef348f-0f5b-46a0-8250-e87aae9f91bd"]';
-const zuzuegeUndFortzuege = '[data-cy="dashboard-resource-8dc0dc8e-6c17-4d98-b29e-5a08a1bb6509"]';
 
 describe('embed resource page tests', () => {
     it('embed page for JSON data should contain filter buttons and barChart', () => {

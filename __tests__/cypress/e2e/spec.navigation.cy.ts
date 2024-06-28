@@ -1,7 +1,8 @@
-import { Cypress, beforeEach, cy, describe, it } from 'local-cypress';
+import { beforeEach, cy, describe, it } from 'local-cypress';
+
+import { baseUrl } from './cypressConstants';
 
 const nav = '@navigation';
-const baseUrl = Cypress.config().baseUrl ?? '';
 
 describe('navigation tests', () => {
     beforeEach(() => {
