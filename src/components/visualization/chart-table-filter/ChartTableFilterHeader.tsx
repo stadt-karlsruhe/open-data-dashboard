@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 const allEntries = 'all-entries';
 
-export function ChartTableFilterHeader({
+export default function ChartTableFilterHeader({
   resourceId,
   filters,
   eventKey,

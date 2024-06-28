@@ -5,7 +5,7 @@ import { TransformedData } from '@/schemas/dataSchema';
 import { useTranslations } from 'next-intl';
 
 // eslint-disable-next-line max-lines-per-function
-export function ChartTableFilterBody({
+export default function ChartTableFilterBody({
   resourceId,
   filters,
   records,

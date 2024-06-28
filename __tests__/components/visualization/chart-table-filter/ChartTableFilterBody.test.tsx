@@ -5,7 +5,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { ChartTableFilterBody } from '@/components/visualization/chart-table-filter/ChartTableFilterBody';
+import ChartTableFilterBody from '@/components/visualization/chart-table-filter/ChartTableFilterBody';
 import { NextIntlClientProvider } from 'next-intl';
 import { filterMixed } from '~/data/dataFilters';
 import { jsonStandard } from '~/data/dataFormats';
