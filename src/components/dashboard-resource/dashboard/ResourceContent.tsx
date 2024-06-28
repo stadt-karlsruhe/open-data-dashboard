@@ -65,7 +65,7 @@ export default function ResourceContent({
               </button>
             </OverlayTrigger>
           )}
-          <button className="nav-link fs-5" data-cy="resource-link">
+          <button className="nav-link fs-5">
             <i className="bi bi-box-arrow-up-right" />
           </button>
         </div>

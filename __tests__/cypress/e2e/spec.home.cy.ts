@@ -14,5 +14,8 @@ describe('homepage tests', () => {
         cy.get('@inputField').clear();
         cy.get('@inputField').type('Wohnerecht');
         cy.contains('Wohnberechtigte Bevölkerung');
+
+        cy.get('[data-cy="dashboard-resource-2a7fd644-bc67-477a-bb9e-cf88f076b7af"]');
+        cy.get('[data-cy="dashboard-carousel"]');
     });
 });
