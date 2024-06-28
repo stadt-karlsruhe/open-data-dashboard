@@ -611,9 +611,11 @@ resources:
       type: GeoJSON
       renameProperties:
           NAME: Name
-      skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
+          GRUPPENNAME_DE: Gruppe
+      skipPropertiesRegEx: "^UPDATED$"
       visualizations:
-          map: {}
+          map:
+              groupKey: Gruppe
     - name: Gastronomie
       source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Kultur/MapServer/2/query?where=GRUPPENNAME_DE+%3D+%27Gastronomie%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       id: 7797d105-c1b9-4ead-b41f-66790c83534b

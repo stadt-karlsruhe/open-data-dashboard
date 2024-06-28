@@ -14,6 +14,7 @@ export default function ResetView({ latLng, zoom }: { latLng: LatLngExpression; 
         map.setView(latLng, zoom);
       }}
       title={t('resetTooltip')}
+      data-cy="map-reset-button"
     >
       <i className="bi bi-crosshair" />
     </button>

@@ -34,11 +34,16 @@ export default function ResourceContent({
   const displayName = content.overrides?.name ?? resource.name;
   const displayDescription = content.overrides?.description ?? resource.description;
   return (
-    <div className={`card d-flex flex-column ${className ?? ''}`} style={{ ...style }}>
+    <div
+      className={`card d-flex flex-column ${className ?? ''}`}
+      style={{ ...style }}
+      data-cy={`dashboard-resource-${resource.id}`}
+    >
       <Link
         href={`/resource/${concatenateNameAndId(resource.name, resource.id)}`}
         className="card-header btn btn-secondary"
         style={{ borderWidth: 0, borderBottomWidth: 1 }}
+        data-cy="dashboard-resource-link"
       >
         <div className="d-flex align-items-baseline">
           <h5 className="flex-fill text-center">
@@ -60,7 +65,7 @@ export default function ResourceContent({
               </button>
             </OverlayTrigger>
           )}
-          <button className="nav-link fs-5">
+          <button className="nav-link fs-5" data-cy="resource-link">
             <i className="bi bi-box-arrow-up-right" />
           </button>
         </div>
