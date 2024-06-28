@@ -868,27 +868,9 @@ resources:
       skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
       visualizations:
           map: {}
-    - name: Behindertenparkplätze
-      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Parken_Autoservices/MapServer/1/query?where=GRUPPENNAME_DE+%3D+%27Behindertenparkplätze%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
-      id: 77a729ff-d947-4166-97d7-2d32a6983225
-      type: GeoJSON
-      renameProperties:
-          NAME: Name
-      skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
-      visualizations:
-          map: {}
     - name: Parkhäuser / Tiefgaragen
       source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Parken_Autoservices/MapServer/3/query?where=GRUPPENNAME_DE+%3D+%27Parkhäuser/Tiefgaragen%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
       id: ea903b2c-ef9f-40c9-8ad6-dece24e29d27
-      type: GeoJSON
-      renameProperties:
-          NAME: Name
-      skipPropertiesRegEx: "^UPDATED|GRUPPENNAME_DE$"
-      visualizations:
-          map: {}
-    - name: Barrierefrei zugängliche Parkhäuser
-      source: https://geoportal.karlsruhe.de/server/rest/services/Stadtplan/Stadtplan_POIs_Parken_Autoservices/MapServer/0/query?where=GRUPPENNAME_DE+%3D+%27barrierefrei%20zugängliche%20Parkhäuser%27&outFields=NAME%2CGRUPPENNAME_DE%2CUPDATED&returnGeometry=true&f=geojson
-      id: 42dc6869-cbfc-412a-b6b5-14feacb1e4eb
       type: GeoJSON
       renameProperties:
           NAME: Name
