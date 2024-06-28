@@ -14,6 +14,6 @@ describe('component TextContent', () => {
 
     render(<TextContent content={mockTextContent} />);
 
-    expect(screen.getByText('test')).toBeInTheDocument();
+    expect(screen.getByText(mockTextContent.header)).toBeInTheDocument();
   });
 });
