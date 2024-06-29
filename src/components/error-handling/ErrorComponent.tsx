@@ -55,7 +55,7 @@ export default function ErrorComponent({ type, resource, error }: ApplicationErr
               </h2>
               <h5 className="mb-2">{t(`${type}Title`)}</h5>
               <p className="mb-2">{type === 'notFound' ? t('notFoundSubtitle') : t('genericSubtitle')}</p>
-              <Link className="btn btn-primary mt-2" href="/">
+              <Link className="btn btn-primary mt-2" href="/" data-cy="error-home">
                 {t('returnBtn')}
               </Link>
               <br />

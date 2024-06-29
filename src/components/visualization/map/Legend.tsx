@@ -16,6 +16,7 @@ export default function Legend({ labels }: { labels: Map<string, string> }) {
       ref={legendRef}
       className="bg-white card position-absolute m-3 fs-6"
       style={{ width: '200px', maxWidth: '50vw', maxHeight: '200px', zIndex: 400, bottom: '6px', left: '6px' }}
+      data-cy="map-legend"
     >
       <div className="card-header text-center">{t('title')}</div>
       <div className="card-body overflow-y-auto">

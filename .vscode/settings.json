@@ -2,15 +2,18 @@
     "cSpell.language": "en,de-de",
     "cSpell.words": [
         "backreference",
+        "bevoelkerung",
         "camelcase",
         "cicd",
         "concat",
+        "daten",
         "deepmerge",
         "defaulticon",
         "dracula",
         "ecma",
         "ellps",
         "eqeqeq",
+        "hunde",
         "iife",
         "karlsruhe",
         "lcov",
@@ -31,7 +34,8 @@
         "sonarjs",
         "typeahead",
         "Typeahead",
-        "yoda"
+        "yoda",
+        "zuzuege"
     ],
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "files.eol": "\n",

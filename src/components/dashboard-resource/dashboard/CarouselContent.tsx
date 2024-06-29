@@ -6,7 +6,7 @@ import { sizeClassToHeight } from '@/utils/mapUtils';
 
 export default function CarouselContent({ content }: { content: DashboardCarouselContent }) {
   return (
-    <Carousel pause="hover" interval={10_000}>
+    <Carousel pause="hover" interval={10_000} data-cy="dashboard-carousel">
       {content.slides.map((slide, index) => (
         <Carousel.Item key={index}>
           <div

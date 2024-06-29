@@ -1,7 +1,6 @@
 import { cy, describe, it } from 'local-cypress';
 
 describe('homepage tests', () => {
-    // TODO: Add checks for additional homepage content
     it('visiting root should redirect to homepage, homepage should contain elements, search should work', () => {
         cy.visit('');
         cy.url().should('include', '/home');
@@ -15,5 +14,8 @@ describe('homepage tests', () => {
         cy.get('@inputField').clear();
         cy.get('@inputField').type('Wohnerecht');
         cy.contains('Wohnberechtigte Bevölkerung');
+
+        cy.get('[data-cy="dashboard-resource-2a7fd644-bc67-477a-bb9e-cf88f076b7af"]');
+        cy.get('[data-cy="dashboard-carousel"]');
     });
 });
