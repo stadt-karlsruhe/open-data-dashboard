@@ -7,7 +7,7 @@ import { filterAllEntries, filterAllEntriesInvalid } from '~/data/dataFilters';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import AccordionContext from 'react-bootstrap/AccordionContext';
-import { ChartTableFilterHeader } from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
+import ChartTableFilterHeader from '@/components/visualization/chart-table-filter/ChartTableFilterHeader';
 import { Filter } from '@/schemas/configuration/configurationSchema';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '@/messages/en.json';

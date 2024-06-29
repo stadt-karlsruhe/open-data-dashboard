@@ -23,7 +23,7 @@
         "allEntriesLabel": "Row",
         "contains": "contains"
     },
-    "DetailsPageControls": {
+    "DashboardResourceControls": {
         "download": "Download",
         "embed": "Embed",
         "fullscreen": "Fullscreen"

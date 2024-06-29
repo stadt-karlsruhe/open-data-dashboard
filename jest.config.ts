@@ -22,7 +22,7 @@ const jestConfig: Config.InitialOptions = {
     },
     setupFilesAfterEnv: ['<rootDir>/jest.setup.tsx'],
     collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
-    coveragePathIgnorePatterns: ['src/(middleware|locales|i18n).ts'],
+    coveragePathIgnorePatterns: ['src/(middleware|locales|i18n).ts', 'src/app/robots.ts', 'src/.*/layout.tsx'],
     coverageReporters: ['lcov', 'text', 'text-summary'],
     bail: true,
     testRegex: String.raw`__tests__/.+\.test\.(ts|tsx)$`,

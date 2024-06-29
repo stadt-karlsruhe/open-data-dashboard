@@ -2,6 +2,6 @@
 
 import ErrorComponent from '@/components/error-handling/ErrorComponent';
 
-export default function Error({ error }: { error: Error & { digest?: string } }) {
+export default function LocaleError({ error }: { error: Error & { digest?: string } }) {
   return <ErrorComponent type="unexpected" error={String(error)} />;
 }

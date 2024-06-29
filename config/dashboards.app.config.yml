@@ -23,6 +23,11 @@ dashboards:
                 icon: info-circle
                 color: black
                 backgroundColor: "#FDCB00"
+              - type: LINK_EXTERNAL
+                target: https://www.kvv.de/
+                text: Karlsruher Verkehrsbetriebe
+                icon: train-lightrail-front
+                backgroundColor: "#C30A37"
               - type: TEXT_CAROUSEL
                 size: S
                 backgroundColor: "#555555"

@@ -10,14 +10,18 @@ const DashboardResourceControls = dynamic(() => import('@/components/dashboard-r
   ssr: false,
 });
 
-export default async function Page({ params: { dashboardNameAndId } }: { params: { dashboardNameAndId: string } }) {
+export default async function DashboardPage({
+  params: { dashboardNameAndId },
+}: {
+  params: { dashboardNameAndId: string };
+}) {
   const { success, configuration, error } = await getValidatedConfiguration();
   if (!success) {
     return <ErrorComponent type="configurationError" error={error} />;
   }
-  const dashboard = configuration.dashboards.find((item) =>
-    safeStringCompare(dashboardNameAndId, concatenateNameAndId(item.name, item.id)),
-  );
+  const dashboard = configuration.dashboards
+    .filter((item) => item.id !== 'homepage')
+    .find((item) => safeStringCompare(dashboardNameAndId, concatenateNameAndId(item.name, item.id)));
 
   if (dashboard === undefined) {
     return <ErrorComponent type="notFound" />;

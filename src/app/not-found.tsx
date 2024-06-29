@@ -1,11 +1,12 @@
 'use client';
 
 import { redirect, usePathname } from 'next/navigation';
+
 import { locales } from '@/locales';
 
 const pathRegex = /^\/([A-Za-z]{2})(\/.*)?$/u;
 
-export default function NotFoundLocale() {
+export default function RootNotFound() {
   const pathname = usePathname();
   const [, locale, path] = pathRegex.exec(pathname) ?? [];
 

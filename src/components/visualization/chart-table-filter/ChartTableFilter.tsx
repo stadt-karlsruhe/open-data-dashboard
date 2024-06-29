@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Accordion from 'react-bootstrap/Accordion';
-import { ChartTableFilterBody } from './ChartTableFilterBody';
-import { ChartTableFilterHeader } from './ChartTableFilterHeader';
+import ChartTableFilterBody from './ChartTableFilterBody';
+import ChartTableFilterHeader from './ChartTableFilterHeader';
 import CurrentFilters from './CurrentFilters';
 import { TransformedData } from '@/schemas/dataSchema';
 import { filterData } from '@/filter';

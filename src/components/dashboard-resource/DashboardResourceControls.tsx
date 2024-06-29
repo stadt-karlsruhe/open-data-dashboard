@@ -23,7 +23,7 @@ type DashboardResourceControlsProps =
 export default function DashboardResourceControls({ type, element }: DashboardResourceControlsProps) {
   const [show, setShow] = useState(false);
   const searchParams = useSearchParams();
-  const t = useTranslations('DetailsPageControls');
+  const t = useTranslations('DashboardResourceControls');
 
   return (
     <div className="d-flex flex-row justify-content-center justify-content-md-between mb-3">

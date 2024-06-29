@@ -68,7 +68,7 @@ export type DashboardResourceContent = z.infer<typeof resourceContentSchema>;
 export type DashboardTextContent = z.infer<typeof textContentSchema>;
 export type DashboardCarouselContent = z.infer<typeof carouselContentSchema>;
 export type DashboardExternalContent = z.infer<typeof externalContentSchema>;
-export type DashboardResourceLinkContent = z.infer<typeof internalLinkContentSchema>;
+export type DashboardInternalLinkContent = z.infer<typeof internalLinkContentSchema>;
 export type DashboardExternalLinkContent = z.infer<typeof externalLinkContentSchema>;
 export type Dashboard = z.infer<typeof dashboardSchema>;
 

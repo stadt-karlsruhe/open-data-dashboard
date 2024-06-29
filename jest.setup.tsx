@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom/jest-globals';
 
+import { ReadonlyURLSearchParams, RedirectType } from 'next/navigation';
 import { TextDecoder, TextEncoder } from 'node:util';
-
-import { ReadonlyURLSearchParams } from 'next/navigation';
 
 // Global mocks
 
@@ -10,11 +9,13 @@ jest.mock<typeof import('next/navigation')>('next/navigation', () => {
   const actual = jest.requireActual<typeof import('next/navigation')>('next/navigation');
   return {
     ...actual,
-    usePathname: () => '',
+    usePathname: jest.fn(),
+    redirect: jest.fn() as unknown as (u: string, t?: RedirectType) => never,
     useRouter: jest.fn().mockReturnValue({
       push: jest.fn(),
       replace: jest.fn(),
     }),
+    notFound: jest.fn() as unknown as () => never,
     useSearchParams: () =>
       ({
         // eslint-disable-next-line no-empty-function, @typescript-eslint/no-empty-function
