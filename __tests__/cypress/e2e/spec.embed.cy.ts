@@ -1,13 +1,13 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable unicorn/no-array-callback-reference */
 import {
     barChart,
     barRectangle,
     bevoelkerungProStadtteil,
     hundeId,
     innenstadtOst,
+    inputGroup,
     kinoId,
     leafletMap,
+    leafletMarker,
     zuzuegeUndFortzuege,
 } from './cypressConstants';
 import { cy, describe, it } from 'local-cypress';
@@ -15,7 +15,7 @@ import { cy, describe, it } from 'local-cypress';
 describe('embed resource page tests', () => {
     it('embed page for JSON data should contain filter buttons and barChart', () => {
         cy.visit(`en/embed/resource/${hundeId}`);
-        cy.get('.input-group').find('[data-cy="toggle-filters"]');
+        cy.get(inputGroup).find('[data-cy="toggle-filters"]');
         cy.get('[data-cy="clear-all"]');
 
         cy.get(barChart).contains('Hunde');
@@ -27,7 +27,7 @@ describe('embed resource page tests', () => {
         cy.visit(`en/embed/resource/${kinoId}`);
         cy.get(leafletMap).find('[data-cy="map-reset-button"]');
         cy.get(leafletMap).find('[data-cy="map-legend"]');
-        cy.get(leafletMap).find('.leaflet-marker-icon').first().click();
+        cy.get(leafletMap).find(leafletMarker).first().click();
         cy.contains('Name: ');
         cy.contains('Gruppe: ');
     });

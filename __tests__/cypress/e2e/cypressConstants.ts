@@ -10,9 +10,11 @@ export const hundeId = 'a5f04b45-528a-41b5-8d8c-eb9677bf2fd1';
 export const kinoId = 'e5e6b5fa-c32b-4477-9e99-01037bce51e0';
 
 // Generic Components
+export const inputGroup = '.input-group';
 export const barChart = '[id*="barChart"]';
 export const barRectangle = '.recharts-bar-rectangle';
 export const leafletMap = '.leaflet-container';
+export const leafletMarker = '.leaflet-marker-icon';
 export const tableBody = '.rdt_TableBody';
 export const embedModal = '[data-cy="embed-modal"]';
 export const searchbar = '[data-cy="header-searchbar"]';

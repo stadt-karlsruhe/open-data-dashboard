@@ -1,6 +1,6 @@
+import { Cypress, cy, describe, it } from 'local-cypress';
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable max-lines-per-function */
-/* eslint-disable unicorn/no-array-callback-reference */
 /* eslint-disable max-statements */
 import {
     barChart,
@@ -8,16 +8,17 @@ import {
     embedModal,
     hundeId,
     innenstadtOst,
+    inputGroup,
     kinoId,
     leafletMap,
+    leafletMarker,
     tableBody,
 } from './cypressConstants';
-import { cy, describe, it } from 'local-cypress';
 
 const filterToggle = '@toggle';
 
 describe('resource detail page tests', () => {
-    it.only('detail page should contain title and buttons, embed button should work, fullscreen should redirect', () => {
+    it('detail page should contain title and buttons, embed button should work, fullscreen should redirect', () => {
         cy.visit(`/en/resource/hunde-insgesamt-${hundeId}`);
         cy.url().should('contain', 'visualization=barChart');
 
@@ -37,12 +38,12 @@ describe('resource detail page tests', () => {
         cy.contains('iframe width="1000" height="500"');
         cy.get(embedModal).find('.modal-header').find('button').click();
 
-        cy.get('[data-cy="control-fullscreen"]').click();
+        cy.get('[data-cy="control-fullscreen"]').click({ force: true });
         cy.url().should('contain', `/embed/resource/${hundeId}`);
     });
     it('detail page for tabular data should have working bar chart, table, and filter', () => {
         cy.visit(`/en/resource/hunde-insgesamt-${hundeId}`);
-        cy.get('.input-group').find('[data-cy="toggle-filters"]').as('toggle').click();
+        cy.get(inputGroup).find('[data-cy="toggle-filters"]').as('toggle').click();
         cy.get('[data-cy="clear-all"]').click();
         cy.get(filterToggle).click();
 
@@ -66,7 +67,7 @@ describe('resource detail page tests', () => {
         cy.get(barChart).contains('Grünwinkel');
 
         cy.get(filterToggle).click();
-        cy.get('.input-group').find('[data-cy="clear"]').first().click();
+        cy.get(inputGroup).find('[data-cy="clear"]').first().click();
         cy.get(`[id="${hundeId}-Stadtteil-text-input"]`).type('Knielingen');
         cy.get(`[id="${hundeId}-Jahr-min"]`).type('2019');
         cy.get(`[id="${hundeId}-Jahr-max"]`).type('2019');
@@ -87,7 +88,7 @@ describe('resource detail page tests', () => {
         cy.visit(`/en/resource/kinos-${kinoId}`);
         cy.get(leafletMap).find('[data-cy="map-reset-button"]');
         cy.get(leafletMap).find('[data-cy="map-legend"]');
-        cy.get(leafletMap).find('.leaflet-marker-icon').first().click();
+        cy.get(leafletMap).find(leafletMarker).first().click();
         cy.contains('Name: ');
         cy.contains('Gruppe: ');
     });

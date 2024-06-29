@@ -4,3 +4,4 @@ extends:
 rules:
     jest/require-hook: off
     jest/valid-expect: off
+    unicorn/no-array-callback-reference: off

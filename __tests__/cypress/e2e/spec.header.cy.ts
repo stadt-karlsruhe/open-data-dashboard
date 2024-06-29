@@ -1,5 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable unicorn/no-array-callback-reference */
 import { cy, describe, it } from 'local-cypress';
 
 import { searchbar } from './cypressConstants';

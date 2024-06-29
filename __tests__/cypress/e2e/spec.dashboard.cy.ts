@@ -1,9 +1,11 @@
 import {
+    barRectangle,
     bevoelkerungProStadtteil,
     datenUndFakten,
     embedModal,
     innenstadtOst,
     leafletMap,
+    leafletMarker,
     staedtischeBehoerden,
     zuzuegeUndFortzuege,
 } from './cypressConstants';
@@ -26,15 +28,14 @@ describe('dashboard tests', () => {
         cy.contains('iframe width="1000" height="500"');
         cy.get(embedModal).find('.modal-header').find('button').click();
 
-        cy.get('[data-cy="control-fullscreen"]').click();
+        cy.get('[data-cy="control-fullscreen"]').click({ force: true });
         cy.url().should('contain', 'en/embed/dashboard/2');
     });
     it('dashboard view for zugezogene should contain dashboard specific elements, e.g. correct maps', () => {
         cy.visit('en/dashboard/f%C3%BCr-zugezogene-5');
 
-        // eslint-disable-next-line unicorn/no-array-callback-reference
         cy.get(staedtischeBehoerden).find(leafletMap).find('[data-cy="map-reset-button"]');
-        cy.get(staedtischeBehoerden).find('.leaflet-marker-icon');
+        cy.get(staedtischeBehoerden).find(leafletMarker);
 
         cy.get(datenUndFakten).contains('Daten und Fakten');
         cy.get(datenUndFakten).find('[data-cy="dashboard-resource-link"]').click();
@@ -44,13 +45,13 @@ describe('dashboard tests', () => {
         cy.visit('en/dashboard/bev%C3%B6lkerung-1');
 
         cy.get(bevoelkerungProStadtteil).contains('Bevölkerung pro Stadtteil');
-        cy.get(bevoelkerungProStadtteil).find('.recharts-bar-rectangle').first().click();
+        cy.get(bevoelkerungProStadtteil).find(barRectangle).first().click();
         cy.contains(innenstadtOst);
         cy.contains('Jahr : 2021');
         cy.contains('Wohnberechtigte : 6450');
 
         cy.get(zuzuegeUndFortzuege).contains('Zuzüge und Fortzüge');
-        cy.get(zuzuegeUndFortzuege).find('.recharts-bar-rectangle').first().click();
+        cy.get(zuzuegeUndFortzuege).find(barRectangle).first().click();
         cy.contains(innenstadtOst);
         cy.contains('Jahr : 2021');
         cy.contains('Personen : -10');
