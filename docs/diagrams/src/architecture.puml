@@ -1,12 +1,11 @@
-@startuml Next.js Application Architecture
+@startuml app_architecture
 
-!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
-!include $ICONURL/common.puml
-!include $ICONURL/font-awesome-6/file_pdf.puml
-!include $ICONURL/font-awesome-6/file_csv.puml
-!include $ICONURL/font-awesome-6/file_code.puml
-!include $ICONURL/font-awesome-6/chart_column.puml
-!include $ICONURL/font-awesome-6/map_location_dot.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/common.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_pdf.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_csv.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_code.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/chart_column.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/map_location_dot.puml
 
 skinparam {
     DefaultTextAlignment center
