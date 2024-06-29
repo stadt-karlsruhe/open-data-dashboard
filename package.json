@@ -1,7 +1,32 @@
 {
   "name": "open-data-dashboard",
+  "description": "A web application for visualizing open data",
   "version": "0.1.0",
+  "contributors": [
+    {
+      "name": "Chiara Scheurer",
+      "url": "https://github.com/ChiaraScheurer"
+    },
+    {
+      "name": "Abdullah Atak",
+      "url": "https://github.com/Abdryy"
+    },
+    {
+      "name": "Christian Holst",
+      "url": "https://github.com/ChromatisGit"
+    },
+    {
+      "name": "Jan Kuhnmünch",
+      "url": "https://github.com/Zerdados"
+    },
+    {
+      "name": "Daniel Purtov",
+      "url": "https://github.com/danielptv"
+    }
+  ],
   "type": "module",
+  "homepage": "https://github.com/stadt-karlsruhe/open-data-dashboard",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
