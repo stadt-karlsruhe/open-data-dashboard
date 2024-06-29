@@ -55,6 +55,13 @@ plugins:
               - locale: de
                 name: Deutsch
                 build: true
+    - build_plantuml:
+        render: 'server'
+        server: 'https://www.plantuml.com/plantuml'
+        output_format: 'svg'
+        diagram_root: 'docs/diagrams'
+        output_folder: 'out'
+        input_folder: 'src'
 extra:
     alternate:
         - name: English

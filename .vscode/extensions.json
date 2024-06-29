@@ -11,6 +11,8 @@
         "Orta.vscode-jest",
         "streetsidesoftware.code-spell-checker",
         "streetsidesoftware.code-spell-checker-german",
-        "amatiasq.sort-imports"
+        "amatiasq.sort-imports",
+        "Zignd.html-css-class-completion",
+        "jebbs.plantuml"
     ]
 }

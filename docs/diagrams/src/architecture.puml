@@ -1,0 +1,63 @@
+@startuml Next.js Application Architecture
+
+!$ICONURL = "https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons"
+!include $ICONURL/common.puml
+!include $ICONURL/font-awesome-6/file_pdf.puml
+!include $ICONURL/font-awesome-6/file_csv.puml
+!include $ICONURL/font-awesome-6/file_code.puml
+!include $ICONURL/font-awesome-6/chart_column.puml
+!include $ICONURL/font-awesome-6/map_location_dot.puml
+
+skinparam {
+    DefaultTextAlignment center
+}
+
+node "Next.js Application" {
+    frame "Client" {
+        [Frontend]
+    }
+
+    frame "Server" {
+        [Configuration]
+        component dataComp [
+        Data fetching,
+        processing, filtering
+        and visualization
+        ]
+    }
+}
+
+node "File System" {
+    FA6_FILE_CODE(yaml_config_1, Dashboards)
+    FA6_FILE_CODE(yaml_config_2, Resources)
+    FA6_FILE_CODE(yaml_config_3, Categories)
+}
+
+note bottom of [File System]
+YAML configuration
+divdied into
+multiple files
+end note
+
+node "External Data Sources" {
+    FA6_FILE_PDF(pdf_source, HTML/PDF)
+    FA6_FILE_CSV(csv_source, CSV)
+    FA6_FILE_CODE(json_source, JSON)
+}
+
+cloud "Open Data Dashboard" {
+    FA6_CHART_COLUMN(bar_chart) #Yellow
+    FA6_MAP_LOCATION_DOT(map)
+}
+
+[File System] -u[hidden]-> [Server]
+[External Data Sources] -u[hidden]-> [Server]
+[Client] -u-- [Open Data Dashboard]
+[Frontend] -r-> [Server]
+[Configuration] ---> [File System]
+[dataComp] ---> [External Data Sources]
+[dataComp] -l-> [Configuration]
+dataComp -d[hidden]-> [External Data Sources] : REST API
+[Client] -d[hidden]-> [File System]
+
+@enduml
