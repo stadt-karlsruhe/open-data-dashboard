@@ -23,7 +23,7 @@
         "allEntriesLabel": "Zeile",
         "contains": "enthält"
     },
-    "DetailsPageControls": {
+    "DashboardResourceControls": {
         "download": "Herunterladen",
         "embed": "Einbetten",
         "fullscreen": "Vollbild"
