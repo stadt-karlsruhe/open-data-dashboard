@@ -26,6 +26,7 @@ nav:
     - Home: index.md
     - About:
           - about/index.md
+          - about/technical-documentation.md
           - about/visualizations.md
           - about/filters.md
     - Configuration:
