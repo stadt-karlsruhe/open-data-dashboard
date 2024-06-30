@@ -1,0 +1,98 @@
+@startuml app_architecture
+
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/common.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_pdf.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_csv.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_code.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/chart_column.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/map_location_dot.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/folder_tree.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/chart_simple.puml
+
+skinparam {
+    DefaultTextAlignment center
+    CloudBackgroundColor #048500
+    CloudFontColor #White
+    NodeFontSize 25
+    CloudFontSize 25
+}
+
+skinparam node {
+    BackgroundColor<<FileSystem>> #D3D3D3
+    BackgroundColor<<ExternalDataSources>> #D3D3D3
+    BackgroundColor<<NextJSServer>> #FFFFE0
+    BackgroundColor<<NextJSClient>> #FFFFE0
+}
+
+node "Next.js Client" <<NextJSClient>> {
+    [Data Visualization]
+    [Data Grouping]
+    [Data Filtering]
+    [Search]
+}
+
+node "Next.js Server" <<NextJSServer>> {
+    frame "Data" {
+        [Data Fetching]
+        [Data Transformation]
+        [Type Narrowing]
+        [Data Validation]
+    }
+    frame "Configuration" {
+        [Configuration Loader]
+        [Configuration Validation]
+    }
+    [Data] ..> Cache
+    [Configuration] ..> Cache
+}
+
+node "File System" <<FileSystem>> {
+    FA6_FILE_CODE(yaml_config_1, Dashboards)
+    FA6_FILE_CODE(yaml_config_2, Resources)
+    FA6_FILE_CODE(yaml_config_3, Categories)
+}
+
+node "External Data Sources" <<ExternalDataSources>> {
+    FA6_FILE_PDF(pdf_source, HTML/PDF) #e0051e
+    FA6_FILE_CSV(csv_source, CSV) #856a00
+    FA6_FILE_CODE(json_source, GeoJSON) #2e759e
+    FA6_FILE_CODE(geojson_source, JSON) #9855e0
+}
+
+cloud "Open Data Dashboard" {
+    FA6_CHART_SIMPLE(dashboards, Dashboards)
+    FA6_CHART_COLUMN(bar_chart, Charts)
+    FA6_MAP_LOCATION_DOT(map, Maps)
+    FA6_FILE_PDF(documents, Documents)
+    FA6_FOLDER_TREE(categories, Categories)
+}
+
+note bottom of [File System]
+YAML configuration
+divdied into
+multiple files
+end note
+
+note bottom of [External Data Sources]
+Variable number of
+external data sources
+as configured
+in the configuration files
+end note
+
+note bottom of Cache
+Native Next.js caching
+extended with a LRU cache
+to store data and configuration
+end note
+
+
+[Next.js Client] ..> [Data]
+[Next.js Client] ..> [Configuration]
+[Data Fetching] ..> [External Data Sources]
+[Configuration Loader] ..> [File System]
+[Data] ..> [Configuration]
+[Open Data Dashboard] -- [Next.js Client]
+
+
+@enduml

@@ -19,7 +19,7 @@ They are located in the `/config` directory and are tailor-made for the needs of
     dashboards: [<dashboard>] # (4)!
     ```
 
-    1. The application [theme](theme.md).
+    1. The application [theme](appearance.md#themes).
     2. A list of configured [resources](resources.md).
     3. A list of configured [categories](categories.md).
     4. A list of configured [dashboards](dashboards.md).

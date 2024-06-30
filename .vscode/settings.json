@@ -34,6 +34,7 @@
         "paren",
         "parens",
         "Parens",
+        "plantuml",
         "proto",
         "Purtov",
         "Scheurer",
@@ -69,5 +70,8 @@
     ],
     "yaml.schemas": {
         "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+    },
+    "[plantuml]": {
+        "editor.defaultFormatter": "jebbs.plantuml"
     }
 }
