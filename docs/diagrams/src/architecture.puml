@@ -6,30 +6,61 @@
 !include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/file_code.puml
 !include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/chart_column.puml
 !include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/map_location_dot.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/folder_tree.puml
+!include https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons/font-awesome-6/chart_simple.puml
 
 skinparam {
     DefaultTextAlignment center
+    CloudBackgroundColor #048500
+    CloudFontColor #White
 }
 
-node "Next.js Application" {
-    frame "Client" {
-        [Frontend]
-    }
+skinparam node {
+    BackgroundColor<<FileSystem>> #D3D3D3
+    BackgroundColor<<ExternalDataSources>> #D3D3D3
+    BackgroundColor<<NextJSServer>> #90EE90
+    BackgroundColor<<NextJSClient>> #FFFFE0
+}
 
-    frame "Server" {
-        [Configuration]
-        component dataComp [
-        Data fetching,
-        processing, filtering
-        and visualization
-        ]
+node "Next.js Client" <<NextJSClient>> {
+    [Data Visualization]
+    [Data Grouping]
+    [Data Filtering]
+    [Search]
+}
+
+node "Next.js Server" <<NextJSServer>> {
+    frame "Data" {
+        [Data Fetching]
+        [Data Transformation]
+        [Type Narrowing]
+        [Data Validation]
+    }
+    frame "Configuration" {
+        [Configuration Loader]
+        [Configuration Validation]
     }
 }
 
-node "File System" {
+node "File System" <<FileSystem>> {
     FA6_FILE_CODE(yaml_config_1, Dashboards)
     FA6_FILE_CODE(yaml_config_2, Resources)
     FA6_FILE_CODE(yaml_config_3, Categories)
+}
+
+node "External Data Sources" <<ExternalDataSources>> {
+    FA6_FILE_PDF(pdf_source, HTML/PDF) #e0051e
+    FA6_FILE_CSV(csv_source, CSV) #856a00
+    FA6_FILE_CODE(json_source, GeoJSON) #2e759e
+    FA6_FILE_CODE(geojson_source, JSON) #9855e0
+}
+
+cloud "Open Data Dashboard" {
+    FA6_CHART_SIMPLE(diagrams, Diagrams)
+    FA6_CHART_COLUMN(bar_chart, Charts)
+    FA6_MAP_LOCATION_DOT(map, Maps)
+    FA6_FILE_PDF(documents, Documents)
+    FA6_FOLDER_TREE(categories, Categories)
 }
 
 note bottom of [File System]
@@ -38,25 +69,20 @@ divdied into
 multiple files
 end note
 
-node "External Data Sources" {
-    FA6_FILE_PDF(pdf_source, HTML/PDF)
-    FA6_FILE_CSV(csv_source, CSV)
-    FA6_FILE_CODE(json_source, JSON)
-}
+note bottom of [External Data Sources]
+Variable number of
+external data sources
+as configured
+in the configuration files
+end note
 
-cloud "Open Data Dashboard" {
-    FA6_CHART_COLUMN(bar_chart) #Yellow
-    FA6_MAP_LOCATION_DOT(map)
-}
 
-[File System] -u[hidden]-> [Server]
-[External Data Sources] -u[hidden]-> [Server]
-[Client] -u-- [Open Data Dashboard]
-[Frontend] -r-> [Server]
-[Configuration] ---> [File System]
-[dataComp] ---> [External Data Sources]
-[dataComp] -l-> [Configuration]
-dataComp -d[hidden]-> [External Data Sources] : REST API
-[Client] -d[hidden]-> [File System]
+[Next.js Client] ..> [Data]
+[Next.js Client] ..> [Configuration]
+[Data Fetching] ..> [External Data Sources]
+[Configuration Loader] ..> [File System]
+[Data] ..> [Configuration]
+[Open Data Dashboard] -- [Next.js Client]
+
 
 @enduml
