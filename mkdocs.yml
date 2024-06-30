@@ -2,7 +2,7 @@ site_name: Open Data Dashboard
 site_url: https://open-data-dashboard.readthedocs.io
 repo_url: https://github.com/stadt-karlsruhe/open-data-dashboard
 extra_css:
-  - stylesheets/extra.css
+    - stylesheets/extra.css
 theme:
     name: material
     language: en
@@ -26,9 +26,10 @@ nav:
     - Home: index.md
     - About:
           - about/index.md
+          - Features:
+                - about/visualizations.md
+                - about/dashboards.md
           - about/technical-documentation.md
-          - about/visualizations.md
-          - about/filters.md
     - Configuration:
           - configuration/index.md
           - Configuration Options:
@@ -57,12 +58,12 @@ plugins:
                 name: Deutsch
                 build: true
     - build_plantuml:
-        render: 'server'
-        server: 'https://www.plantuml.com/plantuml'
-        output_format: 'svg'
-        diagram_root: 'docs/diagrams'
-        output_folder: 'out'
-        input_folder: 'src'
+          render: "server"
+          server: "https://www.plantuml.com/plantuml"
+          output_format: "svg"
+          diagram_root: "docs/diagrams"
+          output_folder: "out"
+          input_folder: "src"
 extra:
     alternate:
         - name: English
