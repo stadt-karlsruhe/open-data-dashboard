@@ -13,12 +13,14 @@ skinparam {
     DefaultTextAlignment center
     CloudBackgroundColor #048500
     CloudFontColor #White
+    NodeFontSize 25
+    CloudFontSize 25
 }
 
 skinparam node {
     BackgroundColor<<FileSystem>> #D3D3D3
     BackgroundColor<<ExternalDataSources>> #D3D3D3
-    BackgroundColor<<NextJSServer>> #90EE90
+    BackgroundColor<<NextJSServer>> #FFFFE0
     BackgroundColor<<NextJSClient>> #FFFFE0
 }
 
@@ -40,6 +42,8 @@ node "Next.js Server" <<NextJSServer>> {
         [Configuration Loader]
         [Configuration Validation]
     }
+    [Data] ..> Cache
+    [Configuration] ..> Cache
 }
 
 node "File System" <<FileSystem>> {
@@ -74,6 +78,12 @@ Variable number of
 external data sources
 as configured
 in the configuration files
+end note
+
+note bottom of Cache
+Native Next.js caching
+extended with a LRU cache
+to store data and configuration
 end note
 
 
