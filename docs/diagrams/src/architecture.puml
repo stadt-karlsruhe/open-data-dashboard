@@ -60,7 +60,7 @@ node "External Data Sources" <<ExternalDataSources>> {
 }
 
 cloud "Open Data Dashboard" {
-    FA6_CHART_SIMPLE(diagrams, Diagrams)
+    FA6_CHART_SIMPLE(dashboards, Dashboards)
     FA6_CHART_COLUMN(bar_chart, Charts)
     FA6_MAP_LOCATION_DOT(map, Maps)
     FA6_FILE_PDF(documents, Documents)
