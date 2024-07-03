@@ -5,7 +5,7 @@
 The component diagram below gives a quick view over the most important aspects of the `Open Data Dashboard`'s inner workings.
 
 <figure markdown="span">
-    ![Architecture](../diagrams/out/app_architecture.svg "Architecture"){ loading=lazy }
+    ![Architecture](../diagrams/src/architecture.drawio.svg "Architecture"){ loading=lazy }
 </figure>
 
 ### Separation between Server and Client
