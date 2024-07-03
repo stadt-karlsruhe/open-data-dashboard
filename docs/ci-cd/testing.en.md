@@ -1,6 +1,27 @@
 # Testing
 
-## E2E
+## Unit Tests
+
+For unit testing, the `Open Data Dashboard` relies on [Jest](https://jestjs.io/), a Testing Framework with a focus on simplicity.
+This way, it is ensured that isolated units of the application work as expected. The tests can be run from your terminal:
+
+```bash title="Run Jest tests locally"
+npm test
+```
+
+## Component Tests
+
+For testing individual components,
+the `Open Data Dashboard` utilizes the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/),
+which focuses on testing components in a way that simulates actual user behavior.
+This approach ensures that the components not only perform as intended from a technical standpoint but also provide the expected user experience.
+The component tests are executed together with the unit tests:
+
+```bash title="Run component tests locally"
+npm run test
+```
+
+## E2E Tests
 
 The Open Data Dashboard uses Cypress end-to-end tests to ensure that our application can always meet certain user expectations.
 
