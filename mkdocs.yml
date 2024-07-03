@@ -41,9 +41,9 @@ nav:
           - Supported Data: configuration/data-types.md
     - Development: development/index.md
     - CI/CD and Testing:
-          - ci-cd/ci.md
-          - ci-cd/cd.md
+          - ci-cd/continuous-integration.md
           - ci-cd/testing.md
+          - ci-cd/continuos-delivery.md
 plugins:
     - search
     - glightbox
