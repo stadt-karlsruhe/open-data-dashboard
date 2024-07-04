@@ -1,0 +1,5 @@
+[[plugins]]
+package = "netlify-plugin-out-of-minutes"
+
+[plugins.inputs]
+buildMinutesRequired = 15
