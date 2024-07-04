@@ -43,7 +43,7 @@ nav:
     - CI/CD and Testing:
           - ci-cd/continuous-integration.md
           - ci-cd/testing.md
-          - ci-cd/continuos-delivery.md
+          - ci-cd/continuous-delivery.md
 plugins:
     - search
     - glightbox

@@ -14,5 +14,5 @@ For further reading, consider the following resources:
 * [Configuration](configuration/index.md): Find out how to configure data to be displayed within the Open Data Dashboard.
 * [Development](development/index.md): Here, you can find some basic starting points for working on the source code
 and the documentation of the Open Data Dashboard.
-* [Continuous Integration](ci-cd/continuous-integration.md) and [Continuous Delivery](ci-cd/continuos-delivery.md):
+* [Continuous Integration](ci-cd/continuous-integration.md) and [Continuous Delivery](ci-cd/continuous-delivery.md):
 An introduction to the continuous integration, testing and continuous delivery tools used for the Open Data Dashboard.
