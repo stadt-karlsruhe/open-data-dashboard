@@ -77,6 +77,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "local-cypress": "^1.2.6",
     "lru-cache": "^10.3.0",
+    "netlify-plugin-out-of-minutes": "1.1.0",
     "next": "14.2.4",
     "next-intl": "3.15.3",
     "prettier-eslint": "16.3.0",
