@@ -89,7 +89,7 @@
     "react-data-table-component": "7.6.2",
     "react-dom": "18.3.1",
     "react-leaflet": "^4.2.1",
-    "react-minisearch": "6.3.0",
+    "react-minisearch": "7.1.0",
     "recharts": "2.12.7",
     "sass": "1.77.6",
     "sharp": "^0.33.4",
