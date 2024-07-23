@@ -1,4 +1,4 @@
-mkdocs-material==9.5.28
+mkdocs-material==9.5.30
 mkdocs-static-i18n==1.2.3
 mkdocs-glightbox==0.4.0
 mkdocs-build-plantuml-plugin==1.11.0
